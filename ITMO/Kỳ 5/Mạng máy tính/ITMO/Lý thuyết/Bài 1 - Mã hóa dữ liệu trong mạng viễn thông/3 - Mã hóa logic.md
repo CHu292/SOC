@@ -62,7 +62,7 @@ $$
 Trong đó $$A_i$$ và $$B_i$$ là giá trị của chữ số thứ $$i$$ của mã gốc và mã kết quả tương ứng; $$B_{i-3}$$ và $$B_{i-5}$$ là giá trị của chữ số tương ứng ở vị trí $$(i-3)$$ và $$(i-5)$$ của mã kết quả; $$\oplus$$ là phép toán XOR (phép cộng theo modulo 2).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/XOR.png" alt="Alt text" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/ITMO/image/1/XOR.png" alt="Alt text" width="500">
 </p>
 
 Đối với chuỗi ban đầu $$A = 110110000001$$, việc sử dụng bộ mã hóa như vậy sẽ cho kết quả như sau:
