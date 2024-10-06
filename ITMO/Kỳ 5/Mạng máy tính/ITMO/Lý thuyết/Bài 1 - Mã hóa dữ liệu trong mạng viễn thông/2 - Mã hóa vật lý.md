@@ -4,7 +4,7 @@
 
 Phương pháp mã hóa nhị phân đơn giản và rõ ràng nhất là phương pháp mã hóa tiềm năng không quay về mức 0 – NRZ (Non Return to Zero), trong đó bit "1" tương ứng với mức điện thế cao, còn bit "0" tương ứng với mức điện thế thấp
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/NRZ.png" alt="Alt text" width="300">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/NRZ.png" alt="Alt text" width="500">
 </p>
 - Ví dụ: Trong chuỗi "1010", mã NRZ sẽ giữ mức điện áp cao cho "1", chuyển xuống thấp cho "0", rồi lại chuyển lên cao cho "1", và cuối cùng xuống thấp cho "0".
 
