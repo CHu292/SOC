@@ -29,4 +29,4 @@ Một yêu cầu mong muốn nhưng không bắt buộc đối với các phươ
 Chi phí thực hiện phương pháp mã hóa kỹ thuật số liên quan đến số lượng mức tín hiệu và càng nhiều mức tín hiệu thì thiết bị thu và phát càng mạnh và do đó, đắt hơn.
 
 Các yêu cầu đối với các phương pháp mã hóa kỹ thuật số là trái ngược nhau. Hơn nữa, mỗi phương pháp mã hóa kỹ thuật số, so với các phương pháp khác, đều có những ưu điểm và nhược điểm riêng, sẽ được thảo luận dưới đây.
-
+# 2. Phương pháp mã hóa vật lý
