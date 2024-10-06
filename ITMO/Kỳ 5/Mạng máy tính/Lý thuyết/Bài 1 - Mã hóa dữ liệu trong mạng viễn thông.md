@@ -178,3 +178,26 @@ $$
 
 Do những nhược điểm này, mã xung lưỡng cực "RZ" hiếm khi được sử dụng.
 
+## 2.3. Alternate Mark Inversion - Mã lưỡng cực với đảo cực xen kẽ (AMI)
+
+Mã lưỡng cực với đảo cực xen kẽ (Alternate Mark Inversion, AMI) là một biến thể của phương pháp mã hóa RZ. Trong AMI cũng sử dụng ba mức điện thế: dương, trung tính và âm. Bit "0" nhị phân được mã hóa bằng điện thế trung tính, còn bit "1" nhị phân được mã hóa bằng điện thế dương hoặc âm, trong đó điện thế của bit "1" kế tiếp luôn ngược với điện thế của bit "1" trước đó.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/AMI.png" alt="Alt text" width="500">
+</p>
+
+**Các ưu điểm chính của phương pháp AMI bao gồm:**
+
+- Không có thành phần cố định, và có khả năng đồng bộ hóa giữa bộ phát và bộ nhận khi truyền các chuỗi dài bit "1", vì trong trường hợp này tín hiệu sẽ là một chuỗi các xung có cực tính đối lập nhau.
+- Phổ tín hiệu khi mã hóa AMI nói chung nhỏ hơn so với mã hóa RZ, điều này giúp tăng dung lượng kênh truyền thông. Đặc biệt, khi truyền các chuỗi bit "1" và "0" luân phiên, giới hạn tần số trên sẽ giống như khi truyền các bit luân phiên trong mã NRZ, với giới hạn tần số trên là $$f_{\text{top}} = \frac{C}{2}$$ Hz, và độ rộng phổ tín hiệu là $$S < \frac{C}{2}$$.
+- Khả năng phát hiện các tín hiệu lỗi (bị cấm) khi có sự vi phạm thứ tự đảo cực của các tín hiệu trong quá trình truyền các bit "1", ví dụ như khi sau một bit "1" xuất hiện một bit "1" cùng cực tính.
+
+**Nhược điểm của phương pháp AMI bao gồm:**
+
+- Sự tồn tại của ba mức tín hiệu yêu cầu tăng công suất của bộ phát, điều này dĩ nhiên làm tăng chi phí.
+- Khi truyền các chuỗi dài bit "0", trong tín hiệu xuất hiện thành phần cố định, dịch chuyển phổ tín hiệu vào dải tần số thấp.
+## 2.4 NRZ-I (Non - Return to Zero Inverted)
+Mã tiềm năng với đảo chiều tại bit "1" (NRZI - Non-Return to Zero Inverted) là một biến thể của mã NRZ (Non-Return to Zero). Trong phương pháp mã hóa này, chỉ có hai mức điện áp được sử dụng, và tín hiệu được thay đổi dựa trên bit "1", cụ thể:
+- Khi truyền một bit "0", mức điện áp không thay đổi. Nghĩa là tín hiệu sẽ giữ nguyên trạng thái điện áp từ bit trước đó.
+- Khi truyền một bit "1", mức điện áp sẽ đảo chiều. Nếu trước đó tín hiệu ở mức cao, nó sẽ chuyển xuống mức thấp, và ngược lại.
+  
