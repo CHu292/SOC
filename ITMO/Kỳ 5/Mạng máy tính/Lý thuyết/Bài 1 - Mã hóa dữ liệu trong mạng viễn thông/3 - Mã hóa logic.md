@@ -26,6 +26,28 @@ Trong số các chuỗi kết quả, có 16 chuỗi được chọn sao cho bấ
 | 0111                  | 01111                 | 1111                  | 11101                 |
 
 
+**Ưu điểm**
+
+- đặc tính tự đồng bộ hóa xuất hiện do các chuỗi số 0 và số 1 dài biến mất; 
+- phổ tín hiệu bị thu hẹp do thiếu thành phần không đổi; 
+- có thể phát hiện lỗi do sự hiện diện của các ký tự bị cấm; 
+- thực hiện đơn giản dưới dạng bảng tra cứu.
+
+**Nhược điểm**
+
+- Giảm băng thông hữu ích của kênh truyền, vì một phần băng thông bị tiêu tốn để truyền các bit dư thừa;
+- Xuất hiện thêm chi phí thời gian tại các nút mạng để thực hiện mã hóa logic.
+
+Nhược điểm chính của mã hóa dư thừa là sự xuất hiện của "bit thừa", tương ứng với 4 bit thông tin, tức là độ dư thừa của mã 4B/5B là 25% $$(1/4 = 0.25)$$. Điều này có nghĩa là băng thông thực tế của kênh sẽ thấp hơn 20% so với băng thông danh nghĩa. Để duy trì băng thông nhất định, cần tăng tần số đồng hồ của bộ phát lên 25%, điều này sẽ dẫn đến việc mở rộng phổ tín hiệu.
+
+Trong phương pháp mã hóa logic 8B/6T, để mã hóa 8 bit (B) của thông điệp gốc, sử dụng mã từ 6 ký hiệu ba trạng thái (T). Số lượng mã dư thừa (bị cấm) là:
+
+$$
+3^6 - 2^8 = 729 - 256 = 473.
+$$
+
+Do đó, trong 8B/6T, tỷ lệ mã bị cấm cao hơn so với 4B/5B (65% so với 50%), điều này làm tăng hiệu quả phát hiện lỗi.
+
 ## 3.2. Mã hóa Scrambling
 
 
@@ -39,8 +61,11 @@ $$
 
 Trong đó $$A_i$$ và $$B_i$$ là giá trị của chữ số thứ $$i$$ của mã gốc và mã kết quả tương ứng; $$B_{i-3}$$ và $$B_{i-5}$$ là giá trị của chữ số tương ứng ở vị trí $$(i-3)$$ và $$(i-5)$$ của mã kết quả; $$\oplus$$ là phép toán XOR (phép cộng theo modulo 2).
 
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/XOR.png" alt="Alt text" width="500">
+</p>
 
-Đối với chuỗi ban đầu \( A = 110110000001 \), việc sử dụng bộ mã hóa như vậy sẽ cho kết quả như sau:
+Đối với chuỗi ban đầu $$A = 110110000001$$, việc sử dụng bộ mã hóa như vậy sẽ cho kết quả như sau:
 
 $$
 \begin{align*}
@@ -59,7 +84,7 @@ B_{12} &= A_{12} \oplus B_9 \oplus B_7 = 1 \oplus 1 \oplus 1 = 1. \\
 \end{align*}
 $$
 
-Như vậy, mã kết quả \( B \) sẽ là \( 110001101111 \), trong đó không có chuỗi nào dài hơn sáu số 0, mà có mặt trong mã gốc.
+Như vậy, mã kết quả $$B$$ sẽ là $$110001101111$$, trong đó không có chuỗi nào dài hơn sáu số 0, mà có mặt trong mã gốc.
 
 Bộ giải mã phục hồi mã gốc bằng cách sử dụng mối quan hệ đảo ngược:
 
@@ -67,7 +92,7 @@ $$
 C_i = B_i \oplus B_{i-3} \oplus B_{i-5} \quad (i = 1, 2, …).
 $$
 
-Dễ dàng nhận thấy rằng mã được phục hồi trùng khớp với mã gốc, tức là \( C_i = A_i \).
+Dễ dàng nhận thấy rằng mã được phục hồi trùng khớp với mã gốc, tức là $$C_i = A_i$$.
 
 Các thuật toán mã hóa Scrambling khác nhau có thể khác nhau về số lượng hạng tử để xác định giá trị của chữ số trong mã kết quả và kích thước dịch chuyển giữa các hạng tử. Ví dụ, kích thước dịch chuyển có thể là 5 và 23 vị trí hoặc bất kỳ giá trị nào khác.
 
@@ -77,4 +102,8 @@ Các thuật toán mã hóa Scrambling khác nhau có thể khác nhau về số
 
 - Chi phí bổ sung (overhead) tại các nút mạng để thực hiện thuật toán mã hóa và giải mã;
 - Không đảm bảo 100% việc loại bỏ các chuỗi dài 0 hoặc 1, cũng như khả năng xuất hiện các chuỗi 0 hoặc 1 khác trong mã kết quả.
+
+
+
+
 
