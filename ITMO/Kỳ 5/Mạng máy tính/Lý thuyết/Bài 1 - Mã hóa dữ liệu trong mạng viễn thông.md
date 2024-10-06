@@ -201,3 +201,94 @@ Mã tiềm năng với đảo chiều tại bit "1" (NRZI - Non-Return to Zero I
 - Khi truyền một bit "0", mức điện áp không thay đổi. Nghĩa là tín hiệu sẽ giữ nguyên trạng thái điện áp từ bit trước đó.
 - Khi truyền một bit "1", mức điện áp sẽ đảo chiều. Nếu trước đó tín hiệu ở mức cao, nó sẽ chuyển xuống mức thấp, và ngược lại.
   
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/NRZI.png" alt="Alt text" width="500">
+</p>
+
+**Ưu điểm của mã NRZI:**
+
+- Sử dụng hai mức điện áp: Điều này giúp mã NRZI đơn giản hơn trong việc thực hiện so với các phương pháp yêu cầu ba mức điện áp (như mã AMI).
+- Hỗ trợ đồng bộ hóa: Mã NRZI cải thiện đồng bộ hóa hơn so với NRZ thông thường, đặc biệt khi có sự xuất hiện của nhiều bit "1". Mỗi lần truyền bit "1", tín hiệu sẽ đảo chiều, giúp dễ dàng nhận biết khi nào bit "1" được truyền.
+
+**Nhược điểm của mã NRZI:**
+
+- Không xử lý tốt các chuỗi dài của bit "0": Giống như NRZ, mã NRZI không thay đổi điện áp khi truyền chuỗi dài các bit "0", điều này có thể gây ra lỗi đồng bộ hóa nếu không có sự thay đổi tín hiệu trong một thời gian dài.
+
+  ## 2.5. Mã Manchester
+
+Mã Manchester đã tìm thấy ứng dụng rộng rãi trong các mạng cục bộ Ethernet. Để mã hóa, hai mức tín hiệu được sử dụng, trong đó để đại diện cho các số nhị phân 1 và 0, có sự chuyển đổi tín hiệu ở giữa mỗi khoảng thời gian bit:
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/Manchester.png" alt="Alt text" width="500">
+</p>
+
+- Bit "1" nhị phân tương ứng với sự chuyển từ mức tín hiệu cao sang mức tín hiệu thấp;
+- Bit "0" nhị phân tương ứng với sự chuyển từ mức tín hiệu thấp sang mức tín hiệu cao.
+
+Trong trường hợp có một chuỗi dài các số 1 hoặc 0, ở đầu mỗi khoảng thời gian bit sẽ xảy ra một chuyển đổi tín hiệu bổ sung.
+
+**Ưu điểm của mã Manchester bao gồm:**
+
+- Tự đồng bộ hóa: Sự thay đổi tín hiệu ở giữa mỗi khoảng thời gian bit có thể được sử dụng làm tín hiệu để đồng bộ hóa giữa bộ nhận và bộ phát.
+- Phổ tín hiệu nhỏ hơn so với mã lưỡng cực (AMI) trong trung bình là 1,5 lần: Giới hạn tần số trên khi truyền chuỗi các số 1 hoặc 0 là \( f_{\text{верх}} = C \) Hz, và giới hạn tần số dưới khi truyền các số 1 và 0 xen kẽ là $$f_{\text{top}} = \frac{C}{2}$$, do đó độ rộng phổ là $$S = f_{\text{top}} - f_{\text{lower}} = \frac{C}{2}$$).
+- Chỉ có hai mức điện thế;
+- Không có thành phần cố định.
+
+**Nhược điểm của mã Manchester là:**
+
+- Phổ tín hiệu rộng hơn so với mã NRZ và AMI.
+
+## 2.6 Manchester vi sai
+Mã Manchester vi sai là một biến thể của mã Manchester, được sử dụng trong các mạng như Token Ring. Phương pháp mã hóa này vẫn sử dụng hai mức điện áp và có sự chuyển đổi tín hiệu trong mỗi khoảng bit, nhưng nó khác so với mã Manchester chuẩn ở cách mã hóa các bit:
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/Manchester_vi_sai.png" alt="Alt text" width="500">
+</p>
+
+- Bit "0" được mã hóa bằng cách chuyển đổi điện áp ở đầu khoảng bit (không phải giữa khoảng bit như trong mã Manchester chuẩn).
+- Bit "1" được mã hóa bằng cách giữ nguyên mức điện áp từ bit trước đó, tức là không có sự thay đổi ở đầu khoảng bit.
+Dù vậy, trong cả hai trường hợp, mã Manchester vi sai luôn có sự chuyển đổi tín hiệu ở giữa mỗi khoảng bit để hỗ trợ đồng bộ hóa tín hiệu giữa máy phát và máy thu.
+
+### 2.6.1 Chuyển đổi tín hiệu ở giữa mỗi khoảng bit
+- Trong mã Manchester vi sai, ở giữa mỗi khoảng bit luôn có sự chuyển đổi từ mức điện áp này sang mức điện áp khác (từ dương sang âm hoặc ngược lại). Điều này đảm bảo rằng tín hiệu có tính đồng bộ hóa cao, giúp máy thu dễ dàng xác định ranh giới của các bit và giải mã chính xác dữ liệu.
+- Việc chuyển đổi tín hiệu ở giữa mỗi khoảng bit là một đặc trưng quan trọng của mã Manchester nói chung (cả vi sai và chuẩn), vì nó giúp duy trì sự đồng bộ hóa tín hiệu giữa máy phát và máy thu, ngăn chặn sự mất tín hiệu khi truyền các chuỗi dài bit giống nhau.
+### 2.6.2 Ký hiệu "J" và "K"
+- Ngoài các bit "0" và "1", mã Manchester vi sai còn có thể truyền các ký hiệu đặc biệt “J” và “K”. Đây là các ký hiệu không tuân theo quy tắc chuyển đổi tín hiệu ở giữa mỗi khoảng bit:
+“J” và “K” là các ký hiệu mà không có sự thay đổi tín hiệu ở giữa khoảng bit.
+- Chúng thường được sử dụng để đánh dấu điểm bắt đầu và kết thúc của một khung (frame) dữ liệu. Điều này rất quan trọng trong truyền thông, vì máy thu cần biết khi nào bắt đầu và khi nào kết thúc một khung dữ liệu.
+
+  **Ưu điểm**
+  
+- Khả năng chịu lỗi tốt hơn:
+Điểm mạnh chính của mã Manchester vi sai so với mã Manchester chuẩn là khả năng chống lại sự đảo ngược tín hiệu. Nếu tín hiệu bị đảo ngược toàn bộ (tức là điện áp cao trở thành điện áp thấp và ngược lại), mã Manchester vi sai vẫn có thể giải mã chính xác. Điều này giúp nó có khả năng chịu lỗi cao hơn trong môi trường truyền tín hiệu không ổn định.
+- Tự đồng bộ hóa:
+Cũng giống như mã Manchester chuẩn, mã Manchester vi sai có sự thay đổi tín hiệu ở giữa mỗi khoảng bit, giúp đảm bảo tín hiệu có tính tự đồng bộ hóa giữa máy phát và máy thu.
+
+**Nhược điểm**
+
+- Phổ tín hiệu rộng:
+Giống với mã Manchester chuẩn, mã Manchester vi sai cũng yêu cầu băng thông lớn để truyền tín hiệu, vì nó tạo ra sự chuyển đổi tín hiệu liên tục trong suốt quá trình truyền.
+- Độ phức tạp cao hơn:
+Mặc dù mã Manchester vi sai có ưu điểm về khả năng chống lỗi, nhưng nó yêu cầu phần cứng phức tạp hơn để thực hiện mã hóa và giải mã so với các phương pháp đơn giản hơn như NRZ hoặc AMI.
+
+## 2.7 MLT-3 (Multi-Level Transmit - 3)  -  Mã hóa truyền 3 mức
+MLT-3 (Multi-Level Transmit - 3) là một phương pháp mã hóa tín hiệu ba mức điện áp, được sử dụng trong các hệ thống truyền dữ liệu tốc độ cao, như Fast Ethernet (100BASE-TX). Mã hóa này sử dụng ba mức điện áp khác nhau: dương, không và âm, để truyền tín hiệu số.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/MLT-3.png" alt="Alt text" width="500">
+</p>
+
+**Nguyên tắc hoạt động của mã MLT-3:**
+
+Trong MLT-3, tín hiệu không thay đổi giá trị với mỗi bit dữ liệu "1", mà thay đổi theo một chu kỳ gồm bốn bước:
+- Từ mức 0 lên mức dương.
+- Từ mức dương xuống mức 0.
+- Từ mức 0 xuống mức âm.
+- Từ mức âm lên mức 0.
+Mỗi lần có bit "1" trong chuỗi dữ liệu, tín hiệu sẽ chuyển sang bước tiếp theo trong chu kỳ này. Nếu bit "0" được truyền, tín hiệu sẽ giữ nguyên ở mức hiện tại mà không thay đổi.
+
+**Những nhược điểm của phương pháp mã hóa này bao gồm:**
+
+- Thiếu khả năng tự đồng bộ;
+- Có ba mức tín hiệu;
+- Sự tồn tại của thành phần cố định trong tín hiệu khi truyền chuỗi dài các bit "0"
