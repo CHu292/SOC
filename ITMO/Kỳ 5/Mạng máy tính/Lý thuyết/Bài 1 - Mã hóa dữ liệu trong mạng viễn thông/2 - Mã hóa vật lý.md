@@ -262,3 +262,29 @@ Mỗi lần có bit "1" trong chuỗi dữ liệu, tín hiệu sẽ chuyển san
 - Thiếu khả năng tự đồng bộ;
 - Có ba mức tín hiệu;
 - Sự tồn tại của thành phần cố định trong tín hiệu khi truyền chuỗi dài các bit "0"
+
+## 2.7 PAM-5 (Pulse Amplitude Modulation - 5 level) - Mã năm mức PAM-5
+PAM-5 (Pulse Amplitude Modulation - 5 level) là một phương pháp mã hóa tín hiệu dựa trên điều chế biên độ xung với năm mức điện áp khác nhau, được sử dụng trong các hệ thống truyền dẫn tốc độ cao như Gigabit Ethernet (1000BASE-T). Mã PAM-5 sử dụng các mức điện áp khác nhau để đại diện cho các giá trị nhị phân, trong đó mỗi mức điện áp có thể biểu diễn nhiều bit thông tin hơn so với các mã nhị phân thông thường.
+
+**Nguyên tắc hoạt động của mã PAM-5:**
+
+Trong PAM-5, tín hiệu có thể có năm mức điện áp: -2, -1, 0, +1, +2. Mỗi mức điện áp này đại diện cho một tổ hợp bit nhị phân nhất định:
+Mức -2 có thể đại diện cho một tổ hợp bit (ví dụ: 00).
+Mức -1 đại diện cho tổ hợp bit khác (ví dụ: 01).
+Mức 0 cho tổ hợp khác (ví dụ: 10).
+Mức +1 và +2 đại diện cho các tổ hợp khác nhau (ví dụ: 11).
+Nhờ việc sử dụng năm mức điện áp, mã PAM-5 có khả năng truyền nhiều bit thông tin hơn trong mỗi xung tín hiệu so với các mã nhị phân chỉ sử dụng hai mức (0 và 1).
+
+**Ưu điểm của mã PAM-5:**
+
+Tăng hiệu quả truyền dữ liệu:
+Với năm mức điện áp, mã PAM-5 có thể mã hóa nhiều bit thông tin hơn trong mỗi khoảng thời gian tín hiệu, điều này giúp tăng hiệu suất truyền dữ liệu. Ví dụ, thay vì chỉ truyền một bit tại mỗi xung như trong mã nhị phân, PAM-5 có thể truyền nhiều bit hơn, giúp nâng cao tốc độ truyền.
+Sử dụng hiệu quả băng thông:
+Bằng cách truyền nhiều bit thông tin hơn trong mỗi xung, PAM-5 sử dụng băng thông hiệu quả hơn. Điều này rất hữu ích trong các hệ thống tốc độ cao như Gigabit Ethernet, nơi cần tối ưu hóa việc sử dụng băng thông để đạt được tốc độ truyền cao.
+
+**Nhược điểm của mã PAM-5:**
+
+Yêu cầu chất lượng kênh truyền tốt:
+Vì mã PAM-5 sử dụng nhiều mức điện áp, tín hiệu có thể bị ảnh hưởng bởi nhiễu và suy hao tín hiệu trong quá trình truyền qua kênh. Điều này đòi hỏi kênh truyền phải có chất lượng tốt để đảm bảo các mức điện áp khác nhau có thể được nhận dạng chính xác.
+Phức tạp trong giải mã:
+So với các mã nhị phân, PAM-5 yêu cầu thiết bị thu phải phân biệt được năm mức điện áp khác nhau, điều này làm tăng độ phức tạp trong quá trình giải mã tín hiệu. Điều này cũng đòi hỏi các bộ xử lý tín hiệu phức tạp hơn.
