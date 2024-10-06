@@ -35,7 +35,6 @@ Các yêu cầu đối với các phương pháp mã hóa kỹ thuật số là 
 Phương pháp mã hóa nhị phân đơn giản và rõ ràng nhất là phương pháp mã hóa tiềm năng không quay về mức 0 – NRZ (Non Return to Zero), trong đó bit "1" tương ứng với mức điện thế cao, còn bit "0" tương ứng với mức điện thế thấp
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/NRZ.png" alt="Alt text" width="300">
-  <figcaption>Non Return to Zero</figcaption>
 </p>
 - Ví dụ: Trong chuỗi "1010", mã NRZ sẽ giữ mức điện áp cao cho "1", chuyển xuống thấp cho "0", rồi lại chuyển lên cao cho "1", và cuối cùng xuống thấp cho "0".
 
@@ -152,4 +151,30 @@ Tuy nhiên, mã NRZ không được sử dụng trong các mạng máy tính do 
 
 Tuy nhiên, các biến thể của mã NRZ được sử dụng, trong đó thành phần cố định được loại bỏ bằng các phương pháp mã hóa logic, cụ thể là mã hóa dư thừa.
 
+## 2.2 Return to Zero (RZ) Mã xung lưỡng cực
+
+Bit "1" được biểu diễn bằng một xung có cực dương (tín hiệu điện áp cao), nhưng chỉ tồn tại trong nửa đầu của khoảng thời gian bit. Trong nửa sau, tín hiệu trở về mức không.
+Bit "0" được biểu diễn bằng một xung có cực âm (tín hiệu điện áp thấp), và cũng chỉ tồn tại trong nửa đầu của khoảng thời gian bit, sau đó cũng trở về mức không.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/image/1/RZ.png" alt="Alt text" width="500">
+</p>
+
+Mỗi xung kéo dài một nửa khoảng thời gian bit. Giữa khoảng thời gian bit, tín hiệu quay trở lại mức 0.
+
+**Ưu điểm của mã RZ bao gồm:**
+
+- Có khả năng tự đồng bộ: Tín hiệu để đồng bộ hóa đồng hồ của bộ nhận là sự quay về mức 0 giữa mỗi khoảng thời gian bit.
+- Không có thành phần cố định.
+
+**Nhược điểm của mã RZ là:**
+
+- Có ba mức tín hiệu, điều này đòi hỏi tăng công suất của bộ phát để đảm bảo độ tin cậy của việc nhận tín hiệu, dẫn đến tăng chi phí thực hiện.
+- Phổ tín hiệu rộng hơn so với các mã tiềm năng: Khi truyền chuỗi các bit "0" hoặc "1", giới hạn tần số trên sẽ là $$f_{\text{top}} = C$$ Hz, và giới hạn tần số dưới khi truyền các bit "0" và "1" xen kẽ sẽ là $$f_{\text{ниж}} = \frac{C}{4}$$, điều này làm tăng phổ tín hiệu lên 1.5 lần so với mã NRZ:
+
+$$
+S = f_{\text{top}} - f_{\text{lower}} = 0.75C
+$$
+
+Do những nhược điểm này, mã xung lưỡng cực "RZ" hiếm khi được sử dụng.
 
