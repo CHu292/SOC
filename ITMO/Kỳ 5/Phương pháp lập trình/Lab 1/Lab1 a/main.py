@@ -6,46 +6,46 @@ import subprocess
 
 TEMPLATE_FILE = 'template.tbl'
 
-# Функция для чтения файла template.tbl
+# Hàm để đọc file template.tbl
 def read_template_file(filename):
     with open(filename, 'r') as file:
         lines = file.readlines()
-    hashed_password = lines[0].strip()  # Первая строка содержит хешированный пароль
-    forbidden_files = [line.strip() for line in lines[1:]]  # Список запрещённых файлов
+    hashed_password = lines[0].strip()  # Dòng đầu tiên chứa mật khẩu đã được băm
+    forbidden_files = [line.strip() for line in lines[1:]]  # Danh sách các tệp bị cấm
     return hashed_password, forbidden_files
 
-# Функция для хэширования пароля
+# Hàm để băm mật khẩu
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-# Функция проверки пароля пользователя
+# Hàm kiểm tra mật khẩu người dùng
 def check_password(hashed_password, input_password):
     return hashed_password == hash_password(input_password)
 
-# Функция проверки, является ли файл запрещённым
+# Hàm kiểm tra xem tệp có bị cấm hay không
 def is_forbidden_file(filename, forbidden_files):
     for pattern in forbidden_files:
         if fnmatch.fnmatch(filename, pattern):
             return True
     return False
 
-# Функция для защиты файла (запрет на чтение, запись, удаление, перемещение)
+# Hàm bảo vệ tệp (cấm đọc, ghi, xóa, di chuyển)
 def protect_file(filepath):
-    # Установка прав без чтения, записи и выполнения для всех пользователей
+    # Đặt quyền không đọc, ghi và thực thi cho tất cả người dùng
     os.chmod(filepath, 0)
-    # Используем chattr для предотвращения удаления и перемещения файла (immutable)
+    # Sử dụng chattr để ngăn chặn xóa và di chuyển tệp (immutable)
     subprocess.run(['sudo', 'chattr', '+i', filepath])
-    print(f"Файл защищён: {filepath}")
+    print(f"Tệp đã được bảo vệ: {filepath}")
 
-# Функция для снятия защиты с файла (разрешение чтения, записи, удаления, перемещения)
+# Hàm gỡ bảo vệ tệp (cho phép đọc, ghi, xóa, di chuyển)
 def unprotect_file(filepath):
-    # Снять атрибут immutable (разрешить удаление файла)
+    # Gỡ thuộc tính immutable (cho phép xóa tệp)
     subprocess.run(['sudo', 'chattr', '-i', filepath])
-    # Восстановить права на чтение, запись и выполнение для владельца
+    # Khôi phục quyền đọc, ghi và thực thi cho chủ sở hữu
     os.chmod(filepath, stat.S_IRWXU)
-    print(f"Доступ к файлу восстановлен: {filepath}")
+    print(f"Quyền truy cập tệp đã được khôi phục: {filepath}")
 
-# Функция для защиты или снятия защиты файлов в текущем каталоге
+# Hàm bảo vệ hoặc gỡ bảo vệ các tệp trong thư mục hiện tại
 def protect_files(directory, forbidden_files, enable=True):
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -56,28 +56,28 @@ def protect_files(directory, forbidden_files, enable=True):
                 else:
                     unprotect_file(filepath)
 
-# Функция для включения/выключения режима защиты
+# Hàm bật/tắt chế độ bảo vệ
 def toggle_protection(template_file, enable=True):
     hashed_password, forbidden_files = read_template_file(template_file)
     
-    input_password = input("Введите пароль для включения/выключения защиты: ")
+    input_password = input("Nhập mật khẩu để bật/tắt bảo vệ: ")
     
     if check_password(hashed_password, input_password):
         if enable:
-            print("Пароль правильный! Начинаем защищать файлы.")
+            print("Mật khẩu đúng! Bắt đầu bảo vệ các tệp.")
         else:
-            print("Пароль правильный! Снимаем защиту с файлов.")
-        current_directory = os.getcwd()  # Текущая директория
+            print("Mật khẩu đúng! Đang gỡ bảo vệ các tệp.")
+        current_directory = os.getcwd()  # Thư mục hiện tại
         protect_files(current_directory, forbidden_files, enable)
     else:
-        print("Неправильный пароль! Не могу включить/выключить защиту.")
+        print("Mật khẩu sai! Không thể bật/tắt chế độ bảo vệ.")
 
-# Запуск программы
+# Chạy chương trình
 if __name__ == "__main__":
-    choice = input("Введите 'on' для включения защиты или 'off' для отключения защиты: ").strip().lower()
+    choice = input("Nhập 'on' để bật bảo vệ hoặc 'off' để tắt bảo vệ: ").strip().lower()
     if choice == 'on':
         toggle_protection(TEMPLATE_FILE, enable=True)
     elif choice == 'off':
         toggle_protection(TEMPLATE_FILE, enable=False)
     else:
-        print("Неверный выбор.")
+        print("Lựa chọn không hợp lệ.")
