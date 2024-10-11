@@ -131,3 +131,11 @@
 - Nhân viên: Tham gia một phần. Không phải tất cả nhân viên đều quản lý kho.
 - Kho hàng: Tham gia toàn phần. Mỗi kho phải được quản lý bởi một nhân viên.
   
+# Ký hiệu Crow's foot
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/ky_crow_foot.png" alt="Ký hiệu chân chim - Crow's foot" width="700">
+</p>
+
+### 2.2.4 Sơ đồ ER
+
