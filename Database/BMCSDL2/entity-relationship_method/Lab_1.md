@@ -139,3 +139,11 @@
 
 ### 2.2.4 Sơ đồ ER
 
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/Mo_hinh_ER.png" alt="Sơ đồ ER" width="700">
+</p>
+
+# 3 Chuyển đổi ER-diagram sang mô hình quan hệ
+
+- Mỗi thực thể trong ER-diagram sẽ được chuyển thành một bảng. Các thuộc tính của thực thể sẽ trở thành các cột của bảng, và khoá chính của thực thể sẽ trở thành khoá chính của bảng.
+  
