@@ -358,3 +358,170 @@ JOIN
 - Supplier_ID, Supplier_Name, Supplier_Phone: ID, tên và số điện thoại của nhà cung cấp.
 - Product_ID, Product_Category_Name, Price: ID sản phẩm, danh mục sản phẩm, và giá sản phẩm mà nhà cung cấp cung cấp.
 
+
+
+# 3 Database Schema
+
+## 1. Table Definitions
+
+### 1.1 Employee Table
+```sql
+CREATE TABLE Employee (
+    Employee_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Position VARCHAR(100),
+    Phone_Number VARCHAR(15),
+    Email VARCHAR(100)
+);
+```
+
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Employee_ID       | INT              | Employee ID (Primary Key)         |
+| Name              | VARCHAR(100)     | Employee's name                  |
+| Position          | VARCHAR(50)      | Employee's position              |
+| Phone_Number      | VARCHAR(15)      | Employee's phone number          |
+| Email             | VARCHAR(100)     | Employee's email                 |
+
+### 1.2 Supplier Table
+```sql
+CREATE TABLE Supplier (
+    Supplier_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Address VARCHAR(255),
+    Phone_Number VARCHAR(15),
+    Email VARCHAR(100)
+);
+```
+
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Supplier_ID       | INT              | Supplier ID (Primary Key)         |
+| Name              | VARCHAR(100)     | Supplier's name                  |
+| Address           | VARCHAR(255)     | Supplier's address               |
+| Phone_Number      | VARCHAR(15)      | Supplier's phone number          |
+| Email             | VARCHAR(100)     | Supplier's email                 |
+
+### 1.3 Product Table
+```sql
+CREATE TABLE Product (
+    Product_ID INT PRIMARY KEY,
+    Product_Category_Name VARCHAR(100),
+    Price DECIMAL(10, 2),
+    Warehouse_ID INT,
+    FOREIGN KEY (Warehouse_ID) REFERENCES Warehouse(Warehouse_ID)
+);
+```
+
+| Column Name              | Data Type        | Description                       |
+|--------------------------|------------------|-----------------------------------|
+| Product_ID               | INT              | Product ID (Primary Key)          |
+| Product_Category_Name     | VARCHAR(100)     | Product category name            |
+| Price                    | DECIMAL(10, 2)   | Product price                    |
+| Warehouse_ID             | INT              | Warehouse ID (Foreign Key)        |
+
+### 1.4 Customer Table
+```sql
+CREATE TABLE Customer (
+    Customer_ID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Phone_Number VARCHAR(15),
+    Email VARCHAR(100)
+);
+```
+
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Customer_ID       | INT              | Customer ID (Primary Key)         |
+| Name              | VARCHAR(100)     | Customer's name                  |
+| Phone_Number      | VARCHAR(15)      | Customer's phone number          |
+| Email             | VARCHAR(100)     | Customer's email                 |
+
+### 1.5 Order Table
+```sql
+CREATE TABLE Order (
+    Order_ID INT PRIMARY KEY,
+    Order_Date DATE,
+    Total_Amount DECIMAL(10, 2),
+    Customer_ID INT,
+    Employee_ID INT,
+    FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID),
+    FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID)
+);
+```
+
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Order_ID          | INT              | Order ID (Primary Key)            |
+| Order_Date        | DATE             | Order date                       |
+| Total_Amount      | DECIMAL(10, 2)   | Total amount of the order         |
+| Customer_ID       | INT              | Customer ID (Foreign Key)         |
+| Employee_ID       | INT              | Employee ID (Foreign Key)         |
+
+
+### 1.6 Bill Table
+```sql
+CREATE TABLE Bill (
+    Bill_ID INT PRIMARY KEY,
+    Amount DECIMAL(10, 2),
+    Payment_Method VARCHAR(50),
+    Order_ID INT,
+    FOREIGN KEY (Order_ID) REFERENCES Order(Order_ID)
+);
+```
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Bill_ID           | INT              | Bill ID (Primary Key)             |
+| Amount            | DECIMAL(10, 2)   | Amount of the bill                |
+| Payment_Method    | VARCHAR(50)      | Payment method                   |
+| Order_ID          | INT              | Order ID (Foreign Key)            |
+
+### 1.7 Warehouse Table
+```sql
+CREATE TABLE Warehouse (
+    Warehouse_ID INT PRIMARY KEY,
+    Address VARCHAR(255),
+    Status VARCHAR(50),
+    Employee_ID INT,
+    FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID)
+);
+```
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Warehouse_ID      | INT              | Warehouse ID (Primary Key)        |
+| Address           | VARCHAR(255)     | Warehouse address                |
+| Status            | VARCHAR(50)      | Warehouse status                 |
+| Employee_ID       | INT              | Employee ID (Foreign Key)         |
+
+### 1.8 Order_Product Table
+```sql
+CREATE TABLE Order_Product (
+    Order_ID INT,
+    Product_ID INT,
+    PRIMARY KEY (Order_ID, Product_ID),
+    FOREIGN KEY (Order_ID) REFERENCES Order(Order_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+);
+```
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Order_ID          | INT              | Order ID (Primary Key, Foreign Key)|
+| Product_ID        | INT              | Product ID (Primary Key, Foreign Key)|
+
+### 1.9 Supplier_Product Table
+```sql
+CREATE TABLE Supplier_Product (
+    Supplier_ID INT,
+    Product_ID INT,
+    PRIMARY KEY (Supplier_ID, Product_ID),
+    FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+);
+```
+
+| Column Name       | Data Type        | Description                       |
+|-------------------|------------------|-----------------------------------|
+| Supplier_ID       | INT              | Supplier ID (Primary Key, Foreign Key)|
+| Product_ID        | INT              | Product ID (Primary Key, Foreign Key)|
+
+
