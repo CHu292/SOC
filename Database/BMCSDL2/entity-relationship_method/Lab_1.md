@@ -525,3 +525,59 @@ CREATE TABLE Supplier_Product (
 | Product_ID        | INT              | Product ID (Primary Key, Foreign Key)|
 
 
+
+# Example Data for Database in 3NF
+
+## 1. Table: Employee
+| Employee_ID | Name          | Position  | Phone_Number   | Email               |
+|-------------|---------------|-----------|----------------|---------------------|
+| 1           | John Doe      | Sales     | 123-456-7890   | john.doe@company.com|
+| 2           | Jane Smith    | Manager   | 987-654-3210   | jane.smith@company.com|
+
+## 2. Table: Supplier
+| Supplier_ID | Name               | Address          | Phone_Number   | Email                    |
+|-------------|--------------------|------------------|----------------|--------------------------|
+| 101         | CoffeeWorld         | 123 Market St    | 123-456-7891   | contact@coffeeworld.com   |
+| 102         | BeanSuppliers       | 456 Elm St       | 987-654-3211   | sales@beansuppliers.com   |
+
+## 3. Table: Product
+| Product_ID | Product_Category_Name | Price | Warehouse_ID |
+|------------|-----------------------|-------|--------------|
+| 1001       | Arabica Beans         | 15.99 | 1            |
+| 1002       | Espresso Machine      | 299.99| 2            |
+
+## 4. Table: Customer
+| Customer_ID | Name          | Phone_Number   | Email               |
+|-------------|---------------|----------------|---------------------|
+| 501         | Alice Johnson  | 123-123-1234   | alice.j@gmail.com    |
+| 502         | Bob Williams   | 987-987-9876   | bob.w@hotmail.com    |
+
+## 5. Table: Order
+| Order_ID | Order_Date | Total_Amount | Customer_ID | Employee_ID |
+|----------|------------|--------------|-------------|-------------|
+| 2001     | 2023-09-01 | 45.99        | 501         | 1           |
+| 2002     | 2023-09-05 | 299.99       | 502         | 2           |
+
+## 6. Table: Bill
+| Bill_ID | Amount | Payment_Method | Order_ID |
+|---------|--------|----------------|----------|
+| 3001    | 45.99  | Credit Card    | 2001     |
+| 3002    | 299.99 | PayPal         | 2002     |
+
+## 7. Table: Warehouse
+| Warehouse_ID | Address         | Status   | Employee_ID |
+|--------------|-----------------|----------|-------------|
+| 1            | 789 Warehouse Rd | Active   | 1           |
+| 2            | 456 Storage Ave  | Inactive | 2           |
+
+## 8. Table: Order_Product
+| Order_ID | Product_ID |
+|----------|------------|
+| 2001     | 1001       |
+| 2002     | 1002       |
+
+## 9. Table: Supplier_Product
+| Supplier_ID | Product_ID |
+|-------------|------------|
+| 101         | 1001       |
+| 102         | 1002       |
