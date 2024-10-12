@@ -22,7 +22,7 @@ Ví dụ cơ sở dữ liệu SOHUUOTO có các bảng:
  Ví dụ cụ thể: Cơ sở dữ liệ sở hữu ô tô
  
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/ky_crow_foot.png" alt="Ký hiệu chân chim - Crow's foot" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/vd_csdl_oto.png" alt="Ví dụ CSDL ô tô" width="700">
 </p>
 
 ## 1.3 Các tính chất của cơ sở dữ liệu
