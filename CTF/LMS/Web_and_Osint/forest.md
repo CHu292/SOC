@@ -11,3 +11,7 @@
 wget https://lms.itmo.xyz/uploads/llphidjegnwa5h3275x2d941ao0jzj9w/%D0%BB%D0%B5%D1%81.png
 ```
 
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/CTF/LMS/Web_and_Osint/image/%D0%BB%D0%B5%D1%81.png" alt="BKP" width="700">
+</p>
+
