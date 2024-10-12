@@ -134,7 +134,7 @@
 # Ký hiệu Crow's foot
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/ky_crow_foot.png" alt="Ký hiệu chân chim - Crow's foot" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/Ky_hieu_crow_.png" alt="Ký hiệu chân chim - Crow's foot" width="700">
 </p>
 
 ### 2.2.4 Sơ đồ ER
