@@ -85,22 +85,28 @@ Hypervisor được cài đặt trong môi trường của hệ điều hành ch
 - Một phần của hạ tầng ảo được phân loại theo một tiêu chí hoặc tập hợp các tiêu chí và được xem xét như một tổng thể.
 
 # Mục 4: Đối tượng bảo vệ
-- Thuật ngữ "ảo hóa" đề cập đến nhiều công nghệ thông tin nhằm giảm chi phí triển khai mạng máy tính của tổ chức, nâng cao khả năng chịu lỗi của các giải pháp máy chủ, và đạt được các lợi ích khác. Ảo hóa bao gồm việc mô phỏng phần mềm và/hoặc phần cứng mà trong môi trường (hoặc dựa trên đó) các chương trình khác nhau hoạt động.
-- Việc ảo hóa được thực hiện đối với:
-   - Phần mềm;
-   - Hệ thống tính toán;
-   - Hệ thống lưu trữ dữ liệu;
-   - Mạng tính toán;
-   - Bộ nhớ;
-   - Dữ liệu.
-- Khi sử dụng công nghệ ảo hóa, các đối tượng truy cập (ảo và ảo hóa) được tạo ra, cần được bảo vệ giống như các đối tượng khác trong hệ thống thông tin, bao gồm các thiết bị phần cứng của hệ thống thông tin được sử dụng để triển khai công nghệ ảo hóa. Các đối tượng bảo vệ chính khi sử dụng công nghệ ảo hóa bao gồm:
-  - Các phương tiện tạo và quản lý hạ tầng ảo (hypervisor loại I, hypervisor loại II, hypervisor của hệ thống lưu trữ dữ liệu, bảng điều khiển quản lý hạ tầng ảo, v.v.);
-  - Hệ thống tính toán ảo (VM, máy chủ ảo, v.v.);
-  - Hệ thống lưu trữ dữ liệu ảo;
-  - Kênh truyền dữ liệu ảo;
-  - Các thiết bị ảo riêng lẻ xử lý, lưu trữ và truyền dữ liệu (bộ xử lý ảo, đĩa ảo, bộ nhớ ảo, thiết bị mạng ảo chủ động và thụ động, v.v.);
-  - Các phương tiện bảo vệ thông tin ảo (ZIS) và các phương tiện ZIS được thiết kế để sử dụng trong môi trường ảo hóa;
-  - Biên giới của hạ tầng ảo (các bộ xử lý trung tâm và lõi của chúng, không gian địa chỉ bộ nhớ, giao diện mạng, cổng kết nối thiết bị ngoại vi, v.v.).
+
+Khái niệm "ảo hóa" bao gồm nhiều công nghệ thông tin nhằm giảm chi phí triển khai mạng máy tính trong tổ chức, nâng cao khả năng chống chịu của các giải pháp máy chủ được sử dụng, cũng như đạt được các lợi ích khác. Ảo hóa là sự mô phỏng phần mềm và/hoặc phần cứng, trong môi trường (trên cơ sở) đó hoạt động các chương trình khác nhau.
+
+Ảo hóa được thực hiện đối với:
+- Phần mềm;
+- Hệ thống tính toán;
+- Hệ thống lưu trữ dữ liệu;
+- Mạng tính toán;
+- Bộ nhớ;
+- Dữ liệu.
+
+Khi sử dụng công nghệ ảo hóa, các đối tượng truy cập (ảo và được ảo hóa) được tạo ra, cần được bảo vệ như các đối tượng khác của hệ thống thông tin, bao gồm cả các phương tiện phần cứng của hệ thống thông tin được sử dụng để triển khai công nghệ ảo hóa. Các đối tượng bảo vệ chính khi sử dụng công nghệ ảo hóa bao gồm:
+- Các phương tiện tạo và quản lý hạ tầng ảo (hypervisor loại I, hypervisor loại II, hypervisor của hệ thống lưu trữ dữ liệu, bảng điều khiển quản lý hạ tầng ảo, v.v.);
+- Các hệ thống tính toán ảo (máy ảo, máy chủ ảo, v.v.);
+- Các hệ thống lưu trữ dữ liệu ảo;
+- Các kênh truyền dữ liệu ảo;
+- Các thiết bị ảo để xử lý, lưu trữ và truyền dữ liệu (bộ xử lý ảo, đĩa ảo, bộ nhớ ảo, thiết bị mạng ảo chủ động và thụ động, v.v.);
+- Các phương tiện bảo vệ thông tin ảo và các phương tiện bảo vệ thông tin được thiết kế để sử dụng trong môi trường ảo hóa;
+- Chu vi của hạ tầng ảo (các bộ vi xử lý trung tâm và các lõi của chúng được sử dụng trong việc triển khai công nghệ ảo hóa, không gian địa chỉ bộ nhớ, giao diện mạng, cổng kết nối thiết bị bên ngoài, v.v.).
+
+Để bảo vệ các đối tượng được liệt kê, sử dụng cả các phương tiện bảo vệ thông tin ảo và các phương tiện bảo vệ thông tin được thiết kế để sử dụng trong môi trường ảo hóa, là những loại phương tiện bảo vệ thông tin, cũng như các loại phương tiện bảo vệ thông tin khác.
+
 
 # Mục 5: Các mối đe dọa an ninh liên quan đến việc sử dụng công nghệ ảo hóa
 
@@ -153,11 +159,18 @@ Những mối đe dọa này liên quan đến sự hạn chế về dung lượ
 Những mối đe dọa này liên quan đến các lỗ hổng trong phần mềm quản lý hạ tầng ảo, phần mềm này có nhiệm vụ phân bổ tài nguyên máy tính (tài nguyên tính toán và bộ nhớ). Việc thực hiện mối đe dọa này có thể xảy ra do truy cập trái phép vào phần mềm này hoặc do lỗi trong mã của nó.
 
 ## 5.16 Mối đe dọa vi phạm công nghệ xử lý thông tin bằng cách thực hiện các thay đổi trái phép vào hình ảnh máy ảo
-- Những mối đe dọa này liên quan đến việc thiếu cơ chế bảo vệ trong phần mềm ảo hóa để ngăn chặn truy cập trái phép vào các hình ảnh máy ảo. Việc thực hiện mối đe dọa này có thể dẫn đến việc vi phạm tính bí mật của thông tin được bảo vệ, tính toàn vẹn của các chương trình được cài đặt trên máy ảo, cũng như tính khả dụng của tài nguyên máy ảo.
-- Ngoài ra, việc cài đặt phần mềm độc hại vào các hình ảnh máy ảo, được sử dụng làm mẫu (hình ảnh tiêu chuẩn), có thể được sử dụng để tạo ra mạng botnet trong quá trình chuẩn bị cho các cuộc tấn công từ chối dịch vụ. Trong trường hợp này, an ninh của thông tin được xử lý trong các máy ảo khác, các phân đoạn của hạ tầng ảo hoặc các hệ thống thông tin bên ngoài có thể bị xâm phạm.
+
+- Các mối đe dọa này liên quan đến việc thiếu các cơ chế bảo vệ trong phần mềm ảo hóa nhằm ngăn chặn việc truy cập trái phép (НСД) vào các hình ảnh máy ảo (VM). Kết quả của việc hiện thực hóa mối đe dọa này có thể vi phạm tính bảo mật của thông tin được bảo vệ đang được xử lý bằng các máy ảo, tính toàn vẹn của các chương trình được cài đặt trên máy ảo, cũng như tính khả dụng của tài nguyên của các máy ảo.
+
+- Hơn nữa, việc cài đặt phần mềm độc hại vào các hình ảnh máy ảo, được sử dụng như các mẫu (hình ảnh mẫu), có thể được sử dụng để tạo ra một botnet trong quá trình chuẩn bị cho một cuộc tấn công từ chối dịch vụ (DoS). Trong trường hợp này, có thể xảy ra vi phạm an ninh thông tin được xử lý trong các máy ảo khác, các phân đoạn của hạ tầng ảo hoặc các hệ thống thông tin bên ngoài.
+
+**Chú thích** - Botnet được hiểu là một mạng máy tính phân tán, được tạo ra bởi kẻ xâm nhập thông qua việc cài đặt phần mềm độc hại đặc biệt vào các máy tính có sẵn nhưng không thuộc sở hữu của họ và các hệ thống tính toán (chủ yếu là máy tính được kết nối với Internet), nhằm thực hiện đồng thời một cuộc tấn công máy tính phân tán vào một hệ thống máy tính mục tiêu (máy tính nạn nhân).
+    
 
 ## 5.17 Mối đe dọa truy cập trái phép vào thông tin được bảo vệ trong không gian ảo
-Do việc sử dụng nhiều công nghệ ảo hóa khác nhau để xử lý thông tin (phân phối dữ liệu giữa các đĩa logic và ảo, phân phối giữa các thiết bị lưu trữ vật lý và ảo, phân bổ không gian đĩa dưới dạng các đĩa riêng lẻ, v.v.), hầu hết các tệp tin đều được lưu trữ dưới dạng các đoạn riêng biệt. Do đó, trong hầu hết các trường hợp, việc đọc tuần tự dữ liệu từ một thiết bị lưu trữ riêng lẻ không cho phép vi phạm tính bí mật của thông tin được bảo vệ. Tuy nhiên, việc sử dụng phần mềm và công nghệ thông tin để xử lý thông tin phân tán có thể khôi phục tính toàn vẹn của các tệp dữ liệu, do đó, vi phạm tính bí mật của chúng.
+- Liên quan đến việc áp dụng nhiều công nghệ ảo hóa, được thiết kế để làm việc với dữ liệu (phân phối dữ liệu bên trong các đĩa ảo và logic, phân phối dữ liệu giữa các đĩa như vậy, phân phối dữ liệu giữa các bộ lưu trữ vật lý và ảo trong cùng một không gian đĩa, phân bổ các khu vực không gian đĩa dưới dạng các đĩa riêng biệt, v.v.), hầu hết tất cả các tệp được lưu trữ dưới dạng nhiều đoạn riêng biệt. Do đó, trong phần lớn các trường hợp, việc đọc dữ liệu tuần tự từ một thiết bị riêng lẻ không cho phép vi phạm tính bảo mật của thông tin được bảo vệ, được lưu trữ trong các hệ thống lưu trữ dữ liệu. Vì lý do này, các biện pháp bảo đảm tính bảo mật của thông tin được lưu trữ trên các thiết bị riêng lẻ hầu như không được áp dụng.
+
+- Tuy nhiên, việc áp dụng phần mềm và công nghệ thông tin để xử lý thông tin phân tán cho phép phục hồi tính toàn vẹn của các tệp phân tán chứa thông tin được bảo vệ và, do đó, vi phạm tính bảo mật của nó.
 
 ## 5.18 Mối đe dọa lỗi cập nhật hypervisor
 - Những mối đe dọa này liên quan đến việc phụ thuộc của mỗi thiết bị ảo và mỗi đối tượng truy cập ảo hóa vào tính khả dụng của hypervisor. Việc cập nhật hypervisor không chính xác có thể dẫn đến việc vô hiệu hóa các cơ chế bảo vệ, làm giảm tính bảo mật của thông tin được bảo vệ, tính toàn vẹn của các chương trình, và tính khả dụng của các tài nguyên máy ảo.
@@ -166,7 +179,9 @@ Do việc sử dụng nhiều công nghệ ảo hóa khác nhau để xử lý t
   - các bản cập nhật trong đó các lỗi mới được đưa vào mã bộ ảo hóa;
   - các bản cập nhật trong đó mã chương trình được đưa vào bộ ảo hóa gây ra sự không tương thích hypervisor với môi trường hoạt động của nó;
   - các sự cố bảo mật thông tin khác xảy ra trong quá trình cập nhật bộ ảo hóa.
+  
 # Mục 6: Các đặc điểm bảo vệ thông tin khi sử dụng công nghệ ảo hóa
+
 - Việc bảo vệ thông tin được xử lý trong hệ thống thông tin (IS) được xây dựng bằng cách sử dụng công nghệ ảo hóa được đảm bảo thông qua việc tuân thủ các yêu cầu về các biện pháp bảo vệ thông tin (ZIS). Hệ thống thông tin điển hình này được trình bày trong Phụ lục B. Nhìn chung, các biện pháp bảo vệ tương tự như các biện pháp được áp dụng trong IS không sử dụng công nghệ ảo hóa. Tuy nhiên, dưới đây là các biện pháp bảo vệ thông tin đặc thù cần áp dụng khi sử dụng công nghệ ảo hóa.
 - Các biện pháp bảo vệ thông tin được chia thành các nhóm khác nhau tùy thuộc vào đối tượng bảo vệ.
 - Vì tính bảo mật của thông tin được xác định bởi các yêu cầu bảo vệ, mức độ và chiều sâu của nó thay đổi tùy theo lớp bảo mật của IS, bao gồm cả khi sử dụng công nghệ ảo hóa. Trong tiêu chuẩn này, đối với mỗi đối tượng bảo vệ, một tập hợp các biện pháp bảo vệ thông tin tương ứng với lớp bảo mật cao nhất khỏi truy cập trái phép (NSD) được cung cấp.
@@ -175,111 +190,222 @@ Do việc sử dụng nhiều công nghệ ảo hóa khác nhau để xử lý t
 ## 6.1 Bảo vệ các phương tiện tạo và quản lý hạ tầng ảo
 **Các biện pháp bảo vệ phương tiện tạo và quản lý hạ tầng ảo bao gồm:**
 
-- Thay đổi tự động tuyến đường truyền gói tin mạng giữa các thành phần của hạ tầng ảo bên trong hypervisor;
-- Chặn quyền truy cập vào các đối tượng của hạ tầng ảo đối với các đối tượng truy cập không qua quy trình xác thực;
-- Phát hiện, phân tích và chặn các kênh truyền thông ẩn bên trong hạ tầng ảo, vượt qua các biện pháp bảo vệ thông tin được triển khai hoặc bên trong các giao thức mạng được phép;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực được nhập bởi các đối tượng truy cập trong hạ tầng ảo;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực của các đối tượng truy cập được lưu trữ trong các thành phần của hạ tầng ảo;
-- Nhận dạng và xác thực các đối tượng truy cập khi họ truy cập cục bộ hoặc từ xa vào các đối tượng của hạ tầng ảo;
-- Kiểm soát việc nhập (xuất) thông tin vào (ra khỏi) hạ tầng ảo;
-- Kiểm soát truy cập của các đối tượng truy cập vào không gian địa chỉ cách ly trong bộ nhớ của hypervisor;
-- Kiểm soát truy cập của các đối tượng truy cập vào không gian địa chỉ cách ly trong bộ nhớ của hệ điều hành chủ;
-- Kiểm soát truy cập của các đối tượng truy cập vào các công cụ cấu hình của phần cứng ảo;
-- Kiểm soát truy cập của các đối tượng truy cập vào các công cụ cấu hình của hypervisor và máy ảo;
-- Kiểm soát việc khởi động hypervisor và máy ảo dựa trên các tiêu chí bảo mật của đối tượng bảo vệ (chế độ khởi động, loại phương tiện sử dụng, v.v.);
+---
+
+**Các biện pháp bảo vệ phương tiện tạo và quản lý hạ tầng ảo bao gồm:**
+- Thay đổi tự động các tuyến truyền gói tin mạng giữa các thành phần của hạ tầng ảo bên trong hypervisor;
+- Chặn truy cập vào các đối tượng của hạ tầng ảo đối với những người dùng không qua được quá trình xác thực;
+- Phát hiện, phân tích và chặn các kênh truyền thông tin ẩn trong hạ tầng ảo để vượt qua các biện pháp bảo vệ thông tin hoặc trong các giao thức mạng được phép;
+- Bảo vệ chống truy cập trái phép (НСД) đối với thông tin xác thực mà người dùng trong hạ tầng ảo nhập vào;
+- Bảo vệ chống truy cập trái phép vào thông tin xác thực của người dùng được lưu trữ trong các thành phần của hạ tầng ảo;
+- Xác định và xác thực người dùng khi họ truy cập cục bộ hoặc từ xa đến các đối tượng trong hạ tầng ảo;
+- Xác định và xác thực người dùng khi họ cố gắng truy cập vào bảng điều khiển quản lý các thông số phần cứng;
+- Kiểm soát việc nhập (xuất) thông tin vào (ra) hạ tầng ảo;
+- Kiểm soát việc nhập (xuất) thông tin vào (ra) hệ thống thông tin (ИС);
+- Kiểm soát truy cập của người dùng vào không gian địa chỉ cách ly trong bộ nhớ của hypervisor;
+- Kiểm soát truy cập của người dùng vào không gian địa chỉ cách ly trong bộ nhớ của hệ điều hành máy chủ;
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình phần cứng ảo;
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình của hypervisor và máy ảo (VM);
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình của hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Kiểm soát quá trình khởi động hypervisor và máy ảo dựa trên các tiêu chí bảo mật được đặt ra (chế độ khởi động, loại phương tiện lưu trữ, v.v.);
+- Kiểm soát quá trình khởi động hệ điều hành máy chủ và/hoặc hệ điều hành khách dựa trên các tiêu chí bảo mật được đặt ra;
+- Kiểm soát việc truyền các thông báo thông tin nội bộ trong các mạng ảo của hệ điều hành máy chủ theo các đặc tính như thành phần, dung lượng, v.v.;
+- Kiểm soát hoạt động của các thành phần dự phòng quan trọng của phần cứng hệ thống thông tin (ИС);
+- Kiểm soát hoạt động của các thành phần dự phòng quan trọng của hạ tầng ảo;
 - Kiểm soát tính toàn vẹn của các thành phần quan trọng cho hoạt động của hypervisor và máy ảo;
-- Đảm bảo khả năng kế thừa các quyền truy cập đã được thiết lập ở cấp độ quản lý đối với các đối tượng truy cập ở cấp độ ảo hóa và thiết bị;
-- Đảm bảo tính xác thực của các kết nối mạng (phiên tương tác) bên trong hạ tầng ảo, bao gồm việc bảo vệ khỏi việc thay thế các thiết bị và dịch vụ mạng;
-- Đặt các cảm biến và/hoặc thiết bị phát hiện (ngăn chặn) xâm nhập trong phần cứng ảo;
-- Đăng ký và theo dõi quá trình khởi động (hoặc tắt) của các thành phần trong hạ tầng ảo;
-- Sao lưu thông tin được bảo vệ trong hypervisor và/hoặc máy ảo, được lưu trữ trên các phương tiện vật lý và/hoặc ảo;
-- Sao lưu không gian đĩa vật lý và/hoặc ảo được sử dụng để lưu trữ nhật ký sự kiện của hypervisor và/hoặc máy ảo;
-- Phát hiện kịp thời các lỗi của các thành phần trong hạ tầng ảo;
-- Tạo các thành phần giả trong hạ tầng ảo nhằm phát hiện, ghi lại và phân tích hành động của những kẻ vi phạm trong quá trình thực hiện các mối đe dọa an ninh;
-- Xóa dữ liệu dư thừa sau khi xóa dữ liệu trong hạ tầng ảo, bao gồm cả thông tin hạn chế.
+- Kiểm soát tính toàn vẹn của các thành phần quan trọng cho hoạt động của hệ điều hành máy chủ và hệ điều hành khách;
+- Kiểm soát tính toàn vẹn của phần mềm nhúng trong phần cứng hệ thống thông tin;
+- Giám sát việc sử dụng năng lực phần cứng vật lý và ảo;
+- Đảm bảo khả năng kế thừa các quyền truy cập được thiết lập ở cấp quản lý cho người dùng đến các đối tượng truy cập ở cấp ảo hóa và phần cứng;
+- Đảm bảo sự cô lập của các luồng dữ liệu khác nhau, được truyền và xử lý bởi các thành phần của hạ tầng ảo của hệ điều hành máy chủ;
+- Đảm bảo tính xác thực của các kết nối mạng (phiên tương tác) trong hạ tầng ảo, bao gồm bảo vệ chống lại việc giả mạo thiết bị mạng và dịch vụ;
+- Vô hiệu hóa các giao thức mạng không sử dụng bởi các thành phần của hạ tầng ảo của hệ điều hành máy chủ;
+- Ngăn chặn sự chậm trễ hoặc gián đoạn của các quy trình có ưu tiên cao trong hạ tầng ảo bởi các quy trình có ưu tiên thấp;
+- Ngăn chặn sự chậm trễ hoặc gián đoạn của các quy trình máy ảo có ưu tiên cao bởi các quy trình máy ảo có ưu tiên thấp;
+- Áp dụng quyền truy cập cá nhân đến các đối tượng cho một hoặc nhiều thành phần của hạ tầng ảo;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các khu vực khởi động của các thiết bị lưu trữ thông tin kết nối với hệ thống thông tin;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong phần mềm nhúng của phần cứng vật lý và ảo;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp cấu hình của hypervisor và/hoặc máy ảo;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp cấu hình của hệ điều hành máy chủ và hệ điều hành khách;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Kiểm tra bộ nhớ tạm thời và hệ thống tệp của hypervisor và/hoặc máy ảo để tìm phần mềm độc hại;
+- Kiểm tra bộ nhớ tạm thời và hệ thống tệp của hệ điều hành máy chủ và/hoặc hệ điều hành khách để tìm phần mềm độc hại;
+- Đặt các cảm biến của hệ thống phát hiện (ngăn chặn) xâm nhập trong phần cứng ảo;
+- Đặt các cảm biến của hệ thống phát hiện (ngăn chặn) xâm nhập trong hypervisor và/hoặc máy ảo;
+- Đặt các cảm biến của hệ thống phát hiện (ngăn chặn) xâm nhập trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký và theo dõi việc khởi động (kết thúc) các thành phần của hạ tầng ảo;
+- Ghi nhật ký việc truy cập của người dùng vào hypervisor và/hoặc máy ảo;
+- Ghi nhật ký việc truy cập của người dùng vào hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký việc khởi động (kết thúc) hypervisor và/hoặc máy ảo, các chương trình và quy trình trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký việc khởi động (kết thúc) hệ điều hành máy chủ và/hoặc hệ điều hành khách, các chương trình và quy trình trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký và theo dõi các thay đổi trong phần mềm và phần cứng của hệ thống thông tin trong quá trình hoạt động và/hoặc trong thời gian hệ thống bị tắt phần cứng;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào phần cứng ảo;
+- Ghi nhật ký các thay đổi về thành phần và cấu hình của phần cứng ảo;
+- Ghi nhật ký các thay đổi về thành phần và cấu hình của máy ảo;
+- Ghi nhật ký các thay đổi về phần mềm và phần cứng ảo trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký các thay đổi về phần mềm và phần cứng ảo trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào thông tin hạn chế, được lưu trữ và xử lý trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào thông tin hạn chế, được lưu trữ và xử lý trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Dự phòng băng thông mạng để đảm bảo tương tác ổn định giữa các thành phần của hạ tầng ảo trong hypervisor;
+- Sao lưu thông tin cần bảo vệ trong hypervisor và/hoặc máy ảo, được lưu trữ trên các thiết bị lưu trữ vật lý và/hoặc ảo;
+- Sao lưu thông tin cần bảo vệ trong hệ điều hành máy chủ và/hoặc hệ điều hành khách, được lưu trữ trên các thiết bị lưu trữ vật lý và/hoặc ảo;
+- Sao lưu không gian đĩa vật lý và/hoặc ảo, được sử dụng để lưu trữ nhật ký sự kiện của hypervisor và/hoặc máy ảo;
+- Phát hiện kịp thời sự cố của các thành phần hạ tầng ảo;
+- Tạo (mô phỏng) các thành phần giả của hạ tầng ảo để phát hiện, ghi lại và phân tích các hành động của kẻ xâm nhập trong quá trình thực hiện các mối đe dọa bảo mật;
+- Xóa thông tin còn sót lại sau khi xóa dữ liệu được xử lý trong hạ tầng ảo chứa thông tin hạn chế;
+- Xóa thông tin còn sót lại sau khi xóa dữ liệu chứa thông tin hạn chế trong hypervisor và/hoặc máy ảo;
+- Xóa thông tin còn sót lại sau khi xóa dữ liệu chứa thông tin hạn chế trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Xóa thông tin còn sót lại sau khi xóa các tệp chứa cấu hình phần mềm ảo hóa và phần cứng ảo;
+- Quản lý quyền truy cập vào phần cứng của hệ thống thông tin, kiểm soát việc kết nối (ngắt kết nối) các thiết bị lưu trữ;
+- Quản lý việc khởi động (truy cập) các thành phần phần mềm, bao gồm xác định các thành phần được khởi động, thiết lập tham số khởi động và kiểm soát việc khởi động thành phần phần mềm;
+- Quản lý việc cài đặt (cài đặt) các thành phần phần mềm trong hạ tầng ảo, bao gồm xác định các thành phần cần cài đặt, thiết lập tham số cài đặt và kiểm soát việc cài đặt các thành phần phần mềm;
+- Chỉ cài đặt phần mềm và/hoặc các thành phần được phép sử dụng trong hạ tầng ảo;
+- Lọc lưu lượng mạng giữa các thành phần hạ tầng ảo và các mạng bên ngoài của hệ điều hành máy chủ, bao gồm cả các mạng công cộng;
+- Lọc lưu lượng mạng từ/đến mỗi hệ điều hành khách.
+
 
 ## 6.2 Bảo vệ hệ thống tính toán ảo
 
 **Các biện pháp bảo vệ hệ thống tính toán ảo bao gồm:**
 
-- Chặn quyền truy cập vào các đối tượng của hạ tầng ảo đối với các đối tượng truy cập không qua quy trình xác thực;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực được nhập bởi các đối tượng truy cập trong hạ tầng ảo;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực của các đối tượng truy cập được lưu trữ trong các thành phần của hạ tầng ảo;
-- Nhận dạng và xác thực các đối tượng truy cập khi họ truy cập cục bộ hoặc từ xa vào các đối tượng của hạ tầng ảo;
-- Kiểm soát truy cập của các đối tượng truy cập vào không gian địa chỉ cách ly trong bộ nhớ của hypervisor;
-- Kiểm soát truy cập của các đối tượng truy cập vào không gian địa chỉ cách ly trong bộ nhớ của hệ điều hành chủ;
-- Kiểm soát truy cập của các đối tượng truy cập vào các công cụ cấu hình của hypervisor và máy ảo;
-- Kiểm soát truy cập của các đối tượng truy cập vào các công cụ cấu hình của hệ điều hành chủ và/hoặc hệ điều hành khách;
-- Kiểm soát truy cập vào các tệp ảnh ảo của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo;
-- Kiểm soát việc khởi động hypervisor và máy ảo dựa trên các tiêu chí bảo mật của đối tượng bảo vệ (chế độ khởi động, loại phương tiện sử dụng, v.v.);
+---
+
+- Chặn truy cập vào các đối tượng của hạ tầng ảo đối với những người dùng không qua được quá trình xác thực;
+- Bảo vệ chống truy cập trái phép (НСД) vào thông tin xác thực do người dùng trong hạ tầng ảo nhập vào;
+- Bảo vệ chống truy cập trái phép vào thông tin xác thực của người dùng được lưu trữ trong các thành phần của hạ tầng ảo;
+- Xác định và xác thực người dùng khi họ truy cập cục bộ hoặc từ xa đến các đối tượng trong hạ tầng ảo;
+- Kiểm soát truy cập của người dùng vào không gian địa chỉ cách ly trong bộ nhớ của hypervisor;
+- Kiểm soát truy cập của người dùng vào không gian địa chỉ cách ly trong bộ nhớ của hệ điều hành máy chủ;
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình của hypervisor và máy ảo (VM);
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình của hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Kiểm soát truy cập của người dùng vào các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Kiểm soát quá trình khởi động hypervisor và máy ảo dựa trên các tiêu chí bảo mật được đặt ra (chế độ khởi động, loại phương tiện lưu trữ, v.v.);
+- Kiểm soát quá trình khởi động hệ điều hành máy chủ và/hoặc hệ điều hành khách dựa trên các tiêu chí bảo mật được đặt ra;
 - Kiểm soát tính toàn vẹn của các thành phần quan trọng cho hoạt động của hypervisor và máy ảo;
-- Kiểm soát tính toàn vẹn của các thành phần quan trọng cho hoạt động của hệ điều hành chủ và hệ điều hành khách;
-- Kiểm soát tính toàn vẹn của các tệp chứa cài đặt phần mềm ảo hóa và máy ảo;
-- Ngăn chặn sự chậm trễ hoặc gián đoạn trong việc thực hiện các quy trình của máy ảo có mức ưu tiên cao từ các quy trình của máy ảo có mức ưu tiên thấp;
-- Kiểm tra sự hiện diện của phần mềm độc hại trong vi chương trình của phần cứng vật lý và ảo;
-- Kiểm tra sự hiện diện của phần mềm độc hại trong các tệp cấu hình của hypervisor và/hoặc máy ảo;
-- Kiểm tra sự hiện diện của phần mềm độc hại trong các tệp ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo;
-- Kiểm tra bộ nhớ và hệ thống tệp của hypervisor và/hoặc máy ảo để phát hiện phần mềm độc hại;
-- Kiểm tra bộ nhớ và hệ thống tệp của hệ điều hành chủ và/hoặc hệ điều hành khách để phát hiện phần mềm độc hại;
-- Đặt các cảm biến và/hoặc thiết bị phát hiện (ngăn chặn) xâm nhập trong phần cứng ảo;
-- Đăng ký việc đăng nhập/thoát ra của các đối tượng truy cập trong hypervisor và/hoặc máy ảo;
-- Đăng ký việc khởi động (hoặc tắt) hypervisor và/hoặc máy ảo, các chương trình và quy trình trong hypervisor và/hoặc máy ảo;
-- Đăng ký các thay đổi về quyền truy cập vào các tệp ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo;
-- Đăng ký các thay đổi về quyền truy cập vào phần cứng ảo;
-- Đăng ký các thay đổi về cấu trúc và cấu hình của phần mềm và phần cứng ảo trong hypervisor và/hoặc máy ảo;
-- Đăng ký các thay đổi về cấu trúc và cấu hình của phần mềm và phần cứng ảo trong hệ điều hành chủ và/hoặc hệ điều hành khách;
-- Sao lưu thông tin được bảo vệ trong hypervisor và/hoặc máy ảo, được lưu trữ trên các phương tiện vật lý và/hoặc ảo;
-- Sao lưu các tệp ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo;
-- Tạo các thành phần giả trong hạ tầng ảo nhằm phát hiện, ghi lại và phân tích hành động của những kẻ vi phạm trong quá trình thực hiện các mối đe dọa an ninh;
-- Xóa dữ liệu dư thừa sau khi xóa thông tin được bảo vệ trong hypervisor và/hoặc máy ảo;
-- Mã hóa các tệp ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo, chứa thông tin hạn chế.
+- Kiểm soát tính toàn vẹn của các thành phần quan trọng cho hoạt động của hệ điều hành máy chủ và hệ điều hành khách;
+- Kiểm soát tính toàn vẹn của các tệp chứa cấu hình phần mềm ảo hóa và máy ảo;
+- Kiểm soát tính toàn vẹn của các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Ngăn chặn sự chậm trễ hoặc gián đoạn của các quy trình máy ảo có ưu tiên cao bởi các quy trình máy ảo có ưu tiên thấp;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong phần mềm nhúng của phần cứng vật lý và ảo;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp cấu hình của hypervisor và/hoặc máy ảo;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp cấu hình của hệ điều hành máy chủ và hệ điều hành khách;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Kiểm tra bộ nhớ tạm thời và hệ thống tệp của hypervisor và/hoặc máy ảo để tìm phần mềm độc hại;
+- Kiểm tra bộ nhớ tạm thời và hệ thống tệp của hệ điều hành máy chủ và/hoặc hệ điều hành khách để tìm phần mềm độc hại;
+- Đặt các cảm biến của hệ thống phát hiện (ngăn chặn) xâm nhập trong phần cứng ảo;
+- Đặt các cảm biến của hệ thống phát hiện (ngăn chặn) xâm nhập trong hypervisor và/hoặc máy ảo;
+- Đặt các cảm biến của hệ thống phát hiện (ngăn chặn) xâm nhập trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký việc truy cập của người dùng vào hypervisor và/hoặc máy ảo;
+- Ghi nhật ký việc truy cập của người dùng vào hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký việc khởi động (kết thúc) hypervisor và/hoặc máy ảo, các chương trình và quy trình trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký việc khởi động (kết thúc) hệ điều hành máy chủ và/hoặc hệ điều hành khách, các chương trình và quy trình trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký các thay đổi về quyền truy cập vào các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào phần cứng ảo;
+- Ghi nhật ký các thay đổi về thành phần và cấu hình của máy ảo;
+- Ghi nhật ký các thay đổi về phần mềm và phần cứng ảo trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký các thay đổi về phần mềm và phần cứng ảo trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào thông tin hạn chế, được lưu trữ và xử lý trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào thông tin hạn chế, được lưu trữ và xử lý trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Sao lưu thông tin cần bảo vệ trong hypervisor và/hoặc máy ảo, được lưu trữ trên các thiết bị lưu trữ vật lý và/hoặc ảo;
+- Sao lưu thông tin cần bảo vệ trong hệ điều hành máy chủ và/hoặc hệ điều hành khách, được lưu trữ trên các thiết bị lưu trữ vật lý và/hoặc ảo;
+- Sao lưu các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Sao lưu không gian đĩa vật lý và/hoặc ảo, được sử dụng để lưu trữ nhật ký sự kiện của hypervisor và/hoặc máy ảo;
+- Tạo (mô phỏng) các thành phần giả của hạ tầng ảo để phát hiện, ghi lại và phân tích các hành động của kẻ xâm nhập trong quá trình thực hiện các mối đe dọa bảo mật;
+- Xóa thông tin còn sót lại sau khi xóa dữ liệu chứa thông tin hạn chế trong hypervisor và/hoặc máy ảo;
+- Xóa thông tin còn sót lại sau khi xóa dữ liệu chứa thông tin hạn chế trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Xóa thông tin còn sót lại sau khi xóa các tệp hình ảnh của máy ảo, nơi đã xử lý thông tin hạn chế;
+- Cài đặt (cài đặt) chỉ phần mềm và/hoặc các thành phần được phép sử dụng trong hạ tầng ảo;
+- Lọc lưu lượng mạng từ/đến mỗi hệ điều hành khách;
+- Mã hóa các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo, chứa thông tin hạn chế.
+
 
 ## 6.3 Bảo vệ hệ thống lưu trữ dữ liệu ảo
 
 **Các biện pháp bảo vệ hệ thống lưu trữ dữ liệu ảo bao gồm:**
 
-- Tự động khôi phục khả năng hoạt động của hệ thống lưu trữ dữ liệu được kết nối với hạ tầng ảo trong trường hợp một hoặc nhiều thành phần của nó bị hỏng;
-- Chặn quyền truy cập vào các đối tượng của hạ tầng ảo đối với các đối tượng truy cập không qua quy trình xác thực;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực được nhập bởi các đối tượng truy cập trong hạ tầng ảo;
-- Nhận dạng và xác thực các đối tượng truy cập khi họ truy cập cục bộ hoặc từ xa vào các đối tượng của hạ tầng ảo;
-- Kiểm soát việc nhập (xuất) thông tin vào (ra khỏi) hệ thống lưu trữ dữ liệu, được kết nối với hạ tầng ảo;
-- Kiểm soát tính toàn vẹn của các dữ liệu được lưu trữ trên các phương tiện thông tin máy móc được kết nối với hạ tầng ảo;
-- Đảm bảo kênh, tuyến đường truyền tin cậy trong/ra khỏi hệ thống lưu trữ dữ liệu được kết nối với hạ tầng ảo;
-- Kiểm tra sự hiện diện của phần mềm độc hại trong môi trường hệ điều hành của hypervisor hệ thống lưu trữ dữ liệu;
-- Phân chia dữ liệu dựa trên mức độ bảo mật của thông tin được xử lý giữa các thành phần của hệ thống lưu trữ dữ liệu, giữa các phương tiện lưu trữ thông tin riêng lẻ;
-- Đăng ký các thay đổi về quyền truy cập vào thông tin được lưu trữ trong hệ thống lưu trữ dữ liệu;
-- Mã hóa các tệp ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo, chứa thông tin hạn chế.
+- Khôi phục tự động khả năng hoạt động của hệ thống lưu trữ dữ liệu kết nối với hạ tầng ảo trong trường hợp một hoặc nhiều thành phần của nó bị hỏng;
+- Chặn truy cập vào các đối tượng của hạ tầng ảo đối với những người dùng không qua được quá trình xác thực;
+- Bảo vệ chống truy cập trái phép (НСД) vào thông tin xác thực do người dùng trong hạ tầng ảo nhập vào;
+- Bảo vệ chống truy cập trái phép vào thông tin xác thực của người dùng được lưu trữ trong các thành phần của hạ tầng ảo;
+- Xác định và xác thực người dùng khi họ truy cập cục bộ hoặc từ xa đến các đối tượng trong hạ tầng ảo;
+- Kiểm soát việc nhập (xuất) thông tin vào (ra) các hệ thống lưu trữ dữ liệu trong hạ tầng ảo;
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình của hệ thống lưu trữ dữ liệu trong hạ tầng ảo;
+- Kiểm soát truy cập của người dùng vào các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Kiểm soát hoạt động (mức độ hao mòn) của các thiết bị lưu trữ thông tin kết nối với hạ tầng ảo, chuyển sang chế độ dự phòng khi cần thiết;
+- Kiểm soát tính toàn vẹn của dữ liệu lưu trữ trên các thiết bị lưu trữ thông tin kết nối với hạ tầng ảo;
+- Kiểm soát tính toàn vẹn của các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Đảm bảo các kênh (đường truyền) bảo mật cho việc truyền dữ liệu vào/ra hệ thống lưu trữ dữ liệu trong hạ tầng ảo;
+- Đảm bảo tính xác thực của các kết nối mạng (phiên tương tác) trong hạ tầng ảo, bao gồm bảo vệ chống lại việc giả mạo thiết bị mạng và dịch vụ;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong môi trường hoạt động của hypervisor của hệ thống lưu trữ dữ liệu;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Phân chia dữ liệu dựa trên mức độ bảo mật của thông tin đang được xử lý giữa các thành phần của hệ thống lưu trữ dữ liệu, các thiết bị lưu trữ thông tin riêng lẻ trong hạ tầng ảo, các ổ đĩa logic hoặc giữa các thư mục tệp;
+- Đặt hệ thống lưu trữ dữ liệu trong một phân đoạn bảo mật của hệ thống thông tin;
+- Ghi nhật ký các thay đổi về quyền truy cập vào thông tin lưu trữ trong hệ thống lưu trữ dữ liệu trong hạ tầng ảo;
+- Ghi nhật ký các thay đổi về quyền truy cập vào các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào phần cứng ảo và vật lý của hệ thống lưu trữ dữ liệu;
+- Ghi nhật ký các thay đổi về thành phần và cấu hình của phần cứng ảo và vật lý của hệ thống lưu trữ dữ liệu;
+- Sao lưu các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Tạo (mô phỏng) các thành phần giả của hạ tầng ảo để phát hiện, ghi lại và phân tích các hành động của kẻ xâm nhập trong quá trình thực hiện các mối đe dọa bảo mật;
+- Quản lý quyền truy cập vào phần cứng của hệ thống lưu trữ dữ liệu, kiểm soát việc kết nối (ngắt kết nối) các thiết bị lưu trữ thông tin với/đến hạ tầng ảo;
+- Mã hóa các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo, chứa thông tin hạn chế.
+
 
 ## 6.4 Bảo vệ các kênh truyền dữ liệu ảo
 
 **Các biện pháp bảo vệ kênh truyền dữ liệu ảo bao gồm:**
 
-- Tự động khôi phục khả năng hoạt động của hệ thống lưu trữ dữ liệu được kết nối với hạ tầng ảo trong trường hợp một hoặc nhiều thành phần của nó bị hỏng;
-- Thay đổi tự động tuyến đường truyền gói tin mạng giữa các thành phần của hạ tầng ảo bên trong hypervisor;
-- Chặn quyền truy cập vào các đối tượng của hạ tầng ảo đối với các đối tượng truy cập không qua quy trình xác thực;
-- Phát hiện, phân tích và chặn các kênh truyền thông ẩn bên trong hạ tầng ảo, vượt qua các biện pháp bảo vệ thông tin;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực của các đối tượng truy cập trong hạ tầng ảo;
-- Kiểm soát việc truyền các thông điệp thông tin dịch vụ, được truyền trong các mạng ảo của hệ điều hành chủ, theo các đặc điểm: thành phần, khối lượng, v.v.;
-- Đảm bảo tính cách ly của các luồng dữ liệu khác nhau, được truyền và xử lý bởi các thành phần của hạ tầng ảo của hệ điều hành chủ;
-- Mã hóa thông tin hạn chế được truyền qua các kênh truyền dữ liệu ảo và vật lý của hypervisor.
+- Khôi phục tự động khả năng hoạt động của hệ thống lưu trữ dữ liệu kết nối với hạ tầng ảo trong trường hợp một hoặc nhiều thành phần của nó bị hỏng;
+- Thay đổi tự động các tuyến truyền gói tin mạng giữa các thành phần của hạ tầng ảo bên trong hypervisor;
+- Chặn truy cập vào các đối tượng của hạ tầng ảo đối với những người dùng không qua được quá trình xác thực;
+- Phát hiện, phân tích và chặn các kênh truyền thông tin ẩn trong hạ tầng ảo để vượt qua các biện pháp bảo vệ thông tin hoặc trong các giao thức mạng được phép;
+- Bảo vệ chống truy cập trái phép (НСД) vào thông tin xác thực mà người dùng trong hạ tầng ảo nhập vào;
+- Bảo vệ chống truy cập trái phép vào thông tin xác thực của người dùng được lưu trữ trong các thành phần của hạ tầng ảo;
+- Xác định và xác thực người dùng khi họ truy cập cục bộ hoặc từ xa đến các đối tượng trong hạ tầng ảo;
+- Kiểm soát việc truyền các thông báo thông tin nội bộ trong các mạng ảo của hệ điều hành máy chủ theo các đặc tính như thành phần, dung lượng, v.v.;
+- Giám sát việc sử dụng năng lực phần cứng vật lý và ảo;
+- Đảm bảo sự cô lập của các luồng dữ liệu khác nhau, được truyền và xử lý bởi các thành phần của hạ tầng ảo của hệ điều hành máy chủ;
+- Đảm bảo tính xác thực của các kết nối mạng (phiên tương tác) trong hạ tầng ảo, bao gồm bảo vệ chống lại việc giả mạo thiết bị mạng và dịch vụ;
+- Vô hiệu hóa các giao thức mạng không sử dụng bởi các thành phần của hạ tầng ảo của hệ điều hành máy chủ;
+- Truyền tải và kiểm soát tính toàn vẹn của các thuộc tính bảo mật (thẻ bảo mật) liên quan đến thông tin hạn chế được xử lý trong hạ tầng ảo khi trao đổi thông tin với các hệ thống thông tin khác;
+- Dự phòng băng thông mạng để đảm bảo tương tác ổn định giữa các thành phần của hạ tầng ảo trong hypervisor;
+- Tạo (mô phỏng) các thành phần giả của hạ tầng ảo để phát hiện, ghi lại và phân tích các hành động của kẻ xâm nhập trong quá trình thực hiện các mối đe dọa bảo mật;
+- Lọc lưu lượng mạng giữa các thành phần của hạ tầng ảo và các mạng bên ngoài của hệ điều hành máy chủ, bao gồm cả các mạng công cộng;
+- Lọc lưu lượng mạng từ/đến mỗi hệ điều hành khách;
+- Mã hóa thông tin hạn chế được truyền qua các kênh giao tiếp ảo và vật lý của hypervisor;
+- Mã hóa thông tin hạn chế được truyền qua các kênh giao tiếp ảo và vật lý của hệ điều hành máy chủ.
+
 
 ## 6.5 Bảo vệ các thiết bị ảo riêng lẻ xử lý, lưu trữ và truyền dữ liệu
 
 **Các biện pháp bảo vệ các thiết bị ảo riêng lẻ xử lý, lưu trữ và truyền dữ liệu bao gồm:**
 
-- Chặn quyền truy cập vào các đối tượng của hạ tầng ảo đối với các đối tượng truy cập không qua quy trình xác thực;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực được nhập bởi các đối tượng truy cập trong hạ tầng ảo;
-- Bảo vệ khỏi truy cập trái phép vào thông tin xác thực của các đối tượng truy cập được lưu trữ trong các thành phần của hạ tầng ảo;
-- Nhận dạng và xác thực các đối tượng truy cập khi họ truy cập cục bộ hoặc từ xa vào các đối tượng của hạ tầng ảo;
-- Kiểm soát truy cập của các đối tượng truy cập vào các công cụ cấu hình của phần cứng ảo;
-- Kiểm soát truy cập vào các tệp ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp ảnh được sử dụng cho hoạt động của hệ thống tệp ảo;
-- Kiểm soát tính toàn vẹn của các tệp chứa cài đặt phần mềm ảo hóa và máy ảo;
-- Đảm bảo quyền truy cập được kế thừa từ cấp độ quản lý xuống cấp độ ảo hóa và phần cứng;
-- Đảm bảo tính xác thực của các kết nối mạng (phiên tương tác) trong hạ tầng ảo, bao gồm việc bảo vệ khỏi sự thay thế các thiết bị và dịch vụ mạng;
-- Tắt các giao thức mạng không sử dụng của các thành phần trong hạ tầng ảo thuộc hệ điều hành chủ;
-- Cung cấp các quyền truy cập cá nhân vào các đối tượng truy cập cho một hoặc nhiều thành phần của hạ tầng ảo;
-- Kiểm tra sự hiện diện của phần mềm độc hại trong bộ nhớ và các tệp cấu hình của hypervisor và/hoặc máy ảo;
-- Sao lưu dữ liệu quan trọng của hệ thống ảo hóa và máy ảo.
+- Chặn truy cập vào các đối tượng của hạ tầng ảo đối với những người dùng không qua được quá trình xác thực;
+- Bảo vệ chống truy cập trái phép (НСД) vào thông tin xác thực mà người dùng trong hạ tầng ảo nhập vào;
+- Bảo vệ chống truy cập trái phép vào thông tin xác thực của người dùng được lưu trữ trong các thành phần của hạ tầng ảo;
+- Xác định và xác thực người dùng khi họ truy cập cục bộ hoặc từ xa đến các đối tượng trong hạ tầng ảo;
+- Kiểm soát truy cập của người dùng vào các phương tiện cấu hình phần cứng ảo;
+- Kiểm soát truy cập của người dùng vào các tệp hình ảnh của phần mềm ảo hóa và máy ảo, cũng như các tệp hình ảnh được sử dụng để vận hành hệ thống tệp ảo;
+- Kiểm soát hoạt động của các thành phần dự phòng quan trọng của hạ tầng ảo;
+- Kiểm soát tính toàn vẹn của các tệp chứa cấu hình phần mềm ảo hóa và máy ảo;
+- Giám sát việc sử dụng năng lực phần cứng vật lý và ảo;
+- Đảm bảo khả năng kế thừa các quyền truy cập được thiết lập ở cấp quản lý cho người dùng đến các đối tượng truy cập ở cấp ảo hóa và phần cứng;
+- Đảm bảo tính xác thực của các kết nối mạng (phiên tương tác) trong hạ tầng ảo, bao gồm bảo vệ chống lại việc giả mạo thiết bị mạng và dịch vụ;
+- Vô hiệu hóa các giao thức mạng không sử dụng bởi các thành phần của hạ tầng ảo của hệ điều hành máy chủ;
+- Áp dụng quyền truy cập cá nhân cho người dùng vào các đối tượng của một hoặc nhiều thành phần của hạ tầng ảo;
+- Kiểm tra sự tồn tại của phần mềm độc hại trong phần mềm nhúng của phần cứng vật lý và ảo;
+- Phân chia các tài nguyên vật lý giữa các thành phần của hạ tầng ảo dựa trên mức độ bảo mật của thông tin đang được xử lý;
+- Đặt các cảm biến và/hoặc bộ phát hiện (ngăn chặn) xâm nhập trong phần cứng ảo;
+- Ghi nhật ký và theo dõi việc khởi động (kết thúc) hoạt động của các thành phần của hạ tầng ảo;
+- Ghi nhật ký và theo dõi các thay đổi trong phần mềm và phần cứng của hệ thống thông tin trong quá trình hoạt động và/hoặc trong thời gian hệ thống bị tắt phần cứng;
+- Ghi nhật ký các thay đổi về quy tắc truy cập vào phần cứng ảo;
+- Ghi nhật ký các thay đổi về thành phần và cấu hình của phần cứng ảo;
+- Ghi nhật ký các thay đổi về phần mềm và phần cứng ảo trong hypervisor và/hoặc máy ảo;
+- Ghi nhật ký các thay đổi về phần mềm và phần cứng ảo trong hệ điều hành máy chủ và/hoặc hệ điều hành khách;
+- Sao lưu thông tin cần bảo vệ được lưu trữ trên các thiết bị lưu trữ vật lý và ảo;
+- Phát hiện kịp thời sự cố của các thành phần hạ tầng ảo;
+- Tạo (mô phỏng) các thành phần giả của hạ tầng ảo để phát hiện, ghi lại và phân tích các hành động của kẻ xâm nhập trong quá trình thực hiện các mối đe dọa bảo mật;
+- Xóa thông tin còn sót lại sau khi xóa các tệp chứa cấu hình phần mềm ảo hóa và phần cứng ảo;
+- Quản lý quyền truy cập vào phần cứng của hệ thống thông tin, kiểm soát việc kết nối (ngắt kết nối) các thiết bị lưu trữ thông tin với/đến hạ tầng ảo.
 
 ## 6.6 Bảo vệ các phương tiện bảo vệ thông tin ảo và các phương tiện bảo vệ thông tin được thiết kế để sử dụng trong môi trường ảo hóa
 
