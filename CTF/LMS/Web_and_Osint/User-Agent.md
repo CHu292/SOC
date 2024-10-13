@@ -45,5 +45,5 @@
 </p>
 
 ### Một chút kiến thức về User-Agent
-
+[Đọc ở đây](https://github.com/CHu292/SOC/blob/main/Terminology/User_Agent.md)
 
