@@ -44,4 +44,6 @@
   <img src="https://github.com/CHu292/SOC/blob/main/CTF/LMS/Web_and_Osint/image/User_Agent_7.png" alt="Nhập Mosaic/0.9" width="1000">
 </p>
 
+### Một chút kiến thức về User-Agent
+
 
