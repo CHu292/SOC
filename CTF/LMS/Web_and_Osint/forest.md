@@ -5,7 +5,7 @@
 ### Format: CTF{uliza_dom}
 ### Example: CTF{lomonosovo_9a}
 
-#### Để tải ảnh xuống
+#### Để tải ảnh xuống (trên linux)
 
 ```bash
 wget https://lms.itmo.xyz/uploads/llphidjegnwa5h3275x2d941ao0jzj9w/%D0%BB%D0%B5%D1%81.png
