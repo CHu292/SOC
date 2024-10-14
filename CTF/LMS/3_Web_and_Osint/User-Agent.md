@@ -46,4 +46,4 @@
 
 ### Một chút kiến thức về User-Agent
 
-
+[Xem Tại Đây -.-](https://github.com/CHu292/SOC/blob/main/Terminology/User_Agent.md)
