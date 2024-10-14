@@ -1,9 +1,8 @@
 ### Câu 1: Nhìn hình và xác định đây là mạng gì
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Local_area_network_based_on_Ethernet_technology.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/Test_1_3.png" width="1000">
 </p>
-<p align="center"><b>Mạng cục bộ dựa trên công nghệ Ethernet</b></p>
 
 **Trả lời: Ta thấy các thiết bị trong văn phòng được kết nối với nhau thông qua swith => Mạng cục bộ (LAN)**
 
@@ -14,9 +13,8 @@
 ### Câu 3:  Đếm số nút (host) trong hình
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Local_area_network_based_on_Ethernet_technology.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/Test_1_3.png" width="1000">
 </p>
-<p align="center"><b>Mạng cục bộ dựa trên công nghệ Ethernet</b></p>
 
 **Trả lời**: Số nút (host) là số thiết bị => 7 host
 
@@ -24,4 +22,4 @@
 **Trả lời**: [Thông lượng (throughput)](https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/1_2_Basic_concepts_in_the_field_of_computer_networks.md)
 
 ### Câu 5: Môi trường truyền dẫn là gì?
-**Trả lời:** là môi trường vật lý truyền tín hiệu từ nguồn đến máy thu. ([xem lại]((https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/1_2_Basic_concepts_in_the_field_of_computer_networks.md))
+**Trả lời:** là môi trường vật lý truyền tín hiệu từ nguồn đến máy thu. ([xem lại](https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/1_2_Basic_concepts_in_the_field_of_computer_networks.md))
