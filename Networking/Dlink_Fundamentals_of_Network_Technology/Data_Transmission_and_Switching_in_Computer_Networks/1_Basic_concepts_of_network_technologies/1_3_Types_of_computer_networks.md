@@ -19,14 +19,14 @@ Phân loại mạng theo đặc điểm lãnh thổ là cơ bản. Tùy thuộc 
 - là một nhóm các nút được kết nối với nhau và nằm trong một khu vực nhỏ. Nhìn chung, mạng cục bộ là hệ thống truyền thông thuộc về một tổ chức. Ví dụ về mạng cục bộ bao gồm mạng gia đình, mạng văn phòng, mạng trường học và mạng doanh nghiệp. Mạng cục bộ được đặc trưng bởi tốc độ truyền dữ liệu cao. Các công nghệ phổ biến nhất cho mạng cục bộ là Ethernet và họ tiêu chuẩn IEEE 802.11 cho mạng cục bộ không dây - Wireless Local Area Network  (WLAN).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Local_Area_Network.png" alt="Mạng cục bộ - LAN" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Local_Area_Network.png" alt="Mạng cục bộ - LAN" width="1000">
 </p>
 <p align="center"><b>Mạng cục bộ - LAN</b></p>
 
 - Các mạng cục bộ nhỏ, phạm vi giới hạn trong vài mét và được thiết kế để kết nối các thiết bị được sử dụng bởi một người (hoặc một nhóm nhỏ người) được gọi là mạng khu vực cá nhân (Personal Area Network - PAN). Thông thường, thuật ngữ này được áp dụng cho các mạng. của công nghệ không dây Bluetooth.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Personal_Local_Area_Network.png" alt="Mạng cục bộ cá nhân PAN" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Personal_Local_Area_Network.png" alt="Mạng cục bộ cá nhân PAN" width="1000">
 </p>
 <p align="center"><b>Mạng cục bộ cá nhân PAN</b></p>
   
@@ -44,7 +44,7 @@ Sự kết hợp giữa các mạng toàn cầu, đô thị và cục bộ giúp
 - Một ví dụ về sự tương tác giữa mạng cục bộ và mạng diện rộng là mạng riêng ảo (VPN - Virtual Private Network) - kết nối an toàn qua các kênh công cộng của mạng diện rộng (ví dụ: Internet) giữa hai hoặc nhiều điểm cuối nằm trên các mạng cục bộ khác nhau.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Virtual_Private_Network.png" alt="Mạng riêng ảo - VPN" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Virtual_Private_Network.png" alt="Mạng riêng ảo - VPN" width="1000">
 </p>
 <p align="center"><b>Mạng riêng ảo - VPN</b></p>
 
@@ -70,7 +70,7 @@ Sự kết hợp giữa các mạng toàn cầu, đô thị và cục bộ giúp
 - **Mạng đường trục  - mạng lõi (Backbone Network)** được hiểu là mạng phân tán về mặt địa lý, thực hiện chức năng truyền (truyền - transporting) các luồng thông báo từ mạng truy cập này sang mạng truy cập khác. Các nút mạng đường trục (bộ chuyển mạch - switches, bộ định tuyến - routers) thường được kết nối bằng các kênh liên lạc tốc độ cao và đáng tin cậy (quang hoặc vệ tinh).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Connecting_access_networks_to_the_backbone_network.png" alt="Kết nối mạng truy cập với mạng đường trục" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Connecting_access_networks_to_the_backbone_network.png" alt="Kết nối mạng truy cập với mạng đường trục" width="1000">
 </p>
 <p align="center"><b>Kết nối mạng truy cập với mạng đường trục</b></p>
 
@@ -82,13 +82,13 @@ Sự kết hợp giữa các mạng toàn cầu, đô thị và cục bộ giúp
   - Mạng có dây sử dụng cáp điện (đồng trục, cáp xoắn đôi) hoặc cáp quang để truyền dữ liệu.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Wired_network.png" alt="Mạng có dây" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Wired_network.png" alt="Mạng có dây" width="1000">
 </p>
 <p align="center"><b>Mạng có dây</b></p>
 
   - Trong mạng không dây, thông tin được truyền bằng sóng điện từ ở một dải tần số nhất định.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Wireless_network.png" alt="Mạng không dây" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/3_Wireless_network.png" alt="Mạng không dây" width="1000">
 </p>
 <p align="center"><b>Mạng không dây</b></p>
