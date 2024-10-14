@@ -7,6 +7,7 @@
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_the_first_computers_in_the_USSR_M_1.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="500">
 </p>
+<p align="center"><b>Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)</b></p>
 
 - Vào cuối những năm 1950, mạch tích hợp đã được phát minh. Vào những năm 1960, khi bộ xử lý trở nên rẻ hơn, những cách tổ chức quy trình tính toán mới đã xuất hiện. Ý tưởng về điện toán tương tác (hay điện toán chia sẻ thời gian) thay vì xử lý hàng loạt bắt đầu được quảng bá.
 - Sự gia tăng số lượng người dùng cần truy cập vào máy tính vào đầu những năm 1960 đã dẫn đến những thử nghiệm với hệ thống máy tính chia sẻ thời gian. Trong hệ thống như vậy, máy tính lớn được chia sẻ bởi nhiều người dùng kết nối với nó từ thiết bị đầu cuối của họ. Hơn nữa, các thiết bị đầu cuối có thể được phân tán trong toàn bộ doanh nghiệp hoặc tổ chức. Chia sẻ thời gian thể hiện một mô hình tương tác khác và cần có các ngôn ngữ lập trình mới cũng như các loại hệ điều hành mới để hỗ trợ nó.
@@ -20,6 +21,7 @@
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Local_area_network_based_on_Ethernet_technology.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="500">
 </p>
+<p align="center"><b>Mạng cục bộ dựa trên công nghệ Ethernet</b></p>
 
 **- Terminator** - Một thiết bị được gắn vào các điểm cuối của mạng bus hoặc chuỗi daisy. Mục đích của bộ kết thúc là hấp thụ tín hiệu để chúng không phản xạ trở lại xuống đường truyền. Mạng Ethernet yêu cầu một bộ kết thúc ở cả hai đầu của bus và chuỗi SCSI yêu cầu một bộ kết thúc duy nhất ở cuối chuỗi.
 - Cần lưu ý rằng các mạng toàn cầu (WAN, Wide Area Network) xuất hiện theo thứ tự thời gian đầu tiên. Tất cả bắt đầu với một nhiệm vụ đơn giản - truy cập vào máy tính từ các thiết bị đầu cuối nằm cách xa hàng trăm, hàng nghìn km. Các thiết bị đầu cuối được kết nối với máy tính thông qua mạng điện thoại bằng modem. Sau đó, các hệ thống xuất hiện, trong đó, cùng với các kết nối đầu cuối với máy tính từ xa, các kết nối từ máy tính đến máy tính từ xa cũng được triển khai. Máy tính hiện nay có khả năng trao đổi dữ liệu tự động. Sử dụng cơ chế này, các mạng đầu tiên đã triển khai chia sẻ tệp, đồng bộ hóa cơ sở dữ liệu, email và các dịch vụ khác hiện đã trở thành truyền thống.
@@ -28,6 +30,7 @@
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Global_network.png" alt="Mạng Toàn cầu" width="500">
 </p>  
+<p align="center"><b>Mạng Toàn cầu</b></p>
 
 - Bắt đầu từ những năm 1960 và tiếp tục trong những năm 1970, 1980 và 1990, Bộ Quốc phòng Hoa Kỳ đã nỗ lực tạo ra một mạng lưới toàn cầu rộng lớn và đáng tin cậy. Năm 1969, họ quyết định rằng trong trường hợp xảy ra chiến tranh, nước Mỹ cần một hệ thống truyền tải thông tin đáng tin cậy. Cơ quan Dự án Nghiên cứu Tiên tiến (ARPA) đề xuất phát triển mạng máy tính cho mục đích này. Việc phát triển mạng lưới như vậy được giao cho Đại học California ở Los Angeles, Trung tâm Nghiên cứu Stanford, Đại học Utah và Đại học California ở Santa Barbara. Cuộc thử nghiệm đầu tiên của công nghệ này diễn ra vào ngày 29 tháng 10 năm 1969. Mạng lưới bao gồm hai thiết bị đầu cuối, một trong số đó được đặt tại Đại học California và thiết bị thứ hai, cách đó 600 km, tại Đại học Stanford.
 - Mạng máy tính được gọi là ARPANET, hợp nhất bốn tổ chức khoa học được chỉ định trong khuôn khổ dự án. Sau đó, mạng ARPANET bắt đầu hình thành và phát triển tích cực và các nhà khoa học từ các lĩnh vực khoa học khác nhau bắt đầu sử dụng nó.
