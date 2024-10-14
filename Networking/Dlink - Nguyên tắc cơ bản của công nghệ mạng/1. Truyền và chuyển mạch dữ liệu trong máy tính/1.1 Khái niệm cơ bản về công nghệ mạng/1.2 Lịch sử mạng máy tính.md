@@ -5,7 +5,7 @@
 - Hệ thống xử lý dữ liệu hàng loạt được xây dựng trên máy tính lớn. Người dùng đưa một bộ bài đục lỗ cho người vận hành, người này đưa chúng vào máy và sau một giờ hoặc hơn, kết quả in ra có thể được thu thập.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/Nguy%C3%AAn%20t%E1%BA%AFc%20c%C6%A1%20b%E1%BA%A3n%20c%E1%BB%A7a%20c%C3%B4ng%20ngh%E1%BB%87%20m%E1%BA%A1ng%20-%20Dlink/image/may_tinh_lien_xo.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink%20-%20Nguy%C3%AAn%20t%E1%BA%AFc%20c%C6%A1%20b%E1%BA%A3n%20c%E1%BB%A7a%20c%C3%B4ng%20ngh%E1%BB%87%20m%E1%BA%A1ng/image/may_tinh_lien_xo.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="500">
 </p>
 
 - Vào cuối những năm 1950, mạch tích hợp đã được phát minh. Vào những năm 1960, khi bộ xử lý trở nên rẻ hơn, những cách tổ chức quy trình tính toán mới đã xuất hiện. Ý tưởng về điện toán tương tác (hay điện toán chia sẻ thời gian) thay vì xử lý hàng loạt bắt đầu được quảng bá.
