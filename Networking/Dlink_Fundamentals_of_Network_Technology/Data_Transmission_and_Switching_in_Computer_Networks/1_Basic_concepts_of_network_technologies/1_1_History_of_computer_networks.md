@@ -5,7 +5,7 @@
 - Hệ thống xử lý dữ liệu hàng loạt được xây dựng trên máy tính lớn. Người dùng đưa một bộ bài đục lỗ cho người vận hành, người này đưa chúng vào máy và sau một giờ hoặc hơn, kết quả in ra có thể được thu thập.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_the_first_computers_in_the_USSR_M_1.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_the_first_computers_in_the_USSR_M_1.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="1000">
 </p>
 <p align="center"><b>Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)</b></p>
 
@@ -19,7 +19,7 @@
 - Các công nghệ tiêu chuẩn đã biến quá trình xây dựng mạng cục bộ từ một nghệ thuật thành một công việc thường ngày. Để tạo một mạng, chỉ cần mua một bộ điều hợp mạng có tiêu chuẩn phù hợp, chẳng hạn như Ethernet, kết nối cáp với nó và cài đặt hệ điều hành mạng thích hợp trên máy tính.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Local_area_network_based_on_Ethernet_technology.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Local_area_network_based_on_Ethernet_technology.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="1000">
 </p>
 <p align="center"><b>Mạng cục bộ dựa trên công nghệ Ethernet</b></p>
 
@@ -28,7 +28,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Global_network.png" alt="Mạng Toàn cầu" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Global_network.png" alt="Mạng Toàn cầu" width="1000">
 </p>  
 <p align="center"><b>Mạng Toàn cầu</b></p>
 
