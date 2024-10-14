@@ -5,7 +5,7 @@
 - Hệ thống xử lý dữ liệu hàng loạt được xây dựng trên máy tính lớn. Người dùng đưa một bộ bài đục lỗ cho người vận hành, người này đưa chúng vào máy và sau một giờ hoặc hơn, kết quả in ra có thể được thu thập.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink%20-%20Nguy%C3%AAn%20t%E1%BA%AFc%20c%C6%A1%20b%E1%BA%A3n%20c%E1%BB%A7a%20c%C3%B4ng%20ngh%E1%BB%87%20m%E1%BA%A1ng/image/may_tinh_lien_xo.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_the_first_computers_in_the_USSR_M_1.png" alt="Một trong những máy tính đầu tiên của Liên Xô M-1 (1950-1951)" width="500">
 </p>
 
 - Vào cuối những năm 1950, mạch tích hợp đã được phát minh. Vào những năm 1960, khi bộ xử lý trở nên rẻ hơn, những cách tổ chức quy trình tính toán mới đã xuất hiện. Ý tưởng về điện toán tương tác (hay điện toán chia sẻ thời gian) thay vì xử lý hàng loạt bắt đầu được quảng bá.
@@ -18,7 +18,7 @@
 - Các công nghệ tiêu chuẩn đã biến quá trình xây dựng mạng cục bộ từ một nghệ thuật thành một công việc thường ngày. Để tạo một mạng, chỉ cần mua một bộ điều hợp mạng có tiêu chuẩn phù hợp, chẳng hạn như Ethernet, kết nối cáp với nó và cài đặt hệ điều hành mạng thích hợp trên máy tính.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/Nguy%C3%AAn%20t%E1%BA%AFc%20c%C6%A1%20b%E1%BA%A3n%20c%E1%BB%A7a%20c%C3%B4ng%20ngh%E1%BB%87%20m%E1%BA%A1ng%20-%20Dlink/image/M%E1%BA%A1ng%20c%E1%BB%A5c%20b%E1%BB%99%20d%E1%BB%B1a%20tr%C3%AAn%20c%C3%B4ng%20ngh%E1%BB%87%20Ethernet.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Local_area_network_based_on_Ethernet_technology.png" alt="Mạng cục bộ dựa trên công nghệ Ethernet" width="500">
 </p>
 
 **- Terminator** - Một thiết bị được gắn vào các điểm cuối của mạng bus hoặc chuỗi daisy. Mục đích của bộ kết thúc là hấp thụ tín hiệu để chúng không phản xạ trở lại xuống đường truyền. Mạng Ethernet yêu cầu một bộ kết thúc ở cả hai đầu của bus và chuỗi SCSI yêu cầu một bộ kết thúc duy nhất ở cuối chuỗi.
@@ -26,7 +26,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/ITMO/K%E1%BB%B3%205/M%E1%BA%A1ng%20m%C3%A1y%20t%C3%ADnh/Nguy%C3%AAn%20t%E1%BA%AFc%20c%C6%A1%20b%E1%BA%A3n%20c%E1%BB%A7a%20c%C3%B4ng%20ngh%E1%BB%87%20m%E1%BA%A1ng%20-%20Dlink/image/M%E1%BA%A1ng%20to%C3%A0n%20c%E1%BA%A7u.png" alt="Mạng Toàn cầu" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_Global_network.png" alt="Mạng Toàn cầu" width="500">
 </p>  
 
 - Bắt đầu từ những năm 1960 và tiếp tục trong những năm 1970, 1980 và 1990, Bộ Quốc phòng Hoa Kỳ đã nỗ lực tạo ra một mạng lưới toàn cầu rộng lớn và đáng tin cậy. Năm 1969, họ quyết định rằng trong trường hợp xảy ra chiến tranh, nước Mỹ cần một hệ thống truyền tải thông tin đáng tin cậy. Cơ quan Dự án Nghiên cứu Tiên tiến (ARPA) đề xuất phát triển mạng máy tính cho mục đích này. Việc phát triển mạng lưới như vậy được giao cho Đại học California ở Los Angeles, Trung tâm Nghiên cứu Stanford, Đại học Utah và Đại học California ở Santa Barbara. Cuộc thử nghiệm đầu tiên của công nghệ này diễn ra vào ngày 29 tháng 10 năm 1969. Mạng lưới bao gồm hai thiết bị đầu cuối, một trong số đó được đặt tại Đại học California và thiết bị thứ hai, cách đó 600 km, tại Đại học Stanford.
