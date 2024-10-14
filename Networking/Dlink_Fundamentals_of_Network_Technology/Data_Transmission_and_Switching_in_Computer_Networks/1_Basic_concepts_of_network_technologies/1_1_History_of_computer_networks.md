@@ -1,4 +1,4 @@
-## 1.2 Lịch sử mạng máy tính
+# 1.1 Lịch sử mạng máy tính
 - Khái niệm mạng máy tính là kết quả hợp lý của quá trình tiến hóa của công nghệ máy tính. Vào những năm 1940, máy tính là những thiết bị cơ điện lớn thường bị hỏng. Vào năm 1947, với phát minh ra bóng bán dẫn, triển vọng tạo ra những máy tính nhỏ hơn, đáng tin cậy hơn đã xuất hiện. Vào những năm 1950, máy tính lớn đã được sử dụng rộng rãi - máy tính đa năng hiệu suất cao và đáng tin cậy với một lượng lớn bộ nhớ hoạt động và bộ nhớ ngoài, trong đó các lệnh chương trình và dữ liệu được lưu trữ trên thẻ bấm lỗ.
 - Thẻ bấm lỗ là vật mang thông tin được làm bằng bìa cứng mỏng, thông tin trên đó được thể hiện bằng sự hiện diện hay vắng mặt của các lỗ ở một số vị trí nhất định.
 - Máy tính lớn là những máy tính lớn và đắt tiền, theo quy định, được sử dụng bởi các nhà khoa học quân sự và nhân viên của các tổ chức khoa học. Chúng thường chiếm các phòng và toàn bộ tòa nhà. Tuy nhiên, những thiết bị này được sản xuất với số lượng hạn chế, điều này thường buộc các nhà khoa học và kỹ sư phải đi công tác để tận dụng sức mạnh tính toán của chúng.
