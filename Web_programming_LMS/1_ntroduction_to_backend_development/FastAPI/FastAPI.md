@@ -192,3 +192,49 @@ async def read_item(item_id):
 <p align="center"><b>Kiểm tra trạng thái</b></p>
 
 
+### Path parameters with types
+- Bạn cũng có thể khai báo định dạng của param để trả về khi truyền biến đúng định dạng sẽ trả về giá trị.
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+	return {"item_id": item_id}
+```
+
+  <p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
+</p>
+<p align="center"><b>Path parameters with types</b></p>
+
+### Data validation
+
+- Còn nếu không đúng định dạng thì trả về thông báo. Mọi dữ liệu được validate đều dựa trên Pydantic.
+
+  <p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
+</p>
+<p align="center"><b>Path parameters with types</b></p>
+
+### Order
+
+Nếu bạn có khai báo đường dẫn trùng lặp như thế này:
+
+```
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/users/me")
+async def read_users_me():
+	return {"user_id": "the current user"}
+
+@app.get("/users/{user_id}")
+async def read_user(user_id: str):
+	return {"user_id": user_id}
+```
+
+
