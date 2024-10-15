@@ -19,4 +19,4 @@ Ví dụ:
   - 30 đến 50 ms - ping trung bình; phản hồi trang web vẫn rất nhanh.
   - 50 đến 100 ms - thời gian ping hơi chậm;  web bắt đầu phản hồi chậm khi  truy cập.
   - 100 ms đến 500 ms - ping chậm; ảnh hưởng rõ ràng hơn đến trình duyệt web, load web rất lâu.
-  - > 500 ms - ping nửa giây trở lên sẽ thêm độ trễ đáng chú ý cho tất cả các yêu cầu; thường xảy ra khi nguồn và đích ở các khu vực khác nhau trên thế giới.
+  - >500 ms - ping nửa giây trở lên sẽ thêm độ trễ đáng chú ý cho tất cả các yêu cầu; thường xảy ra khi nguồn và đích ở các khu vực khác nhau trên thế giới.
