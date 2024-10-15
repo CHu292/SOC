@@ -20,3 +20,12 @@ Ví dụ:
   - 50 đến 100 ms - thời gian ping hơi chậm;  web bắt đầu phản hồi chậm khi  truy cập.
   - 100 ms đến 500 ms - ping chậm; ảnh hưởng rõ ràng hơn đến trình duyệt web, load web rất lâu.
   - >500 ms - ping nửa giây trở lên sẽ thêm độ trễ đáng chú ý cho tất cả các yêu cầu; thường xảy ra khi nguồn và đích ở các khu vực khác nhau trên thế giới.
+
+----
+
+- Ping là một trong những công cụ mạng cơ bản nhất hiện có. Ping sử dụng các gói ICMP (Internet Control Message Protocol - Giao thức tin nhắn điều khiển Internet) để xác định hiệu suất kết nối giữa các thiết bị, chẳng hạn như liệu kết nối có tồn tại hay đáng tin cậy hay không.
+- Thời gian để các gói ICMP di chuyển giữa các thiết bị được đo bằng ping. Việc đo lường này được thực hiện bằng cách sử dụng gói echo của ICMP và sau đó là phản hồi echo của ICMP từ thiết bị đích.
+- Ping có thể được thực hiện với các thiết bị trên mạng, chẳng hạn như mạng gia đình của bạn hoặc các tài nguyên như trang web. Công cụ này có thể dễ dàng sử dụng và được cài đặt trên  Operating Systems  (OSs) như Linux và Windows
+- Cú pháp: ```ping IP address or website URL```
+
+- Ở đây chúng ta đang ping một thiết bị có địa chỉ riêng là 192.168.1.254. Ping thông báo cho chúng tôi rằng chúng tôi đã gửi sáu gói ICMP, tất cả đều được nhận với thời gian trung bình là 4,16 mili giây
