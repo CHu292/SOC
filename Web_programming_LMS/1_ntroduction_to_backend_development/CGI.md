@@ -12,7 +12,7 @@ Common Gateway Interface hoặc CGI là một chuẩn cho các chương trình g
 ## Sơ đồ kiến trúc CGI 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/CGI/CGI_Architecture_Diagram.png" alt="Sơ đồ kiến trúc CGI" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/CGI/CGI_Architecture_Diagram.png" alt="Sơ đồ kiến trúc CGI" width="500">
 </p>
 <p align="center"><b>Sơ đồ kiến trúc CGI</b></p>
 
@@ -21,7 +21,7 @@ Common Gateway Interface hoặc CGI là một chuẩn cho các chương trình g
 CGI là một giao thức trao đổi giữa máy chủ web và các ứng dụng cổng (gateway application) như PHP, Python,…
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/CGI/How_does_CGI_work.jpeg" alt="Cách CGI hoạt động " width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/CGI/How_does_CGI_work.jpeg" alt="Cách CGI hoạt động " width="500">
 </p>
 <p align="center"><b>Cách CGI hoạt động </b></p>
 
