@@ -6,6 +6,7 @@
   <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/life_cycle_of_a_HTTP_request/1.gif" alt="" width="1000">
 </p>
+
 **Request**
 - Một request đúng chuẩn cần có 4 thứ:
 
@@ -13,7 +14,7 @@
   - Method
   - Headers
   - Body
-  - 
+
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/life_cycle_of_a_HTTP_request/2.gif" alt="" width="500">
 </p>
