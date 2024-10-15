@@ -48,7 +48,7 @@
 - 1 giao diện khác của FastAPI docs ```http://0.0.0.0:8000/redoc```
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/code_run_result_redoc.png" alt="" width="1000">
 </p>
 <p align="center"><b>Redoc</b></p>
 
