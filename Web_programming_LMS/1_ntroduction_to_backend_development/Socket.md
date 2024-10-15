@@ -3,8 +3,7 @@
 - Socket, hay còn gọi là ổ cắm mạng, là một điểm cuối (end point) phần mềm trong hệ thống máy tính, đóng vai trò như một kênh giao tiếp để gửi và nhận dữ liệu qua mạng. Socket hoạt động như một giao diện lập trình ứng dụng (API) cho phép các chương trình tương tác với mạng máy tính.
   
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/socket/what_is_.png
-" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/socket/what_is_.png" alt="" width="700">
 </p>
 
 - Socket cho phép giao tiếp giữa hai process khác nhau trên cùng một máy hoặc hai máy khác nhau. Nói chính xác hơn, đó là một cách để nói chuyện với các máy tính khác bằng cách sử dụng các file descriptor Unix tiêu chuẩn.
@@ -43,5 +42,9 @@
   - Số hiệu cổng: Xác định ứng dụng cụ thể nào trên máy tính mà socket sẽ giao tiếp.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/socket/socket.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/socket/How_Sockets_Work.png" alt="" width="1000">
 </p>
+
+<p align="center"><b>Socket hoạt động trên nguyên tắc trao đổi dữ liệu giữa hai điểm cuối trên mạng</b></p>
+
+
