@@ -29,7 +29,7 @@
   - WSGI xử lý nhiều request cùng lúc thay webserver và quyết định request nào được chuyển tới application web.
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Hinh_minh_.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình minh họa</b></p>
 
@@ -41,24 +41,19 @@
 - Khi bật doc bằng local url ```http://0.0.0.0:8000/docs```
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/code_run_result.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
+<p align="center"><b>Docs</b></p>
 
 - 1 giao diện khác của FastAPI docs ```http://0.0.0.0:8000/redoc```
 
   <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
+<p align="center"><b>Redoc</b></p>
 
 ### Performance
 Các bạn có thể test hiệu năng của các web framework trên [trang này](https://www.techempower.com/benchmarks/)
-
-  <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
-</p>
-<p align="center"><b>Hình minh họa</b></p>
 
 ### Optional Depencies
 
@@ -117,25 +112,25 @@ sau đó chạy app:
 ```uvicorn main:app --host 0.0.0.0 --port 8000```
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/run_code_fastapi.png" alt="chạy app" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
+<p align="center"><b>Chạy app </b></p>
 
 **P/S: nếu bạn làm trong môi trường phát triển có thể thêm --reload để tự động restart sau khi thay đổi code.**
 
 -  Chúng ta cùng xem trên giao diện Docs ```http://127.0.0.1:8000/docs```
 
-  <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/code_run_result.png" alt="chạy app" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
-
+<p align="center"><b>Xem kết quả trên giao diện Docs </b></p>
 
 - Ấn vào Try it out -> Execute -> API trả về response.
 
-src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/API_returns_response.png" alt="API trả về response" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
+<p align="center"><b>API trả về response</b></p>
 
 - Giao diện API này được thiết kế dựa trên OpenAPI. Có 1 khái niệm để define API gọi là "Schema". 
 - Truy cập vào:  ```http://127.0.0.1:8000/openapi.json```
@@ -187,13 +182,13 @@ async def read_item(item_id):
 - Biến item_id trên đường dẫn sẽ truyền vào hàm read_item với thông qua param trùng tên item_id. Test thử ```http://127.0.0.1:8000/items/abc```
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_1.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
+<p align="center"><b>Ví dụ thử trên web</b></p>
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/4_Typical_switched_data_center_network_architecture.png" alt="Kiến trúc mạng chuyển mạch trung tâm dữ liệu điển hình" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình minh họa</b></p>
+<p align="center"><b>Kiểm tra trạng thái</b></p>
 
 
