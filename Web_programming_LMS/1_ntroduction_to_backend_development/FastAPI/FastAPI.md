@@ -12,6 +12,8 @@
   - Short: Tối thiểu việc lặp code. Các tham số truyền vào có nhiều tính năng. Ít bugs.
   - Robust: hiệu năng mạnh mẽ, có thể tương tác API qua docs.
 
+---
+
 ## Cách cài đặt
 - Yêu cầu: Python 3.6+.
 - FastAPI được build dựa trên OpenAPI (trước có tên Swagger), phần web được support bởi Starlette, còn phần data được support bởi Pydantic.
@@ -81,8 +83,10 @@ Các bạn có thể test hiệu năng của các web framework trên [trang nà
 
 ```pip install fastapi[all]```
 
-## Hướng dẫn cơ bản
-### Create a simple API
+---
+
+# Hướng dẫn cơ bản
+## Create a simple API
 ---
 Các bước
 
@@ -164,8 +168,9 @@ sau đó chạy app:
   }
 }
 ```
+---
 
-### Path Parameters
+## Path Parameters
 
 - Bạn có thể truyền param thông qua đường dẫn.
 
@@ -255,8 +260,9 @@ async def read_file(file_path: str):
 </p>
 <p align="center"><b>Path in path</b></p>
 
+---
 
-### Query Parameters
+## Query Parameters
 
 - Nếu bạn truyền param dưới dạng key-value thì ở trong FastAPI có hỗ trợ với tên gọi "query" parameters.
 
@@ -355,4 +361,57 @@ async def read_item(item_id: str, short: bool = False): # param short với đ�
 </p>
 <p align="center"><b>Query parameter type conversions - false</b></p>
 
+### Multiple path and query parameters
+
+- Với các đường dẫn lồng nhau, FastAPI biết param nào với param nào dựa trên tên param.
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/users/{user_id}/items/{item_id}")
+async def read_user_item(user_id: int, item_id: str):
+    item = {"item_id": item_id, "owner_id": user_id}
+    return item
+```
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Multiple_path_and_query_parameters.png" alt="" width="700">
+</p>
+<p align="center"><b>Multiple path and query parameters</b></p>
+
+### Required query parameters
+
+Đơn giản là bạn điền thiếu param trên đường dẫn sẽ báo lỗi
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_user_item(item_id: str, needy: str):
+	item = {"item_id": item_id, "needy": needy}
+	return item
+```
+
+- chỉ truyền vào giá trị của item_id còn giá trị của needy thì không nên sinh ra lỗi.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Required_query_parameters.png" alt="" width="700">
+</p>
+<p align="center"><b>Required query parameters</b></p>
+
+```bash
+$ uvicorn Required_query_parameters:app --host 0.0.0.0 --port 8000
+INFO:     Started server process [194004]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:38720 - "GET /items/34 HTTP/1.1" 422 Unprocessable Entity
+```
+----
+
+## Request Body
 
