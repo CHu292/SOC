@@ -236,5 +236,24 @@ async def read_users_me():
 async def read_user(user_id: str):
 	return {"user_id": user_id}
 ```
+Thì nhớ để theo thứ tự /users/me trước rồi đến /users/{user_id} sau, ngược lại nếu /users/{user_id} ở trước thì sẽ nghĩ rằng "user_id" được nhận giá trị me.
+
+### Path in path
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/files/{file_path:path}")
+async def read_file(file_path: str):
+	return {"file_fath": file_path}
+```
+
+  <p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
+</p>
+<p align="center"><b>Path parameters with types</b></p>
+
 
 
