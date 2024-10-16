@@ -275,7 +275,7 @@ async def read_item(skip: int = 0, limit: int = 10):
 - Cùng kiểm tra kết quả
   
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="700">
 </p>
 <p align="center"><b>Query Parameters</b></p>
 
@@ -309,7 +309,7 @@ async def read_item(item_id: str, q: Optional[str] = None):
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/optional_parameters.png" alt="" width="700">
 </p>
 <p align="center"><b>Optional parameters</b></p>
 
@@ -337,21 +337,21 @@ async def read_item(item_id: str, short: bool = False): # param short với đ�
 ```http://127.0.0.1:8000/items/1?short=1```
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Query_parameter_type_conversion_1.png" alt="" width="700">
 </p>
 <p align="center"><b>Query parameter type conversions 1 </b></p>
 
 ```http://127.0.0.1:8000/items/1?short=true```
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Query_parameter_type_conversion_true.png" alt="" width="700">
 </p>
 <p align="center"><b>Query parameter type conversions true</b></p>
 
 ```http://127.0.0.1:8000/items/1?short=false```
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Query_parameter_type_conversion_false.png" alt="" width="700">
 </p>
 <p align="center"><b>Query parameter type conversions - false</b></p>
 
