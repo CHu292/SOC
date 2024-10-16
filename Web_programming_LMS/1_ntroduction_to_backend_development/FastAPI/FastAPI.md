@@ -206,7 +206,7 @@ async def read_item(item_id: int):
 ```
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Path_parameters_with_types.png" alt="" width="1000">
 </p>
 <p align="center"><b>Path parameters with types</b></p>
 
@@ -215,9 +215,9 @@ async def read_item(item_id: int):
 - Còn nếu không đúng định dạng thì trả về thông báo. Mọi dữ liệu được validate đều dựa trên Pydantic.
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Data_validation.png" alt="" width="1000">
 </p>
-<p align="center"><b>Path parameters with types</b></p>
+<p align="center"><b>Data validation</b></p>
 
 ### Order
 
@@ -251,9 +251,9 @@ async def read_file(file_path: str):
 ```
 
   <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_parameters_2.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/path_in_path.png" alt="" width="1000">
 </p>
-<p align="center"><b>Path parameters with types</b></p>
+<p align="center"><b>Path in path</b></p>
 
 
 
