@@ -542,3 +542,53 @@ async def create_item(item: Item):
 ```
 {"name":"Book","description":"A very interesting book","price":15.99,"tax":1.99,"price with tax":17.98}
 ```
+
+### Request body + path parameters
+
+- FastAPI hỗ trợ khai báo tham số URL và request body cùng lúc, framework sẽ biết tham số nào truyền từ đường dẫn và tham số nào lấy từ request.
+
+```python
+from typing import Optional
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+class Item(BaseModel):
+	name: str
+	description: Optional[str] = None
+	price: float
+	tax: Optional[float] = None
+
+app = FastAPI()
+
+@app.put("/items/{item_id}")
+async def create_item(item_id: int, item: Item):
+	return {"item_id": item_id, **item.dict()}
+```
+
+- Thực hiện request
+
+```bash
+curl -X 'PUT' \
+  'http://127.0.0.1:8000/items/123' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Laptop",
+  "description": "A powerful gaming laptop",
+  "price": 1500.00,
+  "tax": 150.00
+}'
+```
+
+- Response
+  
+```bash
+{"item_id":123,"name":"Laptop","description":"A powerful gaming laptop","price":1500.0,"tax":150.0}
+```
+
+- Hoặc có thể như thực hiện như sau:
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Request_body_and_path_parameters.png" alt="" width="700">
+</p>
+<p align="center"><b>Request body + path parameters</b></p>
+
