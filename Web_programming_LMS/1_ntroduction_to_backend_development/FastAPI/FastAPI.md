@@ -592,3 +592,37 @@ curl -X 'PUT' \
 </p>
 <p align="center"><b>Request body + path parameters</b></p>
 
+## Query Parameters and String Validations
+
+- Ở phần trước chúng ta đã biết khái niệm của query parameter rồi, lạ 1 loại param có cũng được không có cũng không sao. Param này có attribute là Optional, nhưng độ dài bị giới hạn không vượt quá 50 ký tự. Nên FastAPI cung cấp class Query.
+
+```python
+from typing import Optional
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: Optional[str] = Query(None, max_length=50)):
+    results = {"items": [{"item_id": "Chu"}, {"item_id": "miran"}]}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+- Câu lệnh q: Optional[str] = Query(None) cũng tương tự q: Optional[str] = None nhưng Query cung cấp các param khác như max_lenght, min_lenght, regex, ... Bạn có thể tăng giới hạn ký tự thành 250 như thế này chỉ việc thay đổi giá trị tham số. (Mặc định của max_lenght là 50)
+
+- Gửi request:
+
+```bash
+$ curl -X 'GET' "http://127.0.0.1:8000/items/hhhh?short=true"
+{"item_id":"hhhh"}
+```
+
+```bash
+$ curl -X 'GET' "http://127.0.0.1:8000/items/hhhh?short=false"
+{"item_id":"hhhh","description":"This is an amazing item that has a long description"}
+```
+
