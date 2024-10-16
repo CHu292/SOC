@@ -256,4 +256,103 @@ async def read_file(file_path: str):
 <p align="center"><b>Path in path</b></p>
 
 
+### Query Parameters
+
+- Nếu bạn truyền param dưới dạng key-value thì ở trong FastAPI có hỗ trợ với tên gọi "query" parameters.
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+fake_items_db = [{"item_name": "Ch"}, {"item_name": "Mi"}, {"item_name": "ran"}] # pair format: key-value
+
+@app.get("/items/")
+async def read_item(skip: int = 0, limit: int = 10):
+	return fake_items_db[skip: skip+limit] # trả về dữ liệu từ skip đến skip  + limit
+```
+
+- Cùng kiểm tra kết quả
+  
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+</p>
+<p align="center"><b>Query Parameters</b></p>
+
+- Nếu bạn để ý skip và limit có format string khi làm đường dẫn nhưng một khi truyền về hàm thì sẽ ngay lập tức được convert từ string về int.
+
+### Optional parameters
+
+- Ngoài ra FastAPI cung cấp một cách khai báo optional query parameters, mặc định là None.
+
+```python
+from fastapi import FastAPI
+from typing import Optional
+
+app = FastAPI()
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: str, q: Optional[str] = None):
+    '''
+    param item_id: format string
+    param q: format string, default value: None, Optional: help you find error that happen
+    '''
+    if q:
+        return {"item_id": item_id, "q": q}
+    return {"item_id": item_id}
+```
+- Như bạn thấy ở trên param truyền ở đường dẫn là item_id, nhưng trong hàm có thêm param q. FastAPI chỉ sử dụng str để nhận định format của param còn Optional thì FastAPI không sử dụng, chỉ có tác dụng check lỗi nếu xảy ra.
+
+- Bạn có thể test bằng đường dẫn sau.
+
+``` http://127.0.0.1:8000/items/1?q=1 # 1 là item_id và ?q=1 là giá trị của q```
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+</p>
+<p align="center"><b>Optional parameters</b></p>
+
+### Query parameter type conversion
+
+Thay đổi giá trị mặc định bằng cách truyền giá trị trên đường dẫn.
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: str, short: bool = False): # param short với định dạng boolean có giá trị mặc định là False
+    item = {"item_id": item_id}
+    if not short:
+        item.update(
+            {"description": "This is an amazing item that has a long description"}
+        )
+    return item
+```
+- Trong trường hợp này
+
+```http://127.0.0.1:8000/items/1?short=1```
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+</p>
+<p align="center"><b>Query parameter type conversions 1 </b></p>
+
+```http://127.0.0.1:8000/items/1?short=true```
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+</p>
+<p align="center"><b>Query parameter type conversions true</b></p>
+
+```http://127.0.0.1:8000/items/1?short=false```
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/query_parameters.png" alt="" width="1000">
+</p>
+<p align="center"><b>Query parameter type conversions - false</b></p>
+
 
