@@ -415,3 +415,130 @@ INFO:     127.0.0.1:38720 - "GET /items/34 HTTP/1.1" 422 Unprocessable Entity
 
 ## Request Body
 
+- Request body: người dùng gửi request từ browser đến API.
+- Response body: dựa trên request, APi trả về response cho người dùng.
+- Để khai báo format của request body, bạn cần sử dụng Pydantic models.
+-  P/S: nhắc nhở khi send request cần sử dụng phương thức POST, nếu dùng phương thức GET thì bạn sẽ bị lộ thông tin trên URL => tính bảo mật không cao.
+
+### Pydantic Models
+
+**code**
+
+```python
+from typing import Optional
+from fastapi import FastAPI
+from pydantic import BaseModel #import class BaseModel của thư viện pydantic
+
+class Item(BaseModel): #Kế thừa từ class BaseModel và khai báo các biến
+	name: str
+	description: Optional[str] = None
+	price: float
+	tax: Optional[float] = None
+
+app = FastAPI()
+
+@app.post("/items/")
+async def create_item(item: Item): #Khai báo dưới dạng parameter
+	return item
+```
+#### Chạy bằng CLI
+
+```bash
+$ curl -X 'POST' \
+  'http://127.0.0.1:8000/items/' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Book",
+  "description": "A very interesting book",
+  "price": 15.99,
+  "tax": 1.99
+}'
+```
+- Kết quả:
+```bash
+{"name":"Book","description":"A very interesting book","price":15.99,"tax":1.99}
+```
+#### Using Swagger UI
+
+- Đi theo url sau:
+
+```bash
+http://127.0.0.1:8000/docs
+```
+
+- thêm vào như sau:
+
+```json
+{
+  "name": "chu",
+  "description": "hehe",
+  "price": 10,
+  "tax": 2
+}
+```
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Pydantic_Models_use_swagger_ui.png" alt="" width="700">
+</p>
+<p align="center"><b>Using Swagger UI</b></p>
+
+
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Pydantic_Models_use_swagger_ui_responses.png" alt="" width="700">
+</p>
+<p align="center"><b>Using Swagger UI - Responses</b></p>
+
+**Dựa trên việc import Pydantic module, FastAPI hỗ trợ:**
+
+- Đọc request body dưới dạng Json.
+- Chuyển đổi định dạng biến.
+- Validate dữ liệu
+- Khai báo format mặc định của request body, class Item trên là 1 ví dụ.
+- Gen JSON Schema cho model của bạn
+- Schema sẽ được gen thành UI của OpenAI doc.
+
+### Use model
+
+Trong hàm create_item, bạn có thể tùy biến các biến của class Item, đơn giản như việc tính phí chịu thuế bằng cách tính tổng item.price và item.tax như bên dưới.
+
+```python
+from typing import Optional
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+class Item(BaseModel):
+	name: str
+	description: Optional[str] = None
+	price: float
+	tax: Optional[float] = None
+
+app = FastAPI()
+
+@app.post("/items/")
+async def create_item(item: Item):
+	item_dict = item.dict()
+	if item.tax:
+		price_with_tax = item.price + item.tax
+		item_dict.update({"price with tax": price_with_tax})
+	return item_dict
+```
+
+- Thực hiện 1 request
+
+  ```bash
+  $ curl -X 'POST' \
+  'http://127.0.0.1:8000/items/' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Book",
+  "description": "A very interesting book",
+  "price": 15.99,
+  "tax": 1.99
+}'
+
+- Trả về response
+  
+```
+{"name":"Book","description":"A very interesting book","price":15.99,"tax":1.99,"price with tax":17.98}
+```
