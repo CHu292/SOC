@@ -30,8 +30,8 @@ tablespace = pg_default
 connection limit = -1
 is_template = False;
 ```
-1. CREATE DATABASE dbs24
-CREATE DATABASE dbs24: Tạo cơ sở dữ liệu mới có tên là dbs24. Đây là tên của cơ sở dữ liệu mà bạn sẽ sử dụng để lưu trữ dữ liệu của mình.
+1. CREATE DATABASE coffee_shop_db
+CREATE DATABASE coffee_shop_db: Tạo cơ sở dữ liệu mới có tên là coffee_shop_db. Đây là tên của cơ sở dữ liệu mà bạn sẽ sử dụng để lưu trữ dữ liệu của mình.
 2. OWNER = postgres
 OWNER = postgres: Xác định người sở hữu (owner) của cơ sở dữ liệu là người dùng postgres. Người sở hữu có toàn quyền quản lý cơ sở dữ liệu này (tạo bảng, sửa bảng, quản lý dữ liệu, v.v.).
 3. ENCODING = 'UTF8'
@@ -42,3 +42,28 @@ TABLESPACE = pg_default: Xác định không gian lưu trữ (tablespace) mặc 
 CONNECTION LIMIT = -1: Giới hạn số lượng kết nối tối đa đến cơ sở dữ liệu này là -1, nghĩa là không giới hạn số lượng kết nối. Bất kỳ số lượng người dùng nào cũng có thể kết nối vào cơ sở dữ liệu, miễn là tài nguyên hệ thống cho phép.
 6. IS_TEMPLATE = False
 IS_TEMPLATE = False: Đặt thuộc tính IS_TEMPLATE thành False, nghĩa là cơ sở dữ liệu này không được sử dụng làm mẫu (template) để tạo các cơ sở dữ liệu khác. Nếu bạn đặt giá trị True, cơ sở dữ liệu này có thể được dùng làm mẫu để sao chép khi tạo các cơ sở dữ liệu mới.
+
+```SQL
+postgres=# \c coffee_shop_db 
+You are now connected to database "coffee_shop_db" as user "postgres".
+coffee_shop_db=# 
+```
+---
+Kiểm tra csdl trên PgAdmin
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/mo_hinh_quan_he.png" alt="Mô hình quan hệ" width="700">
+</p>
+<p align="center"><b>Mô hình quan hệ</b></p>
+
+### Sơ đồ
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/mo_hinh_quan_he.png" alt="Mô hình quan hệ" width="700">
+</p>
+<p align="center"><b>Mô hình quan hệ</b></p>
+
+
+### Tạo bảng
+
+#### 
