@@ -77,7 +77,7 @@ Trong VirtualBox, việc ghi nhật ký và xác thực có sẵn theo mặc đ�
 **Cách thực hiện:** ```click vào biểu tượng có 3 dấu chấm trong máy ảo bạn muốn ghi nhật ký -> Logs```
 
 <p align="center">
-  <img src="" alt="Nhật ký của VirtualBox" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/1_open_logs.png" alt="Nhật ký của VirtualBox" width="1000">
 </p>
 <p align="center"><b>Hình 1 - Nhật ký của VirtualBox</b></p>
 
@@ -86,7 +86,7 @@ Ngoài ra, bạn có thể thiết lập mật khẩu để đăng nhập vào h
 **cách thực hiện:** ``` Chọn settings của máy ảo -> General -> Disk Encryption```
 
 <p align="center">
-  <img src="" alt="Thiết lập mật khẩu" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/2_Set_up_authentication_to_access_the_virtual_machine.png" alt="Thiết lập mật khẩu" width="1000">
 </p>
 <p align="center"><b>Hình 2 - Cài đặt xác thực để truy cập vào máy ảo</b></p>
 
@@ -94,11 +94,11 @@ Ngoài ra, bạn có thể thiết lập mật khẩu để đăng nhập vào h
 Khi cài đặt hệ thống ảo, có thể tạo mật khẩu để đăng nhập vào hệ điều hành khách (Hình 3).
 
 <p align="center">
-  <img src="" alt="Set Password" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/3_set_.png" alt="Set Password" width="1000">
 </p>
 
 <p align="center">
-  <img src="" alt="Login" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/3_login.png" alt="Login" width="1000">
 </p>
 <p align="center"><b>Hình 3 - Yêu cầu mật khẩu trong hệ điều hành khách</b></p>
 
@@ -110,7 +110,7 @@ Trong môi trường ảo, có thể thêm tài khoản người dùng và cấp
 **Cách thực hiện:** ``` windows + R -> nhập Control Panel -> User Acconts and Family Safety -> Tại mục User Accounts chọn Add or remove user acconts -> Create new account```
 
 <p align="center">
-  <img src="" alt="Create New Account" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/4_create_new_account.png  " alt="Create New Account" width="1000">
 </p>
 <p align="center"><b>Hình 4 - Tạo tài khoản người dùng khác</b></p>
 
@@ -122,7 +122,7 @@ Trong VirtualBox và hệ điều hành khách, tính năng ghi nhật ký sự 
 **Cách thực hiện:** ``` windows + R -> nhập eventvwr.msc -> Windows.Logs -> System```
 
 <p align="center">
-  <img src="" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/5_Registering_security_events_in_the_virtual_infrastructure.png" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
 </p>
 <p align="center"><b>Hình 5 - Ghi nhật ký sự kiện trong Windows 7</b></p>
 
@@ -135,7 +135,7 @@ Trong hệ điều hành khách được sử dụng cho ví dụ này, Firewall
 
 
 <p align="center">
-  <img src="" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/6_Firewall_Configuration.png" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
 </p>
 <p align="center"><b>Hình 6 - Cấu hình tường lửa</b></p>
 
@@ -145,7 +145,7 @@ Trong hệ điều hành khách được sử dụng cho ví dụ này, Firewall
 Biện pháp này yêu cầu đảm bảo việc tải tin cậy của các máy chủ ảo hóa, máy ảo và các máy chủ quản lý ảo hóa. Biện pháp này chia thành hai phần - một là tải tin cậy các máy chủ vật lý (hypervisor, hệ thống quản lý ảo hóa), và hai là tải tin cậy của máy ảo. Phần thứ nhất thực hiện bằng các phương tiện phần cứng tải tin cậy truyền thống, phần thứ hai chỉ thực hiện qua các công cụ bảo mật ảo hóa bổ sung (Hình 7).
 
 <p align="center">
-  <img src="" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/7_Trusted_Download_Settings.png" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
 </p>
 <p align="center"><b>Hình 7 - Cài đặt tải tin cậy</b></p>
 
@@ -154,7 +154,7 @@ Biện pháp này yêu cầu đảm bảo việc tải tin cậy của các máy
 Cấu hình của máy ảo có thể xuất sang đám mây. Cũng có thể xuất cấu hình sang hệ thống chính hoặc thiết bị lưu trữ di động (Hình 8).
 
 <p align="center">
-  <img src="" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/8_Export_virtual_machine_configuration.png" alt="Ghi nhật ký sự kiện trong Windows" width="1000">
 </p>
 <p align="center"><b>Hình 8 - Xuất cấu hình máy ảo</b></p>
 
@@ -163,12 +163,12 @@ Cấu hình của máy ảo có thể xuất sang đám mây. Cũng có thể xu
 Kiểm tra tính toàn vẹn được tích hợp trong VirtualBox. Ví dụ, khi cố gắng sửa đổi tệp với phần mở rộng .vdi và mở máy ảo qua VirtualBox, sẽ gặp lỗi về tính toàn vẹn (Hình 9).
 
 <p align="center">
-  <img src="" alt="Sửa file vdi" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/9_change_vdi_file.png" alt="Sửa file vdi" width="1000">
 </p>
 <p align="center"><b>Sửa file .vdi trong máy chính</b></p>
 
 <p align="center">
-  <img src="" alt="Lỗi khi kiểm tra tính toàn vẹn" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/9_Error_in_integrity_control.png" alt="Lỗi khi kiểm tra tính toàn vẹn" width="1000">
 </p>
 <p align="center"><b>Hình 9 - Lỗi khi kiểm tra tính toàn vẹn</b></p>
 
@@ -180,7 +180,7 @@ Trong VirtualBox, có tính năng sao lưu nội bộ máy ảo - tạo Snapshot
 **Cách thực hiện:** ```Click chuột vào dấu 3 chấm của máy ảo -> snapshots -> take```
 
 <p align="center">
-  <img src="" alt="tạo snapshots" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/10_create_snapshot.png" alt="tạo snapshots" width="1000">
 </p>
 <p align="center"><b>Hình 10 - Tạo Snapshot</b></p>
 
@@ -188,7 +188,7 @@ Cũng có thể sao chép tệp cấu hình của máy ảo qua "Trình quản l
 **Cách thực hiện:** ``` Click chuột vào dấu 3 chấm ở mục tools -> media```
 
 <p align="center">
-  <img src="" alt="Sao chép qua trình quản lý phương tiện ảo" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/11_copy_via_virtual_media_manager.png" alt="Sao chép qua trình quản lý phương tiện ảo" width="1000">
 </p>
 <p align="center"><b>Hình 11 - Sao chép qua trình quản lý phương tiện ảo</b></p>
 
@@ -202,14 +202,14 @@ Trong VirtualBox không có sẵn phần mềm chống virus, vì vậy cần t�
 Có thể thiết lập quyền truy cập người dùng trên máy ảo, từ đó phân đoạn hạ tầng (Hình 12). Cũng có thể thiết lập các mạng cục bộ khác nhau trong máy ảo (Hình 13).
 
 <p align="center">
-  <img src="" alt="Hình 12 - Phân đoạn mạng" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/12_network_segmentation.png" alt="Hình 12 - Phân đoạn mạng" width="1000">
 </p>
 <p align="center"><b>Hình 12 - Phân đoạn mạng</b></p>
 
 ```Trên hệ thống bấm góc trái màn hình -> mũi tên ở nút shut down -> switch user```
 
 <p align="center">
-  <img src="" alt="Hình 13 - Phân đoạn kiểm soát truy cập" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/13_access_control_segmentation.png" alt="Hình 13 - Phân đoạn kiểm soát truy cập" width="1000">
 </p>
 <p align="center"><b>Hình 13 - Phân đoạn kiểm soát truy cập</b></p>
 
@@ -218,7 +218,7 @@ Có thể thiết lập quyền truy cập người dùng trên máy ảo, từ 
 Để đảm bảo bảo vệ theo ZSV.9, chúng tôi đã cài đặt phần mềm chống virus 360 Total Security trên máy ảo Windows 7 và kiểm tra hoạt động của nó (Hình 14).
 
 <p align="center">
-  <img src="" alt="Hình 14 - Hoạt động của phần mềm chống virus" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_1_Virtualization_and_containerization/image/14_antivirus_software_in_action.png" alt="Hình 14 - Hoạt động của phần mềm chống virus" width="1000">
 </p>
 <p align="center"><b>Hình 14 - Hoạt động của phần mềm chống virus</b></p>
 
@@ -227,7 +227,7 @@ Có thể thiết lập quyền truy cập người dùng trên máy ảo, từ 
 ## Tài liệu tham khảo
  DANH SÁCH TÀI LIỆU THAM KHẢO
 
-GOST R 56938-2016. Bảo vệ thông tin. Bảo vệ thông tin khi sử dụng công nghệ ảo hóa. Các quy định chung: có hiệu lực từ ngày 01-06-2017. – 2 trang.
-Quyết định FSTEC Nga từ ngày 18 tháng 2 năm 2013, số 17.
-Remote Virtual Machines // VirtualBox Manual URL: https://www.virtualbox.org/manual/ch07.html#vbox-auth
+- GOST R 56938-2016. Bảo vệ thông tin. Bảo vệ thông tin khi sử dụng công nghệ ảo hóa. Các quy định chung: có hiệu lực từ ngày 01-06-2017. – 2 trang.
+- Quyết định FSTEC Nga từ ngày 18 tháng 2 năm 2013, số 17.
+- Remote Virtual Machines // VirtualBox Manual URL: https://www.virtualbox.org/manual/ch07.html#vbox-auth
 u1035 / vbox-vm-backup // GitHub URL: https://github.com/u1035/vbox-vm-backup
