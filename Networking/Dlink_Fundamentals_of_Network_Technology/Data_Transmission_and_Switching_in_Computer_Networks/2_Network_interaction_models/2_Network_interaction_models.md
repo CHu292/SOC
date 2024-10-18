@@ -101,6 +101,14 @@ Mô hình OSI chia nhiệm vụ truyền thông tin giữa các nút thành bả
 
 - Trong một số trường hợp, PDU của giao thức tầng N có thể được đóng gói (encapsulate) trong PDU của giao thức tầng N+1, điều này đặc trưng, đặc biệt là đối với các mạng riêng ảo (VPN). Trong nhiều triển khai VPN, các giao thức của tầng liên kết (Ethernet) hoặc tầng mạng (IP) được đóng gói trong các giao thức của tầng vận chuyển (thường là UDP). Khi truyền tải thông điệp, giao thức định tuyến tầng 3 như RIP sử dụng giao thức của tầng vận chuyển UDP.
 
+## 2.3 Mô hình TCP/IP và Stack Protocol của TCP/IP
+
+- Trước khi mô hình OSI ra đời, đã có nhiều mô hình mạng và stack protocol khác nhau được phát triển, vì vậy stack protocol được xây dựng hoàn toàn theo mô hình OSI không được phổ biến. Mặc dù vậy, mô hình OSI vẫn là một mô hình khái niệm và là một công cụ thuận tiện cho việc học các công nghệ mạng cũng như phát triển các giao thức và thiết bị.
+
+- Stack protocol TCP/IP được phát triển trước mô hình OSI, do đó, các nhà phát triển của nó không sử dụng mô hình OSI để mô tả kiến trúc của ngăn xếp này. Họ đã phát triển một mô hình riêng, có nhiều tên gọi, bao gồm mô hình TCP/IP (ransmission Control Protocol/Internet Protocol-Giao thức điều khiển truyền tải/Giao thức Internet), mô hình DARPA (Defense Advanced Research Projects Agency-Cơ quan Dự án Nghiên cứu Quốc phòng Hoa Kỳ) (DARPA hoặc ARPA) hoặc mô hình DOD (United States Department of Defense-Bộ Quốc phòng Hoa Kỳ).
+
+- Vì mô hình OSI rất phổ biến, kiến trúc TCP/IP thường được mô tả bằng cách sử dụng các tên gọi của các tầng trong mô hình TCP/IP và các tầng tương ứng trong mô hình OSI.
+
 
 
 
