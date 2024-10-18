@@ -110,5 +110,23 @@ Mô hình OSI chia nhiệm vụ truyền thông tin giữa các nút thành bả
 - Vì mô hình OSI rất phổ biến, kiến trúc TCP/IP thường được mô tả bằng cách sử dụng các tên gọi của các tầng trong mô hình TCP/IP và các tầng tương ứng trong mô hình OSI.
 
 
+### 2.3.1 Mô tả các lớp của mô hình TCP/IP
 
+- Mô hình TCP/IP, giống như mô hình OSI, có cấu trúc nhiều tầng, nhưng để dữ liệu từ ứng dụng trên máy tính A được truyền đến ứng dụng trên máy tính B, chúng phải lần lượt đi qua 4 tầng: Application layer - tầng ứng dụng, Transport Layer - tầng vận chuyển, Internet Layer - tầng Internet và Network Access Layer - tầng truy cập môi trường.
 
+- Như được chỉ ra trong hình 2.5, ba tầng trên cùng của mô hình OSI tương ứng với **tầng ứng dụng (Application layer)** trong mô hình TCP/IP, bao gồm các chức năng của việc trình bày, mã hóa và kiểm soát việc thiết lập kết nối. Có nhiều giao thức ở tầng ứng dụng, trong đó phổ biến nhất là FTP, TFTP, HTTP/HTTPS, DHCP, DNS, Telnet, SMTP, POP3, IMAP, và nhiều giao thức khác.
+- ***Tầng vận chuyển (Transport layer)** của mô hình TCP/IP thực hiện các chức năng tương tự như tầng cùng tên trong mô hình OSI. Ở tầng này, có hai giao thức được xác định - TCP và UDP. Giao thức TCP (Transmission Control Protocol-Giao thức điều khiển truyền tải) đảm bảo việc giao hàng đáng tin cậy của các đoạn dữ liệu qua mạng thông qua việc thiết lập một kết nối logic giữa người gửi và người nhận dữ liệu. Giao thức UDP (User Datagram Protocol-Giao thức datagram người dùng), trái ngược với TCP, không thiết lập kết nối giữa người gửi và người nhận thông điệp và không đảm bảo việc giao hàng đáng tin cậy của dữ liệu.
+- **Tầng Internet (Internet layer)** tương đương với các chức năng của tầng mạng trong mô hình OSI và đảm bảo tổ chức kết nối giữa các mạng và các phân mạng tạo thành một mạng tổng hợp. Giao thức chính của tầng Internet là IP, thực hiện hai chức năng chính - định địa chỉ các nút và chọn lộ trình tốt nhất đến mạng đích (định tuyến). Ngoài ra, ở tầng này còn có các giao thức ICMP, IGMP, cũng như các giao thức định tuyến như RIP, OSPF và BGP.
+- **Tầng truy cập mạng (Network access layer)** kết hợp các chức năng của tầng liên kết và tầng vật lý trong mô hình OSI, đảm bảo việc truyền dữ liệu vật lý trong mạng. Có nhiều giao thức khác nhau ở tầng truy cập mạng, trong đó phổ biến nhất là Ethernet, Token Ring, FDDI, PPP, IEEE 802.11 (Wi-Fi), ATM và nhiều giao thức khác.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_5_Correspondence_between_the_layers_of_the_OSI_model_and_the_TCP_IP_model.png" alt="Sự tương ứng giữa các lớp của mô hình OSI và mô hình TCP/IP" width="1000">
+</p>
+<p align="center"><b>Hình 2.5 - Sự tương ứng giữa các lớp của mô hình OSI và mô hình TCP/IP</b></p>
+
+- Hiện nay, stack TCP/IP là một trong những stack giao thức phổ biến nhất trong mạng máy tính. Stack TCP/IP có một số lợi thế so với các stack protocol khác (IPX/SPX, NetBIOS/SMB). Điều này bao gồm, đặc biệt, khả năng định tuyến gói tin, hệ thống địa chỉ linh hoạt và số lượng thông điệp quảng bá ít.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_6_stack_protocol_TCP_IP.png" alt="Stack Protocol TCP/IP" width="1000">
+</p>
+<p align="center"><b>Hình 2.6 Stack Protocol TCP/IP</b></p>
