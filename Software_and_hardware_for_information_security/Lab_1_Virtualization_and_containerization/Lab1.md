@@ -6,11 +6,11 @@
 
 Để đạt được mục tiêu này cần giải quyết các nhiệm vụ sau:
 
-− chọn công nghệ ảo hóa/containerization,
-− nghiên cứu các cơ chế bảo vệ của công nghệ đã chọn,
-− xác định xem các cơ chế của công nghệ ảo hóa có tuân thủ các yêu cầu pháp lý hay không,
-− đảm bảo bảo vệ công nghệ phù hợp với yêu cầu của tài liệu,
-− kiểm tra tất cả các cơ chế được thực hiện,
+- chọn công nghệ ảo hóa/containerization,
+- nghiên cứu các cơ chế bảo vệ của công nghệ đã chọn,
+- xác định xem các cơ chế của công nghệ ảo hóa có tuân thủ các yêu cầu pháp lý hay không,
+- đảm bảo bảo vệ công nghệ phù hợp với yêu cầu của tài liệu,
+- kiểm tra tất cả các cơ chế được thực hiện,
 
 # Khái niệm
 - Ảo hóa là việc tạo ra một môi trường điện toán trong đó các máy ảo khác nhau có thể chạy trên cùng một tài nguyên vật lý, hoàn toàn tách biệt với nhau. Nói cách khác, đây là khả năng tạo ra phần mềm tương tự của các đối tượng vật lý khác nhau, chẳng hạn như máy tính, bộ lưu trữ dữ liệu, mạng, máy chủ và ứng dụng. Một ví dụ về điều này là việc sử dụng nhiều hệ điều hành trên một thiết bị, với tất cả các hệ điều hành và quy trình tính toán của chúng tách biệt với nhau.
