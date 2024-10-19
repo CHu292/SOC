@@ -626,3 +626,118 @@ $ curl -X 'GET' "http://127.0.0.1:8000/items/hhhh?short=false"
 {"item_id":"hhhh","description":"This is an amazing item that has a long description"}
 ```
 
+### Query parameter list / multiple values
+
+Ngoài định dạng string và integer, FastAPI còn hỗ trợ type List.
+
+```python
+from typing import List, Optional
+
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: Optional[List[str]] = Query(None)):
+    query_items = {"q": q}
+    return query_items
+```
+q là 1 List có thể chứa nhiều giá trị.
+
+Ví dụ: ```http://localhost:8000/items/?q=ha&q=he```
+
+Response body mà API trả về:
+
+```html
+{
+  "q": [
+    "ha",
+    "he"
+  ]
+}
+```
+
+API cũng được cập nhật theo.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Query_parameter_list_mutiple_value.png" alt="" width="700">
+</p>
+<p align="center"><b>Query parameter list / multiple values</b></p>
+
+
+P/S: bạn cũng có thể thay List[str] thành list như thế này.
+
+```python
+from fastapi import FastAPI, Query
+
+app = FastAPI()
+
+
+@app.get("/items/")
+async def read_items(q: list = Query([])):
+    query_items = {"q": q}
+    return query_items
+```
+
+Query còn 1 vài param nữa nhưng không quá quan trọng, bạn có thể vào doc của FastAPI để tìm hiểu chi tiết.
+
+Các param mà Query cung cấp:
+
+- Metadata
+
+  	- alias: tên khác của param
+	- title: metadata đặt tên param
+	- description: metadata giới thiệu param
+	- deprecated: khi bạn chán param nào thì thêm vào để người dùng biết là bạn không còn sử dụng param đó nữa
+
+- Validation cho string:
+
+	- min_lenght
+	- max_lenght
+	- regex
+
+ ## Path Parameters and Numeric Validations
+
+- Query parameters có class Query để khai báo metadata và validations, Path parameters có class Pass với cơ chế tương tự.
+
+- Thêm title metadata cho path param item_id:
+
+```python
+from typing import Optional
+
+from fastapi import FastAPI, Path, Query
+
+app = FastAPI()
+
+
+@app.get("/items/{item_id}")
+async def read_items(
+    item_id: int = Path(..., title="The ID of the item to get"),
+    q: Optional[str] = Query(None, alias="item-query"),
+):
+    results = {"item_id": item_id}
+    if q:
+        results.update({"q": q})
+    return results
+```
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Web_programming_LMS/1_ntroduction_to_backend_development/image/FastAPI/Path_Parameters_and_Numberic_Validations.png" alt="" width="700">
+</p>
+<p align="center"><b>Path Parameters and Numeric Validations</b></p>
+
+### Number validations: greater than or equal
+
+Tương tự với le=100, item_id bắt buộc phải là 1 số nhỏ hơn hoặc bằng 100.
+
+```python
+item_id: int = Path(..., title="The ID of the item to get", gt=0, le=1000)
+```
+
+P/S: Number validations không chỉ hỗ trợ type integer mà còn hỗ trợ cho type float.
+
+```python
+size: float = Query(..., gt=0, lt=10.5)
+```
+
