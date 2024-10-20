@@ -60,3 +60,11 @@ Thử 1919: không thành công
 Thử 1920: không thành công
 Đăng nhập thành công với mật khẩu: 1921
 ```
+
+Sau đó đăng nhập bằng user name : addmin
+password là năm sinh:
+
+nó sẽ hiện ra như vậy: 
+```bash
+Hello, admin. Your secret data is 20e2d747c911e970c080fe1084d6315653cb2738041304c491c077f3055dcef63acabf31d753fd29623e799898b04a878f !
+```
