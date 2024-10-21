@@ -1,3 +1,11 @@
+```bash
+chmod +x task_elf
+```
+
+```bash
+gdb ./task_elf
+```
+
 ```gdb
 chu@chu-Latitude-5510:~/Downloads$ gdb ./task_elf
 GNU gdb (Ubuntu 12.1-0ubuntu1~22.04.2) 12.1
@@ -50,3 +58,16 @@ $3 = 0x407ac0 "1234"
 $4 = 0x7fffffffde36 "75b744f57178eeb0c5f6996f4fd3c40e46868be38ff4d5b669e47c34ffc8da88d292f34ee7348abe313681a536467a2003eu"
 (gdb) 
 ```
+---
+thử nhiều lần roài:
+
+ kết quả như này
+
+```bash
+chu@chu-Latitude-5510:~/Downloads$ ./task_elf
+Enter password
+f7cc327fe81990c1814b358c519bf7f8cf9e802f3495581853eb9c87c7a8f6d4ce49277b9d3bb38fe3fb0d20636aacd111d\252
+Passed!
+```
+
+nhưng vẫn báo sai flag :(
