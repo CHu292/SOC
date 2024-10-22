@@ -196,4 +196,43 @@ REVOKE
 ```
 
 # 4 Thao tác với bảng
+### Tạo bảng
+- Cú pháp:
+```sql
+CREATE TABLE tên_bảng (
+    tên_cột kiểu_dữ_liệu [ràng buộc],
+    ...
+);
+```
+- Khi bạn tạo một bảng trong PostgreSQL mà không chỉ định schema, bảng đó sẽ được tạo trong schema mặc định của phiên làm việc, thường là schema public. Schema public là schema mặc định mà PostgreSQL thiết lập khi bạn tạo cơ sở dữ liệu mới, và tất cả người dùng đều có quyền truy cập vào nó trừ khi bạn thay đổi quyền.
+- Xác định schema hiện tại:
+```bash
+SHOW search_path;
+```
+```sql
+n3347_22=# SHOW search_path;
+ "$user", public
+```
+### Tạo bảng trong schema cụ thể:
+- Cú pháp:
+```sql
+CREATE TABLE tên_schema.tên_bảng (
+    tên_cột kiểu_dữ_liệu [ràng buộc],
+    ...
+);
+```
+### Thay đổi search_path để sử dụng schema khác:
+- Cú pháp
+```sql
+SET search_path TO tên_schema;
+```
+- Ví dụ:
+```sql
+n3347_22=# SHOW search_path;
+ "$user", public
 
+n3347_22=# set search_path to n3247_22_schema_lab1;
+SET
+n3347_22=# show search_path;
+ n3247_22_schema_lab1
+```
