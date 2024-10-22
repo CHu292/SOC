@@ -361,6 +361,8 @@ SELECT COUNT(*) FROM tên_bảng;
 
 ## 5 Kiểu dữ liệu
 ### 5.1 Kiểu dữ liệu tổng hợp (Composite Type)
+- Trong PostgreSQL, kiểu tổng hợp (composite type) là kiểu dữ liệu mà bạn có thể định nghĩa, bao gồm nhiều trường với các kiểu dữ liệu khác nhau, giống như một bản ghi (record) hay một hàng trong bảng.
+
 - Cú pháp tạo kiểu tổng hợp 
 ```sql
 CREATE TYPE tên_kiểu AS (
@@ -423,6 +425,7 @@ DROP TYPE tên_kiểu;
 ```
 
 ### 5.2 Kiểu liệt kê (ENUM)
+- Trong PostgreSQL, kiểu dữ liệu liệt kê (ENUM) cho phép bạn xác định một tập hợp các giá trị hợp lệ và chỉ cho phép các giá trị đó xuất hiện trong cột của bảng. Nó rất hữu ích khi bạn muốn giới hạn các giá trị của cột vào một danh sách cố định, ví dụ như trạng thái, phân loại, hoặc các loại dữ liệu khác có số lượng hữu hạn các lựa chọn.
 - Cú pháp tạo kiểu liệt kê (ENUM)
 ```sql
 CREATE TYPE tên_kiểu AS ENUM ('giá_trị1', 'giá_trị2', ..., 'giá_trịN');
@@ -466,5 +469,57 @@ n3347_22=# select name, status from employees where status = 'on_leave';
 - Xóa kiểu ENUM:
 ```sql
 DROP TYPE tên_kiểu;
+```
+### 5.3 Tạo tên miền
+- Trong PostgreSQL, tên miền (domain) là một cách để tạo ra một kiểu dữ liệu mới dựa trên kiểu dữ liệu hiện có, nhưng với các ràng buộc bổ sung. Nó giúp tạo các kiểu dữ liệu tái sử dụng có tính nhất quán và hợp lệ trên nhiều bảng, tương tự như việc mở rộng một kiểu dữ liệu với các quy tắc riêng.
+
+- Cú pháp tạo tên miền (Domain)
+```sql
+CREATE DOMAIN tên_tên_miền AS kiểu_dữ_liệu
+    [ DEFAULT giá_trị_mặc_định ]
+    [ CONSTRAINT tên_ràng_buộc ràng_buộc ];
+```
+  - tên_tên_miền: Tên của tên miền.
+  - kiểu_dữ_liệu: Kiểu dữ liệu cơ sở (ví dụ: VARCHAR, INTEGER, v.v.).
+  - DEFAULT: Giá trị mặc định cho tên miền (tùy chọn).
+  - CONSTRAINT: Ràng buộc (constraint) để kiểm soát tính hợp lệ của dữ liệu.
+
+- Ví dụ: Giả sử bạn muốn tạo một tên miền cho số điện thoại, là chuỗi ký tự có độ dài tối đa 10 ký tự và không được phép chứa giá trị NULL.
+
+```sql
+n3347_22=# create domain phone_number as varchar(10) check (value ~ '^[0-9]+$') not null;
+CREATE DOMAIN
+```
+  - Tên miền phone_number có kiểu dữ liệu cơ sở là VARCHAR(10).
+  - Ràng buộc CHECK đảm bảo rằng giá trị phải chỉ bao gồm các chữ số từ 0 đến 9.
+  - NOT NULL đảm bảo không có giá trị NULL được chấp nhận.
+
+- Sử dụng tên miền trong bảng
+
+```sql
+n3347_22=# CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    phone phone_number -- Sử dụng tên miền
+);
+CREATE TABLE
+```
+- Chèn dữ liệu vào bảng có tên miền:
+```sql
+n3347_22=# INSERT INTO employees (name, phone)
+VALUES ('Sun', '0123456789'),
+       ('Miran', '0987654321');
+INSERT 0 2
+```
+
+- Sửa đổi tên miền:
+
+```sql
+n3347_22=# ALTER DOMAIN phone_number SET DEFAULT '0000000000';
+ALTER DOMAIN
+```
+- Xóa tên miền
+```sql
+DROP DOMAIN tên_tên_miền;
 ```
 
