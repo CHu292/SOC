@@ -359,7 +359,7 @@ SELECT COUNT(*) FROM tên_bảng;
 \d+ tên_bảng
 ```
 
-## 5 Kiểu dữ liệu
+# 5 Kiểu dữ liệu
 ### 5.1 Kiểu dữ liệu tổng hợp (Composite Type)
 - Trong PostgreSQL, kiểu tổng hợp (composite type) là kiểu dữ liệu mà bạn có thể định nghĩa, bao gồm nhiều trường với các kiểu dữ liệu khác nhau, giống như một bản ghi (record) hay một hàng trong bảng.
 
@@ -599,7 +599,7 @@ ORDER BY salary ASC;
 DROP INDEX tên_chỉ_mục;
 ```
 
-## 6 Chế độ xem view
+# 6 Chế độ xem view
 - Trong PostgreSQL, View (chế độ xem) là một bảng ảo được định nghĩa bằng một truy vấn SQL. View không lưu trữ dữ liệu thực tế mà lưu trữ kết quả của truy vấn SQL đã định nghĩa. View giúp tổ chức các truy vấn phức tạp, bảo mật dữ liệu, và cung cấp cách tiếp cận nhất quán cho dữ liệu từ nhiều bảng khác nhau.
 
 ### 6.1 Cú pháp tạo View
