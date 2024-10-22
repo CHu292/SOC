@@ -119,7 +119,7 @@ ALTER SCHEMA tên_schema_cũ RENAME TO tên_schema_mới;
 ```sql
 DROP SCHEMA tên_schema;
 ```
-## Phân quyền cho schema (Grant permission Schema)
+### Phân quyền cho schema (Grant permission Schema)
 
 **Bạn có thể cấp các quyền truy cập sau cho schema:**
 
@@ -144,6 +144,55 @@ GRANT
 ```sql
 n3347_22=# grant usage, create on schema n3247_22_schema_lab1 to chu;
 GRANT
+```
+
+### Phân quyền cho các đối tượng trong schema
+
+**Bạn cũng có thể cấp quyền truy cập vào các đối tượng bên trong schema, như bảng hoặc hàm:**
+
+- SELECT: Cho phép người dùng đọc dữ liệu từ bảng.
+- INSERT: Cho phép người dùng thêm dữ liệu vào bảng.
+- UPDATE: Cho phép người dùng cập nhật dữ liệu trong bảng.
+- DELETE: Cho phép người dùng xóa dữ liệu từ bảng.
+- ALL PRIVILEGES: Cấp tất cả các quyền cho đối tượng
+- Cú pháp:
+```sql
+GRANT quyền_truy_cập ON đối_tượng (bảng/hàm) TO tên_người_dùng;
+```
+- Ví dụ:
+```sql
+n3347_22=# grant select on n3247_22_schema_lab1.my_table to chu;
+GRANT
+```
+### Xóa quyền trên schema
+- Cú pháp:
+```sql
+REVOKE quyền_truy_cập ON SCHEMA tên_schema FROM tên_người_dùng;
+```
+- Ví dụ:
+```sql
+n3347_22=# revoke usage on schema n3247_22_schema_lab1 from chu;
+REVOKE
+```
+###  Xóa quyền trên các đối tượng trong schema (bảng, hàm)
+- Cú pháp
+```sql
+REVOKE quyền_truy_cập ON đối_tượng (bảng/hàm) FROM tên_người_dùng;
+```
+- Ví dụ:
+```sql
+n3347_22=# revoke select on n3247_22_schema_lab1.my_table from chu;
+REVOKE
+```
+###  Xóa quyền trên tất cả các đối tượng hiện tại và tương lai trong schema
+- Nếu bạn đã cấp quyền cho tất cả các đối tượng bên trong schema, và muốn xóa chúng, bạn có thể sử dụng lệnh như sau:
+```sql
+REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA tên_schema FROM tên_người_dùng;
+```
+- Ví dụ:
+```sql
+n3347_22=# revoke all privileges on all tables in schema n3247_22_schema_lab1 from chu;
+REVOKE
 ```
 
 # 4 Thao tác với bảng
