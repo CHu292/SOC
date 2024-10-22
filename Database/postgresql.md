@@ -357,4 +357,63 @@ SELECT COUNT(*) FROM tên_bảng;
 -  Xem cấu trúc bảng và chỉ mục (Indexes)
 ```sql
 \d+ tên_bảng
-```  
+```
+
+## 5 Kiểu dữ liệu
+### 5.1 Kiểu dữ liệu tổng hợp (Composite Type)
+- Cú pháp tạo kiểu tổng hợp 
+```sql
+CREATE TYPE tên_kiểu AS (
+    tên_trường1 kiểu_dữ_liệu1,
+    tên_trường2 kiểu_dữ_liệu2,
+    ...
+);
+```
+
+- Ví dụ
+```sql
+CREATE TYPE employee_info AS (
+    name VARCHAR(100),
+    age INTEGER,
+    position VARCHAR(50)
+);
+```
+
+- Sử dụng kiểu tổng hợp
+- Khai báo cột sử dụng kiểu tổng hợp: Sau khi tạo kiểu tổng hợp, bạn có thể sử dụng nó trong định nghĩa bảng như một cột.
+```sql
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    info employee_info -- Cột sử dụng kiểu tổng hợp
+);
+```
+```sql
+n3347_22=# \d employees
+ id     | integer       |           | not null | nextval('employees_id_seq'::regclass)
+ info   | employee_info |           |          | 
+```
+- Chèn dữ liệu vào bảng với kiểu tổng hợp: Để chèn dữ liệu vào cột kiểu tổng hợp, bạn cần sử dụng cú pháp phù hợp cho composite type.
+```sql
+n3347_22=# insert into employees (info) values (row('Chu', 30, 'Manager'));
+INSERT 0 1
+```
+- Truy vấn dữ liệu từ bảng với kiểu tổng hợp: Bạn có thể truy vấn và truy cập các trường trong kiểu tổng hợp bằng cách sử dụng dấu chấm ```.```.
+```sql
+n3347_22=# SELECT (info).name, (info).age, (info).position FROM employees;
+ Chu  |  30 | Manager
+```
+- Cập nhật dữ liệu trong kiểu tổng hợp: Để cập nhật một phần của kiểu tổng hợp, bạn có thể thực hiện như sau:
+
+```sql
+n3347_22=# update employees set info = row('Chu', 22, 'Senior Manager') where id = 1;
+UPDATE 1
+n3347_22=# SELECT (info).name, (info).age, (info).position FROM employees;
+ Chu  |  22 | Senior Manager
+```
+- Hoặc chỉ cập nhật một trường trong kiểu tổng hợp:
+ ```sql
+n3347_22=# update employees set info.age = 21 where id = 1;
+UPDATE 1
+n3347_22=# SELECT (info).name, (info).age, (info).position FROM employees;
+ Chu  |  21 | Senior Manager
+```
