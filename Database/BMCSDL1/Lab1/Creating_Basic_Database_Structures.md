@@ -110,4 +110,11 @@ DROP SCHEMA tên_schema;
 **Cấp quyền:**
 ```sql
 GRANT quyền_truy_cập ON SCHEMA tên_schema TO tên_người_dùng;
-``
+```
+**Xóa quyền**
+
+```sql
+DENY SELECT, INSERT, UPDATE, DELETE ON SCHEMA :: news TO  postgres
+```
+
+## 4. Tạo bảng
