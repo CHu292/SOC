@@ -417,3 +417,54 @@ UPDATE 1
 n3347_22=# SELECT (info).name, (info).age, (info).position FROM employees;
  Chu  |  21 | Senior Manager
 ```
+- Xóa kiểu tổng hợp
+```sql
+DROP TYPE tên_kiểu;
+```
+
+### 5.2 Kiểu liệt kê (ENUM)
+- Cú pháp tạo kiểu liệt kê (ENUM)
+```sql
+CREATE TYPE tên_kiểu AS ENUM ('giá_trị1', 'giá_trị2', ..., 'giá_trịN');
+```
+- Ví dụ
+```sql
+n3347_22=# create type job_status as enum ('active', 'inactive', 'on_leave');
+CREATE TYPE
+```
+
+- Sử dụng kiểu liệt kê trong bảng: Tạo bảng employees với một cột sử dụng kiểu liệt kê:
+
+```sql
+n3347_22=# create table employees (id serial primary key, name varchar(100), status job_status);
+CREATE TABLE
+n3347_22=# \d employees
+ id     | integer                |           | not null | nextval('employees_id_seq'::regclass)
+ name   | character varying(100) |           |          | 
+ status | job_status             |           |          | 
+
+```
+- Chèn dữ liệu vào cột kiểu ENUM:
+
+```sql
+n3347_22=# insert into employees (name, status) values ('Chu', 'active'), ('Miran', 'inactive');
+INSERT 0 2
+```
+- Truy vấn dữ liệu từ bảng có kiểu ENUM:
+```sql
+n3347_22=# select name, status from employees where status = 'active';
+ Chu  | active
+```
+- Cập nhật giá trị của cột kiểu ENUM:
+
+```sql
+n3347_22=# update employees set status = 'on_leave' where name = 'Chu';
+UPDATE 1
+n3347_22=# select name, status from employees where status = 'on_leave';
+ Chu  | on_leave
+```
+- Xóa kiểu ENUM:
+```sql
+DROP TYPE tên_kiểu;
+```
+
