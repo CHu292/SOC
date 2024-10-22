@@ -196,13 +196,23 @@ REVOKE
 ```
 
 # 4 Thao tác với bảng
-### 4.1 Tạo bảng
+### 4.1 Tạo bảng (create table)
 - Cú pháp:
 ```sql
 CREATE TABLE tên_bảng (
     tên_cột kiểu_dữ_liệu [ràng buộc],
     ...
 );
+```
+- Ví dụ:
+```sql
+n3347_22=# CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    position VARCHAR(50),
+    salary NUMERIC(10, 2)
+);
+CREATE TABLE
 ```
 - Khi bạn tạo một bảng trong PostgreSQL mà không chỉ định schema, bảng đó sẽ được tạo trong schema mặc định của phiên làm việc, thường là schema public. Schema public là schema mặc định mà PostgreSQL thiết lập khi bạn tạo cơ sở dữ liệu mới, và tất cả người dùng đều có quyền truy cập vào nó trừ khi bạn thay đổi quyền.
 - Xác định schema hiện tại:
@@ -236,3 +246,115 @@ SET
 n3347_22=# show search_path;
  n3247_22_schema_lab1
 ```
+### 4.4 Thêm cột vào bảng (Add Column)
+- Cú pháp:
+```sql
+ALTER TABLE tên_bảng ADD COLUMN tên_cột kiểu_dữ_liệu [ràng buộc];
+```
+- Ví dụ:
+```sql
+n3347_22=# ALTER TABLE employees ADD COLUMN hire_date DATE;
+ALTER TABLE
+```
+### 4.5 Xóa cột khỏi bảng (Drop Column)
+- Cú pháp:
+```sql
+ALTER TABLE tên_bảng DROP COLUMN tên_cột;
+```
+- Ví dụ:
+```sql
+n3347_22=# ALTER TABLE employees DROP COLUMN hire_date;
+ALTER TABLE
+```
+### 4.6 Đổi tên bảng (Rename Table)
+- Cú pháp:
+```sql
+ALTER TABLE tên_bảng_cũ RENAME TO tên_bảng_mới;
+```
+- Ví dụ:
+```sql
+n3347_22=# ALTER TABLE employees RENAME TO staff;
+ALTER TABLE
+```
+### 4.7 Đổi tên cột (Rename Column)
+- Cú pháp:
+```sql
+ALTER TABLE tên_bảng RENAME COLUMN tên_cột_cũ TO tên_cột_mới;
+```
+- Ví dụ:
+```sql
+n3347_22=# alter table staff rename column id to staff_id;
+ALTER TABLE
+```
+### 4.8 Sửa kiểu dữ liệu của cột (Alter Column Data Type)
+- Cú pháp:
+```sql
+ALTER TABLE tên_bảng ALTER COLUMN tên_cột SET DATA TYPE kiểu_dữ_liệu_mới;
+```
+- Ví dụ:
+```sql
+n3347_22=# alter table staff alter column salary set data type decimal(12,2);
+ALTER TABLE
+```
+
+### 4.9  Xóa bảng (Drop Table)
+
+- Cú pháp:
+```sql
+DROP TABLE tên_bảng;
+```
+- Ví dụ:
+```sql
+n3347_22=# drop table my_table;
+DROP TABLE
+```
+### 4.10 Chèn dữ liệu vào bảng (Insert Data)
+- Cú pháp:
+```sql
+INSERT INTO tên_bảng (cột1, cột2, ...) VALUES (giá_trị1, giá_trị2, ...);
+```
+- Ví dụ:
+```sql
+n3347_22=# insert into employee (staff_id, name, salary) values (1, 'Chu', 500000);
+INSERT 0 1
+```
+### 4.11  Cập nhật dữ liệu (Update Data)
+-  Cú pháp:
+```sql
+UPDATE tên_bảng SET cột1 = giá_trị_mới WHERE điều_kiện;
+```
+- Ví dụ:
+```sql
+n3347_22=# update employee set salary = 10000000 where name = 'Chu';
+UPDATE 1
+```
+### 4.12 Truy vấn dữ liệu (Select Data)
+- Cú pháp xem tất cả dữ liệu:
+```sql
+SELECT * FROM tên_bảng;
+```
+```sql
+n3347_22=# select * from employee;
+        1 | Chu  |          | 10000000.00
+```
+
+- Cú pháp xem một số cột cụ thể:
+```sql
+SELECT cột1, cột2, ... FROM tên_bảng;
+```
+```sql
+n3347_22=# select name, salary from employee;
+ Chu  | 10000000.00
+```
+- Cú pháp xem dữ liệu với điều kiện:
+```sql
+SELECT cột1, cột2, ... FROM tên_bảng WHERE điều_kiện;
+```
+- Xem số lượng hàng trong bảng (Row Count)
+```sql
+SELECT COUNT(*) FROM tên_bảng;
+```
+-  Xem cấu trúc bảng và chỉ mục (Indexes)
+```sql
+\d+ tên_bảng
+```  
