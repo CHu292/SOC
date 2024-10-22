@@ -522,4 +522,80 @@ ALTER DOMAIN
 ```sql
 DROP DOMAIN tên_tên_miền;
 ```
+### 5.4 Chỉ mục (index)
+
+- Trong PostgreSQL, chỉ mục (index) là một cấu trúc dữ liệu giúp tăng tốc độ truy vấn và tìm kiếm dữ liệu trong bảng. Khi bạn tạo một chỉ mục trên một hoặc nhiều cột của bảng, PostgreSQL sẽ duy trì một bản sao đã sắp xếp của dữ liệu trong các cột đó, cho phép truy cập nhanh hơn. Tuy nhiên, việc tạo chỉ mục cũng có chi phí về dung lượng và tốc độ ghi dữ liệu (INSERT/UPDATE/DELETE).
+- Cú pháp tạo chỉ mục (Index)
+
+```sql
+CREATE [UNIQUE] INDEX tên_chỉ_mục
+    ON tên_bảng (cột1 [ASC|DESC], cột2 [ASC|DESC], ...);
+```
+  - UNIQUE: Tùy chọn để đảm bảo rằng các giá trị trong cột được chỉ mục là duy nhất.
+  - ASC|DESC: Tùy chọn để xác định thứ tự sắp xếp tăng dần (ASC) hoặc giảm dần (DESC).
+  - tên_bảng: Tên bảng mà bạn muốn tạo chỉ mục.
+  - cột1, cột2: Các cột bạn muốn chỉ mục
+
+- Ví dụ 1: Tạo chỉ mục cơ bản
+- Bây giờ PostgreSQL sẽ sử dụng chỉ mục này khi bạn truy vấn bảng employees với điều kiện dựa trên cột name.
+```sql
+n3347_22=# create index idx_employee_name on employees (name);
+CREATE INDEX
+n3347_22=# select * from employees where name = 'Sun';
+ id | name |   phone    
+----+------+------------
+  1 | Sun  | 0123456789
+(1 row)
+```
+- Ví dụ 2: Tạo chỉ mục đa cột
+- Tạo chỉ mục trên nhiều cột, ví dụ: name và position, để tối ưu hóa truy vấn có điều kiện trên cả hai cột.
+```sql
+n3347_22=# create index inx_employee_name_position on employees (name, position);
+CREATE INDEX
+```
+- Ví dụ 3: Tạo chỉ mục duy nhất (UNIQUE)
+- Nếu bạn muốn đảm bảo rằng giá trị của cột được chỉ mục là duy nhất, bạn có thể thêm từ khóa UNIQUE.
+```sql
+n3347_22=# create unique index idx_employee_phone on employees (phone);
+CREATE INDEX
+```
+-> Điều này đảm bảo rằng không có hai nhân viên nào có cùng số điện thoại trong cột phone.
+- Ví dụ 4: Chỉ mục với thứ tự sắp xếp
+- Bạn có thể chỉ định thứ tự sắp xếp của cột trong chỉ mục bằng ASC (tăng dần) hoặc DESC (giảm dần). Điều này có thể hữu ích trong các trường hợp truy vấn cụ thể.
+```sql
+n3347_22=# create index idx_emloyee_salary_desc on employees (salary desc);
+CREATE INDEX
+```
+- Truy vấn sử dụng chỉ mục với sắp xếp giảm/tăng dần:
+
+```sql
+n3347_22=# SELECT name, salary
+FROM employees
+ORDER BY salary DESC;
+ name  |   salary   
+-------+------------
+ Sun   | 2532252.00
+ Miran | 2522115.00
+(2 rows)
+
+n3347_22=# CREATE INDEX idx_employee_salary_asc
+    ON employees (salary ASC);
+CREATE INDEX
+n3347_22=# SELECT name, salary
+FROM employees
+ORDER BY salary ASC;
+ name  |   salary   
+-------+------------
+ Miran | 2522115.00
+ Sun   | 2532252.00
+(2 rows)
+```
+- Kiểm tra chỉ mục hiện có
+```sql
+\d tên_bảng
+```
+- Xóa chỉ mục
+```sql
+DROP INDEX tên_chỉ_mục;
+```
 
