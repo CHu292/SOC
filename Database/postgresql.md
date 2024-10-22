@@ -599,3 +599,99 @@ ORDER BY salary ASC;
 DROP INDEX tên_chỉ_mục;
 ```
 
+## 6 Chế độ xem view
+- Trong PostgreSQL, View (chế độ xem) là một bảng ảo được định nghĩa bằng một truy vấn SQL. View không lưu trữ dữ liệu thực tế mà lưu trữ kết quả của truy vấn SQL đã định nghĩa. View giúp tổ chức các truy vấn phức tạp, bảo mật dữ liệu, và cung cấp cách tiếp cận nhất quán cho dữ liệu từ nhiều bảng khác nhau.
+
+### 6.1 Cú pháp tạo View
+```sql
+CREATE VIEW tên_view AS
+SELECT cột1, cột2, ...
+FROM bảng
+WHERE điều_kiện;
+```
+  - tên_view: Tên của view bạn muốn tạo.
+  - SELECT: Truy vấn SQL xác định nội dung của view. Nó có thể là bất kỳ truy vấn hợp lệ nào trong PostgreSQL.
+
+### 6.2 Ví dụ 1: Tạo view đơn giản
+- Giả sử bạn có bảng employees với các cột như id, name, salary, và position. Bạn muốn tạo một view chỉ hiển thị các nhân viên có lương cao hơn 50,000.
+
+```sql
+3347_22=# CREATE VIEW high_salary_employees AS
+SELECT id, name, salary
+FROM employees
+WHERE salary > 50000;
+CREATE VIEW
+n3347_22=# SELECT * FROM high_salary_employees;
+ id | name  |   salary   
+----+-------+------------
+  1 | Sun   | 2532252.00
+  2 | Miran | 2522115.00
+(2 rows)
+```
+
+### 6.3 Ví dụ 2: Tạo view phức tạp với JOIN
+- Bạn cũng có thể tạo view từ nhiều bảng với các truy vấn phức tạp, chẳng hạn như kết hợp các bảng bằng cách sử dụng JOIN.
+
+- Giả sử bạn có hai bảng employees và departments:
+
+  - employees có cột: id, name, salary, department_id.
+```sql
+n3347_22=# select * from employees;
+ id | name  |   phone    |    position    |   salary   | department_id 
+----+-------+------------+----------------+------------+---------------
+  1 | Sun   | 0123456789 | senior Manager | 2532252.00 |             1
+  2 | Miran | 0987654321 | Manager        | 2522115.00 |             2
+(2 rows)
+```
+  - departments có cột: department_id, department_name.
+```sql
+n3347_22=# select * from departments;
+ department_id | department_name 
+---------------+-----------------
+             1 | Vingroup
+             2 | SaiGon
+(2 rows)
+```
+Bạn muốn tạo một view hiển thị tên nhân viên cùng với tên phòng ban của họ:
+```sql
+n3347_22=# CREATE VIEW employee_department_view AS
+SELECT e.id, e.name, e.salary, d.department_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id;
+CREATE VIEW
+```
+- Bây giờ, bạn có thể truy vấn employee_department_view để xem nhân viên cùng với tên phòng ban:
+
+```sql
+n3347_22=# SELECT * FROM employee_department_view;
+ id | name  |   salary   | department_name 
+----+-------+------------+-----------------
+  1 | Sun   | 2532252.00 | Vingroup
+  2 | Miran | 2522115.00 | SaiGon
+(2 rows)
+```
+
+### 6.4 Ví dụ 3: Tạo view có ràng buộc bảo mật
+
+- Giả sử bạn không muốn người dùng nhìn thấy mức lương của nhân viên, bạn có thể tạo một view chỉ hiển thị tên và phòng ban:
+
+```sql
+n3347_22=# CREATE VIEW employee_public_view AS
+SELECT e.name, d.department_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id;
+CREATE VIEW
+n3347_22=# select * from employee_public_view;
+ name  | department_name 
+-------+-----------------
+ Sun   | Vingroup
+ Miran | SaiGon
+(2 rows)
+```
+-> Người dùng chỉ có thể truy cập thông tin thông qua view này mà không thấy mức lương.
+
+- Xóa view
+```sql
+DROP VIEW tên_view;
+```
+
