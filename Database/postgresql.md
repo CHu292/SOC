@@ -18,7 +18,8 @@ sudo su postgres -c psql
 - -c psql: Lệnh này chạy chương trình psql với các quyền của người dùng postgres.
 
 # 2. Thao tác với cơ sở dữ liệu:
-**Cú pháp**
+
+#### Tạo cơ sở dữ liệu
 
 ```bash
 CREATE DATABASE <tên_cơ_sở_dữ_liệu>;
@@ -29,21 +30,20 @@ postgres=# create database n3347_22;
 CREATE DATABASE
 ```
 
-**Cú pháp xóa cơ sở dữ liệu:**
+#### Xóa cơ sở dữ liệu
 
 ```sql
 DROP DATABASE <tên_cơ_sở_dữ_liệu>;
 ```
-**Cú pháp đổi tên cơ sở dữ liệu:**
+#### Đổi tên cơ sở dữ liệu
 
 ```sql
 ALTER DATABASE <tên_cơ_sở_dữ_liệu_cũ> RENAME TO <tên_cơ_sở_dữ_liệu_mới>;
 ```
 
----
-# Các câu lệnh
+#### Liệt kê tất cả các sơ sở dữ liệu
 
-**Liệt kê tất cả các sơ sở dữ liệu** ```\l```
+```\l```
 
 *tùy chọn \l trong PostgreSQL là một lệnh được sử dụng để hiển thị danh sách các đối tượng trong cơ sở dữ liệu hiện tại, bao gồm bảng, lược đồ, view, v.v.*
 
@@ -64,7 +64,8 @@ postgres=# \l
                 |          |          |                 |             |             |            |           | postgres=CTc/postgres
 (6 rows)
 ```
-**Kết nối với cơ sở dữ liệu**
+
+#### Kết nối với cơ sở dữ liệu
 - Cú pháp:
 ```bash
 \c <cơ sở dữ liệu bạn muốn kết nối
@@ -75,13 +76,10 @@ postgres=# \c n3347_22
 You are now connected to database "n3347_22" as user "postgres".
 n3347_22=# 
 ```
-**Cách xem các schema đã tạo:** sử dụng ```\dn```
-```sql
-n3347_22=# \dn
- n3247_22_schema_lab1 | postgres
- public               | pg_database_owner
-```
-**Cách xem tất cả các người dùng**: ```\du```
+
+#### Xem tất cả các người dùng
+
+```\du```
 
 ```sql
 n3347_22=# \du
@@ -89,5 +87,64 @@ n3347_22=# \du
  postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS
 ```
 
+# 3 Thao tác với schema  
+#### Xem các schema đã tạo:
 
+```bash
+\dn
+```
+
+```sql
+n3347_22=# \dn
+ n3247_22_schema_lab1 | postgres
+ public               | pg_database_owner
+```
+
+#### Tạo Schema
+```sql
+CREATE SCHEMA <tên_lược_đồ>;
+```
+**ví dụ**
+
+```sql
+create schema n3247_22_schema_lab1;
+```
+
+#### Đổi tên schema
+```sql
+ALTER SCHEMA tên_schema_cũ RENAME TO tên_schema_mới;
+```
+
+#### Xóa schema
+```sql
+DROP SCHEMA tên_schema;
+```
+## Phân quyền cho schema (Grant permission Schema)
+
+**Bạn có thể cấp các quyền truy cập sau cho schema:**
+
+- USAGE: Cho phép người dùng truy cập vào schema, nhưng không thể tạo đối tượng mới trong schema.
+- CREATE: Cho phép người dùng tạo đối tượng mới (như bảng, chỉ mục) trong schema.
+- Cú pháp:
+```sql
+GRANT quyền_truy_cập ON SCHEMA tên_schema TO tên_người_dùng;
+```
+- Cho phép người dùng chu có quyền truy cập (usage) vào schema n3247_22_schema_lab1:
+```sql
+n3347_22=# grant usage on schema n3247_22_schema_lab1 to chu;
+GRANT
+```
+- Cho phép người dùng chu có quyền tạo đối tượng (create) trong schema n3247_22_schema_lab1:
+
+```sql
+n3347_22=# grant create on schema n3247_22_schema_lab1 to chu;
+GRANT
+```
+- ấp cả quyền truy cập và tạo đối tượng cho người dùng chu
+```sql
+n3347_22=# grant usage, create on schema n3247_22_schema_lab1 to chu;
+GRANT
+```
+
+# 4 Thao tác với bảng
 
