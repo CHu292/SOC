@@ -19,7 +19,7 @@ sudo su postgres -c psql
 
 # 2. Thao tác với cơ sở dữ liệu:
 
-#### Tạo cơ sở dữ liệu
+#### 2.1 Tạo cơ sở dữ liệu
 
 ```bash
 CREATE DATABASE <tên_cơ_sở_dữ_liệu>;
@@ -30,18 +30,18 @@ postgres=# create database n3347_22;
 CREATE DATABASE
 ```
 
-#### Xóa cơ sở dữ liệu
+#### 2.2 Xóa cơ sở dữ liệu
 
 ```sql
 DROP DATABASE <tên_cơ_sở_dữ_liệu>;
 ```
-#### Đổi tên cơ sở dữ liệu
+#### 2.3 Đổi tên cơ sở dữ liệu
 
 ```sql
 ALTER DATABASE <tên_cơ_sở_dữ_liệu_cũ> RENAME TO <tên_cơ_sở_dữ_liệu_mới>;
 ```
 
-#### Liệt kê tất cả các sơ sở dữ liệu
+#### 2.4 Liệt kê tất cả các sơ sở dữ liệu
 
 ```\l```
 
@@ -65,7 +65,7 @@ postgres=# \l
 (6 rows)
 ```
 
-#### Kết nối với cơ sở dữ liệu
+#### 2.5 Kết nối với cơ sở dữ liệu
 - Cú pháp:
 ```bash
 \c <cơ sở dữ liệu bạn muốn kết nối
@@ -77,7 +77,7 @@ You are now connected to database "n3347_22" as user "postgres".
 n3347_22=# 
 ```
 
-#### Xem tất cả các người dùng
+#### 2.6 Xem tất cả các người dùng
 
 ```\du```
 
@@ -88,7 +88,7 @@ n3347_22=# \du
 ```
 
 # 3 Thao tác với schema  
-#### Xem các schema đã tạo:
+#### 3.1 Xem các schema đã tạo:
 
 ```bash
 \dn
@@ -100,7 +100,7 @@ n3347_22=# \dn
  public               | pg_database_owner
 ```
 
-#### Tạo Schema
+#### 3.2 Tạo Schema
 ```sql
 CREATE SCHEMA <tên_lược_đồ>;
 ```
@@ -110,16 +110,16 @@ CREATE SCHEMA <tên_lược_đồ>;
 create schema n3247_22_schema_lab1;
 ```
 
-#### Đổi tên schema
+#### 3.3 Đổi tên schema
 ```sql
 ALTER SCHEMA tên_schema_cũ RENAME TO tên_schema_mới;
 ```
 
-#### Xóa schema
+#### 3.4 Xóa schema
 ```sql
 DROP SCHEMA tên_schema;
 ```
-### Phân quyền cho schema (Grant permission Schema)
+#### 3.5 Phân quyền cho schema (Grant permission Schema)
 
 **Bạn có thể cấp các quyền truy cập sau cho schema:**
 
@@ -146,7 +146,7 @@ n3347_22=# grant usage, create on schema n3247_22_schema_lab1 to chu;
 GRANT
 ```
 
-### Phân quyền cho các đối tượng trong schema
+#### 3.6 Phân quyền cho các đối tượng trong schema
 
 **Bạn cũng có thể cấp quyền truy cập vào các đối tượng bên trong schema, như bảng hoặc hàm:**
 
@@ -164,7 +164,7 @@ GRANT quyền_truy_cập ON đối_tượng (bảng/hàm) TO tên_người_dùng
 n3347_22=# grant select on n3247_22_schema_lab1.my_table to chu;
 GRANT
 ```
-### Xóa quyền trên schema
+#### 3.7 Xóa quyền trên schema
 - Cú pháp:
 ```sql
 REVOKE quyền_truy_cập ON SCHEMA tên_schema FROM tên_người_dùng;
@@ -174,7 +174,7 @@ REVOKE quyền_truy_cập ON SCHEMA tên_schema FROM tên_người_dùng;
 n3347_22=# revoke usage on schema n3247_22_schema_lab1 from chu;
 REVOKE
 ```
-###  Xóa quyền trên các đối tượng trong schema (bảng, hàm)
+#### 3.8  Xóa quyền trên các đối tượng trong schema (bảng, hàm)
 - Cú pháp
 ```sql
 REVOKE quyền_truy_cập ON đối_tượng (bảng/hàm) FROM tên_người_dùng;
@@ -184,7 +184,7 @@ REVOKE quyền_truy_cập ON đối_tượng (bảng/hàm) FROM tên_người_d�
 n3347_22=# revoke select on n3247_22_schema_lab1.my_table from chu;
 REVOKE
 ```
-###  Xóa quyền trên tất cả các đối tượng hiện tại và tương lai trong schema
+#### 3.9  Xóa quyền trên tất cả các đối tượng hiện tại và tương lai trong schema
 - Nếu bạn đã cấp quyền cho tất cả các đối tượng bên trong schema, và muốn xóa chúng, bạn có thể sử dụng lệnh như sau:
 ```sql
 REVOKE ALL PRIVILEGES ON ALL TABLES IN SCHEMA tên_schema FROM tên_người_dùng;
@@ -196,7 +196,7 @@ REVOKE
 ```
 
 # 4 Thao tác với bảng
-### Tạo bảng
+### 4.1 Tạo bảng
 - Cú pháp:
 ```sql
 CREATE TABLE tên_bảng (
@@ -213,7 +213,7 @@ SHOW search_path;
 n3347_22=# SHOW search_path;
  "$user", public
 ```
-### Tạo bảng trong schema cụ thể:
+### 4.2 Tạo bảng trong schema cụ thể:
 - Cú pháp:
 ```sql
 CREATE TABLE tên_schema.tên_bảng (
@@ -221,7 +221,7 @@ CREATE TABLE tên_schema.tên_bảng (
     ...
 );
 ```
-### Thay đổi search_path để sử dụng schema khác:
+### 4.3 Thay đổi search_path để sử dụng schema khác:
 - Cú pháp
 ```sql
 SET search_path TO tên_schema;
