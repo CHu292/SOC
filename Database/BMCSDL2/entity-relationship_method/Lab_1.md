@@ -110,8 +110,8 @@
 #### Đơn hàng (Order) và Hóa đơn (Bill):
 
 - Tên liên kết: "Có" (Has)
-- Mô tả: Mỗi đơn hàng chỉ có một hóa đơn, và mỗi hóa đơn chỉ liên quan đến một đơn hàng.
-- Cardinality: 1 : 1 (Mỗi đơn hàng tương ứng với một hóa đơn và ngược lại).
+- Mô tả: Mỗi đơn hàng chỉ có thể có nhiều hóa đơn, và mỗi hóa đơn chỉ liên quan đến một đơn hàng.
+- Cardinality: 1 : N (Mỗi đơn hàng tương ứng với một hóa đơn và ngược lại).
 - Đơn hàng: Tham gia toàn phần. Mỗi đơn hàng đều phải có một hoá đơn.
 - Hoá đơn: Tham gia toàn phần. Mỗi hoá đơn phải gắn liền với một đơn hàng.
 
