@@ -1,8 +1,7 @@
 # 1. Chọn hệ quản trị cơ sở dữ liệu (DBMS)
 
 - Sử dụng PostgreSQL
-- Hỗ trợ chuẩn SQL, mạnh mẽ trong việc tối ưu hóa truy vấn và hỗ trợ các tính năng nâng cao.
-- Lý do chọn PostgreSQL: Đây là hệ quản trị CSDL phổ biến, dễ sử dụng, có khả năng xử lý dữ liệu lớn, và đáp ứng các yêu cầu về bảo mật.
+- Lý do sử dụng: PostgreSQL là một hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, mã nguồn mở và tuân thủ chuẩn SQL. Nó có khả năng xử lý các cơ sở dữ liệu phức tạp, hỗ trợ đa người dùng và tích hợp tốt với các ngôn ngữ lập trình. PostgreSQL cũng được sử dụng rộng rãi trong các dự án thực tế nhờ khả năng mở rộng và bảo mật tốt.
 
 # 2. Tạo cấu trúc cơ sở dữ liệu
 
@@ -48,7 +47,147 @@ postgres=# \c coffee_shop_db
 You are now connected to database "coffee_shop_db" as user "postgres".
 coffee_shop_db=# 
 ```
+
+- Tạo schema
+```sql
+coffee_shop_db=# create schema coffee_shop_schema;
+CREATE SCHEMA
+coffee_shop_db=# \dn
+            List of schemas
+        Name        |       Owner       
+--------------------+-------------------
+ coffee_shop_schema | postgres
+ public             | pg_database_owner
+(2 rows)
+```
+- Chỉ định schema
+```sql
+coffee_shop_db=# set search_path to coffee_shop_schema;
+SET
+coffee_shop_db=# show search_path ;
+    search_path     
+--------------------
+ coffee_shop_schema
+```
+### Tạo bảng
+Bảng nhân viên
+
+```sql
+CREATE TABLE Employee (
+    Employee_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Position VARCHAR(50) NOT NULL,
+    Phone_Number VARCHAR(13),
+    Email VARCHAR(100)
+);
+```
+
+Bảng Supplier
+```sql
+CREATE TABLE Supplier (
+    Supplier_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Address VARCHAR(255),
+    Phone_Number VARCHAR(13),
+    Email VARCHAR(100)
+);
+```
+Bảng Warehouse
+```sql
+CREATE TABLE Warehouse (
+    Warehouse_ID SERIAL PRIMARY KEY,
+    Address VARCHAR(255) NOT NULL,
+    Status VARCHAR(50),
+    Employee_ID INTEGER,
+    FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID)
+);
+```
+
+Bảng Product
+```sql
+CREATE TABLE Product (
+    Product_ID SERIAL PRIMARY KEY,
+    Product_Category_Name VARCHAR(100) NOT NULL,
+    Price NUMERIC(10, 2) NOT NULL,
+    Warehouse_ID INTEGER,
+    FOREIGN KEY (Warehouse_ID) REFERENCES Warehouse(Warehouse_ID)
+);
+```
+Bảng Customer
+```sql
+CREATE TABLE Customer (
+    Customer_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Phone_Number VARCHAR(15),
+    Email VARCHAR(100)
+);
+```
+
+Bảng Orders
+```sql
+CREATE TABLE Orders(
+    Order_ID SERIAL PRIMARY KEY,
+    Order_Date DATE NOT NULL,
+    Total_Amount NUMERIC(10, 2) NOT NULL,
+    Customer_ID INTEGER,
+    Employee_ID INTEGER,
+    FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID),
+    FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID)
+);
+```
+Bảng Bill
+```sql
+CREATE TABLE Bill (
+    Bill_ID SERIAL PRIMARY KEY,
+    Amount NUMERIC(10, 2) NOT NULL,
+    Payment_Method VARCHAR(50) NOT NULL,
+    Order_ID INTEGER,
+    FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID)
+);
+```
+
+Bảng liên kết giữa bảng Orders và bảng Product
+```sql
+CREATE TABLE Order_Product (
+    Order_ID INTEGER,
+    Product_ID INTEGER,
+    PRIMARY KEY (Order_ID, Product_ID),
+    FOREIGN KEY (Order_ID) REFERENCES "Order"(Order_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+);
+```
+
+- Bảng liên kết giữa bảng Supplier và Product
+```sql
+CREATE TABLE Supplier_Product (
+    Supplier_ID INTEGER,
+    Product_ID INTEGER,
+    PRIMARY KEY (Supplier_ID, Product_ID),
+    FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+);
+```
+Ta có các bảng sau
+```sql
+coffee_shop_db=# \dt
+                    List of relations
+       Schema       |       Name       | Type  |  Owner   
+--------------------+------------------+-------+----------
+ coffee_shop_schema | bill             | table | postgres
+ coffee_shop_schema | customer         | table | postgres
+ coffee_shop_schema | employee         | table | postgres
+ coffee_shop_schema | order_product    | table | postgres
+ coffee_shop_schema | orders           | table | postgres
+ coffee_shop_schema | product          | table | postgres
+ coffee_shop_schema | supplier         | table | postgres
+ coffee_shop_schema | supplier_product | table | postgres
+ coffee_shop_schema | warehouse        | table | postgres
+(9 rows)
+```
+
 ---
+
+
 Kiểm tra csdl trên PgAdmin
 
 <p align="center">
