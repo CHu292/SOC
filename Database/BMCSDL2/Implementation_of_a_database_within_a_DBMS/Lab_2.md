@@ -2,7 +2,7 @@
 
 - Sử dụng PostgreSQL
 - Lý do sử dụng: PostgreSQL là một hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, mã nguồn mở và tuân thủ chuẩn SQL. Nó có khả năng xử lý các cơ sở dữ liệu phức tạp, hỗ trợ đa người dùng và tích hợp tốt với các ngôn ngữ lập trình. PostgreSQL cũng được sử dụng rộng rãi trong các dự án thực tế nhờ khả năng mở rộng và bảo mật tốt.
-
+---
 # 2. Tạo cấu trúc cơ sở dữ liệu
 
 ## Kết nối cơ sở dữ liệu:
@@ -18,6 +18,7 @@ Executing: /lib/systemd/systemd-sysv-install enable postgresql
 sudo su postgres -c psql
 psql (16.4 (Ubuntu 16.4-1.pgdg22.04+1))
 ```
+---
 ### Tạo cơ sở dữ liệu
 
 ```SQL
@@ -69,6 +70,7 @@ coffee_shop_db=# show search_path ;
 --------------------
  coffee_shop_schema
 ```
+----
 ### Tạo bảng
 Bảng nhân viên
 
@@ -184,10 +186,133 @@ coffee_shop_db=# \dt
  coffee_shop_schema | warehouse        | table | postgres
 (9 rows)
 ```
-
 ---
+### Thêm dữ liệu vào các bảng
+ Thêm dữ liệu vào bảng Emloyee
+ 
+```sql
+INSERT INTO employee (name, position, phone_number, email) 
+VALUES 
+    ('Nguyen Van A', 'supervisor', '9312828535', 'nguyenvana123@gmail.com'),
+    ('Nguyen Thi B', 'salesperson', '92537563834', 'nb4214@gmail.com'),
+    ('Artom', 'salesperson', '27582473683', 'artom33@mail.ru'),
+    ('Irina', 'salesperson', '8925748253', 'irina8386@mail.ru'),
+    ('Tran', 'salesperson', '92846363583', 'trantran4953@gmail.com');
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from employee;
+ employee_id |     name     |  position   | phone_number |          email          
+-------------+--------------+-------------+--------------+-------------------------
+           1 | Nguyen Van A | supervisor  | 9312828535   | nguyenvana123@gmail.com
+           2 | Nguyen Thi B | salesperson | 92537563834  | nb4214@gmail.com
+           3 | Artom        | salesperson | 27582473683  | artom33@mail.ru
+           4 | Irina        | salesperson | 8925748253   | irina8386@mail.ru
+           5 | Tran         | salesperson | 92846363583  | trantran4953@gmail.com
+(5 rows)
+```
 
+Thêm dữ liệu vào bảng Supplier
+```sql
+INSERT INTO supplier (name, address, phone_number, email) 
+VALUES 
+    ('Trung Nguyen Coffee', 'Dalat city', '03873532753', 'trungnguyencoffee@gmail.com'),
+    ('King Coffee', 'Ho Chi Minh city', '0385636282', 'kingcoffee@gmail.com'),
+    ('G7 Coffee', 'Ha Noi', '92834772843', 'g7coffee@gmail.com');
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from supplier;
+ supplier_id |        name         |     address      | phone_number |            email            
+-------------+---------------------+------------------+--------------+-----------------------------
+           1 | Trung Nguyen Coffee | Dalat city       | 03873532753  | trungnguyencoffee@gmail.com
+           2 | King Coffee         | Ho Chi Minh city | 0385636282   | kingcoffee@gmail.com
+           3 | G7 Coffee           | Ha Noi           | 92834772843  | g7coffee@gmail.com
+(3 rows)
+```
 
+Thêm dữ liệu cho bảng Warehouse
+```sql
+INSERT INTO warehouse (address, status, employee_id) 
+VALUES 
+    ('Lam Ha', 'In stock', 1),
+    ('Tan Ha', 'In stock', 1),
+    ('Dan Phuong', 'In stock', 1),
+    ('Me Linh', 'In stock', 1);
+```
+Kết quả
+```sql
+coffee_shop_db=# select * from warehouse;
+ warehouse_id |  address   |  status  | employee_id 
+--------------+------------+----------+-------------
+            1 | Lam Ha     | In stock |           1
+            2 | Tan Ha     | In stock |           1
+            3 | Dan Phuong | In stock |           1
+            4 | Me Linh    | In stock |           1
+(4 rows)
+```
+
+Thêm dữ liệu cho bảng Product
+```sql
+INSERT INTO product (product_category_name, price, warehouse_id) 
+VALUES 
+    ('Arabica', 100000, 1),
+    ('Robusta', 90000, 2),
+    ('Bourbon', 96000, 3),
+    ('Typica', 92000, 4);
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from product;
+ product_id | product_category_name |   price   | warehouse_id 
+------------+-----------------------+-----------+--------------
+          1 | Arabica               | 100000.00 |            1
+          2 | Robusta               |  90000.00 |            2
+          3 | Bourbon               |  96000.00 |            3
+          4 | Typica                |  92000.00 |            4
+(4 rows)
+```
+
+Thêm dữ liệu cho bảng Customer
+```sql
+INSERT INTO customer (name, phone_number, email) 
+VALUES 
+    ('Alex', '93842727543', 'alex8888@mail.ru'),
+    ('Tom', '82736464383', 'tomi7749@mail.ru'),
+    ('Anton', '827364646737', 'ton@mail.ru'),
+    ('Karababy', '8283747654', 'baby@mail.ru');
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from customer;
+ customer_id |   name   | phone_number |      email       
+-------------+----------+--------------+------------------
+           1 | Alex     | 93842727543  | alex8888@mail.ru
+           2 | Tom      | 82736464383  | tomi7749@mail.ru
+           3 | Anton    | 827364646737 | ton@mail.ru
+           4 | Karababy | 8283747654   | baby@mail.ru
+(4 rows)
+```
+Nhập dữ liệu cho bảng Orders
+```sql
+INSERT INTO orders (order_date, total_amount, employee_id, customer_id) 
+VALUES 
+    ('2024-10-12', 150000, 2, 1),
+    ('2024-10-13', 599999, 2, 2),
+    ('2024-10-13', 70000, 3, 3),
+    ('2024-10-20', 6699999, 4, 4);
+```
+Kết quả
+```sql
+coffee_shop_db=# select * from orders;
+ order_id | order_date | total_amount | employee_id | customer_id 
+----------+------------+--------------+-------------+-------------
+        1 | 2024-10-12 |    150000.00 |           2 |           1
+        2 | 2024-10-13 |    599999.00 |           2 |           2
+        3 | 2024-10-13 |     70000.00 |           3 |           3
+        4 | 2024-10-20 |   6699999.00 |           4 |           4
+(4 rows)
+```
 Kiểm tra csdl trên PgAdmin
 
 <p align="center">
