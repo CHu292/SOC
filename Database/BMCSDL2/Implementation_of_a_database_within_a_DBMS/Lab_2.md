@@ -472,6 +472,49 @@ WHERE table_schema = 'coffee_shop_schema';
 (3 rows)
 ```
 
+---
+### Tạo index
+
+```sql
+-- Bảng Employee
+-- Tạo chỉ mục cho cột Employee_ID để tìm kiếm nhân viên
+CREATE INDEX idx_employee_id ON Employee(Employee_ID);
+
+-- Bảng Supplier
+-- Tạo chỉ mục cho cột Supplier_ID để tìm kiếm nhà cung cấp
+CREATE INDEX idx_supplier_id ON Supplier(Supplier_ID);
+
+-- Bảng Product
+-- Tạo chỉ mục cho cột Warehouse_ID để tăng tốc liên kết với bảng Warehouse
+CREATE INDEX idx_product_warehouse_id ON Product(Warehouse_ID);
+
+-- Bảng Customer
+-- Tạo chỉ mục cho cột Customer_ID để tìm kiếm khách hàng
+CREATE INDEX idx_customer_id ON Customer(Customer_ID);
+
+-- Bảng Order
+-- Tạo chỉ mục cho cột Customer_ID và Employee_ID để tăng tốc các truy vấn liên kết giữa Order và Customer, Order và Employee
+CREATE INDEX idx_order_customer_id ON orders(Customer_ID);
+CREATE INDEX idx_order_employee_id ON orders(Employee_ID);
+
+-- Bảng Bill
+-- Tạo chỉ mục cho cột Order_ID để tăng tốc truy vấn liên kết giữa Bill và Order
+CREATE INDEX idx_bill_order_id ON Bill(Order_ID);
+
+-- Bảng Warehouse
+-- Tạo chỉ mục cho cột Employee_ID để tăng tốc truy vấn liên kết giữa Warehouse và Employee
+CREATE INDEX idx_warehouse_employee_id ON Warehouse(Employee_ID);
+
+-- Bảng liên kết Order_Product
+-- Tạo chỉ mục cho cột Order_ID và Product_ID để tăng tốc truy vấn liên kết giữa Order và Product
+CREATE INDEX idx_order_product_order_id ON Order_Product(Order_ID);
+CREATE INDEX idx_order_product_product_id ON Order_Product(Product_ID);
+
+-- Bảng liên kết Supplier_Product
+-- Tạo chỉ mục cho cột Supplier_ID và Product_ID để tăng tốc truy vấn liên kết giữa Supplier và Product
+CREATE INDEX idx_supplier_product_supplier_id ON Supplier_Product(Supplier_ID);
+CREATE INDEX idx_supplier_product_product_id ON Supplier_Product(Product_ID);
+```
 Kiểm tra csdl trên PgAdmin
 
 <p align="center">
