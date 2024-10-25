@@ -612,6 +612,25 @@ WHERE điều_kiện;
   - tên_view: Tên của view bạn muốn tạo.
   - SELECT: Truy vấn SQL xác định nội dung của view. Nó có thể là bất kỳ truy vấn hợp lệ nào trong PostgreSQL.
 
+**- Xem view đã có**
+```sql
+SELECT table_name 
+FROM information_schema.views 
+WHERE table_schema = 'tên schema';
+```
+ví dụ:
+```sql
+coffee_shop_db=# SELECT table_name 
+FROM information_schema.views 
+WHERE table_schema = 'coffee_shop_schema';
+       table_name       
+------------------------
+ sales_employee_view
+ warehouse_manager_view
+ customer_order_view
+(3 rows)
+```
+
 ### 6.2 Ví dụ 1: Tạo view đơn giản
 - Giả sử bạn có bảng employees với các cột như id, name, salary, và position. Bạn muốn tạo một view chỉ hiển thị các nhân viên có lương cao hơn 50,000.
 
