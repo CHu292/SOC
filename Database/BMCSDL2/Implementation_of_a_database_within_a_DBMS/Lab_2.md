@@ -313,6 +313,165 @@ coffee_shop_db=# select * from orders;
         4 | 2024-10-20 |   6699999.00 |           4 |           4
 (4 rows)
 ```
+
+Thêm dữ liệu vào bảng Bill
+```sql
+INSERT INTO bill (amount, payment, order_id) 
+VALUES 
+    (150000, 'Cash', 1),
+    (599999, 'Bank Transfer', 2),
+    (50000, 'Cash', 3),
+    (20000, 'Online Payment', 3),
+    (6699999, 'Cash', 4);
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from bill;
+ bill_id |   amount   |    payment     | order_id 
+---------+------------+----------------+----------
+       1 |  150000.00 | Cash           |        1
+       2 |  599999.00 | Bank Transfer  |        2
+       3 |   50000.00 | Cash           |        3
+       4 |   20000.00 | Online Payment |        3
+       5 | 6699999.00 | Cash           |        4
+(5 rows)
+```
+
+Thêm dữ liệu vào bảng trung gian Order_Product
+```sql
+INSERT INTO order_product (order_id, product_id) 
+VALUES 
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4);
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from order_product ;
+ order_id | product_id 
+----------+------------
+        1 |          1
+        2 |          2
+        3 |          3
+        4 |          4
+(4 rows)
+```
+Thêm dữ liệu vào bảng trung gian Supplier_Product
+```sql
+INSERT INTO supplier_product (supplier_id, product_id) 
+VALUES 
+    (1, 1),
+    (1, 2),
+    (2, 3),
+    (3, 4);
+```
+Kết quả:
+```sql
+coffee_shop_db=# select * from supplier_product;
+ supplier_id | product_id 
+-------------+------------
+           1 |          1
+           1 |          2
+           2 |          3
+           3 |          4
+(4 rows)
+```
+---
+### Tạo view
+
+View dành cho Nhân viên bán hàng (Sales Employee View)
+```sql
+CREATE VIEW sales_employee_view AS 
+SELECT 
+    e.employee_ID,
+    e.name AS employee_name,
+    o.order_id,
+    o.order_date,
+    o.total_amount,
+    c.customer_id,
+    c.name AS customer_name,
+    c.phone_number AS customer_phone,
+    c.email AS customer_mail
+FROM 
+    employee e
+JOIN 
+    orders o ON e.employee_id = o.employee_id
+JOIN 
+    customer c ON o.customer_id = c.customer_id;
+```
+Kết quả
+```sql
+coffee_shop_db=# select * from sales_employee_view;
+ employee_id | employee_name | order_id | order_date | total_amount | customer_id | customer_name | customer_phone |  customer_mail   
+-------------+---------------+----------+------------+--------------+-------------+---------------+----------------+------------------
+           2 | Nguyen Thi B  |        1 | 2024-10-12 |    150000.00 |           1 | Alex          | 93842727543    | alex8888@mail.ru
+           2 | Nguyen Thi B  |        2 | 2024-10-13 |    599999.00 |           2 | Tom           | 82736464383    | tomi7749@mail.ru
+           3 | Artom         |        3 | 2024-10-13 |     70000.00 |           3 | Anton         | 827364646737   | ton@mail.ru
+           4 | Irina         |        4 | 2024-10-20 |   6699999.00 |           4 | Karababy      | 8283747654     | baby@mail.ru
+(4 rows)
+```
+
+View dành cho Quản lý kho (Warehouse Manager View)
+```sql
+CREATE VIEW Warehouse_Manager_View AS 
+SELECT
+    w.warehouse_id,
+    w.address AS warehouse_address,
+    w.status AS warehouse_status,
+    p.product_id,
+    p.product_category_name,
+    p.price
+FROM 
+    warehouse w
+JOIN 
+    product p ON w.warehouse_id = p.warehouse_id;
+```
+Kết quả
+```sql
+coffee_shop_db=# select * from warehouse_manager_view ;
+ warehouse_id | warehouse_address | warehouse_status | product_id | product_category_name |   price   
+--------------+-------------------+------------------+------------+-----------------------+-----------
+            1 | Lam Ha            | In stock         |          1 | Arabica               | 100000.00
+            2 | Tan Ha            | In stock         |          2 | Robusta               |  90000.00
+            3 | Dan Phuong        | In stock         |          3 | Bourbon               |  96000.00
+            4 | Me Linh           | In stock         |          4 | Typica                |  92000.00
+(4 rows)
+```
+
+View dành cho Khách hàng (Customer View)
+```sql
+CREATE VIEW Customer_Order_View AS 
+SELECT 
+    c.customer_id,
+    c.name AS customer_name,
+    o.order_id,
+    o.order_date,
+    o.total_amount,
+    b.bill_id,
+    b.amount AS bill_amount,
+    b.payment 
+FROM 
+    customer c
+JOIN 
+    orders o ON c.customer_id = o.customer_id
+JOIN 
+    bill b ON o.order_id = b.order_id;
+```
+
+Xem tất cả các view 
+```sql
+coffee_shop_db=# SELECT table_name 
+FROM information_schema.views 
+WHERE table_schema = 'coffee_shop_schema';
+       table_name       
+------------------------
+ sales_employee_view
+ warehouse_manager_view
+ customer_order_view
+(3 rows)
+```
+
 Kiểm tra csdl trên PgAdmin
 
 <p align="center">
