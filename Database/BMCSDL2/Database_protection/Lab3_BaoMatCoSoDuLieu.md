@@ -336,16 +336,160 @@ FROM secret_data;
 Tạo các vai trò và phân quyền cho từng vai trò dựa trên nguyên tắc quyền hạn tối thiểu.
 
 ### Tạo Vai Trò
+Trước tiên, chúng ta cần tạo ít nhất hai vai trò khác nhau cho các loại người dùng khác nhau (không tính superuser). Ví dụ, trong một hệ thống quản lý quán cà phê, bạn có thể tạo các vai trò như sales_role (vai trò nhân viên bán hàng) và warehouse_role (vai trò nhân viên kho).
+
 
 ```sql
+-- Tạo vai trò cho nhân viên bán hàng
 CREATE ROLE sales_role NOLOGIN;
+
+-- Tạo vai trò cho nhân viên kho
 CREATE ROLE warehouse_role NOLOGIN;
-CREATE ROLE admin_role NOLOGIN;
+
 ```
+
 
 ### Phân Quyền
 
-Phân quyền truy cập cho `sales_role` vào bảng `Orders` và `Customer`.
+Sau khi đã tạo các vai trò, bước tiếp theo là xác định quyền hạn cho từng vai trò dựa trên nguyên tắc quyền hạn tối thiểu. Điều này có nghĩa là bạn chỉ cấp quyền truy cập cho các bảng mà mỗi vai trò cần để thực hiện công việc của mình.
+
+Ví dụ về Quyền Hạn:
+
+- Nhân viên bán hàng (sales_role): Có quyền truy cập để xem các bảng liên quan đến đơn hàng và khách hàng.
+- Nhân viên kho (warehouse_role): Có quyền truy cập để xem và quản lý các bảng sản phẩm và kho.
+
+**Tuy nhiên trong lab của mình các bảng để trong schema coffee_shop_schema. Nên cần cấp quyền truy cập vào schema trước**
+
+- Cấp Quyền Truy Cập vào Schema:
+
+```sql
+GRANT USAGE ON SCHEMA coffee_shop_schema TO sales_role;
+GRANT USAGE ON SCHEMA coffee_shop_schema TO warehouse_role;
+```
+
+Câu lệnh cấp quyền:
+
+```sql
+-- Cấp quyền truy cập cho nhân viên bán hàng
+GRANT SELECT ON Orders TO sales_role;
+GRANT SELECT ON Customer TO sales_role;
+
+-- Cấp quyền truy cập cho nhân viên kho
+GRANT SELECT, INSERT, UPDATE ON Product TO warehouse_role;
+GRANT SELECT, INSERT ON Warehouse TO warehouse_role;
+```
+
+
+
+
+###  Quyền Truy Cập Đến Các Bảng Log
+
+Chỉ superuser mới có quyền xem bảng log, điều này giúp bảo vệ thông tin nhạy cảm. Bạn cần đảm bảo rằng không ai khác ngoài superuser có thể truy cập bảng log này.
+
+Câu lệnh cấp quyền:
+
+```sql
+-- Không cấp quyền cho các vai trò khác để xem bảng log
+REVOKE ALL ON main_log FROM sales_role;
+REVOKE ALL ON main_log FROM warehouse_role;
+```
+
+### Thực Hiện Kiểm Tra Quyền Hạn
+
+Để kiểm tra xem các vai trò đã được phân quyền đúng hay chưa, bạn có thể thực hiện như sau:
+
+1. Đăng Nhập với Vai Trò sales_role:
+
+```sql
+-- Đăng nhập với vai trò nhân viên bán hàng
+SET ROLE sales_role;
+
+-- Kiểm tra quyền truy cập
+SELECT * FROM Orders;  -- Nên thành công
+SELECT * FROM Product;  -- Nên thất bại
+```
+
+Kết quả 
+```sql
+lab3=# set role sales_role;
+SET
+lab3=> select * from orders;
+ order_id | order_date | total_amount | employee_id | customer_id 
+----------+------------+--------------+-------------+-------------
+        1 | 2024-10-12 |    150000.00 |           2 |           1
+        2 | 2024-10-13 |    599999.00 |           2 |           2
+        3 | 2024-10-13 |     70000.00 |           3 |           3
+        4 | 2024-10-20 |   6699999.00 |           4 |           4
+(4 rows)
+
+lab3=> select * from product;
+ERROR:  permission denied for table product
+```
+
+2. Đăng Nhập với Vai Trò warehouse_role:
+
+```sql
+-- Đăng nhập với vai trò nhân viên kho
+SET ROLE warehouse_role;
+
+-- Kiểm tra quyền truy cập
+SELECT * FROM Product;  -- Nên thành công
+SELECT * FROM Orders;    -- Nên thất bại
+```
+
+Kết quả:
+
+```sql
+lab3=> SET ROLE warehouse_role;
+SET
+lab3=> SELECT * FROM Product;
+ product_id | product_category_name |   price   | warehouse_id 
+------------+-----------------------+-----------+--------------
+          1 | Arabica               | 100000.00 |            1
+          2 | Robusta               |  90000.00 |            2
+          3 | Bourbon               |  96000.00 |            3
+          4 | Typica                |  95000.00 |            4
+(4 rows)
+
+lab3=> SELECT * FROM Orders; 
+ERROR:  permission denied for table orders
+```
+
+3. Kiểm Tra Quyền Truy Cập Đến Bảng Log:
+
+
+```sql
+-- Kiểm tra quyền truy cập bảng log
+SELECT * FROM main_log;  -- Nên thất bại đối với tất cả các vai trò không phải superuser
+```
+
+Kết quả:
+
+```sql
+lab3=> set role sales_role;
+SET
+lab3=> SELECT * FROM main_log; 
+ERROR:  permission denied for table main_log
+lab3=> SET ROLE warehouse_role;
+SET
+lab3=> SELECT * FROM main_log; 
+ERROR:  permission denied for table main_log
+lab3=> 
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Phân quyền truy cập cho `sales_role` vào bảng `Orders` và `Customer`.
 
 ```sql
 GRANT SELECT ON Orders TO sales_role;
