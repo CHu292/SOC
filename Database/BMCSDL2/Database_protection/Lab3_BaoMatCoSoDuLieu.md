@@ -23,6 +23,7 @@ Cấu trúc bảng log:
 - user_operator: Người thực hiện thao tác (tên người dùng hoặc vai trò).
 - changed_data: Dữ liệu đã thay đổi, lưu ở dạng JSON để dễ dàng lưu cả dữ liệu cũ và mới.
 
+- Ví dụ:
 ```sql
 lab3=# CREATE TABLE main_log (
     log_id SERIAL PRIMARY KEY,
@@ -103,6 +104,34 @@ RETURN NULL;
 END;
 $logging$ LANGUAGE plpgsql;
 ```
+Ví dụ:
+```sql
+lab3=# CREATE OR REPLACE FUNCTION logging() RETURNS TRIGGER AS $logging$
+BEGIN
+    IF (TG_OP = 'DELETE') THEN
+        INSERT INTO main_log (operation_type, user_operator, changed_data)
+        VALUES ('D', current_user, row_to_json(OLD));
+    ELSIF (TG_OP = 'UPDATE') THEN
+        INSERT INTO main_log (operation_type, user_operator, changed_data)
+        VALUES ('U', current_user, row_to_json(NEW));
+    ELSIF (TG_OP = 'INSERT') THEN
+        INSERT INTO main_log (operation_type, user_operator, changed_data)
+        VALUES ('I', current_user, row_to_json(NEW));
+    END IF;
+    RETURN NULL;    
+END;
+$logging$ LANGUAGE plpgsql;
+CREATE FUNCTION
+lab3=# \df
+                              List of functions
+       Schema       |  Name   | Result data type | Argument data types | Type 
+--------------------+---------+------------------+---------------------+------
+ coffee_shop_schema | logging | trigger          |                     | func
+(1 row)
+
+```
+
+
 
 ### Áp Dụng Trigger Cho Các Bảng
 
@@ -113,6 +142,55 @@ CREATE TRIGGER product_logging
 AFTER INSERT OR UPDATE OR DELETE ON Product
 FOR EACH ROW EXECUTE FUNCTION logging();
 ```
+
+Áp dụng trigger cho bảng `Bill`.
+
+```sql
+CREATE TRIGGER bill_logging
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
+Áp dụng trigger cho bảng `Orders`.
+
+```sql
+CREATE TRIGGER order_logging
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
+Áp dụng trigger cho bảng `Customer`.
+
+```sql
+CREATE TRIGGER customer_logging
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
+Áp dụng trigger cho bảng `Employee`.
+
+```sql
+CREATE TRIGGER employee_logging
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
+Áp dụng trigger cho bảng `Warehouse`.
+
+```sql
+CREATE TRIGGER warehouse_logging
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
+Áp dụng trigger cho bảng `Supplier`.
+
+```sql
+CREATE TRIGGER supplier_logging
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
 
 ## 2. Mã Hóa Dữ Liệu Nhạy Cảm (Data Encryption)
 
