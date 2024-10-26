@@ -16,6 +16,39 @@ CREATE TABLE main_log (
     changed_data JSON
 );
 ```
+Cấu trúc bảng log:
+- log_id: Khóa chính, tự động tăng.
+- operation_type: Loại thao tác (INSERT, UPDATE, DELETE).
+- operation_date: Ngày và giờ xảy ra thay đổi.
+- user_operator: Người thực hiện thao tác (tên người dùng hoặc vai trò).
+- changed_data: Dữ liệu đã thay đổi, lưu ở dạng JSON để dễ dàng lưu cả dữ liệu cũ và mới.
+
+```sql
+lab3=# CREATE TABLE main_log (
+    log_id SERIAL PRIMARY KEY,
+    operation_type TEXT,
+    operation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_operator TEXT,
+    changed_data JSON
+);
+CREATE TABLE
+lab3=# \dt
+                    List of relations
+       Schema       |       Name       | Type  |  Owner   
+--------------------+------------------+-------+----------
+ coffee_shop_schema | bill             | table | postgres
+ coffee_shop_schema | customer         | table | postgres
+ coffee_shop_schema | employee         | table | postgres
+ coffee_shop_schema | main_log         | table | postgres
+ coffee_shop_schema | order_product    | table | postgres
+ coffee_shop_schema | orders           | table | postgres
+ coffee_shop_schema | product          | table | postgres
+ coffee_shop_schema | supplier         | table | postgres
+ coffee_shop_schema | supplier_product | table | postgres
+ coffee_shop_schema | warehouse        | table | postgres
+(10 rows)
+```
+
 
 ### Tạo Hàm Trigger
 
@@ -35,6 +68,38 @@ BEGIN
         VALUES ('I', current_user, row_to_json(NEW));
     END IF;
     RETURN NULL;    
+END;
+$logging$ LANGUAGE plpgsql;
+```
+- Định nghĩa hàm trigger logging(): Hàm logging() là một hàm loại trigger (kích hoạt) được viết bằng ngôn ngữ plpgsql của PostgreSQL. Hàm này sẽ thực hiện khi có thao tác thêm (INSERT), cập nhật (UPDATE) hoặc xóa (DELETE) trên các bảng đã được liên kết với trigger.
+
+```sql
+CREATE OR REPLACE FUNCTION logging() RETURNS TRIGGER AS $logging$
+```
+    - RETURNS TRIGGER cho biết hàm sẽ được gọi dưới dạng trigger.
+    - $logging$ được sử dụng để đánh dấu phần thân của hàm bắt đầu và kết thúc.
+
+- Kiểm tra loại thao tác với TG_OP: Bên trong hàm, TG_OP là biến hệ thống dùng để xác định loại thao tác đã kích hoạt trigger:
+    - DELETE': Xóa bản ghi
+    - 'UPDATE': Cập nhật bản ghi
+    - 'INSERT': Thêm mới bản ghi
+ 
+- Dựa trên giá trị của TG_OP, hàm sẽ xử lý tương ứng và lưu dữ liệu phù hợp vào bảng log.
+- Lưu dữ liệu vào bảng log main_log: Với mỗi loại thao tác, hàm sẽ thực hiện một câu lệnh INSERT vào bảng main_log. Cụ thể:
+    - Khi xóa dữ liệu (TG_OP = 'DELETE'):
+        - Lưu loại thao tác là DELETE.
+        - Ghi lại tên người dùng hiện tại thực hiện thao tác (current_user).
+        - Lưu dữ liệu của bản ghi bị xóa, sử dụng row_to_json(OLD) để chuyển dữ liệu của bản ghi cũ thành định dạng JSON.
+
+```sql
+INSERT INTO main_log (operation_type, user_operator, changed_data)
+VALUES ('DELETE', current_user, row_to_json(OLD));
+
+```
+- Các thao tác còn lại tương tự
+- Hoàn tất hàm và trả về kết quả: Hàm logging() kết thúc bằng RETURN NULL;, để chỉ ra rằng trigger không thay đổi nội dung của bản ghi trong bảng gốc. Cuối cùng, đóng phần thân hàm với $logging$ LANGUAGE plpgsql;.
+```sql
+RETURN NULL;
 END;
 $logging$ LANGUAGE plpgsql;
 ```
