@@ -131,8 +131,6 @@ lab3=# \df
 
 ```
 
-
-
 ### Áp Dụng Trigger Cho Các Bảng
 
 Áp dụng trigger cho bảng `Product`.
@@ -189,6 +187,33 @@ FOR EACH ROW EXECUTE FUNCTION logging();
 CREATE TRIGGER supplier_logging
 AFTER INSERT OR UPDATE OR DELETE ON Product
 FOR EACH ROW EXECUTE FUNCTION logging();
+```
+
+###  Kiểm Tra Hệ Thống Log
+1. Thêm dữ liệu mới vào bảng Product:
+```sql
+INSERT INTO product (product_category_name, price, warehouse_id) 
+VALUES ('Arabica Vip Pro', 200000, 1);
+```
+2. Cập nhật dữ liệu trong bảng Product:
+```sql
+UPDATE product 
+SET price = 95000 
+WHERE product_id = 4;
+```
+3. Xóa dữ liệu trong bảng Product:
+```sql
+DELETE FROM product 
+WHERE product_id = 6;
+```
+5. Kiểm tra main_log
+```sql
+lab3=# select * from main_log;
+ log_id | operation_type |       operation_date       | user_operator |                                         changed_data                                          
+--------+----------------+----------------------------+---------------+-----------------------------------------------------------------------------------------------
+      1 | I              | 2024-10-26 22:14:47.801626 | postgres      | {"product_id":6,"product_category_name":"Arabica Vip Pro","price":200000.00,"warehouse_id":1}
+      2 | U              | 2024-10-26 22:16:57.623706 | postgres      | {"product_id":4,"product_category_name":"Typica","price":95000.00,"warehouse_id":4}
+      3 | D              | 2024-10-26 22:17:26.847963 | postgres      | {"product_id":6,"product_category_name":"Arabica Vip Pro","price":200000.00,"warehouse_id":1}
 ```
 
 
