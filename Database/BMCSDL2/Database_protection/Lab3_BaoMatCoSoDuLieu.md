@@ -477,51 +477,6 @@ ERROR:  permission denied for table main_log
 lab3=> 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-- Phân quyền truy cập cho `sales_role` vào bảng `Orders` và `Customer`.
-
-```sql
-GRANT SELECT ON Orders TO sales_role;
-GRANT SELECT ON Customer TO sales_role;
-```
-
-Phân quyền truy cập cho `warehouse_role` vào bảng `Product` và `Warehouse`.
-
-```sql
-GRANT SELECT ON Product TO warehouse_role;
-GRANT SELECT ON Warehouse TO warehouse_role;
-```
-
-Phân quyền toàn quyền cho `admin_role`.
-
-```sql
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO admin_role;
-```
-
-### Tạo Người Dùng và Gán Vai Trò
-
-```sql
-CREATE ROLE user_sales LOGIN PASSWORD 'strong_password';
-GRANT sales_role TO user_sales;
-
-CREATE ROLE user_warehouse LOGIN PASSWORD 'secure_password';
-GRANT warehouse_role TO user_warehouse;
-
-CREATE ROLE admin_user LOGIN PASSWORD 'admin_password';
-GRANT admin_role TO admin_user;
-```
-
 ## Kết Luận
 
 Qua các bước trên, chúng ta đã hoàn thành việc thiết lập hệ thống bảo mật cơ sở dữ liệu với chức năng giám sát thay đổi, mã hóa dữ liệu nhạy cảm, và phân quyền truy cập.
