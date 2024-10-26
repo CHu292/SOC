@@ -232,16 +232,104 @@ CREATE TABLE secret_data (
 ```
 
 ### Mã Hóa Dữ Liệu Sử Dụng pgcrypto
+1. Tạo bảng dữ liệu nhạy cảm
+- Đầu tiên, chúng ta cần tạo một bảng riêng để lưu trữ dữ liệu nhạy cảm, chẳng hạn như token hoặc khóa truy cập cho từng loại người dùng. Bảng này nên được tách biệt khỏi các bảng chính của cơ sở dữ liệu.
+```sql
+CREATE TABLE secret_data (
+    id SERIAL PRIMARY KEY,
+    username TEXT,
+    secret_token TEXT
+);
+```
+- id: Khóa chính, tự động tăng.
+- username: Tên người dùng.
+- secret_token: Dữ liệu nhạy cảm (token hoặc khóa truy cập) sẽ được mã hóa.
+
+2. Mã hóa dữ liệu
+
+Chúng ta sẽ sử dụng thuật toán mã hóa đối xứng (ví dụ: AES-256) để mã hóa dữ liệu trong bảng secret_data. Điều này đảm bảo rằng ngay cả khi dữ liệu bị rò rỉ, chúng cũng sẽ không thể đọc được nếu không có khóa mã hóa.
+
+Chuẩn Bị Sử Dụng Mô-đun pgcrypto: PostgreSQL có mô-đun pgcrypto hỗ trợ mã hóa và giải mã dữ liệu. Đầu tiên, hãy chắc chắn rằng bạn đã cài đặt mô-đun này:
 
 ```sql
--- Tải mô-đun pgcrypto (chỉ cần làm một lần)
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
-
--- Mã hóa dữ liệu với khóa mã hóa được tạo từ mật khẩu đã băm
-INSERT INTO secret_data (username, secret_token) VALUES 
-    (pgp_sym_encrypt('nguyen_van_a', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'), 
-     pgp_sym_encrypt('token_secret', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08'));
 ```
+
+3. Tạo khóa mã hóa từ mật khẩu
+
+Khóa mã hóa sẽ được tạo từ mật khẩu của superuser thông qua một hàm băm (ví dụ: SHA-256). Điều này đảm bảo rằng khóa không được lưu trữ trực tiếp trong cơ sở dữ liệu.
+
+Ví dụ
+
+```sql
+lab3=# select encode(digest('Ch.u992mvd', 'sha256'), 'hex') as encryption_key;
+                          encryption_key                          
+------------------------------------------------------------------
+ ca69b9601669b11f98acf29d694ec0e6d52f581bef9ffbe01bf426a3c2e6418a
+(1 row)
+
+```
+
+4. Mã Hóa Dữ Liệu Trước Khi Chèn Vào Bảng
+
+Khi chèn dữ liệu vào bảng secret_data, chúng ta sẽ mã hóa giá trị secret_token bằng khóa đã tạo ở bước trước.
+
+Cú pháp:
+
+```sql
+INSERT INTO secret_data (username, secret_token)
+VALUES 
+    ('user1', pgp_sym_encrypt('token_user1', 'your_generated_key')),
+    ('user2', pgp_sym_encrypt('token_user2', 'your_generated_key'));
+```
+- Thay your_generated_key bằng giá trị khóa được tạo từ mật khẩu.
+
+Ví dụ
+
+```sql
+INSERT INTO secret_data (username, secret_token) 
+VALUES 
+    ('Chu', pgp_sym_encrypt('token_Chu', 'ca69b9601669b11f98acf29d694ec0e6d52f581bef9ffbe01bf426a3c2e6418a')), 
+    ('postgres', pgp_sym_encrypt('token_postgres', 'ca69b9601669b11f98acf29d694ec0e6d52f581bef9ffbe01bf426a3c2e6418a'));
+```
+
+5. Chứng Minh Việc Giải Mã Dữ Liệu
+
+Để chứng minh rằng ngay cả người có quyền quản trị cũng không thể xem dữ liệu trong bảng mà không biết mật khẩu, chúng ta sẽ sử dụng phương thức giải mã.
+
+Giải Mã Dữ Liệu: Để giải mã dữ liệu, chúng ta cần có mật khẩu gốc. Nếu không có mật khẩu này, các quản trị viên không thể giải mã và đọc được nội dung của bảng secret_data.
+
+```sql
+lab3=# select * from secret_data;
+ id | username |                                                                            secret_token                                                                            
+----+----------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | Chu      | \xc30d04070302cbda441b01d7b95274d23a0167245609f84edb96a65edbde2c8b5689019035e368e08cf678485dffc70a65a79480d94e9f8b21af40531c9ce1a89ca09596e9f547218265ef
+  2 | postgres | \xc30d04070302571df6bfa22c5a2064d23f01406b15d947d495bc01aeb175c38236d0b2cb584474597a12109270332cc8686d8ada1e339139e6ee48af356ada4be450c8e76f019f4d9ce3a60ea7b153d5
+(2 rows)
+```
+
+Như chúng ta đã thấy, chúng ta không thể đọc được nội dung trong đó là gì
+
+Để giải mã:
+
+```sql
+-- Giải mã dữ liệu
+SELECT username, pgp_sym_decrypt(secret_token::bytea, 'your_generated_key') AS decrypted_token
+FROM secret_data;
+```
+
+Ví dụ
+
+```sql
+SELECT username, pgp_sym_decrypt(secret_token::bytea, 'ca69b9601669b11f98acf29d694ec0e6d52f581bef9ffbe01bf426a3c2e6418a') AS decrypted_token
+FROM secret_data;
+ username | decrypted_token 
+----------+-----------------
+ Chu      | token_Chu
+ postgres | token_postgres
+(2 rows)
+```
+
 
 ## 3. Kiểm Soát Truy Cập (Access Control)
 
