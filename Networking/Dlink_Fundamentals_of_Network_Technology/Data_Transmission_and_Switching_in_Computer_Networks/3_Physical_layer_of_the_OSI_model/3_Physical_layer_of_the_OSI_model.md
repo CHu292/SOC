@@ -13,7 +13,7 @@ Theo nghĩa hẹp, thuật ngữ liên kết truyền tải hoặc **đường t
 Mạng máy tính sử dụng hai loại phương tiện truyền dẫn: cáp và không dây.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_1_OSI_model.png" alt="Hình 3.1 - Các loại phương tiện truyền dẫn" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_1_Types_of_transmission_media.png" alt="Hình 3.1 - Các loại phương tiện truyền dẫn" width="1000">
 </p>
 <p align="center"><b>Hình 3.1 - Các loại phương tiện truyền dẫn"</b></p>
 
@@ -26,7 +26,7 @@ Theo nghĩa rộng, thuật ngữ “đường truyền - communication line” 
 Trong bối cảnh này, thuật ngữ "đường truyền" và "kênh liên lạc" là đồng nghĩa.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_1_OSI_model.png" alt="Hình 3.2 - Kênh liên lạc" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_2_Communication_channel.png" alt="Hình 3.2 - Kênh liên lạc" width="1000">
 </p>
 <p align="center"><b>Hình 3.2 - Kênh liên lạc</b></p>
 
@@ -37,7 +37,7 @@ Các kênh logic được thiết lập giữa các giao thức của bất kỳ
 Khi đặt một số kênh logic trong một kênh vật lý, tài nguyên của kênh vật lý được phân phối giữa các kênh logic bằng phương pháp ghép kênh.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_1_OSI_model.png" alt="Hình 3.3 - Các kênh truyền thông vật lý và logic" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_3_Physical_and_logical_communication_channels.png" alt="Hình 3.3 - Các kênh truyền thông vật lý và logic" width="1000">
 </p>
 <p align="center"><b>Hình 3.3 - Các kênh truyền thông vật lý và logic</b></p>
 
@@ -60,20 +60,20 @@ Tùy thuộc vào hướng truyền dữ liệu, các kênh được phân biệ
 - song công (**full duplex**), là chế độ truyền tín hiệu hiệu suất cao, được sử dụng trong các ứng dụng yêu cầu giao tiếp hai chiều đồng thời.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_1_OSI_model.png" alt="Hình 3.4 - Simplex" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_4_Simplex.png" alt="Hình 3.4 - Simplex" width="1000">
 </p>
 <p align="center"><b>"Hình 3.4 - Simplex</b></p>
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_1_OSI_model.png" alt="Hình 3.5 - Half Duplex" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_5_half_duplex.png" alt="Hình 3.5 - Half Duplex" width="1000">
 </p>
-<p align="center"><b>"Hình 3.4 - Half Duplex</b></p>
+<p align="center"><b>"Hình 3.5 - Half Duplex</b></p>
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/2_Network_interaction_models/image/2_1_OSI_model.png" alt="Hình 3.5 - Full Duplex" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.6 - Full Duplex" width="1000">
 </p>
-<p align="center"><b>"Hình 3.4 - Full Duplex</b></p>
+<p align="center"><b>"Hình 3.6 - Full Duplex</b></p>
 
 
 Các kênh cũng có thể được phân loại theo thời gian sẵn có của người đăng ký. Các kênh giữa các hệ thống đầu cuối có sẵn để truyền dữ liệu dài hạn nhờ kết nối cố định với các đặc tính cụ thể được gọi là **kênh chuyên dụng (dedicated)** hoặc **kênh không chuyển mạch (non-switched)**. Các kênh liên lạc chỉ có thể truyền dữ liệu sau khi thiết lập kết nối giữa các hệ thống tương tác được gọi là **kênh chuyển mạch (switched)** hoặc **kênh tạm thời (temporary)**. Kênh này chỉ tồn tại trong suốt phiên kết nối, tức là chỉ trong thời gian cần thiết để truyền dữ liệu.
