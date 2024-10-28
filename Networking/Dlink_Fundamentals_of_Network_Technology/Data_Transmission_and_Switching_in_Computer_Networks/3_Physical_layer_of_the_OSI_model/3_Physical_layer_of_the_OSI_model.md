@@ -124,7 +124,7 @@ Nói chung, tín hiệu điều hòa có thể được xác định bởi ba th
 Tín hiệu analog cơ bản là sóng hình sin. Nói chung, các dao động điều hòa thay đổi theo định luật hình sin có thể được biểu diễn dưới dạng sau:
 
 $$ 
-y(t) = A \sin(\omega t + \varphi_0) = A \sin(2 \pi f t + \varphi_0) (3.1)
+y(t) = A \sin(\omega t + \varphi_0) = A \sin(2 \pi f t + \varphi_0), (3.1)
 $$
 
 Trong đó:
@@ -137,6 +137,6 @@ Trong đó:
 Giả sử rằng tín hiệu thực được truyền qua kênh liên lạc là tín hiệu tuần hoàn. Trong trường hợp này, nó có thể được biểu diễn dưới dạng chuỗi Fourier,tức là phân tích thành các thành phần hình sin:
 
 $$
-x(t) = C_0 + \sum_{i=1}^{\infty} \left( A_i \cos(i \omega_1 t) + B_i \sin(i \omega_1 t) \right) = C_0 + \sum_{i=1}^{\infty} C_i \cos(i \omega_1 t - \varphi_i), \tag{3.2}
+x(t) = C_0 + \sum_{i=1}^{\infty} \left( A_i \cos(i \omega_1 t) + B_i \sin(i \omega_1 t) \right) = C_0 + \sum_{i=1}^{\infty} C_i \cos(i \omega_1 t - \varphi_i), (3.2)
 $$
 
