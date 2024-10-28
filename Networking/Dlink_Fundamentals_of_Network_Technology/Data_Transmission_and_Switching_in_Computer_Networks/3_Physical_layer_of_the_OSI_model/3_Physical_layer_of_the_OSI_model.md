@@ -147,3 +147,24 @@ Trong đó:
 - $$\omega_1 = 2 \pi f = \frac{2 \pi}{T}$$ — tần số cơ bản;  
 - $$t$$ — thời gian.
 
+Nhà khoa học người Pháp J.B. Fourier đã chứng minh rằng bất kỳ sự thay đổi thời gian nào của một hàm số nào đó đều có thể được tính gần đúng như một tổng hữu hạn hoặc vô hạn của một chuỗi dao động điều hòa có biên độ, tần số và pha ban đầu khác nhau.
+
+Nói cách khác, bất kỳ tín hiệu tuần hoàn nào (analog hoặc digital signal) được mô tả bằng hàm phức tạp của thời gian đều có thể được biểu diễn dưới dạng tổng vô hạn hoặc hữu hạn của các hình sin có tần số là bội số của tần số cơ bản $$\omega_1$$ và với biên độ và pha ban đầu được chọn đúng. Các thuật ngữ riêng lẻ được gọi là sóng điều hòa. Dao động của tần số cơ bản $$\omega_1$$ được gọi là sóng điều hòa đầu tiên hay sóng điều hòa cơ bản của tín hiệu; sóng điều hòa bậc hai gọi là dao động có tần số $$2\omega_1$$; sóng điều hòa thứ ba là dao động có tần số $$3\omega_1$$, v.v.
+
+Thành phần hằng số $$C_0$$ đơn giản là giá trị trung bình của hàm x(t) và thường không có trong thực tế.
+
+Từ tập hợp các sóng điều hòa tạo nên tín hiệu, biên độ và phổ pha được tách biệt và phân biệt. Phổ biên độ là tập hợp các giá trị $$C_1$$. Về mặt đồ họa, phổ được biểu diễn theo tọa độ $$C_i$$ và $$\omega$$, như trong Hình 3.10. Độ dài của các đoạn thẳng đứng biểu thị biên độ của các sóng điều hòa tương ứng; những đoạn này được gọi là vạch quang phổ. Biên độ và phổ pha xác định duy nhất tín hiệu. Tuy nhiên, đối với nhiều bài toán thực tế, chỉ cần giới hạn ở phổ biên độ là đủ, để cho ngắn gọn gọi là phổ.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.10 - Phổ" width="1000">
+</p>
+<p align="center"><b>"Hình 3.10 - Sự hình thành tín hiệu từ tổng của 4 sóng điều hòa đầu tiên và sơ đồ biên độ phổ của tín hiệu tuần hoàn</b></p>
+
+Trong trường hợp tổng quát, tổng công thức (3.2) biểu thị một chuỗi vô hạn. Nhưng thực tế không có tín hiệu nào trong tự nhiên có phổ vô hạn. Phần năng lượng chiếm ưu thế của tín hiệu thực tập trung ở một vùng (dải) tần số giới hạn và bản thân tín hiệu đó được biểu diễn dưới dạng tổng hữu hạn của các dao động điều hòa, bởi vì biên độ của các sóng điều hòa, bắt đầu từ một số n nhất định, nhỏ đến mức có thể bỏ qua. Vì vậy, trong thực tế, tín hiệu được biểu diễn bằng các hàm có phổ giới hạn. Khoảng trên thang tần số chứa phổ giới hạn được gọi là **độ rộng phổ**.
+
+Khi truyền tín hiệu qua kênh liên lạc, hình dạng của nó bị biến dạng do sự biến dạng không đồng đều của các sóng điều hòa ở các tần số khác nhau. Điều này xảy ra do các thông số vật lý của kênh liên lạc khác với các thông số lý tưởng.Tín hiệu bị ảnh hưởng bởi các yếu tố như suy giảm, tiếng ồn và nhiễu. Tuy nhiên, yếu tố chính ảnh hưởng đến hình dạng tín hiệu là băng thông của kênh truyền thông. Để truyền tín hiệu mà không bị biến dạng đáng kể, kênh liên lạc phải có băng thông không nhỏ hơn độ rộng phổ của tín hiệu được truyền.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.11 - Ảnh hưởng của các thông số vật lý của môi trường truyền dẫn đến tín hiệu" width="1000">
+</p>
+<p align="center"><b>"Hình 3.11 - Ảnh hưởng của các thông số vật lý của môi trường truyền dẫn đến tín hiệu</b></p>
