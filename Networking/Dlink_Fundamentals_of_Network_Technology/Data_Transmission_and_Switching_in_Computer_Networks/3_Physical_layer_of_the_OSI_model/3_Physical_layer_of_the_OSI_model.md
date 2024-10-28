@@ -140,3 +140,10 @@ $$
 x(t) = C_0 + \sum_{i=1}^{\infty} \left( A_i \cos(i \omega_1 t) + B_i \sin(i \omega_1 t) \right) = C_0 + \sum_{i=1}^{\infty} C_i \cos(i \omega_1 t - \varphi_i), (3.2)
 $$
 
+Trong đó:
+- $$i$$ — số thứ tự của điều hòa;  
+- $$C_i = \sqrt{A_i^2 + B_i^2}$$ — biên độ,  
+- $$\varphi_i$$ — pha ban đầu của điều hòa thứ $$i$$;  
+- $$\omega_1 = 2 \pi f = \frac{2 \pi}{T}$$ — tần số cơ bản;  
+- $$t$$ — thời gian.
+
