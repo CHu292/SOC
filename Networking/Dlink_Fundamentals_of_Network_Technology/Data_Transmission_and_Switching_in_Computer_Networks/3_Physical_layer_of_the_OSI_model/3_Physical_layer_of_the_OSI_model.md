@@ -85,3 +85,58 @@ Một đặc tính quan trọng của kênh liên lạc là **băng thông (band
 Kênh băng thông cơ sở được đặc trưng bởi sự đơn giản và chi phí triển khai thấp và do đó được sử dụng rộng rãi trong các mạng cục bộ (từ “BASE” trong tên của các thông số kỹ thuật của lớp vật lý Ethernet (ví dụ: 10BASE-T, 100BASE-FX, 1000BASE-SX ) biểu thị việc truyền băng cơ sở). Tín hiệu qua kênh băng thông cơ sở được truyền trong tần số cở bản, tức là không điều chế sóng mang, với toàn bộ băng thông chỉ được sử dụng để truyền một tín hiệu.
 
 Không giống như kênh băng thông cơ sở, toàn bộ băng thông của kênh băng rộng được phân chia giữa một số kênh logic bằng kỹ thuật ghép kênh, cho phép tín hiệu được truyền đồng thời và độc lập giữa nhiều cặp hệ thống liên lạc. Các công nghệ truy cập băng thông rộng (ví dụ: xDSL, PowerLine (PLC), 3G (UMTS), 4G (LTE)) được sử dụng để tổ chức kết nối với một loạt dịch vụ do các nhà khai thác viễn thông cung cấp.
+
+
+## 3.2 Tín Hiệu
+
+Việc truyền dữ liệu qua các kênh liên lạc được thực hiện bằng cách sử dụng biểu diễn vật lý của chúng - tín hiệu điện (dòng điện), quang (ánh sáng) hoặc điện từ.
+
+Nếu chúng ta coi tín hiệu là hàm của thời gian thì nó có thể là:
+
+- analog (liên tục) - giá trị của nó thay đổi liên tục theo thời gian;
+- kỹ thuật số (rời rạc) - có số lượng giá trị hữu hạn, thường nhỏ.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.7 - Analog Signal" width="1000">
+</p>
+<p align="center"><b>"Hình 3.7 - Analog Signal</b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.8 - Digital Signal" width="1000">
+</p>
+<p align="center"><b>"Hình 3.8 - Digital Signal</b></p>
+
+Loại tín hiệu đơn giản nhất là tín hiệu tuần hoàn **(periodic signal)**. Dạng đơn giản nhất của tín hiệu tuần hoàn là tín hiệu điều hòa **(harmonic signal)**.
+
+**Tín hiệu tuần hoàn** là một loại ảnh hưởng khi hình dạng tín hiệu được lặp lại sau một khoảng thời gian T nhất định, được gọi là một khoảng thời gian.
+
+**Tín hiệu điều hòa** là một dao động điều hòa lan truyền trong không gian theo thời gian, mang theo thông tin hoặc một số loại dữ liệu.
+
+**Dao động điều hòa** là dao động trong đó một đại lượng vật lý (hoặc bất kỳ đại lượng nào khác) thay đổi theo thời gian theo định luật hình sin hoặc cosin.
+
+Nói chung, tín hiệu điều hòa có thể được xác định bởi ba tham số: biên độ cực đại A, pha φ và tần số ƒ. Biên độ cực đại là giá trị hoặc cường độ tối đa của tín hiệu theo thời gian; nó thường được đo bằng vôn. Tần số là số dao động xảy ra trong một đơn vị thời gian. Đơn vị của tần số là Hz. Pha là thước đo sự dịch chuyển thời gian tương đối trong một khoảng thời gian tín hiệu cụ thể. Pha được đo bằng radian hoặc độ.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.9 - Tín hiệu điều hòa" width="1000">
+</p>
+<p align="center"><b>"Hình 3.9 - Tín hiệu điều hòa</b></p>
+
+Tín hiệu analog cơ bản là sóng hình sin. Nói chung, các dao động điều hòa thay đổi theo định luật hình sin có thể được biểu diễn dưới dạng sau:
+
+$$ 
+y(t) = A \sin(\omega t + \varphi_0) = A \sin(2 \pi f t + \varphi_0) (3.1)
+$$
+
+Trong đó:
+- $$A$$ là biên độ tín hiệu;
+- $$\omega$$ là tần số góc: $$\omega = 2 \pi f$$;
+- $$f$$ là tần số, được tính bằng $$f = \frac{1}{T}$$, nghịch đảo của chu kỳ $$T$$;
+- $$\varphi_0$$ là pha ban đầu của tín hiệu điều hòa;
+- $$t$$ là thời gian.
+
+Giả sử rằng tín hiệu thực được truyền qua kênh liên lạc là tín hiệu tuần hoàn. Trong trường hợp này, nó có thể được biểu diễn dưới dạng chuỗi Fourier,tức là phân tích thành các thành phần hình sin:
+
+$$
+x(t) = C_0 + \sum_{i=1}^{\infty} \left( A_i \cos(i \omega_1 t) + B_i \sin(i \omega_1 t) \right) = C_0 + \sum_{i=1}^{\infty} C_i \cos(i \omega_1 t - \varphi_i)
+$$
+
