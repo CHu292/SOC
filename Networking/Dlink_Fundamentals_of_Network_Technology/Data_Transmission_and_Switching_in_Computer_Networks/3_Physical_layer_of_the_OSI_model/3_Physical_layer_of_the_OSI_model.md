@@ -76,6 +76,5 @@ Tùy thuộc vào hướng truyền dữ liệu, các kênh được phân biệ
 <p align="center"><b>"Hình 3.4 - Full Duplex</b></p>
 
 
-Các kênh cũng có thể được phân loại theo thời gian sẵn có của người đăng ký. Các kênh giữa các hệ thống đầu cuối có sẵn để truyền dữ liệu dài hạn nhờ kết nối cố định với các đặc tính cụ thể được gọi là kênh chuyên dụng hoặc không chuyển mạch. Các kênh liên lạc chỉ có thể truyền dữ liệu sau khi thiết lập kết nối giữa các hệ thống tương tác được gọi là chuyển mạch hoặc tạm thời. Trong trường hợp này, kênh sẽ chỉ tồn tại trong phiên giao tiếp, tức là. thời gian cần thiết để truyền dữ liệu.
-
+Các kênh cũng có thể được phân loại theo thời gian sẵn có của người đăng ký. Các kênh giữa các hệ thống đầu cuối có sẵn để truyền dữ liệu dài hạn nhờ kết nối cố định với các đặc tính cụ thể được gọi là **kênh chuyên dụng (dedicated)** hoặc **kênh không chuyển mạch (non-switched)**. Các kênh liên lạc chỉ có thể truyền dữ liệu sau khi thiết lập kết nối giữa các hệ thống tương tác được gọi là **kênh chuyển mạch (switched)** hoặc **kênh tạm thời (temporary)**. Kênh này chỉ tồn tại trong suốt phiên kết nối, tức là chỉ trong thời gian cần thiết để truyền dữ liệu.
 
