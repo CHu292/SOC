@@ -3,12 +3,15 @@ from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes, serialization
 
 PUBLIC_KEY_FILE = "public_key.pem"
-SIGNATURE_FILE = "signature.dat"
+SIGNATURE_FILE = "signature.sig"
 
 def save_signature_to_file(signature):
-    with open(SIGNATURE_FILE, "wb") as f:
-        f.write(signature)
-    print("Chữ ký đã được lưu vào file signature.dat.")
+    try:
+        with open(SIGNATURE_FILE, 'wb') as f:
+            f.write(signature)
+        print("Chữ ký đã được lưu vào tệp.")
+    except Exception as e:
+        print(f"Lỗi khi lưu chữ ký vào tệp: {e}")
 
 def generate_key_pair():
     private_key = rsa.generate_private_key(
@@ -27,14 +30,19 @@ def generate_key_pair():
         )
     print(f"Khóa công khai đã được lưu vào {PUBLIC_KEY_FILE}")
 
-    message = b"sysinfo"
+    message = b"ChuVanDoanN3347"
     signature = private_key.sign(
         message,
         padding.PKCS1v15(),
         hashes.SHA256()
     )
-    
+
     save_signature_to_file(signature)
 
-if __name__ == "__main__":
+def main():
     generate_key_pair()
+
+if __name__ == "__main__":
+    main()
+
+
