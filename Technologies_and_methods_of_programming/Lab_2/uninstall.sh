@@ -19,8 +19,8 @@ if [ -f "$INSTALL_DIR/user_data.txt" ]; then
     echo "Tệp user_data.txt đã bị xóa."
 fi
 
+# Giữ lại tệp limit_data.txt để bảo lưu dữ liệu giới hạn
 if [ -f "$INSTALL_DIR/limit_data.txt" ]; then
-    rm "$INSTALL_DIR/limit_data.txt"
-    echo "Tệp limit_data.txt đã bị xóa."
+    echo "Tệp limit_data.txt được giữ lại để bảo lưu giới hạn sử dụng trước đó."
 fi
 
