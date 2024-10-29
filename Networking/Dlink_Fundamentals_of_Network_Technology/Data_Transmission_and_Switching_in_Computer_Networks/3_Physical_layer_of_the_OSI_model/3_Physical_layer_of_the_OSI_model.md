@@ -97,12 +97,12 @@ Nếu chúng ta coi tín hiệu là hàm của thời gian thì nó có thể l�
 - kỹ thuật số (rời rạc) - có số lượng giá trị hữu hạn, thường nhỏ.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.7 - Analog Signal" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_7_Analog_signal.png" alt="Hình 3.7 - Analog Signal" width="1000">
 </p>
 <p align="center"><b>"Hình 3.7 - Analog Signal</b></p>
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.8 - Digital Signal" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_8_Digital_signal.png" alt="Hình 3.8 - Digital Signal" width="1000">
 </p>
 <p align="center"><b>"Hình 3.8 - Digital Signal</b></p>
 
@@ -117,7 +117,7 @@ Loại tín hiệu đơn giản nhất là tín hiệu tuần hoàn **(periodic 
 Nói chung, tín hiệu điều hòa có thể được xác định bởi ba tham số: biên độ cực đại A, pha φ và tần số ƒ. Biên độ cực đại là giá trị hoặc cường độ tối đa của tín hiệu theo thời gian; nó thường được đo bằng vôn. Tần số là số dao động xảy ra trong một đơn vị thời gian. Đơn vị của tần số là Hz. Pha là thước đo sự dịch chuyển thời gian tương đối trong một khoảng thời gian tín hiệu cụ thể. Pha được đo bằng radian hoặc độ.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.9 - Tín hiệu điều hòa" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_9_Harmonic_signal.png" alt="Hình 3.9 - Tín hiệu điều hòa" width="1000">
 </p>
 <p align="center"><b>"Hình 3.9 - Tín hiệu điều hòa</b></p>
 
@@ -156,7 +156,7 @@ Thành phần hằng số $$C_0$$ đơn giản là giá trị trung bình của 
 Từ tập hợp các sóng điều hòa tạo nên tín hiệu, biên độ và phổ pha được tách biệt và phân biệt. Phổ biên độ là tập hợp các giá trị $$C_1$$. Về mặt đồ họa, phổ được biểu diễn theo tọa độ $$C_i$$ và $$\omega$$, như trong Hình 3.10. Độ dài của các đoạn thẳng đứng biểu thị biên độ của các sóng điều hòa tương ứng; những đoạn này được gọi là vạch quang phổ. Biên độ và phổ pha xác định duy nhất tín hiệu. Tuy nhiên, đối với nhiều bài toán thực tế, chỉ cần giới hạn ở phổ biên độ là đủ, để cho ngắn gọn gọi là phổ.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.10 - Phổ" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_10_Signal_spectrum.png" alt="Hình 3.10 - Phổ" width="1000">
 </p>
 <p align="center"><b>"Hình 3.10 - Sự hình thành tín hiệu từ tổng của 4 sóng điều hòa đầu tiên và sơ đồ biên độ phổ của tín hiệu tuần hoàn</b></p>
 
@@ -165,6 +165,6 @@ Trong trường hợp tổng quát, tổng công thức (3.2) biểu thị một
 Khi truyền tín hiệu qua kênh liên lạc, hình dạng của nó bị biến dạng do sự biến dạng không đồng đều của các sóng điều hòa ở các tần số khác nhau. Điều này xảy ra do các thông số vật lý của kênh liên lạc khác với các thông số lý tưởng.Tín hiệu bị ảnh hưởng bởi các yếu tố như suy giảm, tiếng ồn và nhiễu. Tuy nhiên, yếu tố chính ảnh hưởng đến hình dạng tín hiệu là băng thông của kênh truyền thông. Để truyền tín hiệu mà không bị biến dạng đáng kể, kênh liên lạc phải có băng thông không nhỏ hơn độ rộng phổ của tín hiệu được truyền.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_6_Full_Duplex.png" alt="Hình 3.11 - Ảnh hưởng của các thông số vật lý của môi trường truyền dẫn đến tín hiệu" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_11_The_influence_of_physical_parameters_of_the_transmission_medium_on_the_signal.png" alt="Hình 3.11 - Ảnh hưởng của các thông số vật lý của môi trường truyền dẫn đến tín hiệu" width="1000">
 </p>
 <p align="center"><b>"Hình 3.11 - Ảnh hưởng của các thông số vật lý của môi trường truyền dẫn đến tín hiệu</b></p>
