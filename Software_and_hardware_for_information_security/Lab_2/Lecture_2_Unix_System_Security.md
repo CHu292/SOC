@@ -188,5 +188,62 @@ Trong hệ sinh thái Red Hat, container là thành phần quan trọng của c�
 
 [Tìm hiểu thêm về podman](https://podman.io/)
 
+Các container cũng hoạt động dưới sự quản lý của SELinux, mang lại một lớp bảo mật bổ sung và ngăn chặn container vượt quá quyền hạn của chúng.
+
+## 2.4 SCAP (Security Content Automation Protocol)
+
+Red Hat cung cấp OpenSCAP, một bộ công cụ cho việc kiểm tra bảo mật và tuân thủ tiêu chuẩn. Công cụ này được sử dụng để kiểm tra hệ thống theo các tiêu chuẩn bảo mật khác nhau, như PCI-DSS hoặc HIPAA, và cung cấp các khuyến nghị để nâng cao bảo mật hệ thống.
+
+OpenSCAP có thể tự động kiểm tra cấu hình hệ thống và cung cấp báo cáo về sự tuân thủ chính sách bảo mật.
+
+[Tìm hiểu thêm về OpenSCAP](https://www.open-scap.org/)
+
+## 2.5 Tích hợp với Red Hat Satellite
+
+Red Hat Satellite là một công cụ quản lý vòng đời hệ thống, cho phép quản lý cập nhật, vá lỗi và cấu hình bảo mật của số lượng lớn hệ thống một cách tập trung. Điều này rất quan trọng đối với các môi trường doanh nghiệp lớn với hàng ngàn node (máy chủ hoặc thiết bị mạng).
+
+# 3. Gentoo-based
+
+Gentoo Linux là một bản phân phối có khả năng cấu hình cao, nổi tiếng với tính linh hoạt và hệ thống quản lý gói mạnh mẽ. Gentoo cho phép người dùng kiểm soát hoàn toàn hệ thống, tạo điều kiện cho việc cấu hình nhằm đảm bảo mức độ bảo mật tối đa. Cũng giống như Arch Linux, bảo mật của Gentoo phụ thuộc vào cách người dùng cấu hình và duy trì hệ thống của mình. Các khía cạnh bảo mật chính của Gentoo Linux bao gồm:
+
+## 3.1 Linh hoạt và cấu hình bảo mật ở cấp độ biên dịch
+
+Điểm khác biệt chính của Gentoo so với các bản phân phối khác là các gói được biên dịch từ mã nguồn bằng hệ thống Portage. Người dùng có thể sử dụng cờ USE để bật hoặc tắt các tính năng khác nhau, giúp tránh cài đặt những tính năng không cần thiết hoặc có khả năng gây lỗ hổng.
+
+Người dùng cũng có thể tùy chỉnh cài đặt của trình biên dịch với CFLAGS và LDFLAGS để thêm các tham số bảo mật bổ sung, như bảo vệ khỏi tràn bộ đệm và bảo vệ bộ nhớ.
+
+Ví dụ về cài đặt cờ bảo mật:
+
+```bash
+CFLAGS="-O2 -pipe -fstack-protector-strong"
+LDFLAGS="-Wl,-z,relro,-z,now"
+```
+
+##  3.2 Hardened Gentoo
+
+Hardened Gentoo là phiên bản Gentoo đặc biệt, tập trung vào các biện pháp bảo mật nâng cao. Nó bao gồm nhiều bản vá và cấu hình để tăng cường bảo mật, như PaX, grsecurity (trước khi ngừng hỗ trợ công khai), và hỗ trợ PIE (Position Independent Executables), làm cho nó trở thành một lựa chọn tuyệt vời cho các hệ thống yêu cầu bảo mật cao.
+
+Bật profile hardened sẽ tự động cấu hình hệ thống để tăng cường bảo mật, bao gồm hỗ trợ bảo vệ bộ nhớ và các biện pháp quan trọng khác.
+
+## 3.3 Kiểm tra tính toàn vẹn của gói
+
+Tất cả các gói trong Gentoo đều được kiểm tra tính toàn vẹn bằng chữ ký GPG, bảo vệ người dùng khỏi việc cài đặt các gói giả mạo hoặc bị thay đổi. Hệ thống Portage sử dụng các chữ ký để xác minh rằng các gói không bị thay đổi.
+
+Người dùng có thể cấu hình kiểm tra tính toàn vẹn bổ sung cho các gói và sử dụng `eix` để kiểm tra tính bảo mật của các gói đã cài đặt.
+
+## 3.4 Cập nhật và bản vá bảo mật
+
+Gentoo không có chu kỳ phát hành phiên bản cố định và sử dụng mô hình rolling release. Điều này có nghĩa là các bản cập nhật bảo mật có thể được nhận ngay khi chúng được phát hành.
+
+Người dùng có thể cấu hình hệ thống để tự động kiểm tra cập nhật và chỉ cài đặt các bản vá bảo mật quan trọng.
+
+Các lệnh cập nhật hệ thống:
+
+```bash
+emerge --sync
+emerge -avuDN @world
+```
+
+
 
 
