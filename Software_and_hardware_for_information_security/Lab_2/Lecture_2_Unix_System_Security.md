@@ -13,7 +13,151 @@ Hiện tại có 7 nhóm hệ thống Unix:
 - Independent
 
 
-Bảo mật trong các phân phối Debian-based, Arch Linux-based, Slackware-based
+# 1. Bảo mật trong các phân phối Debian-based, Arch Linux-based, Slackware-based
 
 Các phân phối dựa trên Debian như Debian, Ubuntu, Linux Mint và các hệ điều hành khác được biết đến với độ tin cậy và ổn định cao, điều này cũng làm cho chúng trở thành lựa chọn tốt về mặt bảo mật. Tuy nhiên, bảo mật hệ thống phụ thuộc vào nhiều yếu tố, bao gồm cập nhật thường xuyên, cấu hình chính xác và sử dụng các công cụ tích hợp sẵn. Dưới đây là các khía cạnh chính của bảo mật trong các phân phối Debian-based:
 
+## 1.1 Cập nhật thường xuyên
+
+Debian và các bản phân phối khác thường cung cấp các bản cập nhật bảo mật cho tất cả các gói hỗ trợ. Các bản cập nhật này bao gồm các bản vá cho các lỗ hổng bảo mật được phát hiện trong hệ điều hành hoặc phần mềm của bên thứ ba.
+
+Người dùng được khuyến nghị cập nhật hệ thống thường xuyên bằng APT để đảm bảo rằng tất cả các gói được cập nhật lên phiên bản ổn định và bảo mật nhất. Nhóm bảo mật của Debian theo dõi các lỗ hổng mới và nhanh chóng phát hành các bản cập nhật.
+
+[Hướng dẫn đầy đủ về APT](https://manpages.ubuntu.com/manpages/bionic/man8/apt.8.html)
+
+Các lệnh cập nhật hệ thống:
+
+```bash
+sudo apt update
+sudo apt upgrade
+```
+
+## 1.2 Các gói hỗ trợ dài hạn (LTS)
+
+Debian Stable và Ubuntu LTS tập trung vào hỗ trợ dài hạn (Ubuntu LTS hỗ trợ 5 năm), điều này giúp chúng ổn định và an toàn khi sử dụng trên các máy chủ và hệ thống quan trọng. Các phiên bản này chỉ bao gồm các phiên bản phần mềm đã được kiểm tra kỹ lưỡng và ổn định, giảm thiểu nguy cơ từ các lỗ hổng bảo mật.
+
+## 1.3 AppArmor và SELinux
+
+Trong các phân phối dựa trên Debian, AppArmor thường được sử dụng (Ubuntu bật sẵn AppArmor). AppArmor là một cơ chế kiểm soát truy cập dựa trên hồ sơ, hạn chế hành động của các chương trình trong hệ thống, ngăn chặn truy cập trái phép vào các tài nguyên hệ thống.
+
+[Thông tin thêm về AppArmor](https://gitlab.com/apparmor/apparmor/-/wikis/Documentation)
+
+Quản lý AppArmor:
+
+```bash
+sudo systemctl status apparmor
+sudo aa-status
+```
+
+SELinux (Security-Enhanced Linux) cũng có thể được cài đặt và cấu hình, cung cấp chính sách bảo mật phức tạp hơn nhưng cần thiết lập kỹ lưỡng.
+
+[Thông tin thêm về SELinux](https://losst.pro/nastrojka-selinux)
+
+## 1.4 Mã hóa dữ liệu
+
+Các phân phối Debian-based hỗ trợ mã hóa toàn bộ ổ đĩa với LUKS (Linux Unified Key Setup) và dm-crypt. Điều này đặc biệt quan trọng để bảo vệ dữ liệu nhạy cảm khi có truy cập vật lý vào thiết bị.
+
+Trong quá trình cài đặt, bạn có thể chọn mã hóa thư mục cá nhân hoặc toàn bộ ổ đĩa, thêm một lớp bảo mật bổ sung.
+
+[Thông tin thêm về LUKS](https://gitlab.com/cryptsetup/cryptsetup/)
+
+[Thông tin thêm về dn-crypt](https://en.wikipedia.org/wiki/Dm-crypt)
+
+## 1.5 Firewall - Tường lửa
+
+Hầu hết các hệ thống Debian-based tích hợp và dễ cấu hình tường lửa dựa trên iptables hoặc phiên bản đơn giản hơn ufw (Uncomplicated Firewall), có thể dùng để lọc lưu lượng mạng và ngăn chặn truy cập trái phép.
+
+UFW được cài đặt mặc định trong Ubuntu và các bản phân phối liên quan, nhưng có thể thêm vào các phân phối khác.
+
+Các lệnh cấu hình UFW:
+
+```bash
+sudo ufw enable
+sudo ufw allow ssh
+sudo ufw deny 80
+```
+
+[Tìm hiểu thêm về iptables](https://wiki.archlinux.org/title/Iptables)
+
+[Tìm hiểu thêm về UFW](https://help.ubuntu.com/community/UFW)
+
+## 1.6 Cập nhật thường xuyên kernel và gói
+
+Debian và Ubuntu sử dụng phiên bản ổn định của nhân Linux, nhưng người dùng có thể cập nhật nhân thủ công nếu cần. Điều này cho phép các lỗ hổng ở cấp kernel được giải quyết kịp thời.
+
+Ngoài ra còn có backport - kho lưu trữ với các phiên bản gói mới hơn dành cho các bản phát hành ổn định, có thể được sử dụng để cài đặt các bản cập nhật quan trọng mà không cần phải cập nhật toàn bộ bản phân phối.
+
+[Tìm hiểu thêm về backports](https://wiki.debian.org/ru/Backports)
+
+## 1.7 Cách ly ứng dụng trong các container
+
+Các phân phối Debian-based hiện đại hỗ trợ sử dụng container như Docker, tạo môi trường cách ly cho ứng dụng với các phụ thuộc và cấu hình riêng, cải thiện bảo mật bằng cách giảm thiểu tác động của các lỗ hổng có thể có.
+
+[Tìm hiểu thêm về Docker](https://docs.docker.com/)
+
+LXC (Linux Container) là một tùy chọn chứa khác được Debian hỗ trợ, có thể được sử dụng để cách ly và cải thiện bảo mật ứng dụng.
+
+[Tìm hiểu thêm về LXC](https://ubuntu.com/server/docs/lxc-containers)
+
+## 1.8 Kiểm tra chữ ký gói
+
+Tất cả các gói trong kho của Debian và các bản phân phối liên quan đều được ký bằng khóa mật mã, ngăn chặn cài đặt các gói không có thẩm quyền hoặc bị thay đổi.
+
+Người dùng cũng có thể thêm kho lưu trữ và khóa ký theo cách thủ công thông qua APT, nhưng cần cẩn thận với các nguồn không chính thức.
+
+## 1.9 Fail2Ban
+
+Để bảo vệ khỏi các cuộc tấn công brute-force nhắm vào các dịch vụ như SSH, bạn có thể sử dụng Fail2Ban, công cụ này theo dõi nhật ký và tự động chặn các địa chỉ IP sau một số lần đăng nhập thất bại.
+
+[Tìm hiểu thêm về Fail2Ban](https://help.ubuntu.com/community/Fail2ban)
+
+Cài đặt và cấu hình Fail2Ban:
+
+```bash
+sudo apt install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+```
+
+## 1.10 Kiểm soát tài khoản và quyền hạn
+
+Trong các hệ thống Debian-based, phân quyền truy cập của người dùng và nhóm được thực hiện nghiêm ngặt với quyền POSIX và hệ thống kiểm soát quyền (ví dụ: dùng sudo).
+
+Bạn cũng có thể sử dụng các cơ chế như PAM (Pluggable Authentication Modules-Các Mô-đun Xác Thực Cắm Được) để quản lý các chính sách xác thực và truy cập.
+
+[Tìm hiểu về Posix](https://ru.wikipedia.org/wiki/POSIX)
+
+[Tìm hiểu về PAM](https://wiki.archlinux.org/title/PAM)
+
+## 1.11 Thiết lập an toàn cho SSH
+
+Để tăng cường bảo mật truy cập từ xa qua SSH, nên sử dụng khóa SSH thay vì mật khẩu, vô hiệu hóa truy cập root, và áp dụng xác thực hai yếu tố (ví dụ, qua Google Authenticator).
+
+Ví dụ về cấu hình SSH:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+#Vô hiệu hóa đăng nhập mật khẩu
+PasswordAuthentication no
+# Vô hiệu hóa quyền truy cập root
+PermitRootLogin no
+```
+
+## 1.12 Tự động áp dụng cập nhật bảo mật
+
+Trong các hệ thống Debian-based, bạn có thể cấu hình áp dụng tự động các bản cập nhật bảo mật thông qua công cụ unattended-upgrades, điều này đặc biệt hữu ích cho các máy chủ.
+
+Cài đặt và cấu hình:
+
+```bash
+udo apt install unattended-upgrades
+sudo dpkg-reconfigure unattended-upgrades
+```
+
+[Tìm hiểu thêm về unattended-upgrades](https://wiki.debian.org/UnattendedUpgrades)
+
+# 2. Bảo mật cho các hệ thống dựa trên Red hat-based
+
+Các cơ chế bảo mật cơ bản của hệ thống Red Hat tương tự với các hệ thống dựa trên Debian, nhưng có một số khác biệt cụ thể:
+
+## 2.1 
