@@ -160,4 +160,33 @@ sudo dpkg-reconfigure unattended-upgrades
 
 Các cơ chế bảo mật cơ bản của hệ thống Red Hat tương tự với các hệ thống dựa trên Debian, nhưng có một số khác biệt cụ thể:
 
-## 2.1 
+## 2.1 Hỗ trợ các tiêu chuẩn và chứng nhận bảo mật cho doanh nghiệp
+
+Red Hat Enterprise Linux (RHEL) được chứng nhận theo các tiêu chuẩn bảo mật quốc tế khác nhau, bao gồm Common Criteria và FIPS (Federal Information Processing Standards). Điều này giúp RHEL phù hợp với các tổ chức chính phủ, tài chính và các ngành khác có yêu cầu bảo mật cao.
+
+[Tìm hiểu thêm về Common Criteria](https://access.redhat.com/articles/1403233)
+
+[Tìm hiểu thêm về FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards)
+
+Đối với các môi trường yêu cầu tiêu chuẩn mã hóa cao, RHEL có thể được cấu hình theo chế độ FIPS, đảm bảo tuân thủ các tiêu chuẩn mã hóa.
+
+## 2.2 Xác thực và quản lý truy cập
+
+Red Hat hỗ trợ nhiều phương thức xác thực khác nhau, bao gồm Kerberos, LDAP, và SSSD (System Security Services Daemon), cho phép tích hợp với các hệ thống quản lý truy cập tập trung.
+
+[Tìm hiểu thêm về Kerberos](https://www.kerberos.org/software/tutorial.html)
+
+[Tìm hiểu thêm về LDAP](https://ldapwiki.com/wiki/Wiki.jsp?page=LDAP)
+
+[Tìm hiểu thêm về SSSD](https://sssd.io/docs/introduction.html)
+
+PAM (Pluggable Authentication Modules) cũng được sử dụng để cấu hình linh hoạt về xác thực và kiểm soát truy cập, cho phép cài đặt các tính năng như xác thực hai yếu tố (ví dụ: sử dụng Google Authenticator).
+
+## 2.3 Bảo mật container
+
+Trong hệ sinh thái Red Hat, container là thành phần quan trọng của cơ sở hạ tầng, và các biện pháp kiểm soát truy cập nghiêm ngặt được áp dụng để bảo mật container. Red Hat cung cấp Podman như một giải pháp thay thế cho Docker, hoạt động với các image container tương tự nhưng cải thiện tính cô lập do Podman không yêu cầu quá trình demon để chạy.
+
+[Tìm hiểu thêm về podman](https://podman.io/)
+
+
+
