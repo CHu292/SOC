@@ -210,4 +210,4 @@ sudo apt purge package-name
 
 
 
-[Bài viết tham khảo tại](https://azdigi.com/blog/linux-server/linux-can-ban/lenh-apt-tren-linux-ubuntu-debian/)
+[Bài viết tham khảo tại đây](https://azdigi.com/blog/linux-server/linux-can-ban/lenh-apt-tren-linux-ubuntu-debian/)
