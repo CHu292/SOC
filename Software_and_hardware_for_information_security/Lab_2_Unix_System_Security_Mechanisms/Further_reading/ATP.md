@@ -74,45 +74,138 @@ sudo apt install package-name
 
 Ví dụ ở đây mình sẽ cài gói nload thì mình sử sử dụng lệnh sudo apt install nload.
 
-
 ```bash
 $ sudo apt install nload
-[sudo] password for chu: 
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following packages were automatically installed and are no longer required:
-  asymptote asymptote-doc biber context fonts-arphic-bkai00mp fonts-arphic-bsmi00lp fonts-arphic-gbsn00lp fonts-arphic-gkai00mp fonts-baekmuk
-  fonts-gfs-baskerville fonts-gfs-bodoni-classic fonts-gfs-didot-classic fonts-gfs-gazis fonts-gfs-porson fonts-gfs-theokritos fonts-hosny-amiri
-  fonts-unfonts-core fonts-unfonts-extra latex-cjk-all latex-cjk-chinese latex-cjk-chinese-arphic-bkai00mp latex-cjk-chinese-arphic-bsmi00lp
-  latex-cjk-chinese-arphic-gbsn00lp latex-cjk-chinese-arphic-gkai00mp latex-cjk-common latex-cjk-japanese latex-cjk-japanese-wadalab latex-cjk-korean
-  latex-cjk-thai libautovivification-perl libbtparse2 libbusiness-ismn-perl libbusiness-issn-perl libclass-accessor-perl libclass-inspector-perl
-  libclass-singleton-perl libdata-compare-perl libdata-uniqid-perl libdate-simple-perl libdatetime-calendar-julian-perl libdatetime-format-builder-perl
-  libdatetime-format-strptime-perl libdatetime-locale-perl libdatetime-perl libdatetime-timezone-perl libencode-eucjpms-perl libencode-jis2k-perl
-  libfile-find-rule-perl libfile-sharedir-perl libfile-slurper-perl libgsl27 libgslcblas0 libipc-run3-perl liblingua-translit-perl
-  liblist-allutils-perl liblist-someutils-perl liblist-someutils-xs-perl liblist-utilsby-perl libnumber-compare-perl libosp5 libostyle1c2
-  libparams-validate-perl libparse-recdescent-perl libperlio-utf8-strict-perl libqt5script5 libqt5scripttools5 libregexp-common-perl libsigsegv2
-  libsort-key-perl libtext-bibtex-perl libtext-csv-perl libtext-csv-xs-perl libtext-glob-perl libtext-roman-perl libtext-unidecode-perl
-  libtie-cycle-perl libxml-libxml-simple-perl libxml-libxslt-perl libxml-writer-perl openjade teckit texinfo texlive-bibtex-extra texlive-formats-extra
-  texlive-games texlive-humanities texlive-humanities-doc texlive-lang-arabic texlive-lang-chinese texlive-lang-cjk texlive-lang-cyrillic
-  texlive-lang-czechslovak texlive-lang-english texlive-lang-european texlive-lang-french texlive-lang-german texlive-lang-greek texlive-lang-italian
-  texlive-lang-japanese texlive-lang-korean texlive-lang-other texlive-lang-polish texlive-lang-portuguese texlive-lang-spanish texlive-music
-  texlive-publishers texlive-publishers-doc texlive-science texlive-science-doc texlive-xetex
-Use 'sudo apt autoremove' to remove them.
-The following NEW packages will be installed:
-  nload
-0 upgraded, 1 newly installed, 0 to remove and 65 not upgraded.
-Need to get 55,1 kB of archives.
-After this operation, 173 kB of additional disk space will be used.
-Get:1 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 nload amd64 0.7.4-2build3 [55,1 kB]
-Fetched 55,1 kB in 2s (30,8 kB/s)                         
-Selecting previously unselected package nload.
-(Reading database ... 596020 files and directories currently installed.)
-Preparing to unpack .../nload_0.7.4-2build3_amd64.deb ...
-Unpacking nload (0.7.4-2build3) ...
-Setting up nload (0.7.4-2build3) ...
-Processing triggers for man-db (2.10.2-1) ...
 ```
+
+Ngoài ra, bạn có thể cài đặt nhiều gói trên một lệnh bằng cách điền tên các gói giữa khoảng trắng như lệnh sau:
+
+```bash
+sudo apt install package-name1 package-name2 package-name3
+```
+Nếu chúng ta cài đặt một gói đã cài đặt thì nó sẽ được nâng cấp lên phiên bản mới nhất nếu có
+
+### 2.5 Liệt kê các gói đã cài đặt
+
+Để xem tất cả các gói đã cài đặt trên hệ thống của bạn, hãy chạy lệnh sau:
+
+```bash
+sudo apt list --installed
+```
+
+Để tìm kiếm một gói cụ thể, các bạn hãy thêm grep phía sau như lệnh sau:
+
+```bash
+sudo apt list --installed | grep package-name
+```
+
+Ví dụ sau mình cần tìm tập hợp các gói có từ khóa ssh.
+
+```bash
+$ sudo apt list --installed | grep ssh
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+libssh-4/jammy-updates,jammy-security,now 0.9.6-2ubuntu0.22.04.3 amd64 [installed,automatic]
+libssh-4/jammy-updates,jammy-security,now 0.9.6-2ubuntu0.22.04.3 i386 [installed,automatic]
+libssh-gcrypt-4/jammy-updates,jammy-security,now 0.9.6-2ubuntu0.22.04.3 amd64 [installed,automatic]
+libssh2-1/jammy,now 1.10.0-3 amd64 [installed,automatic]
+openssh-client/jammy-updates,jammy-security,now 1:8.9p1-3ubuntu0.10 amd64 [installed,automatic]
+```
+
+### 2.6 Tìm kiếm một gói bằng APT
+
+```bash
+sudo apt search package-name
+```
+
+Lệnh này sẽ cho phép bạn tìm kiếm và kiểm tra sự sẵn có của một gói trong kho Ubuntu/Debian. Trong ví dụ dưới đây, mình đang tìm kiếm tính khả dụng của gói `net-tools` trong kho lưu trữ Ubuntu:
+
+```bash
+sudo apt search net-tools
+Sorting... Done
+Full Text Search... Done
+atm-tools/jammy 1:2.5.1-4build2 amd64
+  Base programs for ATM in Linux, the net-tools for ATM
+
+ddnet-tools/jammy 15.9.1-1 amd64
+  Tools for DDNet
+
+hobbit-plugins/jammy,jammy 20201127 all
+  plugins for the Xymon network monitor
+
+iproute2/jammy,now 5.15.0-1ubuntu2 amd64 [installed]
+  networking and traffic control tools
+
+net-tools/jammy,now 1.60+git20181103.0eebece-1ubuntu5 amd64 [installed]
+  NET-3 networking toolkit
+```
+
+### 2.7 Hiển thị thông tin về một gói bằng lệnh APT
+
+Trước khi cài đặt hoặc gỡ bỏ một gói, bạn có thể tìm kiếm thông tin bổ sung về một gói bằng lệnh `apt show`. Ví dụ: để hiển thị thêm thông tin về gói nload thì chúng ta sử dụng lệnh sau:
+
+```bash
+chu@chu-Latitude-5510:~$ sudo apt show nload
+[sudo] password for chu: 
+Package: nload
+Version: 0.7.4-2build3
+Priority: extra
+Section: universe/net
+Origin: Ubuntu
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Marcio de Souza Oliveira <m.desouza20@gmail.com>
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Installed-Size: 173 kB
+Depends: libc6 (>= 2.14), libgcc-s1 (>= 3.0), libncurses6 (>= 6), libstdc++6 (>= 5.2), libtinfo6 (>= 6)
+Homepage: http://www.roland-riegel.de/nload/
+Download-Size: 55,1 kB
+APT-Manual-Installed: yes
+APT-Sources: http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 Packages
+Description: realtime console network usage monitor
+ Nload is a console application which monitors network traffic and bandwidth
+ usage in real time. It displays the total amount of data that has been
+ transferred over a network device since the last reboot, the current bandwidth
+ usage, and the minimum, maximum, and average bandwidth usage measured
+ since it started.
+ .
+ If the user wants, it is also able to display two bars, similar to progress
+ bars, presenting the current load graphically. Support for displaying several
+ devices simultaneously is included.
+```
+
+Thông tin đầu ra sẽ bao gồm thông tin chi tiết như tên gói, phiên bản, nhà phát hành, kích thước cài đặt, …vv…
+
+### 2.8 Loại bỏ các gói không sử dụng sau khi cài đặt
+
+Đôi khi chúng ta cài đặt một gói, các thư viện và các gói cần phụ thuộc khác cũng sẽ được yêu cầu cài đặt. Tuy nhiên sau khi cài đặt, các thư viện và phụ thuộc này không cần thiết nữa và nó chiếm một phần dung lượng của các bạn.
+
+Và để loại bỏ các tệp và các gói phụ thuộc này nhằm giải phóng một số dung lượng đĩa, các bạn hãy thực hiện lệnh APT sau:
+
+```bash
+sudo apt autoremove
+```
+
+### 2.9 Loại bỏ các gói đã cài đặt
+
+Bạn có thể gỡ một gói đã được cài đặt bằng cách sử dụng lệnh APT sau:
+
+```bash
+sudo apt remove package-name
+```
+
+Ngoài ra, bạn cũng có thể gỡ nhiều gói đồng thời với lệnh sau:
+
+```bash
+sudo apt remove package-name1 package-name2 package-name3
+```
+
+Việc loại bỏ một gói bằng lệnh ```apt remove``` sẽ để lại các tệp cấu hình của gói đó, nhằm việc sau này bạn cài đặt lại gói đó thì mọi cấu hình sẽ được giữ nguyên như trước đây. Để xóa hoàn toàn gói cùng với các tệp cấu hình của nó, các bạn hãy sử dụng ```purge``` ở vị trí ```remove``` như lệnh sau là được:
+
+```bash
+sudo apt purge package-name
+```
+
 
 
 
