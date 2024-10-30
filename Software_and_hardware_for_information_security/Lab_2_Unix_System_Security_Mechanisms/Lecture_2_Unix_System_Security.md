@@ -25,6 +25,9 @@ Người dùng được khuyến nghị cập nhật hệ thống thường xuy�
 
 [Hướng dẫn đầy đủ về APT](https://manpages.ubuntu.com/manpages/bionic/man8/apt.8.html)
 
+[Hướng dẫn cách sử dụng ATP](https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/Further_reading/ATP.md)
+
+
 Các lệnh cập nhật hệ thống:
 
 ```bash
