@@ -375,3 +375,36 @@ Trong các mạng máy tính, các loại ghép kênh chủ yếu bao gồm:
 - ghép kênh theo tần số (FDM);
 - ghép kênh theo bước sóng (WDM);
 - ghép kênh với phân chia theo mã (CDM).
+
+
+### 3.4.1 Ghép kênh theo phân chia thời gian
+
+**Ghép kênh theo phân chia thời gian** (*Time Division Multiplexing, TDM*) hay ghép kênh tạm thời là quá trình chia sẻ băng thông của kênh giữa các hệ thống tương tác trong một khoảng thời gian ngắn. Nói cách khác, tất cả các người gửi sử dụng cùng một dải tần số của kênh chung tại các thời điểm khác nhau. Công nghệ TDM thường được sử dụng trong các kênh truyền dẫn kỹ thuật số.
+
+Mỗi kênh đầu vào được cấp một khoảng thời gian, gọi là *thời gian khe* hoặc *khe thời gian* - Time slot, để truyền tải dữ liệu. Thời gian khe có thể là khoảng thời gian cần thiết để truyền một bit, byte, khung, hoặc gói tin.
+
+Có hai loại ghép kênh theo phân chia thời gian: *đồng bộ* và *không đồng bộ*.
+
+Trong chế độ đồng bộ (*Synchronous Time Division Multiplexing*), thời gian hoạt động của kênh được chia thành các chu kỳ lặp lại, bao gồm các khung TDM. Mỗi khung TDM bắt đầu bằng một chuỗi đồng bộ hóa và được chia thành các khe thời gian có độ dài bằng nhau, mỗi khe dành riêng cho một kênh logic. Các khe thời gian được phân bổ cho tất cả các kênh đầu vào được kết nối với bộ ghép kênh, được đánh số và sắp xếp trong khung TDM theo thứ tự cố định.
+
+Các kênh đầu vào lần lượt truyền các khối dữ liệu có kích thước bằng nhau trong mỗi khe thời gian của mỗi chu kỳ. Hình 3.15 minh họa chế độ ghép kênh theo phân chia thời gian đồng bộ, đảm bảo truyền tải dữ liệu giữa bốn cặp thiết bị. Khối dữ liệu từ cổng 1 của bộ ghép kênh sẽ được truyền trong khe thời gian 1 cho kết nối A1–A2. Khối dữ liệu từ cổng 2 sẽ được truyền trong khe thời gian 2 cho kết nối B1–B2. Khối dữ liệu từ cổng 3 sẽ được truyền trong khe thời gian 3 cho kết nối C1–C2. Cuối cùng, khối dữ liệu từ cổng 4 sẽ được truyền trong khe thời gian 4 cho kết nối D1–D2.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_15_Synchronous_Time_Division_Multiplexing.png" alt="Hình 3.15 Ghép kênh phân chia thời gian đồng bộ" width="700">
+</p>
+<p align="center"><b>"Hình 3.15 Ghép kênh phân chia thời gian đồng bộ</b></p>
+
+
+Việc sử dụng phương pháp này có thể dẫn đến tình trạng trong cùng một chu kỳ, một hệ thống không có dữ liệu để truyền, trong khi hệ thống khác lại không đủ thời gian được phân bổ. Khi một thiết bị không có dữ liệu để truyền, khe thời gian được phân cho nó sẽ vẫn trống và không thể được sử dụng bởi thiết bị khác.
+
+Để bộ giải ghép kênh ở đầu kia của kênh truyền có thể đọc chính xác các khối dữ liệu và phân phối chúng vào các kênh đầu ra tương ứng, thứ tự của các khe thời gian trong khung TDM phải được tuân thủ nghiêm ngặt. Mỗi kênh đầu vào trong TDM đồng bộ được nhận dạng bởi vị trí thời gian của nó trong khung, tức là bằng số thứ tự của khe thời gian. Vị trí này được sử dụng làm thông tin địa chỉ.
+
+Để bên nhận có thể xác định điểm bắt đầu của khe thời gian tiếp theo trong khung TDM, cần phải có sự đồng bộ hóa. Đồng bộ hóa có thể thực hiện bằng nhiều cách. Ví dụ, một trong những cách là truyền một chuỗi đồng bộ hóa ở đầu khung TDM, giúp phân biệt giữa các khung với nhau. Việc mất đồng bộ dẫn đến việc bên nhận không thể phân phối chính xác luồng dữ liệu đến các kênh, vì vị trí tương đối của các khe thời gian thay đổi, và do đó thông tin địa chỉ bị mất.
+
+
+TDM đồng bộ được sử dụng trong các mạng chuyển mạch kênh. Hai kiến trúc cơ bản dựa trên TDM đồng bộ là hệ thống phân cấp số không đồng bộ (*PDH*, *Plesiochronous Digital Hierarchy*), được sử dụng để truyền tín hiệu số của nhiều cuộc gọi điện thoại qua các kênh T1 (1,544 Mbps) và E1 (2 Mbps), và các hệ thống truyền dẫn số *SDH/SONET*, cung cấp khả năng truyền tín hiệu số qua cả dây đồng và cáp quang. Các giao diện *BRI* (*Basic Rate Interface*) và *PRI* (*Primary Rate Interface*) của mạng *ISDN* (*Integrated Services Digital Network*) cũng được sử dụng để vận chuyển dữ liệu dựa trên TDM đồng bộ.
+
+Thông lượng của kênh chung trong TDM đồng bộ được xác định bằng tổng thông lượng của tất cả các kênh đầu vào cộng thêm một số chi phí quản lý. Một trong những nhược điểm chính của chế độ đồng bộ là sự ràng buộc giữa các kênh đầu vào và các khe thời gian. Nếu một thiết bị không có dữ liệu để truyền, thiết bị khác không thể truyền dữ liệu trong khe thời gian đó. Điều này dẫn đến việc sử dụng băng thông không hiệu quả và làm giảm thông lượng của kênh truyền.
+
+Một ưu điểm của TDM đồng bộ là tính minh bạch đối với các giao thức tầng trên, vì nó được thực hiện ở tầng vật lý của mô hình OSI. Trong các khe thời gian, có thể truyền nhiều loại lưu lượng khác nhau: dữ liệu, thoại, video. Vì các hệ thống tương tác nhận được khe thời gian với cùng một số thứ tự trong mỗi chu kỳ, các khối dữ liệu được truyền đi sẽ xuất hiện ở bên nhận trong khoảng thời gian bằng nhau và đến với cùng độ trễ. Do đó, không cần sử dụng bộ đệm, vì luồng dữ liệu được truyền và nhận với cùng một tốc độ.
+
