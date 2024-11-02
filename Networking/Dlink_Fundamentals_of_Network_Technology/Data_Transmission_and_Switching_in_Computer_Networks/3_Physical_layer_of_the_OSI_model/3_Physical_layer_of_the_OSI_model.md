@@ -333,9 +333,9 @@ Bài toán trên minh họa cách tính thông lượng kênh dựa trên băng 
 
 2. Theo công thức của Shannon, xác định khả năng truyền tải của kênh liên lạc. 
 
-   $$
-   C = 100 \times 10^6 \times \log_2(1 + 50) \approx 100 \times 10^6 \times 5.672 = 567,2 \, \text{Mbit/s}.
-   $$
+$$
+C = 100 \times 10^6 \times \log_2(1 + 50) \approx 100 \times 10^6 \times 5.672 = 567,2 \, \text{Mbit/s}.
+$$
 
 Cần hiểu rõ sự khác biệt giữa tốc độ truyền dữ liệu và tốc độ ký hiệu. **Tốc độ truyền dữ liệu** (information rate, data rate) là tốc độ truyền các bit, đo bằng bit/s và các đơn vị phát sinh khác.
 
