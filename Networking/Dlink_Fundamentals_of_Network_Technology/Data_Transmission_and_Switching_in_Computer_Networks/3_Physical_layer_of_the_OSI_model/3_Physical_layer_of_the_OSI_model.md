@@ -189,6 +189,19 @@ Băng thông F được định nghĩa là sự chênh lệch giữa tần số 
 Băng thông được đo bằng (Hz).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_12_Bandwidth_of_the_communication_channel.png" alt="Hình 3.1  Băng thông kênh liên lạc" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_12_Bandwidth_of_the_communication_channel.png" alt="Hình 3.12  Băng thông kênh liên lạc" width="700">
 </p>
-<p align="center"><b>"Hình 3.11 - Ảnh hưởng của các thông số vật lý của môi trường truyền dẫn đến tín hiệu</b></p>
+<p align="center"><b>"Hình 3.12 -  Băng thông kênh liên lạc</b></p>
+
+Băng thông ảnh hưởng rất lớn đến tốc độ truyền dữ liệu tối đa có thể qua kênh truyền thông và phụ thuộc vào loại môi trường truyền dẫn cũng như sự hiện diện của các bộ lọc tần số trong kênh.
+
+Các tín hiệu bao gồm một tập hợp lớn các sóng điều hòa, nhưng máy thu chỉ có thể nhận được những sóng điều hòa có tần số nằm trong băng thông của kênh. Băng thông của kênh càng rộng, tốc độ truyền dữ liệu có thể càng cao và các sóng hài tần số cao của tín hiệu càng có thể truyền được. Nếu các sóng hài có biên độ đóng góp chính vào tín hiệu kết quả rơi vào băng thông của kênh, hình dạng tín hiệu sẽ thay đổi không đáng kể và tín hiệu sẽ được nhận diện đúng bởi máy thu.
+
+Ngược lại, hình dạng tín hiệu sẽ bị méo đáng kể, dẫn đến giảm tốc độ truyền thông qua kênh do gặp vấn đề trong việc nhận diện tín hiệu, gây ra lỗi liên lạc và yêu cầu truyền lại.
+
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_13_The_influence_of_bandwidth_on_the_signal.png" alt="Hình 3.13 Ảnh hưởng của băng thông đến tín hiệu" width="700">
+</p>
+<p align="center"><b>"Hình 3.13 Ảnh hưởng của băng thông đến tín hiệu</b></p>
