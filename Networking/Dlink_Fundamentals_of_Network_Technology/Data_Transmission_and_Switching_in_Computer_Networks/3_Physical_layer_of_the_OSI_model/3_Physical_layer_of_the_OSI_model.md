@@ -213,7 +213,7 @@ Khi truyền tín hiệu qua kênh liên lạc, tín hiệu sẽ bị suy giảm
 Suy giảm (attenuation) là độ lớn cho thấy mức độ giảm của công suất (biên độ) tín hiệu tại đầu ra của kênh truyền so với công suất (biên độ) tín hiệu tại đầu vào. Hệ số suy giảm $$d$$ được đo bằng decibel (dB) trên một đơn vị chiều dài và được tính theo công thức sau:
 
 $$
-d \, [\text{dB}] = 10 \log \frac{P_{\text{out}}}{P_{\text{in}}}
+d \, [\text{dB}] = 10 \log \frac{P_{\text{out}}}{P_{\text{in}}} (3.3)
 $$
 
 
@@ -261,13 +261,11 @@ Các kênh quang học là loại được bảo vệ tốt nhất khỏi nhiễ
 
 Một trong những thông số quan trọng của kênh truyền dẫn, cho phép đánh giá tác động gây nhiễu của nhiễu lên tín hiệu, là tỷ lệ tín hiệu trên nhiễu (SNR, Signal-to-Noise Ratio). Tỷ lệ này được xác định là tỷ số giữa công suất của tín hiệu $$P_s$$ và công suất của nhiễu (nhiễu) $$P_n$$. Để thuận tiện, biểu thức này thường được biểu diễn bằng decibel (dB).
 
-Here is the formula in LaTeX markdown:
 
 $$
-\text{SNR} \, [\text{dB}] = 10 \cdot \log \left( \frac{P_s}{P_n} \right)
+\text{SNR} \, [\text{dB}] = 10 \cdot \log \left( \frac{P_s}{P_n} \right) (3.4)
 $$
 
-Dịch sang tiếng Việt:
 
 trong đó $$P_s$$ là công suất tín hiệu (signal power); $$P_n$$ là công suất nhiễu -noise power (nhiễu loạn).
 
