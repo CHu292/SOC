@@ -351,3 +351,27 @@ BER được xác định bằng tỷ lệ giữa số bit nhận bị lỗi v�
 Thông thường, các lỗi xuất hiện chủ yếu do nhiễu và tiếng ồn trong kênh. Đối với các kênh truyền mà không có phương tiện bảo vệ bổ sung, giá trị BER nằm trong khoảng từ $$10^{-4}$$ đến $$10^{-6}$$, còn trong các kênh quang học, BER có thể đạt đến $$10^{-9}$$. Giá trị độ tin cậy của truyền dữ liệu, ví dụ như $$10^{-4}$$, cho biết trung bình cứ 10.000 bit thì có một bit bị sai lệch.
 
 Có thể tăng độ tin cậy của dữ liệu truyền bằng cách nâng cao khả năng chống nhiễu của kênh liên lạc.
+
+
+## 3.4 Các phương pháp sử dụng chung môi trường truyền tải của kênh liên lạc
+
+Trong thực tế, thường phải thực hiện việc truyền các luồng dữ liệu từ nhiều người dùng qua môi trường truyền tải chung (shared medium), vì việc lắp đặt một kênh liên lạc riêng cho mọi hệ thống tương tác quá đắt đỏ, phức tạp hoặc không khả thi. Thông thường, điều này liên quan đến các hạn chế như mạng điện thoại đã có sẵn, các kênh truyền tải đã được thiết lập, tài nguyên tần số vô tuyến bị phân bổ, hoặc khó khăn trong việc xây dựng các kênh truyền tải mới do cấu trúc đô thị.
+
+Để có thể truyền tải nhiều tín hiệu từ các người dùng khác nhau đồng thời qua cùng một cáp hoặc kênh không dây, người ta sử dụng các phương pháp **ghép kênh** (multiplexing).
+
+**Ghép kênh** (multiplexing) là công nghệ truyền tải dữ liệu của nhiều kênh với thuông lượng thấp hơn qua một kênh có thông lượng cao hơn.
+
+Nhiệm vụ của ghép kênh là phân bổ cho mỗi kênh một khoảng thời gian, tần số và/hoặc mã với sự can thiệp tối thiểu và tận dụng tối đa các đặc điểm của môi trường truyền tải chung.
+
+Kết quả của ghép kênh là trong một kênh vật lý tạo ra một nhóm các kênh logic. Khi đó, **thông lượng** của kênh vật lý được chia sẻ giữa các kênh logic và cần đủ để đảm bảo tốc độ truyền dữ liệu cần thiết cho các kênh logic.
+
+Ghép kênh được thực hiện bằng chương trình hoặc thiết bị gọi là **bộ ghép kênh** (multiplexer, MUX). Bộ ghép kênh kết nối nhóm các kênh tốc độ thấp với một kênh vật lý tốc độ cao.
+
+Quá trình ngược lại của ghép kênh được gọi là **tách kênh** (demultiplexing), và thiết bị hoặc chương trình thực hiện quá trình này gọi là **bộ tách kênh** (demultiplexer, DEMUX). Bộ tách kênh phân phối dữ liệu nhận được từ kênh vật lý chung đến nhóm các kênh đầu ra.
+
+Trong các mạng máy tính, các loại ghép kênh chủ yếu bao gồm:
+
+- ghép kênh theo thời gian (TDM);
+- ghép kênh theo tần số (FDM);
+- ghép kênh theo bước sóng (WDM);
+- ghép kênh với phân chia theo mã (CDM).
