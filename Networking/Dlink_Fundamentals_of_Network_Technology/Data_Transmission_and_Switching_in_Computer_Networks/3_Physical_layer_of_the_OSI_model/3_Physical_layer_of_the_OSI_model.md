@@ -205,3 +205,78 @@ Ngược lại, hình dạng tín hiệu sẽ bị méo đáng kể, dẫn đế
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_13_The_influence_of_bandwidth_on_the_signal.png" alt="Hình 3.13 Ảnh hưởng của băng thông đến tín hiệu" width="700">
 </p>
 <p align="center"><b>"Hình 3.13 Ảnh hưởng của băng thông đến tín hiệu</b></p>
+
+### 3.3.2 Suy giảm
+
+Khi truyền tín hiệu qua kênh liên lạc, tín hiệu sẽ bị suy giảm dần, điều này do các đặc tính vật lý và kỹ thuật của môi trường truyền dẫn và các thiết bị mạng được sử dụng. Để tín hiệu có thể được nhận diện chính xác tại điểm tiếp nhận, mức suy giảm này không được vượt quá một giá trị ngưỡng nhất định.
+
+Suy giảm (attenuation) là độ lớn cho thấy mức độ giảm của công suất (biên độ) tín hiệu tại đầu ra của kênh truyền so với công suất (biên độ) tín hiệu tại đầu vào. Hệ số suy giảm $$d$$ được đo bằng decibel (dB) trên một đơn vị chiều dài và được tính theo công thức sau:
+
+$$
+d \, [\text{dB}] = 10 \log \frac{P_{\text{out}}}{P_{\text{in}}}
+$$
+
+
+trong đó $$P_{\text{out}$$ là công suất tín hiệu đầu ra (out signal); $$P_{\text{in}}$$ là công suất tín hiệu đầu vào (P_in signal).
+
+Suy giảm đặc trưng cho cả tín hiệu analog và tín hiệu số (digital). Mức độ suy giảm tăng lên khi tần số của tín hiệu tăng: tần số càng cao thì tín hiệu càng dễ bị suy giảm. Vì lý do này, các thiết bị thu của các thiết bị tốc độ cao sẽ gặp khó khăn đáng kể hơn trong việc nhận diện tín hiệu gốc.
+
+Suy giảm tín hiệu ảnh hưởng đến khoảng cách mà tín hiệu có thể đi qua giữa hai điểm mà không cần khuếch đại hoặc phục hồi. Suy giảm là một trong những thông số quan trọng được xác định cho các loại cáp (cặp xoắn, cáp quang, cáp đồng trục). Cáp có độ suy giảm càng thấp thì chất lượng càng cao. Do đó, khi thiết kế các kênh truyền dẫn có dây, cần xem xét các đặc tính của cáp và sử dụng các loại cáp có độ suy giảm thấp nhất để đạt được chiều dài kênh tối đa.
+
+### 3.3.3 Khả năng chống nhiễu
+
+Trong kênh liên lạc thực tế, có tồn tại nhiễu, do các đặc tính của môi trường truyền dẫn, thiết bị tạo kênh, và tác động của các trường điện từ từ các thiết bị điện tử khác nhau. Do ảnh hưởng của các nhiễu này, các lỗi xuất hiện trong kênh truyền.
+
+Một trong những chỉ số quan trọng nhất của kênh liên lạc là khả năng chống nhiễu của nó, được hiểu là khả năng của kênh trong việc chống lại tác động của nhiễu. Khả năng chống nhiễu dựa trên khả năng phân biệt tín hiệu với nhiễu với độ tin cậy nhất định. Vì vậy, khi xây dựng kênh liên lạc, cần phải xem xét các nhiễu có thể xảy ra và tối đa hóa sự khác biệt giữa chúng và tín hiệu.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_14_The_influence_of_interference_on_the_communication_channel.png" alt="Hình 3.14 Ảnh hưởng của nhiễu lên kênh truyền thông" width="700">
+</p>
+<p align="center"><b>"Hình 3.14 Ảnh hưởng của nhiễu lên kênh truyền thông</b></p>
+
+
+Tùy thuộc vào nguồn gốc phát sinh và đặc tính tác động của chúng, nhiễu được chia thành nhiễu bên trong, nhiễu bên ngoài và nhiễu tương hỗ. 
+
+**Nhiễu bên trong**, hay còn gọi là nhiễu nội tại, phát sinh từ các nguồn bên trong kênh này và xuất hiện ngay sau khi thiết bị liên lạc được bật lên. Chúng chủ yếu bao gồm nhiễu nhiệt, nhiễu chập, nhiễu tiếp xúc và nhiễu xung, và hầu như không thể loại bỏ được.
+
+**Nhiễu bên ngoài** được chia thành nhiễu công nghiệp, nhiễu vô tuyến, nhiễu khí quyển và nhiễu vũ trụ. 
+-  Nhiễu công nghiệp (giao thoa điện từ, hay còn gọi là EMI - Electro Magnetic Interference) được tạo ra do tác động của các trường điện từ từ các thiết bị điện khác nhau đến kênh liên lạc: đèn huỳnh quang, thiết bị gia dụng, máy tính, hệ thống vô tuyến, đường dây điện, thiết bị điện của các xí nghiệp công nghiệp, thiết bị y tế, mạng tiếp xúc của các phương tiện giao thông điện (như tàu điện, xe buýt điện v.v.), quảng cáo đèn neon và nhiều thiết bị tương tự. 
+- Nhiễu vô tuyến (nhiễu tần số vô tuyến, RFI - Radio Frequency Interference) phát sinh từ bức xạ của các đài phát thanh với các mục đích khác nhau, có phổ tần vì một lý do nào đó trùng lên phổ tín hiệu hữu ích của kênh liên lạc.
+- Nhiễu khí quyển bao gồm các nhiễu do hiện tượng khí quyển khác nhau gây ra: bão từ, cực quang, sấm sét, v.v. - Nhiễu vũ trụ bao gồm các nhiễu điện từ được tạo ra từ bức xạ của Mặt Trời, các ngôi sao nhìn thấy và không nhìn thấy, các tinh vân trong các dải tần số tương ứng.
+
+
+**Nhiễu tương hỗ** (hay nhiễu xuyên âm, crosstalk) xảy ra khi truyền thông tin qua các kênh liền kề - tín hiệu truyền qua một kênh liên lạc gây ra hiệu ứng không mong muốn ở kênh khác (xuất hiện nhiễu tín hiệu).
+
+Các kênh liên lạc không dây là những kênh ít được bảo vệ nhất khỏi ảnh hưởng của nhiễu. Chúng chịu tác động của cả nhiễu bên ngoài và nhiễu xuyên âm. Trong các mạng không dây gia đình, nhiễu bên ngoài phát sinh từ các thiết bị như lò vi sóng, máy tính, điện thoại di động, v.v. Còn nhiễu xuyên âm liên quan đến nhiễu từ các thiết bị không dây khác hoạt động trên cùng tần số. Điều này đặc biệt phổ biến ở các tòa nhà chung cư, nơi các mạng gia đình chủ yếu được xây dựng bằng công nghệ không dây.
+
+
+Trong số các kênh cáp, kênh sử dụng cáp điện dễ bị ảnh hưởng bởi nhiễu nhất. Để chống lại nhiễu, các nhà sản xuất cáp điện áp dụng các biện pháp như che chắn (shielding) và xoắn cặp dây dẫn. Che chắn được sử dụng để bảo vệ khỏi nhiễu điện từ và nhiễu vô tuyến. Lớp che chắn là một lớp lưới kim loại hoặc lá kim loại bao quanh từng dây hoặc nhóm dây trong cáp, đóng vai trò như một rào cản ngăn chặn các tín hiệu tương tác.
+
+Bản thân cáp điện cũng là nguồn phát bức xạ điện từ, có thể gây ra nhiễu xuyên âm. Trong các loại cáp xoắn đôi, nhiễu này được biết đến với tên gọi nhiễu xuyên âm đầu gần (NEXT - Near End Cross Talk) và nhiễu xuyên âm đầu xa (FEXT - Far End Cross Talk), phát sinh từ sự ảnh hưởng lẫn nhau của các trường điện từ của tín hiệu được truyền qua các cặp dây dẫn khác nhau. Để giảm thiểu các trường điện từ này, cặp dây dẫn trong cáp xoắn đôi được xoắn lại với nhau.
+
+
+Các kênh quang học là loại được bảo vệ tốt nhất khỏi nhiễu. Cáp quang không bị ảnh hưởng bởi nhiễu điện từ (EMI), nhiễu tần số vô tuyến (RFI), sét và các xung điện áp cao. Ngoài ra, cáp quang cũng không tạo ra bất kỳ nhiễu điện từ hay nhiễu tần số vô tuyến nào.
+
+Để nhiễu không làm giảm đáng kể chất lượng truyền dẫn, cần phải hạn chế ảnh hưởng của nó. Các phương pháp chống nhiễu nhằm đảm bảo mức độ tín hiệu tại nơi nhận sao cho đáp ứng được chất lượng tín hiệu yêu cầu.
+
+Một trong những thông số quan trọng của kênh truyền dẫn, cho phép đánh giá tác động gây nhiễu của nhiễu lên tín hiệu, là tỷ lệ tín hiệu trên nhiễu (SNR, Signal-to-Noise Ratio). Tỷ lệ này được xác định là tỷ số giữa công suất của tín hiệu $$P_s$$ và công suất của nhiễu (nhiễu) $$P_n$$. Để thuận tiện, biểu thức này thường được biểu diễn bằng decibel (dB).
+
+Here is the formula in LaTeX markdown:
+
+$$
+\text{SNR} \, [\text{dB}] = 10 \cdot \log \left( \frac{P_s}{P_n} \right)
+$$
+
+Dịch sang tiếng Việt:
+
+trong đó $$P_s$$ là công suất tín hiệu (signal power); $$P_n$$ là công suất nhiễu -noise power (nhiễu loạn).
+
+Khi tỷ lệ tín hiệu trên nhiễu càng lớn, nhiễu càng ít ảnh hưởng đến tín hiệu hữu ích khi nó được truyền qua kênh liên lạc và giúp máy thu nhận diện tín hiệu tốt hơn.
+
+Để tăng khả năng chống nhiễu của kênh truyền, các phương pháp sau đây được áp dụng:
+
+- Tăng tỷ lệ tín hiệu trên nhiễu;
+- Mở rộng phổ tín hiệu;
+- Tăng độ dư thừa thông tin;
+- Sử dụng mã chống nhiễu;
+- Lọc tín hiệu hữu ích.
