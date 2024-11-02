@@ -337,6 +337,17 @@ $$
 C = 100 \times 10^6 \times \log_2(1 + 50) \approx 100 \times 10^6 \times 5.672 = 567,2 \, \text{Mbit/s}.
 $$
 
-Cần hiểu rõ sự khác biệt giữa tốc độ truyền dữ liệu và tốc độ ký hiệu. **Tốc độ truyền dữ liệu** (information rate, data rate) là tốc độ truyền các bit, đo bằng bit/s và các đơn vị phát sinh khác.
+Cần hiểu rõ sự khác biệt giữa tốc độ truyền dữ liệu và tốc độ ký hiệu. **Tốc độ truyền dữ liệu** (information rate, data rate) là tốc độ truyền các bit, đo bằng bit/s và các đơn vị phát sinh khác. \)
 
 **Tốc độ ký hiệu** (symbol rate) hay **tốc độ điều chế** là tốc độ thay đổi các ký hiệu, đo bằng baud hoặc ký hiệu mỗi giây. Mỗi ký hiệu đại diện cho một hoặc nhiều bit thông tin tùy thuộc vào phương pháp mã hóa được chọn.
+
+
+### 3.3.5 Độ tin cậy của truyền dữ liệu
+
+Chất lượng thông tin được truyền qua kênh liên lạc thường được đánh giá dựa trên độ tin cậy của truyền dữ liệu, tức là mức độ tương ứng giữa thông tin nhận được và thông tin đã truyền. **Độ tin cậy của truyền dữ liệu** được đặc trưng bởi xác suất lỗi trong quá trình nhận mỗi bit dữ liệu truyền, tức là tần suất xuất hiện của các bit bị lỗi. Đôi khi chỉ số này còn được gọi là **tỷ lệ lỗi bit** (Bit Error Rate, BER).
+
+BER được xác định bằng tỷ lệ giữa số bit nhận bị lỗi với tổng số bit đã truyền.
+
+Thông thường, các lỗi xuất hiện chủ yếu do nhiễu và tiếng ồn trong kênh. Đối với các kênh truyền mà không có phương tiện bảo vệ bổ sung, giá trị BER nằm trong khoảng từ $$10^{-4}$$ đến $$10^{-6}$$, còn trong các kênh quang học, BER có thể đạt đến $$10^{-9}$$. Giá trị độ tin cậy của truyền dữ liệu, ví dụ như $$10^{-4}$$, cho biết trung bình cứ 10.000 bit thì có một bit bị sai lệch.
+
+Có thể tăng độ tin cậy của dữ liệu truyền bằng cách nâng cao khả năng chống nhiễu của kênh liên lạc.
