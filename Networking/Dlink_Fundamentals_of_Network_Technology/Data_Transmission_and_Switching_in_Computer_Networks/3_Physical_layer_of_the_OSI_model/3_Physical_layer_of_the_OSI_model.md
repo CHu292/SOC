@@ -303,9 +303,40 @@ Hãy xem các ví dụ liên quan đến công thức Shannon.
 
 2. Thực hiện chuyển đổi tỷ lệ tín hiệu/nhiễu từ decibel sang đơn vị thông thường. $$24,1 = 10 \lg(x) \Rightarrow x = 10^{\frac{24,1}{10}} \approx 257$$.
 
-3. Sử dụng công thức Shannon để xác định thông lượng của kênh truyền.  
-   $$
-   C = 10 \times 10^6 \times \log_2 \left(1 + 257\right) \approx 10 \times 10^6 \times 8,011 \approx 80,11 \, \text{Mbit/s}.
-  $$
+3. Sử dụng công thức Shannon để xác định thông lượng của kênh truyền.
+
+$$
+C = 10 \times 10^6 \times \log_2 \left(1 + 257\right) \approx 10 \times 10^6 \times 8,011 \approx 80,11 \, \text{Mbit/s}.
+$$
 
 Công thức và tính toán trên cho thấy cách xác định thông lượng kênh dựa trên băng thông và tỷ lệ tín hiệu/nhiễu.
+
+
+
+**Ví dụ 2.** Phổ của kênh chiếm dải từ 2401 MHz đến 2423 MHz. Công suất tín hiệu là 150 mW, công suất nhiễu là 10 mW. Xác định thông lượng của kênh truyền.
+
+1. Xác định băng thông của kênh (Hz). $$F = 2423 \, \text{MHz} - 2401 \, \text{MHz} = 22 \, \text{MHz} = 22 \times 10^6 \, \text{Hz}$$.
+
+2. Sử dụng công thức Shannon để xác định thông lượng của kênh truyền.
+ 
+$$
+C = 22 \times 10^6 \times \log_2 \left(1 + \frac{150}{10}\right) = 22 \times 10^6 \times 4 = 88 \, \text{Mbit/s}.
+$$
+
+Bài toán trên minh họa cách tính thông lượng kênh dựa trên băng thông và tỷ lệ công suất tín hiệu/nhiễu.
+
+**Ví dụ 3.** Độ rộng băng thông của kênh truyền là 100 MHz. Công suất tín hiệu - 20 dBm, công suất nhiễu - 3 dBm. Xác định khả năng truyền tải của kênh liên lạc.
+
+1. Xác định tỷ lệ tín hiệu/nhiễu và thực hiện chuyển đổi giữa decibel và tỷ lệ. $$20 - 3 = 10 \cdot \lg(x) \Rightarrow x = 50$$.
+
+   Cách thứ hai để tính tỷ lệ tín hiệu/nhiễu là chuyển đổi công suất tín hiệu từ dBm sang mW. Có thể sử dụng bảng hoặc tự tính như sau: 20 dBm = 100 mW, 3 dBm = 2.0 mW. Do đó, SRN = $$\frac{100}{2} = 50$$.
+
+2. Theo công thức của Shannon, xác định khả năng truyền tải của kênh liên lạc. 
+
+   $$
+   C = 100 \times 10^6 \times \log_2(1 + 50) \approx 100 \times 10^6 \times 5.672 = 567,2 \, \text{Mbit/s}.
+   $$
+
+Cần hiểu rõ sự khác biệt giữa tốc độ truyền dữ liệu và tốc độ ký hiệu. **Tốc độ truyền dữ liệu** (information rate, data rate) là tốc độ truyền các bit, đo bằng bit/s và các đơn vị phát sinh khác.
+
+**Tốc độ ký hiệu** (symbol rate) hay **tốc độ điều chế** là tốc độ thay đổi các ký hiệu, đo bằng baud hoặc ký hiệu mỗi giây. Mỗi ký hiệu đại diện cho một hoặc nhiều bit thông tin tùy thuộc vào phương pháp mã hóa được chọn.
