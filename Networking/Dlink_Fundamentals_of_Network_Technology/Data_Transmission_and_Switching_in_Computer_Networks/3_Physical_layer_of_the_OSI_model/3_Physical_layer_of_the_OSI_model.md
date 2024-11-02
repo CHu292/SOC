@@ -217,7 +217,7 @@ d \, [\text{dB}] = 10 \log \frac{P_{\text{out}}}{P_{\text{in}}} (3.3)
 $$
 
 
-trong đó $$P_{\text{out}$$ là công suất tín hiệu đầu ra (out signal); $$P_{\text{in}}$$ là công suất tín hiệu đầu vào (P_in signal).
+trong đó $$P_{\text{out}}$$ là công suất tín hiệu đầu ra (out signal); $$P_{\text{in}}$$ là công suất tín hiệu đầu vào (P_in signal).
 
 Suy giảm đặc trưng cho cả tín hiệu analog và tín hiệu số (digital). Mức độ suy giảm tăng lên khi tần số của tín hiệu tăng: tần số càng cao thì tín hiệu càng dễ bị suy giảm. Vì lý do này, các thiết bị thu của các thiết bị tốc độ cao sẽ gặp khó khăn đáng kể hơn trong việc nhận diện tín hiệu gốc.
 
@@ -278,3 +278,34 @@ Khi tỷ lệ tín hiệu trên nhiễu càng lớn, nhiễu càng ít ảnh hư
 - Tăng độ dư thừa thông tin;
 - Sử dụng mã chống nhiễu;
 - Lọc tín hiệu hữu ích.
+
+### 3.3.4 Thông lượng  
+Thông lượng (throughput) của kênh truyền là tốc độ truyền thông tin tối đa có thể qua kênh, được xác định bởi các giới hạn của nó. Thông lượng được đo bằng bit trên giây (bit/s hoặc bps — bits per second) và các đơn vị dẫn xuất khác.  
+
+Mối quan hệ giữa thông lượng tối đa và băng thông của kênh truyền đã được Claude Shannon xác định:
+
+$$
+C = F \log_2 \left(1 + \frac{P_s}{P_n}\right),
+$$
+
+
+Trong đó $$C$$ là thông lượng tối đa của kênh (bit/s); $$F$$ là băng thông của kênh (Hz); $$P_s$$ là công suất tín hiệu và $$P_n$$ là công suất nhiễu.  
+
+Như có thể thấy từ công thức, thông lượng tối đa của kênh có thể được tăng lên bằng cách mở rộng băng thông $$F$$ hoặc giảm công suất nhiễu trên đường truyền.  
+
+Thuật ngữ "thông lượng" có thể mang ý nghĩa lý thuyết và thực tiễn. Thông thường, nó được sử dụng theo nghĩa thực tế và là thước đo lượng dữ liệu hữu ích được truyền qua một kênh truyền nhất định trong một khoảng thời gian xác định, dưới những điều kiện nhất định. Thông lượng lý thuyết bị giới hạn bởi băng thông hoặc tốc độ truyền dữ liệu của công nghệ cụ thể. Ví dụ, trong đặc tả của Gigabit Ethernet, tốc độ được xác định là 1 Gbit/s. Đối với mạng Gigabit Ethernet, giá trị này sẽ là giới hạn trên của thông lượng. Tuy nhiên, thông lượng thực tế của mạng luôn nhỏ hơn thông lượng lý thuyết, vì nó phụ thuộc vào các tham số của thiết bị kênh truyền, cách tổ chức truyền dữ liệu, số lượng nút được kết nối với kênh truyền. Ngoài ra, thông lượng cũng bị giảm do chi phí quản lý liên quan đến việc truyền các gói tin điều khiển cần thiết cho hoạt động của các giao thức mạng.
+
+Hãy xem các ví dụ liên quan đến công thức Shannon.
+
+**Ví dụ 1.** Phổ của kênh chiếm dải từ 5 MHz đến 15 MHz. Tỷ lệ tín hiệu/nhiễu (SRN) là 24,1 dB. Xác định thông lượng của kênh truyền.
+
+1. Xác định băng thông của kênh (Hz). $$F = 15 \, \text{MHz} - 5 \, \text{MHz} = 10 \, \text{MHz} = 10 \times 10^6 \, \text{Hz}$$.
+
+2. Thực hiện chuyển đổi tỷ lệ tín hiệu/nhiễu từ decibel sang đơn vị thông thường. $$24,1 = 10 \lg(x) \Rightarrow x = 10^{\frac{24,1}{10}} \approx 257$$.
+
+3. Sử dụng công thức Shannon để xác định thông lượng của kênh truyền.  
+   $$
+   C = 10 \times 10^6 \times \log_2 \left(1 + 257\right) \approx 10 \times 10^6 \times 8,011 \approx 80,11 \, \text{Mbit/s}.
+  $$
+
+Công thức và tính toán trên cho thấy cách xác định thông lượng kênh dựa trên băng thông và tỷ lệ tín hiệu/nhiễu.
