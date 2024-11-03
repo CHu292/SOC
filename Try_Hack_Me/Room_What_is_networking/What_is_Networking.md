@@ -121,3 +121,25 @@ Tuy nhiên, một điều thú vị với địa chỉ MAC là chúng có thể 
 Hãy xem tình huống sau: Tường lửa được cấu hình để cho phép mọi giao tiếp đến và đi từ địa chỉ MAC của quản trị viên. Nếu một thiết bị giả mạo hoặc "giả mạo" địa chỉ MAC này, tường lửa giờ đây sẽ cho rằng nó đang nhận thông tin liên lạc từ quản trị viên trong khi thực tế không phải vậy.
 
 Các địa điểm như quán cà phê, quán cà phê và khách sạn thường sử dụng tính năng kiểm soát địa chỉ MAC khi sử dụng Wi-Fi "Guest" hoặc "Public" của họ. Cấu hình này có thể cung cấp các dịch vụ tốt hơn, tức là kết nối nhanh hơn với mức giá nếu bạn sẵn sàng trả phí cho mỗi thiết bị.
+
+# 3. Ping (ICMP)
+
+Ping là một trong những công cụ mạng cơ bản nhất hiện có. . Ping sử dụng các gói ICMP (Internet Control Message Protocol - Giao thức tin nhắn điều khiển Internet) để xác định hiệu suất kết nối giữa các thiết bị, chẳng hạn như liệu kết nối có tồn tại hay đáng tin cậy hay không.
+
+Thời gian để các gói ICMP di chuyển giữa các thiết bị được đo bằng ping. Việc đo lường này được thực hiện bằng cách sử dụng gói echo của ICMP và sau đó là phản hồi echo của ICMP từ thiết bị đích.
+
+Ping có thể được thực hiện với các thiết bị trên mạng, chẳng hạn như mạng gia đình của bạn hoặc các tài nguyên như trang web. Công cụ này có thể dễ dàng sử dụng và được cài đặt trên  Operating Systems  (OSs) như Linux và Windows.
+
+Cú pháp: 
+
+```
+ping IP address or website URL
+```
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/3_1.png" alt="" width="1000">
+</p>
+<p align="center"><b>Hình 3.1 "</b></p>
+
+Ở đây chúng ta đang ping một thiết bị có địa chỉ riêng là 192.168.1.254. Ping thông báo cho chúng tôi rằng chúng tôi đã gửi sáu gói ICMP, tất cả đều được nhận với thời gian trung bình là 4,16 mili giây.
+
