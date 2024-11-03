@@ -1,0 +1,9 @@
+fastapi
+sqlalchemy
+pydantic
+jinja2
+passlib[bcrypt]
+pyjwt
+psycopg2-binary
+uvicorn
+python-multipart  # Thêm dòng này

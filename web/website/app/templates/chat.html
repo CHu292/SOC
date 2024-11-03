@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+</head>
+<body>
+    <h1>Welcome to the Chat Room</h1>
+    <form id="create-room-form" action="/create-room" method="post">
+        <label for="room_name">Create New Room:</label>
+        <input type="text" id="room_name" name="room_name" required>
+        <button type="submit">Create Room</button>
+    </form>
+
+    <h2>Search Rooms</h2>
+    <form id="search-form" action="/search-rooms" method="get">
+        <label for="search_query">Room Name:</label>
+        <input type="text" id="search_query" name="search_query" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Available Rooms</h2>
+    <ul id="room-list">
+        <!-- Danh sách phòng chat sẽ được hiển thị tại đây -->
+    </ul>
+</body>
+</html>
