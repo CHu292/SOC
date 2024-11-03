@@ -90,7 +90,7 @@ Ví dụ:
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_3.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình 2.3 "</b></p>
+<p align="center"><b>Hình 2.3</b></p>
 
 Khi càng ngày càng có nhiều thiết bị kết nối, việc có được một địa chỉ IP public chưa được sử dụng trở nên khó khăn. Ví dụ, Cisco, một gã khổng lồ trong ngành về thế giới mạng, ước tính rằng sẽ có khoảng 50 tỷ thiết bị được kết nối trên Internet vào cuối năm 2021. Ở đây chúng ta đề cập đến internet protocol được gọi là IPv4 sử dụng hệ thống đánh số gồm 2^32 IP (tức 4.29 tỷ).
 
@@ -101,7 +101,7 @@ So sánh 2 địa chỉ:
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_4.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình 2.4 "</b></p>
+<p align="center"><b>Hình 2.4</b></p>
 
 ### 2.2 Mac Address-Địa chỉ MAC
 
@@ -114,7 +114,7 @@ Ví dụ: `a4:c3:f0:85:ac:2d`. Sáu ký tự đầu tiên đại diện cho côn
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_5.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình 2.5 "</b></p>
+<p align="center"><b>Hình 2.5</b></p>
 
 Tuy nhiên, một điều thú vị với địa chỉ MAC là chúng có thể bị làm giả hoặc "giả mạo" trong một quá trình được gọi là **spoofing**. Việc giả mạo này xảy ra khi một thiết bị nối mạng giả vờ nhận dạng là một thiết bị khác bằng địa chỉ MAC của nó. Khi điều này xảy ra, nó thường có thể phá vỡ các thiết kế bảo mật được triển khai kém vốn cho rằng các thiết bị giao tiếp trên mạng là đáng tin cậy.
 
@@ -139,7 +139,7 @@ ping IP address or website URL
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/3_1.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình 3.1 "</b></p>
+<p align="center"><b>Hình 3.1</b></p>
 
 Ở đây chúng ta đang ping một thiết bị có địa chỉ riêng là 192.168.1.254. Ping thông báo cho chúng tôi rằng chúng tôi đã gửi sáu gói ICMP, tất cả đều được nhận với thời gian trung bình là 4,16 mili giây.
 
