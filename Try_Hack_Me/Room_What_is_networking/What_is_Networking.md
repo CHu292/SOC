@@ -12,9 +12,9 @@ Mạng lưới được tích hợp vào cuộc sống hàng ngày của chúng 
 Internet là một mạng khổng lồ bao gồm rất nhiều mạng nhỏ trong đó.
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/1_1.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình 1.1 "</b></p>
+<p align="center"><b>Hình 1.1 </b></p>
 
 Xét ví dụ ở trên: Alice kết bạn với Zayn và Toby. Cô ấy muốn giới thiệu 2 người này cho Bob và Jim. Vấn đề là Alice là người duy nhất nói cùng ngôn ngữ với Zayn và Toby. Vậy để 2 người này giao tiếp được với Bob và Jim thì cần thông qua Alice. Do đó, họ giao tiếp với nhau thông qua Alice và tạo thành một mạng mới.
 
@@ -23,9 +23,9 @@ Internet được phát minh bởi Tim Berners-Lee nhờ sự sáng tạo của 
 Internet giống như sau: 
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/1_2.png" alt="" width="1000">
 </p>
-<p align="center"><b>Hình 1.1 "</b></p>
+<p align="center"><b>Hình 1.2</b></p>
 
 Như đã nói ở trên, Internet được tạo thành từ nhiều mạng nhỏ được kết nối với nhau. 
 
@@ -57,7 +57,7 @@ Tóm lại, địa chỉ IP (Internet Protocol) có thể được sử dụng �
 Hãy xem xét địa chỉ sau:
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_1.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình 2.1 "</b></p>
 
@@ -79,7 +79,7 @@ Ví dụ:
 | CMNatic-PC        | 86.157.52.21  | Public          |
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_2.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình 2.2 "</b></p>
 
@@ -88,7 +88,7 @@ Ta thấy 2 thiết bị này dùng địa chỉ IP private để giao tiếp v�
 Ví dụ: 
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_3.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình 2.3 "</b></p>
 
@@ -99,7 +99,7 @@ IPv6 là phiên bản mới của sơ đồ đánh địa chỉ giao thức inte
 So sánh 2 địa chỉ:
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_4.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình 2.4 "</b></p>
 
@@ -112,7 +112,7 @@ Các thiết bị trên mạng đều sẽ có giao diện mạng vật lý, đ�
 Ví dụ: `a4:c3:f0:85:ac:2d`. Sáu ký tự đầu tiên đại diện cho công ty tạo ra giao diện mạng và sáu ký tự cuối cùng là một số duy nhất.
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_What_is_networking/image/2_5.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình 2.5 "</b></p>
 
