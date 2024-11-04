@@ -192,7 +192,7 @@ Ví dụ:
 - Dung lượng gói tin: **64 bytes**
 - Thời gian phản hồi: **6.17 ms**
 
-### Đánh giá thời gian phản hồi khi dùng lệnh ping
+##### Đánh giá thời gian phản hồi khi dùng lệnh ping
 
 - **< 30 ms** - **Ping tuyệt vời**: Hầu như không có độ trễ, rất tốt cho các yêu cầu cần phản hồi nhanh như chơi game online (phản hồi thời gian thực).
 - **30 đến 50 ms** - **Ping trung bình**: Phản hồi trang web vẫn nhanh.
