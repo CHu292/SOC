@@ -222,6 +222,138 @@ Giao thức sử dụng:
 - Trên Unix: Traceroute hoạt động bằng cách sử dụng UDP.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/5_1.png" width ="800">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/5_1.png" width ="1000">
 </p>
 <p align="center"><b>Hình 5.1 </b></p>
+
+## 6. WHOIS
+
+
+**WHOIS** cho phép bạn truy vấn thông tin về tên miền được đăng ký, bao gồm thông tin về chủ sở hữu tên miền đó.
+
+#### Cài đặt WHOIS
+Để cài đặt **WHOIS**, bạn có thể sử dụng lệnh sau:
+```bash
+$ sudo apt update && apt-get install whois
+```
+
+#### Cách sử dụng
+Sau khi cài đặt, bạn có thể sử dụng lệnh **WHOIS** theo cú pháp sau:
+```bash
+whois <domain>
+```
+Thay `<domain>` bằng tên miền mà bạn muốn tra cứu.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/6_1.png" width ="1000">
+</p>
+<p align="center"><b>Hình 6.1 </b></p>
+
+
+## 7. Dig
+
+
+Bây giờ chúng ta sẽ nói về cách hoạt động của tên miền. Làm thế nào để một URL được chuyển thành địa chỉ IP mà máy tính có thể hiểu? Đó là giao thức TCP/IP có tên là **DNS** (Domain Name System - Hệ thống tên miền).
+
+### Chức năng của DNS
+Về cơ bản, DNS cho phép chúng ta yêu cầu một máy chủ đặc biệt cung cấp cho chúng ta địa chỉ IP của trang web mà chúng ta đang cố truy cập. 
+
+**Ví dụ:** Khi chúng ta gửi yêu cầu đến địa chỉ trang web `www.google.com`, trước tiên máy tính sẽ gửi yêu cầu đến một máy chủ DNS đặc biệt. Sau đó, máy chủ sẽ tìm địa chỉ IP của Google và gửi lại cho chúng ta. Khi có địa chỉ IP, máy tính có thể gửi yêu cầu đến địa chỉ đó.
+
+### Quy trình truy vấn DNS
+1. **Kiểm tra Host file cục bộ:** 
+   - Khi bạn thực hiện một yêu cầu đến một trang web, máy tính sẽ kiểm tra "Host file" cục bộ để xem liệu đã có ánh xạ tên miền đến địa chỉ IP hay chưa. Đây là hệ thống cũ hơn DNS và ít được sử dụng hơn, nhưng vẫn được ưu tiên trong thứ tự tìm kiếm của hầu hết các hệ điều hành.
+
+2. **Kiểm tra bộ đệm DNS cục bộ:** 
+   - Nếu không có ánh xạ nào được tạo thủ công, máy tính sẽ kiểm tra bộ đệm DNS cục bộ để xem liệu địa chỉ IP cho trang web đã được lưu trữ hay chưa.
+
+3. **Gửi yêu cầu đến máy chủ DNS đệ quy:** 
+   - Nếu địa chỉ chưa được tìm thấy, máy tính sẽ gửi yêu cầu đến **recursive DNS server** (máy chủ DNS đệ quy). 
+   - Nhiều nhà cung cấp dịch vụ Internet (ISPs) duy trì máy chủ đệ quy riêng của họ, nhưng các công ty như Google hay OpenDNS cũng quản lý các máy chủ đệ quy.
+
+4. **Gửi yêu cầu đến máy chủ gốc:** 
+   - Nếu máy chủ đệ quy không có thông tin, nó sẽ chuyển yêu cầu đến **root name server**.
+   - Trước năm 2004, thế giới có chính xác 13 máy chủ DNS root. Ngày nay, số lượng máy chủ này đã tăng lên, nhưng vẫn có thể truy cập bằng 13 địa chỉ IP được gán cho máy chủ gốc, giúp bạn đến gần máy chủ nhất khi thực hiện yêu cầu.
+
+5. **Chuyển hướng đến máy chủ TLD:** 
+   - Máy chủ tên miền cấp cao nhất (Top-Level Domain - TLD) được chia thành các phần mở rộng. 
+   - Ví dụ, nếu bạn đang tìm kiếm `facebook.com`, yêu cầu của bạn sẽ được chuyển hướng đến máy chủ TLD xử lý các miền `.com`. 
+   - Hoặc nếu bạn tìm kiếm `bbc.co.uk`, yêu cầu sẽ được chuyển đến máy chủ TLD xử lý các miền `.co.uk`.
+
+6. **Chuyển đến máy chủ định danh có thẩm quyền:** 
+   - Khi TLD server nhận được yêu cầu thông tin của bạn, máy chủ sẽ chuyển đến một máy chủ định danh có thẩm quyền thích hợp để lấy thông tin địa chỉ IP cuối cùng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/7_1.png" width ="700">
+</p>
+<p align="center"><b>Hình 7.1 </b></p>
+
+### Authoritative Name Server
+
+Một **máy chủ định danh có thẩm quyền** được sử dụng để lưu trữ trực tiếp bản ghi DNS cho tên miền. Nói cách khác, mọi tên miền trên thế giới sẽ có bản ghi DNS được lưu trữ trên **Authoritative name server** ở đâu đó; chúng là nguồn thông tin đáng tin cậy. 
+
+Khi yêu cầu của bạn được gửi đến Authoritative name server cho tên miền mà bạn đang truy vấn, nó sẽ gửi lại thông tin liên quan cho bạn, cho phép máy tính của bạn kết nối với địa chỉ IP phía sau tên miền bạn đang yêu cầu.
+
+#### Quá trình tự động
+Khi bạn truy cập web bằng trình duyệt, tất cả quá trình này diễn ra tự động. Tuy nhiên, chúng ta có thể theo dõi quá trình này bằng công cụ có tên là **dig**.
+
+#### Cú pháp sử dụng dig
+`dig <domain> @<dns-server-ip>`
+
+- **<domain>**: Tên miền mà bạn muốn truy vấn.
+- **<dns-server-ip>**: Địa chỉ IP của máy chủ DNS mà bạn muốn sử dụng để thực hiện truy vấn.
+
+Đây là một công cụ hữu ích để khắc phục các sự cố mạng.
+
+```bash
+chu@chu-Latitude-5510:~$ dig google.com @1.1.1.1
+;; communications error to 1.1.1.1#53: timed out
+
+; <<>> DiG 9.18.28-0ubuntu0.22.04.1-Ubuntu <<>> google.com @1.1.1.1
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 44075
+;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		130	IN	A	64.233.164.138
+google.com.		130	IN	A	64.233.164.102
+google.com.		130	IN	A	64.233.164.139
+google.com.		130	IN	A	64.233.164.101
+google.com.		130	IN	A	64.233.164.100
+google.com.		130	IN	A	64.233.164.113
+
+;; Query time: 43 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1) (UDP)
+;; WHEN: Thu Aug 15 13:10:00 MSK 2024
+;; MSG SIZE  rcvd: 135
+```
+
+
+
+Trong bài học này, chúng ta sẽ tập trung vào phần **ANSWER** của kết quả trả về từ lệnh `dig`. Phần này cho chúng ta biết rằng chúng ta đã gửi một truy vấn thành công (tức là không có lỗi) và đã nhận được một câu trả lời đầy đủ như mong đợi. Câu trả lời này chứa các địa chỉ IP cho tên miền mà chúng ta đã truy vấn.
+
+### TTL (Time To Live)
+
+Một thông tin thú vị khác mà `dig` cung cấp là **TTL (Time To Live)** của bản ghi DNS được truy vấn. Khi máy tính của bạn truy vấn vào một tên miền, nó sẽ lưu kết quả vào bộ nhớ đệm cục bộ. TTL của bản ghi sẽ cho bạn biết khi nào nên dừng coi bản ghi là hợp lệ — tức là khi nào máy tính nên yêu cầu lại dữ liệu, thay vì dựa vào bản sao được lưu trong bộ nhớ đệm.
+
+TTL có thể được tìm thấy trong cột thứ hai của phần **ANSWER SECTION**.
+
+```bash
+;; ANSWER SECTION:
+google.com.		130	IN	A	64.233.164.138
+google.com.		130	IN	A	64.233.164.102
+google.com.		130	IN	A	64.233.164.139
+google.com.		130	IN	A	64.233.164.101
+google.com.		130	IN	A	64.233.164.100
+google.com.		130	IN	A	64.233.164.113
+```
+
+Điều quan trọng cần lưu ý là TTL (trong ngữ cảnh bộ nhớ đệm DNS) được tính bằng giây. Với ví dụ trên sẽ là 2 phút 10 giây. 
+
