@@ -154,8 +154,6 @@ Khi quá trình bắt tay ba bước hoàn tất, dữ liệu có thể được
 ## 4. Ping 
 
 
-## Lệnh Ping
-
 **Ping** (viết tắt của *Packet Internet Grouper*) là lệnh được sử dụng để kiểm tra khả năng kết nối với tài nguyên từ xa.
 
 #### Cách thức hoạt động:
