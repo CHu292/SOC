@@ -15,7 +15,7 @@ Mô hình Kết nối các hệ thống mở (OSI) là một khung khái niệm 
 Mô hình OSI gồm có 7 lớp:
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/1_1.png" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/1_1.png" width="500">
 </p>
 <p align="center"><b>Hình 1.1</b></p>
 
@@ -87,7 +87,7 @@ Lớp vật lý là phương tiện truyền dẫn vật lý và các công ngh�
 Khi dữ liệu được truyền xuống từng lớp của mô hình OSI, thông tin cụ thể cho từng lớp sẽ được thêm vào, bắt đầu từ khi dữ liệu được truyền đi. Ví dụ, tiêu đề do Lớp Mạng thêm vào sẽ bao gồm địa chỉ IP nguồn và đích, trong khi tiêu đề của Lớp Vận chuyển sẽ chứa thông tin liên quan đến giao thức truyền đang được sử dụng. Lớp Liên kết Dữ liệu cũng thêm một phần vào cuối quá trình truyền, nhằm xác minh rằng dữ liệu không bị hỏng trong quá trình truyền. Điều này cũng tăng cường bảo mật, vì dữ liệu không thể bị chặn và giả mạo mà không làm hỏng phần cuối. Toàn bộ quá trình này được gọi là đóng gói, là cách thức dữ liệu được gửi từ máy tính này sang máy tính khác.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/2_1.png width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/2_1.png" width="500">
 </p>
 <p align="center"><b>Hình 2.1 </b></p>
 
@@ -106,7 +106,7 @@ Transmission Control Protocol (TCP) là một giao thức hướng kết nối y
 Mô hình **TCP/IP**, theo nhiều cách, rất giống với mô hình **OSI**. TCP/IP cũ hơn mô hình OSI vài năm và đóng vai trò là cơ sở cho mạng lưới trong thực tế. Mô hình TCP/IP bao gồm **bốn lớp**:
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_1.png width ="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_1.png" width ="500">
 </p>
 <p align="center"><b>Hình 3.1 </b></p>
 
@@ -121,7 +121,7 @@ Một số nguồn gần đây chia mô hình TCP/IP thành **năm lớp**, chia
  Cách khớp các lớp giữa hai mô hình:
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_2.png width ="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_2.png" width ="500">
 </p>
 <p align="center"><b>Hình 3.2 </b></p>
 
@@ -147,6 +147,6 @@ Khi quá trình bắt tay ba bước hoàn tất, dữ liệu có thể được
 #### Quá trình bắt tay ba bước trong TCP/IP
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_3.png width ="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_3.png" width ="500">
 </p>
 <p align="center"><b>Hình 3.3 </b></p>
