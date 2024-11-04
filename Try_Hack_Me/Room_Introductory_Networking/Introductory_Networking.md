@@ -150,3 +150,78 @@ Khi quá trình bắt tay ba bước hoàn tất, dữ liệu có thể được
   <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_3.png" width ="500">
 </p>
 <p align="center"><b>Hình 3.3 </b></p>
+
+## 4. Ping 
+
+
+## Lệnh Ping
+
+**Ping** (viết tắt của *Packet Internet Grouper*) là lệnh được sử dụng để kiểm tra khả năng kết nối với tài nguyên từ xa.
+
+#### Cách thức hoạt động:
+
+Lệnh **ping** hoạt động dựa trên giao thức **ICMP** (Internet Control Message Protocol), là một trong những giao thức thuộc bộ **TCP/IP**:
+- ICMP hoạt động trên **lớp Network** của mô hình **OSI** và **lớp Internet** của mô hình **TCP/IP**.
+
+#### Cú pháp cơ bản
+```bash
+ping <target>
+```
+
+Lệnh ping trả về **địa chỉ IP** của máy chủ, thay vì trả về URL đã yêu cầu. Để tìm hiểu chi tiết hơn, bạn có thể dùng lệnh `man ping`.
+
+#### Công dụng
+- **Ping** là một lệnh cơ bản để kiểm tra kết nối đến một địa chỉ cụ thể và xem mất bao lâu để nhận được phản hồi.
+- Khi sử dụng lệnh **ping** với tên miền, bạn có thể kiểm tra được **địa chỉ IP** thực của trang web.
+- Ping cũng thường được dùng để kiểm tra **thời gian phản hồi** từ thiết bị đến các nhà cung cấp dịch vụ Internet lớn.
+
+Ví dụ:
+- **FPT**: `ping 210.245.31.130`
+- **Viettel**: `ping 203.113.131.1`
+- **VNN**: `ping 203.162.4.190`
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/4_1.png" width ="800">
+</p>
+<p align="center"><b>Hình 4.1 </b></p>
+
+
+``` basg
+64 bytes from lt-in-f102.1e100.net (108.177.14.102): icmp_seq=1 ttl=109 time=6.17 ms
+```
+
+- Phản hồi từ **IP 108.177.14.102**
+- Dung lượng gói tin: **64 bytes**
+- Thời gian phản hồi: **6.17 ms**
+
+### Đánh giá thời gian phản hồi khi dùng lệnh ping
+
+- **< 30 ms** - **Ping tuyệt vời**: Hầu như không có độ trễ, rất tốt cho các yêu cầu cần phản hồi nhanh như chơi game online (phản hồi thời gian thực).
+- **30 đến 50 ms** - **Ping trung bình**: Phản hồi trang web vẫn nhanh.
+- **50 đến 100 ms** - **Ping hơi chậm**: Web bắt đầu phản hồi chậm khi truy cập.
+- **100 đến 500 ms** - **Ping chậm**: Ảnh hưởng rõ ràng đến trình duyệt web, load web rất lâu.
+- **> 500 ms** - **Ping rất chậm**: Độ trễ đáng kể cho tất cả các yêu cầu; thường xảy ra khi nguồn và đích ở các khu vực khác nhau trên thế giới.
+
+## 5. Traceroute - theo dõi lộ trình
+
+#### Lệnh Traceroute
+
+**Traceroute** là một lệnh dùng để ánh xạ đường dẫn mà yêu cầu của bạn đi qua để đến máy mục tiêu.
+
+#### Cách thức hoạt động
+Internet bao gồm rất nhiều máy chủ và các end-points khác nhau, tất cả đều được kết nối với nhau. Khi truy cập thông tin trên internet, yêu cầu của bạn phải đi qua nhiều máy chủ trung gian. **Traceroute** cho phép bạn xem từng kết nối này, hay chính là các bước trung gian từ máy tính của bạn đến tài nguyên mà bạn yêu cầu.
+
+#### Cú pháp cơ bản
+```bash
+traceroute <destination>
+```
+
+Giao thức sử dụng:
+
+- Trên Windows: Tiện ích tracert sử dụng giao thức ICMP, giống như lệnh ping.
+- Trên Unix: Traceroute hoạt động bằng cách sử dụng UDP.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/5_1.png" width ="800">
+</p>
+<p align="center"><b>Hình 5.1 </b></p>
