@@ -87,7 +87,7 @@ Lớp vật lý là phương tiện truyền dẫn vật lý và các công ngh�
 Khi dữ liệu được truyền xuống từng lớp của mô hình OSI, thông tin cụ thể cho từng lớp sẽ được thêm vào, bắt đầu từ khi dữ liệu được truyền đi. Ví dụ, tiêu đề do Lớp Mạng thêm vào sẽ bao gồm địa chỉ IP nguồn và đích, trong khi tiêu đề của Lớp Vận chuyển sẽ chứa thông tin liên quan đến giao thức truyền đang được sử dụng. Lớp Liên kết Dữ liệu cũng thêm một phần vào cuối quá trình truyền, nhằm xác minh rằng dữ liệu không bị hỏng trong quá trình truyền. Điều này cũng tăng cường bảo mật, vì dữ liệu không thể bị chặn và giả mạo mà không làm hỏng phần cuối. Toàn bộ quá trình này được gọi là đóng gói, là cách thức dữ liệu được gửi từ máy tính này sang máy tính khác.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/2_1.png" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/2_1.png" width="900">
 </p>
 <p align="center"><b>Hình 2.1 </b></p>
 
