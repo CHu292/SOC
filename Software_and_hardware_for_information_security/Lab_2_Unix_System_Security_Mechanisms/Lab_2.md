@@ -112,15 +112,188 @@ Các lớp được chia thành ba nhóm, khác nhau về cách thức xử lý 
 Đầu tiên, chúng ta tạo một người dùng mới (Hình 2).
 
 <p align="center">
-  <img src="" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/2.png" alt="" width="1000">
 </p>
 <p align="center"><b>Hình 2 – Tạo người dùng mới</b></p>
 
 
 Sau đó, thực hiện nhận dạng và xác thực các chủ thể truy cập khi đăng nhập vào hệ thống bằng mã nhận dạng và mật khẩu cố định, gồm ít nhất 8 ký tự và bao gồm ít nhất 3 loại ký tự khác nhau (Hình 3).
 
-**Hình 3 – Quy tắc đặt mật khẩu**
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/3.png" alt="" width="800">
+</p>
+<p align="center"><b></b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/3.1.png" alt="" width="800">
+</p>
+<p align="center"><b>Hình 3 – Quy tắc đặt mật khẩu</b></p>
 
 Tiếp theo, kiểm tra các quy tắc đặt mật khẩu. Chúng ta thấy rằng nếu mật khẩu có ít hơn 12 ký tự hoặc bao gồm ít hơn 3 loại ký tự, thì mật khẩu được coi là không hợp lệ và chúng ta không thể thay đổi mật khẩu (Hình 4).
 
-**Hình 4 – Kiểm tra quy tắc đặt mật khẩu**
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/4.png" alt="" width="800">
+</p>
+<p align="center"><b>Hình 4 – Kiểm tra quy tắc đặt mật khẩu</b></p>
+
+
+### 3.2 Cấu hình hệ thống ghi nhật ký và kiểm toán
+
+Tất cả các tệp nhật ký có thể được phân loại vào một trong các nhóm sau:
+- ứng dụng;
+- sự kiện;
+- dịch vụ;
+- hệ thống.
+
+Hầu hết các tệp nhật ký đều nằm trong thư mục `/var/log`:
+- `/var/log/syslog` hoặc `/var/log/messages` — chứa nhật ký hệ thống toàn cục, ghi lại các thông báo từ lúc hệ thống khởi động, bao gồm thông tin từ kernel của Linux, các dịch vụ khác nhau, thiết bị được phát hiện, các giao diện mạng, và nhiều thông tin khác.
+- `/var/log/auth.log` hoặc `/var/log/secure` — chứa thông tin về việc xác thực người dùng, bao gồm các lần đăng nhập thành công và thất bại, cùng các cơ chế xác thực được sử dụng.
+- `/var/log/dmesg` — chứa nhật ký của các trình điều khiển thiết bị. Có thể sử dụng lệnh cùng tên để xem nội dung của tệp này. Dung lượng của nhật ký có giới hạn; khi tệp đạt đến mức tối đa, các thông báo cũ sẽ bị ghi đè bởi các thông báo mới. Thêm tùy chọn `--level=` để lọc đầu ra theo mức độ quan trọng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/5.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 5** – Danh sách các bản ghi về các sự kiện hệ thống và ứng dụng khác nhau </b></p>
+
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/6.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 6** – Nhật ký đăng nhập và đăng xuất của người dùng  </b></p>
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/7.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 7** – Nhật ký các lần đăng nhập không thành công  </b></p>
+
+Lệnh `dmesg` được sử dụng để hiển thị các thông báo của kernel trong các hệ điều hành tương tự Unix, bao gồm Debian. Để tìm kiếm thông tin liên quan đến một thiết bị cụ thể, chẳng hạn như ổ đĩa cứng được xác định là "sda", chúng ta có thể sử dụng lệnh `dmesg` kết hợp với `grep`.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/8.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 8** – Nhật ký phương tiện thông tin  </b></p>
+
+### 3.3 Cấu hình hệ thống bảo đảm tính toàn vẹn
+
+Chúng tôi đã chọn phần mềm chống virus miễn phí ClamAV làm hệ thống bảo đảm an ninh thông tin (СЗИ). Các tệp cấu hình của ClamAV nằm trong đường dẫn `/etc/clamav/clamd.conf` và `/etc/clamav/freshclam.conf`. Để kiểm tra tính toàn vẹn của các tệp cấu hình, chúng tôi sử dụng hàm băm `sha256`. Giá trị của hàm băm được hiển thị ở **Hình 9**.
+
+Cài đặt clamav:
+```bash
+sudo apt install clamav clamav-daemon
+```
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/9.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 9** – Kiểm tra tính toàn vẹn của tệp trước khi thay đổi</b></p>
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/10.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 10** – Bash script để tạo giá trị băm</b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/11.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 11** – Bash script để so sánh giá trị băm tính toán với giá trị mong đợi</b></p>
+
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/12.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 12** – Kiểm tra hoạt động của script</b></p>
+
+Để thêm script vào crontab ta thực hiện như sau:
+
+```bash
+crontab -e
+```
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/13.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 13** – Thêm script vào crontab</b></p>
+
+
+
+Tệp `/home/debian/check_hash.sh` thực hiện việc khởi chạy script bash. Giờ đây, sau khi lưu tệp và khởi động lại thiết bị, script bash sẽ tự động chạy.
+
+Sau đó, chúng tôi sử dụng ứng dụng “Backintime” để tạo bản sao lưu. Chúng ta có thể lưu bản sao lưu trên máy cục bộ hoặc thông qua SSH để kết nối từ xa. Ngoài ra, chúng ta có thể lập lịch sao lưu trong phần “Schedule” (**Hình 14**).
+
+Đầu tiên chúng ta cần tải Back In Time
+```bash
+sudo apt update
+sudo apt install backintime-qt
+```
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/14.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 14** – Ứng dụng “Backintime”</b></p>
+
+
+Tùy chọn “Include” cho phép chỉ định các tệp và thư mục để sao lưu, trong khi “Exclude” cho phép loại trừ các thư mục không cần thiết. Khi khởi chạy ứng dụng, cấu hình khá đơn giản. Trên màn hình chính, tất cả các bản sao lưu được liệt kê (Backintime gọi chúng là "snapshot").
+
+---
+Để cấu hình và sử dụng **Back In Time** nhằm sao lưu các tệp và thư mục mong muốn, bạn có thể thực hiện theo các bước sau:
+
+### Bước 1: Khởi chạy Back In Time
+- Mở **Back In Time** bằng cách chạy lệnh sau trên terminal:
+  ```bash
+  backintime-qt
+  ```
+- Nếu cần quyền root, chạy:
+  ```bash
+  sudo backintime-qt
+  ```
+
+### Bước 2: Thiết lập cấu hình sao lưu
+Khi khởi chạy lần đầu, **Back In Time** sẽ yêu cầu bạn thiết lập cấu hình cho các bản sao lưu. Các bước cụ thể như sau:
+
+1. **Chọn thư mục sao lưu**:
+   - Trong tab **General** (Tổng quát), chọn thư mục **Where to save snapshots** (Nơi lưu trữ các bản snapshot). Đây là nơi các bản sao lưu sẽ được lưu trữ (có thể là ổ đĩa ngoài, thư mục cụ thể trên hệ thống, v.v.).
+   
+2. **Thiết lập thời gian sao lưu tự động (tùy chọn)**:
+   - Trong phần **Schedule** (Lịch trình), bạn có thể chọn thời gian sao lưu tự động (hàng giờ, hàng ngày, hàng tuần, hoặc theo ý muốn).
+
+### Bước 3: Cấu hình tệp và thư mục để sao lưu và loại trừ
+Để chỉ định các thư mục và tệp bạn muốn sao lưu hoặc loại trừ, chuyển đến tab **Include/Exclude** và làm như sau:
+
+1. **Thêm các thư mục và tệp cần sao lưu**:
+   - Trong phần **Include** (Bao gồm), nhấp vào nút **Add** để thêm các thư mục hoặc tệp mà bạn muốn sao lưu. Bạn có thể thêm nhiều thư mục và tệp tùy ý.
+
+2. **Loại trừ các thư mục và tệp không cần thiết**:
+   - Trong phần **Exclude** (Loại trừ), nhấp vào nút **Add** để loại trừ các thư mục hoặc tệp mà bạn không muốn sao lưu (như thư mục tạm thời, thư mục cache, v.v.).
+   - Back In Time cũng cho phép bạn thiết lập các quy tắc loại trừ dựa trên kiểu tệp hoặc tên tệp. Bạn có thể loại trừ dựa trên ký tự đại diện hoặc biểu thức (như `*.tmp` để loại trừ tất cả các tệp có đuôi `.tmp`).
+
+### Bước 4: Thực hiện sao lưu lần đầu
+- Sau khi hoàn tất cấu hình, quay lại màn hình chính và nhấp vào **Take Snapshot** (Chụp snapshot) để thực hiện sao lưu lần đầu.
+- Tất cả các bản sao lưu sẽ xuất hiện trên màn hình chính của ứng dụng dưới dạng các "snapshot" được liệt kê theo thời gian.
+
+### Bước 5: Khôi phục dữ liệu từ snapshot (nếu cần)
+- Để khôi phục dữ liệu từ snapshot, chỉ cần chọn snapshot trong danh sách và nhấp vào nút **Restore** (Khôi phục).
+- Bạn có thể chọn khôi phục toàn bộ snapshot hoặc chỉ những tệp và thư mục cụ thể.
+
+Với các bước này, bạn sẽ có một bản sao lưu được cấu hình và quản lý dễ dàng thông qua giao diện của **Back In Time**.
+--- 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/15.png" alt="" width="800">
+</p>
+<p align="center"><b>**Hình 15** – Giao diện chương trình</b></p>
+
+
+Ở đây bạn có thể thao tác với tất cả các bản sao lưu: khôi phục, xóa, so sánh, v.v. Chọn bản sao lưu cần thiết và nhấn nút “Khôi phục”. Sau khi hoàn tất, tất cả dữ liệu sẽ được khôi phục.
+
+Để kiểm tra định kỳ chức năng của hệ thống bảo đảm an ninh thông tin (СЗИ), chúng tôi đã chọn Vulners Agent, một chương trình kiểm tra tương thích với Debian 12. Agent này thu thập thông tin về hệ điều hành, phiên bản và các gói đã cài đặt. Sau đó, thông tin này được gửi đến Vulners API để xác định phần mềm nào có lỗ hổng bảo mật.
+
+
+**Hình 17** – Thêm api-key để sử dụng Vulners Agent
+
+**Hình 18** – Khởi chạy máy quét
+
+**Hình 19** – Kết quả quét
+
+СЗИ ClamAV không cho phép các loại virus và phần mềm độc hại xâm nhập.
+
