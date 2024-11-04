@@ -15,7 +15,7 @@ Mô hình Kết nối các hệ thống mở (OSI) là một khung khái niệm 
 Mô hình OSI gồm có 7 lớp:
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/1_1.png" alt="" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/1_1.png="1000">
 </p>
 <p align="center"><b>Hình 1.1 </b></p>
 
@@ -80,4 +80,19 @@ Lớp vật lý (Physical) nằm ngay dưới phần cứng của máy tính. Đ
 Công việc của lớp vật lý là chuyển đổi dữ liệu nhị phân của quá trình truyền thành tín hiệu và truyền chúng qua mạng, cũng như nhận tín hiệu và chuyển đổi chúng trở lại thành dữ liệu nhị phân.
 
 Lớp vật lý là phương tiện truyền dẫn vật lý và các công nghệ để truyền dữ liệu qua phương tiện đó. Về cốt lõi, hoạt động truyền dữ liệu là việc truyền tín hiệu kỹ thuật số và điện tử qua các kênh vật lý khác nhau như cáp quang, cáp đồng và không khí. Lớp vật lý bao gồm tiêu chuẩn cho các công nghệ và chỉ số liên quan chặt chẽ với các kênh, chẳng hạn như Bluetooth, NFC và tốc độ truyền dữ liệu.
+
+## 2. Encapsulation
+
+Khi dữ liệu được truyền xuống từng lớp của mô hình OSI, thông tin cụ thể cho từng lớp sẽ được thêm vào, bắt đầu từ khi dữ liệu được truyền đi. Ví dụ, tiêu đề do Lớp Mạng thêm vào sẽ bao gồm địa chỉ IP nguồn và đích, trong khi tiêu đề của Lớp Vận chuyển sẽ chứa thông tin liên quan đến giao thức truyền đang được sử dụng. Lớp Liên kết Dữ liệu cũng thêm một phần vào cuối quá trình truyền, nhằm xác minh rằng dữ liệu không bị hỏng trong quá trình truyền. Điều này cũng tăng cường bảo mật, vì dữ liệu không thể bị chặn và giả mạo mà không làm hỏng phần cuối. Toàn bộ quá trình này được gọi là đóng gói, là cách thức dữ liệu được gửi từ máy tính này sang máy tính khác.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/2_1.png="1000">
+</p>
+<p align="center"><b>Hình 2.1 </b></p>
+
+Lưu ý rằng dữ liệu được đóng gói có tên gọi khác nhau ở từng lớp trong quy trình. Tại các Lớp 7, 6 và 5, dữ liệu được gọi đơn giản là **dữ liệu**. Ở Lớp Vận chuyển, dữ liệu đóng gói được gọi là **phân đoạn** (segment) hoặc **gói dữ liệu** (datagram), tùy thuộc vào việc TCP hay UDP là giao thức truyền. Tại Lớp Mạng, dữ liệu được gọi là **gói**. Khi gói được truyền xuống Lớp Liên kết Dữ liệu, nó trở thành **khung**, và khi truyền qua mạng, khung được chia thành các **bit**.
+
+Khi máy tính đích nhận được dữ liệu, nó đảo ngược quy trình này – bắt đầu từ Lớp Vật lý và xử lý lên tới Lớp Ứng dụng, lần lượt loại bỏ các thông tin đã được thêm vào. Quá trình này gọi là giải đóng gói (de-encapsulation). Có thể coi các lớp của mô hình OSI tồn tại bên trong mọi máy tính có khả năng mạng, dù không thực sự rõ ràng. Tất cả các máy tính đều tuân theo quy trình đóng gói để gửi dữ liệu và giải đóng gói khi nhận dữ liệu.
+
+Các quy trình đóng gói và giải đóng gói rất quan trọng – không chỉ vì mục đích sử dụng thực tế mà còn vì chúng cung cấp một phương pháp chuẩn hóa để gửi dữ liệu. Điều này đảm bảo rằng mọi lần truyền sẽ tuân theo cùng một phương pháp, cho phép bất kỳ thiết bị mạng nào gửi yêu cầu đến bất kỳ thiết bị nào khác có thể truy cập được và đảm bảo yêu cầu đó được hiểu – bất kể chúng có cùng nhà sản xuất, hệ điều hành hay không.
 
