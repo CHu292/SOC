@@ -96,3 +96,56 @@ Khi máy tính đích nhận được dữ liệu, nó đảo ngược quy trìn
 
 Các quy trình đóng gói và giải đóng gói rất quan trọng – không chỉ vì mục đích sử dụng thực tế mà còn vì chúng cung cấp một phương pháp chuẩn hóa để gửi dữ liệu. Điều này đảm bảo rằng mọi lần truyền sẽ tuân theo cùng một phương pháp, cho phép bất kỳ thiết bị mạng nào gửi yêu cầu đến bất kỳ thiết bị nào khác có thể truy cập được và đảm bảo yêu cầu đó được hiểu – bất kể chúng có cùng nhà sản xuất, hệ điều hành hay không.
 
+## 3. The TCP/IP Model
+
+
+Transmission Control Protocol (TCP) là một giao thức hướng kết nối yêu cầu **bắt tay ba bước TCP** (three-way handshake) để thiết lập kết nối. TCP cung cấp khả năng truyền dữ liệu đáng tin cậy, kiểm soát luồng và kiểm soát tắc nghẽn. Các giao thức cấp cao hơn như **HTTP**, **POP3**, **IMAP**, và **SMTP** sử dụng TCP.
+
+ Mô hình TCP/IP và sự tương đồng với mô hình OSI
+Mô hình **TCP/IP**, theo nhiều cách, rất giống với mô hình **OSI**. TCP/IP cũ hơn mô hình OSI vài năm và đóng vai trò là cơ sở cho mạng lưới trong thực tế. Mô hình TCP/IP bao gồm **bốn lớp**:
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_1.png="1000">
+</p>
+<p align="center"><b>Hình 3.1 </b></p>
+
+1. **Application Layer** - Tương đương với các lớp Application, Presentation, và Session trong mô hình OSI.
+2. **Transport Layer** - Tương đương với Lớp Vận chuyển (Transport) trong mô hình OSI.
+3. **Internet Layer** - Tương đương với Lớp Mạng (Network) trong mô hình OSI.
+4. **Network Interface Layer** - Bao gồm chức năng của các Lớp Liên kết Dữ liệu (Data Link) và Vật lý (Physical) trong mô hình OSI.
+
+Lưu ý về phân chia các lớp trong mô hình TCP/IP
+Một số nguồn gần đây chia mô hình TCP/IP thành **năm lớp**, chia lớp **Network Interface** thành **Lớp Liên kết Dữ liệu** (Data Link) và **Lớp Vật lý** (Physical), giống như mô hình OSI. Điều này được chấp nhận và biết đến rộng rãi; tuy nhiên, nó không được định nghĩa chính thức, không giống như bốn lớp ban đầu trong RFC1122. Cả hai cách chia đều hợp lệ, tùy thuộc vào phiên bản mà bạn sử dụng.
+
+ Cách khớp các lớp giữa hai mô hình:
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_2.png="1000">
+</p>
+<p align="center"><b>Hình 3.2 </b></p>
+
+#### Các quá trình đóng gói và giải đóng gói trong mô hình TCP/IP
+Các quá trình **đóng gói** và **giải đóng gói** hoạt động tương tự với mô hình TCP/IP như với mô hình OSI. Ở mỗi lớp của mô hình TCP/IP, một **tiêu đề** được thêm vào trong quá trình đóng gói và được xóa trong quá trình giải đóng gói.
+
+#### Bộ giao thức TCP/IP
+Khi nói về TCP/IP, chúng ta nên hình dung một bảng có **bốn lớp**, nhưng thực chất đang đề cập đến một **bộ giao thức** -- tức là các quy tắc xác định cách thực hiện một hành động. TCP/IP lấy tên từ hai giao thức quan trọng nhất:
+
+- **Transmission Control Protocol (TCP)**: Điều khiển luồng dữ liệu giữa hai điểm cuối.
+- **Internet Protocol (IP)**: Kiểm soát cách các gói được xử lý và gửi đi.
+
+#### Transmission Control Protocol (TCP) và quá trình bắt tay ba bước (three-way handshake)
+**TCP** là một giao thức **dựa trên kết nối** (connection-based protocol). Nghĩa là, trước khi gửi bất kỳ dữ liệu nào qua TCP, phải tạo một kết nối ổn định giữa hai máy tính. Quá trình này gọi là **bắt tay ba bước**.
+
+Khi cố gắng tạo kết nối:
+1. Máy tính gửi một yêu cầu đặc biệt đến máy chủ từ xa để khởi tạo kết nối. Yêu cầu này chứa **bit SYN** (synchronise - đồng bộ hóa), tạo ra liên hệ đầu tiên trong quá trình kết nối.
+2. Máy chủ phản hồi bằng một gói chứa **bit SYN** và **bit ACK** (acknowledgement - xác nhận).
+3. Cuối cùng, máy tính của bạn sẽ gửi một gói chứa **bit ACK**, xác nhận rằng kết nối đã được thiết lập thành công.
+
+Khi quá trình bắt tay ba bước hoàn tất, dữ liệu có thể được truyền giữa hai máy tính. Bất kỳ dữ liệu nào bị hỏng hoặc mất sẽ được gửi lại, đảm bảo kết nối ổn định. 
+
+#### Quá trình bắt tay ba bước trong TCP/IP
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Try_Hack_Me/Room_Introductory_Networking/image/3_3.png="1000">
+</p>
+<p align="center"><b>Hình 3.3 </b></p>
