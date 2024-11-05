@@ -288,8 +288,25 @@ Với các bước này, bạn sẽ có một bản sao lưu được cấu hìn
 
 Để kiểm tra định kỳ chức năng của hệ thống bảo đảm an ninh thông tin (СЗИ), chúng tôi đã chọn Vulners Agent, một chương trình kiểm tra tương thích với Debian 12. Agent này thu thập thông tin về hệ điều hành, phiên bản và các gói đã cài đặt. Sau đó, thông tin này được gửi đến Vulners API để xác định phần mềm nào có lỗ hổng bảo mật.
 
+#### Cách tải Vulners Agent
 
-**Hình 17** – Thêm api-key để sử dụng Vulners Agent
+Adding the Public Key
+
+First, add vulners.com pubkey:
+
+```bash
+wget -O- https://repo.vulners.com/pubkey.txt | apt-key add -
+echo "deb http://repo.vulners.com/debian focal main" | tee /etc/apt/sources.list.d/vulners.list
+apt-get update && apt-get install vulners-agent
+```
+[chi tiết tại đây](https://vulners.com/docs/manuals/vulners_agent/#debian)
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Software_and_hardware_for_information_security/Lab_2_Unix_System_Security_Mechanisms/image/16.png" alt="" width="800">
+</p>
+<p align="center"><b>****Hình 17** – Thêm api-key để sử dụng Vulners Agent</b></p>
+
+
 
 **Hình 18** – Khởi chạy máy quét
 
