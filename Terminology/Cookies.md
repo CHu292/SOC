@@ -1,0 +1,3 @@
+# 1. Cookies là gì?
+
+Cookies là những tập tin được một trang web bất kì gửi đến máy tính của người dùng và được lưu lại thông qua trình duyệt khi người dùng truy cập trang web đó. Cookies được dùng với mục đích phổ biến là để lưu trữ phiên đăng nhập nhằm phục vụ cho mục đích xác thực với website, duy trì trạng thái đăng nhập. Ngoài ra, Cookies còn được dùng để ghi nhớ thông tin trạng thái, ghi nhớ hoạt động người dùng thực hiện trong quá trình truy cập và duyệt một trang web. Cookies cũng được dùng để lưu lại các thông tin khác mà người dùng nhập hay điền vào trang web như tên, địa chỉ, email...
