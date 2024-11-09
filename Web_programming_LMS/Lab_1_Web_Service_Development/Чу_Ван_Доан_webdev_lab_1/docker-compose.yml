@@ -1,0 +1,52 @@
+version: '3.8'  # Указывает версию Docker Compose
+
+services:
+  website:
+    build: ./website  # Сборка образа из папки ./website
+    container_name: website  # Устанавливаем имя контейнера как 'website'
+    ports:
+      - "8000:8000"  # Проброс порта 8000 контейнера на порт 8000 хоста
+    depends_on:
+      - db  # Контейнер 'website' зависит от контейнера 'db'
+    environment:
+      DATABASE_URL: "postgresql://user:password@db:5432/chatapp"  # Переменная окружения для подключения к базе данных
+    networks:
+      - chat-net  # Подключение контейнера к сети 'chat-net'
+
+  chat:
+    build: ./chat  # Сборка образа из папки ./chat
+    container_name: chat  # Устанавливаем имя контейнера как 'chat'
+    ports:
+      - "8001:8001"  # Проброс порта 8001 контейнера на порт 8001 хоста
+    depends_on:
+      - db  # Контейнер 'chat' зависит от контейнера 'db'
+    networks:
+      - chat-net  # Подключение контейнера к сети 'chat-net'
+
+  db:
+    image: postgres:13  # Использование официального образа Postgres версии 13
+    container_name: db  # Устанавливаем имя контейнера как 'db'
+    environment:
+      POSTGRES_USER: user  # Имя пользователя для базы данных
+      POSTGRES_PASSWORD: password  # Пароль для базы данных
+      POSTGRES_DB: chatapp  # Имя базы данных
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql  # Инициализация базы данных из файла init.sql
+    networks:
+      - chat-net  # Подключение контейнера к сети 'chat-net'
+
+  nginx:
+    build: ./nginx  # Сборка образа из папки ./nginx
+    container_name: nginx  # Устанавливаем имя контейнера как 'nginx'
+    ports:
+      - "8080:80"  # Проброс порта 80 контейнера на порт 8080 хоста
+    depends_on:
+      - website  # Контейнер 'nginx' зависит от контейнера 'website'
+      - chat  # Контейнер 'nginx' зависит от контейнера 'chat'
+    networks:
+      - chat-net  # Подключение контейнера к сети 'chat-net'
+
+networks:
+  chat-net:
+    driver: bridge  # Используется сетевой драйвер 'bridge' для создания виртуальной сети
+
