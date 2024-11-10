@@ -626,7 +626,7 @@ Như đã đề cập trước đó, trong quá trình điều chế, một tron
 - Điều biến pha (Phase-Shift Keying, PSK).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_23_Modulation_of_digital_data_by_analog_signals.png" alt="  Hình 3.23 Điều chế dữ liệu số với tín hiệu analog" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_23_Modulation_of_digital_data_by_analog_signals.png" alt="  Hình 3.23 Điều chế dữ liệu số với tín hiệu analog" width="900">
 </p>
 <p align="center"><b> Hình 3.23 Điều chế dữ liệu số với tín hiệu analog</b></p>
 
