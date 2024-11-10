@@ -337,7 +337,7 @@ $$
 C = 100 \times 10^6 \times \log_2(1 + 50) \approx 100 \times 10^6 \times 5.672 = 567,2 \, \text{Mbit/s}.
 $$
 
-Cần hiểu rõ sự khác biệt giữa tốc độ truyền dữ liệu và tốc độ ký hiệu. **Tốc độ truyền dữ liệu** (information rate, data rate) là tốc độ truyền các bit, đo bằng bit/s và các đơn vị phát sinh khác. \)
+Cần hiểu rõ sự khác biệt giữa tốc độ truyền dữ liệu và tốc độ ký hiệu. **Tốc độ truyền dữ liệu** (information rate, data rate) là tốc độ truyền các bit, đo bằng bit/s và các đơn vị phát sinh khác.$$
 
 **Tốc độ ký hiệu** (symbol rate) hay **tốc độ điều chế** là tốc độ thay đổi các ký hiệu, đo bằng baud hoặc ký hiệu mỗi giây. Mỗi ký hiệu đại diện cho một hoặc nhiều bit thông tin tùy thuộc vào phương pháp mã hóa được chọn.
 
@@ -561,3 +561,31 @@ Các phương pháp truy cập dựa trên ghép kênh phân chia theo tần s�
 - Truy cập đa người dùng phân chia theo bước sóng (WDMA, Wavelength Division Multiple Access).
 
 Phương pháp truy cập đa người dùng phân chia theo mã (CDMA, Code Division Multiple Access) được dựa trên ghép kênh phân chia theo mã (CDM).
+
+---
+## 3.5 Điều chế và mã hóa tín hiệu
+
+Thông thường, các tín hiệu thông tin có tần số thấp và giới hạn về độ rộng phổ (băng tần cơ bản). Việc truyền các tín hiệu băng tần cơ bản trực tiếp (trong dải tần số cơ bản) được thực hiện bởi các kênh truyền cơ bản (baseband channel). Các kênh này có băng thông hẹp, do đó toàn bộ băng thông được sử dụng để truyền tín hiệu.
+
+Tuy nhiên, trong nhiều trường hợp, không thể truyền tín hiệu gốc trực tiếp qua kênh truyền. Ví dụ, kênh truyền là kênh tần số cao, băng rộng và được thiết kế để truyền tín hiệu từ nhiều nguồn đồng thời bằng cách phân chia tần số các kênh.
+
+Để dịch phổ của tín hiệu từ vùng tần số thấp sang vùng tần số cao dành cho truyền dẫn, cần sử dụng điều chế.
+
+Giả sử tín hiệu tần số thấp cần truyền qua kênh truyền được xác định bởi hàm $$s(t)$$. Trong kênh truyền, một dải tần số cao được dành để truyền tín hiệu này. Ở đầu vào của kênh truyền, một thiết bị truyền đặc biệt tạo ra tín hiệu tần số cao phụ trợ, thường là tín hiệu liên tục theo thời gian $$u(t)$$. Nếu thay đổi các tham số của tín hiệu $$u(t)$$ theo dạng của tín hiệu $$s(t)$$, thì dạng của tín hiệu $$u(t)$$ sẽ có thuộc tính mới, mang thông tin giống như trong tín hiệu $$s(t)$$.
+
+Do đó, tín hiệu $$u(t)$$ được gọi là tín hiệu sóng mang, dao động mang hoặc chỉ đơn giản là sóng mang (carrier), và quá trình chuyển tải thông tin vào các tham số của tín hiệu sóng mang được gọi là điều chế của nó (modulation).
+
+**Điều chế** là quá trình thay đổi một tín hiệu theo dạng của một tín hiệu khác.  
+Tín hiệu thông tin $$s(t)$$ được gọi là tín hiệu điều chế (modulating signal), và kết quả của điều chế là tín hiệu đã được điều chế (modulated signal). Quá trình ngược lại là tách tín hiệu điều chế ra khỏi dao động đã được điều chế, gọi là giải điều chế (demodulation).
+
+Các thao tác điều chế và giải điều chế được thực hiện bằng modem (modem: modulator - demodulator), là một thiết bị riêng hoặc tích hợp trong các thiết bị khác.
+
+Mục đích chính của điều chế là dịch phổ của tín hiệu sang một dải tần khác, đảm bảo cơ chế biểu diễn thông tin ít nhạy cảm với nhiễu và giao thoa, và khả năng sử dụng các phương pháp ghép kênh và truy cập đa người dùng.
+
+Khi truyền dẫn băng rộng, việc sử dụng nhiều sóng mang có tần số khác nhau cho phép truyền nhiều kênh logic trong một kênh vật lý duy nhất.
+
+Để phân biệt điều chế tín hiệu tương tự và tín hiệu số, điều chế tín hiệu tương tự trên cơ sở sóng mang được gọi là **điều chế tương tự** (analog modulation), còn điều chế tín hiệu số trên cơ sở sóng mang được gọi là **điều chế số** (digital modulation) hay thao tác điều chế.
+
+Sóng mang thường cần thiết khi truyền dữ liệu qua dây điện thoại, môi trường không khí hoặc cáp quang. Tuy nhiên, trong một số trường hợp, điều chế có thể được thực hiện trên cơ sở các tín hiệu rời rạc dưới dạng các xung. Đối với truyền dẫn tín hiệu dựa trên các chuỗi xung tuần hoàn, sử dụng **điều chế xung** (pulse modulation).
+
+Khi truyền tín hiệu số qua các kênh truyền băng cơ bản, các phương pháp mã hóa tuyến tính hoặc mã hóa số tín hiệu (line coding) được áp dụng.
