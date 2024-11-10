@@ -508,3 +508,34 @@ Phương pháp ghép kênh theo tần số (bước sóng) và ghép kênh theo 
 
 Ví dụ về kết hợp giữa ghép kênh theo tần số và ghép kênh theo thời gian là **hệ thống thông tin di động GSM** (Global System for Mobile Communications).
 
+---
+
+### 3.4.4 Ghép kênh phân chia theo mã
+
+**Ghép kênh phân chia theo mã (Code Division Multiplexing, CDM)** khác biệt so với ghép kênh theo tần số và ghép kênh theo thời gian. Trong phương pháp này, tất cả các kênh đều sử dụng cùng một phổ tần số vào cùng một thời điểm, nhưng mỗi kênh sẽ có một mã riêng biệt.
+
+CDM dựa trên nguyên lý mở rộng phổ (Spread Spectrum). Ý tưởng chính của mở rộng phổ là chuyển đổi tín hiệu thông tin với băng thông hẹp thành tín hiệu có băng thông rộng. Điều này đạt được bằng cách điều chế tín hiệu thông tin với mã mở rộng, mã này hoàn toàn độc lập với tín hiệu thông tin và có băng thông lớn hơn. Kết quả của quá trình điều chế là công suất của tín hiệu gốc không thay đổi mà được phân bố trên một dải băng tần rộng hơn. Nói cách khác, băng tần của tín hiệu truyền đi được mở rộng đáng kể (mở rộng phổ tín hiệu).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_20_Spread_Spectrum_Method.png" alt="Hình 3.20 Phương pháp mở rộng phổ" width="800">
+</p>
+<p align="center"><b>Hình 3.20 Phương pháp mở rộng phổ</b></p>
+
+
+
+Các mã mở rộng được chọn sao cho tín hiệu trở nên giống như nhiễu. Nhờ vậy, nhiều người dùng có thể đồng thời sử dụng cùng một dải tần số với mức nhiễu tương tác thấp.
+
+Trong CDM, có một yêu cầu bổ sung đối với các mã mở rộng: chúng phải độc lập với nhau. Mã mở rộng là duy nhất cho mỗi bộ phát và được sử dụng để xác định kết nối. Nó là một chuỗi các bit dài 11, 16, 32, 64, v.v. (được gọi là chuỗi chip hoặc chip). Để tạo ra tín hiệu có phổ mở rộng, bộ phát thay thế mỗi bit trong dòng dữ liệu gốc bằng mã mở rộng thông qua phép toán XOR (hoặc loại trừ). Sau đó, tín hiệu giống như nhiễu này được truyền bởi bộ phát vào kênh chung, nơi đồng thời truyền các tín hiệu từ nhiều bộ phát khác.
+
+Mỗi tín hiệu truyền đi có một mã mở rộng riêng biệt. Bộ thu biết mã mở rộng của bộ phát mà nó cần nhận tín hiệu. Điều này cho phép bộ thu tách tín hiệu dành cho nó ra khỏi nhiều tín hiệu nhận được. Trong quá trình này, tín hiệu của các bộ phát khác với các mã mở rộng khác nhau được bộ thu xem như nhiễu cộng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_21_Code_Division_Multiplexing.png" alt="Hình 3.21 Ghép kênh phân chia theo mã" width="800">
+</p>
+<p align="center"><b>Hình 3.21 Ghép kênh phân chia theo mã</b></p>
+
+
+Ưu điểm chính của phương pháp ghép kênh này là tính bảo mật và độ ẩn danh cao trong truyền dữ liệu: nếu không biết mã, không thể nhận tín hiệu, và trong một số trường hợp cũng không thể phát hiện sự hiện diện của nó. Ban đầu, phương pháp này được sử dụng trong các ứng dụng quân sự (bài báo đầu tiên về chủ đề này được công bố vào năm 1935 bởi nhà khoa học Liên Xô D.V. Ageev), sau đó được áp dụng trong các ứng dụng dân sự. Ngoài ra, không gian mã rộng hơn nhiều so với phương pháp ghép kênh theo tần số, cho phép dễ dàng gán mã riêng cho mỗi bộ phát mà không gặp vấn đề đáng kể. Tuy nhiên, vấn đề chính của ghép kênh theo mã trong thời gian dài là khó khăn trong việc thực hiện kỹ thuật cho các bộ thu và yêu cầu phải đảm bảo đồng bộ chính xác giữa bộ phát và bộ thu để đảm bảo nhận đúng khối dữ liệu.
+
+CDM được sử dụng chủ yếu trong các mạng di động. Cơ chế này là nền tảng cho phương pháp truy cập đa mã (Code Division Multiple Access, CDMA), tên của nó được sử dụng để đặt tên cho tiêu chuẩn truyền thông di động IS-95a, cũng như một số tiêu chuẩn của hệ thống di động thế hệ thứ ba (CDMA2000, WCDMA, v.v.).
+
