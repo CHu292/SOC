@@ -469,3 +469,42 @@ Ngoài việc sử dụng băng thông hiệu quả, OFDM còn giúp giảm các
 
 
 OFDM không phải là một công nghệ mới. Phần lớn các nghiên cứu cơ bản mô tả hoạt động của nó xuất hiện vào những năm 1960. Nó được sử dụng rộng rãi trong mạng không dây chuẩn 802.11, mạng truyền hình cáp, mạng dựa trên dây điện, mạng dựa trên công nghệ xDSL và mạng truyền dữ liệu di động thế hệ thứ 4 (LTE).
+
+
+
+### 3.4.3 Ghép Kênh Phân Chia Theo Bước Sóng
+
+**Ghép kênh phân chia theo bước sóng** (Wavelength Division Multiplexing, WDM) hoặc **ghép kênh theo bước sóng** được sử dụng trong các kênh truyền dẫn quang và là một biến thể của ghép kênh phân chia tần số. Công nghệ WDM cho phép truyền đồng thời và độc lập hai hoặc nhiều tín hiệu quang qua một sợi quang bằng cách sử dụng các bước sóng khác nhau. Công nghệ này cũng cho phép truyền dẫn hai chiều qua một sợi quang (truyền trên một bước sóng và nhận trên một bước sóng khác).
+
+Các tín hiệu từ mỗi kênh đầu vào được mang trong một dải tần riêng biệt. Sau đó, chúng được tập hợp lại trong bộ ghép kênh và truyền qua một sợi quang, tạo thành một kênh băng thông rộng. Phân chia tần số trong sợi quang được thực hiện bằng cách truyền các tia sáng với các bước sóng khác nhau: mỗi bộ phát laser sẽ phát ánh sáng ở một tần số xác định (tần số trong dải ánh sáng) vào một sợi quang. Ánh sáng của mỗi nguồn sẽ đi qua sợi quang một cách độc lập. Do đó, nhiều kênh độc lập được tạo ra song song trong cùng một sợi, giúp tăng băng thông của hệ thống truyền dẫn tổng thể.
+
+Ở phía nhận, bộ tách sóng phân chia các tần số của tín hiệu bằng các bộ lọc.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_19_Wavelength_division_multiplexing.png" alt="Hình 3.19 Ghép kênh phân chia bước sóng" width="800">
+</p>
+<p align="center"><b>Hình 3.19 Ghép kênh phân chia bước sóng</b></p>
+
+
+**Công nghệ WDM** được triển khai ở tầng vật lý của mô hình OSI nên nó **trong suốt đối với các giao thức tầng trên**. Phần lớn các hệ thống WDM sử dụng các cáp quang đơn mode có đường kính sợi 9/125 µm.
+
+Cách triển khai đơn giản và rẻ nhất của công nghệ WDM sử dụng hai kênh – một kênh có bước sóng 1310 nm và kênh còn lại là 1550 nm. Để tạo ra hệ thống WDM loại này, có thể sử dụng các bộ thu phát quang mà không cần kiểm soát chặt chẽ các bước sóng.
+
+**Công nghệ CWDM** (Coarse WDM, ghép kênh phân chia bước sóng thưa) là sự phát triển của công nghệ WDM, cho phép sử dụng tối đa 18 kênh quang (như quy định trong ITU-T G.694.2) với khoảng cách giữa các bước sóng là 20 nm để truyền tín hiệu quang. Các kênh quang nằm trong dải từ 1271 đến 1611 nm. Do độ suy hao cao trong dải từ 1271–1451 nm, hầu hết các hệ thống CWDM chỉ sử dụng 8 kênh trong khoảng từ 1471–1611 nm. Dữ liệu trên mỗi kênh có thể truyền với tốc độ lên tới 10 Gbps.
+
+Để tạo hệ thống CWDM, người ta sử dụng các bộ thu phát quang, các bộ ghép kênh và tách kênh với các bước sóng xác định, nhưng vì các bước sóng này không cần phải kiểm soát chặt chẽ, nên chi phí thiết bị này thấp hơn so với thiết bị của hệ thống DWDM.
+
+**Công nghệ Dense WDM** (DWDM, ghép kênh phân chia bước sóng dày đặc) cũng là một biến thể của công nghệ WDM và cho phép truyền 40, 80 và thậm chí 160 kênh quang trong dải hẹp giữa 1525–1565 nm hoặc 1570–1610 nm (lưới tần số DWDM được quy định trong ITU-T G.694.1-2012). Các kênh quang cách nhau khoảng 0,8 nm, 0,4 nm hoặc 0,2 nm. Dữ liệu trên mỗi kênh có thể truyền với tốc độ 10 Gbps, với khả năng nâng cấp lên dịch vụ 40 Gbps và 100 Gbps.
+
+Công nghệ DWDM phức tạp hơn so với CWDM và yêu cầu kiểm soát chặt chẽ các bước sóng và ổn định nhiệt độ của thiết bị — bao gồm các bộ thu phát quang, các bộ ghép kênh và tách kênh.
+
+Công ty D-Link cung cấp các bộ thu phát quang SFP, XFP và SFP+ để tạo hệ thống WDM và CWDM. Bài giảng 5 sẽ giới thiệu về các bộ thu phát quang này.
+
+**Công nghệ WDM** chủ yếu được sử dụng trên các tuyến truyền dẫn dài, nơi yêu cầu băng thông lớn. Việc sử dụng WDM giúp tránh phải lắp đặt thêm các cáp quang mới trong mạng hiện tại và tăng băng thông của kênh quang sẵn có bằng cách tăng số lượng kênh logic (các bước sóng phát ra từ các bộ phát laser). Điều này đặc biệt quan trọng khi lưu lượng dữ liệu ngày càng tăng, cho phép các nhà cung cấp dịch vụ cung cấp thêm dịch vụ cho khách hàng. Một dịch vụ mới có thể được thêm vào trên hệ thống cáp quang hiện có mà không làm gián đoạn dịch vụ cho khách hàng.
+
+Bên cạnh việc cung cấp các dịch vụ, việc sử dụng WDM cũng cho phép các nhà khai thác dịch vụ viễn thông cung cấp dịch vụ cho thuê “sợi quang ảo”, tức là cho thuê từng bước sóng riêng lẻ.
+
+Phương pháp ghép kênh theo tần số (bước sóng) và ghép kênh theo thời gian có thể được sử dụng đồng thời. Trong trường hợp này, các băng tần được chia sẻ trong một kênh vật lý. Trong bất kỳ băng tần nào, mỗi hệ thống đều được cung cấp các khoảng thời gian nhất định để truyền dữ liệu.
+
+Ví dụ về kết hợp giữa ghép kênh theo tần số và ghép kênh theo thời gian là **hệ thống thông tin di động GSM** (Global System for Mobile Communications).
+
