@@ -415,7 +415,7 @@ Trong ghép kênh tần số hoặc ghép kênh phân chia theo tần số (Freq
 Tuy nhiên, mặc dù có các dải bảo vệ, các thành phần phổ của tín hiệu vẫn có thể vượt quá giới hạn của kênh logic và gây nhiễu cho kênh logic lân cận.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_17_Frequency_Division_Multiplexing.png" alt="Hình 3.17 Ghép kênh phân chia theo tần số" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_17_Frequency_Division_Multiplexing.png" alt="Hình 3.17 Ghép kênh phân chia theo tần số" width="900">
 </p>
 <p align="center"><b>Hình 3.17 Ghép kênh phân chia theo tần số</b></p>
 
