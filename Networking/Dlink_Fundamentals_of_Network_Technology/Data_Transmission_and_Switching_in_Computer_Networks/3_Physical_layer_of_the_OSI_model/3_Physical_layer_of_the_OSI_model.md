@@ -390,7 +390,7 @@ Trong chế độ đồng bộ (*Synchronous Time Division Multiplexing*), thờ
 Các kênh đầu vào lần lượt truyền các khối dữ liệu có kích thước bằng nhau trong mỗi khe thời gian của mỗi chu kỳ. Hình 3.15 minh họa chế độ ghép kênh theo phân chia thời gian đồng bộ, đảm bảo truyền tải dữ liệu giữa bốn cặp thiết bị. Khối dữ liệu từ cổng 1 của bộ ghép kênh sẽ được truyền trong khe thời gian 1 cho kết nối A1–A2. Khối dữ liệu từ cổng 2 sẽ được truyền trong khe thời gian 2 cho kết nối B1–B2. Khối dữ liệu từ cổng 3 sẽ được truyền trong khe thời gian 3 cho kết nối C1–C2. Cuối cùng, khối dữ liệu từ cổng 4 sẽ được truyền trong khe thời gian 4 cho kết nối D1–D2.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_15_Synchronous_Time_Division_Multiplexing.png" alt="Hình 3.15 Ghép kênh phân chia thời gian đồng bộ" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_15_Synchronous_Time_Division_Multiplexing.png" alt=Hình 3.15 Ghép kênh phân chia thời gian đồng bộ" width="700">
 </p>
 <p align="center"><b>"Hình 3.15 Ghép kênh phân chia thời gian đồng bộ</b></p>
 
@@ -408,3 +408,37 @@ Thông lượng của kênh chung trong TDM đồng bộ được xác định b
 
 Một ưu điểm của TDM đồng bộ là tính minh bạch đối với các giao thức tầng trên, vì nó được thực hiện ở tầng vật lý của mô hình OSI. Trong các khe thời gian, có thể truyền nhiều loại lưu lượng khác nhau: dữ liệu, thoại, video. Vì các hệ thống tương tác nhận được khe thời gian với cùng một số thứ tự trong mỗi chu kỳ, các khối dữ liệu được truyền đi sẽ xuất hiện ở bên nhận trong khoảng thời gian bằng nhau và đến với cùng độ trễ. Do đó, không cần sử dụng bộ đệm, vì luồng dữ liệu được truyền và nhận với cùng một tốc độ.
 
+### 3.4.2 Ghép kênh phân chia theo tần số
+
+Trong ghép kênh tần số hoặc ghép kênh phân chia theo tần số (Frequency Division Multiplexing - FDM), băng thông rộng của kênh vật lý $$F$$ được chia thành $$n$$ dải tần số hẹp $$f \ll F$$, trong mỗi dải tần này tạo ra một kênh logic. Kích thước của các dải tần số $$f$$ có thể khác nhau. Mỗi hệ thống tương tác được chỉ định một dải tần riêng (kênh logic). Các bộ phát có thể gửi tín hiệu đồng thời. Tín hiệu truyền qua các kênh logic khác nhau được đặt trên các tần số sóng mang khác nhau và do đó trong miền tần số không nên chồng chéo nhau. Để loại bỏ ảnh hưởng lẫn nhau của các tín hiệu truyền qua các kênh logic khác nhau, các dải bảo vệ được hình thành giữa chúng, đóng vai trò là biên giới giữa các kênh.
+
+Tuy nhiên, mặc dù có các dải bảo vệ, các thành phần phổ của tín hiệu vẫn có thể vượt quá giới hạn của kênh logic và gây nhiễu cho kênh logic lân cận.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_17_Frequency_Division_Multiplexing.png" alt="Hình 3.17 Ghép kênh phân chia theo tần số" width="700">
+</p>
+<p align="center"><b>Hình 3.17 Ghép kênh phân chia theo tần số</b></p>
+
+
+Ưu điểm của ghép kênh tần số là cho phép truyền đồng thời các tín hiệu bởi nhiều hệ thống tương tác. Tuy nhiên, vì mỗi hệ thống được chỉ định một kênh riêng biệt theo cách tĩnh, điều này dẫn đến việc sử dụng không hiệu quả băng thông của kênh truyền chung. Tại một thời điểm, một hệ thống có thể không có dữ liệu để truyền và kênh sẽ để trống, trong khi các hệ thống khác có thể thiếu tài nguyên từ các kênh logic được phân bổ cho chúng. Ngoài ra, sự tồn tại của các dải bảo vệ giữa các kênh logic làm giảm băng thông có sẵn để truyền.
+
+Ghép kênh phân chia theo tần số là một phương pháp ghép kênh được sử dụng rộng rãi trong phát thanh và truyền hình cũng như trong truyền thông di động. Nó cũng được sử dụng trong các mạng dựa trên công nghệ xDSL.
+
+Tuy nhiên, trong ghép kênh tần số, có thể chia băng thông thành các kênh mà không cần sử dụng dải bảo vệ. 
+
+Trong ghép kênh phân chia theo tần số trực giao (Orthogonal Frequency Division Multiplexing - OFDM), toàn bộ băng thông của kênh vật lý được chia thành nhiều tần số con (subcarriers) hoặc các kênh con. Các tần số con này có thể lên đến hàng chục, thậm chí hàng nghìn. Mỗi bộ phát được chỉ định để truyền trên một số tần số con nhất định, được chọn từ nhiều tần số con theo một quy luật xác định. Các tần số con này là trực giao với nhau, nghĩa là việc truyền thông tin trên mỗi tần số con không ảnh hưởng đến các tần số con lân cận. Như được thể hiện trong Hình 3.18, các trung tâm của tần số con được đặt sao cho mức năng lượng tối đa của một tần số con trùng với mức năng lượng tối thiểu của các tần số con khác, mặc dù tín hiệu của chúng chồng chéo nhau trong phổ tần số. Cách sắp xếp này cho phép sử dụng băng thông có sẵn một cách hiệu quả hơn.
+
+Truyền dẫn được thực hiện đồng thời trên tất cả các tần số con. Luồng dữ liệu tốc độ cao ở đầu phát được chia thành $$n$$ luồng tốc độ thấp (với $$n$$ là số lượng tần số con được chỉ định cho bộ phát đó), mỗi luồng trong số đó được điều chế trên một tần số con riêng biệt. Phân bổ các tần số con có thể thay đổi động trong quá trình hoạt động.
+
+Để truyền một tín hiệu phức tạp, bao gồm nhiều tần số con, phép biến đổi Fourier ngược nhanh (IFFT) được sử dụng. Bộ phát sẽ lấy các tín hiệu điều chế từ mỗi kênh con, cộng chúng lại để tạo thành một tín hiệu tổng hợp. Tín hiệu OFDM tổng hợp có thể được xem như một tập hợp các tín hiệu hẹp băng được điều chế chậm, thay vì một tín hiệu rộng băng được điều chế nhanh. Khi nhận tín hiệu, phép biến đổi Fourier nhanh (FFT) sẽ được thực hiện. Tất cả các tần số con được tách ra đồng thời và các thông số mang thông tin của từng tần số con (biên độ và/hoặc pha) được xác định.
+
+Ngoài việc sử dụng băng thông hiệu quả, OFDM còn giúp giảm các hiệu ứng tiêu cực nổi tiếng của hiện tượng đa đường và nhiễu liên ký tự. Tín hiệu OFDM kết hợp nhiều kênh con hẹp băng, mỗi kênh có thể truyền ở tốc độ thấp. Do đó, hệ thống chỉ gặp phải nhiễu liên ký tự ở mức tối thiểu, điều mà các hệ thống tốc độ cao dễ bị ảnh hưởng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_18_Orthogonal_Frequency_Division_Multiplexing.png" alt="Hình 3.18 Ghép kênh phân chia theo tần số trực giao" width="700">
+</p>
+<p align="center"><b>Hình 3.18 Ghép kênh phân chia theo tần số trực giao</b></p>
+
+
+
+OFDM không phải là một công nghệ mới. Phần lớn các nghiên cứu cơ bản mô tả hoạt động của nó xuất hiện vào những năm 1960. Nó được sử dụng rộng rãi trong mạng không dây chuẩn 802.11, mạng truyền hình cáp, mạng dựa trên dây điện, mạng dựa trên công nghệ xDSL và mạng truyền dữ liệu di động thế hệ thứ 4 (LTE).
