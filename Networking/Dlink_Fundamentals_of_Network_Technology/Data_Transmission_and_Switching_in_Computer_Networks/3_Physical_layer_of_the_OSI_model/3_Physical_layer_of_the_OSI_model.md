@@ -584,7 +584,7 @@ Mục đích chính của điều chế là dịch phổ của tín hiệu sang 
 
 Khi truyền dẫn băng rộng, việc sử dụng nhiều sóng mang có tần số khác nhau cho phép truyền nhiều kênh logic trong một kênh vật lý duy nhất.
 
-Để phân biệt điều chế tín hiệu tương tự và tín hiệu số, điều chế tín hiệu tương tự trên cơ sở sóng mang được gọi là **điều chế tương tự** (analog modulation), còn điều chế tín hiệu số trên cơ sở sóng mang được gọi là **điều chế số** (digital modulation) hay thao tác điều chế.
+Để phân biệt điều chế Tín hiệu tương tự (Analog signal) và tín hiệu số, điều chế Tín hiệu tương tự (Analog signal) trên cơ sở sóng mang được gọi là **điều chế tương tự** (analog modulation), còn điều chế tín hiệu số trên cơ sở sóng mang được gọi là **điều chế số** (digital modulation) hay thao tác điều chế.
 
 Sóng mang thường cần thiết khi truyền dữ liệu qua dây điện thoại, môi trường không khí hoặc cáp quang. Tuy nhiên, trong một số trường hợp, điều chế có thể được thực hiện trên cơ sở các tín hiệu rời rạc dưới dạng các xung. Đối với truyền dẫn tín hiệu dựa trên các chuỗi xung tuần hoàn, sử dụng **điều chế xung** (pulse modulation).
 
@@ -594,7 +594,7 @@ Khi truyền tín hiệu số qua các kênh truyền băng cơ bản, các phư
 
 ### 3.5.1 Các phương pháp điều chế tương tự
 
-Việc sử dụng điều chế tương tự cho dữ liệu tương tự có thể không rõ ràng ngay. Tín hiệu âm thanh thường được truyền qua đường dây điện thoại với phổ gốc được giữ nguyên, tức là không cần điều chế. Tuy nhiên, trong các môi trường phi định hướng, việc truyền tín hiệu tương tự mà không điều chế là gần như không khả thi — sẽ cần đến các ăng-ten dài hàng km. Để đạt hiệu quả trong truyền dẫn, có thể cần sử dụng tần số cao hơn cũng như khả năng ghép kênh theo tần số.
+Việc sử dụng điều chế tương tự cho dữ liệu tương tự có thể không rõ ràng ngay. Tín hiệu âm thanh thường được truyền qua đường dây điện thoại với phổ gốc được giữ nguyên, tức là không cần điều chế. Tuy nhiên, trong các môi trường phi định hướng, việc truyền Tín hiệu tương tự (Analog signal) mà không điều chế là gần như không khả thi — sẽ cần đến các ăng-ten dài hàng km. Để đạt hiệu quả trong truyền dẫn, có thể cần sử dụng tần số cao hơn cũng như khả năng ghép kênh theo tần số.
 
 Điều chế tương tự dựa trên việc truyền tín hiệu tần số thấp bằng sóng mang tần số cao. Dạng chính của sóng mang là dao động điều hòa, có ba tham số tự do: biên độ, pha và tần số.
 
@@ -607,9 +607,9 @@ Dựa trên việc thông tin được mang trên tham số nào trong ba tham s
 Điều chế tương tự được sử dụng trong phát thanh, khi nhiều đài phát cùng hoạt động trong một môi trường truyền dẫn chung: điều chế biên độ (AM) cho các đài phát trong dải sóng AM và điều chế tần số (FM) cho các đài trong dải sóng FM.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_22_Amplitude_and_frequency_modulation_of_an_analog_signal.png" alt=" Hình 3.22: Điều chế biên độ và điều chế tần số của tín hiệu tương tự" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_22_Amplitude_and_frequency_modulation_of_an_analog_signal.png" alt=" Hình 3.22: Điều chế biên độ và điều chế tần số của Tín hiệu tương tự (Analog signal)" width="500">
 </p>
-<p align="center"><b> Hình 3.22: Điều chế biên độ và điều chế tần số của tín hiệu tương tự</b></p>
+<p align="center"><b> Hình 3.22: Điều chế biên độ và điều chế tần số của Tín hiệu tương tự (Analog signal)</b></p>
 
 ---
 
@@ -617,9 +617,9 @@ Dựa trên việc thông tin được mang trên tham số nào trong ba tham s
 
 Quá trình truyền dữ liệu số thông qua sóng mang được gọi là điều chế số hoặc điều biến số.
 
-Để có thể truyền dữ liệu số qua kênh tương tự, dữ liệu cần được chuyển đổi thành tín hiệu tương tự cơ sở trước, sau đó tín hiệu này sẽ được đặt ở tần số sóng mang để truyền tối ưu qua môi trường vật lý. Ví dụ về các mạng mà dữ liệu số được truyền qua tín hiệu tương tự bao gồm mạng điện thoại công cộng và mạng không dây.
+Để có thể truyền dữ liệu số qua kênh tương tự, dữ liệu cần được chuyển đổi thành Tín hiệu tương tự (Analog signal) cơ sở trước, sau đó tín hiệu này sẽ được đặt ở tần số sóng mang để truyền tối ưu qua môi trường vật lý. Ví dụ về các mạng mà dữ liệu số được truyền qua Tín hiệu tương tự (Analog signal) bao gồm mạng điện thoại công cộng và mạng không dây.
 
-Như đã đề cập trước đó, trong quá trình điều chế, một trong ba đặc điểm của tín hiệu sóng mang sẽ được sử dụng: biên độ, pha và tần số. Do đó, có ba công nghệ điều chế chính thực hiện chuyển đổi dữ liệu số thành tín hiệu tương tự:
+Như đã đề cập trước đó, trong quá trình điều chế, một trong ba đặc điểm của tín hiệu sóng mang sẽ được sử dụng: biên độ, pha và tần số. Do đó, có ba công nghệ điều chế chính thực hiện chuyển đổi dữ liệu số thành Tín hiệu tương tự (Analog signal):
 
 - Điều biến biên độ (Amplitude-Shift Keying, ASK);
 - Điều biến tần số (Frequency-Shift Keying, FSK);
@@ -726,7 +726,7 @@ Trong **Điều biến pha vi sai bốn mức** (Differential QPSK, DQPSK), tư�
 
 #### Điều biến biên độ vuông góc (Quadrature Amplitude Modulation, QAM)
 
-**Điều biến biên độ vuông góc** (Quadrature Amplitude Modulation, QAM) được sử dụng rộng rãi trong các tiêu chuẩn mạng không dây và có dây, là một phương pháp truyền tín hiệu tương tự.
+**Điều biến biên độ vuông góc** (Quadrature Amplitude Modulation, QAM) được sử dụng rộng rãi trong các tiêu chuẩn mạng không dây và có dây, là một phương pháp truyền Tín hiệu tương tự (Analog signal).
 
 Kỹ thuật điều chế này kết hợp giữa điều chế biên độ và điều chế pha. Phương pháp QAM cho phép truyền đồng thời hai tín hiệu khác nhau trên cùng một tần số sóng mang, sử dụng hai bản sao của sóng mang dịch pha nhau 90°. Trong QAM, hai tín hiệu độc lập được điều chế theo cả biên độ và pha, sau đó truyền qua môi trường. Tín hiệu được giải điều chế ở phía thu và được kết hợp để tái tạo lại tín hiệu nhị phân ban đầu.
 
@@ -734,3 +734,54 @@ Kỹ thuật điều chế này kết hợp giữa điều chế biên độ và
 Khi sử dụng điều biến biên độ hai mức (2QAM), mỗi luồng dữ liệu có thể có hai trạng thái, tạo ra một kết hợp hai trạng thái — tổng cộng có $$2 \times 2 = 4$$ trạng thái. Khi sử dụng điều biến biên độ bốn mức (4QAM), với bốn mức biên độ khác nhau, luồng dữ liệu kết hợp sẽ có tổng cộng $$4 \times 4 = 16$$ trạng thái. Hiện nay, có những hệ thống sử dụng 64 trạng thái (64QAM) hoặc thậm chí 256 trạng thái (256QAM). 
 
 Số trạng thái càng lớn, tốc độ truyền càng cao, nhưng cũng tăng khả năng xảy ra lỗi do nhiễu hoặc suy hao tín hiệu.
+
+---
+
+### 3.5.3 Các phương pháp điều chế xung
+
+Trong các phần trước, chúng ta đã xem xét các phương pháp điều chế sử dụng tín hiệu hài làm sóng mang. Trong hệ thống truyền thông, sóng mang dưới dạng chuỗi xung được sử dụng rộng rãi. Phương pháp điều chế sử dụng sóng mang như vậy được gọi là **điều chế xung** (Impulse Modulation). Nó được sử dụng để truyền dữ liệu đã được số hóa qua các kênh truyền thông. Ngoài ra, điều chế xung còn cho phép truyền đồng thời nhiều tín hiệu qua một kênh bằng cách **ghép kênh phân chia theo thời gian** (Time Division Multiplexing).
+
+Thao tác thay thế hàm liên tục bằng chuỗi các giá trị tức thời của nó được gọi là **lấy mẫu** (discretization).
+
+Trong điều chế xung, sóng mang có dạng chuỗi xung tuần hoàn. Xung được mô tả bằng các tham số như biên độ, độ dài, tần số lặp lại và pha ban đầu. Tùy thuộc vào tham số của xung thay đổi, người ta phân loại các loại điều chế xung như sau:
+
+- Điều chế xung biên độ (Amplitude Impulse Modulation - AIM),
+- Điều chế xung tần số (Frequency Impulse Modulation - FIM),
+- Điều chế xung độ rộng (Pulse Width Modulation - PWM),
+- Điều chế xung vị trí (Pulse Position Modulation - PPM),
+- Điều chế xung mã (Pulse Code Modulation - PCM).
+
+Cơ sở lý thuyết của tất cả các phương pháp điều chế xung là **định lý Nyquist-Kotelnikov**. Theo định lý này, bất kỳ tín hiệu liên tục nào với phổ tần giới hạn (từ 0 đến $$F_{max}$$) đều có thể được mô tả hoàn toàn bằng chuỗi các giá trị của nó tại các thời điểm cách nhau một khoảng thời gian $$T = 1/(2F_{max})$$, trong đó $$F_{max}$$ là tần số tối đa trong phổ của tín hiệu thông tin. Tần suất lấy mẫu càng cao thì tín hiệu điều chế sẽ được biểu diễn càng chính xác. Tần số tối thiểu của xung phụ thuộc vào định lý Nyquist-Kotelnikov.
+
+Trong **điều chế xung biên độ** (Amplitude Impulse Modulation - AIM, hay Pulse Amplitude Modulation - PAM), biên độ của xung được thay đổi để truyền dữ liệu. Các tham số khác của xung không thay đổi. Trong trường hợp điều chế dữ liệu analog, biên độ của xung thay đổi theo biên độ của tín hiệu điều chế, và số mức biên độ của xung về lý thuyết có thể không giới hạn. Trong truyền dữ liệu số, số lượng mức biên độ khả thi bị giới hạn ở một số cấp độ cụ thể.
+
+Điều chế xung biên độ (PAM) được sử dụng trong chuẩn IEEE 802.3. Ví dụ, trong đặc tả tầng vật lý của **Ethernet 1000Base-T** (Gigabit Ethernet qua cáp xoắn đôi), phương pháp PAM với 5 mức biên độ (PAM-5) được sử dụng. Bốn mức dùng để mã hóa hai bit thông tin, và mức thứ năm là dư thừa, được dùng để sửa lỗi. Đặc tả **10GBASE-T** (Ethernet 10 Gigabit) sử dụng phiên bản THP của mã hóa Tomlinson-Harashima (THP-coding) với 16 mức biên độ trong điều chế PAM.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_24_Pulse_amplitude_modulation_of_an_analog_signal.png" alt="  Hình 3.24 Điều chế biên độ xung của tín hiệu analog" width="900">
+</p>
+<p align="center"><b> Hình 3.24 Điều chế biên độ xung của tín hiệu analog</b></p>
+
+
+
+#### Điều chế xung độ rộng (PWM - Pulse Width Modulation)
+
+**Điều chế xung độ rộng** (PWM, Pulse Width Modulation), đôi khi còn được gọi là điều chế theo độ dài xung, là phương pháp điều chế trong đó độ dài của xung được điều chỉnh tỷ lệ với hàm của tín hiệu điều chế, trong khi biên độ của xung và khoảng cách giữa các xung được giữ cố định. 
+
+#### Điều chế xung vị trí (PPM - Pulse Position Modulation)
+
+Trong **điều chế xung vị trí** (PPM, Pulse Position Modulation), các xung có biên độ và độ dài như nhau nhưng vị trí của chúng lệch khỏi điểm bắt đầu chu kỳ theo khoảng thời gian tỷ lệ với tín hiệu thông tin. Phương pháp điều chế này thường được sử dụng trong truyền dẫn dữ liệu qua các kênh quang học.
+
+#### Điều chế xung mã (PCM - Pulse Code Modulation)
+
+**Điều chế xung mã** (PCM, Pulse Code Modulation) là phương pháp chuyển đổi dữ liệu tương tự thành tín hiệu số. Sau đó, tín hiệu số này có thể được truyền qua kênh số bằng một trong các phương pháp mã hóa vật lý, hoặc chuyển đổi ngược lại thành Tín hiệu tương tự (Analog signal) bằng phương pháp giải mã thích hợp.
+
+Điều chế xung mã được sử dụng rộng rãi trong điện thoại IP. Nó bao gồm quá trình lấy mẫu theo thời gian, lượng tử hóa theo mức (biên độ) và mã hóa. Quá trình lấy mẫu biên độ tương tự xảy ra trong các khoảng thời gian cố định, và mỗi giá trị mẫu sẽ được làm tròn đến mức gần nhất trong tập hợp các mức xác định trước. Quá trình này gọi là **lượng tử hóa**. Số lượng mức được chọn theo bội số của 2, chẳng hạn 2⁸ = 256, 2⁴ = 16, 2⁵ = 32, v.v. Số bit dùng để biểu diễn các mức lượng tử hóa này được gọi là **độ sâu bit**. Như vậy, sau khi lượng tử hóa, mỗi mẫu có thể được biểu diễn dưới dạng mã nhị phân n-bit.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_25_Pulse code_modulation.png" alt="  Hình 3.25 Điều chế mã xung" width="900">
+</p>
+<p align="center"><b> Hình 3.25 Điều chế mã xung</b></p>
+
+
+---
