@@ -539,3 +539,25 @@ Mỗi tín hiệu truyền đi có một mã mở rộng riêng biệt. Bộ thu
 
 CDM được sử dụng chủ yếu trong các mạng di động. Cơ chế này là nền tảng cho phương pháp truy cập đa mã (Code Division Multiple Access, CDMA), tên của nó được sử dụng để đặt tên cho tiêu chuẩn truyền thông di động IS-95a, cũng như một số tiêu chuẩn của hệ thống di động thế hệ thứ ba (CDMA2000, WCDMA, v.v.).
 
+---
+
+### 3.4.5 Ghép kênh và các phương pháp truy cập đa người dùng
+
+Ghép kênh và truy cập đa người dùng (multiple access) có điểm chung là đều nhằm chia sẻ tài nguyên chung giữa các người dùng. Ghép kênh cho phép nhiều người dùng sử dụng chung một kênh vật lý để truyền nhiều thông điệp cùng lúc. Các phương pháp truy cập đa người dùng dựa trên các phương pháp ghép kênh theo thời gian, tần số và mã, giúp xác định cách các kênh logic được phân phối giữa nhiều người dùng, đồng thời quản lý tình huống khi nhiều người dùng cùng lúc muốn sử dụng một kênh (trong trường hợp số kênh logic ít hơn số người dùng).
+
+Ghép kênh được thực hiện ở tầng vật lý của mô hình OSI, trong khi các phương pháp truy cập đa người dùng được thực hiện ở cả tầng vật lý và tầng liên kết của mô hình OSI.
+
+Các phương pháp truy cập dựa trên ghép kênh phân chia theo thời gian (TDM) bao gồm:
+
+- Truy cập đa người dùng phân chia theo thời gian (TDMA, Time Division Multiple Access);
+- Truy cập đa người dùng có kiểm soát sóng mang và phát hiện va chạm (CSMA/CD, Carrier Sense Multiple Access With Collision Detection);
+- Truy cập đa người dùng có kiểm soát sóng mang và tránh va chạm (CSMA/CA, Carrier Sense Multiple Access with Collision Avoidance);
+- Truyền bằng mã thông (Token passing).
+
+Các phương pháp truy cập dựa trên ghép kênh phân chia theo tần số (FDM) bao gồm:
+
+- Truy cập đa người dùng phân chia theo tần số (FDMA, Frequency Division Multiple Access);
+- Truy cập đa người dùng phân chia theo tần số trực giao (OFDMA, Orthogonal Frequency Division Multiple Access);
+- Truy cập đa người dùng phân chia theo bước sóng (WDMA, Wavelength Division Multiple Access).
+
+Phương pháp truy cập đa người dùng phân chia theo mã (CDMA, Code Division Multiple Access) được dựa trên ghép kênh phân chia theo mã (CDM).
