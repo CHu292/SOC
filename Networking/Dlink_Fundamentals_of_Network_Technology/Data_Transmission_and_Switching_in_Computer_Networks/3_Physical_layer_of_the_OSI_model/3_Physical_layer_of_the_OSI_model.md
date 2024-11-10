@@ -392,7 +392,7 @@ Các kênh đầu vào lần lượt truyền các khối dữ liệu có kích 
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_15_Synchronous_Time_Division_Multiplexing.png" alt=Hình 3.15 Ghép kênh phân chia thời gian đồng bộ" width="700">
 </p>
-<p align="center"><b>"Hình 3.15 Ghép kênh phân chia thời gian đồng bộ</b></p>
+<p align="center"><b>Hình 3.15 Ghép kênh phân chia thời gian đồng bộ</b></p>
 
 
 Việc sử dụng phương pháp này có thể dẫn đến tình trạng trong cùng một chu kỳ, một hệ thống không có dữ liệu để truyền, trong khi hệ thống khác lại không đủ thời gian được phân bổ. Khi một thiết bị không có dữ liệu để truyền, khe thời gian được phân cho nó sẽ vẫn trống và không thể được sử dụng bởi thiết bị khác.
@@ -407,6 +407,33 @@ TDM đồng bộ được sử dụng trong các mạng chuyển mạch kênh. H
 Thông lượng của kênh chung trong TDM đồng bộ được xác định bằng tổng thông lượng của tất cả các kênh đầu vào cộng thêm một số chi phí quản lý. Một trong những nhược điểm chính của chế độ đồng bộ là sự ràng buộc giữa các kênh đầu vào và các khe thời gian. Nếu một thiết bị không có dữ liệu để truyền, thiết bị khác không thể truyền dữ liệu trong khe thời gian đó. Điều này dẫn đến việc sử dụng băng thông không hiệu quả và làm giảm thông lượng của kênh truyền.
 
 Một ưu điểm của TDM đồng bộ là tính minh bạch đối với các giao thức tầng trên, vì nó được thực hiện ở tầng vật lý của mô hình OSI. Trong các khe thời gian, có thể truyền nhiều loại lưu lượng khác nhau: dữ liệu, thoại, video. Vì các hệ thống tương tác nhận được khe thời gian với cùng một số thứ tự trong mỗi chu kỳ, các khối dữ liệu được truyền đi sẽ xuất hiện ở bên nhận trong khoảng thời gian bằng nhau và đến với cùng độ trễ. Do đó, không cần sử dụng bộ đệm, vì luồng dữ liệu được truyền và nhận với cùng một tốc độ.
+
+
+
+**Bộ đệm - Buffer** là một vùng nhớ nơi thiết bị mạng tạm thời lưu trữ dữ liệu đang được truyền.
+
+Thay thế cho **ghép kênh theo thời gian đồng bộ** là **ghép kênh không đồng bộ** (Asynchronous TDM, ATDM) hoặc **ghép kênh thống kê** (Statistical TDM). Ghép kênh thống kê khác biệt ở chỗ người gửi chỉ nhận **khoảng thời gian** (time-slot) khi họ có dữ liệu để truyền. Các khoảng thời gian không có độ dài cố định (kích thước của khối dữ liệu truyền có thể thay đổi), không gắn liền với một kênh đầu vào cụ thể mà được cấp phát động, theo thống kê về nhu cầu của các kênh. Nếu người gửi không có dữ liệu để truyền, khoảng thời gian đó sẽ không bị bỏ trống mà được truyền cho thiết bị khác sẵn sàng truyền dữ liệu. Hơn nữa, người gửi, tùy thuộc vào lượng dữ liệu họ có, có thể nhận không chỉ một mà nhiều khoảng thời gian liên tiếp.
+
+**Băng thông của kênh truyền chung** sẽ được xác định bởi băng thông trung bình của các kênh đầu vào được kết nối.
+
+Khác với **TDM đồng bộ**, nơi thông tin địa chỉ được biểu thị bằng vị trí của khoảng thời gian trong khung TDM, trong **TDM thống kê**, khối dữ liệu truyền phải chứa thông tin địa chỉ chính xác để đảm bảo dữ liệu được truyền đến đúng người nhận.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_16_Asynchronous_Time_Division_Multiplexing.png" alt=Hình 3.16 Ghép kênh không đồng bộ với phân chia theo thời gian" width="900">
+</p>
+<p align="center"><b>Hình 3.16 Ghép kênh không đồng bộ với phân chia theo thời gian</b></p>
+
+
+Thông thường, các thiết bị mạng tương tác một cách ngẫu nhiên, vì không phải tất cả các thiết bị đều có dữ liệu để truyền cùng lúc. Nếu dữ liệu đến cùng lúc từ nhiều cổng đầu vào, thì chỉ một cặp thiết bị có thể sử dụng kênh chung để truyền dữ liệu. Các dữ liệu khác, từ các cổng khác của bộ ghép kênh, sẽ được đưa vào bộ đệm và chờ đợi đến khi kênh chung được giải phóng. Nếu không, chúng có thể bị mất. Để giải quyết vấn đề khi nhiều người gửi muốn sử dụng kênh chung cùng lúc, các **phương pháp truy cập đa người dùng** (multiple access) được áp dụng, được thực hiện ở tầng liên kết của mô hình OSI.
+
+Một cặp thiết bị tương tác không thể chiếm giữ độc quyền kênh chung để truyền dữ liệu, vì điều này có thể dẫn đến tình trạng đầy bộ đệm của bộ ghép kênh (tắc nghẽn mạng). Để ngăn chặn tình trạng đầy bộ đệm, các phương pháp **kiểm soát luồng** (flow control) đặc biệt được sử dụng.
+
+Thông thường, các khối dữ liệu được lưu trong bộ đệm sẽ được truyền qua cổng ra của bộ ghép kênh theo thứ tự mà chúng đã đến, tức là theo nguyên tắc **“vào trước, ra trước”** (FIFO - First Input, First Output). Tuy nhiên, có thể tổ chức truyền dữ liệu phân biệt hoặc đảm bảo cho các khối dữ liệu, từ đó đảm bảo **chất lượng dịch vụ** (Quality of Service, QoS).
+
+Thuật ngữ **“chất lượng dịch vụ”** không ám chỉ “tốc độ” mà các gói tin được truyền từ người gửi đến người nhận, mà là cách thức chúng được truyền. Các gói tin có thể được truyền qua các tuyến đường khác nhau, có thể được đưa vào bộ đệm của thiết bị mạng và chờ đợi lâu hoặc được truyền trước các gói tin khác, thậm chí có thể bị loại bỏ. Lưu lượng của các ứng dụng khác nhau yêu cầu băng thông khác nhau. Các chức năng QoS trong mạng hiện đại nhằm đảm bảo mức dịch vụ đảm bảo hoặc phân biệt cho lưu lượng mạng. Chi tiết về các chức năng chất lượng dịch vụ có thể tham khảo trong khóa học “Công nghệ chuyển mạch của các mạng Ethernet hiện đại”.
+
+**Ghép kênh thống kê** được sử dụng trong các mạng chuyển mạch gói và mạng chuyển mạch tế bào. Khác với TDM đồng bộ, nó không “trong suốt” đối với các giao thức, vì nó được thực hiện ở tầng liên kết và các tầng cao hơn trong mô hình OSI. Các nút cuối và thiết bị mạng phải hỗ trợ các giao thức giống nhau. Ví dụ về ứng dụng của TDM không đồng bộ bao gồm các giao thức trong họ Ethernet, giao thức IP, các giao thức TCP và UDP, giao thức ATM (Asynchronous Transfer Mode).
+
 
 ### 3.4.2 Ghép kênh phân chia theo tần số
 
