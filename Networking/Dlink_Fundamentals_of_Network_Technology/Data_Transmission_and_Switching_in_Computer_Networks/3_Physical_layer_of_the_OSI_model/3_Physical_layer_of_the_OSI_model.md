@@ -611,3 +611,126 @@ Dựa trên việc thông tin được mang trên tham số nào trong ba tham s
 </p>
 <p align="center"><b> Hình 3.22: Điều chế biên độ và điều chế tần số của tín hiệu tương tự</b></p>
 
+---
+
+### 3.5.2 Phương pháp điều chế số
+
+Quá trình truyền dữ liệu số thông qua sóng mang được gọi là điều chế số hoặc điều biến số.
+
+Để có thể truyền dữ liệu số qua kênh tương tự, dữ liệu cần được chuyển đổi thành tín hiệu tương tự cơ sở trước, sau đó tín hiệu này sẽ được đặt ở tần số sóng mang để truyền tối ưu qua môi trường vật lý. Ví dụ về các mạng mà dữ liệu số được truyền qua tín hiệu tương tự bao gồm mạng điện thoại công cộng và mạng không dây.
+
+Như đã đề cập trước đó, trong quá trình điều chế, một trong ba đặc điểm của tín hiệu sóng mang sẽ được sử dụng: biên độ, pha và tần số. Do đó, có ba công nghệ điều chế chính thực hiện chuyển đổi dữ liệu số thành tín hiệu tương tự:
+
+- Điều biến biên độ (Amplitude-Shift Keying, ASK);
+- Điều biến tần số (Frequency-Shift Keying, FSK);
+- Điều biến pha (Phase-Shift Keying, PSK).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_23_Modulation_of_digital_data_by_analog_signals.png" alt="  Hình 3.23 Điều chế dữ liệu số với tín hiệu analog" width="500">
+</p>
+<p align="center"><b> Hình 3.23 Điều chế dữ liệu số với tín hiệu analog</b></p>
+
+
+#### Điều biến biên độ (Amplitude-Shift Keying, ASK)
+
+Trong điều biến biên độ, các giá trị "0" và "1" được biểu diễn bằng các tín hiệu sóng mang với hai biên độ khác nhau. Một trong các biên độ thường được chọn bằng không; tức là, một giá trị nhị phân được biểu diễn bằng sự hiện diện của sóng mang với biên độ cố định, và giá trị khác là sự vắng mặt của nó.
+
+Công thức tín hiệu:
+
+$$
+y(t) = 
+\begin{cases}
+A \cos(2\pi f_c t) & \text{— nhị phân 1} \\
+0 & \text{— nhị phân 0}
+\end{cases}
+$$
+
+trong đó:
+- $$A \cos(2\pi f_c t)$$: tín hiệu sóng mang,
+- $$y(t)$$: tín hiệu đầu ra.
+
+Điều biến biên độ là một trường hợp đặc biệt của điều chế biên độ vuông góc.
+
+
+
+#### Điều biến tần số (Frequency-Shift Keying, FSK)
+
+Trong điều biến tần số, thông tin số được biểu diễn bằng cách thay đổi tần số của sóng mang. Dạng đơn giản nhất của điều biến tần số là **điều biến tần số nhị phân** (Binary FSK, BFSK), trong đó các giá trị "0" và "1" được biểu diễn bằng các tín hiệu có hai tần số khác nhau, nằm gần tần số sóng mang.
+
+Công thức tín hiệu:
+
+$$
+y(t) = 
+\begin{cases}
+A \cos(2\pi f_1 t) & \text{— nhị phân 1} \\
+A \cos(2\pi f_2 t) & \text{— nhị phân 0}
+\end{cases}
+$$
+
+trong đó:
+- $$f_1$$ và $$f_2$$: các tần số được dịch từ tần số sóng mang $$f_c$$ với các giá trị bằng nhau về độ lớn, nhưng ngược dấu.
+
+Điều biến tần số được sử dụng trong các modem đầu tiên và cho phép thực hiện truyền dữ liệu song công trên các đường dây điện thoại.
+
+
+
+#### Điều biến pha (Phase-Shift Keying, PSK)
+
+Trong điều biến pha, dữ liệu được biểu diễn bằng cách thay đổi pha của sóng mang. Hiện nay có nhiều biến thể của điều biến pha được phát triển để truyền dữ liệu ở các mạng không dây theo tiêu chuẩn IEEE 802.11.
+
+Hình thức đơn giản nhất của điều biến pha là **điều biến pha nhị phân** hay **điều biến pha hai mức** (Binary PSK, BPSK), trong đó hai pha của sóng mang 0° và 180° được sử dụng để biểu diễn hai chữ số nhị phân.
+
+Công thức tín hiệu:
+
+$$
+y(t) = 
+\begin{cases}
+A \cos(2\pi f_c t) & \text{— nhị phân 1} \\
+A \cos(2\pi f_c t + \pi) & \text{— nhị phân 0}
+\end{cases}
+$$
+
+
+
+#### Điều biến pha nhị phân (Binary PSK, BPSK)
+
+BPSK là loại điều biến pha có khả năng chống nhiễu cao nhất, nhưng với mỗi lần thay đổi tín hiệu, nó chỉ có thể truyền 1 bit thông tin. Điều này khiến BPSK không phù hợp cho các ứng dụng yêu cầu tốc độ cao.
+
+Một dạng khác của PSK hai mức là **Điều biến pha nhị phân vi sai** (Differential BPSK, DBPSK). Trong DBPSK, dữ liệu không được mã hóa trực tiếp theo bit thông tin mà dựa trên sự thay đổi của bit. Khi truyền giá trị nhị phân 0, pha của sóng mang không thay đổi, còn khi truyền giá trị nhị phân 1, pha của sóng mang sẽ thay đổi ngược lại. Nói cách khác, sự thay đổi pha phụ thuộc vào pha của tín hiệu trước đó.
+
+
+#### Điều biến pha bốn mức hoặc điều biến pha vuông góc (Quadrature PSK, QPSK)
+
+**Điều biến pha vuông góc** (Quadrature PSK, QPSK) sử dụng bốn giá trị pha khác nhau của sóng mang, với mỗi giá trị pha đại diện cho hai bit dữ liệu. So với BPSK, QPSK có thể tăng gấp đôi tốc độ truyền và sử dụng hiệu quả hơn băng thông. 
+
+Trong QPSK, thay vì sử dụng dịch pha 180°, các pha dịch được chọn là bội số của π/2 (90°). Các giá trị bit được chọn sao cho khi thay đổi giữa các trạng thái pha lân cận của sóng mang, lỗi trong quá trình truyền chỉ gây ra lỗi một bit.
+
+Công thức tín hiệu cho QPSK:
+
+$$
+y(t) = 
+\begin{cases}
+A \cos\left(2\pi f_c t + \frac{\pi}{4}\right) & \text{— 11} \\
+A \cos\left(2\pi f_c t + \frac{3\pi}{4}\right) & \text{— 10} \\
+A \cos\left(2\pi f_c t + \frac{5\pi}{4}\right) & \text{— 00} \\
+A \cos\left(2\pi f_c t + \frac{7\pi}{4}\right) & \text{— 01}
+\end{cases}
+$$
+
+
+#### Điều biến pha vi sai bốn mức (Differential QPSK, DQPSK)
+
+Trong **Điều biến pha vi sai bốn mức** (Differential QPSK, DQPSK), tương tự như DBPSK, sự thay đổi pha xảy ra khi có sự thay đổi bit thông tin.
+
+
+
+#### Điều biến biên độ vuông góc (Quadrature Amplitude Modulation, QAM)
+
+**Điều biến biên độ vuông góc** (Quadrature Amplitude Modulation, QAM) được sử dụng rộng rãi trong các tiêu chuẩn mạng không dây và có dây, là một phương pháp truyền tín hiệu tương tự.
+
+Kỹ thuật điều chế này kết hợp giữa điều chế biên độ và điều chế pha. Phương pháp QAM cho phép truyền đồng thời hai tín hiệu khác nhau trên cùng một tần số sóng mang, sử dụng hai bản sao của sóng mang dịch pha nhau 90°. Trong QAM, hai tín hiệu độc lập được điều chế theo cả biên độ và pha, sau đó truyền qua môi trường. Tín hiệu được giải điều chế ở phía thu và được kết hợp để tái tạo lại tín hiệu nhị phân ban đầu.
+
+
+Khi sử dụng điều biến biên độ hai mức (2QAM), mỗi luồng dữ liệu có thể có hai trạng thái, tạo ra một kết hợp hai trạng thái — tổng cộng có $$2 \times 2 = 4$$ trạng thái. Khi sử dụng điều biến biên độ bốn mức (4QAM), với bốn mức biên độ khác nhau, luồng dữ liệu kết hợp sẽ có tổng cộng $$4 \times 4 = 16$$ trạng thái. Hiện nay, có những hệ thống sử dụng 64 trạng thái (64QAM) hoặc thậm chí 256 trạng thái (256QAM). 
+
+Số trạng thái càng lớn, tốc độ truyền càng cao, nhưng cũng tăng khả năng xảy ra lỗi do nhiễu hoặc suy hao tín hiệu.
