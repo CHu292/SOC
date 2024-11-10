@@ -589,3 +589,25 @@ Khi truyền dẫn băng rộng, việc sử dụng nhiều sóng mang có tần
 Sóng mang thường cần thiết khi truyền dữ liệu qua dây điện thoại, môi trường không khí hoặc cáp quang. Tuy nhiên, trong một số trường hợp, điều chế có thể được thực hiện trên cơ sở các tín hiệu rời rạc dưới dạng các xung. Đối với truyền dẫn tín hiệu dựa trên các chuỗi xung tuần hoàn, sử dụng **điều chế xung** (pulse modulation).
 
 Khi truyền tín hiệu số qua các kênh truyền băng cơ bản, các phương pháp mã hóa tuyến tính hoặc mã hóa số tín hiệu (line coding) được áp dụng.
+
+---
+
+### 3.5.1 Các phương pháp điều chế tương tự
+
+Việc sử dụng điều chế tương tự cho dữ liệu tương tự có thể không rõ ràng ngay. Tín hiệu âm thanh thường được truyền qua đường dây điện thoại với phổ gốc được giữ nguyên, tức là không cần điều chế. Tuy nhiên, trong các môi trường phi định hướng, việc truyền tín hiệu tương tự mà không điều chế là gần như không khả thi — sẽ cần đến các ăng-ten dài hàng km. Để đạt hiệu quả trong truyền dẫn, có thể cần sử dụng tần số cao hơn cũng như khả năng ghép kênh theo tần số.
+
+Điều chế tương tự dựa trên việc truyền tín hiệu tần số thấp bằng sóng mang tần số cao. Dạng chính của sóng mang là dao động điều hòa, có ba tham số tự do: biên độ, pha và tần số.
+
+Dựa trên việc thông tin được mang trên tham số nào trong ba tham số này, có các loại điều chế biên độ (AM), điều chế tần số (FM) hoặc điều chế pha (PM) của sóng mang. Điều chế tần số và điều chế pha có liên quan với nhau, vì cả hai đều thay đổi tham số của hàm cosin, và chúng thường được gộp chung dưới tên gọi điều chế góc (angle modulation). 
+
+- **Điều chế biên độ** (Amplitude Modulation, AM) là thay đổi biên độ của sóng mang theo biên độ tức thời của tín hiệu điều chế.
+- **Điều chế tần số** (Frequency Modulation, FM) là thay đổi tần số của sóng mang theo biên độ tức thời của tín hiệu điều chế.
+- **Điều chế pha** (Phase Modulation, PM) là thay đổi pha của sóng mang theo biên độ tức thời của tín hiệu điều chế.
+
+Điều chế tương tự được sử dụng trong phát thanh, khi nhiều đài phát cùng hoạt động trong một môi trường truyền dẫn chung: điều chế biên độ (AM) cho các đài phát trong dải sóng AM và điều chế tần số (FM) cho các đài trong dải sóng FM.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_22_Amplitude_and_frequency_modulation_of_an_analog_signal.png" alt=" Hình 3.22: Điều chế biên độ và điều chế tần số của tín hiệu tương tự" width="500">
+</p>
+<p align="center"><b> Hình 3.22: Điều chế biên độ và điều chế tần số của tín hiệu tương tự</b></p>
+
