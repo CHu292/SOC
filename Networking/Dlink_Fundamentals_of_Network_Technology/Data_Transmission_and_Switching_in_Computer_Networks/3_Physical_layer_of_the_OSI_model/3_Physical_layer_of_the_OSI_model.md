@@ -1448,7 +1448,7 @@ Hệ thống cáp bao gồm tập hợp các loại cáp khác nhau (cáp quang,
 - **Giá viễn thông (Telecommunications Rack)**  
  
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_56_Telecommunication_rack.jpg" alt=" Hình 3.56 Giá viễn thông" width="600">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_56_Telecommunication_rack.jpg" alt=" Hình 3.56 Giá viễn thông" width="450">
 </p>
 <p align="center"><b>  Hình 3.56 Giá viễn thông</b></p>
 
@@ -1459,7 +1459,7 @@ Các thành phần của hệ thống cáp là thiết bị mạng thụ động
 Thiết bị thụ động là các thiết bị mạng không tiêu thụ điện và không gây thay đổi tín hiệu ở cấp độ thông tin. Thiết bị mạng chủ động bao gồm các thiết bị điện tử và điện tử-quang học, có chức năng xử lý, hình thành, biến đổi và chuyển mạch tín hiệu điện, radio và/hoặc quang học. Để truyền và nhận tín hiệu, thiết bị mạng chủ động sử dụng các nguồn năng lượng bổ sung, tức là cần điện để hoạt động.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_57_Types_of_network_equipment.png" alt="Hình 3.57 Các loại thiết bị mạng" width="600">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_57_Types_of_network_equipment.png" alt="Hình 3.57 Các loại thiết bị mạng" width="900">
 </p>
 <p align="center"><b>Hình 3.57 Các loại thiết bị mạng</b></p>
 
