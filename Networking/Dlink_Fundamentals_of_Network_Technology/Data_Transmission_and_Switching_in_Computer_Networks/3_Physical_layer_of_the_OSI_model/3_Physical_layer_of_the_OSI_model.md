@@ -1511,7 +1511,7 @@ Trong mạng máy tính, "phương tiện truyền dẫn tín hiệu" mà bộ c
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_59_Using_a_media_converter_on_the_network.png" alt="Hình 3.59 Sử dụng bộ chuyển đổi phương tiện trong mạng" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_59_Using_a_media_converter_on_the_network.png" alt="Hình 3.59 Sử dụng bộ chuyển đổi phương tiện trong mạng" width="1000">
 </p>
 <p align="center"><b>Hình 3.59 Sử dụng bộ chuyển đổi phương tiện trong mạng</b></p>
 
@@ -1522,7 +1522,7 @@ Trong mạng máy tính, "phương tiện truyền dẫn tín hiệu" mà bộ c
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_60.jpg" alt="Hình 3.60 Bộ chuyển đổi phương tiện DMC-F02SC với giao diện quang SC" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_60.jpg" alt="Hình 3.60 Bộ chuyển đổi phương tiện DMC-F02SC với giao diện quang SC" width="400">
 </p>
 <p align="center"><b>Hình 3.60 Bộ chuyển đổi phương tiện DMC-F02SC với giao diện quang SC</b></p>
 
@@ -1531,7 +1531,7 @@ Trong mạng máy tính, "phương tiện truyền dẫn tín hiệu" mà bộ c
 **Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP**
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_61.jpg" alt="Hình 3.61 Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_61.jpg" alt="Hình 3.61 Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP" width="400">
 </p>
 <p align="center"><b>Hình 3.61 Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP</b></p>
 
@@ -1541,7 +1541,7 @@ Các bộ chuyển đổi phương tiện do D-Link sản xuất có thể hoạ
 **Khung cho bộ chuyển đổi phương tiện DMC-1000**
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_62.jpg" alt="Hình 3.62 Khung cho bộ chuyển đổi phương tiện DMC-1000" width="700">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_62.jpg" alt="Hình 3.62 Khung cho bộ chuyển đổi phương tiện DMC-1000" width="400">
 </p>
 <p align="center"><b>Hình 3.62 Khung cho bộ chuyển đổi phương tiện DMC-1000</b></p>
 
