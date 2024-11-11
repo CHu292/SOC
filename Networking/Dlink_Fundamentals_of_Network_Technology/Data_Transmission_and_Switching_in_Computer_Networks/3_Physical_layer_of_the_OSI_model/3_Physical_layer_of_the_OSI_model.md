@@ -1267,3 +1267,166 @@ Hiện nay, hầu hết các nhà sản xuất thiết bị mạng đều trang 
 
 
 Lưu ý rằng cáp xoắn đôi không chỉ dùng cho truyền và nhận dữ liệu. Trong mạng Ethernet, nó cũng có thể được sử dụng để cung cấp điện năng cho thiết bị từ xa cùng với dữ liệu. Công nghệ này được gọi là **Power over Ethernet (PoE)**, được mô tả trong các tiêu chuẩn IEEE 802.3af, 802.3at và 802.3bt. Công nghệ PoE sẽ được trình bày trong chương 6.
+
+---
+
+### 3.6.4 Cáp quang (cáp sợi quang)
+
+**Cáp quang** (*fiber-optic cable*) khác với cáp đồng trục (*coaxial cable*) hoặc cáp xoắn đôi (*twisted pair cable*) ở chỗ nó truyền tín hiệu ánh sáng thay vì tín hiệu điện. Các đặc tính của sợi quang khiến nó trở thành môi trường lý tưởng để truyền tải lượng lớn thông tin với tốc độ cao trên khoảng cách xa. Cáp quang có nhiều ưu điểm như băng thông cao, chống nhiễu tốt, bảo mật tốt, đường kính nhỏ, trọng lượng nhẹ, không cần nối đất và phạm vi truyền xa. Nhược điểm của cáp quang là lắp đặt phức tạp và chi phí cao của thiết bị mạng quang.
+
+Cáp quang là một phương tiện truyền dẫn bao gồm các sợi quang được bọc trong một lớp vỏ bảo vệ bên ngoài.
+
+Để đảm bảo độ bền cơ học cần thiết và ngăn ngừa áp lực cơ học lớn, cáp quang được gia cố bằng các thành phần chịu lực đặc biệt như dây thép, đồng, nhôm, sợi aramid và thanh sợi thủy tinh. Các thành phần chịu lực này được bố trí ở trung tâm (tăng độ linh hoạt) hoặc ngoại vi (tăng khả năng chịu lực va đập và căng kéo).
+
+**Sợi quang** bao gồm một lõi dẫn ánh sáng (*core*) và lớp vỏ (*cladding*) bao quanh với các chỉ số khúc xạ khác nhau. Hiện tượng truyền dẫn ánh sáng của sợi quang dựa trên hiệu ứng phản xạ toàn phần khi ánh sáng đi từ môi trường có chỉ số khúc xạ cao sang môi trường có chỉ số khúc xạ thấp. Lõi dẫn, nơi ánh sáng lan truyền, được làm từ vật liệu quang học có mật độ cao hơn. Các sợi quang khác nhau ở đường kính lõi và vỏ, cũng như ở cấu trúc chỉ số khúc xạ của lõi. Các thông số quan trọng của sợi quang là suy hao (*attenuation*) và tán sắc (*dispersion*).
+
+**Cáp quang**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_47_Fiber_optic_cable.png" alt="Hình 3.47 Cáp quang" width="900">
+</p>
+<p align="center"><b>Hình 3.47 Cáp quang</b></p>
+
+#### Các loại sợi quang
+
+Sợi quang được chia thành hai nhóm chính: **đa mode** (*Multi-Mode Fiber - MMF*) và **đơn mode** (*Single-Mode Fiber - SMF*).
+
+Tiêu chuẩn quy định hai loại sợi đa mode phổ biến nhất: **62,5/125 µm** và **50/125 µm**, trong đó 62,5 µm hoặc 50 µm là đường kính lõi, và 125 µm là đường kính vỏ. Do đường kính lõi quang (50 và 62,5 µm) lớn hơn nhiều so với bước sóng ánh sáng, nên nhiều sóng điện từ (gọi là mode) có thể truyền đồng thời trong lõi. Các mode đi vào lõi dưới các góc khác nhau, phản xạ nhiều lần trong lõi và vỏ, và đi qua các khoảng cách khác nhau, dẫn đến sự khác biệt về thời gian đến điểm nhận. Hiện tượng này gọi là tán sắc mode (*modal dispersion*), gây mở rộng dần các xung ánh sáng, giới hạn băng thông. Băng thông của sợi quang được đo bằng megahertz trên mỗi kilomet (MHz·km).
+
+Sợi đa mode có hai loại cấu trúc khúc xạ:
+
+1. **Cấu trúc bậc**: Lõi có chỉ số khúc xạ không đổi, được bao bọc bởi lớp vỏ với chỉ số khúc xạ khác biệt. Ánh sáng phản xạ từ mặt tiếp xúc lõi/vỏ để truyền dọc theo lõi. Tuy nhiên, sợi với cấu trúc bậc có tán sắc cao, gây giới hạn băng thông đáng kể.
+
+2. **Cấu trúc giảm dần**: Chỉ số khúc xạ của lõi giảm dần từ trung tâm lõi ra ngoài, làm cho các tia sáng bị uốn cong khi di chuyển qua lõi, tạo thành các sóng ánh sáng hình sin. Tán sắc ở sợi cấu trúc giảm dần thấp hơn so với sợi bậc, nhưng vẫn giới hạn băng thông.
+
+**Sợi quang đa mode**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_48_Multimode_fiber_optic.png" alt="Hình 3.48 Sợi quang đa mode" width="900">
+</p>
+<p align="center"><b>Hình 3.48 Sợi quang đa mode</b></p>
+
+
+Trong sợi MMF, các nguồn phát ánh sáng thường là laser có bước sóng 850 nm và 1310 nm. Khoảng cách truyền tối đa của sợi đa mode là 2 km, thường được sử dụng trong các mạng LAN có phạm vi ngắn.
+
+**Sợi đơn mode** có cấu trúc chỉ số khúc xạ bậc, nhưng đường kính lõi rất nhỏ (5-10 µm, với đường kính vỏ 125 µm), gần bằng bước sóng ánh sáng, cho phép chỉ một mode truyền qua. Điều này loại bỏ tán sắc mode, giúp tăng băng thông sợi đơn mode lên trên 10 Gbps.
+
+**Sợi quang đơn mode**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_49_Single_mode_fiber.png" alt="Hình 3.49 Sợi quang đơn mode" width="900">
+</p>
+<p align="center"><b>Hình 3.49 Sợi quang đơn mode</b></p>
+
+Khoảng cách truyền của sợi đơn mode có thể lên tới 100 km hoặc hơn, thường dùng cho các tuyến liên tỉnh, mạng đô thị và khu vực.
+
+Các nguồn phát ánh sáng cho SMF thường là laser với bước sóng 1310 nm và 1550 nm. Bước sóng 1310 nm tối ưu về tán sắc, nhưng suy hao thấp nhất là ở 1550 nm.
+
+#### Ghép kênh WDM - Wavelength Division Multiplexing
+
+Để tối ưu kênh quang, người ta áp dụng kỹ thuật **ghép kênh phân chia bước sóng WDM** (*Wavelength Division Multiplexing*). Phần lớn hệ thống WDM sử dụng sợi đơn mode với đường kính lõi 9/125 µm. Sợi đơn mode với **tán sắc dịch chuyển không** (*NZDSF - Non-Zero Dispersion Shifted Fiber*) tối ưu cho truyền nhiều bước sóng, hỗ trợ ghép kênh WDM.
+
+#### Phân loại cáp quang
+
+Cáp quang có thể được phân loại theo các yếu tố sau:
+
+- Mục đích sử dụng
+- Điều kiện áp dụng
+- Cách thức lắp đặt
+- Đặc điểm cấu tạo và công nghệ
+- Số lượng sợi quang và dây dẫn điện
+
+Theo mục đích, cáp quang chia thành các loại:
+
+- **Cáp trục**: quốc tế và liên tỉnh
+- **Cáp vùng**: kết nối và liên tỉnh
+- **Cáp địa phương**: kết nối, phân phối và cáp thuê bao
+- **Cáp nội bộ**: trạm và thuê bao
+
+Theo phân loại của Liên minh Viễn thông Quốc tế (*ITU-T*), cáp quang được chia thành cáp ngoài trời và cáp trong nhà:
+
+- **Cáp ngoài trời**: kết nối liên tỉnh, liên trạm, phân phối (cáp treo, cáp chôn trong đất, cáp đặt trong cống, hầm hoặc dưới nước).
+- **Cáp trong nhà**: cáp thuê bao và trạm (trong tòa nhà).
+
+#### Yêu cầu môi trường cho cáp ngoài trời và trong nhà
+
+Cáp quang không bị nhiễu điện từ nên có thể đi dọc đường dây điện hoặc đường sắt điện khí hóa.
+
+Lựa chọn cáp ngoài trời phụ thuộc nhiều vào điều kiện sử dụng, tác động bên ngoài như nhiệt độ (co rút vỏ, tăng suy hao do thay đổi nhiệt độ, độ giòn của vỏ khi lạnh); nước mặn (ăn mòn dây treo và giáp); mưa, suối nóng (ăn mòn cáp và vỏ ngoài); dòng điện một chiều (ăn mòn điện ly); hỏa hoạn; gió, tuyết, và băng (hư hỏng do dao động, trọng lượng tuyết và băng); hydrogen (tăng suy hao); và nguy cơ phá hoại từ động vật gặm nhấm, chim và côn trùng.
+
+Đối với cáp trong nhà, yếu tố quan trọng nhất khi lựa chọn là độ linh hoạt khi lắp đặt và tính an toàn cháy nổ.
+
+**ISO/IEC 11801** phân loại các loại sợi đa mode và đơn mode dùng trong nhà. Tiêu chuẩn này quy định bốn lớp sợi đa mode (OM1 đến OM4) và hai lớp sợi đơn mode (OS1 và OS2), phân biệt theo suy hao và băng thông (bandwidth).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/table_3_3.png" alt="Bảng 3.3 Các loại sợi quang đa mode theo tiêu chuẩn ISO/IEC 11801" width="900">
+</p>
+<p align="center"><b>Bảng 3.3 Các loại sợi quang đa mode theo tiêu chuẩn ISO/IEC 11801</b></p>
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/table_3_4.png" alt="Bảng 3.4 Các loại sợi quang đơn mode theo tiêu chuẩn ISO/IEC 11801" width="900">
+</p>
+<p align="center"><b>Bảng 3.4 Các loại sợi quang đơn mode theo tiêu chuẩn ISO/IEC 11801</b></p>
+
+Trong tiêu chuẩn này, các kênh quang học được phân loại theo các cấp (tương tự như các hạng cáp xoắn đôi). OF-300, OF-500 và OF-2000 hỗ trợ các ứng dụng của lớp quang học ở các khoảng cách lên tới 300, 500 và 2000 m tương ứng.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/table_3_5.png" alt="Bảng 3.5 Các loại kênh theo tiêu chuẩn ISO/IEC 11801" width="900">
+</p>
+<p align="center"><b>Bảng 3.5 Các loại kênh theo tiêu chuẩn ISO/IEC 11801</b></p>
+
+
+
+Có rất nhiều loại đầu nối quang học (optical connectors) khác nhau, khác biệt về cấu trúc, phương pháp cố định, đường kính ferrule, loại đánh bóng, v.v. Các yêu cầu đối với chúng được quy định trong các phần khác nhau của tiêu chuẩn IEC 61754.
+
+Các thành phần cấu trúc chính của đầu nối quang học bao gồm vỏ (housing), ferrule và khóa (latch). Ferrule hoặc đầu quang học (optical tip) giúp căn chỉnh chính xác sợi quang. Đầu này có thể được làm từ gốm, kim loại, thủy tinh hoặc nhựa. Có những đầu nối cho phép kết nối chỉ một sợi quang hoặc nhiều sợi cùng lúc.
+
+Hãy cùng tìm hiểu ngắn gọn các loại đầu nối đang được sử dụng trong các mạng máy tính hiện đại.
+
+**Đầu nối FC (Ferrule Connector)** được mô tả trong tiêu chuẩn IEC 61754-13. Nó có vỏ kim loại và cố định bằng cách kết nối ren (threaded connection). Đường kính của ferrule là 2,5 mm. Đầu nối này bền và chống rung tốt, chủ yếu được thiết kế cho sợi quang đơn mode (single-mode fiber), nhưng cũng có thể dùng cho sợi quang đa mode (multi-mode fiber). Đầu nối FC chủ yếu được sử dụng trong các tuyến truyền dẫn quang dài, trong công nghiệp và thiết bị đo lường.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_50_FC.jpg" alt="Hình 3.50 Đầu nối FC" width="400">
+</p>
+<p align="center"><b>Hình 3.50 Đầu nối FC</b></p>
+
+
+**Đầu nối SC (Subscriber Connector, Square Connector, Standard Connector)** được sử dụng cho cả sợi quang đơn mode và đa mode. Yêu cầu của loại đầu nối này được mô tả trong tiêu chuẩn IEC 61754-4. Đầu nối SC bao gồm vỏ trong và vỏ ngoài, với ferrule gốm có đường kính 2,5 mm. Đầu nối sử dụng cơ chế “push-pull” (đẩy-kéo), cho phép nối tự động khóa, rất thuận tiện khi chuyển đổi. Đầu nối này không thích hợp với các tác động cơ học và rung động, nhưng cho phép đạt mật độ kết nối cao trên bảng viễn thông. Đầu nối SC có thể là loại simplex (đơn) hoặc duplex (kép). Đầu nối duplex là một mô-đun bao gồm hai đầu nối và được sử dụng cho kết nối duplex (một sợi quang dùng để truyền tín hiệu đi, còn sợi kia để truyền tín hiệu ngược lại).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_51_SC.jpg" alt="Hình 3.51 Đầu nối SC" width="400">
+</p>
+<p align="center"><b>Hình 3.51 Đầu nối SC</b></p>
+
+
+
+**Đầu nối LC (Lucent Connector, Local Connector)** được mô tả trong tiêu chuẩn IEC 61754-20. Nó được sử dụng cho cả sợi quang đơn mode và đa mode. Đường kính ferrule gốm là 1,25 mm, đòi hỏi phải thao tác cẩn thận. Đầu nối này nhỏ gọn hơn so với đầu nối SC, giúp tăng mật độ kết nối. Đầu nối này thuộc loại SFF (Small Form Factor - Hình thức nhỏ gọn), có kích thước bên ngoài phù hợp với khe cắm của đầu nối RJ-45. Đầu nối LC được đặt trong vỏ nhựa với cơ chế "push-pull" (có khóa, tương tự như khóa của đầu nối RJ-45). Nó có thể được sử dụng cho cả kết nối simplex và duplex.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_52_LC.jpg" alt="Hình 3.52 Đầu nối LC" width="400">
+</p>
+<p align="center"><b>Hình 3.52 Đầu nối LC</b></p>
+
+
+Các đầu nối quang học được mô tả ở trên chỉ cho phép kết nối một sợi quang. **Đầu nối MPO (Multi-Fiber Push-On)** bao gồm nhiều sợi quang. Các sợi quang này có thể là đơn mode hoặc đa mode. Loại đầu nối này được mô tả trong các tiêu chuẩn IEC 61754-7 và EIA/TIA-604-5 (FOCSI 5).
+
+Trong vỏ nhựa, có một ferrule bằng vật liệu composite (polyphenylene), các sợi được xếp thành một hàng hoặc nhiều hàng tùy theo mật độ cáp. Ở một phía của vỏ có khóa (key), giúp xác định phân cực của đầu nối. Trong các trung tâm dữ liệu và kết nối mạng nội bộ, các đầu nối MPO với 8, 12 hoặc 24 sợi thường được sử dụng.
+
+Khác với các đầu nối quang đơn sợi, là loại đầu nối "papa" (male), đầu nối MPO được chia thành loại "papa" (male) và "mama" (female). Đầu nối "papa" có các chốt (pins), trong khi đầu nối "mama" có các lỗ (holes).
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_53_MPO.png" alt="Hình 3.53 Đầu nối MPO" width="400">
+</p>
+<p align="center"><b>Hình 3.53 Đầu nối MPO</b></p>
+
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_54_MPO_Female.jpg" alt="Hình 3.54 Mô-đun giao diện thay thế 100 Gbit/s với đầu nối MPO (female)" width="400">
+</p>
+<p align="center"><b>Hình 3.54 Mô-đun giao diện thay thế 100 Gbit/s với đầu nối MPO (female)</b></p>
+
+
