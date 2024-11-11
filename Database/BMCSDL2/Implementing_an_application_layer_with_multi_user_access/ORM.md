@@ -39,3 +39,5 @@ Các loại ORM phổ biến hiện nay bao gồm:
 # ORM hoạt động như thế nào?
 
 ORM có đặc trưng cơ bản là gói gọn (encapsulate) toàn bộ cấu trúc của CSDL vào trong một đối tượng của ứng dụng. Đối tượng này được thiết kế để xử lý dữ liệu theo logic của lập trình hướng đối tượng, sau đó chuyển đổi thành các câu lệnh truy vấn tương thích với cấu trúc quan hệ của cơ sở dữ liệu.
+
+[Bài viết được tham khảo ở đây](https://vietnix.vn/orm-la-gi/#orm-la-gi)
