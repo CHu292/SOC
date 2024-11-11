@@ -783,5 +783,57 @@ Trong **điều chế xung vị trí** (PPM, Pulse Position Modulation), các xu
 </p>
 <p align="center"><b> Hình 3.25 Điều chế mã xung</b></p>
 
-
 ---
+
+### 3.5.4 Phương pháp mã hóa số (Digital Coding Methods)
+
+Mã hóa số (điều chế băng gốc số) – *Digital Coding (Digital Baseband Modulation)* – được sử dụng để truyền dữ liệu số qua các kênh băng gốc (*baseband channels*). Các mã số thường phản ánh yêu cầu kỹ thuật của môi trường truyền dẫn, chẳng hạn như cáp quang (*optical cable*) hoặc cáp xoắn đôi (*twisted pair cable*). Những yêu cầu này là duy nhất cho mỗi môi trường truyền dẫn, vì mỗi loại có khả năng chống nhiễu (*noise immunity*), băng thông (*bandwidth*), và tổn thất suy hao (*attenuation losses*) khác nhau.
+
+Khi mã hóa thông tin số, người ta sử dụng các mã tiềm năng (*potential codes*) và mã xung (*pulse codes*).
+
+Trong các mã tiềm năng (*potential coding*), giá trị tiềm năng của tín hiệu (*signal potential*, hoặc mức điện áp – *voltage level*) được sử dụng để biểu diễn các giá trị logic 1 và 0, và không quan tâm đến các biến thiên tạo thành các xung hoàn chỉnh (*complete pulses*).
+
+**Mã hóa tiềm năng (Potential Coding)**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_26_Potential_Coding.png" alt="Hình 3.26 Mã hóa tiềm năng" width="900">
+</p>
+<p align="center"><b> Hình 3.26 Mã hóa tiềm năng</b></p>
+
+
+
+Các mã xung (*pulse codes*) cho phép biểu diễn dữ liệu nhị phân bằng cách thay đổi phân cực của xung (*pulse polarity*) (Hình 3.27, a) hoặc bằng biến thiên điện áp (*voltage transition*) (Hình 3.27, b).
+
+**Mã hóa xung (Pulse Coding)**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_27_Pulse_Coding.png" alt="Hình 3.27 Mã hóa xung" width="900">
+</p>
+<p align="center"><b>Hình 3.27 Mã hóa xung</b></p>
+
+
+
+Thời gian dành để truyền một bit (0 hoặc 1) thông tin được gọi là **khoảng thời gian bit**. Độ dài của khoảng thời gian bit \( t_b \) được liên kết với khả năng truyền tải của kênh theo công thức: \( t_b = 1/C \).
+
+Như đã biết, khi truyền tín hiệu qua kênh liên lạc, tín hiệu sẽ suy giảm, và cường độ tín hiệu tại điểm nhận sẽ thấp hơn nhiều so với cường độ tín hiệu gốc. Ngoài ra, bất kỳ kênh liên lạc thực tế nào cũng có nhiễu, chồng lên tín hiệu thông tin và có thể ảnh hưởng đến việc nhận diện tín hiệu chính xác. Hiểu rõ rằng ở phía nhận, để nhận diện tín hiệu một cách chính xác, cần đọc giá trị tín hiệu ở trung tâm của khoảng thời gian bit, vì đây là nơi cường độ tín hiệu thường mạnh nhất.
+
+Để đảm bảo truyền nhận tín hiệu chất lượng cao, cần có đồng bộ giữa các bộ đếm thời gian của máy phát và máy thu. Điều này có nghĩa là các bộ đếm thời gian ở phía phát cần xác định đúng thời điểm phát tín hiệu, trong khi ở phía thu, chúng xác định thời điểm đọc giá trị tín hiệu. Đồng bộ này giúp các bộ đếm thời gian hoạt động cùng pha, tuy nhiên trong thực tế sẽ có một số sai lệch nhỏ theo thời gian. Sai lệch này có thể gây ra lỗi đồng bộ sau một chuỗi bit dài. Để tránh các vấn đề như vậy, cần có phương pháp mã hóa tự đồng bộ hóa (*self-synchronizing codes*), cho phép các bộ đếm thời gian của máy thu và máy phát tự động đồng bộ.
+
+Với mã hóa tiềm năng, nếu có một chuỗi dài các bit 0 hoặc 1, sẽ tạo ra tín hiệu có thành phần cố định, khiến tần số tín hiệu gần như bằng không. Trong các kênh có băng thông lớn, giới hạn tần số thấp khác biệt nhiều với 0, điều này gây khó khăn trong việc duy trì đồng bộ giữa bộ phát và bộ thu. Khi truyền các chuỗi bit xen kẽ giữa 0 và 1, thành phần cố định sẽ biến mất.
+
+Các phương pháp mã hóa số ảnh hưởng lớn đến chất lượng truyền tải dữ liệu rời rạc và xác định khả năng băng thông yêu cầu của môi trường truyền tải.
+
+Do đó, mã hóa số cần đáp ứng các yêu cầu sau:
+- Giảm thiểu phổ của tín hiệu đầu ra ở cùng tốc độ bit;
+- Cho phép nhận diện và sửa lỗi;
+- Hỗ trợ đồng bộ giữa máy thu và máy phát;
+- Chi phí thực hiện thấp.
+
+Ở phía nhận, thực hiện giải mã đối xứng.
+
+Thông thường, mã hóa có thể chia thành hai dạng chính:
+- **Mã hóa logic**;
+- **Mã hóa vật lý**. 
+
+--- 
+
