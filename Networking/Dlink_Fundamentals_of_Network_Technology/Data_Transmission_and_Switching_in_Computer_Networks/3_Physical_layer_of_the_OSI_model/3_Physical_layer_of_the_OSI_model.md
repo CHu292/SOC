@@ -1172,7 +1172,7 @@ Khoảng cách truyền tối đa của cáp xoắn đôi là 100 m nếu không
 **Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)**  
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_40.jpg" alt="Hình 3.40 Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)" width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_40.jpg" alt="Hình 3.40 Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)" width="400">
 </p>
 <p align="center"><b>Hình 3.40 Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)</b></p>
 
@@ -1181,7 +1181,7 @@ Khoảng cách truyền tối đa của cáp xoắn đôi là 100 m nếu không
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_41.jpg" alt="Hình 3.41 Cáp U/FTP Cat. 6a với đầu nối 8P8C (RJ-45)" width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_41.jpg" alt="Hình 3.41 Cáp U/FTP Cat. 6a với đầu nối 8P8C (RJ-45)" width="400">
 </p>
 <p align="center"><b>Hình 3.41 Cáp U/FTP Cat. 6a với đầu nối 8P8C (RJ-45)</b></p>
 
@@ -1191,7 +1191,7 @@ Số thứ tự các chân của đầu nối được xác định từ trái q
 
 **Số thứ tự các chân của RJ-45**  
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_42.jpg" alt="Hình 3.42 Số thứ tự các chân của RJ-45" width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_42.jpg" alt="Hình 3.42 Số thứ tự các chân của RJ-45" width="400">
 </p>
 <p align="center"><b>Hình 3.42 Số thứ tự các chân của RJ-45</b></p>
 
@@ -1211,7 +1211,7 @@ Hai tiêu chuẩn khác nhau ở cách sắp xếp cặp màu cam và xanh lá, 
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_43.jpg" alt="Hình 3.43 Thứ tự sắp xếp dây dẫn trong đầu nối" width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_43.jpg" alt="Hình 3.43 Thứ tự sắp xếp dây dẫn trong đầu nối" width="500">
 </p>
 <p align="center"><b>Hình 3.43 Thứ tự sắp xếp dây dẫn trong đầu nối</b></p>
 
