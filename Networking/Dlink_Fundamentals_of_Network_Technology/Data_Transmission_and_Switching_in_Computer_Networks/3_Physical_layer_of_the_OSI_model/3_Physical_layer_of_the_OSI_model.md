@@ -813,7 +813,7 @@ Các mã xung (*pulse codes*) cho phép biểu diễn dữ liệu nhị phân b�
 
 
 
-Thời gian dành để truyền một bit (0 hoặc 1) thông tin được gọi là **khoảng thời gian bit**. Độ dài của khoảng thời gian bit \( t_b \) được liên kết với khả năng truyền tải của kênh theo công thức: \( t_b = 1/C \).
+Thời gian dành để truyền một bit (0 hoặc 1) thông tin được gọi là **khoảng thời gian bit**. Độ dài của khoảng thời gian bit $$t_b$$ được liên kết với khả năng truyền tải của kênh theo công thức: $$t_b = 1/C$$.
 
 Như đã biết, khi truyền tín hiệu qua kênh liên lạc, tín hiệu sẽ suy giảm, và cường độ tín hiệu tại điểm nhận sẽ thấp hơn nhiều so với cường độ tín hiệu gốc. Ngoài ra, bất kỳ kênh liên lạc thực tế nào cũng có nhiễu, chồng lên tín hiệu thông tin và có thể ảnh hưởng đến việc nhận diện tín hiệu chính xác. Hiểu rõ rằng ở phía nhận, để nhận diện tín hiệu một cách chính xác, cần đọc giá trị tín hiệu ở trung tâm của khoảng thời gian bit, vì đây là nơi cường độ tín hiệu thường mạnh nhất.
 
@@ -836,4 +836,127 @@ Thông thường, mã hóa có thể chia thành hai dạng chính:
 - **Mã hóa vật lý**. 
 
 --- 
+
+#### 3.5.4.1 Mã hóa vật lý (Physical Encoding)
+
+**Mã hóa vật lý** (Physical Encoding) là phương pháp biểu diễn thông tin rời rạc dưới dạng các tín hiệu điện hoặc quang học được đưa vào đường truyền.
+
+Dưới đây là những phương pháp mã hóa vật lý thường được sử dụng:
+
+- **Mã tiềm năng không quay về 0 (NRZ, Non-Return to Zero)**
+- **Mã tiềm năng không quay về 0 với đảo chiều ở bit 1 (NRZI, Non-Return to Zero with One Inverted)**
+- **Mã Manchester (Manchester Code)**
+- **Mã truyền tải ba mức MLТ-3 (Multi-Level Transmission-3)**
+
+Trong phương pháp **mã hóa tiềm năng không quay về 0 (NRZ)**, mức điện áp thấp biểu diễn 0 và mức điện áp cao biểu diễn 1. Sự chuyển đổi tín hiệu diễn ra tại ranh giới của mỗi chu kỳ xung nhịp. Khi truyền một chuỗi các bit 1 liên tiếp, tín hiệu sẽ không quay về mức 0 trong suốt chu kỳ xung nhịp.
+
+**Mã tiềm năng NRZ**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_28_NRZ.png" alt="Hình 3.28 Mã tiềm năng NRZ" width="900">
+</p>
+<p align="center"><b>Hình 3.28 Mã tiềm năng NRZ</b></p>
+
+
+Phổ của tín hiệu thực tế luôn thay đổi tùy thuộc vào cấu trúc của dữ liệu được truyền qua kênh. Tuy nhiên, khi truyền chuỗi dài các bit 0 hoặc bit 1, phổ tín hiệu dịch chuyển về tần số thấp, tiến dần đến tín hiệu không thay đổi, và không đảm bảo khả năng đồng bộ hóa giữa máy phát và máy thu. Mã NRZ có ưu điểm là dễ thực hiện và có khả năng chống nhiễu tốt nhờ vào hai mức tín hiệu khác biệt rõ rệt.
+
+Mã NRZ được sử dụng ở lớp vật lý trong các chuẩn **1000BASE-SX, 1000BASE-LX**.
+
+**Mã tiềm năng không quay về 0 với đảo chiều ở bit 1 (NRZI, Non-Return to Zero with Inverted at One)** là một biến thể của mã NRZ.
+
+NRZI sẽ duy trì mức điện áp hiện tại khi truyền bit 0 (không thay đổi tín hiệu), còn khi truyền bit 1, tín hiệu sẽ đảo chiều sang mức đối diện.
+
+**Mã tiềm năng NRZI**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_29_NRZI.png" alt="Hình 3.29 Mã tiềm năng NRZI" width="900">
+</p>
+<p align="center"><b>Hình 3.29 Mã tiềm năng NRZI</b></p>
+
+
+Mã NRZI có khả năng tự đồng bộ hóa tốt hơn so với NRZ khi số lượng các bit 1 trong thông tin được mã hóa nhiều hơn các bit 0. Tuy nhiên, mã này không đảm bảo đồng bộ hóa khi có chuỗi dài các bit 0.
+
+Phương pháp này được sử dụng ở lớp vật lý của chuẩn **100BASE-FX Fast Ethernet**.
+
+Trong **mã Manchester (Manchester Code)**, việc mã hóa các bit 1 và 0 được thực hiện bằng cách thay đổi mức điện áp, tức là biên độ xung. Mỗi chu kỳ xung nhịp được chia thành hai phần. Thông tin được mã hóa bằng các sự thay đổi điện áp xảy ra ở giữa mỗi chu kỳ: bit 1 được mã hóa bằng sự thay đổi từ mức tín hiệu thấp lên mức cao, còn bit 0 thì ngược lại (theo chuẩn IEEE 802.3). Sự thay đổi này được sử dụng để đồng bộ hóa giữa máy phát và máy thu.
+
+Ở đầu mỗi chu kỳ có thể xảy ra sự thay đổi tín hiệu phụ trợ để biểu diễn một chuỗi các bit 1 hoặc bit 0 liên tiếp.
+
+**Mã Manchester**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_30_Manchester.png" alt="Hình 3.30 Mã Manchester" width="900">
+</p>
+<p align="center"><b>Hình 3.30 Mã Manchester</b></p>
+
+
+Băng thông phổ khi sử dụng mã hóa Manchester rộng gấp đôi so với mã hóa NRZ. Phương pháp này được sử dụng ở lớp vật lý trong các chuẩn Ethernet tốc độ 10 Mbps (**10BASE5, 10BASE2, 10BASE-T, 10BASE-F**).
+
+**Mã truyền tải ba mức MLТ-3 (Multi-Level Transmission-3)** sử dụng ba mức tín hiệu: +1, 0 và -1.
+
+Bit 1 được mã hóa bằng cách chuyển từ mức tín hiệu này sang mức tín hiệu khác. Khi truyền bit 0, tín hiệu sẽ không thay đổi.
+
+**Mã MLТ-3**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_31_MLT_3.png" alt="Hình 3.31 Mã MLТ-3" width="900">
+</p>
+<p align="center"><b>Hình 3.31 Mã MLТ-3</b></p>
+
+
+Nhược điểm của phương pháp này là thiếu khả năng đồng bộ hóa khi xuất hiện chuỗi dài các bit 0. Mã MLT-3 được sử dụng ở lớp vật lý của chuẩn **100BASE-TX Fast Ethernet** kết hợp với phương pháp mã hóa logic **4B/5B**.
+
+--- 
+
+#### 3.5.4.2 Mã hóa logic (Logical Encoding)
+
+**Mã hóa logic** (Logical Encoding), thực hiện trước mã hóa vật lý, nhằm khắc phục các hạn chế của các mã tiềm năng như **NRZ**, **NRZI** hoặc **MLT-3**. Mã hóa logic bao gồm việc thay thế các bit của thông tin gốc bằng một chuỗi bit mới, mang cùng nội dung thông tin nhưng có thêm các tính chất bổ sung, đặc biệt là khả năng giúp bên nhận phát hiện lỗi trong dữ liệu nhận được.
+
+Ngoài ra, mã hóa logic cho phép loại bỏ các chuỗi dài các bit 0 và bit 1 có thể gây mất đồng bộ, đảm bảo nhận diện biên của khung và các trạng thái đặc biệt trong dòng bit liên tục, và cải thiện đặc điểm phổ của tín hiệu.
+
+Mã hóa logic chuyển đổi dòng bit của khung MAC tại tầng con của tầng liên kết (Data Link Layer) thành chuỗi ký hiệu chuẩn bị cho mã hóa vật lý để truyền qua đường truyền.
+
+Hai phương pháp chính cho mã hóa logic bao gồm:
+
+- **Mã thừa (Redundant Codes)**
+- **Xáo trộn (Scrambling)**
+
+**Mã thừa** (Redundant Coding) dựa trên việc chia chuỗi bit gốc thành các đoạn có độ dài bằng nhau – được gọi là **ký hiệu (symbols)**. Sau đó, mỗi ký hiệu được thay thế (thường bằng cách tra bảng) bằng một ký hiệu mới có số bit lớn hơn.
+
+**Mã logic 4B/5B** thay thế mỗi 4 bit của dòng dữ liệu gốc (ký hiệu gốc) bằng một ký hiệu đầu ra 5 bit (bảng 3.1). Trong chuỗi 4 bit gốc có 16 tổ hợp khác nhau của các bit 0 và 1, trong khi trong nhóm 5 bit có đến 32 tổ hợp. Do đó, trong mã kết quả, có thể chọn ra 16 tổ hợp không chứa nhiều bit 0 liên tiếp. Các tổ hợp còn lại có thể được xem là các chuỗi bị cấm. Nhờ vậy, ngoài việc cải thiện khả năng tự đồng bộ hóa của mã gốc, mã thừa còn cho phép máy thu nhận diện lỗi, vì sự xuất hiện của chuỗi bị cấm báo hiệu có lỗi xảy ra.
+
+*bảng 3.1*
+
+| Mã nhị phân 4B | Mã kết quả 5B |
+|----------------|---------------|
+| 0000           | 11110         |
+| 0001           | 01001         |
+| 0010           | 10100         |
+| 0011           | 10101         |
+| 0100           | 01010         |
+| 0101           | 01011         |
+| 0110           | 01110         |
+| 0111           | 01111         |
+| 1000           | 10010         |
+| 1001           | 10011         |
+| 1010           | 10110         |
+| 1011           | 10111         |
+| 1100           | 11010         |
+| 1101           | 11011         |
+| 1110           | 11100         |
+| 1111           | 11101         |
+
+Mã 4B/5B được sử dụng trong các chuẩn **100BASE-FX và 100BASE-TX**.
+
+**Mã logic 8B/10B** thay thế mỗi ký hiệu 8 bit gốc bằng ký hiệu đầu ra 10 bit. Trong chuỗi gốc có 256 tổ hợp khác nhau của các bit 0 và 1, trong khi trong mã kết quả có đến 1024 tổ hợp. Nhờ đó, có thể mã hóa 256 tổ hợp của các ký hiệu 8 bit theo hai cách khác nhau. Mã 8B/10B được sử dụng trong các chuẩn Gigabit Ethernet: **1000BASE-SX, 1000BASE-LX**.
+
+**Mã logic 64B/66B** thay thế mỗi ký hiệu 64 bit gốc bằng ký hiệu đầu ra 66 bit. Phương pháp này được sử dụng trong các chuẩn Ethernet 10 Gigabit: **10GBASE-SR, 10GBASE-LR, 10GBASE-ER, 10GBASE-LRM, 10GBASE-KR**.
+
+**Xáo trộn (Scrambling)** bao gồm việc chuyển đổi từng bit của chuỗi bit gốc bằng cách sử dụng một chuỗi bit giả ngẫu nhiên để cải thiện đặc điểm phổ và khả năng tự đồng bộ của chuỗi bit kết quả. Quá trình xáo trộn thực hiện bằng phép toán XOR từng bit của chuỗi gốc với chuỗi giả ngẫu nhiên. Ở phía nhận, dòng bit gốc được khôi phục thông qua bộ giải xáo trộn (descrambler).
+
+Về mặt phần cứng, bộ xáo trộn gồm một số cổng logic XOR và thanh ghi dịch với các kết nối hồi tiếp để tạo ra chuỗi bit giả ngẫu nhiên.
+
+Các thuật toán xáo trộn khác nhau ở số lượng thành phần và độ dịch giữa các thành phần.
+
+Ưu điểm của xáo trộn là không sử dụng mã thừa, nhưng nhược điểm là cần có thuật toán xáo trộn/giải xáo trộn tại các nút mạng, gây thêm chi phí thực hiện.
 
