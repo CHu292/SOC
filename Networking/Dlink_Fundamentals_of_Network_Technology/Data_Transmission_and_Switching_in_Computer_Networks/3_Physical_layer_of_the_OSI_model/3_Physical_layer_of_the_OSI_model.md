@@ -1014,3 +1014,60 @@ Các đặc tính chính của cáp điện, có ý nghĩa thực tiễn và đ�
 - **Đường kính hoặc tiết diện dây dẫn**: Trong các tiêu chuẩn quốc tế và châu Âu, đường kính dây dẫn thường đo bằng milimet. Trong các mạng máy tính hiện đại, hệ thống chuẩn AWG (American Wire Gauge) thường được sử dụng để phân loại cáp đồng, ví dụ: 22AWG, 24AWG, và 26AWG. Số AWG càng nhỏ, đường kính dây dẫn càng lớn và điện trở càng thấp.
 
 Các thông số này ảnh hưởng lớn đến hiệu suất và độ tin cậy của hệ thống cáp, đảm bảo các kênh truyền đạt yêu cầu về chất lượng và độ bền trong môi trường mạng máy tính.
+
+---
+
+### 3.6.2 Cáp đồng trục (Coaxial cable)
+
+Cáp đồng trục (Coaxial cable) là loại cáp điện bao gồm dây dẫn trung tâm và lớp vỏ bọc được sắp xếp đồng trục, dùng để truyền tải tín hiệu tần số cao. Đặc điểm của loại cáp này là khả năng chống nhiễu cao và độ suy giảm tín hiệu thấp.
+
+Cáp đồng trục bao gồm dây dẫn bên trong, có thể là dây đồng nguyên khối hoặc dây đồng xoắn.
+
+Xung quanh dây dẫn bên trong là lớp vỏ nhựa cách điện (dielectric), bên ngoài lớp cách điện này là dây dẫn ngoài. Dây dẫn ngoài được làm từ lớp màng kim loại có chức năng như một màn chắn nhiễu điện từ, bao quanh bởi lớp bện đồng. Bên ngoài cùng của cáp là lớp ống nhựa cứng, đóng vai trò làm lớp vỏ bảo vệ bên ngoài của cáp (hình 3.33).
+
+**Cáp đồng trục**
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_33_Coaxial_cable.png" alt="Hình 3.33 Cáp đồng trục" width="900">
+</p>
+<p align="center"><b>Hình 3.33 Cáp đồng trục</b></p>
+
+
+
+Trong các mạng cục bộ (LAN), có hai loại cáp đồng trục từng được sử dụng là "cáp mỏng" và "cáp dày".
+
+- **Cáp dày** (thick coaxial cable): RG-8 và RG-11 có trở kháng sóng 50 Ohm, được thiết kế cho mạng Ethernet 10BASE5. Loại cáp này có khả năng chống nhiễu tốt và suy giảm thấp, vì vậy có thể truyền dữ liệu ở khoảng cách xa. Đường kính của cáp vào khoảng 12 mm, với khoảng cách truyền tối đa lên đến 500 m. Tuy nhiên, so với cáp mỏng, cáp dày có giá thành cao hơn, khó uốn và yêu cầu lắp đặt phức tạp hơn.
+
+- **Cáp mỏng** (thin coaxial cable): RG-58 được thiết kế cho mạng Ethernet 10BASE2. Loại cáp này có khả năng chống nhiễu thấp hơn cáp dày, nhưng lại linh hoạt và có giá thành rẻ hơn. Đường kính cáp vào khoảng 6 mm, trở kháng sóng là 50 Ohm, và khoảng cách truyền tối đa lên đến 185 m.
+
+Hiện nay, cáp đồng trục RG-59 chủ yếu được sử dụng để truyền tín hiệu truyền hình.
+
+Một loại biến thể của cáp đồng trục là **cáp twinaxial** (Twinaxial cable).
+
+### Cáp twinaxial - Cáp trục đôi (Twinaxial cable)
+
+Cáp twinaxial là loại cáp điện chất lượng cao, có cấu tạo tương tự cáp đồng trục nhưng bao gồm hai dây dẫn bên trong. Đường kính của dây dẫn thường nằm trong khoảng từ 30 AWG đến 24 AWG, với trở kháng sóng là 100 Ohm.
+
+**Cáp twinaxial - Cáp trục đôi**
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_34_Twinaxial_cable.png" alt="Hình 3.34 Cáp twinaxial" width="900">
+</p>
+<p align="center"><b>Hình 3.34 Cáp twinaxial</b></p>
+
+
+
+Ban đầu, cáp twinaxial được thiết kế để sử dụng trong mạng Gigabit Ethernet theo chuẩn 1000BASE-CX cho truyền tải dữ liệu ở khoảng cách ngắn (tối đa 25 m). Hiện tại, cáp này được sử dụng rộng rãi trong mạng Ethernet tốc độ cao ở các chuẩn như 10GBASE-CX4, 40GBASE-CR4 và 100GBASE-CR10 cho các khoảng cách ngắn.
+
+Để đạt hiệu suất tối ưu, cáp twinaxial trong các mạng theo chuẩn 10GBASE-CX4, 40GBASE-CR4 và 100GBASE-CR10 nên được kết thúc tại nhà máy sản xuất. Để phục vụ mục đích này, các nhà sản xuất thiết bị mạng cung cấp các bộ cáp thụ động hoặc chủ động, bao gồm cáp twinaxial (hoặc nhiều cáp twinaxial), và các bộ thu phát SFP+ và/hoặc QSFP+ hoặc các đầu nối InfiniBand được kết nối trực tiếp ở hai đầu.
+
+**Cáp twinaxial thụ động** để kết nối trực tiếp với các bộ thu phát QSFP+ có chiều dài 3 mét
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_35.jpg" alt="Hình 3.35 Cáp twinaxial thụ động để kết nối trực tiếp với các bộ thu phát QSFP+ có chiều dài 3 mét" width="900">
+</p>
+<p align="center"><b>Hình 3.35 Cáp twinaxial thụ động để kết nối trực tiếp với các bộ thu phát QSFP+ có chiều dài 3 mét</b></p>
+
+
