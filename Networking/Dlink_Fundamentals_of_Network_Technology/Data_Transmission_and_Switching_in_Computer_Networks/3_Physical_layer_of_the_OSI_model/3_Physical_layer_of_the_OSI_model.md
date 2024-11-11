@@ -1463,4 +1463,92 @@ Thiết bị thụ động là các thiết bị mạng không tiêu thụ đi�
 </p>
 <p align="center"><b>Hình 3.57 Các loại thiết bị mạng</b></p>
 
+---
+
+### 3.6.6 Hệ thống cáp có cấu trúc
+
+Hệ thống cáp có cấu trúc (Structured Cabling System - SCS) là hệ thống cáp của một tòa nhà hoặc nhóm tòa nhà đáp ứng các yêu cầu của các tiêu chuẩn. SCS được quy định bởi các tiêu chuẩn quốc tế, châu Âu và quốc gia.
+
+Hiện tại, có ba tiêu chuẩn chính:
+
+- **TIA/EIA-568 C Commercial Building Telecommunications Wiring Standard** (Tiêu chuẩn Mỹ);
+- **ISO/IEC 11801-2002 Information Technology. Generic cabling for customer premises** (Tiêu chuẩn quốc tế);
+- **CENELEC EN 50173 Information Technology. Generic cabling systems** (Tiêu chuẩn châu Âu).
+
+Tại Liên bang Nga, các tiêu chuẩn GOST R 53246-2008 và GOST R 53245-2008 đã được đưa vào thực tiễn, dựa trên tiêu chuẩn quốc tế ISO/IEC 11801.
+
+Tất cả các tiêu chuẩn này xác định cấu trúc của SCS, các thông số hoạt động của các thành phần chức năng, nguyên tắc thiết kế, quy tắc lắp đặt, phương pháp đo lường, quy tắc quản lý, và các yêu cầu về tiếp đất viễn thông. Cần lưu ý rằng các tiêu chuẩn này có sự khác biệt về thuật ngữ, danh sách các thành phần chức năng của SCS và số lượng các phân hệ của SCS.
+
+Hệ thống cáp có cấu trúc là một cơ sở hạ tầng cáp toàn diện, cung cấp khả năng truyền tín hiệu của tất cả các loại: dữ liệu, thoại và video. Các lợi ích của nó bao gồm khả năng kết nối với bất kỳ thiết bị mạng nào và sử dụng các giao thức mạng khác nhau. Ngoài ra, SCS sử dụng các thành phần và vật liệu tiêu chuẩn, cho phép kết hợp nhiều loại cáp trong cùng một mạng, có tính mô-đun, khả năng điều chỉnh và mở rộng hệ thống cáp, cũng như đảm bảo tuổi thọ lâu dài. Đơn giản trong quản lý được đạt được nhờ tất cả các thành phần của SCS (cổng, cáp, bảng, tủ, v.v.) đều được đánh dấu và ghi chép.
+
+**Ví dụ về lắp đặt và đánh dấu ổ cắm**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_58.jpg" alt="Hình 3.58 Ví dụ về lắp đặt và đánh dấu ổ cắm" width="700">
+</p>
+<p align="center"><b>Hình 3.58 Ví dụ về lắp đặt và đánh dấu ổ cắm</b></p>
+
+
+Nhược điểm của SCS là các tiêu chuẩn khuyến nghị việc lắp đặt thiết bị dự phòng, dẫn đến chi phí ban đầu đáng kể, nhưng những chi phí này sẽ nhanh chóng được hoàn vốn.
+
+Một trong những thủ tục quan trọng giúp tránh các vấn đề với hoạt động của các ứng dụng mạng máy tính là thử nghiệm và chứng nhận SCS. SCS có thể đáp ứng các tiêu chuẩn nhưng không đảm bảo hoạt động của một số ứng dụng trong mạng cục bộ theo thông số tỷ lệ lỗi bit (BER, Bit Error Rate). Việc thử nghiệm cho phép phát hiện các lỗi tiềm ẩn gây ra các sự cố và lỗi hệ thống.
+
+Để chẩn đoán SCS, người ta sử dụng các thiết bị chuyên dụng:
+
+- **Bộ phân tích mạng (network analyzers)**: là các thiết bị đo tiêu chuẩn dùng để chẩn đoán và chứng nhận cáp và hệ thống cáp trong điều kiện phòng thí nghiệm bởi các nhân viên đã qua đào tạo (không nên nhầm lẫn với bộ phân tích giao thức).
+- **Máy quét cáp (cable scanners)**: là các thiết bị di động dùng để chứng nhận hệ thống cáp, cho phép xác định chiều dài cáp, các đặc tính điện từ (NEXT, suy hao, trở kháng), sơ đồ đi dây cáp, mức độ của trường điện từ, tỷ lệ tín hiệu/nhiễu.
+- **Máy kiểm tra cáp (cable testers)**: là các thiết bị di động cho phép chẩn đoán hệ thống cáp để đảm bảo tính chính xác của việc lắp đặt và phát hiện các lỗi trong cáp.
+
+---
+
+### 3.6.7 Bộ chuyển đổi phương tiện (Media Converters)
+
+Khi mở rộng hoặc nâng cấp mạng hiện có, cũng như khi tổ chức truy cập Internet cho người dùng, có thể xảy ra các vấn đề liên quan đến sự không tương thích giữa các loại phương tiện truyền tải và tín hiệu. Ví dụ, khi kết nối thiết bị với giao diện "dây đồng" (copper interface) vào các kênh truyền dẫn quang hoặc ngược lại. Để tránh chi phí tài chính đáng kể cho việc thiết lập các kết nối mới hoặc mua sắm thiết bị đắt tiền, những vấn đề này trong mạng có thể được giải quyết bằng cách sử dụng bộ chuyển đổi phương tiện (media converters).
+
+**Bộ chuyển đổi phương tiện (Media Converter)** là thiết bị chuyển đổi loại phương tiện truyền dẫn tín hiệu từ một dạng này sang dạng khác.
+
+Trong mạng máy tính, "phương tiện truyền dẫn tín hiệu" mà bộ chuyển đổi phương tiện xử lý thường là cáp đồng và cáp quang. Nói cách khác, nó là cầu nối giữa hai môi trường vật lý - cáp đồng và cáp quang.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_59_Using_a_media_converter_on_the_network.png" alt="Hình 3.59 Sử dụng bộ chuyển đổi phương tiện trong mạng" width="700">
+</p>
+<p align="center"><b>Hình 3.59 Sử dụng bộ chuyển đổi phương tiện trong mạng</b></p>
+
+
+Để kết nối với cáp đồng, bộ chuyển đổi phương tiện được trang bị giao diện RJ-45. Để kết nối với cáp quang, thường sử dụng giao diện SC.
+
+**Bộ chuyển đổi phương tiện DMC-F02SC với giao diện quang SC**
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_60.jpg" alt="Hình 3.60 Bộ chuyển đổi phương tiện DMC-F02SC với giao diện quang SC" width="700">
+</p>
+<p align="center"><b>Hình 3.60 Bộ chuyển đổi phương tiện DMC-F02SC với giao diện quang SC</b></p>
+
+Để linh hoạt hơn trong việc lựa chọn loại kết nối quang, thay vì giao diện quang cố định, bộ chuyển đổi phương tiện có thể được trang bị khe cắm để lắp các mô-đun giao diện có thể thay thế, thông thường là SFP.
+
+**Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_61.jpg" alt="Hình 3.61 Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP" width="700">
+</p>
+<p align="center"><b>Hình 3.61 Bộ chuyển đổi phương tiện DMC-G01L với khe cắm SFP</b></p>
+
+
+Các bộ chuyển đổi phương tiện do D-Link sản xuất có thể hoạt động như các thiết bị độc lập (được đặt trong vỏ riêng và được trang bị bộ cấp nguồn), hoặc là một phần của hệ thống khung (chassis). Khung chứa bộ chuyển đổi phương tiện rất tiện lợi khi sử dụng trong mạng của các nhà cung cấp dịch vụ viễn thông, khi cần tổ chức truy cập Internet cho người dùng. Khung có thể chứa đến 16 bộ chuyển đổi phương tiện, có thể thiết lập dự phòng nguồn điện cho chúng, cũng như giám sát chúng trong thời gian thực. Khung có thể được đặt trong giá viễn thông.
+
+**Khung cho bộ chuyển đổi phương tiện DMC-1000**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_62.jpg" alt="Hình 3.62 Khung cho bộ chuyển đổi phương tiện DMC-1000" width="700">
+</p>
+<p align="center"><b>Hình 3.62 Khung cho bộ chuyển đổi phương tiện DMC-1000</b></p>
+
+
+Truyền thống, bộ chuyển đổi phương tiện được xem là thiết bị hoạt động ở lớp vật lý của mô hình OSI. Tuy nhiên, sự phát triển công nghệ đã dẫn đến sự ra đời của các bộ chuyển đổi phương tiện có chức năng thông minh, hoạt động ở lớp liên kết dữ liệu.
+
+Các bộ chuyển đổi phương tiện hiện đại có thể không chỉ chuyển đổi phương tiện truyền dẫn mà còn có khả năng điều chỉnh tốc độ và chế độ truyền dữ liệu. Việc điều chỉnh tốc độ và chế độ hoạt động (song công/ bán song công) được thực hiện qua cổng kết nối cáp xoắn đôi, thường là giao diện Ethernet. Ngoài ra, bộ chuyển đổi phương tiện còn có các chức năng dịch vụ khác. Ví dụ, chúng có thể kiểm soát lưu lượng dữ liệu (flow control), giám sát các cổng quang và cổng đồng để phát hiện sự mất tín hiệu (chức năng Link Pass Through), thực hiện chuyển mạch khung ở chế độ Store-and-forward.
+
+--- 
 
