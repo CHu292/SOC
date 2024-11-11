@@ -1429,4 +1429,38 @@ Khác với các đầu nối quang đơn sợi, là loại đầu nối "papa" 
 </p>
 <p align="center"><b>Hình 3.54 Mô-đun giao diện thay thế 100 Gbit/s với đầu nối MPO (female)</b></p>
 
+--- 
+
+
+### 3.6.5 Hệ thống cáp
+
+Hệ thống cáp bao gồm tập hợp các loại cáp khác nhau (cáp quang, cáp xoắn đôi), cáp nối (patch cords), đầu nối cho cáp, ổ cắm kết nối, các bảng kết nối hoặc bảng phân phối (patch panels), tủ và giá viễn thông, được sử dụng để kết nối các thiết bị mạng khác nhau vào mạng máy tính.
+
+- **Bảng phân phối (Patch Panel)**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_55_Patch_panel.jpg" alt=" Hình 3.55 Bảng phân phối" width="600">
+</p>
+<p align="center"><b> Hình 3.55 Bảng phân phối</b></p>
+
+ 
+
+- **Giá viễn thông (Telecommunications Rack)**  
+ 
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_56_Telecommunication_rack.jpg" alt=" Hình 3.56 Giá viễn thông" width="600">
+</p>
+<p align="center"><b>  Hình 3.56 Giá viễn thông</b></p>
+
+Thiết bị được sử dụng để tổ chức mạng máy tính có thể chia thành hai loại: thiết bị thụ động và thiết bị chủ động.
+
+Các thành phần của hệ thống cáp là thiết bị mạng thụ động, trong khi các thiết bị mạng mà chúng kết nối là thiết bị mạng chủ động.
+
+Thiết bị thụ động là các thiết bị mạng không tiêu thụ điện và không gây thay đổi tín hiệu ở cấp độ thông tin. Thiết bị mạng chủ động bao gồm các thiết bị điện tử và điện tử-quang học, có chức năng xử lý, hình thành, biến đổi và chuyển mạch tín hiệu điện, radio và/hoặc quang học. Để truyền và nhận tín hiệu, thiết bị mạng chủ động sử dụng các nguồn năng lượng bổ sung, tức là cần điện để hoạt động.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_57_Types_of_network_equipment.png" alt="Hình 3.57 Các loại thiết bị mạng" width="600">
+</p>
+<p align="center"><b>Hình 3.57 Các loại thiết bị mạng</b></p>
+
 
