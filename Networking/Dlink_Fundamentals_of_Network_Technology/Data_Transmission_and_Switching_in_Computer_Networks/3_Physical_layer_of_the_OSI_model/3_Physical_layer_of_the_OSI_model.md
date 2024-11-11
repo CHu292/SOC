@@ -1045,7 +1045,7 @@ Hiện nay, cáp đồng trục RG-59 chủ yếu được sử dụng để tru
 
 Một loại biến thể của cáp đồng trục là **cáp twinaxial** (Twinaxial cable).
 
-### Cáp twinaxial - Cáp trục đôi (Twinaxial cable)
+**Cáp twinaxial - Cáp trục đôi (Twinaxial cable)**
 
 Cáp twinaxial là loại cáp điện chất lượng cao, có cấu tạo tương tự cáp đồng trục nhưng bao gồm hai dây dẫn bên trong. Đường kính của dây dẫn thường nằm trong khoảng từ 30 AWG đến 24 AWG, với trở kháng sóng là 100 Ohm.
 
