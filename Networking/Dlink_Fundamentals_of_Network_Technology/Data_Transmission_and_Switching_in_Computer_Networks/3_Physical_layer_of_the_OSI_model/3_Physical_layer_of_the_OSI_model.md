@@ -1071,3 +1071,199 @@ Ban đầu, cáp twinaxial được thiết kế để sử dụng trong mạng 
 <p align="center"><b>Hình 3.35 Cáp twinaxial thụ động để kết nối trực tiếp với các bộ thu phát QSFP+ có chiều dài 3 mét</b></p>
 
 
+--- 
+
+### 3.6.3 Cáp xoắn đôi (Twisted pair cable)
+
+**Cáp xoắn đôi** (*Twisted pair*) là một loại dây dẫn cách điện, trong đó các dây dẫn được xoắn lại với nhau theo từng cặp, với một số vòng xoắn nhất định trên một đơn vị chiều dài, và được bao bọc trong một lớp vỏ nhựa (*plastic sheath*).
+
+Như đã đề cập trước đó, việc xoắn các dây dẫn theo từng cặp giúp giảm nhiễu chéo (*crosstalk*), vì các sóng điện từ do từng dây phát ra sẽ triệt tiêu lẫn nhau. Bước xoắn khác nhau cho từng cặp dây và được xác định trong các tiêu chuẩn.
+
+Cáp xoắn đôi là loại cáp phổ biến nhất trong điện thoại và mạng máy tính cục bộ (*LAN*) do giá thành rẻ và dễ dàng lắp đặt.
+
+Cáp thường chứa nhiều cặp dây xoắn: thường có 2, 4, 6, 8, 25, 50 hoặc 100 cặp trong một bó. Trong các mạng cục bộ, cáp 4 cặp là loại được sử dụng phổ biến nhất.
+
+Các lõi dẫn điện (*conductors*) trong các cặp dây được làm bằng đồng. Chúng có thể là loại dây đơn (nguyên một sợi) hoặc dây xoắn (gồm nhiều sợi nhỏ kết hợp chặt chẽ với nhau). Độ dày của lõi dẫn điện nằm trong khoảng 0,4 đến 0,6 mm theo hệ mét và từ 26 đến 22 AWG theo hệ AWG. Trong các cáp 4 cặp tiêu chuẩn, đường kính lõi chủ yếu là 0,51 mm (24 AWG).
+
+Phía trên lõi dẫn điện là lớp cách điện (*insulation*), có thể là lớp đặc, lớp xốp, hoặc lớp cách điện dạng phim. Cáp được bọc bởi lớp vỏ nhựa PVC (*Polyvinyl chloride*), PP (*Polypropylene*) hoặc PE (*Polyethylene*).
+
+Có hai loại cáp xoắn đôi chính:
+
+1. **Cáp xoắn đôi không được che chắn** (*UTP, Unshielded Twisted Pair*)
+2. **Cáp xoắn đôi được che chắn** (*STP, Shielded Twisted Pair*)
+
+Như tên gọi, cáp không che chắn (*UTP*) không có thêm lớp màn chắn bảo vệ khỏi nhiễu điện từ (*EMI*) hoặc nghe lén trái phép.
+
+**Cáp UTP**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_36_UTP_cable.png" alt="Hình 3.36 Cáp UTP" width="900">
+</p>
+<p align="center"><b>Hình 3.36 Cáp UTP</b></p>
+
+
+Các cáp có che chắn có thêm lớp bảo vệ. Dựa vào công nghệ sử dụng, có một số loại cáp xoắn đôi có che chắn:
+
+- **Cáp xoắn đôi có che chắn** (*STP, Shielded Twisted Pair*)
+- **Cáp xoắn đôi có màn chắn bảo vệ** (*ScTP, Screened Twisted Pair*)
+- **Cáp xoắn đôi có che chắn bảo vệ kép** (*SSTP, Screened Shielded Twisted Pair*)
+
+Trong cáp **STP** (U/FTP - *Unshielded/Foiled Twisted Pair* theo tiêu chuẩn ISO/IEC 11801), mỗi cặp dây đồng xoắn để giảm nhiễu và nhiễu chéo được bọc thêm một lớp màn chắn bằng nhôm.
+
+**Cáp STP**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_37_STP_cable.png" alt="Hình 3.37 Cáp STP" width="900">
+</p>
+<p align="center"><b>Hình 3.37 Cáp STP</b></p>
+
+Trong **cáp ScTP** có một lớp màn chắn bảo vệ chung xung quanh tất cả các cặp không có che chắn. Các loại phổ biến là F/UTP (*Foiled/Unshielded Twisted Pair*) với màn chắn làm từ lá nhôm, S/UTP (*Shielded/Unshielded Twisted Pair*) với màn chắn dạng lưới dây đồng, và SF/UTP (*Shielded Foiled/Unshielded Twisted Pair*) có hai lớp che chắn ngoài từ lá nhôm và dây đồng bện.
+
+**Cáp F/UTP**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_38_F_UTP_cable.png" alt="Hình 3.38 Cáp F/UTP" width="900">
+</p>
+<p align="center"><b>Hình 3.38 Cáp F/UTP</b></p>
+
+
+**Cáp xoắn đôi có che chắn bảo vệ kép** bảo vệ tối ưu khỏi nhiễu điện từ và nhiễu chéo, vì mỗi cặp dây đều có màn chắn riêng và một lớp màn chắn chung cho tất cả các cặp. Có hai loại cáp này: F/FTP và S/FTP theo tiêu chuẩn ISO/IEC 11801. Trong cáp F/FTP (*Foiled/Foiled Twisted Pair*), các lớp màn chắn xung quanh các cặp và màn chắn chung được làm từ lá nhôm. Trong cáp S/FTP (*Shielded/Foiled Twisted Pair*), màn chắn quanh các cặp là lá nhôm, và màn chắn chung là lưới đồng.
+
+**Cáp S/FTP**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_39_S_FTP_cable.png" alt="Hình 3.39 Cáp S/FTP" width="900">
+</p>
+<p align="center"><b>Hình 3.39 Cáp S/FTP</b></p>
+
+
+
+Dù lớp che chắn giúp tăng khả năng chống nhiễu, nhưng đồng thời làm cho các loại cáp có che chắn đắt và nặng hơn so với cáp không có che chắn, và yêu cầu nối đất đúng cách. Do đó, trong các mạng cục bộ chạy ở tốc độ 100 hoặc 1000 Mb/s, thường sử dụng cáp không có che chắn. Tuy nhiên, với các mạng tốc độ cao như 10 Gb/s, 40 Gb/s, và 100 Gb/s, tiêu chuẩn chỉ định phải dùng cáp có che chắn.
+
+Cáp xoắn đôi được phân thành các **loại (categories)** theo băng thông của chúng. Loại cáp càng cao thì băng thông càng lớn và hiệu suất càng tốt.
+
+Các loại này được quy định trong tiêu chuẩn EIA/TIA-568 của Mỹ và tiêu chuẩn ISO/IEC 11801 quốc tế. Hiện tại có 8 loại cáp được xác định. Mô tả các loại cáp được đưa ra trong bảng 3.2.
+
+Đối với cáp không che chắn theo tiêu chuẩn EIA/TIA-568, các loại cáp được xác định là 3, 4, 5, 5e, và 6; còn trong tiêu chuẩn ISO/IEC 11801, các loại được quy định là A, B, C, D, và E. Đối với cáp có che chắn, các loại cáp trong tiêu chuẩn EIA/TIA-568 bao gồm 6A, 7, 7A, 8.1 và 8.2, trong khi tiêu chuẩn ISO/IEC 11801 bao gồm các loại Ea, F, Fa, I, và II.
+
+Khoảng cách truyền tối đa của cáp xoắn đôi là 100 m nếu không có các hạn chế theo tiêu chuẩn tương ứng. Trở kháng của tất cả các loại và loại cáp xoắn đôi là 100 Ohm. Các tham số khác, như suy giảm tín hiệu (*attenuation*), nhiễu chéo gần (*NEXT*), tốc độ lan truyền tín hiệu và các đặc điểm khác, thay đổi tùy theo loại cáp.
+
+**Bảng 3.2: Các loại cáp xoắn đôi (twisted pair)**
+
+| **Tên gọi (EIA/TIA-568)** | **Tên gọi (ISO/IEC 11801)** | **Băng tần (MHz)** | **Ứng dụng** | **Ghi chú và nhận xét** |
+|----------------------------|----------------------------|--------------------|--------------|-------------------------|
+| -                          | Class A                    | Đến 100 KHz       | xDSL         | Cáp điện thoại. Chỉ dùng cho truyền thoại hoặc dữ liệu qua modem analog hoặc ADSL. |
+| -                          | Class B                    | Đến 1 MHz         | ISDN, 1BASE5 | Hiện không còn sử dụng. |
+| Category 3 (Cat. 3)        | Class C                    | Đến 16 MHz        | Token Ring, 10BASE-T | Cáp UTP 2 cặp. Chủ yếu dùng để truyền thoại. |
+| Category 4 (Cat. 4)        | -                          | Đến 20 MHz        | Token Ring, 10BASE-T, 100BASE-T | Cáp UTP 4 cặp. Không còn được sử dụng. |
+| Category 5 (Cat. 5)        | Class D                    | Đến 100 MHz       | 10BASE-T, 100BASE-TX (2 cặp), 1000BASE-T (4 cặp) | Cáp UTP 4 cặp. Không còn được sử dụng. |
+| Category 5e (Cat. 5e)      | -                          | Đến 125 MHz       | 10BASE-T, 100BASE-TX (2 cặp), 1000BASE-T (4 cặp), 2.5GBASE-T, 5GBASE-T | Cáp UTP 4 cặp. Loại phổ biến trong các mạng hiện nay. |
+| Category 6 (Cat. 6)        | Class E                    | Đến 250 MHz       | 1000BASE-T, 10GBASE-T, 2.5GBASE-T, 5GBASE-T | Cáp UTP 4 cặp. Giới hạn khoảng cách tối đa 10GBASE-T là 55 m. |
+| Category 6A (Cat. 6A)      | Class Ea                   | Đến 500 MHz       | 1000BASE-T, 10GBASE-T | Cáp U/FTP, F/UTP với 4 cặp dây. |
+| Category 7 (Cat. 7)        | Class F                    | Đến 600 MHz       | 1000BASE-T, 10GBASE-T | Cáp F/FTP hoặc S/FTP với 4 cặp dây. |
+| Category 7A (Cat. 7A)      | Class Fa                   | Đến 1 GHz         | 1000BASE-T, 10GBASE-T | Cáp F/FTP hoặc S/FTP với 4 cặp dây. |
+| Category 8.1               | Class I                    | Đến 2 GHz         | 25GBASE-T, 40GBASE-T | Cáp U/FTP, F/UTP với 4 cặp dây. Khoảng cách truyền tối đa là 30 m. |
+| Category 8.2               | Class II                   | Đến 2 GHz         | 25GBASE-T, 40GBASE-T | Cáp F/FTP hoặc S/FTP với 4 cặp dây. Khoảng cách truyền tối đa là 30 m. Dùng các đầu nối TERA, GG45. |
+
+**Kết nối cáp xoắn đôi vào các thiết bị mạng**
+
+Để kết nối cáp xoắn đôi (*twisted pair cable*) vào các thiết bị mạng, người ta sử dụng đầu nối loại 8P8C (*8 Position 8 Contact*), thường được gọi là **RJ-45**. Mặc dù tên gọi này có phần không chính xác (vì RJ-45 thực sự là đầu nối loại 8P2C), do có vẻ ngoài tương tự, đầu nối 8P8C đã thừa hưởng tên gọi RJ-45 và trở nên phổ biến với tên này. Trong phần tiếp theo, chúng ta sẽ tiếp tục sử dụng thuật ngữ RJ-45. Hiện tại, đầu nối này được sử dụng cho cả cáp xoắn đôi không che chắn (*UTP - Unshielded Twisted Pair*) và cáp xoắn đôi có che chắn (*STP - Shielded Twisted Pair*).
+
+**Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_40.jpg" alt="Hình 3.40 Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)" width="900">
+</p>
+<p align="center"><b>Hình 3.40 Cáp UTP Cat. 5e với đầu nối 8P8C (RJ-45)</b></p>
+
+
+**Cáp U/FTP Cat. 6a với đầu nối 8P8C (RJ-45)**  
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_41.jpg" alt="Hình 3.41 Cáp U/FTP Cat. 6a với đầu nối 8P8C (RJ-45)" width="900">
+</p>
+<p align="center"><b>Hình 3.41 Cáp U/FTP Cat. 6a với đầu nối 8P8C (RJ-45)</b></p>
+
+**Các phương pháp bấm đầu nối 8P8C trên cáp**
+
+Số thứ tự các chân của đầu nối được xác định từ trái qua phải khi nhìn từ phía các chân tiếp xúc (hình 3.42).
+
+**Số thứ tự các chân của RJ-45**  
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_42.jpg" alt="Hình 3.42 Số thứ tự các chân của RJ-45" width="900">
+</p>
+<p align="center"><b>Hình 3.42 Số thứ tự các chân của RJ-45</b></p>
+
+
+
+Cách sắp xếp thứ tự các cặp dây dẫn trong đầu nối được quy định theo tiêu chuẩn **EIA/TIA-568A** và **EIA/TIA-568B** (hình 3.43). Mỗi cặp dây có màu sắc riêng, trong đó một dây được phủ hoàn toàn màu đó, còn dây còn lại có sọc.
+
+- **Tiêu chuẩn EIA/TIA-568A** quy định thứ tự chân trên đầu nối:  
+  1 - trắng-xanh lá, 2 - xanh lá, 3 - trắng-cam, 4 - xanh dương, 5 - trắng-xanh dương, 6 - cam, 7 - trắng-nâu, 8 - nâu.
+
+- **Tiêu chuẩn EIA/TIA-568B** quy định thứ tự chân trên đầu nối:  
+  1 - trắng-cam, 2 - cam, 3 - trắng-xanh lá, 4 - xanh dương, 5 - trắng-xanh dương, 6 - xanh lá, 7 - trắng-nâu, 8 - nâu.
+
+Hai tiêu chuẩn khác nhau ở cách sắp xếp cặp màu cam và xanh lá, khi chúng đổi vị trí cho nhau.
+
+**Thứ tự sắp xếp dây dẫn trong đầu nối**  
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_43.jpg" alt="Hình 3.43 Thứ tự sắp xếp dây dẫn trong đầu nối" width="900">
+</p>
+<p align="center"><b>Hình 3.43 Thứ tự sắp xếp dây dẫn trong đầu nối</b></p>
+
+**Phân loại cáp xoắn đôi theo cách bấm đầu nối hai đầu**
+
+Tùy thuộc vào cách bấm dây dẫn trong các đầu nối ở hai đầu cáp, cáp xoắn đôi được chia thành:
+
+1. **Cáp thẳng** (*straight through cable*): Dây xoắn đôi được bấm giống nhau ở cả hai đầu, không có hoán đổi giữa các cặp dây bên trong.
+   
+   **Cáp xoắn đôi thẳng**
+   
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_44.jpg" alt="Hình 3.44 Cáp xoắn đôi thẳng" width="900">
+</p>
+<p align="center"><b>Hình 3.44 Cáp xoắn đôi thẳng</b></p>
+
+   
+3. **Cáp chéo** (*crossover cable*): Dây dẫn được bố trí đảo ngược với sự hoán đổi giữa các cặp dây bên trong.
+   
+   **Cáp xoắn đôi chéo**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_45.jpg" alt="   Hình 3.45 Cáp xoắn đôi chéo" width="900">
+</p>
+<p align="center"><b>   Hình 3.45 Cáp xoắn đôi chéo</b></p>
+
+
+
+
+**Các loại giao diện Ethernet với đầu nối 8P8C (RJ-45)**
+
+Có ba loại giao diện (*port interfaces*) Ethernet với đầu nối 8P8C (RJ-45):
+
+1. **MDI** (*Medium Dependent Interface*): Giao diện phụ thuộc vào môi trường vật lý.
+2. **MDI-X** (*Medium Dependent Interface crossover*): Giao diện phụ thuộc vào môi trường vật lý, có hoán đổi.
+3. **Auto MDI/MDI-X**: Giao diện tự động xác định cấu hình MDI hoặc MDI-X.
+
+Các loại giao diện này khác nhau ở việc sử dụng các chân cho nhận (Rx) và truyền (Tx) tín hiệu:
+- Ở cổng MDI, các chân 1 và 2 dùng cho truyền (Tx) và các chân 3 và 6 dùng cho nhận (Rx).
+- Ở cổng MDI-X, các chân 1 và 2 dùng cho nhận (Rx) và các chân 3 và 6 dùng cho truyền (Tx).
+
+Khi kết nối các cổng MDI–MDI-X, người ta sử dụng cáp thẳng, còn khi kết nối cổng MDI–MDI hoặc MDI-X–MDI-X, cần dùng cáp chéo.
+
+Hiện nay, hầu hết các nhà sản xuất thiết bị mạng đều trang bị cổng Ethernet hỗ trợ tính năng tự động xác định cực tính **Auto MDI/MDI-X**, cho phép sử dụng bất kỳ loại cáp nào (cả cáp thẳng và cáp chéo) để kết nối thiết bị. Tính năng Auto MDI/MDI-X là một phần của tiêu chuẩn IEEE 802.3-2018.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_46_Ethernet_port.png" alt="Hình 3.46 Các cổng Ethernet MDI và MDI-X" width="900">
+</p>
+<p align="center"><b>Hình 3.46 Các cổng Ethernet MDI và MDI-X</b></p>
+
+**Công nghệ Power over Ethernet (PoE)**
+
+
+Lưu ý rằng cáp xoắn đôi không chỉ dùng cho truyền và nhận dữ liệu. Trong mạng Ethernet, nó cũng có thể được sử dụng để cung cấp điện năng cho thiết bị từ xa cùng với dữ liệu. Công nghệ này được gọi là **Power over Ethernet (PoE)**, được mô tả trong các tiêu chuẩn IEEE 802.3af, 802.3at và 802.3bt. Công nghệ PoE sẽ được trình bày trong chương 6.
