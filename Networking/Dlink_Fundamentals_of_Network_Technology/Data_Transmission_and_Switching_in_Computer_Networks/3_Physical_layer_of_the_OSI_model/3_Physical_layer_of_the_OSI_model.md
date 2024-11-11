@@ -960,3 +960,57 @@ Các thuật toán xáo trộn khác nhau ở số lượng thành phần và đ
 
 Ưu điểm của xáo trộn là không sử dụng mã thừa, nhưng nhược điểm là cần có thuật toán xáo trộn/giải xáo trộn tại các nút mạng, gây thêm chi phí thực hiện.
 
+---
+
+## 3.6 Tiêu chuẩn cáp (Cable Standards)
+
+Trong các mạng máy tính, cáp phải đáp ứng các tiêu chuẩn nhất định, cho phép xây dựng hệ thống cáp mạng từ các loại cáp và thiết bị kết nối của các nhà sản xuất khác nhau.
+
+Hiện nay, các tiêu chuẩn phổ biến nhất trong thực tế toàn cầu bao gồm:
+
+- **Tiêu chuẩn Mỹ EIA/TIA-568**
+- **Tiêu chuẩn quốc tế ISO/IEC 11801**
+- **Tiêu chuẩn châu Âu EN50173**
+
+Trong tiêu chuẩn hóa cáp, có một cách tiếp cận độc lập với các giao thức. Điều này có nghĩa là tiêu chuẩn không quy định loại cáp nào dành cho giao thức cụ thể nào. Thay vào đó, tiêu chuẩn mô tả các đặc tính điện, quang học và cơ học mà cáp hoặc đầu nối phải đáp ứng. Vì vậy, cần biết loại cáp tiêu chuẩn nào hỗ trợ các giao thức như Ethernet hoặc FDDI.
+
+Cáp có thể chia thành hai nhóm: **cáp điện** và **cáp quang**. Cáp điện bao gồm cáp xoắn đôi (twisted pair), cáp đồng trục (coaxial cable) và cáp twinaxial. Cáp quang bao gồm cáp quang đơn mode và đa mode. 
+
+**Phân loại:**
+
+- **Cáp xoắn đôi (Twisted Pair)**: Loại cáp này thường được sử dụng trong các mạng LAN Ethernet.
+- **Cáp đồng trục (Coaxial Cable)**: Chủ yếu dùng trong truyền hình cáp và một số mạng cũ.
+- **Cáp twinaxial**: Loại cáp này được sử dụng trong một số ứng dụng chuyên dụng, như kết nối trong trung tâm dữ liệu.
+- **Cáp quang đơn mode (Single-mode Fiber)**: Thường dùng trong các kết nối đường dài, cho phép truyền dữ liệu ở khoảng cách xa.
+- **Cáp quang đa mode (Multi-mode Fiber)**: Dùng cho các kết nối ngắn hơn, thường thấy trong các mạng nội bộ hoặc trung tâm dữ liệu. 
+
+Mỗi loại cáp và tiêu chuẩn sẽ phù hợp với các ứng dụng và nhu cầu truyền dẫn khác nhau, giúp tối ưu hóa hiệu quả hoạt động của mạng máy tính.
+
+---
+
+### 3.6.1 Đặc điểm chính của cáp điện (Main Characteristics of Electrical Cables)
+
+Các đặc tính chính của cáp điện, có ý nghĩa thực tiễn và được quy định bởi các tiêu chuẩn hiện hành, bao gồm:
+
+- **Suy hao (Attenuation)**: Giảm biên độ hoặc công suất tín hiệu khi truyền giữa hai điểm. Đây là một thông số quan trọng trong thiết kế kênh truyền và xác định chiều dài tối đa của cáp. Suy hao được đo bằng decibel trên mét (dB/m) và phụ thuộc vào tần số tín hiệu. 
+
+- **Nhiễu xuyên âm cận kề (NEXT) và nhiễu xuyên âm xa (FEXT) - Near-End Crosstalk (NEXT) and Far-End Crosstalk (FEXT)**: Kết quả của nhiễu tín hiệu truyền trên các cặp dây dẫn lân cận. NEXT đo tại đầu phát, trong khi FEXT đo ở đầu xa của cáp. Giá trị NEXT và FEXT đều phụ thuộc vào tần số tín hiệu.
+
+  - **NEXT**: Được tính ở đầu cáp có máy phát, là tỷ lệ giữa công suất tín hiệu vào và công suất tín hiệu nhiễu, đo bằng decibel (dB) cho một tần số nhất định. Giá trị tuyệt đối NEXT càng lớn thì mức độ nhiễu từ các cặp dây lân cận càng thấp, do đó chất lượng tín hiệu càng tốt.
+  
+  - **FEXT**: Khi truyền ở khoảng cách xa, tín hiệu sẽ suy yếu, do đó FEXT tạo ra mức nhiễu nhỏ hơn NEXT. NEXT thường quan trọng hơn FEXT trong việc đảm bảo chất lượng truyền tín hiệu.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_32_Crosstalk.png" alt="Hình 3.32 Nhiễu xuyên âm" width="900">
+</p>
+<p align="center"><b>Hình 3.32 Nhiễu xuyên âm</b></p>
+
+- **Trở kháng (Impedance)**: Là tổng trở (bao gồm cả thành phần trở kháng và điện kháng) của mạch điện, đo bằng Ohm. Trở kháng thường ổn định trong hệ thống cáp nhưng có thể thay đổi ở tần số cao (trên 100 MHz). Các biến động đột ngột về trở kháng dọc theo chiều dài cáp có thể gây ra phản xạ bên trong, dẫn đến sóng đứng, làm gián đoạn việc truyền dữ liệu.
+
+- **Điện trở kháng hoạt động (Active Resistance)**: Là điện trở đối với dòng điện một chiều trong mạch điện. Không phụ thuộc vào tần số và tăng lên khi chiều dài cáp tăng. Đơn vị đo là Ohm.
+
+- **Điện dung (Capacitance)**: Khả năng của dây dẫn kim loại trong cáp tích trữ năng lượng điện. Điện dung là thông số không mong muốn vì giá trị cao có thể gây méo tín hiệu và giảm băng thông của kênh truyền. Do đó, điện dung càng thấp thì chất lượng cáp càng tốt.
+
+- **Đường kính hoặc tiết diện dây dẫn**: Trong các tiêu chuẩn quốc tế và châu Âu, đường kính dây dẫn thường đo bằng milimet. Trong các mạng máy tính hiện đại, hệ thống chuẩn AWG (American Wire Gauge) thường được sử dụng để phân loại cáp đồng, ví dụ: 22AWG, 24AWG, và 26AWG. Số AWG càng nhỏ, đường kính dây dẫn càng lớn và điện trở càng thấp.
+
+Các thông số này ảnh hưởng lớn đến hiệu suất và độ tin cậy của hệ thống cáp, đảm bảo các kênh truyền đạt yêu cầu về chất lượng và độ bền trong môi trường mạng máy tính.
