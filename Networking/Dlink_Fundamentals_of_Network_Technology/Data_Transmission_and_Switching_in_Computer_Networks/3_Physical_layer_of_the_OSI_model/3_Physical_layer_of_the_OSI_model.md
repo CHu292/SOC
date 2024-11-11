@@ -1388,7 +1388,7 @@ Hãy cùng tìm hiểu ngắn gọn các loại đầu nối đang được sử
 **Đầu nối FC (Ferrule Connector)** được mô tả trong tiêu chuẩn IEC 61754-13. Nó có vỏ kim loại và cố định bằng cách kết nối ren (threaded connection). Đường kính của ferrule là 2,5 mm. Đầu nối này bền và chống rung tốt, chủ yếu được thiết kế cho sợi quang đơn mode (single-mode fiber), nhưng cũng có thể dùng cho sợi quang đa mode (multi-mode fiber). Đầu nối FC chủ yếu được sử dụng trong các tuyến truyền dẫn quang dài, trong công nghiệp và thiết bị đo lường.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_50_FC.jpg" alt="Hình 3.50 Đầu nối FC" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_50_FC.jpg" alt="Hình 3.50 Đầu nối FC" width="600">
 </p>
 <p align="center"><b>Hình 3.50 Đầu nối FC</b></p>
 
@@ -1396,7 +1396,7 @@ Hãy cùng tìm hiểu ngắn gọn các loại đầu nối đang được sử
 **Đầu nối SC (Subscriber Connector, Square Connector, Standard Connector)** được sử dụng cho cả sợi quang đơn mode và đa mode. Yêu cầu của loại đầu nối này được mô tả trong tiêu chuẩn IEC 61754-4. Đầu nối SC bao gồm vỏ trong và vỏ ngoài, với ferrule gốm có đường kính 2,5 mm. Đầu nối sử dụng cơ chế “push-pull” (đẩy-kéo), cho phép nối tự động khóa, rất thuận tiện khi chuyển đổi. Đầu nối này không thích hợp với các tác động cơ học và rung động, nhưng cho phép đạt mật độ kết nối cao trên bảng viễn thông. Đầu nối SC có thể là loại simplex (đơn) hoặc duplex (kép). Đầu nối duplex là một mô-đun bao gồm hai đầu nối và được sử dụng cho kết nối duplex (một sợi quang dùng để truyền tín hiệu đi, còn sợi kia để truyền tín hiệu ngược lại).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_51_SC.jpg" alt="Hình 3.51 Đầu nối SC" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_51_SC.jpg" alt="Hình 3.51 Đầu nối SC" width="600">
 </p>
 <p align="center"><b>Hình 3.51 Đầu nối SC</b></p>
 
@@ -1405,7 +1405,7 @@ Hãy cùng tìm hiểu ngắn gọn các loại đầu nối đang được sử
 **Đầu nối LC (Lucent Connector, Local Connector)** được mô tả trong tiêu chuẩn IEC 61754-20. Nó được sử dụng cho cả sợi quang đơn mode và đa mode. Đường kính ferrule gốm là 1,25 mm, đòi hỏi phải thao tác cẩn thận. Đầu nối này nhỏ gọn hơn so với đầu nối SC, giúp tăng mật độ kết nối. Đầu nối này thuộc loại SFF (Small Form Factor - Hình thức nhỏ gọn), có kích thước bên ngoài phù hợp với khe cắm của đầu nối RJ-45. Đầu nối LC được đặt trong vỏ nhựa với cơ chế "push-pull" (có khóa, tương tự như khóa của đầu nối RJ-45). Nó có thể được sử dụng cho cả kết nối simplex và duplex.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_52_LC.jpg" alt="Hình 3.52 Đầu nối LC" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_52_LC.jpg" alt="Hình 3.52 Đầu nối LC" width="600">
 </p>
 <p align="center"><b>Hình 3.52 Đầu nối LC</b></p>
 
@@ -1418,7 +1418,7 @@ Khác với các đầu nối quang đơn sợi, là loại đầu nối "papa" 
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_53_MPO.png" alt="Hình 3.53 Đầu nối MPO" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_53_MPO.png" alt="Hình 3.53 Đầu nối MPO" width="600">
 </p>
 <p align="center"><b>Hình 3.53 Đầu nối MPO</b></p>
 
