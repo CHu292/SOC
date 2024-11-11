@@ -1224,7 +1224,7 @@ Tùy thuộc vào cách bấm dây dẫn trong các đầu nối ở hai đầu 
    **Cáp xoắn đôi thẳng**
    
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_44.jpg" alt="Hình 3.44 Cáp xoắn đôi thẳng" width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_44.png" alt="Hình 3.44 Cáp xoắn đôi thẳng" width="900">
 </p>
 <p align="center"><b>Hình 3.44 Cáp xoắn đôi thẳng</b></p>
 
