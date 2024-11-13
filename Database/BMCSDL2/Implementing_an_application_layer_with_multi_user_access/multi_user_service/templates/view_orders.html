@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Orders</title></head>
+<body>
+    <h1>Orders</h1>
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li>{{ order.customer_name }} ordered {{ order.quantity }} of product ID {{ order.product_id }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No orders available.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><title>Sales Dashboard</title></head>
+<body>
+    <h1>Sales Dashboard</h1>
+    <h2>Orders</h2>
+    <ul>
+        {% for order in orders %}
+            <li>{{ order.customer_name }} ordered {{ order.quantity }} of product ID {{ order.product_id }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

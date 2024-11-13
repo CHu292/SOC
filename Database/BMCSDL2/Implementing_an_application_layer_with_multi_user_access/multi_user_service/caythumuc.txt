@@ -1,0 +1,15 @@
+multi_user_service/
+├── app.py               # Tập tin chính để chạy ứng dụng Flask
+├── config.py            # Cấu hình kết nối với cơ sở dữ liệu
+├── models.py            # Định nghĩa các lớp ORM cho các bảng
+├── requirements.txt     # Danh sách các thư viện cần cài đặt
+├── templates/           # Thư mục chứa các template HTML
+│   ├── base.html
+│   ├── login.html
+│   ├── register.html
+│   ├── home.html
+│   ├── products.html
+│   ├── orders.html
+│   └── logs.html
+└── static/              # Chứa các tập tin CSS, JS nếu có
+    ├── style.css
