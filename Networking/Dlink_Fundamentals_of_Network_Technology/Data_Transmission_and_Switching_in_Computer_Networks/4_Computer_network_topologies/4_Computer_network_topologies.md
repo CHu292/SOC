@@ -456,4 +456,110 @@ Khi kết nối các bộ chuyển mạch hoặc điểm truy cập thành vòng
 
 Chi tiết về hoạt động của giao thức STP trong các mạng được xây dựng trên bộ chuyển mạch Ethernet sẽ được mô tả trong chương 6.
 
+---
+
+4.3.4 Cấu trúc liên kết "sao"  
+Cấu trúc liên kết "sao" (star) là một trong những cấu trúc liên kết phổ biến nhất của mạng máy tính. Thường được sử dụng trong các mạng cục bộ của văn phòng nhỏ hoặc mạng gia đình. Trong cấu trúc liên kết này, tất cả các nút đều được kết nối bằng đường truyền "điểm-điểm" tới một thiết bị trung tâm, trong các mạng hiện đại có thể là bộ chuyển mạch (switch), bộ định tuyến (router), hoặc điểm truy cập (access point). Việc trao đổi dữ liệu giữa các nút được thực hiện thông qua thiết bị trung tâm, thiết bị này thực hiện và kiểm soát các chức năng được triển khai trong mạng, cũng như tăng cường tín hiệu đi qua nó.
+
+**Mạng với cấu trúc liên kết "sao"**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_28.png" alt="Hình 4.28 Mạng với cấu trúc liên kết "sao"" width="600">
+</p>
+<p align="center"><b>Hình 4.28 Mạng với cấu trúc liên kết "sao"</b></p>
+
+
+Các ưu điểm chính của cấu trúc liên kết "sao" bao gồm:
+
+- Đơn giản trong việc bảo trì và khắc phục sự cố mạng, cũng như dễ dàng kết nối thêm thiết bị mới.
+- Tính bảo mật của mạng. Thiết bị trung tâm có thể là thiết bị mạng với các chức năng bảo mật tiên tiến, đảm bảo kiểm soát lưu lượng đi qua nó. Ngoài ra, có thể hạn chế truy cập vật lý vào thiết bị trung tâm bằng cách đặt nó ở một vị trí an toàn.
+- Có thể sử dụng các loại cáp khác nhau để kết nối các nút với thiết bị trung tâm, nếu thiết bị này được trang bị các cổng có loại khác nhau (quang học, đồng).
+- Có thể sử dụng thiết bị giá rẻ.
+
+Những nhược điểm chính của cấu trúc liên kết này bao gồm:
+
+- Tồn tại "điểm duy nhất gây lỗi". Nếu thiết bị trung tâm gặp sự cố, toàn bộ mạng sẽ ngừng hoạt động.
+- Để kết nối thiết bị trong mạng có dây, cần sử dụng một lượng lớn cáp.
+- Số lượng thiết bị có thể kết nối vào mạng bị giới hạn bởi số lượng cổng của thiết bị trung tâm (đối với mạng có dây) hoặc hiệu suất của điểm truy cập.
+
+Trước khi tiếp tục xem xét các cấu trúc liên kết mạng khác, chúng ta sẽ làm một số ngoại lệ nhỏ. Các mạng nhỏ, thông thường được xây dựng trên một trong những cấu trúc liên kết cơ bản — kết nối tuyến tính, vòng hoặc sao. Đối với các mạng lớn, việc có các kết nối tùy ý giữa các nút là đặc điểm phổ biến, vì chúng thường xuyên được mở rộng và nâng cấp. Trong những mạng như vậy, có thể phân tách thành các đoạn mạng liên kết tùy ý, mỗi đoạn có một trong những cấu trúc liên kết điển hình. Vì cấu trúc liên kết của các mạng lớn là sự kết hợp của nhiều cấu trúc liên kết cơ bản, nên những mạng này được gọi là mạng có cấu trúc liên kết hỗn hợp hoặc linh hoạt.
+
+---
+
+## 4.3.5 Cấu trúc liên kết "cây"  
+Cấu trúc liên kết "cây" (tree), còn được gọi là "sao mở rộng" (extended star), được tạo ra từ sự kết hợp của cấu trúc liên kết "sao" và kết nối tuyến tính. Cấu trúc này thực hiện phân cấp các nút. Ở cấp cao nhất của hệ thống phân cấp là thiết bị trung tâm, nó kết nối các thiết bị trung tâm của các "sao" riêng lẻ bằng các đường truyền "điểm-điểm". Cấu trúc phân cấp này có thể có nhiều cấp.
+
+Cấu trúc liên kết "cây" là cấu trúc liên kết phổ biến nhất trong các mạng máy tính hiện đại. Nó thường được sử dụng trong mạng của các doanh nghiệp vừa và lớn, cũng như trong mạng của các nhà cung cấp dịch vụ.
+
+**Mạng với cấu trúc liên kết "cây"**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_29.png" alt="Hình 4.29 Mạng với cấu trúc liên kết "cây"" width="600">
+</p>
+<p align="center"><b>Hình 4.29 Mạng với cấu trúc liên kết "cây"</b></p>
+
+
+Các ưu điểm chính của cấu trúc liên kết này bao gồm:
+
+- Khả năng mở rộng và tăng quy mô mạng.
+- Có thể phân chia mạng lớn thành các đoạn mạng (các "sao" riêng lẻ), giúp đơn giản hóa việc bảo trì và quản lý mạng.
+- Sự cố trong một đoạn mạng không ảnh hưởng đến hoạt động của các đoạn mạng khác.
+
+Những nhược điểm của cấu trúc liên kết "cây" là:
+
+- Khi số lượng đoạn mạng tăng lên, việc bảo trì và quản lý mạng trở nên phức tạp hơn, cũng như việc tìm và khắc phục sự cố.
+- Chi phí thiết bị cao.
+- Cần một lượng lớn cáp (trong trường hợp mạng có dây).
+- Yêu cầu nhân viên có trình độ chuyên môn cao.
+
+---
+
+## 4.3.6 Cấu trúc liên kết dạng lưới  
+Cấu trúc liên kết dạng lưới (mesh), còn được gọi là cấu trúc liên kết mạng lưới hoặc ô lưới, là một kiểu cấu trúc liên kết trong đó mỗi thiết bị được kết nối với nhiều thiết bị khác bằng các kênh truyền "điểm-điểm". Thiết bị không chỉ thu thập và xử lý dữ liệu của mình mà còn hoạt động như một bộ phát lại thông điệp cho các thiết bị khác. Cấu trúc này được đặc trưng bởi độ tin cậy cao và khả năng chống lỗi nhờ vào sự có mặt của nhiều liên kết dự phòng giữa các nút trong mạng. Sự cố của một nút hoặc đứt gãy đường truyền không ảnh hưởng đến hoạt động của mạng (khi một kênh bị đứt, có thể truyền qua các kênh khác). Để tìm ra con đường tốt nhất để truyền dữ liệu giữa các nút trong mạng lưới, các bộ định tuyến, bộ chuyển mạch, hoặc điểm truy cập được sử dụng.
+
+Có hai loại cấu trúc liên kết dạng lưới: cấu trúc liên kết đầy đủ (full connected) và cấu trúc liên kết không đầy đủ (partially connected).
+
+Trong cấu trúc liên kết đầy đủ, mỗi nút được kết nối trực tiếp với tất cả các nút khác trong mạng. Cấu trúc này phản ánh kiến trúc của Internet, trong đó có nhiều con đường đến bất kỳ điểm nào. Cấu trúc liên kết đầy đủ khá đắt đỏ vì trong trường hợp mạng có dây, nó yêu cầu tiêu tốn nhiều cáp và số lượng cổng kết nối lớn, nhưng đồng thời đảm bảo độ chống lỗi cao. Trên thực tế, nó hiếm khi được sử dụng và chỉ được áp dụng ở những nơi yêu cầu độ tin cậy cao và khả năng chống lỗi tối đa, ví dụ như trong việc xây dựng mạng xương sống.
+
+**Mạng với cấu trúc liên kết dạng lưới đầy đủ**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_30.png" alt="Hình 4.30 Mạng với cấu trúc liên kết dạng lưới đầy đủ" width="600">
+</p>
+<p align="center"><b>Hình 4.30 Mạng với cấu trúc liên kết dạng lưới đầy đủ</b></p>
+
+Cấu trúc liên kết không đầy đủ được tạo ra từ cấu trúc liên kết đầy đủ bằng cách loại bỏ một số liên kết có thể có. Trong cấu trúc này, số lượng kết nối của mỗi thiết bị phụ thuộc chủ yếu vào tầm quan trọng của nó trong mạng. Cấu trúc liên kết không đầy đủ ít tốn kém hơn cấu trúc đầy đủ và thường được sử dụng trong các mạng ngoại vi để kết nối với các mạng xương sống có cấu trúc liên kết đầy đủ.
+
+**Mạng với cấu trúc liên kết dạng lưới không đầy đủ**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_31.png" alt="Hình 4.31 Mạng với cấu trúc liên kết dạng lưới không đầy đủ" width="600">
+</p>
+<p align="center"><b>Hình 4.31 Mạng với cấu trúc liên kết dạng lưới không đầy đủ</b></p>
+
+Để mạng có cấu trúc liên kết dạng lưới hoạt động chính xác, cần phải cấu hình các giao thức loại bỏ những liên kết dư thừa, tránh việc tạo ra vòng lặp dữ liệu hoặc vòng lặp định tuyến.
+
+Mặc dù có ưu điểm rõ ràng, các mạng có cấu trúc liên kết dạng lưới vẫn có những nhược điểm chính bao gồm chi phí cao, khó khăn trong việc kết nối/ngắt kết nối thiết bị mạng và cấu hình của nó. Cấu trúc liên kết dạng lưới thường được sử dụng kết hợp với các cấu trúc liên kết khác như "chuỗi", "vòng" và "sao" để tạo thành một mạng có cấu trúc liên kết hỗn hợp.
+
+**Ví dụ về mạng có cấu trúc liên kết hỗn hợp**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_32.png" alt="Hình 4.32 Ví dụ về mạng có cấu trúc liên kết hỗn hợp" width="1000">
+</p>
+<p align="center"><b>Hình 4.32 Ví dụ về mạng có cấu trúc liên kết hỗn hợp</b></p>
+
+Sau khi xem xét các cấu trúc liên kết mạng hiện có, chúng ta cần chú ý đến các yếu tố quan trọng khác ảnh hưởng đến việc lựa chọn cấu trúc liên kết mạng. Cấu trúc liên kết phải đảm bảo:
+
+- Quản lý luồng dữ liệu thuận tiện.
+- Chịu được lỗi của các nút kết nối vào mạng và đứt cáp.
+- Khả năng mở rộng mạng và chuyển đổi sang các công nghệ tốc độ cao mới.
+- Chi phí thấp để xây dựng và duy trì mạng.
+
+Ngoài ra, cần cân nhắc:
+
+- Hạ tầng cáp và thiết bị hiện có nếu mạng cần được mở rộng.
+- Vị trí lắp đặt các thiết bị.
+- Kích thước của mạng dự kiến.
+- Khối lượng và loại thông tin để sử dụng chung.
+
 
