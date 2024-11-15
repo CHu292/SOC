@@ -131,9 +131,9 @@ Các cầu nối được thiết kế để sử dụng trong nhà cho phép k�
 
 Các bộ cầu nối (bridge) cho mạng có dây hiện đã lỗi thời và được thay thế bằng các bộ chuyển mạch (switch). Bộ chuyển mạch là một cầu nối đa cổng (multi-port bridge) và hoạt động tương tự trong việc xử lý dữ liệu, nhưng hỗ trợ nhiều tính năng bổ sung hơn so với cầu nối. Bộ chuyển mạch hoạt động ở tầng liên kết dữ liệu (data link layer, tầng thứ hai) của mô hình OSI và được sử dụng để kết nối các thiết bị mạng trong cùng một hoặc nhiều phân đoạn (segment) của mạng.
 
----
+
 Các thiết bị mạng có thể hoạt động trên một hoặc nhiều tầng của mô hình OSI. Thông thường khi mô tả thiết bị mạng, người ta sẽ nhắc đến tầng cao nhất của mô hình OSI mà thiết bị đó hỗ trợ. Điều này ngụ ý rằng thiết bị cũng có thể hoạt động trên các tầng thấp hơn. Ví dụ, khi nói rằng bộ chuyển mạch là thiết bị tầng liên kết dữ liệu (tầng thứ hai của OSI), tức là nó thực hiện các chức năng của cả tầng vật lý và tầng liên kết dữ liệu.
----
+
 
 Bộ chuyển mạch có thể được trang bị nhiều cổng và thiết lập nhiều kết nối đồng thời giữa các cặp cổng khác nhau, cho phép các thiết bị kết nối với nó giao tiếp cùng lúc.
 
@@ -146,14 +146,14 @@ Bộ chuyển mạch có thể được trang bị nhiều cổng và thiết l�
 
 Khi truyền khung (frame) qua bộ chuyển mạch, một kênh ảo hoặc thực (tùy theo kiến trúc) sẽ được tạo ra, qua đó dữ liệu được truyền trực tiếp từ cổng nguồn đến cổng đích với tốc độ cao nhất có thể theo công nghệ sử dụng. Nguyên tắc hoạt động này được gọi là "vi phân đoạn" (microsegmentation).
 
----
+
 **Vi phân đoạn (microsegmentation)** là quá trình mà bộ chuyển mạch chia một miền va chạm (collision domain) của mạng LAN thành các miền nhỏ hơn cho mỗi cổng.
----
+
 
 Nhờ vi phân đoạn, các bộ chuyển mạch có thể hoạt động ở chế độ song công toàn phần (full duplex), cho phép mỗi nút kết nối trực tiếp với cổng của bộ chuyển mạch có thể truyền và nhận dữ liệu đồng thời. Do đó, chế độ song công toàn phần đã loại bỏ khái niệm về miền va chạm (collision domain). Các nút không còn phải cạnh tranh băng thông với các thiết bị khác, nhờ đó không xảy ra va chạm và hiệu suất mạng được cải thiện.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_9.png" alt="Hình 4.9: Vi phân đoạn" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_9.png" alt="Hình 4.9: Vi phân đoạn" width="800">
 </p>
 <p align="center"><b>Hình 4.9: Vi phân đoạn</b></p>
 
@@ -170,7 +170,7 @@ Bộ chuyển mạch truyền dữ liệu dựa trên bảng chuyển mạch (sw
 Nếu trong bảng chuyển mạch không có bản ghi nào cho địa chỉ MAC của thiết bị và cổng hoặc địa chỉ MAC của đích là địa chỉ quảng bá (broadcast), bộ chuyển mạch sẽ truyền khung qua tất cả các cổng, giống như một bộ tập trung (hub). Trong trường hợp này, ta nói rằng bộ chuyển mạch tạo thành một miền quảng bá (broadcast domain).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_11.png" alt="Hình 4.11: Quảng bá qua bộ chuyển mạch" width="1000">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_11.png" alt="Hình 4.11: Quảng bá qua bộ chuyển mạch" width="800">
 </p>
 <p align="center"><b>Hình 4.11: Quảng bá qua bộ chuyển mạch</b></p>
 
