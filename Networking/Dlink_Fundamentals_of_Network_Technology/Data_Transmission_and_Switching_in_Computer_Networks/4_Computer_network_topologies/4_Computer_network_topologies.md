@@ -386,7 +386,7 @@ Cấu trúc liên kết vật lý kiểu "vòng" yêu cầu tổ chức mạng s
 Mạng với cấu trúc liên kết kiểu "vòng"  
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_25.jpg" alt="Hình 4.25 Mạng với cấu trúc liên kết logic kiểu "vòng"" width="800">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_25.jpg" alt="Hình 4.25 Mạng với cấu trúc liên kết logic kiểu "vòng"" width="600">
 </p>
 <p align="center"><b>Hình 4.25 Mạng với cấu trúc liên kết logic kiểu "vòng"</b></p>
 
@@ -406,4 +406,54 @@ Tuy nhiên, cấu trúc liên kết này cũng có các nhược điểm sau:
 - Khó mở rộng mạng. Việc thêm một nút mới vào mạng thường yêu cầu dừng hoạt động của mạng, làm gián đoạn hoạt động của tất cả các nút khác.
 
 Hiện nay, cấu trúc liên kết "vòng" được hiểu là kết nối tuần tự dạng vòng.
+
+
+---
+
+## 4.3.3 Kết nối nối tiếp  
+Kết nối nối tiếp (daisy chain) là một trong những cấu trúc liên kết đơn giản nhất, nếu không tính cấu trúc liên kết "bus". Có hai loại kết nối nối tiếp: tuyến tính (linear daisy chain) và vòng (ring daisy chain).
+
+Trong kết nối tuyến tính hoặc dạng chuỗi (còn được gọi là "chuỗi", "dây đèn"), mỗi thiết bị được kết nối với thiết bị trước và sau nó bằng đường truyền "điểm-điểm" (tức là cáp riêng biệt), nhưng thiết bị đầu tiên và cuối cùng không kết nối với nhau. Trong trường hợp mạng có dây, các thiết bị được kết nối qua cáp riêng biệt, trong mạng không dây - thông qua môi trường truyền có dây.
+
+**Kết nối nối tiếp tuyến tính**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_26.jpg" alt="Hình 4.26 Kết nối nối tiếp tuyến tính" width="600">
+</p>
+<p align="center"><b>Hình 4.26 Kết nối nối tiếp tuyến tính</b></p>
+
+
+Các ưu điểm của kết nối tuyến tính bao gồm tính đơn giản, khả năng sử dụng thiết bị giá rẻ và tiêu thụ ít cáp (đối với mạng có dây). Tuy nhiên, nó cũng có những nhược điểm sau:
+
+- Sự hỏng hóc của bất kỳ thiết bị nào hoặc cáp bị đứt sẽ làm gián đoạn chuỗi và gây ra việc các phần của mạng bị cách ly khỏi nhau, không thể phục vụ người dùng.
+- Chuỗi càng dài, thời gian cần thiết để truyền thông tin qua nó càng lâu, việc tìm lỗi và bảo trì mạng càng khó khăn.
+
+**Kết nối nối tiếp vòng** (hay còn gọi là "vòng") được tạo ra từ kết nối tuyến tính bằng cách kết nối thiết bị đầu tiên và cuối cùng. Trong kết nối vòng, mỗi thiết bị có thể truyền dữ liệu theo bất kỳ hướng nào.
+
+**Kết nối nối tiếp vòng**  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_27.jpg" alt="Hình 4.27 Kết nối nối tiếp vòng" width="600">
+</p>
+<p align="center"><b>Hình 4.27 Kết nối nối tiếp vòng</b></p>
+
+
+
+Kết nối vòng đáng tin cậy hơn kết nối tuyến tính, vì nó không có "điểm duy nhất gây lỗi". Ngay cả khi một thiết bị gặp sự cố hoặc dây cáp bị hư hỏng (trong trường hợp mạng có dây), mạng vẫn duy trì được tính toàn vẹn và tiếp tục hoạt động vì có hai tuyến đến mỗi thiết bị trong mạng.
+
+Các nhược điểm của cấu trúc liên kết này bao gồm:
+
+- Mạng yêu cầu sử dụng các thiết bị có phần mềm hỗ trợ hoạt động trong mạch vòng.
+- Chi phí cao và phức tạp trong việc cài đặt thiết bị.
+- Khó khăn trong việc tìm lỗi và bảo trì mạng.
+- Khi có hai hoặc nhiều thiết bị bị hỏng, hoạt động của mạng sẽ bị gián đoạn.
+
+Các cấu trúc liên kết được thảo luận ở trên thường được áp dụng trong các mạng truy cập của nhà cung cấp dịch vụ, được xây dựng trên các bộ chuyển mạch Ethernet, cũng như trong các mạng không dây phân bố theo lãnh thổ. Cấu trúc liên kết tuyến tính chủ yếu được sử dụng bởi các nhà cung cấp dịch vụ nhỏ, mới bắt đầu vì nó không yêu cầu chi phí tài chính lớn, yêu cầu nhân viên có trình độ cao và thích ứng tốt với môi trường đô thị. Tuy nhiên, khi mạng phát triển và số lượng khách hàng tăng lên, mạng với kết nối tuyến tính sẽ không còn hiệu quả.
+
+Kết nối vòng đáng tin cậy nhờ các liên kết dư thừa giữa các thiết bị, do đó nó thường được sử dụng trong các mạng truy cập của các nhà cung cấp dịch vụ vừa và lớn.
+
+Khi kết nối các bộ chuyển mạch hoặc điểm truy cập thành vòng, cần nhớ rằng chúng không thể hoạt động chính xác trong các mạng có mạch vòng. Do đó, phần mềm của thiết bị phải hỗ trợ các giao thức đặc biệt để đảm bảo hoạt động trong các mạng có tuyến đường dư thừa. Đó là các giao thức Spanning Tree Protocol (STP hoặc các phiên bản cải tiến của nó như RSTP và MSTP) và/hoặc Ethernet Ring Protection Switching (ERPS). Nhiệm vụ của các giao thức này là chuyển đổi cấu trúc liên kết vòng thành cấu trúc tuyến tính về mặt logic với khả năng tự động dự phòng các kênh truyền thay thế giữa các thiết bị khi kênh truyền hoạt động gặp sự cố.
+
+Chi tiết về hoạt động của giao thức STP trong các mạng được xây dựng trên bộ chuyển mạch Ethernet sẽ được mô tả trong chương 6.
+
 
