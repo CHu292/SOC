@@ -211,4 +211,50 @@ Thông tin chi tiết về công nghệ **Wi-Fi**, các chức năng và chế �
 
 --- 
 
+## 4.2.5 Bộ định tuyến (Router)
 
+Tất cả các thiết bị đã xem xét ở trên cho phép kết nối các nút trong một mạng cục bộ (**Local Area Network, LAN**), nhưng để kết nối giữa các mạng với nhau và kết nối LAN với mạng diện rộng (**Wide Area Network, WAN**), cần có thiết bị mạng đặc biệt - **bộ định tuyến**.
+
+**Bộ định tuyến (router)** là thiết bị hoạt động ở **tầng mạng** (tầng thứ ba của mô hình OSI, **Network Layer**), với nhiệm vụ chính là phân tích **địa chỉ logic** (thường là **địa chỉ IP**) và xác định tuyến đường tốt nhất để truyền gói tin từ nguồn đến đích.
+
+Bộ định tuyến thực hiện các chức năng của **tầng vật lý** (**Physical Layer**), **tầng liên kết dữ liệu** (**Data Link Layer**) và **tầng mạng** (**Network Layer**) của mô hình OSI. Ở hai tầng đầu tiên, nó tương tác với các mạng cục bộ hoặc các phân đoạn khác nhau của cùng một mạng, và ở tầng thứ ba, nó đưa ra quyết định về tuyến đường tiếp theo cho các gói tin.
+
+Bộ định tuyến có thể kết nối ít nhất hai mạng với nhau. Các bộ định tuyến của D-Link, tùy thuộc vào kiểu máy, có thể được trang bị từ 1 đến 8 **giao diện LAN** (Local Area Network Interface), được sử dụng để kết nối các mạng cục bộ, và 1 hoặc 2 **giao diện WAN** (Wide Area Network Interface), được dùng để kết nối LAN với mạng bên ngoài, thường là mạng của nhà cung cấp dịch vụ internet, cung cấp cho khách hàng truy cập internet.
+
+Các **giao thức** sử dụng ở các tầng vật lý, tầng liên kết dữ liệu và tầng mạng của các mạng khác nhau có thể khác nhau. Không giống như **bộ chuyển mạch** (**switch**), bộ định tuyến thay đổi các gói dữ liệu được truyền. Nó phân tích các gói đến tầng mạng và sau đó tạo lại các gói theo các quy tắc nhất định dựa trên công nghệ được hỗ trợ bởi giao diện mà dữ liệu sẽ được truyền đi. Nói cách khác, bộ định tuyến thực hiện **chuyển đổi giao thức** trước khi gửi dữ liệu đến một mạng khác hoặc phân đoạn khác của mạng. Vì lý do này, bộ định tuyến được sử dụng như một **cổng** (**gateway**) khi kết nối các mạng sử dụng các giao thức khác nhau.
+
+Do đó, các bộ định tuyến giá rẻ dùng để kết nối các mạng gia đình và văn phòng nhỏ với internet thường được gọi là **internet gateway** (cổng internet). Các thiết bị này có thể tích hợp các chức năng của bộ chuyển mạch, điểm truy cập không dây (**Wireless Access Point**), modem ADSL, và được trang bị **tường lửa** (firewall) để ngăn chặn các cuộc tấn công từ mạng bên ngoài. Một ví dụ về **cổng internet** là bộ định tuyến D-Link DIR-822.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_14.png" alt="Hình 4.14 D-Link Router" width="700">
+</p>
+<p align="center"><b>Hình 4.14: D-Link Router</b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_15.png" alt=" Hình 4.15 Kết nối với internet thông qua cổng internet" width="800">
+</p>
+<p align="center"><b> Hình 4.15 Kết nối với internet thông qua cổng internet</b></p>
+
+
+Sử dụng **địa chỉ logic** (**địa chỉ mạng, Network Addressing**), các bộ định tuyến cô lập lưu lượng giữa các phần khác nhau của mạng tốt hơn so với bộ chuyển mạch, tạo ra các phân đoạn logic riêng biệt.
+
+Không giống như **địa chỉ vật lý** (địa chỉ MAC), địa chỉ logic (thường là địa chỉ IP) có trường **số mạng** (**network number**), do đó, tất cả các nút có cùng giá trị trường này thuộc về một phân đoạn, được gọi là **mạng con** (**subnetwork, subnet**). Mỗi giao diện của bộ định tuyến có thể kết nối với một mạng con.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_16.png" alt=" Hình 4.16 Kết nối các mạng khác nhau (mạng con) bằng bộ định tuyến" width="800">
+</p>
+<p align="center"><b> Hình 4.16 Kết nối các mạng khác nhau (mạng con) bằng bộ định tuyến</b></p>
+
+
+
+Không có cấu hình đặc biệt, các bộ định tuyến không truyền các gói **broadcat** qua các cổng của chúng, do đó, chúng giới hạn khu vực lan truyền của lưu lượng broadcast, tức là chia nhỏ một **miền broadcast** lớn thành các miền nhỏ hơn.
+
+Chi tiết về bộ định tuyến và các công nghệ hỗ trợ sẽ được giới thiệu trong phần ba của khóa học.
+
+Cần lưu ý rằng vấn đề về lưu lượng broadcast trong các mạng được xây dựng bằng các bộ chuyển mạch có thể được giải quyết bằng công nghệ **mạng LAN ảo** (**Virtual LAN, VLAN**).
+
+**Mạng LAN ảo (Virtual LAN, VLAN)** là một nhóm logic của các nút mạng mà lưu lượng của nó, bao gồm cả lưu lượng broadcast, được cô lập hoàn toàn khỏi các nút mạng khác ở tầng liên kết dữ liệu. Điều này có nghĩa là việc truyền các khung giữa các mạng ảo khác nhau dựa trên địa chỉ MAC là không thể, bất kể loại địa chỉ - cá nhân, nhóm hay broadcast. Trong khi đó, trong cùng một mạng ảo, các khung được truyền theo công nghệ chuyển mạch, tức là chỉ trên cổng có địa chỉ MAC của đích.
+
+Bộ chuyển mạch có phần mềm hỗ trợ chức năng mạng LAN ảo cho phép phân đoạn mạng logic thông qua cấu hình phần mềm thích hợp. Nhờ đó, có thể tập hợp các máy tính vào các nhóm làm việc ảo (các phân đoạn logic) bất kể vị trí vật lý của chúng trong mạng. Chi tiết về công nghệ VLAN sẽ được trình bày trong chương 6.
+
+Gần đây, trong các mạng doanh nghiệp và nhà cung cấp dịch vụ, các bộ định tuyến chủ yếu được thay thế bằng các **bộ chuyển mạch tầng 3** (**Layer 3 Switches**), cho phép chuyển mạch và lọc dựa trên địa chỉ ở tầng liên kết dữ liệu (tầng 2) và tầng mạng (tầng 3) của mô hình OSI. Các bộ chuyển mạch tầng 3 thực hiện chuyển mạch trong một nhóm làm việc và định tuyến giữa các mạng con khác nhau hoặc các mạng LAN ảo (VLAN).
