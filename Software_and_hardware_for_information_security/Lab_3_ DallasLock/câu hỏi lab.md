@@ -164,3 +164,77 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
   **Отключение Dallas Lock следует проводить осторожно, чтобы избежать нарушения правил безопасности или потери важных данных.**  
 - Đảm bảo rằng bạn có quyền truy cập hợp lệ và tuân thủ quy trình được mô tả trong tài liệu khi thực hiện các bước này.  
   **Убедитесь, что у вас есть законный доступ, и соблюдайте процедуру, описанную в документации, при выполнении этих действий.**
+
+---
+
+## **Как работает криптоконтейнер в Dallas Lock / Cách hoạt động của crypto-container trong Dallas Lock**
+
+---
+
+#### **Общее описание работы криптоконтейнеров / Mô tả chung về cách hoạt động của crypto-container**
+
+Криптоконтейнеры в Dallas Lock представляют собой безопасный способ хранения данных. Эти контейнеры преобразуют файлы или папки в зашифрованный формат, доступ к которому можно получить только с использованием ключевой информации (например, пароля или аппаратного идентификатора).  
+**Crypto-container trong Dallas Lock là một phương pháp an toàn để lưu trữ dữ liệu. Các container này chuyển đổi tệp hoặc thư mục sang định dạng mã hóa, chỉ có thể truy cập bằng thông tin khóa (ví dụ: mật khẩu hoặc định danh phần cứng).**
+
+Основные характеристики:  
+**Đặc điểm chính:**  
+- **Шифрование данных**: Все данные внутри контейнера шифруются.  
+  **Mã hóa dữ liệu**: Toàn bộ dữ liệu trong container được mã hóa.  
+- **Недоступность данных на других ПК**: Данные в криптоконтейнере недоступны без ключа шифрования, даже если файл перемещён на другой ПК.  
+  **Không thể truy cập dữ liệu trên máy khác**: Dữ liệu trong crypto-container không thể truy cập được nếu không có khóa giải mã, ngay cả khi tệp được chuyển sang máy tính khác.  
+- **Безопасная передача**: Контейнер можно передавать через незащищённые каналы, такие как электронная почта или съемные носители.  
+  **Truyền tải an toàn**: Container có thể được truyền qua các kênh không bảo mật như email hoặc thiết bị lưu trữ di động.
+
+---
+
+#### **Создание и использование криптоконтейнера / Tạo và sử dụng crypto-container**
+
+1. **Создание криптоконтейнера**:  
+   **Tạo crypto-container:**  
+   - Пользователь выбирает файлы или папки для преобразования.  
+     **Người dùng chọn tệp hoặc thư mục để chuyển đổi.**  
+   - Указывается ключевая информация (пароль, аппаратный идентификатор).  
+     **Cung cấp thông tin khóa (mật khẩu, định danh phần cứng).**  
+   - Созданный криптоконтейнер сохраняется как файл с расширением `.dlpfd`.  
+     **Crypto-container được lưu dưới dạng tệp có phần mở rộng `.dlpfd`.**  
+
+2. **Доступ к контейнеру**:  
+   **Truy cập container:**  
+   - Для открытия контейнера пользователь вводит пароль и подключает указанный аппаратный идентификатор.  
+     **Để mở container, người dùng nhập mật khẩu và kết nối thiết bị định danh phần cứng.**  
+   - Криптоконтейнер монтируется в системе как логический диск, с которым можно работать через файловый менеджер.  
+     **Container được gắn vào hệ thống dưới dạng ổ đĩa logic, có thể thao tác qua trình quản lý tệp.**  
+
+3. **Безопасность контейнера**:  
+   **Bảo mật container:**  
+   - Если вводится неверный пароль или аппаратный идентификатор отсутствует, доступ к данным невозможен.  
+     **Nếu mật khẩu sai hoặc không có định danh phần cứng, không thể truy cập dữ liệu.**  
+   - Данные остаются зашифрованными при переносе или копировании контейнера.  
+     **Dữ liệu vẫn được mã hóa khi chuyển hoặc sao chép container.**
+
+---
+
+#### **Особенности криптоконтейнеров / Đặc điểm của crypto-container**
+
+- **Совместимость**: Криптоконтейнеры, созданные в одной версии Dallas Lock, могут быть преобразованы обратно в другой версии.  
+  **Tương thích**: Các container được tạo bằng một phiên bản của Dallas Lock có thể được giải mã trên phiên bản khác.  
+- **Безопасная передача**: Контейнеры можно безопасно отправлять через сети или на съемных носителях.  
+  **Truyền tải an toàn**: Các container có thể được gửi qua mạng hoặc thiết bị lưu trữ một cách an toàn.  
+- **Гибкость управления доступом**: Возможность настроить уровень доступа к контейнеру.  
+  **Linh hoạt quản lý quyền truy cập**: Có thể tùy chỉnh mức độ truy cập vào container.
+
+---
+
+#### **Практическое применение / Ứng dụng thực tiễn**
+
+- Хранение конфиденциальных данных, недоступных на незашифрованных устройствах.  
+  **Lưu trữ dữ liệu nhạy cảm mà không thể truy cập trên các thiết bị không được mã hóa.**  
+- Использование в организациях для защиты корпоративных данных, которые передаются между сотрудниками.  
+  **Sử dụng trong tổ chức để bảo vệ dữ liệu doanh nghiệp được chia sẻ giữa các nhân viên.**  
+- Реализация политики безопасности для предотвращения утечки информации.  
+  **Thực hiện chính sách bảo mật để ngăn chặn rò rỉ thông tin.**
+
+---
+
+Этот процесс подробно описан в документации Dallas Lock 8.0, включая инструкции по созданию, управлению и восстановлению данных из криптоконтейнеров.  
+**Quy trình này được mô tả chi tiết trong tài liệu Dallas Lock 8.0, bao gồm hướng dẫn tạo, quản lý và khôi phục dữ liệu từ các crypto-container.**
