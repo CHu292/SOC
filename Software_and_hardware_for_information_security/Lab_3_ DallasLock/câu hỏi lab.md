@@ -1,4 +1,4 @@
-### **Хеш-алгоритмы (Hash Algorithms) - Giải thích chi tiết / Подробное объяснение**
+## **Хеш-алгоритмы (Hash Algorithms) - Giải thích chi tiết / Подробное объяснение**
 
 ---
 
@@ -116,3 +116,51 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
    - **SHA-256**: `a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b53a67625a749e6da`  
 
 ---
+
+## какими способами можно отключить Dallas Lock
+
+ 1. **Tắt khẩn cấp bằng đĩa khởi động (Аварийное отключение с помощью загрузочного диска):**
+   - Sử dụng đĩa khởi động đã được chuẩn bị từ trước (Boot Disk).  
+     **Используйте заранее подготовленный загрузочный диск (Boot Disk).**  
+   - Thực hiện các bước để khởi động máy tính từ đĩa và chọn tùy chọn để tắt Dallas Lock.  
+     **Выполните шаги для загрузки компьютера с диска и выберите опцию для отключения Dallas Lock.**
+
+---
+
+ 2. **Tắt thủ công (Аварийное отключение в ручном режиме):**
+   - Đòi hỏi quyền truy cập vật lý vào máy tính.  
+     **Требуется физический доступ к компьютеру.**  
+   - Thực hiện theo hướng dẫn trong tài liệu để vô hiệu hóa các thành phần Dallas Lock trong chế độ thủ công.  
+     **Следуйте инструкциям в документации, чтобы отключить компоненты Dallas Lock вручную.**
+
+---
+
+ 3. **Gỡ cài đặt qua giao diện Windows (Удаление через интерфейс Windows):**
+   - Truy cập **"Программы и компоненты" (Programs and Features)** trong bảng điều khiển.  
+     **Перейдите в раздел "Программы и компоненты" (Programs and Features) на панели управления.**  
+   - Tìm và chọn **Dallas Lock**, sau đó nhấn nút **"Удалить" (Gỡ cài đặt)**.  
+     **Найдите и выберите "Dallas Lock", затем нажмите "Удалить".**  
+   - Hoàn thành quá trình gỡ cài đặt và khởi động lại hệ thống.  
+     **Завершите процесс удаления и перезагрузите систему.**
+
+---
+
+ 4. **Quyền vô hiệu hóa hệ thống bảo mật (Отключение системы с использованием прав):**
+   - Chỉ những người dùng có quyền "Деактивация системы защиты" (Deactivation Rights) trong **"Права пользователей" (User Rights)** của Dallas Lock mới có thể thực hiện hành động này.  
+     **Только пользователи с правами "Деактивация системы защиты" (Deactivation Rights) в разделе "Права пользователей" (User Rights) Dallas Lock могут выполнить это действие.**
+
+---
+
+ 5. **Xóa cấu hình và cài đặt lại hệ thống (Удаление конфигурации и повторная установка):**
+   - Sao lưu tệp cấu hình nếu cần thiết.  
+     **Создайте резервную копию файлов конфигурации, если это необходимо.**  
+   - Xóa hệ thống Dallas Lock khỏi máy tính và cài đặt lại từ đầu nếu cần khắc phục sự cố hoặc thay đổi cấu hình.  
+     **Удалите систему Dallas Lock с компьютера и выполните повторную установку для устранения проблем или изменения конфигурации.**
+
+---
+
+ **Lưu ý / Примечание**:
+- Việc vô hiệu hóa Dallas Lock cần được thực hiện cẩn thận để tránh vi phạm các quy định bảo mật hoặc mất dữ liệu quan trọng.  
+  **Отключение Dallas Lock следует проводить осторожно, чтобы избежать нарушения правил безопасности или потери важных данных.**  
+- Đảm bảo rằng bạn có quyền truy cập hợp lệ và tuân thủ quy trình được mô tả trong tài liệu khi thực hiện các bước này.  
+  **Убедитесь, что у вас есть законный доступ, и соблюдайте процедуру, описанную в документации, при выполнении этих действий.**
