@@ -183,4 +183,32 @@ Thông tin chi tiết về các bộ chuyển mạch và các công nghệ đư�
 ---
 
 
+## 4.2.4 Điểm truy cập (Access Points)
+
+Trong khi các **bộ chuyển mạch** (switch) là thành phần chính của mạng nội bộ có dây, thì **điểm truy cập** (access points) là yếu tố cơ bản trong việc xây dựng mạng nội bộ không dây. **Điểm truy cập** thường được sử dụng để tổ chức các mạng không dây truy cập internet ở những nơi công cộng như sân bay, quán cà phê, sân thể thao và trung tâm mua sắm. Trong mạng gia đình và văn phòng nhỏ, điểm truy cập có thể được sử dụng để kết nối tất cả các thiết bị di động (máy tính xách tay, điện thoại thông minh, máy tính bảng, camera IP không dây) vào một mạng không dây chung, hoặc để mở rộng mạng không dây hiện có, ví dụ, mạng được xây dựng bằng cách sử dụng **bộ định tuyến không dây** (wireless router).
+
+**Điểm truy cập** (Access Point) hoạt động ở **tầng liên kết dữ liệu** (Data Link Layer) của **mô hình OSI**. Nó đóng vai trò như một trạm không dây, cung cấp quyền truy cập cho các **thiết bị khách không dây** (wireless client devices) đã được kết nối với nó, cho phép truy cập vào mạng có dây và/hoặc không dây thông qua môi trường truyền dẫn không dây. **Thiết bị khách không dây** bao gồm các thiết bị có tích hợp sẵn hoặc được cài đặt **bộ điều hợp mạng không dây** (wireless network adapter), tức là những thiết bị có **giao diện** (interface) để kết nối với mạng không dây.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_12.png" alt="Hình 4.12: Điểm truy cập DAP-300P" width="800">
+</p>
+<p align="center"><b>Hình 4.12: Điểm truy cập DAP-300P</b></p>
+
+**Kết nối** giữa **điểm truy cập** và các **thiết bị khách không dây** được thực hiện thông qua công nghệ **Wi-Fi**. **Điểm truy cập** cung cấp sự tương tác và trao đổi thông tin giữa các khách hàng không dây, cũng như kết nối với mạng nội bộ có dây. Để thực hiện điều này, điểm truy cập có một **giao diện mạng** (uplink port), thường là một **cổng Ethernet** với đầu nối **RJ-45**. Thông qua giao diện này cũng có thể cấu hình điểm truy cập.
+
+**Ứng dụng của điểm truy cập**
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_13.png" alt="Hình 4.13: Ứng dụng của điểm truy cập" width="800">
+</p>
+<p align="center"><b>Hình 4.13: Ứng dụng của điểm truy cập</b></p>
+
+Hầu hết các **điểm truy cập** hiện đại hỗ trợ các tính năng tiên tiến, cũng như nhiều chế độ hoạt động khác nhau.
+
+Thông tin chi tiết về công nghệ **Wi-Fi**, các chức năng và chế độ hoạt động của điểm truy cập sẽ được đề cập trong phần hai của khóa học.
+
+--- 
+
 
