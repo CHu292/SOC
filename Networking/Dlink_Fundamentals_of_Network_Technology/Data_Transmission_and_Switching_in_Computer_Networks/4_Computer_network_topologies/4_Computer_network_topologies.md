@@ -258,3 +258,90 @@ Cần lưu ý rằng vấn đề về lưu lượng broadcast trong các mạng 
 Bộ chuyển mạch có phần mềm hỗ trợ chức năng mạng LAN ảo cho phép phân đoạn mạng logic thông qua cấu hình phần mềm thích hợp. Nhờ đó, có thể tập hợp các máy tính vào các nhóm làm việc ảo (các phân đoạn logic) bất kể vị trí vật lý của chúng trong mạng. Chi tiết về công nghệ VLAN sẽ được trình bày trong chương 6.
 
 Gần đây, trong các mạng doanh nghiệp và nhà cung cấp dịch vụ, các bộ định tuyến chủ yếu được thay thế bằng các **bộ chuyển mạch tầng 3** (**Layer 3 Switches**), cho phép chuyển mạch và lọc dựa trên địa chỉ ở tầng liên kết dữ liệu (tầng 2) và tầng mạng (tầng 3) của mô hình OSI. Các bộ chuyển mạch tầng 3 thực hiện chuyển mạch trong một nhóm làm việc và định tuyến giữa các mạng con khác nhau hoặc các mạng LAN ảo (VLAN).
+
+---
+
+## 4.2.6 Công cụ quản lý thiết bị mạng
+
+Cấu trúc liên kết logic có thể thay đổi động bằng cách thực hiện các cài đặt khác nhau trên thiết bị mạng. Hầu hết các thiết bị hiện đại đều hỗ trợ các chức năng quản lý và giám sát khác nhau, bao gồm giao diện quản lý Web, giao diện dòng lệnh (Command Line Interface, CLI), Telnet, và quản lý SNMP.
+
+Giao diện quản lý Web cho phép cấu hình và giám sát các thông số của thiết bị mạng bằng bất kỳ máy tính nào được trang bị trình duyệt Web. Nó có sẵn cho các điểm truy cập, cổng Internet, các bộ chuyển mạch có thể cấu hình và quản lý, thiết bị lưu trữ mạng (NAS), camera IP, cổng IP-điện thoại, và điện thoại IP. Thông qua giao diện Web, người quản trị có thể xem trạng thái thiết bị, thống kê hiệu suất, và thực hiện các cài đặt cần thiết.
+
+Cần lưu ý rằng giao diện Web của các thiết bị khác nhau (và các phiên bản phần cứng khác nhau của cùng một mẫu thiết bị) có thể khác nhau. Mô tả về giao diện Web và cách sử dụng nó có sẵn trong hướng dẫn sử dụng của thiết bị.
+
+Ví dụ, chúng ta hãy xem xét giao diện Web của điểm truy cập DAP-2310 (hình 4.17). Giao diện Web có thể được chia thành 3 khu vực. Khu vực 1 chứa danh sách các thư mục, kết hợp các nhóm chức năng dùng để thực hiện các nhiệm vụ khác nhau. Ở khu vực 3 hiển thị các cài đặt hiện tại của thiết bị hoặc các trường để thay đổi, tùy thuộc vào mục menu được chọn ở khu vực 1. Trong khu vực 2, tùy thuộc vào mẫu và loại thiết bị, có thể truy cập vào các cài đặt hoặc hiển thị hình ảnh đồ họa của bảng điều khiển phía trước của thiết bị trong thời gian thực.
+
+Giao diện Web quản lý của điểm truy cập DAP-2310 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_17.jpg" alt="Hình 4.17 Giao diện Web quản lý của điểm truy cập DAP-2310" width="800">
+</p>
+<p align="center"><b> Hình 4.17 Giao diện Web quản lý của điểm truy cập DAP-2310</b></p>
+
+
+Giao diện Web quản lý bao gồm giao diện người dùng đồ họa (GUI), được chạy trên máy khách, và máy chủ HTTP/HTTPS, được chạy trên thiết bị.
+
+Kết nối giữa máy khách và máy chủ thường được thực hiện qua kết nối TCP/IP với cổng 80 của giao thức HTTP. Khi kết nối lần đầu với máy chủ HTTP trên thiết bị mạng, nói chung cần thực hiện các bước sau:
+
+Bước 1. Kết nối một đầu của cáp Ethernet với cổng Ethernet trên máy tính và đầu kia với bất kỳ cổng LAN Ethernet nào trên thiết bị. Ngoài ra, cũng có thể kết nối qua đường truyền không dây nếu thiết bị và máy tính được trang bị giao diện phù hợp.
+
+Bước 2. Gán cho máy tính địa chỉ IP tĩnh từ cùng một mạng với địa chỉ IP của giao diện quản lý của thiết bị mạng (thông thường được nêu trong hướng dẫn sử dụng). Ví dụ, nếu bộ chuyển mạch được gán địa chỉ IP 10.90.90.90, thì máy tính cần được gán địa chỉ IP dạng 10.x.y.z (trong đó x và y là các số từ 0 đến 254, z là số từ 1 đến 254) và mặt nạ mạng con 255.0.0.0.
+
+Địa chỉ IP hay địa chỉ cấp ba là địa chỉ logic, không gắn với phần cứng cụ thể (thẻ mạng, cổng, v.v.) và được gán bởi quản trị viên mạng, không phụ thuộc vào địa chỉ vật lý (địa chỉ MAC).
+Bước 3. Trên máy tính, mở trình duyệt Web (Internet Explorer, Mozilla Firefox, Google Chrome), nhập địa chỉ IP của giao diện quản lý mặc định vào thanh địa chỉ (thường được nêu trong hướng dẫn sử dụng).
+
+Địa chỉ IP của giao diện quản lý mặc định trong thanh địa chỉ của trình duyệt Web 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_18.jpg" alt="Hình 4.18 Địa chỉ IP của giao diện quản lý mặc định trong thanh địa chỉ của trình duyệt Web" width="400">
+</p>
+<p align="center"><b>Hình 4.18 Địa chỉ IP của giao diện quản lý mặc định trong thanh địa chỉ của trình duyệt Web</b></p>
+
+
+Bước 4. Trong cửa sổ xác thực hiện ra, cần nhập mật khẩu của quản trị viên (thường được nêu trong hướng dẫn sử dụng). Sau đó, cửa sổ giao diện Web của thiết bị mạng sẽ xuất hiện.
+
+Cửa sổ xác thực người dùng 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_19.jpg" alt="Hình 4.19 Cửa sổ xác thực người dùng của giao diện Web quản lý bộ chuyển mạch D-Link" width="400">
+</p>
+<p align="center"><b>Hình 4.19 Cửa sổ xác thực người dùng của giao diện Web quản lý bộ chuyển mạch D-Link</b></p>
+
+
+Giao diện Web quản lý của bộ chuyển mạch DES-1100-16 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_20.jpg" alt="Hình 4.20 Giao diện Web quản lý của bộ chuyển mạch DES-1100-16" width="400">
+</p>
+<p align="center"><b>Hình 4.20 Giao diện Web quản lý của bộ chuyển mạch DES-1100-16</b></p>
+
+
+
+Chú ý: Phần mềm của thiết bị D-Link cho phép lựa chọn ngôn ngữ giao diện Web. Thông tin về hỗ trợ tiếng Nga của giao diện Web có thể được lấy từ bộ phận hỗ trợ kỹ thuật của công ty.
+
+Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-300 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_21.png" alt="Hình 4.21 Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-853" width="400">
+</p>
+<p align="center"><b>Hình 4.21 Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-853</b></p>
+
+Để đơn giản hóa việc quản lý nhiều thiết bị mạng, D-Link cung cấp các tiện ích quản lý khác nhau. Ví dụ, để quản lý nhiều bộ chuyển mạch D-Link dòng EasySmart từ một máy tính, có thể sử dụng tiện ích SmartConsole. Tiện ích này có thể cài đặt từ đĩa CD kèm theo thiết bị.
+
+Truy cập vào giao diện dòng lệnh của thiết bị được thực hiện bằng cách kết nối với cổng console của thiết bị từ máy tính cá nhân có cài đặt phần mềm giả lập terminal. Cần lưu ý rằng không phải tất cả thiết bị đều có cổng console. Thường thì cổng này có trên các bộ chuyển mạch và bộ định tuyến được quản lý, dành cho mạng doanh nghiệp vừa và nhỏ (SMB, Small-to-Medium Business), mạng doanh nghiệp, và mạng của các nhà cung cấp dịch vụ. Phương pháp truy cập này thuận tiện nhất khi kết nối lần đầu với bộ chuyển mạch hoặc bộ định tuyến khi địa chỉ IP chưa được biết hoặc chưa được cấu hình, hoặc khi cần khôi phục mật khẩu và thực hiện cài đặt nâng cao cho thiết bị. Truy cập giao diện dòng lệnh cũng có thể được thực hiện qua mạng bằng giao thức Telnet.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_22.png" alt="Hình 4.22 Cửa sổ ban đầu của giao diện dòng lệnh" width="400">
+</p>
+<p align="center"><b>Hình 4.22 Cửa sổ ban đầu của giao diện dòng lệnh</b></p>
+
+Một cách khác để quản lý thiết bị mạng là sử dụng giao thức SNMP (Simple Network Management Protocol). SNMP là giao thức tầng 7 của mô hình OSI và được phát triển đặc biệt để quản lý và giám sát các thiết bị mạng thông qua trao đổi thông tin quản lý giữa các đại lý nằm trên thiết bị mạng và các quản lý viên nằm trên các trạm quản lý.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_23.png" alt="Hình 4.23 Ví dụ sử dụng giao thức SNMP" width="400">
+</p>
+<p align="center"><b>Hình 4.23 Ví dụ sử dụng giao thức SNMP</b></p>
+
+Cần lưu ý đến khả năng cập nhật phần mềm cho thiết bị mạng. Nhờ tính năng này, thiết bị có thể được sử dụng lâu dài, vì khi cập nhật phần mềm sẽ thêm vào các chức năng mới hoặc sửa lỗi hiện có. Công ty D-Link phát hành miễn phí các phiên bản phần mềm mới, có thể tải về từ trang web của công ty www.dlink.ru.
