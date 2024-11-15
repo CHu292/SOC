@@ -93,3 +93,35 @@ Hub tạo ra một môi trường truyền tín hiệu chung cho tất cả các
 
 Khi số lượng phân đoạn mạng và máy tính tăng lên, số lượng va chạm cũng tăng lên. Ngoài ra, số lượng hub và các phân đoạn mạng mà chúng kết nối bị giới hạn do độ trễ thời gian và giảm **băng thông mạng (network bandwidth)**. Hơn nữa, mạng được xây dựng bằng hub có mức độ bảo mật thấp, vì dữ liệu được truyền qua tất cả các cổng, cho phép thông tin truyền trong mạng bị “nghe lén”. Băng thông thấp và mức bảo mật kém dẫn đến việc hub không còn được sử dụng trong các mạng máy tính hiện đại; đầu tiên chúng được thay thế bằng **bridge (cầu nối)**, sau đó là **switch (bộ chuyển mạch)**.
 
+---
+
+## 4.2.2 Cầu nối (Bridge)
+
+Cầu nối (bridge) được phát triển bởi công ty Digital Equipment Corporation (DEC) vào đầu những năm 1980 và là thiết bị hoạt động trên tầng vật lý (Physical Layer) và tầng liên kết dữ liệu (Data Link Layer) của mô hình OSI, dùng để kết nối hai mạng cục bộ (LAN) hoặc hai phân đoạn của cùng một mạng.
+
+Không giống như bộ tập trung (hub) chỉ tăng cường và khôi phục dạng tín hiệu khi truyền từ cổng này sang cổng khác, cầu nối có các chức năng thông minh. Nó chỉ truyền qua các khung (frame - khối dữ liệu ở tầng liên kết dữ liệu) khi cần thiết, nghĩa là khi địa chỉ vật lý (MAC address - địa chỉ MAC) của thiết bị đích thuộc về phân đoạn mạng khác hoặc mạng khác. Cầu nối thực hiện điều này bằng cách sử dụng một bảng chuyển mạch được lưu trữ trong bộ nhớ - một bảng tương ứng giữa các cổng của nó và các địa chỉ MAC được sử dụng trong mỗi mạng hoặc phân đoạn mạng, bảng này được thiết lập ngay sau khi bật nguồn. Nhờ vậy, cầu nối cách ly lưu lượng của một phân đoạn mạng khỏi phân đoạn khác, giảm thiểu các va chạm (collision) bằng cách chia một miền va chạm lớn thành hai miền nhỏ hơn, từ đó cải thiện hiệu suất tổng thể của mạng. Cầu nối cũng làm giảm khả năng truy cập trái phép vào dữ liệu vì các khung không rời khỏi phân đoạn của nó, giúp khó bị tin tặc chặn lại hơn.
+
+
+
+**Minh họa về kết nối hai phân đoạn mạng thông qua cầu nối**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_6.png" alt="Hình 4.6 Kết nối hai phân đoạn mạng bằng cầu nối" width="1000">
+</p>
+<p align="center"><b>Hình 4.6 Kết nối hai phân đoạn mạng bằng cầu nối</b></p>
+
+
+Hiện nay, các cầu nối được sản xuất cho mạng không dây. Với các cầu nối không dây (wireless bridges), có thể kết nối các mạng có dây ở khoảng cách gần như các tòa nhà liền kề hoặc các phòng trong cùng một tòa nhà, hoặc ở khoảng cách lên tới vài km.
+
+Các cầu nối được thiết kế để sử dụng trong nhà cho phép kết nối từ một đến nhiều thiết bị không có giao diện không dây vào mạng không dây. Ví dụ, chúng rất hữu ích khi kết nối các thiết bị như máy in hoặc máy chơi game, vốn chỉ có cổng Ethernet.
+
+
+**Ví dụ về việc sử dụng cầu nối không dây**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_7.png" alt="Hình 4.7 Ví dụ về việc sử dụng cầu nối không dây" width="1000">
+</p>
+<p align="center"><b>Hình 4.7 Ví dụ về việc sử dụng cầu nối không dây</b></p>
+
+
+
