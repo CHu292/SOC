@@ -1667,7 +1667,7 @@ Biểu đồ phụ thuộc của hệ số khuếch đại vào hướng của �
 Thông thường, sơ đồ định hướng của ăng-ten được biểu diễn bằng hai mặt cắt ngang hai chiều của sơ đồ ba chiều: mặt cắt ngang nằm ngang và mặt cắt ngang thẳng đứng. Trong trường hợp này, sơ đồ định hướng là một đường khép kín trong hệ tọa độ cực (polar coordinate system), được xây dựng sao cho khoảng cách từ ăng-ten (tâm của sơ đồ) đến bất kỳ điểm nào trên sơ đồ định hướng tỷ lệ thuận với năng lượng được ăng-ten phát ra theo hướng đó.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_68.png" alt="Hình 3.68 Sơ đồ định hướng của ăng-ten định hướng trong mặt phẳng ngang và mặt phẳng thẳng đứng" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_68.png" alt="Hình 3.68 Sơ đồ định hướng của ăng-ten định hướng trong mặt phẳng ngang và mặt phẳng thẳng đứng" width="800">
 </p>
 <p align="center"><b>Hình 3.68 Sơ đồ định hướng của ăng-ten định hướng trong mặt phẳng ngang và mặt phẳng thẳng đứng</b></p>
 
@@ -1675,7 +1675,7 @@ Thông thường, sơ đồ định hướng của ăng-ten được biểu di�
 Hướng bức xạ tối đa được gọi là **thùy chính (main lobe)** của ăng-ten. Các thùy còn lại trên sơ đồ định hướng của ăng-ten là **thùy phụ (side lobes)**, và thùy bức xạ theo hướng ngược lại với hướng chính được gọi là **thùy sau (back lobe)** của sơ đồ định hướng ăng-ten.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_69.png" alt="Hình 3.69 Các tham số của ăng-ten" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_69.png" alt="Hình 3.69 Các tham số của ăng-ten" width="800">
 </p>
 <p align="center"><b>Hình 3.69 Các tham số của ăng-ten</b></p>
 
@@ -1689,7 +1689,7 @@ Phân cực của sóng được xác định thông qua hình chiếu của vec
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_70.png" alt="Hình 3.70 Các loại phân cực của sóng" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_70.png" alt="Hình 3.70 Các loại phân cực của sóng" width="800">
 </p>
 <p align="center"><b>Hình 3.70 Các loại phân cực của sóng</b></p>
 
@@ -1701,3 +1701,121 @@ Khi thiết lập các đường truyền không dây hai điểm khoảng cách
 
 Tuy nhiên, khi hoạt động trong nhà, do có nhiều phản xạ từ các vật thể xung quanh, đặc biệt là các vật bằng kim loại (nội thất, tường nhà), phân cực của sóng có thể thay đổi (phân cực tuyến tính ngang có thể quay và trở thành phân cực thẳng đứng). Vì vậy, trong môi trường trong nhà, không cần thiết phải điều chỉnh ăng-ten theo phân cực.
 
+
+
+### 3.8.1 Sự lan truyền tín hiệu trong môi trường truyền không dây
+
+Khi lan truyền, tín hiệu phát ra từ ăng-ten có thể bao quanh bề mặt Trái Đất, phản xạ từ các lớp trên của khí quyển hoặc truyền dọc theo đường nhìn trực tiếp. Phương thức lan truyền tín hiệu, khoảng cách truyền của nó, v.v., phụ thuộc nhiều vào dải tần số của phổ điện từ được sử dụng.
+
+Toàn bộ phổ bức xạ điện từ được chia thành các dải tần số tùy theo loại sóng điện từ:
+
+- Sóng vô tuyến;
+- Bức xạ hồng ngoại;
+- Ánh sáng nhìn thấy;
+- Bức xạ tia cực tím;
+- Bức xạ tia X;
+- Bức xạ gamma.
+
+Chúng ta quan tâm đến dải vi sóng của tần số vô tuyến, nơi có thể truyền dẫn không dây (xem Hình 3.71).
+
+Trong dải tần từ 30 MHz đến 300 GHz là sóng siêu ngắn, với bước sóng từ 10 m đến 0,1 m (tần số càng cao thì bước sóng càng ngắn). Sóng siêu ngắn được sử dụng rộng rãi để tổ chức các đường truyền vô tuyến, kênh vệ tinh, mạng cục bộ không dây Wi-Fi và hệ thống truy cập không dây cố định. Hạn chế chính của liên lạc bằng sóng siêu ngắn là máy thu và máy phát phải ở trong vùng có thể nhìn thấy nhau trực tiếp. Điều này là do sóng siêu ngắn lan truyền chủ yếu theo đường thẳng và hầu như không thể đi qua các chướng ngại vật tự nhiên hoặc nhân tạo trên đường đi của chúng. Địa hình, các chướng ngại vật và điều kiện thời tiết có ảnh hưởng đáng kể đến sự lan truyền của chúng. Đặc biệt, sóng trong dải SHF (Super High Frequency - tần số siêu cao, từ 3 đến 30 GHz), được sử dụng rộng rãi trong các mạng Wi-Fi, bị hấp thụ mạnh bởi mưa, tuyết, sương mù và các khí trong khí quyển, dẫn đến suy giảm nhanh chóng cường độ trường điện từ.
+
+**Phổ sóng điện từ**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_71.png" alt="Hình 3.71 Phổ sóng điện từ" width="1000">
+</p>
+<p align="center"><b>Hình 3.71 Phổ sóng điện từ</b></p>
+
+
+
+Nếu vị trí của các ăng-ten trong hệ thống truyền thông là tương đối ngẫu nhiên, có thể xảy ra trường hợp kênh không dây trùng với đường nhìn trực tiếp giữa máy phát và máy thu (khi không có chướng ngại vật nào gây nhiễu). Thường thì vị trí này được chọn cho các kênh truyền thông hai điểm tần số cao. Tuy nhiên, trong hầu hết các trường hợp, giữa máy phát và máy thu có nhiều chướng ngại vật. Trong nhà, các chướng ngại vật bao gồm tường, trần và đồ nội thất. Trong không gian mở, chúng bao gồm nhà cửa, cây cối và phương tiện giao thông. Khi gặp chướng ngại vật trên đường truyền, sóng điện từ có thể bị phản xạ, khúc xạ, tán xạ hoặc nhiễu xạ.
+
+**Phản xạ** xảy ra khi sóng điện từ gặp một chướng ngại vật lớn hơn rất nhiều so với bước sóng của nó. Trong trường hợp này, một phần năng lượng của sóng điện từ bị phản xạ khỏi chướng ngại vật đó.
+
+**Phản xạ sóng điện từ**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_72.png" alt="Hình 3.72 Phản xạ sóng điện từ" width="800">
+</p>
+<p align="center"><b>Hình 3.72 Phản xạ sóng điện từ</b></p>
+
+
+
+Khi sóng gặp ranh giới giữa hai môi trường trong suốt cho sóng điện từ nhưng có mật độ khác nhau, một phần sóng bị phản xạ và một phần truyền qua môi trường khác, bị khúc xạ.
+
+**Khúc xạ sóng điện từ**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_73.png" alt="Hình 3.73 Khúc xạ sóng điện từ" width="800">
+</p>
+<p align="center"><b>Hình 3.73 Khúc xạ sóng điện từ</b></p>
+
+
+Nếu sóng điện từ gặp một chướng ngại vật không thể xuyên qua được, có kích thước tương đương với bước sóng (như nhà cửa, núi), xảy ra nhiễu xạ – tín hiệu dường như bao quanh chướng ngại vật. Vì vậy, tín hiệu có thể được nhận ngay cả khi không nằm trong vùng nhìn trực tiếp.
+
+**Nhiễu xạ sóng điện từ**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_74.png" alt="Hình 3.74 Nhiễu xạ sóng điện từ" width="800">
+</p>
+<p align="center"><b>Hình 3.74 Nhiễu xạ sóng điện từ</b></p>
+
+
+
+
+Khi gặp chướng ngại vật có kích thước nhỏ hơn nhiều so với bước sóng (như sương mù, lá cây, bụi), xảy ra hiện tượng tán xạ – sóng bị phản xạ theo các góc khác nhau.
+
+**Tán xạ sóng điện từ**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_75.png" alt="Hình 3.75 Tán xạ sóng điện từ" width="800">
+</p>
+<p align="center"><b>Hình 3.75 Tán xạ sóng điện từ</b></p>
+
+
+Kết quả của phản xạ, nhiễu xạ và tán xạ là máy thu có thể nhận được tín hiệu gốc và một số bản sao phản xạ của nó, đến từ các đường truyền khác nhau và vào các khoảng thời gian khác nhau. Đây được gọi là sự **truyền đa đường (multipath propagation)**. Tình huống này thường xảy ra trong các mạng không dây trong nhà.
+
+**Truyền đa đường**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_76.png" alt="Hình 3.76 Truyền đa đường" width="800">
+</p>
+<p align="center"><b>Hình 3.76 Truyền đa đường</b></p>
+
+
+**Tại điểm thu**, tín hiệu ban đầu và các tín hiệu phản xạ chồng lên nhau (gây ra hiện tượng giao thoa), do đó tín hiệu kết quả là tổng hợp của nhiều tín hiệu với các biên độ khác nhau. Một trong những hiệu ứng không mong muốn của sự truyền sóng đa đường là sự lệch pha giữa biên độ của tín hiệu ban đầu và tín hiệu phản xạ theo thời gian (sự khác biệt về pha). Kết quả của sự cộng pha khác nhau có thể làm giảm hoặc thậm chí đưa mức công suất của tín hiệu kết quả về 0, gây khó khăn cho bộ thu trong việc nhận diện tín hiệu.
+
+**Hiện tượng truyền sóng đa đường** ảnh hưởng đến hiệu suất của hệ thống khác nhau tùy theo đặc điểm của địa hình và sự di chuyển của thiết bị không dây (ví dụ như điện thoại thông minh hoặc máy tính bảng). Trong môi trường có đường truyền thẳng giữa nguồn và bộ thu, ảnh hưởng của hiện tượng truyền sóng đa đường thường yếu và dễ khắc phục. Biên độ của tín hiệu phản xạ yếu hơn nhiều so với tín hiệu gốc. Trong trường hợp không có đường truyền thẳng, tín hiệu phản xạ có thể có mức công suất cao hơn, vì đường truyền của tín hiệu gốc có thể bị chắn một phần hoặc toàn bộ bởi các vật cản. Kết quả là công suất tín hiệu gốc, khi cộng với tín hiệu phản xạ, có thể giảm so với nhiễu, khiến bộ thu khó nhận diện tín hiệu hơn. Nhìn chung, hiệu ứng của hiện tượng truyền sóng đa đường nổi bật hơn trong các trường hợp này. Tuy nhiên, cần lưu ý rằng trong trường hợp không có đường truyền thẳng giữa bộ phát và bộ thu (như trong công viên hoặc trên phương tiện có dịch vụ Wi-Fi), tín hiệu chủ yếu được thu nhận nhờ vào sự nhiễu xạ và tán xạ.
+
+Một hiệu ứng không mong muốn khác của truyền sóng đa đường là hiện tượng **nhiễu liên ký tự (InterSymbol Interference, ISI)**. Điều này xảy ra khi độ trễ của tín hiệu phản xạ so với tín hiệu gốc tương đương hoặc lớn hơn thời lượng của một ký tự (bit). Tín hiệu phản xạ của ký tự trước có thể được thu cùng lúc với tín hiệu cơ bản của ký tự sau. Kết quả là các tín hiệu đại diện cho các bit khác nhau cộng vào nhau, dẫn đến hỏng dữ liệu. Khi dữ liệu bị hỏng, bộ phát phải truyền lại dữ liệu. Số lượng lớn các lần truyền lại do nhiễu liên ký tự có thể làm giảm đáng kể băng thông của mạng không dây.
+
+Việc **sử dụng điều chế OFDM** giúp giảm hoặc loại bỏ ảnh hưởng tiêu cực của nhiễu liên ký tự trong các hệ thống không dây. Nhiễu liên ký tự ảnh hưởng đáng kể khi tốc độ truyền dữ liệu cao, do khoảng cách giữa các ký tự (hoặc bit) là nhỏ. Với điều chế OFDM, tốc độ truyền dữ liệu giảm n lần (n là số kênh con mà luồng chính được chia thành), cho phép tăng thời gian truyền ký tự lên n lần, từ đó giảm thiểu ảnh hưởng của nhiễu liên ký tự.
+
+Ngoài truyền sóng đa đường, các yếu tố khác như **suy hao tín hiệu, mất mát trong không gian tự do, nhiễu và hấp thụ bởi môi trường** cũng gây ra sự biến dạng tín hiệu trong kênh không dây.
+
+Khi truyền tín hiệu qua bất kỳ môi trường nào, **cường độ tín hiệu** sẽ giảm theo khoảng cách, tức là xảy ra hiện tượng suy hao tín hiệu. Nếu khoảng cách giữa bộ thu và bộ phát vượt quá một giá trị nhất định, vượt quá mức suy hao có thể chấp nhận được, các bộ khuếch đại hoặc bộ lặp tín hiệu được đặt tại các điểm cụ thể trong không gian để tăng cường tín hiệu. Việc tăng cường tín hiệu trở nên phức tạp nếu có nhiều bộ thu, đặc biệt khi khoảng cách giữa chúng và trạm phát thay đổi.
+
+**Mất mát trong không gian tự do (Free Space Path Loss, FSPL)** xảy ra khi tín hiệu được phân tán khi truyền trong không gian (tương tự như ánh sáng của đèn pha xe hơi giảm dần theo khoảng cách). Loại suy hao này làm giảm công suất tín hiệu từ bộ phát đến bộ thu, ngay cả khi không có nguyên nhân suy hao nào khác.
+
+Nguyên nhân chính gây mất công suất tín hiệu bổ sung là **hấp thụ bởi môi trường**, trong đó hơi nước và oxy đóng vai trò quan trọng trong việc làm suy giảm tín hiệu. Mưa và sương mù (các giọt nước lơ lửng trong không khí) làm tán xạ sóng vô tuyến và dẫn đến suy yếu tín hiệu.
+
+**Nguồn gây nhiễu trong các kênh không dây** bao gồm lò vi sóng, điện thoại không dây, máy phát vô tuyến, cảm biến chuyển động, mạng không dây lân cận, camera giám sát không dây, sét và nhiều nguồn khác. Tỷ lệ lỗi bit trong mạng không dây (BER) là 10⁻³.
+
+**Giải pháp khắc phục vấn đề nhiễu cao trong các kênh không dây** được thực hiện theo nhiều cách khác nhau. Trong môi trường đô thị, các bộ phát tín hiệu (và bộ thu nếu có thể) thường được đặt trên các tòa nhà cao hoặc tháp để tránh hiện tượng phản xạ nhiều lần. Trong mạng không dây gia đình, một trong các giải pháp là thay đổi kênh tần số của điểm truy cập nếu có một thiết bị phát tín hiệu khác đang sử dụng cùng kênh tần số, đồng thời tắt tất cả các thiết bị gây nhiễu như lò vi sóng trước khi kết nối với mạng không dây.
+
+Để xử lý lỗi do truyền sóng đa đường, **các phương pháp phân tán (diversity)** được sử dụng rộng rãi. Phân tán dựa trên thực tế rằng hiện tượng giảm công suất tín hiệu trong mỗi kênh xảy ra độc lập. Các lỗi có thể được khắc phục bằng cách tạo nhiều kênh logic giữa bộ thu và bộ phát, truyền các bản sao của tín hiệu qua từng kênh. Bộ thu sẽ chọn tín hiệu gốc tin cậy nhất từ các bản sao đã nhận.
+
+Các loại phân tán trong mạng không dây bao gồm:
+
+- **Phân tán theo tần số (Frequency diversity)** — tín hiệu được truyền qua nhiều sóng mang khác nhau, có thể thông qua các kênh tần số khác nhau hoặc bằng cách sử dụng các công nghệ mở rộng phổ và OFDM.
+- **Phân tán theo thời gian (Time diversity)** — tín hiệu được truyền nhiều lần trong các khoảng thời gian khác nhau, sử dụng các khe thời gian và mã hóa kênh.
+- **Phân tán theo không gian (Space diversity)** — sử dụng nhiều ăng-ten đặt gần nhau để thu nhận nhiều bản sao của tín hiệu. Đây là cơ sở cho công nghệ MIMO.
+
+**MIMO (Multiple Input Multiple Output)** là công nghệ ăng-ten trong đó bộ thu và bộ phát sử dụng nhiều ăng-ten để cung cấp nhiều kênh truyền dữ liệu. MIMO được ứng dụng trong các mạng Wi-Fi hiện đại như chuẩn IEEE 802.11n, 802.11ac và 802.11ax, cũng như trong mạng di động LTE thế hệ thứ tư. Công nghệ này không chỉ giúp giảm thiểu ảnh hưởng tiêu cực của hiện tượng truyền sóng đa đường mà còn tận dụng hiệu ứng này để tăng băng thông của kênh truyền. Công nghệ MIMO sẽ được đề cập chi tiết hơn trong phần hai của khóa học.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_77.png" alt="Hình 3.77 Truyền dữ liệu với hai luồng không gian (spatial streams) trong công nghệ MIMO" width="800">
+</p>
+<p align="center"><b>Hình 3.77 Truyền dữ liệu với hai luồng không gian (spatial streams) trong công nghệ MIMO</b></p>
