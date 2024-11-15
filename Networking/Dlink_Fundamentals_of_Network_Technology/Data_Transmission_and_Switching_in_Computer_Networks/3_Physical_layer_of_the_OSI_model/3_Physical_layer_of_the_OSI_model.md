@@ -1550,5 +1550,154 @@ Truyền thống, bộ chuyển đổi phương tiện được xem là thiết 
 
 Các bộ chuyển đổi phương tiện hiện đại có thể không chỉ chuyển đổi phương tiện truyền dẫn mà còn có khả năng điều chỉnh tốc độ và chế độ truyền dữ liệu. Việc điều chỉnh tốc độ và chế độ hoạt động (song công/ bán song công) được thực hiện qua cổng kết nối cáp xoắn đôi, thường là giao diện Ethernet. Ngoài ra, bộ chuyển đổi phương tiện còn có các chức năng dịch vụ khác. Ví dụ, chúng có thể kiểm soát lưu lượng dữ liệu (flow control), giám sát các cổng quang và cổng đồng để phát hiện sự mất tín hiệu (chức năng Link Pass Through), thực hiện chuyển mạch khung ở chế độ Store-and-forward.
 
---- 
+
+---
+
+## 3.7 Hệ thống dây điện
+
+Mạng cục bộ (local network) có thể được xây dựng bằng cách sử dụng dây điện 220 V thông thường, tức là sử dụng hệ thống dây điện gia đình để truyền tải giọng nói hoặc dữ liệu. Để làm điều này, tín hiệu analog (analog signal) được chồng lên dòng điện xoay chiều (alternating current) chuẩn có tần số 50 Hz. Lý do sử dụng hệ thống dây điện làm phương tiện truyền dẫn là do sự phổ biến của các mạng gia đình.
+
+Hầu như mỗi gia đình đều có ít nhất một hoặc hai máy tính. Công nghệ Smart TV (TV thông minh) đang phát triển mạnh mẽ - tích hợp Internet và các dịch vụ tương tác số vào các thiết bị như TV hiện đại, đầu thu kỹ thuật số, đầu phát Blu-ray, máy chơi game và các thiết bị tương tự. Bạn có thể kéo hàng chục mét cáp xung quanh nhà để kết nối tất cả máy tính, máy in, TV và các thiết bị mạng khác với nhau. Nhưng trong trường hợp đó, mỗi thiết bị sẽ được bố trí cố định trong phòng. Việc di chuyển máy tính hoặc TV đồng nghĩa với việc phải di dời cáp mạng. Bạn có thể cài đặt mạng Wi-Fi không dây (wireless network Wi-Fi) tại nhà, nhưng có thể gặp vấn đề khi tín hiệu xuyên qua tường và trần nhà.
+
+Có một phương pháp khác - sử dụng hệ thống dây điện và ổ cắm điện có sẵn được lắp trong tường. Ổ cắm điện có trong mỗi phòng của mỗi căn hộ và ngôi nhà. Điều duy nhất bạn cần là các bộ chuyển đổi PowerLine (PowerLine adapters) phù hợp, chúng được cắm trực tiếp vào ổ cắm điện.
+
+Bộ chuyển đổi PowerLine có loại có dây và không dây, với hỗ trợ giao diện Wi-Fi.
+
+Ngoài ra, hệ thống dây điện còn có thể được sử dụng để thực hiện ý tưởng "nhà thông minh" (smart home), nơi tất cả các thiết bị điện tử gia dụng được kết nối vào một mạng duy nhất với khả năng điều khiển tập trung.
+
+Ứng dụng của công nghệ PowerLine không chỉ giới hạn ở gia đình mà còn có thể được áp dụng trong các văn phòng nhỏ (tối đa 15 máy tính), nơi yêu cầu chính là tính đơn giản và khả năng mở rộng, tính di động của các thiết bị. Cả mạng văn phòng và từng phân đoạn của nó đều có thể được xây dựng bằng cách sử dụng các bộ chuyển đổi PowerLine. Một tình huống phổ biến là khi cần kết nối máy tính hoặc máy in mạng ở phòng khác hoặc ở đầu kia của tòa nhà vào mạng đã tồn tại. Vấn đề này cũng dễ dàng được giải quyết với các bộ chuyển đổi PowerLine.
+
+Công nghệ PowerLine có thể được sử dụng trong tự động hóa quy trình công nghệ, kết nối các khối tự động hóa thông qua dây điện hoặc các loại dây khác.
+
+**Bộ chuyển đổi PowerLine AV DHP-P309AV**
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_63.jpg" alt="Hình 3.63 Bộ chuyển đổi PowerLine AV DHP-P309AV" width="500">
+</p>
+<p align="center"><b>Hình 3.63 Bộ chuyển đổi PowerLine AV DHP-P309AV</b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_64.png" alt="Hình 3.64 Mở rộng mạng gia đình bằng công nghệ PowerLine" width="500">
+</p>
+<p align="center"><b>Hình 3.64 Mở rộng mạng gia đình bằng công nghệ PowerLine</b></p>
+
+
+Hiện nay, phần lớn kết nối cuối cùng được thực hiện bằng cách kéo cáp từ đường truyền tốc độ cao đến căn hộ hoặc văn phòng của người dùng. Đây là giải pháp rẻ nhất và đáng tin cậy nhất, nhưng nếu không thể kéo cáp, bạn có thể sử dụng hệ thống dây điện hiện có trong tòa nhà. Bất kỳ ổ cắm điện nào trong tòa nhà có thể trở thành điểm truy cập Internet. Người dùng chỉ cần có modem PowerLine (PowerLine modem) hoặc bộ định tuyến (router) PowerLine để kết nối với thiết bị tương tự, thường được lắp đặt trong tủ điện của tòa nhà và kết nối với kênh tốc độ cao.
+
+Truyền dữ liệu qua mạng điện (PowerLine Communication - PLC) cũng là giải pháp lý tưởng cho "last mile" trong các khu nhà biệt thự và khu xây dựng thấp tầng, vì việc tổ chức các kênh truyền thông thay thế sẽ tốn kém hơn so với hệ thống dây điện sẵn có.
+
+Để tạo ra một tiêu chuẩn duy nhất cho truyền dữ liệu qua mạng điện, liên minh HomePlug Power Line Alliance đã được thành lập. Tiêu chuẩn IEEE 1901-2010, dựa trên đặc tả HomePlug AV, xác định truyền dữ liệu băng rộng tốc độ cao (lên đến 500 Mbps) qua dây điện. Tiêu chuẩn này quy định băng thông từ 1,8 đến 30 MHz cho truyền dữ liệu.
+
+Mọi công nghệ truyền dữ liệu đều cần thích ứng với môi trường vật lý, do đó cần có các phương tiện phát hiện và khắc phục lỗi cũng như xung đột khi sử dụng chung. Khi truyền tín hiệu qua mạng điện, người ta phải đối mặt với nhiều vấn đề, bao gồm méo tín hiệu do truyền đa đường (multipath propagation), suy giảm tín hiệu (signal attenuation), nhiễu xung (impulse noise) và nhiễu liên ký tự (inter-symbol interference).
+
+Cấu trúc mạng điện, đặc biệt là hệ thống dây điện gia đình, ban đầu không được thiết kế cho truyền dữ liệu tốc độ cao. Nó chứa nhiều ổ cắm, công tắc, máy biến áp phân phối và thiết bị bảo vệ quá tải (cầu chì). Đường truyền tín hiệu tần số cao từ thiết bị phát đến thiết bị nhận phụ thuộc vào nhiều yếu tố, chủ yếu là vào cấu trúc mạng điện (topology). Thứ nhất, vì tính phân nhánh của mạng, luôn có nhiều đường truyền từ nguồn tới nơi nhận. Thứ hai, do có nhiều điểm không đồng nhất, tín hiệu đến nơi nhận không chỉ là tín hiệu trực tiếp mà còn là các tín hiệu phản xạ (hiện tượng phản xạ đa đường). Trong khi tín hiệu truyền qua mạng điện, mức độ suy giảm xảy ra. Một nguyên nhân khác làm suy giảm tín hiệu là sự hiện diện của các phần tử chuyển mạch trong mạng. Thông thường, mạch điện chứa các công tắc và biến áp tần số thấp (50 Hz), là trở ngại chính cho tín hiệu tần số cao. Các nguồn gây nhiễu trong căn hộ và văn phòng bao gồm các bộ sạc điện thoại di động, điều chỉnh độ sáng đèn halogen, và các thiết bị gia dụng khác.
+
+Công nghệ PowerLine ở cấp độ vật lý chủ yếu sử dụng **multiplexing với tần số phân chia trực giao (OFDM - Orthogonal Frequency Division Multiplexing)**, trong đó dòng dữ liệu tốc độ cao được chia thành nhiều dòng tốc độ thấp hơn, mỗi dòng truyền trên một tần số sóng mang phụ và sau đó được gộp lại thành một tín hiệu.
+
+Sử dụng OFDM giúp tăng khả năng chống nhiễu bằng cách thích ứng với các thông số của môi trường truyền vật lý. Tuy nhiên, do tín hiệu suy giảm và méo trên đường truyền do phản xạ đa đường, mức độ nhiễu cao, và nhiễu xung ngắn nhưng mạnh trong mạng điện gây lỗi dữ liệu, chỉ riêng OFDM là chưa đủ để đảm bảo truyền thông tin đáng tin cậy. Để đảm bảo độ chính xác chấp nhận được, cần áp dụng các biện pháp bổ sung.
+
+Một phương pháp để giải quyết vấn đề này là sử dụng mã hóa chống nhiễu (noise-resistant coding) cho luồng bit trước khi điều chế và truyền qua mạng. Mã hóa chống nhiễu giúp phát hiện và sửa lỗi tại đầu nhận bằng cách thêm các bit dư vào luồng dữ liệu.
+
+Mạng điện là một mạng với phương tiện truyền chia sẻ. Để giải quyết các vấn đề truy cập đa điểm, các phương pháp **CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)** và **TDMA (Time Division Multiple Access)** được sử dụng. CSMA/CA tương tự như phương pháp trong MAC của tiêu chuẩn IEEE 802.11. TDMA được sử dụng để đảm bảo chất lượng dịch vụ (QoS).
+
+Bảo vệ dữ liệu truyền được thực hiện bằng mã hóa AES 128-bit.
+
+Tốc độ truyền dữ liệu qua mạng PowerLine về mặt lý thuyết có thể đạt tới 500 Mbps. Tuy nhiên, băng thông thực tế bị ảnh hưởng nhiều bởi chất lượng dây (vật liệu, tiết diện, số lượng kết nối), hoạt động của các thiết bị điện khác, số lượng adapter PowerLine trong mạng (băng thông được chia giữa các thiết bị, vì vậy khuyến nghị không nên kết nối quá 15 thiết bị), loại và khối lượng lưu lượng. Khoảng cách tối đa giữa các thiết bị PowerLine không nên quá 100 m trong mạng LAN và 1500 m khi kết nối Internet.
+
+Năm 2012, đặc tả HomePlug AV2 ra đời. Thiết bị theo đặc tả này tương thích ngược với HomePlug AV và tiêu chuẩn IEEE 1901-2010. So với HomePlug AV, HomePlug AV2 mở rộng băng thông từ 30 MHz lên 86 MHz và thêm hỗ trợ công nghệ **MIMO (Multiple Input Multiple Output)**, giúp tăng băng thông đáng kể. Cũng có hỗ trợ chế độ tiết kiệm năng lượng.
+
+---
+
+## 3.8 Môi trường truyền không dây
+
+Khác với các mạng có dây, nơi tín hiệu được truyền qua các chất dẫn cố định như dây xoắn đồng (twisted copper pair) hoặc cáp quang (optical fiber), trong các mạng không dây, môi trường truyền vật lý là bầu khí quyển và không gian mở. Trong môi trường cáp, tín hiệu luôn được truyền theo hướng nhất định, còn môi trường vật lý của truyền không dây thì không thể định hướng tín hiệu theo một hướng nhất định. Để thiết lập một đường truyền không dây, mỗi nút mạng đều được trang bị một ăng-ten (antenna). Ăng-ten có thể được định nghĩa là một chất dẫn (hoặc hệ thống chất dẫn) dùng để phát ra và thu nhận sóng điện từ (electromagnetic waves) từ không gian. Để truyền tín hiệu, các xung điện tần số vô tuyến (radio frequency electrical impulses) từ bộ phát (transmitter) được chuyển đổi thành năng lượng điện từ thông qua ăng-ten và phát ra không gian xung quanh (khí quyển, không gian, hoặc nước). Khi nhận tín hiệu, năng lượng của sóng điện từ đến ăng-ten sẽ được chuyển đổi thành các xung điện tần số vô tuyến và đưa vào bộ thu (receiver). Thông thường, trong truyền thông hai chiều, cùng một ăng-ten có thể được sử dụng cho cả việc thu và phát tín hiệu. Điều này là do đặc tính của ăng-ten không thay đổi trong quá trình thu và phát năng lượng điện từ.
+
+Sóng điện từ (electromagnetic waves) là sự dao động (biến đổi) của trường điện từ truyền đi trong không gian.
+
+**Đường truyền không dây**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_65.png" alt="Hình 3.65 Đường truyền không dây" width="500">
+</p>
+<p align="center"><b>Hình 3.65 Đường truyền không dây</b></p>
+
+
+Hướng lan truyền của sóng phụ thuộc vào loại ăng-ten được sử dụng. Về tổng thể, ăng-ten có thể được phân loại thành **ăng-ten đa hướng (omni-directional)** và **ăng-ten định hướng (directional)**. Trong truyền dẫn định hướng, ăng-ten phát sẽ phát ra một chùm sóng điện từ hội tụ, do đó ăng-ten phát và ăng-ten thu cần phải được căn chỉnh cẩn thận. Trong truyền dẫn không định hướng (sử dụng ăng-ten đa hướng), tín hiệu truyền đi theo mọi hướng và có thể được thu nhận bởi nhiều ăng-ten khác nhau.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_66.png" alt="Hình 3.66 Phát sóng của ăng-ten đa hướng và ăng-ten định hướng" width="500">
+</p>
+<p align="center"><b>Hình 3.66 Phát sóng của ăng-ten đa hướng và ăng-ten định hướng</b></p>
+
+
+
+**Hệ số khuếch đại (antenna gain) $$ G $$** là thước đo **độ định hướng (directionality)** của ăng-ten. Nó được xác định bằng tỷ lệ công suất của tín hiệu $$ P_1 $$, phát ra theo một hướng cụ thể, với công suất của tín hiệu $$ P_2 $$ phát ra bởi ăng-ten lý tưởng (đẳng hướng - isotropic) theo mọi hướng.
+
+$$
+G = \frac{P_1}{P_2}
+$$
+
+Từ công thức này, ta thấy rằng hệ số khuếch đại của ăng-ten là một đại lượng không có đơn vị. Trong thực tế, nó thường được biểu diễn dưới dạng tỷ lệ công suất theo thang đo logarit, tính theo **decibel (dB)**:
+
+$$
+G = 10 \cdot \log \left( \frac{P_1}{P_2} \right)
+$$
+
+Trong các mô tả kỹ thuật của ăng-ten, đơn vị đo lường của hệ số khuếch đại ăng-ten thường được biểu diễn dưới dạng decibel đẳng hướng (**dBi**), nghĩa là đo bằng decibel với ký tự "i" (isotropic - đẳng hướng) chỉ rằng bức xạ của ăng-ten trong một hướng cụ thể được so sánh với bức xạ của ăng-ten đẳng hướng.
+
+**Ăng-ten đẳng hướng (Isotropic antenna)** là một loại ăng-ten lý tưởng (mang tính lý thuyết), phát ra năng lượng điện từ có cường độ bằng nhau theo mọi hướng. Ăng-ten đẳng hướng có thể được so sánh với Mặt Trời. 
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_67.png" alt="Hình 3.67 Ăng-ten đẳng hướng" width="500">
+</p>
+<p align="center"><b>Hình 3.67 Ăng-ten đẳng hướng</b></p>
+
+
+Thuật ngữ **"hệ số khuếch đại (antenna gain)"** thường gây hiểu lầm, dẫn đến giả định sai rằng ăng-ten có khả năng khuếch đại tín hiệu. Trên thực tế, điều này không đúng. Ăng-ten là thiết bị thụ động (passive devices) và không có nguồn năng lượng nào để tăng cường tín hiệu truyền. Hệ số khuếch đại của ăng-ten chỉ ra sự tập trung công suất vào một hướng nhất định, chứ không phải là khuếch đại nó. Việc tăng cường công suất tín hiệu theo một hướng nhất định xảy ra là nhờ giảm công suất trong các hướng phát sóng khác. Nói cách khác, việc tăng công suất ở một hướng sẽ dẫn đến giảm công suất ở các hướng khác.
+
+Để hiểu rõ hơn về nguyên tắc tập trung năng lượng theo các hướng khác nhau, hãy tưởng tượng một ăng-ten đẳng hướng (isotropic antenna) được minh họa trong Hình 3.67 giống như một quả bóng cao su. Hãy tưởng tượng bạn ấn mạnh lên quả bóng từ phía trên (theo hướng thẳng đứng). Quả bóng hơi dẹt lại, nhưng vẫn giữ hình dạng tròn trong mặt phẳng ngang, còn trong mặt phẳng thẳng đứng thì bị ép lại dưới tác động của lực. Ví dụ này có thể được sử dụng để mô tả nguyên lý hoạt động của **ăng-ten đa hướng (omni-directional antenna)**, nơi mà năng lượng được tập trung nhiều hơn trong mặt phẳng ngang bằng cách giảm năng lượng ở mặt phẳng thẳng đứng.
+
+Nếu bạn ép mạnh quả bóng từ một trong các đầu, hình dạng của nó sẽ trở thành hình nón. Ví dụ này mô tả nguyên lý phát xạ của **ăng-ten định hướng (directional antenna)**.
+
+Biểu đồ phụ thuộc của hệ số khuếch đại vào hướng của ăng-ten trong một mặt phẳng nhất định được gọi là **sơ đồ định hướng (radiation pattern)**.
+
+Thông thường, sơ đồ định hướng của ăng-ten được biểu diễn bằng hai mặt cắt ngang hai chiều của sơ đồ ba chiều: mặt cắt ngang nằm ngang và mặt cắt ngang thẳng đứng. Trong trường hợp này, sơ đồ định hướng là một đường khép kín trong hệ tọa độ cực (polar coordinate system), được xây dựng sao cho khoảng cách từ ăng-ten (tâm của sơ đồ) đến bất kỳ điểm nào trên sơ đồ định hướng tỷ lệ thuận với năng lượng được ăng-ten phát ra theo hướng đó.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_68.png" alt="Hình 3.68 Sơ đồ định hướng của ăng-ten định hướng trong mặt phẳng ngang và mặt phẳng thẳng đứng" width="500">
+</p>
+<p align="center"><b>Hình 3.68 Sơ đồ định hướng của ăng-ten định hướng trong mặt phẳng ngang và mặt phẳng thẳng đứng</b></p>
+
+
+Hướng bức xạ tối đa được gọi là **thùy chính (main lobe)** của ăng-ten. Các thùy còn lại trên sơ đồ định hướng của ăng-ten là **thùy phụ (side lobes)**, và thùy bức xạ theo hướng ngược lại với hướng chính được gọi là **thùy sau (back lobe)** của sơ đồ định hướng ăng-ten.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_69.png" alt="Hình 3.69 Các tham số của ăng-ten" width="500">
+</p>
+<p align="center"><b>Hình 3.69 Các tham số của ăng-ten</b></p>
+
+
+
+Một tham số quan trọng của ăng-ten là **độ rộng sơ đồ định hướng (beamwidth)**, hay **độ rộng của thùy chính (main lobe)**, được hiểu là góc giữa hai hướng, dọc theo đó cường độ trường (hoặc mật độ dòng công suất) giảm xuống một giá trị nhất định. Độ rộng sơ đồ định hướng được đo bằng độ (degrees). Trong thực tế, độ rộng sơ đồ định hướng thường được đánh giá trong mặt phẳng ngang và mặt phẳng đứng theo mức giảm công suất xuống còn 3 dB (giảm một nửa) hoặc 2 lần. Các tham số này thường được nhà sản xuất chỉ ra trong các đặc tính của ăng-ten.
+
+Một đặc tính quan trọng khác của ăng-ten là **phân cực (polarization)**. Trong sóng điện từ (electromagnetic wave), các vector điện (electric field vector $$\vec{E}$$) và từ trường (magnetic field vector $$\vec{H}$$) tại mỗi thời điểm được định hướng trong không gian theo một cách nhất định. Phân cực của sóng điện từ là một đặc tính không gian - thời gian và được xác định bởi loại đường di chuyển của vector cường độ trường điện $$\vec{E}$$ trong mặt phẳng vuông góc với hướng lan truyền của sóng điện từ. Nói cách khác, nó mô tả sự thay đổi của vector điện $$\vec{E}$$ theo thời gian.
+
+Phân cực của sóng được xác định thông qua hình chiếu của vector $$\vec{E}$$ lên mặt phẳng yz. Nếu hình chiếu là một đường thẳng, thì đó là **phân cực tuyến tính (linear polarization)**, nếu là một đường tròn hoặc hình elip thì đó là **phân cực tròn hoặc phân cực elip (circular or elliptical polarization)**. Phân cực tuyến tính có thể là **phân cực thẳng đứng (vertical)** hoặc **phân cực ngang (horizontal)** (song song với mặt phẳng của Trái Đất). Phân cực tròn (circular polarization) hoặc phân cực elip (elliptical polarization) có thể là phân cực theo chiều **xoay phải hoặc xoay trái (right-hand or left-hand rotation)** (Hình 3.70). Nhà sản xuất thường chỉ định kiểu phân cực của ăng-ten trong các đặc tính của nó. Ăng-ten cũng có thể được trang bị một chỉ báo đặc biệt để xác định phân cực.
+
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/3_Physical_layer_of_the_OSI_model/image/3_70.png" alt="Hình 3.70 Các loại phân cực của sóng" width="500">
+</p>
+<p align="center"><b>Hình 3.70 Các loại phân cực của sóng</b></p>
+
+
+
+Phân cực của sóng trong một số trường hợp có thể có ảnh hưởng đáng kể đến chất lượng kết nối. Việc tính toán phân cực cho phép đạt được lợi thế năng lượng bổ sung khi thiết lập các đường truyền không dây khoảng cách xa. Nếu khi thiết lập một đường truyền hai điểm (cầu không dây - wireless bridge) với khoảng cách giữa các ăng-ten hàng trăm mét hoặc xa hơn, một ăng-ten hoạt động với phân cực tuyến tính ngang (horizontal linear polarization) và ăng-ten kia với phân cực thẳng đứng (vertical polarization), thì kết nối sẽ không ổn định hoặc có thể không kết nối được. Điều này xảy ra vì trường sóng với phân cực tuyến tính ngang không ảnh hưởng đến trường sóng với phân cực thẳng đứng. Điều này có thể hữu ích cho các hệ thống sử dụng MIMO (Multiple Input Multiple Output) với nhiều ăng-ten, mỗi ăng-ten truyền các tín hiệu khác nhau với các phân cực khác nhau. Khi sử dụng hai ăng-ten với các phân cực tuyến tính khác nhau, có thể tạo ra một hệ thống với hai kênh độc lập (không gây nhiễu sóng vô tuyến cho nhau), từ đó tăng gấp đôi tốc độ truyền tải.
+
+Khi thiết lập các đường truyền không dây hai điểm khoảng cách xa mà không sử dụng hệ thống MIMO, cần sử dụng các ăng-ten có cùng phân cực và định hướng chúng theo cùng một phân cực. Nói cách khác, cần phải điều chỉnh ăng-ten theo phân cực.
+
+Tuy nhiên, khi hoạt động trong nhà, do có nhiều phản xạ từ các vật thể xung quanh, đặc biệt là các vật bằng kim loại (nội thất, tường nhà), phân cực của sóng có thể thay đổi (phân cực tuyến tính ngang có thể quay và trở thành phân cực thẳng đứng). Vì vậy, trong môi trường trong nhà, không cần thiết phải điều chỉnh ăng-ten theo phân cực.
 
