@@ -345,3 +345,65 @@ Một cách khác để quản lý thiết bị mạng là sử dụng giao th�
 <p align="center"><b>Hình 4.23 Ví dụ sử dụng giao thức SNMP</b></p>
 
 Cần lưu ý đến khả năng cập nhật phần mềm cho thiết bị mạng. Nhờ tính năng này, thiết bị có thể được sử dụng lâu dài, vì khi cập nhật phần mềm sẽ thêm vào các chức năng mới hoặc sửa lỗi hiện có. Công ty D-Link phát hành miễn phí các phiên bản phần mềm mới, có thể tải về từ trang web của công ty www.dlink.ru.
+
+---
+
+# 4.3 Tổng quan về các cấu trúc liên kết mạng  
+
+Trong phần này, chúng ta sẽ xem xét các cấu trúc liên kết chính của mạng máy tính.
+
+---
+
+## 4.3.1 Cấu trúc liên kết "bus"  
+Cấu trúc liên kết "bus" là phương án đơn giản nhất để tổ chức mạng cục bộ. Trong mạng với cấu trúc liên kết vật lý kiểu "bus", tất cả các nút đều được kết nối bình đẳng với môi trường truyền chung, do đó mỗi nút đều có thể "nghe" được những gì mà các nút khác đang truyền. Môi trường truyền chung trong mạng với cấu trúc liên kết vật lý kiểu "bus" không nhất thiết phải là cáp, mặc dù ban đầu cấu trúc liên kết "bus" được sử dụng trong các mạng Ethernet 10BASE2 và 10BASE5 dựa trên cáp đồng trục. Cáp này được gọi là "bus". Cả hai đầu của nó phải kết thúc bằng một tải điện trở, gọi là terminator, để ngăn chặn hiện tượng phản xạ tín hiệu.
+
+Cấu trúc liên kết logic kiểu "bus" cho phép truyền dữ liệu sao cho tất cả các nút đều nhận được thông điệp được gửi đi, và mỗi nút kiểm tra xem thông điệp có phải dành cho mình hay không. Ví dụ về mạng có cấu trúc liên kết logic kiểu "bus" là mạng Ethernet 10BASE-T, được xây dựng với các bộ tập trung (hub) và cáp xoắn đôi làm môi trường truyền. Cấu trúc liên kết vật lý của mạng này là kiểu "sao".
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_24.png" alt="Hình 4.24 Mạng với cấu trúc liên kết vật lý kiểu "bus"" width="800">
+</p>
+<p align="center"><b>Hình 4.24 Mạng với cấu trúc liên kết vật lý kiểu "bus"</b></p>
+
+
+Mặc dù cấu trúc liên kết "bus" đơn giản trong việc triển khai và có chi phí thấp, nhưng nó có một số nhược điểm quan trọng:
+
+- Có giới hạn về khoảng cách giữa các nút trong mạng. Khoảng cách giữa các nút xa nhất phải nhỏ hơn khoảng cách suy giảm tín hiệu khi truyền qua môi trường vật lý đó. Trong các mạng không dây, khoảng cách này bị giới hạn từ 300 đến 400 mét.
+- Có giới hạn về số lượng thiết bị được kết nối với mạng. Vì mạng được sử dụng chung, khi số lượng nút trong mạng tăng lên, số lượng va chạm cũng tăng lên, làm giảm hiệu suất chung của mạng và làm chậm hoạt động của nó.
+- Nếu sử dụng cáp làm môi trường truyền, cáp sẽ là "điểm duy nhất gây lỗi". Nếu bất kỳ đoạn cáp nào bị đứt, toàn bộ mạng sẽ ngừng hoạt động.
+
+Hiện nay, cấu trúc liên kết "bus" được sử dụng trong các mạng không dây 802.11 hoặc các mạng xây dựng dựa trên đường dây điện (PLC).
+
+
+---
+
+## 4.3.2 Cấu trúc liên kết "vòng"  
+Khi xem xét cấu trúc liên kết "vòng" (ring), cần phân biệt sự khác nhau giữa cấu trúc liên kết vật lý và logic.
+
+Trong cấu trúc liên kết logic kiểu "vòng", các khung dữ liệu được truyền tuần tự từ nút này đến nút khác theo một thứ tự đã được xác định trước. Các nút tạo thành một vòng khép kín và do đó, nút gửi khung dữ liệu sẽ là nút cuối cùng nhận lại nó. Ví dụ về mạng có cấu trúc liên kết logic kiểu "vòng" là mạng Token Ring. Cấu trúc liên kết vật lý của mạng Token Ring là kiểu "sao".
+
+Cấu trúc liên kết vật lý kiểu "vòng" yêu cầu tổ chức mạng sao cho mỗi nút được kết nối với hai nút khác, để từ một nút nó nhận thông tin và truyền tiếp cho nút thứ hai cho đến khi dữ liệu được nhận bởi nút đích. Nút cuối cùng kết nối với nút đầu tiên, tạo thành vòng khép kín. Việc truyền dữ liệu trong vòng chỉ diễn ra theo một hướng, tuần tự từ nút này sang nút khác.
+
+Mạng với cấu trúc liên kết kiểu "vòng"  
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_25.jpg" alt="Hình 4.25 Mạng với cấu trúc liên kết logic kiểu "vòng"" width="800">
+</p>
+<p align="center"><b>Hình 4.25 Mạng với cấu trúc liên kết logic kiểu "vòng"</b></p>
+
+
+
+Cấu trúc liên kết "vòng" cũng có những ưu và nhược điểm như cấu trúc liên kết "bus". Các ưu điểm bao gồm:
+
+- Các nút có cơ hội truy cập bình đẳng vào môi trường truyền, do đó không nút nào có thể chiếm giữ độc quyền môi trường truyền;
+- Không cần bộ kết thúc (terminator);
+- Không xảy ra va chạm (collision);
+- Có thể xây dựng các mạng có độ dài lớn.
+
+Tuy nhiên, cấu trúc liên kết này cũng có các nhược điểm sau:
+
+- Hiệu suất mạng thấp. Tùy thuộc vào số lượng nút trong mạng, thời gian truyền dữ liệu có thể khá lâu, vì tín hiệu phải đi tuần tự qua tất cả các nút, mỗi nút phải kiểm tra xem thông tin có được gửi cho mình hay không;
+- Độ tin cậy của mạng không cao. Việc một nút ngừng hoạt động hoặc dây cáp bị đứt sẽ dẫn đến việc mạng hoàn toàn không hoạt động được. Để tránh việc dừng hoạt động của mạng khi một nút gặp sự cố hoặc cáp bị đứt, thường sử dụng vòng kép, điều này dẫn đến chi phí tài chính đáng kể;
+- Khó mở rộng mạng. Việc thêm một nút mới vào mạng thường yêu cầu dừng hoạt động của mạng, làm gián đoạn hoạt động của tất cả các nút khác.
+
+Hiện nay, cấu trúc liên kết "vòng" được hiểu là kết nối tuần tự dạng vòng.
+
