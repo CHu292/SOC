@@ -311,7 +311,7 @@ Cửa sổ xác thực người dùng
 Giao diện Web quản lý của bộ chuyển mạch DES-1100-16 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_20.jpg" alt="Hình 4.20 Giao diện Web quản lý của bộ chuyển mạch DES-1100-16" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_20.jpg" alt="Hình 4.20 Giao diện Web quản lý của bộ chuyển mạch DES-1100-16" width="800">
 </p>
 <p align="center"><b>Hình 4.20 Giao diện Web quản lý của bộ chuyển mạch DES-1100-16</b></p>
 
@@ -322,7 +322,7 @@ Chú ý: Phần mềm của thiết bị D-Link cho phép lựa chọn ngôn ng�
 Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-300 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_21.png" alt="Hình 4.21 Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-853" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_21.png" alt="Hình 4.21 Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-853" width="800">
 </p>
 <p align="center"><b>Hình 4.21 Chọn ngôn ngữ giao diện Web trên bộ định tuyến DIR-853</b></p>
 
@@ -332,7 +332,7 @@ Truy cập vào giao diện dòng lệnh của thiết bị được thực hi�
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_22.png" alt="Hình 4.22 Cửa sổ ban đầu của giao diện dòng lệnh" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_22.png" alt="Hình 4.22 Cửa sổ ban đầu của giao diện dòng lệnh" width="800">
 </p>
 <p align="center"><b>Hình 4.22 Cửa sổ ban đầu của giao diện dòng lệnh</b></p>
 
@@ -340,7 +340,7 @@ Một cách khác để quản lý thiết bị mạng là sử dụng giao th�
 
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_23.png" alt="Hình 4.23 Ví dụ sử dụng giao thức SNMP" width="400">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/4_Computer_network_topologies/img/4_23.png" alt="Hình 4.23 Ví dụ sử dụng giao thức SNMP" width="800">
 </p>
 <p align="center"><b>Hình 4.23 Ví dụ sử dụng giao thức SNMP</b></p>
 
