@@ -519,25 +519,63 @@ CREATE INDEX idx_supplier_product_product_id ON Supplier_Product(Product_ID);
 
 1. **Thiết lập mối quan hệ giữa các bảng:**
    Các mối quan hệ chính giữa các bảng đã được thiết lập bằng cách sử dụng các khóa ngoại (foreign keys). Tuy nhiên, việc thêm các chỉ mục (indexes) cũng sẽ giúp tăng tốc độ các truy vấn. Ví dụ về cách thiết lập các mối quan hệ như sau:
-   ```sql
-   ALTER TABLE Warehouse
-       ADD FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID);
    
-   ALTER TABLE Orders
-       ADD FOREIGN KEY (Customer_ID) REFERENCES Customer(Customer_ID),
-       ADD FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID);
-   
-   ALTER TABLE Bill
-       ADD FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID);
-   
-   ALTER TABLE Order_Product
-       ADD FOREIGN KEY (Order_ID) REFERENCES Orders(Order_ID),
-       ADD FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID);
-   
-   ALTER TABLE Supplier_Product
-       ADD FOREIGN KEY (Supplier_ID) REFERENCES Supplier(Supplier_ID),
-       ADD FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID);
-   ```
+```sql
+-- Quan hệ giữa Employee và Warehouse
+ALTER TABLE Warehouse
+ADD CONSTRAINT fk_warehouse_employee
+FOREIGN KEY (Employee_ID)
+REFERENCES Employee(Employee_ID);
+
+-- Quan hệ giữa Orders và Customer
+ALTER TABLE Orders
+ADD CONSTRAINT fk_orders_customer
+FOREIGN KEY (Customer_ID)
+REFERENCES Customer(Customer_ID);
+
+-- Quan hệ giữa Orders và Employee
+ALTER TABLE Orders
+ADD CONSTRAINT fk_orders_employee
+FOREIGN KEY (Employee_ID)
+REFERENCES Employee(Employee_ID);
+
+-- Quan hệ giữa Bill và Orders
+ALTER TABLE Bill
+ADD CONSTRAINT fk_bill_orders
+FOREIGN KEY (Order_ID)
+REFERENCES Orders(Order_ID);
+
+-- Quan hệ giữa Product và Warehouse
+ALTER TABLE Product
+ADD CONSTRAINT fk_product_warehouse
+FOREIGN KEY (Warehouse_ID)
+REFERENCES Warehouse(Warehouse_ID);
+
+-- Quan hệ giữa Order_Product và Orders
+ALTER TABLE Order_Product
+ADD CONSTRAINT fk_order_product_order
+FOREIGN KEY (Order_ID)
+REFERENCES Orders(Order_ID);
+
+-- Quan hệ giữa Order_Product và Product
+ALTER TABLE Order_Product
+ADD CONSTRAINT fk_order_product_product
+FOREIGN KEY (Product_ID)
+REFERENCES Product(Product_ID);
+
+-- Quan hệ giữa Supplier_Product và Supplier
+ALTER TABLE Supplier_Product
+ADD CONSTRAINT fk_supplier_product_supplier
+FOREIGN KEY (Supplier_ID)
+REFERENCES Supplier(Supplier_ID);
+
+-- Quan hệ giữa Supplier_Product và Product
+ALTER TABLE Supplier_Product
+ADD CONSTRAINT fk_supplier_product_product
+FOREIGN KEY (Product_ID)
+REFERENCES Product(Product_ID);
+```
+
 
    Ở đây, các khóa ngoại giúp xác định và thiết lập mối quan hệ giữa các bảng như kho hàng, đơn hàng, sản phẩm và hóa đơn.
 
