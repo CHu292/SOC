@@ -484,6 +484,51 @@ FOREIGN KEY (Product_ID)
 REFERENCES Product(Product_ID);
 ```
 
+# 5 Ví dụ các truy vấn thử nghiệm trong cơ sở dữ liệu:
+
+   - **Truy vấn để lấy danh sách các đơn hàng, kèm thông tin về khách hàng và nhân viên phục vụ:**
+     ```sql
+     SELECT o.Order_ID, o.Order_Date, o.Total_Amount, c.Name AS Customer, e.Name AS Employee
+     FROM Orders o
+     JOIN Customer c ON o.Customer_ID = c.Customer_ID
+     JOIN Employee e ON o.Employee_ID = e.Employee_ID;
+     ```
+     Truy vấn này trả về danh sách các đơn hàng, bao gồm ngày đặt hàng, tổng số tiền, tên khách hàng và nhân viên phục vụ.
+
+   - **Truy vấn để hiển thị tất cả các sản phẩm được lưu trữ ở từng kho:**
+     ```sql
+     SELECT w.Address AS Warehouse, p.Product_Category_Name AS Product, p.Price
+     FROM Warehouse w
+     JOIN Product p ON w.Warehouse_ID = p.Warehouse_ID;
+     ```
+     Truy vấn này hiển thị thông tin các sản phẩm tại từng kho, bao gồm địa chỉ kho, tên loại sản phẩm và giá.
+
+   - **Truy vấn để hiển thị danh sách các nhà cung cấp và sản phẩm mà họ cung cấp:**
+     ```sql
+     SELECT s.Name AS Supplier, p.Product_Category_Name AS Product
+     FROM Supplier s
+     JOIN Supplier_Product sp ON s.Supplier_ID = sp.Supplier_ID
+     JOIN Product p ON sp.Product_ID = p.Product_ID;
+     ```
+     Truy vấn này trả về danh sách nhà cung cấp cùng các sản phẩm mà họ cung cấp cho cửa hàng.
+
+   - **Truy vấn để tìm tổng tiền của tất cả các đơn hàng thanh toán bằng tiền mặt:**
+     ```sql
+     SELECT SUM(b.Amount) AS TotalCashPayments
+     FROM Bill b
+     WHERE b.Payment_Method = 'Cash';
+     ```
+     Truy vấn này tính tổng số tiền của các đơn hàng được thanh toán bằng tiền mặt.
+
+   - **Truy vấn để lấy danh sách các đơn hàng có chứa một sản phẩm cụ thể, ví dụ "Arabica":**
+     ```sql
+     SELECT o.Order_ID, o.Order_Date, o.Total_Amount
+     FROM Orders o
+     JOIN Order_Product op ON o.Order_ID = op.Order_ID
+     JOIN Product p ON op.Product_ID = p.Product_ID
+     WHERE p.Product_Category_Name = 'Arabica';
+     ```
+     Truy vấn này trả về thông tin các đơn hàng có chứa sản phẩm "Arabica", bao gồm mã đơn hàng, ngày đặt hàng và tổng tiền.
 
 ### Tạo view
 
@@ -581,56 +626,10 @@ WHERE table_schema = 'coffee_shop_schema';
 
 ---
 
-Để thiết lập mối quan hệ giữa các bảng và tạo các truy vấn thử nghiệm trong cơ sở dữ liệu (CSDL) đã trình bày trong tài liệu, chúng ta có thể thực hiện các truy vấn SQL như sau:
 
 
 
 
-2. **Ví dụ các truy vấn thử nghiệm trong cơ sở dữ liệu:**
 
-   - **Truy vấn để lấy danh sách các đơn hàng, kèm thông tin về khách hàng và nhân viên phục vụ:**
-     ```sql
-     SELECT o.Order_ID, o.Order_Date, o.Total_Amount, c.Name AS Customer, e.Name AS Employee
-     FROM Orders o
-     JOIN Customer c ON o.Customer_ID = c.Customer_ID
-     JOIN Employee e ON o.Employee_ID = e.Employee_ID;
-     ```
-     Truy vấn này trả về danh sách các đơn hàng, bao gồm ngày đặt hàng, tổng số tiền, tên khách hàng và nhân viên phục vụ.
 
-   - **Truy vấn để hiển thị tất cả các sản phẩm được lưu trữ ở từng kho:**
-     ```sql
-     SELECT w.Address AS Warehouse, p.Product_Category_Name AS Product, p.Price
-     FROM Warehouse w
-     JOIN Product p ON w.Warehouse_ID = p.Warehouse_ID;
-     ```
-     Truy vấn này hiển thị thông tin các sản phẩm tại từng kho, bao gồm địa chỉ kho, tên loại sản phẩm và giá.
 
-   - **Truy vấn để hiển thị danh sách các nhà cung cấp và sản phẩm mà họ cung cấp:**
-     ```sql
-     SELECT s.Name AS Supplier, p.Product_Category_Name AS Product
-     FROM Supplier s
-     JOIN Supplier_Product sp ON s.Supplier_ID = sp.Supplier_ID
-     JOIN Product p ON sp.Product_ID = p.Product_ID;
-     ```
-     Truy vấn này trả về danh sách nhà cung cấp cùng các sản phẩm mà họ cung cấp cho cửa hàng.
-
-   - **Truy vấn để tìm tổng tiền của tất cả các đơn hàng thanh toán bằng tiền mặt:**
-     ```sql
-     SELECT SUM(b.Amount) AS TotalCashPayments
-     FROM Bill b
-     WHERE b.Payment_Method = 'Cash';
-     ```
-     Truy vấn này tính tổng số tiền của các đơn hàng được thanh toán bằng tiền mặt.
-
-   - **Truy vấn để lấy danh sách các đơn hàng có chứa một sản phẩm cụ thể, ví dụ "Arabica":**
-     ```sql
-     SELECT o.Order_ID, o.Order_Date, o.Total_Amount
-     FROM Orders o
-     JOIN Order_Product op ON o.Order_ID = op.Order_ID
-     JOIN Product p ON op.Product_ID = p.Product_ID
-     WHERE p.Product_Category_Name = 'Arabica';
-     ```
-     Truy vấn này trả về thông tin các đơn hàng có chứa sản phẩm "Arabica", bao gồm mã đơn hàng, ngày đặt hàng và tổng tiền.
-
-Những truy vấn này giúp kiểm tra chức năng và mối quan hệ giữa các bảng trong CSDL của quán cà phê, đảm bảo rằng dữ liệu được liên kết chính xác và có thể truy xuất theo yêu cầu.
-#### 
