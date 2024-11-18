@@ -10,7 +10,7 @@ Dưới đây là nội dung của **Bảng 1.2** từ tài liệu "Задачи
 
 ---
 
-### Bảng 1.2
+ Bảng 1.2
 
 | Ký hiệu | Mã  | Ký hiệu | Mã  | Ký hiệu | Mã  | Ký hiệu | Mã  | Ký hiệu | Mã  |
 |---------|-----|---------|-----|---------|-----|---------|-----|---------|-----|
@@ -32,8 +32,8 @@ Dưới đây là nội dung của **Bảng 1.2** từ tài liệu "Задачи
 | П       | CF  | Я       | DF  | п       | EF  | я       | FF  |         |     |
 
 Bảng này hiển thị các mã thập lục phân cho từng ký tự chữ cái trong bảng chữ cái Cyrillic, cùng với một số ký hiệu đặc biệt và số.
----
 
+--- 
 
 Thông điệp ban đầu: `Чу В.Д.`
 
