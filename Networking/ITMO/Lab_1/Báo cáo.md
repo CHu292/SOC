@@ -31,9 +31,9 @@ Dưới đây là nội dung của **Bảng 1.2** từ tài liệu "Задачи
 | О       | CE  | Ю       | DE  | о       | EE  | ю       | FE  |         |     |
 | П       | CF  | Я       | DF  | п       | EF  | я       | FF  |         |     |
 
+Bảng này hiển thị các mã thập lục phân cho từng ký tự chữ cái trong bảng chữ cái Cyrillic, cùng với một số ký hiệu đặc biệt và số.
 ---
 
-Bảng này hiển thị các mã thập lục phân cho từng ký tự chữ cái trong bảng chữ cái Cyrillic, cùng với một số ký hiệu đặc biệt và số.
 
 Thông điệp ban đầu: `Чу В.Д.`
 
@@ -61,14 +61,13 @@ Mã nhị phân: `11010111111100110010000011000010001011101100010000101110`
 
 Độ dài thông điệp: 7 byte (56 bit)
 
-**Băng thông của kênh truyền là $C = 1$ Gbit/s**.
+Băng thông của kênh truyền là $C = 1$ Gbit/s.
 
 Bốn byte đầu tiên của chuỗi nhị phân là: `11010111 11110011 00100000 11000010`.
 
 ## Bước 2. Mã hóa vật lý thông điệp ban đầu
 
-Thực hiện mã hóa vật lý cho thông điệp ban đầu bằng mã Manchester và thêm hai phương pháp mã hóa khác (để đạt điểm "đạt"), ba phương pháp (để đạt điểm "khá") hoặc bốn phương pháp (để đạt điểm "giỏi") mà được xem là phù hợp nhất.
-
+---
 
 **Ký hiệu:**
 - tần số cơ bản $$f_0$$;
@@ -83,28 +82,98 @@ Thực hiện mã hóa vật lý cho thông điệp ban đầu bằng mã Manche
 - **$$f_lower$$**: Lower frequency limit
 - **$$f_{avg}$$**: Average frequency in spectrum
 - **$$S$$**: Required bandwidth for quality transmission
+---
+
+### 1. Mã hóa NRZ:
+
+Phương pháp mã hóa nhị phân đơn giản và rõ ràng nhất là phương pháp mã hóa tiềm năng không quay về mức 0 – NRZ (Non Return to Zero), trong đó bit "1" tương ứng với mức điện thế cao, còn bit "0" tương ứng với mức điện thế thấp
 
 
-### Trong mã hóa NRZ:
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Lab_1/img/1_NRZ.png" alt="NRZ" width="1000">
+</p>
+<p align="center"><b>Mã hóa NRZ</b></p>
 
-- **Tần số cơ bản $$f_0$$** được tính bằng công thức:
+#### 1.1 Tần số cơ bản
+Trong mã hóa NRZ, mỗi bit được biểu diễn bởi một mức điện áp cố định trong suốt khoảng thời gian bit mà không quay về mức 0 giữa các bit. Điều này dẫn đến tần số cơ bản của tín hiệu NRZ bằng một nửa tốc độ bit (bit rate).
+
+Tần số cơ bản (hay còn gọi là tần số cơ sở) là tần số thấp nhất của tín hiệu được biểu diễn.
+
+Công thức tính thời gian truyền 1 bit
+
+$$
+t = \frac{1}{C}
+$$
+
+Trong đó:
+
+- $$t$$: Khoảng thời gian cần để truyền 1 bit (đơn vị: giây).
+- $$C$$: Tốc độ truyền dữ liệu (đơn vị: bps - bits per second).
+
+ **Tần số cơ bản $$f_0$$** được tính bằng công thức:
   
 $$
-  f_0 = \frac{C}{2}= \frac{1 \text{ Gbps}}{2} = 0.5 \text{ GHz}
+  f_0 = \frac{1}{T_0} = \frac{1}{2t} = \frac{C}{2}= \frac{1 \text{ Gbps}}{2} = 0.5 \text{ GHz} = 500 \text{ MHz}
 $$
 
--  **giới hạn tần số trên** $$f_{\text{upper}}$$ có thể được ước tính bằng công thức:
+#### 1.2 giới hạn tần số trên 
+
+ Dựa vào chuỗi bit và hình ảnh trên ta thấy chuỗi có 6 lần truyền với tần số $$f_0$$
+
+$$f_{\text{upper}}$$ có thể được ước tính bằng công thức:
 
 $$
-f_{\text{upper}} = 7 \times f_0
+f_{\text{upper}} = 6 \times f_0 = 6*500 = 3000 \text{ MHz}
 $$
 
-Điều này dựa trên việc mở rộng phổ tần số của tín hiệu trong các hệ thống thực tế, đặc biệt là khi cần đảm bảo chất lượng truyền dẫn cho các loại tín hiệu mã hóa như **NRZ (Non-Return-to-Zero)**. Công thức này cho phép bao quát các thành phần tần số cao hơn của tín hiệu, nhằm giảm thiểu sự suy giảm chất lượng do các yếu tố như nhiễu và suy hao trong môi trường truyền.
+#### 1.3 Giới hạn tần số dưới  
 
-   $$
-   f_{\text{upper}} = 7 \times 0.5 \text{ GHz} = 3.5 \text{ GHz}
-   $$
+Là chuỗi bit liên tiếp dài nhất chỉ gồm toàn 0 hoặc toàn 1
 
+ Dựa vào hình ta thấy có chuỗi `1100` là chuỗi có các bit 1 và 0 liên tiếp nhiều nhất
+
+$$
+T_{\text{lower}} = 4t
+$$
+
+$$
+f_{\text{lower}} = \frac{1}{T_{\text{lower}}} = \frac{1}{4t} = \frac{C}{4} = \frac{f_0}{2} = 250  \text{MHz}
+$$
+
+#### 1.4 Tần số trung bình
+
+Chúng ta sẽ phân tích các chuỗi liên tiếp khác nhau trong tín hiệu, đại diện cho mức đóng góp tần số từ các chuỗi đó. Những thành phần này tính đến sự xuất hiện của các chuỗi liên tiếp khác nhau, từ đó tính toán ảnh hưởng của chúng đến tần số trung bình của toàn bộ tín hiệu.
+
+
+$$
+f_{\text{avg}} = \frac{1}{32} \left( 6 f_0 + \frac{10}{2} f_0 + \frac{4}{4} f_0 + \frac{5}{5} f_0 + \frac{7}{7} f_0 \right) = \frac{14}{32} f_0 = 218.75 \text{ MHz}
+$$
+
+Để hiểu cách công thức này hoạt động, chúng ta sẽ phân tích từng thành phần.
+
+ Các Thành Phần Của Công Thức
+- **Tần số cơ bản ($$f_0$$)**: Đây là tần số cơ bản của tín hiệu, phụ thuộc vào băng thông của kênh. Với băng thông $$1 \text{ Gbit/s}$$, tần số cơ bản của tín hiệu NRZ là $$f_0 = 500 \text{ MHz}$$.
+  
+- **Phân tích chuỗi nhị phân và chuỗi không đổi**:
+ 
+  - Trong công thức này, chúng ta chia tổng của các giá trị bằng tổng độ dài của chuỗi bit ($$32$$). Điều này là để tính ra giá trị trung bình của tần số trong toàn bộ chuỗi.
+  
+
+  - Mỗi thành phần của công thức đều biểu diễn sự đóng góp của tần số từ một nhóm chuỗi nhất định trong tín hiệu.
+  - Ví dụ, **$$6 f_0$$** đại diện cho tần số từ nhóm có 1 bit không thay đổi.
+  - **$$\frac{10}{2} f_0$$** đại diện cho đóng góp tần số từ nhóm chuỗi có 2 bit liên tiếp ko đổi
+  - Tương tự, **$$\frac{4}{4} f_0$$**, **$$\frac{5}{5} f_0$$**, và **$$\frac{7}{7} f_0$$** cũng biểu thị sự đóng góp từ các nhóm chuỗi với tỉ lệ khác nhau.
+
+
+#### 1.5 Băng thông cần thiết để truyền
+
+$$
+S = f_{\text{upper}} - f_{\text{lower}} = 3500 - 250 = 3250 \, \text{MHz}
+$$
+
+Trong đó $$S$$: Băng thông tín hiệu.
+
+---
 
 #### Bước 3. Phân tích phổ tần số
 
