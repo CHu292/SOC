@@ -1,4 +1,4 @@
-# 1.3 Các bước thực hiện công việc và các tùy chọn bài tập 
+# 1.3 Các bước thực hiện công việc 
 
 ## Bước 1. Hình thành thông điệp
 
@@ -61,7 +61,7 @@ Mã nhị phân: `11010111111100110010000011000010001011101100010000101110`
 
 Độ dài thông điệp: 7 byte (56 bit)
 
-**Băng thông của kênh truyền là $C = 1$ Gbit/s**.
+**Tốc độ của kênh truyền là $C = 1$ Gbit/s**.
 
 Bốn byte đầu tiên của chuỗi nhị phân là: `11010111 11110011 00100000 11000010`.
 
@@ -85,7 +85,9 @@ Thực hiện mã hóa vật lý cho thông điệp ban đầu bằng mã Manche
 - **$$S$$**: Required bandwidth for quality transmission
 
 
-### Trong mã hóa NRZ:
+### Mã hóa NRZ:
+
+Phương pháp mã hóa nhị phân đơn giản và rõ ràng nhất là phương pháp mã hóa tiềm năng không quay về mức 0 – NRZ (Non Return to Zero), trong đó bit "1" tương ứng với mức điện thế cao, còn bit "0" tương ứng với mức điện thế thấp
 
 Trong mã hóa NRZ, mỗi bit được biểu diễn bởi một mức điện áp cố định trong suốt khoảng thời gian bit mà không quay về mức 0 giữa các bit. Điều này dẫn đến tần số cơ bản của tín hiệu NRZ bằng một nửa tốc độ bit (bit rate).
 
