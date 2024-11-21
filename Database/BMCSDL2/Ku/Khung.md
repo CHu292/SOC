@@ -2,6 +2,7 @@
 ## 1.1 Lựa chọn chủ đề
 
 Chủ đề: Hệ thống thông tin bán sản phẩm cà phê
+
 Lý do chọn chủ đề: Nơi tôi sống ở Việt Nam họ trồng rất nhiều cà phê. Vì vậy tôi chọn đề tài:
 “Hệ thống thông tin bán sản phẩm cà phê”
 
@@ -56,4 +57,90 @@ Lý do chọn chủ đề: Nơi tôi sống ở Việt Nam họ trồng rất nh
 - Mỗi đơn hàng chỉ có thể thuộc về một khách hàng, và một khách hàng có thể có nhiều đơn hàng.
 - Một sản phẩm có thể liên quan đến nhiều nhà cung cấp, nhưng phải có ít nhất một nhà cung cấp.
 - Mỗi kho phải có một nhân viên quản lý duy nhất.
+
+### 1.2.2 Xác định thực thể và xây dựng ERD
+
+#### 1.2.2.1 Xác dựng các thực thể 
+
+- Employee: Nhân viên
+- Supplier: Nhà cung cấp
+- Product: Sản phẩm
+- Customer: Khách hàng
+- Order: Đơn hàng
+- Bill: Hóa đơn
+- Warehouse: Kho hàng
+
+#### 1.2.2.2 Mô tả thực thể
+
+- Employee: Gồm ID, tên, chức vụ, số điện thoại và email.
+- Supplier: Gồm ID, tên nhà cung cấp, địa chỉ, số điện thoại và email.
+- Product: Gồm ID, tên loại sản phẩm, giá cả.
+- Customer: Gồm ID, tên khách hàng, số điện thoại, email.
+- Order: Gồm ID, ngày đặt hàng, tổng số tiền.
+- Bill: Gồm ID, số tiền, phương thức thanh toán.
+- Warehouse: Gồm ID, địa chỉ, trạng thái kho
+
+#### 1.2.2.3 Các liên kết
+
+1.  Nhân viên (Employee) và Đơn hàng (Order):
+
+- Tên liên kết: "Xử lý" (Processes)
+- Mô tả: Mỗi nhân viên có thể xử lý nhiều đơn hàng, nhưng mỗi đơn hàng chỉ được xử lý bởi một nhân viên duy nhất.
+- Cardinality: 1 : N (Một nhân viên có thể xử lý nhiều đơn hàng, mỗi đơn hàng chỉ có một nhân viên).
+- Nhân viên: Tham gia một phần (Partial Participation). Không phải tất cả nhân viên đều xử lý đơn hàng.
+- Đơn hàng: Tham gia toàn phần (Total Participation). Mỗi đơn hàng đều phải được xử lý bởi một nhân viên.
+
+2. Nhà cung cấp (Supplier) và Sản phẩm (Product):
+
+- Tên liên kết: "Cung cấp" (Delivers)
+- Mô tả: Một nhà cung cấp có thể cung cấp nhiều sản phẩm, và một sản phẩm có thể được cung cấp bởi nhiều nhà cung cấp.
+- Cardinality: M : N (Nhiều nhà cung cấp có thể cung cấp nhiều sản phẩm, và nhiều sản phẩm có thể được cung cấp bởi nhiều nhà cung cấp).
+- Nhà cung cấp: Tham gia một phần. Không phải nhà cung cấp nào cũng cung cấp tất cả các sản phẩm.
+- Sản phẩm: Tham gia toàn phần. Mỗi sản phẩm cần có ít nhất một nhà cung cấp.
+
+3. Sản phẩm (Product) và Đơn hàng (Order):
+
+- Tên liên kết: "Bao gồm" (Includes)
+- Mô tả: Một đơn hàng có thể bao gồm nhiều sản phẩm, và một sản phẩm có thể có trong nhiều đơn hàng.
+- Cardinality: M : N (Một đơn hàng có thể chứa nhiều sản phẩm, và một sản phẩm có thể nằm trong nhiều đơn hàng).
+- Sản phẩm: Tham gia toàn phần. Mỗi sản phẩm phải thuộc ít nhất một đơn hàng nếu nó đã được bán.
+- Đơn hàng: Tham gia toàn phần. Mỗi đơn hàng phải chứa ít nhất một sản phẩm
+
+4. Khách hàng (Customer) và Đơn hàng (Order):
+
+- Tên liên kết: "Đặt hàng" (Places)
+- Mô tả: Một khách hàng có thể đặt nhiều đơn hàng, nhưng mỗi đơn hàng chỉ thuộc về một khách hàng.
+- Cardinality: 1 : N (Một khách hàng có thể có nhiều đơn hàng, nhưng mỗi đơn hàng chỉ thuộc về một khách hàng).
+- Khách hàng: Tham gia một phần. Không phải khách hàng nào cũng đặt đơn hàng.
+- Đơn hàng: Tham gia toàn phần. Mỗi đơn hàng phải thuộc về một khách hàng.
+
+5. Đơn hàng (Order) và Hóa đơn (Bill):
+
+- Tên liên kết: "Có" (Has)
+- Mô tả: Mỗi đơn hàng chỉ có thể có nhiều hóa đơn, và mỗi hóa đơn chỉ liên quan đến một đơn hàng.
+- Cardinality: 1 : N (Mỗi đơn hàng tương ứng với một hóa đơn và ngược lại).
+- Đơn hàng: Tham gia toàn phần. Mỗi đơn hàng đều phải có một hoá đơn.
+- Hoá đơn: Tham gia toàn phần. Mỗi hoá đơn phải gắn liền với một đơn hàng.
+
+6. Kho hàng (Warehouse) và Sản phẩm (Product):
+
+- Tên liên kết: "Lưu trữ" (Stores)
+- Mô tả: Một kho có thể chứa nhiều sản phẩm, nhưng mỗi sản phẩm chỉ được lưu trữ tại một kho.
+- Cardinality: 1 : N (Một kho có thể lưu trữ nhiều sản phẩm, mỗi sản phẩm chỉ lưu trữ tại một kho).
+- Kho hàng: Tham gia một phần. Không phải tất cả các kho đều chứa sản phẩm.
+- Sản phẩm: Tham gia toàn phần. Mỗi sản phẩm phải được lưu trữ tại một kho.
+
+7. Nhân viên (Employee) và Kho hàng (Warehouse):
+
+- Tên liên kết: "Quản lý" (Manages)
+- Mô tả: Một nhân viên có thể quản lý nhiều kho, nhưng mỗi kho chỉ có một nhân viên quản lý.
+- Cardinality: 1 : N (Một nhân viên có thể quản lý nhiều kho, nhưng mỗi kho chỉ có một nhân viên quản lý).
+- Nhân viên: Tham gia một phần. Không phải tất cả nhân viên đều quản lý kho.
+- Kho hàng: Tham gia toàn phần. Mỗi kho phải được quản lý bởi một nhân viên.
+
+#### 1.2.2.4 Sơ đồ ER
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/So_do_ER.png" alt="Sơ đồ ER" width="700">
+</p>
 
