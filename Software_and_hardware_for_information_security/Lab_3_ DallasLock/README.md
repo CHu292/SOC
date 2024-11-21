@@ -1,3 +1,43 @@
+
+### **Цели лабораторной работы (Лабораторная работа №3)**
+
+#### **Основные цели**
+1. **Обеспечить знакомство с системой защиты Dallas Lock 8.0-K**:  
+   - Познакомиться с системой защиты информации Dallas Lock 8.0-K и её возможностями в обеспечении защиты от несанкционированного доступа.  
+   - Làm quen với hệ thống bảo vệ Dallas Lock 8.0-K và khả năng của nó trong việc bảo vệ thông tin khỏi truy cập trái phép.
+
+2. **Изучить основные механизмы работы системы**:  
+   - Изучить основные механизмы работы системы, включая:  
+     - Разграничение прав доступа к файлам.  
+     - Контроль целостности.  
+     - Аудит и ведение журналов.  
+   - Nghiên cứu các cơ chế chính của hệ thống, bao gồm:  
+     - Phân quyền truy cập tệp.  
+     - Kiểm tra tính toàn vẹn.  
+     - Nhật ký kiểm toán.  
+
+3. **Освоить работу с политиками аудита и управления доступом**:  
+   - Научиться настраивать и проверять политики аудита и разграничения доступа.  
+   - Làm quen với cách thiết lập và kiểm tra chính sách kiểm toán và phân quyền truy cập.
+
+#### **Конкретные задачи**
+- Настроить политику аудита для двух различных пользователей.  
+  - Thiết lập chính sách kiểm toán cho hai người dùng khác nhau.
+
+- Настроить и сохранить журналы аудита, применив фильтр событий за неделю, месяц или год.  
+  - Cấu hình và lưu trữ nhật ký kiểm toán, bao gồm áp dụng bộ lọc sự kiện theo tuần, tháng, hoặc năm.
+
+- Предоставить полномочия одного пользователя другому с использованием функционала Dallas Lock.  
+  - Cấp quyền của một người dùng cho người khác bằng chức năng Dallas Lock.
+
+- Настроить контроль целостности для устройств, таких как жёсткий диск, USB-устройства, папка и файл.  
+  - Cấu hình kiểm tra tính toàn vẹn cho các thiết bị như ổ cứng, thiết bị USB, thư mục và tệp tin.
+
+- Удалить информацию о сохранённых журналах с помощью системы Dallas Lock.  
+  - Xóa thông tin nhật ký đã lưu bằng hệ thống Dallas Lock.
+ 
+---
+
 **Báo cáo Thực hành số 3. Hệ thống bảo đảm an ninh thông tin trước truy cập trái phép. DallasLock.**
 
 **1. Mục đích và khả năng của hệ thống DALLAS LOCK 8.0-K**
