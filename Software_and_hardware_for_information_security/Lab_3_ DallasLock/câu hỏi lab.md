@@ -249,7 +249,7 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
 
 ---
 
-#### **1. Какие механизмы защиты информации реализованы в системе Dallas Lock 8.0-K?** Những cơ chế bảo vệ thông tin nào được triển khai trong hệ thống Dallas Lock 8.0-K?
+### **1. Какие механизмы защиты информации реализованы в системе Dallas Lock 8.0-K?** Những cơ chế bảo vệ thông tin nào được triển khai trong hệ thống Dallas Lock 8.0-K?
 
 - **На русском:** 
   - Дискреционный контроль доступа.
@@ -268,7 +268,7 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
 
 ---
 
-#### **2. Что такое дискреционный контроль доступа? Какие задачи он решает?** Quản lý truy cập có chọn lọc là gì? Nó giải quyết những nhiệm vụ nào?
+### **2. Что такое дискреционный контроль доступа? Какие задачи он решает?** Quản lý truy cập có chọn lọc là gì? Nó giải quyết những nhiệm vụ nào?
 
 - **На русском:**
   Дискреционный контроль доступа (Discretionary Access Control) позволяет определять права доступа к объектам файловой системы (дискам, папкам, файлам) для каждого пользователя или группы. Он обеспечивает:
@@ -281,7 +281,7 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
 
 ---
 
-#### **3. Как настроить контроль целостности ресурсов?** Làm thế nào để cấu hình kiểm tra tính toàn vẹn của tài nguyên?
+### **3. Как настроить контроль целостности ресурсов?** Làm thế nào để cấu hình kiểm tra tính toàn vẹn của tài nguyên?
 
 - **На русском:**
   1. Выберите ресурс (жёсткий диск, папку, файл и т.д.), который необходимо контролировать.
@@ -296,7 +296,7 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
 
 ---
 
-#### **4. Какие возможности предоставляет система Dallas Lock для защиты конфиденциальной информации?** Hệ thống Dallas Lock cung cấp những tính năng nào để bảo vệ thông tin mật?
+### **4. Какие возможности предоставляет система Dallas Lock для защиты конфиденциальной информации?** Hệ thống Dallas Lock cung cấp những tính năng nào để bảo vệ thông tin mật?
 
 - **На русском:**
   - Шифрование данных с использованием встроенных криптоалгоритмов.
@@ -315,7 +315,7 @@ Hash algorithms là các thuật toán mã hóa tạo ra một giá trị băm (
 
 ---
 
-#### **5. Какие форматы журналов и виды событий поддерживаются в Dallas Lock?** Những định dạng nhật ký và loại sự kiện nào được hỗ trợ trong Dallas Lock?
+### **5. Какие форматы журналов и виды событий поддерживаются в Dallas Lock?** Những định dạng nhật ký và loại sự kiện nào được hỗ trợ trong Dallas Lock?
 
 - **На русском:**
   Dallas Lock поддерживает следующие журналы:
