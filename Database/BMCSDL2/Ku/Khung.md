@@ -143,13 +143,91 @@ Lý do chọn chủ đề: Nơi tôi sống ở Việt Nam họ trồng rất nh
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/So_do_ER.png" alt="Sơ đồ ER" width="700">
 </p>
+<p align="center"><b>Bảng 1 - Sơ đồ ER</b></p>
 
 ## 1.3 Chuyển đổi ER-diagram sang mô hình quan hệ
+
+### 1.3.1 Xác định các thực thể trong sơ đồ ER
+
+Trong sơ đồ ER (Hình 1), các thực thể được xác định bao gồm:
+
+Employee: Nhân viên
+
+- Thuộc tính: Employee_ID, Name, Position, Phone_Number, Email.
+- Khóa chính (Primary Key): Employee_ID.
+
+Warehouse: Lưu trữ hàng hóa.
+
+- Thuộc tính: Warehouse_ID, Address, Status.
+- Khóa chính: Warehouse_ID.
+
+Supplier: Nhà cung cấp hàng hóa.
+
+- Thuộc tính: Supplier_ID, Name, Address, Phone_Number, Email.
+- Khóa chính: Supplier_ID.
+
+Product: Sản phẩm.
+
+- Thuộc tính: Product_ID, Product_Category_Name, Price.
+- Khóa chính: Product_ID.
+
+Customer: Khách hàng.
+
+- Thuộc tính: Customer_ID, Name, Phone_Number, Email.
+- Khóa chính: Customer_ID.
+
+Orders: Đơn hàng được đặt bởi khách hàng.
+
+- Thuộc tính: Order_ID, Order_Date, Total_Amount.
+- Khóa chính: Order_ID.
+
+Bill: Hóa đơn gắn với đơn hàng.
+
+- Thuộc tính: Bill_ID, Amount, Payment.
+- Khóa chính: Bill_ID.
+
+### 1.3.2 Chuyển đổi các mối quan hệ trong sơ đồ ER
+
+Mối quan hệ giữa Employee và Warehouse:
+
+- Mối quan hệ 1:N (Employee quản lý nhiều Warehouse).
+- Giải pháp: Thêm khóa ngoại Employee_ID vào bảng Warehouse để tham chiếu đến bảng Employee.
+
+Mối quan hệ giữa Warehouse và Product:
+
+- Mối quan hệ 1:N (một Warehouse chứa nhiều Product).
+- Giải pháp: Thêm khóa ngoại Warehouse_ID vào bảng Product để tham chiếu đến bảng Warehouse.
+
+Mối quan hệ giữa Supplier và Product
+
+- Mối quan hệ N:M (một Supplier cung cấp nhiều Product, một Product được cung cấp bởi nhiều Supplier).
+- Giải pháp: Tạo bảng trung gian Supplier_Product với:
+  - Thuộc tính: Supplier_ID, Product_ID.
+  - Khóa chính là tổ hợp của Supplier_ID và Product_ID.
+  - Cả hai cột này đều là khóa ngoại tham chiếu đến bảng Supplier và Product.
+
+Mối quan hệ giữa Customer và Orders:
+
+- Mối quan hệ 1:N (một Customer có thể đặt nhiều Orders).
+- Giải pháp: Thêm khóa ngoại Customer_ID vào bảng Orders để tham chiếu đến bảng Customer.
+
+Mối quan hệ giữa Orders và Product:
+
+- Mối quan hệ N:M (một Order có thể bao gồm nhiều Product, một Product có thể thuộc nhiều Order).
+- Giải pháp: Tạo bảng trung gian Order_Product với:
+  - Thuộc tính: Order_ID, Product_ID.
+  - Khóa chính là tổ hợp của Order_ID và Product_ID.
+  - Cả hai cột này đều là khóa ngoại tham chiếu đến bảng Orders và Product.
+ 
+
+Mối quan hệ giữa Orders và Bill:
+
+- Mối quan hệ 1:1 (mỗi Order có một Bill tương ứng).
+- Giải pháp: Thêm khóa ngoại Order_ID vào bảng Bill để tham chiếu đến bảng Orders.
 
 - Mỗi thực thể trong ER-diagram sẽ được chuyển thành một bảng. Các thuộc tính của thực thể sẽ trở thành các cột của bảng, và khoá chính của thực thể sẽ trở thành khoá chính của bảng.
 
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/mo_hinh_quan_he.png" alt="Mô hình quan hệ" width="700">
 </p>
-
-
+<p align="center"><b>Bảng 2 - Mô hình quan hệ</b></p>
