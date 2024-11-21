@@ -144,3 +144,12 @@ Lý do chọn chủ đề: Nơi tôi sống ở Việt Nam họ trồng rất nh
   <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/So_do_ER.png" alt="Sơ đồ ER" width="700">
 </p>
 
+## 1.3 Chuyển đổi ER-diagram sang mô hình quan hệ
+
+- Mỗi thực thể trong ER-diagram sẽ được chuyển thành một bảng. Các thuộc tính của thực thể sẽ trở thành các cột của bảng, và khoá chính của thực thể sẽ trở thành khoá chính của bảng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Database/BMCSDL2/entity-relationship_method/image/mo_hinh_quan_he.png" alt="Mô hình quan hệ" width="700">
+</p>
+
+
