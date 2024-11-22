@@ -1150,3 +1150,152 @@ GROUP BY b.Payment_Method;
 (3 rows)
 ```
 
+## 2.6 Tạo view
+
+
+
+1. View dành cho Nhân viên bán hàng (Sales Employee View)
+```sql
+CREATE VIEW Sales_Employee_View AS
+SELECT 
+    e.Employee_ID, 
+    e.Name AS Employee_Name,
+    o.Order_ID, 
+    o.Order_Date, 
+    o.Total_Amount,
+    c.Customer_ID, 
+    c.Name AS Customer_Name, 
+    c.Phone_Number AS Customer_Phone, 
+    c.Email AS Customer_Email
+FROM Employee e
+JOIN Orders o ON e.Employee_ID = o.Employee_ID
+JOIN Customer c ON o.Customer_ID = c.Customer_ID
+WHERE e.Position = 'Sales Staff';
+```
+```sql
+coffee_shop_db=# select * from sales_employee_view ;
+ employee_id |   employee_name    | order_id | order_date | total_amount | customer_id |   customer_name   | customer_phone |      customer_email      
+-------------+--------------------+----------+------------+--------------+-------------+-------------------+----------------+--------------------------
+           7 | Ольга Попова       |        9 | 2024-11-04 |      3561.47 |           1 | Иван Иванов       | +84347792080   | ivanivanov@mail.ru
+           6 | Мария Кузнецова    |        6 | 2024-10-26 |      3024.59 |           2 | Петр Петров       | +84725742192   | petrpetrov@mail.ru
+           1 | Алексей Иванов     |        8 | 2024-10-29 |      2891.04 |           3 | Светлана Смирнова | +84498734272   | svetlanasmirnova@mail.ru
+           3 | Екатерина Смирнова |       10 | 2024-10-30 |      4589.87 |           5 | Александр Соколов | +84479531226   | aleksandrsokolov@mail.ru
+           6 | Мария Кузнецова    |        5 | 2024-11-08 |      2161.28 |           6 | Мария Попова      | +84712349852   | mariyapopova@mail.ru
+           5 | Иван Васильев      |        7 | 2024-11-06 |      4376.18 |           7 | Николай Федоров   | +84396571482   | nikolayfedorov@mail.ru
+           3 | Екатерина Смирнова |        4 | 2024-10-24 |      3579.22 |           9 | Дмитрий Григорьев | +84410239854   | dmitriygrigorev@mail.ru
+           4 | Анна Петрова       |        2 | 2024-10-28 |      1316.75 |           9 | Дмитрий Григорьев | +84410239854   | dmitriygrigorev@mail.ru
+           5 | Иван Васильев      |        1 | 2024-11-08 |      1039.79 |           9 | Дмитрий Григорьев | +84410239854   | dmitriygrigorev@mail.ru
+           4 | Анна Петрова       |        3 | 2024-10-31 |      3327.25 |          10 | Ольга Николаева   | +84765849320   | olganikolaeva@mail.ru
+(10 rows)
+```
+
+
+2. View dành cho Quản lý kho (Warehouse Manager View)
+```sql
+CREATE VIEW Warehouse_Manager_View AS
+SELECT 
+    w.Warehouse_ID, 
+    w.Address AS Warehouse_Address, 
+    w.Status AS Warehouse_Status,
+    p.Product_ID, 
+    p.Product_Category_Name, 
+    p.Price
+FROM Warehouse w
+JOIN Product p ON w.Warehouse_ID = p.Warehouse_ID;
+```
+```sql
+coffee_shop_db=# select * from warehouse_manager_view ;
+ warehouse_id |     warehouse_address     | warehouse_status | product_id | product_category_name | price  
+--------------+---------------------------+------------------+------------+-----------------------+--------
+            1 | ул. 97-4, Москва, Россия  | Inactive         |          1 | Арабика               | 481.21
+            1 | ул. 97-4, Москва, Россия  | Inactive         |          2 | Капучино              | 549.51
+            5 | ул. 58-40, Москва, Россия | Active           |          3 | Латте                 | 778.31
+            5 | ул. 58-40, Москва, Россия | Active           |          4 | Капучино              | 114.89
+            5 | ул. 58-40, Москва, Россия | Active           |          5 | Робуста               | 465.66
+            3 | ул. 97-13, Москва, Россия | Inactive         |          6 | Эспрессо              | 982.47
+            2 | ул. 38-11, Москва, Россия | Active           |          7 | Робуста               | 347.12
+            1 | ул. 97-4, Москва, Россия  | Inactive         |          8 | Капучино              | 853.89
+            4 | ул. 24-37, Москва, Россия | Inactive         |          9 | Арабика               | 616.37
+            3 | ул. 97-13, Москва, Россия | Inactive         |         10 | Латте                 | 239.44
+(10 rows)
+
+```
+
+3. View dành cho Khách hàng (Customer View)**
+```sql
+CREATE VIEW Customer_View AS
+SELECT 
+    c.Customer_ID, 
+    c.Name AS Customer_Name,
+    o.Order_ID, 
+    o.Order_Date, 
+    o.Total_Amount,
+    b.Bill_ID, 
+    b.Amount AS Bill_Amount, 
+    b.Payment_Method
+FROM Customer c
+JOIN Orders o ON c.Customer_ID = o.Customer_ID
+JOIN Bill b ON o.Order_ID = b.Order_ID;
+```
+```sql
+coffee_shop_db=# select * from customer_view ;
+ customer_id |   customer_name   | order_id | order_date | total_amount | bill_id | bill_amount | payment_method 
+-------------+-------------------+----------+------------+--------------+---------+-------------+----------------
+           9 | Дмитрий Григорьев |        1 | 2024-11-08 |      1039.79 |       1 |     1039.79 | Bank Transfer
+           9 | Дмитрий Григорьев |        2 | 2024-10-28 |      1316.75 |       2 |     1316.75 | Bank Transfer
+          10 | Ольга Николаева   |        3 | 2024-10-31 |      3327.25 |       3 |     3327.25 | Credit Card
+           9 | Дмитрий Григорьев |        4 | 2024-10-24 |      3579.22 |       4 |     3579.22 | Credit Card
+           6 | Мария Попова      |        5 | 2024-11-08 |      2161.28 |       5 |     2161.28 | Bank Transfer
+           2 | Петр Петров       |        6 | 2024-10-26 |      3024.59 |       6 |     3024.59 | Cash
+           7 | Николай Федоров   |        7 | 2024-11-06 |      4376.18 |       7 |     4376.18 | Credit Card
+           3 | Светлана Смирнова |        8 | 2024-10-29 |      2891.04 |       8 |     2891.04 | Cash
+           1 | Иван Иванов       |        9 | 2024-11-04 |      3561.47 |       9 |     3561.47 | Credit Card
+           5 | Александр Соколов |       10 | 2024-10-30 |      4589.87 |      10 |     4589.87 | Bank Transfer
+(10 rows)
+```
+---
+
+4. View dành cho Quản lý nhà cung cấp (Supplier Manager View)**
+```sql
+CREATE VIEW Supplier_Manager_View AS
+SELECT 
+    s.Supplier_ID, 
+    s.Name AS Supplier_Name, 
+    s.Phone_Number AS Supplier_Phone,
+    p.Product_ID, 
+    p.Product_Category_Name, 
+    p.Price
+FROM Supplier s
+JOIN Supplier_Product sp ON s.Supplier_ID = sp.Supplier_ID
+JOIN Product p ON sp.Product_ID = p.Product_ID;
+```
+```sql
+coffee_shop_db=# select * from supplier_manager_view ;
+ supplier_id |  supplier_name   | supplier_phone | product_id | product_category_name | price  
+-------------+------------------+----------------+------------+-----------------------+--------
+           1 | ООО РусКофе      | +84867010843   |          7 | Робуста               | 347.12
+           1 | ООО РусКофе      | +84867010843   |          1 | Арабика               | 481.21
+           1 | ООО РусКофе      | +84867010843   |         10 | Латте                 | 239.44
+           2 | ЗАО ЧайКофе      | +84625548793   |          7 | Робуста               | 347.12
+           2 | ЗАО ЧайКофе      | +84625548793   |          9 | Арабика               | 616.37
+           2 | ЗАО ЧайКофе      | +84625548793   |          2 | Капучино              | 549.51
+           2 | ЗАО ЧайКофе      | +84625548793   |          5 | Робуста               | 465.66
+           3 | ИП Васильев Торг | +84534269602   |          8 | Капучино              | 853.89
+           3 | ИП Васильев Торг | +84534269602   |          4 | Капучино              | 114.89
+           3 | ИП Васильев Торг | +84534269602   |          6 | Эспрессо              | 982.47
+           4 | ТД Бариста       | +84919114853   |          3 | Латте                 | 778.31
+           4 | ТД Бариста       | +84919114853   |          1 | Арабика               | 481.21
+           4 | ТД Бариста       | +84919114853   |          5 | Робуста               | 465.66
+           4 | ТД Бариста       | +84919114853   |         10 | Латте                 | 239.44
+           5 | КофеТрейд        | +84992880427   |          9 | Арабика               | 616.37
+           5 | КофеТрейд        | +84992880427   |          4 | Капучино              | 114.89
+           5 | КофеТрейд        | +84992880427   |          2 | Капучино              | 549.51
+           5 | КофеТрейд        | +84992880427   |          6 | Эспрессо              | 982.47
+           5 | КофеТрейд        | +84992880427   |          8 | Капучино              | 853.89
+(19 rows)
+
+```
+
+# 3. Bảo mật cơ sở dữ liệu
+
+
