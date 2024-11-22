@@ -510,5 +510,370 @@ coffee_shop_db=# \dt
 (9 rows)
 ```
 
+### 2.2.2 Code nhập dữ liệu vào bảng
+
+- Bảng employee
+
+```sql
+INSERT INTO Employee (Name, Position, Phone_Number, Email) VALUES
+('Алексей Иванов', 'Sales Staff', '+84410621704', 'alekseyivanov@mail.ru'),
+('Дмитрий Соколов', 'Sales Staff', '+84804504364', 'dmitriysokolov@mail.ru'),
+('Екатерина Смирнова', 'Sales Staff', '+84637892756', 'ekaterinasmirnova@mail.ru'),
+('Анна Петрова', 'Sales Staff', '+84116278986', 'annapetrova@mail.ru'),
+('Иван Васильев', 'Sales Staff', '+84463544856', 'ivanvasilev@mail.ru'),
+('Мария Кузнецова', 'Sales Staff', '+84726549107', 'mariyakuznetsova@mail.ru'),
+('Ольга Попова', 'Sales Staff', '+84913287564', 'olgapopova@mail.ru'),
+('Сергей Федоров', 'Warehouse Manager', '+84892657481', 'sergeyfedorov@mail.ru'),
+('Николай Григорьев', 'Warehouse Manager', '+84652718462', 'nikolaygrigoriev@mail.ru'),
+('Владимир Николаев', 'Warehouse Manager', '+84187365942', 'vladimirnikolaev@mail.ru');
+```
+
+- Bảng supplier
+
+```sql
+INSERT INTO Supplier (Name, Address, Phone_Number, Email) VALUES
+('ООО РусКофе', 'ул. 80-15, Москва, Россия', '+84867010843', 'oooruskofe@mail.ru'),
+('ЗАО ЧайКофе', 'ул. 100-16, Москва, Россия', '+84625548793', 'zaochaykofe@mail.ru'),
+('ИП Васильев Торг', 'ул. 25-5, Москва, Россия', '+84534269602', 'ipvasilevtorg@mail.ru'),
+('ТД Бариста', 'ул. 18-45, Москва, Россия', '+84919114853', 'tdbarista@mail.ru'),
+('КофеТрейд', 'ул. 97-24, Москва, Россия', '+84992880427', 'kofetreyd@mail.ru'),
+('СоюзКофе', 'ул. 59-42, Москва, Россия', '+84731450928', 'soyuzkofe@mail.ru'),
+('МирКофе', 'ул. 38-35, Москва, Россия', '+84713090284', 'mirkofe@mail.ru'),
+('ЭспрессоЭкспорт', 'ул. 47-9, Москва, Россия', '+84890236452', 'espressoeksport@mail.ru'),
+('ЗАО Черный Жемчуг', 'ул. 64-17, Москва, Россия', '+84938572461', 'zaochernyjzhemchug@mail.ru'),
+('Кофейный Дом', 'ул. 29-31, Москва, Россия', '+84719530678', 'kofejnyjdom@mail.ru');
+```
+
+- Bảng warehouse
+
+```sql
+INSERT INTO Warehouse (Address, Status, Employee_ID) VALUES
+('ул. 97-4, Москва, Россия', 'Inactive', 9),
+('ул. 38-11, Москва, Россия', 'Active', 9),
+('ул. 97-13, Москва, Россия', 'Inactive', 8),
+('ул. 24-37, Москва, Россия', 'Inactive', 10),
+('ул. 58-40, Москва, Россия', 'Active', 10);
+```
+
+- Bảng product
+
+```sql
+INSERT INTO Product (Product_Category_Name, Price, Warehouse_ID) VALUES
+('Арабика', 481.21, 1),
+('Капучино', 549.51, 1),
+('Латте', 778.31, 5),
+('Капучино', 114.89, 5),
+('Робуста', 465.66, 5),
+('Эспрессо', 982.47, 3),
+('Робуста', 347.12, 2),
+('Капучино', 853.89, 1),
+('Арабика', 616.37, 4),
+('Латте', 239.44, 3);
+```
+
+- Bảng customer
+
+```sql
+INSERT INTO Customer (Name, Phone_Number, Email) VALUES
+('Иван Иванов', '+84347792080', 'ivanivanov@mail.ru'),
+('Петр Петров', '+84725742192', 'petrpetrov@mail.ru'),
+('Светлана Смирнова', '+84498734272', 'svetlanasmirnova@mail.ru'),
+('Елена Кузнецова', '+84451098251', 'elenakuznetsova@mail.ru'),
+('Александр Соколов', '+84479531226', 'aleksandrsokolov@mail.ru'),
+('Мария Попова', '+84712349852', 'mariyapopova@mail.ru'),
+('Николай Федоров', '+84396571482', 'nikolayfedorov@mail.ru'),
+('Анна Васильева', '+84578321940', 'annavasilyeva@mail.ru'),
+('Дмитрий Григорьев', '+84410239854', 'dmitriygrigorev@mail.ru'),
+('Ольга Николаева', '+84765849320', 'olganikolaeva@mail.ru');
+```
+
+- Bảng orders
+
+```sql
+INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID) VALUES
+('2024-11-08', 1039.79, 9, 5),
+('2024-10-28', 1316.75, 9, 4),
+('2024-10-31', 3327.25, 10, 4),
+('2024-10-24', 3579.22, 9, 3),
+('2024-11-08', 2161.28, 6, 6),
+('2024-10-26', 3024.59, 2, 6),
+('2024-11-06', 4376.18, 7, 5),
+('2024-10-29', 2891.04, 3, 1),
+('2024-11-04', 3561.47, 1, 7),
+('2024-10-30', 4589.87, 5, 3);
+```
+
+- Bảng bill
+
+```sql
+INSERT INTO Bill (Bill_ID, Amount, Payment_Method, Order_ID) VALUES
+(1, 1039.79, 'Bank Transfer', 1),
+(2, 1316.75, 'Bank Transfer', 2),
+(3, 3327.25, 'Credit Card', 3),
+(4, 3579.22, 'Credit Card', 4),
+(5, 2161.28, 'Bank Transfer', 5),
+(6, 3024.59, 'Cash', 6),
+(7, 4376.18, 'Credit Card', 7),
+(8, 2891.04, 'Cash', 8),
+(9, 3561.47, 'Credit Card', 9),
+(10, 4589.87, 'Bank Transfer', 10);
+```
+
+- Bảng liên kết giữa bảng Orders và bảng Product
+
+```sql
+INSERT INTO Order_Product (Order_ID, Product_ID) VALUES
+(1, 2),
+(1, 4),
+(2, 5),
+(2, 1),
+(2, 9),
+(3, 7),
+(3, 3),
+(3, 8),
+(4, 10),
+(4, 6),
+(4, 2),
+(5, 4),
+(5, 1),
+(6, 3),
+(6, 8),
+(6, 5),
+(7, 9),
+(7, 2),
+(7, 10),
+(8, 1),
+(8, 7),
+(9, 6),
+(9, 5),
+(10, 4),
+(10, 3);
+```
+
+- Bảng liên kết giữa bảng Supplier và Product
+
+```sql
+INSERT INTO Supplier_Product (Supplier_ID, Product_ID) VALUES
+(1, 7),
+(1, 1),
+(1, 10),
+(2, 7),
+(2, 9),
+(2, 2),
+(2, 5),
+(3, 8),
+(3, 4),
+(3, 6),
+(4, 3),
+(4, 1),
+(4, 5),
+(4, 10),
+(5, 9),
+(5, 4),
+(5, 2),
+(5, 6),
+(5, 8);
+```
+
+## 2.3 Tạo index
+
+ **Liên kết bảng** (JOIN): Thông thường là các cột `Primary Key` và `Foreign Key`.
+ **Tìm kiếm hoặc lọc dữ liệu**: Các cột thường xuyên được sử dụng trong các mệnh đề `WHERE`, `ORDER BY`, hoặc `GROUP BY`.
+
+
+
+1. Index bảng `Employee`
+- **Mục tiêu**: Tăng tốc tìm kiếm theo `Employee_ID`.
+
+```sql
+CREATE INDEX idx_employee_id ON Employee (Employee_ID);
+CREATE INDEX idx_employee_email ON Employee (Email);
+```
+
+
+2. Index bảng `Supplier`
+- **Mục tiêu**: Tăng tốc truy vấn theo `Supplier_ID` và tìm kiếm qua `Name`.
+
+```sql
+CREATE INDEX idx_supplier_id ON Supplier (Supplier_ID);
+CREATE INDEX idx_supplier_name ON Supplier (Name);
+```
+
+
+3. Index bảng `Warehouse`
+- **Mục tiêu**: Tăng tốc liên kết và lọc dữ liệu theo `Employee_ID` và `Warehouse_ID`.
+
+```sql
+CREATE INDEX idx_warehouse_id ON Warehouse (Warehouse_ID);
+CREATE INDEX idx_warehouse_employee_id ON Warehouse (Employee_ID);
+```
+
+
+4. Index bảng `Product`
+- **Mục tiêu**: Tăng tốc tìm kiếm theo `Product_ID`, `Warehouse_ID`, và lọc dữ liệu theo `Price`.
+
+```sql
+CREATE INDEX idx_product_id ON Product (Product_ID);
+CREATE INDEX idx_product_warehouse_id ON Product (Warehouse_ID);
+CREATE INDEX idx_product_price ON Product (Price);
+```
+
+
+5. Index bảng `Customer`
+- **Mục tiêu**: Tăng tốc tìm kiếm theo `Customer_ID` và email khách hàng.
+
+```sql
+CREATE INDEX idx_customer_id ON Customer (Customer_ID);
+CREATE INDEX idx_customer_email ON Customer (Email);
+```
+
+
+6. Index bảng `Orders`
+- **Mục tiêu**: Tăng tốc liên kết và lọc dữ liệu theo `Order_ID`, `Customer_ID`, và `Employee_ID`.
+
+```sql
+CREATE INDEX idx_orders_id ON Orders (Order_ID);
+CREATE INDEX idx_orders_customer_id ON Orders (Customer_ID);
+CREATE INDEX idx_orders_employee_id ON Orders (Employee_ID);
+```
+
+
+7. Index bảng `Bill`
+- **Mục tiêu**: Tăng tốc liên kết với bảng `Orders` và tìm kiếm theo `Payment_Method`.
+
+```sql
+CREATE INDEX idx_bill_id ON Bill (Bill_ID);
+CREATE INDEX idx_bill_order_id ON Bill (Order_ID);
+CREATE INDEX idx_bill_payment_method ON Bill (Payment_Method);
+```
+
+8. Index bảng `Order_Product`
+- **Mục tiêu**: Tăng tốc liên kết giữa `Orders` và `Product`.
+
+```sql
+CREATE INDEX idx_order_product_order_id ON Order_Product (Order_ID);
+CREATE INDEX idx_order_product_product_id ON Order_Product (Product_ID);
+```
+
+
+9. Index bảng `Supplier_Product`
+- **Mục tiêu**: Tăng tốc liên kết giữa `Supplier` và `Product`.
+
+```sql
+CREATE INDEX idx_supplier_product_supplier_id ON Supplier_Product (Supplier_ID);
+CREATE INDEX idx_supplier_product_product_id ON Supplier_Product (Product_ID);
+```
+
+## 2.4 Thiết lập mối quan hệ giữa các bảng
+
+Để thiết lập mối quan hệ giữa các bảng trong cơ sở dữ liệu PostgreSQL, chúng ta sẽ sử dụng các **Foreign Key** (khóa ngoại). Điều này giúp duy trì tính toàn vẹn dữ liệu và thể hiện các mối quan hệ giữa các bảng.
+
+
+1. Mối quan hệ giữa `Warehouse` và `Employee`
+- **Mô tả**: Một nhân viên (`Employee`) quản lý một hoặc nhiều kho (`Warehouse`).
+- **Mối quan hệ**: 1:N.
+
+```sql
+ALTER TABLE Warehouse
+ADD CONSTRAINT fk_warehouse_employee
+FOREIGN KEY (Employee_ID)
+REFERENCES Employee (Employee_ID)
+ON DELETE SET NULL;
+```
+
+
+2. Mối quan hệ giữa `Product` và `Warehouse`
+- **Mô tả**: Một sản phẩm (`Product`) được lưu trữ trong một kho (`Warehouse`).
+- **Mối quan hệ**: 1:N.
+
+```sql
+ALTER TABLE Product
+ADD CONSTRAINT fk_product_warehouse
+FOREIGN KEY (Warehouse_ID)
+REFERENCES Warehouse (Warehouse_ID)
+ON DELETE CASCADE;
+```
+
+
+3. Mối quan hệ giữa `Orders` và `Customer`
+- **Mô tả**: Một khách hàng (`Customer`) có thể đặt nhiều đơn hàng (`Orders`).
+- **Mối quan hệ**: 1:N.
+
+```sql
+ALTER TABLE Orders
+ADD CONSTRAINT fk_orders_customer
+FOREIGN KEY (Customer_ID)
+REFERENCES Customer (Customer_ID)
+ON DELETE CASCADE;
+```
+
+
+4. Mối quan hệ giữa `Orders` và `Employee`
+- **Mô tả**: Một nhân viên (`Employee`) xử lý nhiều đơn hàng (`Orders`).
+- **Mối quan hệ**: 1:N.
+
+```sql
+ALTER TABLE Orders
+ADD CONSTRAINT fk_orders_employee
+FOREIGN KEY (Employee_ID)
+REFERENCES Employee (Employee_ID)
+ON DELETE SET NULL;
+```
+
+
+5. Mối quan hệ giữa `Bill` và `Orders`
+- **Mô tả**: Một hóa đơn (`Bill`) thuộc về một đơn hàng (`Orders`).
+- **Mối quan hệ**: 1:1.
+
+```sql
+ALTER TABLE Bill
+ADD CONSTRAINT fk_bill_order
+FOREIGN KEY (Order_ID)
+REFERENCES Orders (Order_ID)
+ON DELETE CASCADE;
+```
+
+
+6. Mối quan hệ giữa `Order_Product` và `Orders`, `Product`
+- **Mô tả**: Liên kết giữa các đơn hàng (`Orders`) và sản phẩm (`Product`) thông qua bảng trung gian `Order_Product`.
+- **Mối quan hệ**: N:M.
+
+```sql
+ALTER TABLE Order_Product
+ADD CONSTRAINT fk_order_product_order
+FOREIGN KEY (Order_ID)
+REFERENCES Orders (Order_ID)
+ON DELETE CASCADE;
+
+ALTER TABLE Order_Product
+ADD CONSTRAINT fk_order_product_product
+FOREIGN KEY (Product_ID)
+REFERENCES Product (Product_ID)
+ON DELETE CASCADE;
+```
+
+
+7. Mối quan hệ giữa `Supplier_Product` và `Supplier`, `Product`
+- **Mô tả**: Liên kết giữa các nhà cung cấp (`Supplier`) và sản phẩm (`Product`) thông qua bảng trung gian `Supplier_Product`.
+- **Mối quan hệ**: N:M.
+
+```sql
+ALTER TABLE Supplier_Product
+ADD CONSTRAINT fk_supplier_product_supplier
+FOREIGN KEY (Supplier_ID)
+REFERENCES Supplier (Supplier_ID)
+ON DELETE CASCADE;
+
+ALTER TABLE Supplier_Product
+ADD CONSTRAINT fk_supplier_product_product
+FOREIGN KEY (Product_ID)
+REFERENCES Product (Product_ID)
+ON DELETE CASCADE;
+```
+
+
+Ghi chú:
+- **`ON DELETE CASCADE`**: Khi dữ liệu trong bảng cha bị xóa, các bản ghi liên quan trong bảng con cũng sẽ bị xóa.
+- **`ON DELETE SET NULL`**: Khi dữ liệu trong bảng cha bị xóa, cột khóa ngoại trong bảng con sẽ được đặt thành `NULL`.
 
 
