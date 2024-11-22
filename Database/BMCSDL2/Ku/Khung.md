@@ -359,3 +359,156 @@ View này cho phép quản lý nhà cung cấp theo dõi thông tin về các nh
 - Supplier_ID, Supplier_Name, Supplier_Phone: ID, tên và số điện thoại của nhà cung cấp.
 - Product_ID, Product_Category_Name, Price: ID sản phẩm, danh mục sản phẩm, và giá sản phẩm mà nhà cung cấp cung cấp.
 
+# 2. Triển khai cơ sở dữ liệu trong DBMS
+
+## 2.1 Chọn hệ quản trị cơ sở dữ liệu (DBMS)
+
+- Sử dụng PostgreSQL
+- Lý do sử dụng: PostgreSQL là một hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, mã nguồn mở và tuân thủ chuẩn SQL. Nó có khả năng xử lý các cơ sở dữ liệu phức tạp, hỗ trợ đa người dùng và tích hợp tốt với các ngôn ngữ lập trình. PostgreSQL cũng được sử dụng rộng rãi trong các dự án thực tế nhờ khả năng mở rộng và bảo mật tốt.
+
+## 2.2 Tạo cấu trúc cơ sở dữ liệu
+
+Kết nối cơ sở dữ liệu:
+
+```bash
+sudo systemctl enable --now postgresql.service
+[sudo] password for chu: 
+Synchronizing state of postgresql.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable postgresql
+```
+
+```bash
+sudo su postgres -c psql
+psql (16.4 (Ubuntu 16.4-1.pgdg22.04+1))
+```
+
+Tạo cơ sở dữ liệu
+
+```SQL
+create database coffee_shop_db
+with
+owner = postgres
+encoding = 'UTF8'
+tablespace = pg_default
+connection limit = -1
+is_template = False;
+```
+
+```SQL
+postgres=# \c coffee_shop_db 
+You are now connected to database "coffee_shop_db" as user "postgres".
+coffee_shop_db=# 
+```
+
+### 2.2.1 Code tạo các bảng 
+
+Bảng nhân viên
+
+```sql
+CREATE TABLE Employee (
+    Employee_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Position VARCHAR(50) NOT NULL,
+    Phone_Number VARCHAR(13),
+    Email VARCHAR(100)
+);
+```
+
+Bảng Supplier
+```sql
+CREATE TABLE Supplier (
+    Supplier_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Address VARCHAR(255),
+    Phone_Number VARCHAR(13),
+    Email VARCHAR(100)
+);
+```
+Bảng Warehouse
+```sql
+CREATE TABLE Warehouse (
+    Warehouse_ID SERIAL PRIMARY KEY,
+    Address VARCHAR(255) NOT NULL,
+    Status VARCHAR(50),
+    Employee_ID INTEGER
+);
+```
+
+Bảng Product
+```sql
+CREATE TABLE Product (
+    Product_ID SERIAL PRIMARY KEY,
+    Product_Category_Name VARCHAR(100) NOT NULL,
+    Price NUMERIC(10, 2) NOT NULL,
+    Warehouse_ID INTEGER
+);
+```
+Bảng Customer
+```sql
+CREATE TABLE Customer (
+    Customer_ID SERIAL PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Phone_Number VARCHAR(15),
+    Email VARCHAR(100)
+);
+```
+
+Bảng Orders
+```sql
+CREATE TABLE Orders(
+    Order_ID SERIAL PRIMARY KEY,
+    Order_Date DATE NOT NULL,
+    Total_Amount NUMERIC(10, 2) NOT NULL,
+    Customer_ID INTEGER,
+    Employee_ID INTEGER
+);
+```
+Bảng Bill
+```sql
+CREATE TABLE Bill (
+    Bill_ID SERIAL PRIMARY KEY,
+    Amount NUMERIC(10, 2) NOT NULL,
+    Payment_Method VARCHAR(50) NOT NULL,
+    Order_ID INTEGER
+);
+```
+
+Bảng liên kết giữa bảng Orders và bảng Product
+```sql
+CREATE TABLE Order_Product (
+    Order_ID INTEGER,
+    Product_ID INTEGER,
+    PRIMARY KEY (Order_ID, Product_ID)
+);
+```
+
+- Bảng liên kết giữa bảng Supplier và Product
+```sql
+CREATE TABLE Supplier_Product (
+    Supplier_ID INTEGER,
+    Product_ID INTEGER,
+    PRIMARY KEY (Supplier_ID, Product_ID)
+);
+```
+
+Ta có các bảng như sau:
+
+```sql
+coffee_shop_db=# \dt
+              List of relations
+ Schema |       Name       | Type  |  Owner   
+--------+------------------+-------+----------
+ public | bill             | table | postgres
+ public | customer         | table | postgres
+ public | employee         | table | postgres
+ public | order_product    | table | postgres
+ public | orders           | table | postgres
+ public | product          | table | postgres
+ public | supplier         | table | postgres
+ public | supplier_product | table | postgres
+ public | warehouse        | table | postgres
+(9 rows)
+```
+
+
+
