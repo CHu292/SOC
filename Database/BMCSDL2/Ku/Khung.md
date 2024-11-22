@@ -1452,3 +1452,406 @@ coffee_shop_db=# SELECT * FROM main_log ORDER BY operation_date DESC;
 ```
 
 ## 3.2 Mã hóa dữ liệu
+
+### 3.2.1 Tạo bảng để lưu trữ dữ liệu bảo mật
+
+- Đầu tiên, chúng ta cần tạo một bảng riêng để lưu trữ dữ liệu nhạy cảm, chẳng hạn như token hoặc khóa truy cập cho từng loại người dùng. Bảng này nên được tách biệt khỏi các bảng chính của cơ sở dữ liệu.
+
+
+```sql
+CREATE TABLE secret_data (
+    id SERIAL PRIMARY KEY,       -- ID duy nhất cho mỗi bản ghi
+    username TEXT,               -- Tên người dùng
+    secret_token TEXT            -- Token hoặc khóa bảo mật
+);
+```
+
+- id: Khóa chính, tự động tăng.
+- username: Tên người dùng.
+- secret_token: Dữ liệu nhạy cảm (token hoặc khóa truy cập) sẽ được mã hóa.
+
+### 3.2.2 Mã hóa dữ liệu
+
+Chúng ta sẽ sử dụng thuật toán mã hóa đối xứng (ví dụ: AES-256) để mã hóa dữ liệu trong bảng secret_data. Điều này đảm bảo rằng ngay cả khi dữ liệu bị rò rỉ, chúng cũng sẽ không thể đọc được nếu không có khóa mã hóa.
+
+Chuẩn Bị Sử Dụng Mô-đun pgcrypto: PostgreSQL có mô-đun pgcrypto hỗ trợ mã hóa và giải mã dữ liệu. Đầu tiên, hãy chắc chắn rằng bạn đã cài đặt mô-đun này:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+```
+
+### 3.2.3 Tạo khóa từ mật khẩu
+
+Khóa mã hóa sẽ được tạo từ mật khẩu của superuser thông qua một hàm băm (ví dụ: SHA-256). Điều này đảm bảo rằng khóa không được lưu trữ trực tiếp trong cơ sở dữ liệu.
+
+- Tạo khóa mã hóa cho admin
+
+```sql
+coffee_shop_db=# select encode(digest('Ch.u992mvd', 'sha256'), 'hex') as encryption_key;
+                          encryption_key                          
+------------------------------------------------------------------
+ ca69b9601669b11f98acf29d694ec0e6d52f581bef9ffbe01bf426a3c2e6418a
+(1 row)
+```
+
+- Tạo khóa mã hóa cho manager
+
+```sql
+coffee_shop_db=# select encode(digest('Chumiran', 'sha256'), 'hex') as encryption_key;
+                          encryption_key                          
+------------------------------------------------------------------
+ 9f836f77a5918d1d48f774cbde22f4317f7931018ccd44e4350a441e00c6b56a
+(1 row)
+```
+
+- Tạo khóa mã hóa cho user
+
+```sql
+coffee_shop_db=# select encode(digest('Chudoan', 'sha256'), 'hex') as encryption_key;
+                          encryption_key                          
+------------------------------------------------------------------
+ 9b766363aa387a7f871298d2d5273e8df0f12e997062618ec47ff14e34352ae5
+(1 row)
+```
+
+### 3.2.4 Chèn dữ liệu với mã hóa
+
+```sql
+INSERT INTO secret_data (username, secret_token)
+VALUES 
+('admin', pgp_sym_encrypt('admin_token', 'ca69b9601669b11f98acf29d694ec0e6d52f581bef9ffbe01bf426a3c2e6418a')),
+('manager', pgp_sym_encrypt('manager_token', '9f836f77a5918d1d48f774cbde22f4317f7931018ccd44e4350a441e00c6b56a')),
+('user', pgp_sym_encrypt('user_token', '9b766363aa387a7f871298d2d5273e8df0f12e997062618ec47ff14e34352ae5'));
+```
+
+### 3.2.5 Chứng minh giải mã dữ liệu
+
+Để chứng minh rằng ngay cả người có quyền quản trị cũng không thể xem dữ liệu trong bảng mà không biết mật khẩu, chúng ta sẽ sử dụng phương thức giải mã.
+
+Giải Mã Dữ Liệu: Để giải mã dữ liệu, chúng ta cần có mật khẩu gốc. Nếu không có mật khẩu này, các quản trị viên không thể giải mã và đọc được nội dung của bảng secret_data.
+
+```sql
+coffee_shop_db=# SELECT * FROM secret_data;
+ id | username |                                                                           secret_token                                                                           
+----+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  1 | admin    | \xc30d040703020f5d604f69c6e78a67d23c0120fc2827eb39f9fff2db0261c6d8f516ccb53c7846075eef17b54ee0bdbe1c26ae946b5b904a866e424575ba74ad76797f35dbc343b1cf5fdb2e54
+  2 | manager  | \xc30d04070302b9c64d64901ae9b165d23e0172c08888d2becb206f9e1e7302e3afd42f13f5626e870c9aff5d99c772cff69d137d4a1de3f6411d21a015900662461567119c3984f4fb9e994a694c26
+  3 | user     | \xc30d040703028d9f757c7581acdd67d23b01fa076da8a793794d4106a1227237035ebf9cf37fe1939b5a9f6f62ef6e08ac137ed9508c7039dd0f454c196039a371b33560af372c98894dc9b2
+```
+
+Như chúng ta đã thấy, chúng ta không thể đọc được nội dung trong đó là gì
+
+Để giải mã:
+
+```sql
+SELECT username, pgp_sym_decrypt(secret_token::bytea, 'your_generated_key') AS secret_token
+FROM secret_data;
+```
+Thay `your_generated_key` bằng key
+
+- Kiểm thử với fake token:
+
+```sql
+coffee_shop_db=# SELECT username, pgp_sym_decrypt(secret_token::bytea, 'fake_token') AS token
+FROM secret_data ;
+ERROR:  Wrong key or corrupt data
+```
+
+```sql
+coffee_shop_db=# SELECT username, pgp_sym_decrypt(secret_token::bytea, '9f836f77a5918d1d48f774cbde22f4317f7931018ccd44e4350a441e00c6b56a') AS token
+FROM secret_data where username = 'user';
+ERROR:  Wrong key or corrupt data
+```
+- Kiểm thử đúng token
+
+```sql
+coffee_shop_db=# SELECT username, pgp_sym_decrypt(secret_token::bytea, '9b766363aa387a7f871298d2d5273e8df0f12e997062618ec47ff14e34352ae5') AS token
+FROM secret_data where username = 'user';
+ username |   token    
+----------+------------
+ user     | user_token
+(1 row)
+```
+
+## 3.3 Kiểm Soát Truy Cập (Access Control)
+
+Tạo các vai trò và phân quyền cho từng vai trò dựa trên nguyên tắc quyền hạn tối thiểu.
+
+### 3.3.1 Tạo vai trò (role)
+
+
+1. **role_manager**: Vai trò dành cho quản lý, có quyền truy cập vào các bảng `Orders` (Đơn hàng), `Products` (Sản phẩm) và `Customers` (Khách hàng).
+2. **role_staff**: Vai trò dành cho nhân viên, chỉ có quyền truy cập vào các *view* liên quan đến sản phẩm và đơn hàng.
+
+```sql
+-- Tạo vai trò quản lý
+CREATE ROLE role_manager WITH LOGIN PASSWORD 'manager_pass';
+
+-- Tạo vai trò nhân viên
+CREATE ROLE role_staff WITH LOGIN PASSWORD 'staff_pass';
+```
+
+
+### 3.3.2 Phân quyền
+
+- Cấp Quyền Truy Cập vào Schema:
+
+```sql
+GRANT USAGE ON SCHEMA public TO role_manager;
+GRANT USAGE ON SCHEMA public TO role_staff;
+```
+
+#### 3.3.2.1. Quyền cho vai trò `role_manager`**
+
+Quản lý có thể:
+- Xem (`SELECT`), thêm (`INSERT`), sửa (`UPDATE`), và xóa (`DELETE`) dữ liệu trong bảng `Orders`, `Products`, `Customers`.
+- Không được phép truy cập bảng `main_log` hoặc các bảng liên quan đến thông tin nhạy cảm.
+
+```sql
+-- Quyền cho bảng Orders
+GRANT SELECT, INSERT, UPDATE, DELETE ON Orders TO role_manager;
+
+-- Quyền cho bảng Products
+GRANT SELECT, INSERT, UPDATE, DELETE ON Product TO role_manager;
+
+-- Quyền cho bảng Customers
+GRANT SELECT, INSERT, UPDATE, DELETE ON Customer TO role_manager;
+
+-- Từ chối quyền truy cập bảng main_log
+REVOKE ALL ON main_log FROM role_manager;
+```
+
+
+#### 3.3.2.2. Quyền cho vai trò `role_staff`
+
+Nhân viên có thể:
+- Chỉ xem các *view* (bảng ảo) được tạo ở bài trước, ví dụ như `sales_employee_view` và `customer_view`.
+- Không có quyền truy cập vào các bảng cơ sở dữ liệu chính (`Orders`, `Products`, `Customers`).
+
+```sql
+-- Quyền cho *view* sales_employee_view
+GRANT SELECT ON sales_employee_view TO role_staff;
+
+-- Quyền cho *view* customer_view
+GRANT SELECT ON customer_view TO role_staff;
+
+-- Từ chối quyền truy cập các bảng chính
+REVOKE ALL ON Orders FROM role_staff;
+REVOKE ALL ON Product FROM role_staff;
+REVOKE ALL ON Customer FROM role_staff;
+
+-- Từ chối quyền truy cập bảng main_log
+REVOKE ALL ON main_log FROM role_staff;
+```
+
+
+
+#### 3.3.2.3. Hạn chế truy cập bảng log
+
+Bảng `main_log` (bảng ghi log hoạt động) chỉ có thể được xem bởi **superuser**. Đảm bảo rằng các vai trò khác không thể truy cập:
+
+```sql
+-- Từ chối quyền truy cập bảng log cho tất cả người dùng
+REVOKE ALL ON main_log FROM PUBLIC;
+
+-- Chỉ cho phép superuser (ví dụ: postgres) truy cập
+GRANT ALL ON main_log TO postgres; -- Thay "postgres" bằng superuser của bạn
+```
+
+---
+
+### 3.3.3 Kiểm tra phân quyền**
+
+#### 3.3.3.1 Kiểm tra với vai trò `role_manager`
+
+Đăng nhập vào cơ sở dữ liệu với vai trò `role_manager`:
+```bash
+psql -U role_manager -d coffee_shop_db
+```
+
+Hoặc:
+
+```sql
+coffee_shop_db=# set role role_manager;
+SET
+```
+
+Thực hiện các truy vấn sau:
+
+1. **Xem bảng Orders**:
+   ```sql
+   SELECT * FROM Orders;
+   ```
+
+```sql
+coffee_shop_db=> SELECT * FROM Orders;
+ order_id | order_date | total_amount | customer_id | employee_id 
+----------+------------+--------------+-------------+-------------
+        1 | 2024-11-08 |      1039.79 |           9 |           5
+        2 | 2024-10-28 |      1316.75 |           9 |           4
+        3 | 2024-10-31 |      3327.25 |          10 |           4
+        4 | 2024-10-24 |      3579.22 |           9 |           3
+        5 | 2024-11-08 |      2161.28 |           6 |           6
+        6 | 2024-10-26 |      3024.59 |           2 |           6
+        7 | 2024-11-06 |      4376.18 |           7 |           5
+        8 | 2024-10-29 |      2891.04 |           3 |           1
+        9 | 2024-11-04 |      3561.47 |           1 |           7
+       10 | 2024-10-30 |      4589.87 |           5 |           3
+(10 rows)
+```
+
+2. **Xem bảng Products**:
+   ```sql
+   SELECT * FROM Product;
+   ```
+   
+```sql
+coffee_shop_db=> SELECT * FROM Product;
+ product_id | product_category_name | price  | warehouse_id 
+------------+-----------------------+--------+--------------
+          1 | Арабика               | 481.21 |            1
+          2 | Капучино              | 549.51 |            1
+          3 | Латте                 | 778.31 |            5
+          4 | Капучино              | 114.89 |            5
+          5 | Робуста               | 465.66 |            5
+          6 | Эспрессо              | 982.47 |            3
+          7 | Робуста               | 347.12 |            2
+          8 | Капучино              | 853.89 |            1
+          9 | Арабика               | 616.37 |            4
+         10 | Латте                 | 239.44 |            3
+(10 rows)
+
+```
+
+3. **Xem bảng Customers**:
+   ```sql
+   SELECT * FROM Customer;
+   ```
+```sql
+coffee_shop_db=>  SELECT * FROM Customer;
+ customer_id |       name        | phone_number |          email           
+-------------+-------------------+--------------+--------------------------
+           1 | Иван Иванов       | +84347792080 | ivanivanov@mail.ru
+           2 | Петр Петров       | +84725742192 | petrpetrov@mail.ru
+           3 | Светлана Смирнова | +84498734272 | svetlanasmirnova@mail.ru
+           4 | Елена Кузнецова   | +84451098251 | elenakuznetsova@mail.ru
+           5 | Александр Соколов | +84479531226 | aleksandrsokolov@mail.ru
+           6 | Мария Попова      | +84712349852 | mariyapopova@mail.ru
+           7 | Николай Федоров   | +84396571482 | nikolayfedorov@mail.ru
+           8 | Анна Васильева    | +84578321940 | annavasilyeva@mail.ru
+           9 | Дмитрий Григорьев | +84410239854 | dmitriygrigorev@mail.ru
+          10 | Ольга Николаева   | +84765849320 | olganikolaeva@mail.ru
+(10 rows)
+```
+
+4. **Thử truy cập bảng main_log**:
+   ```sql
+   SELECT * FROM main_log;
+   ```
+```sql
+coffee_shop_db=> SELECT * FROM main_log;
+ERROR:  permission denied for table main_log
+```
+
+**Kết quả mong đợi**:
+- Vai trò `role_manager` có thể truy cập các bảng `Orders`, `Products`, và `Customers`.
+- Truy cập bảng `main_log` sẽ bị từ chối với lỗi: `ERROR: permission denied`.
+
+
+#### 3.3.3.2 Kiểm tra với vai trò `role_staff`
+
+Đăng nhập với vai trò `role_staff`:
+```bash
+psql -U role_staff -d coffee_shop_db
+```
+
+Hoặc:
+
+```sql
+coffee_shop_db=> set role role_staff;
+SET
+```
+
+Thực hiện các truy vấn sau:
+
+1. **Xem *view* sales_employee_view**:
+   ```sql
+   SELECT * FROM sales_employee_view;
+   ```
+```sql
+offee_shop_db=> SELECT * FROM sales_employee_view;
+ employee_id |   employee_name    | order_id | order_date | total_amount | customer_id |   customer_name   | customer_phone |      customer_email      
+-------------+--------------------+----------+------------+--------------+-------------+-------------------+----------------+--------------------------
+           7 | Ольга Попова       |        9 | 2024-11-04 |      3561.47 |           1 | Иван Иванов       | +84347792080   | ivanivanov@mail.ru
+           6 | Мария Кузнецова    |        6 | 2024-10-26 |      3024.59 |           2 | Петр Петров       | +84725742192   | petrpetrov@mail.ru
+           1 | Алексей Иванов     |        8 | 2024-10-29 |      2891.04 |           3 | Светлана Смирнова | +84498734272   | svetlanasmirnova@mail.ru
+           3 | Екатерина Смирнова |       10 | 2024-10-30 |      4589.87 |           5 | Александр Соколов | +84479531226   | aleksandrsokolov@mail.ru
+           6 | Мария Кузнецова    |        5 | 2024-11-08 |      2161.28 |           6 | Мария Попова      | +84712349852   | mariyapopova@mail.ru
+           5 | Иван Васильев      |        7 | 2024-11-06 |      4376.18 |           7 | Николай Федоров   | +84396571482   | nikolayfedorov@mail.ru
+           3 | Екатерина Смирнова |        4 | 2024-10-24 |      3579.22 |           9 | Дмитрий Григорьев | +84410239854   | dmitriygrigorev@mail.ru
+           4 | Анна Петрова       |        2 | 2024-10-28 |      1316.75 |           9 | Дмитрий Григорьев | +84410239854   | dmitriygrigorev@mail.ru
+           5 | Иван Васильев      |        1 | 2024-11-08 |      1039.79 |           9 | Дмитрий Григорьев | +84410239854   | dmitriygrigorev@mail.ru
+           4 | Анна Петрова       |        3 | 2024-10-31 |      3327.25 |          10 | Ольга Николаева   | +84765849320   | olganikolaeva@mail.ru
+(10 rows)
+```
+
+2. **Xem *view* customer_view**:
+   ```sql
+   SELECT * FROM customer_view;
+   ```
+```sql
+coffee_shop_db=> SELECT * FROM customer_view;
+ customer_id |   customer_name   | order_id | order_date | total_amount | bill_id | bill_amount | payment_method 
+-------------+-------------------+----------+------------+--------------+---------+-------------+----------------
+           9 | Дмитрий Григорьев |        1 | 2024-11-08 |      1039.79 |       1 |     1039.79 | Bank Transfer
+           9 | Дмитрий Григорьев |        2 | 2024-10-28 |      1316.75 |       2 |     1316.75 | Bank Transfer
+          10 | Ольга Николаева   |        3 | 2024-10-31 |      3327.25 |       3 |     3327.25 | Credit Card
+           9 | Дмитрий Григорьев |        4 | 2024-10-24 |      3579.22 |       4 |     3579.22 | Credit Card
+           6 | Мария Попова      |        5 | 2024-11-08 |      2161.28 |       5 |     2161.28 | Bank Transfer
+           2 | Петр Петров       |        6 | 2024-10-26 |      3024.59 |       6 |     3024.59 | Cash
+           7 | Николай Федоров   |        7 | 2024-11-06 |      4376.18 |       7 |     4376.18 | Credit Card
+           3 | Светлана Смирнова |        8 | 2024-10-29 |      2891.04 |       8 |     2891.04 | Cash
+           1 | Иван Иванов       |        9 | 2024-11-04 |      3561.47 |       9 |     3561.47 | Credit Card
+           5 | Александр Соколов |       10 | 2024-10-30 |      4589.87 |      10 |     4589.87 | Bank Transfer
+(10 rows)
+
+```
+
+3. **Thử truy cập bảng Products**:
+   ```sql
+   SELECT * FROM Product;
+   ```
+```sql
+coffee_shop_db=> SELECT * FROM Product;
+ERROR:  permission denied for table product
+```
+
+4. **Thử truy cập bảng main_log**:
+   ```sql
+   SELECT * FROM main_log;
+   ```
+```sql
+coffee_shop_db=> SELECT * FROM main_log;
+ERROR:  permission denied for table main_log
+```
+**Kết quả mong đợi**:
+- Vai trò `role_staff` chỉ có thể truy cập *view* `customer_view` và `sales_employee_view`.
+- Truy cập các bảng cơ sở dữ liệu chính (`Orders`, `Products`, `Customers`) và bảng `main_log` sẽ bị từ chối với lỗi: `ERROR: permission denied`.
+
+---
+
+#### 3.3.3.3 Kiểm tra từ chối truy cập
+
+Nếu vai trò `role_staff` thử thêm dữ liệu vào bảng `Orders`, ví dụ:
+```sql
+INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-22', 1000.00, 1, 1);
+```
+
+```sql
+coffee_shop_db=> INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-22', 1000.00, 1, 1);
+ERROR:  permission denied for table orders
+```
+
+
