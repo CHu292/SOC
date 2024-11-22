@@ -823,7 +823,7 @@ ON DELETE SET NULL;
 
 5. Mối quan hệ giữa `Bill` và `Orders`
 - **Mô tả**: Một hóa đơn (`Bill`) thuộc về một đơn hàng (`Orders`).
-- **Mối quan hệ**: 1:1.
+- **Mối quan hệ**: 1:N.
 
 ```sql
 ALTER TABLE Bill
@@ -876,4 +876,277 @@ Ghi chú:
 - **`ON DELETE CASCADE`**: Khi dữ liệu trong bảng cha bị xóa, các bản ghi liên quan trong bảng con cũng sẽ bị xóa.
 - **`ON DELETE SET NULL`**: Khi dữ liệu trong bảng cha bị xóa, cột khóa ngoại trong bảng con sẽ được đặt thành `NULL`.
 
+## 2.5 Test queries -  kiểm tra cơ sở dữ liệu
+
+Dưới đây là một số truy vấn mẫu (test queries) để kiểm tra cơ sở dữ liệu của bạn sau khi thiết lập xong:
+
+---
+
+1.  Xem tất cả thông tin về nhân viên trong bảng `Employee`.
+
+```sql
+SELECT * FROM Employee;
+```
+
+```sql
+coffee_shop_db=# select * from employee;
+ employee_id |        name        |     position      | phone_number |           email           
+-------------+--------------------+-------------------+--------------+---------------------------
+           1 | Алексей Иванов     | Sales Staff       | +84410621704 | alekseyivanov@mail.ru
+           2 | Дмитрий Соколов    | Sales Staff       | +84804504364 | dmitriysokolov@mail.ru
+           3 | Екатерина Смирнова | Sales Staff       | +84637892756 | ekaterinasmirnova@mail.ru
+           4 | Анна Петрова       | Sales Staff       | +84116278986 | annapetrova@mail.ru
+           5 | Иван Васильев      | Sales Staff       | +84463544856 | ivanvasilev@mail.ru
+           6 | Мария Кузнецова    | Sales Staff       | +84726549107 | mariyakuznetsova@mail.ru
+           7 | Ольга Попова       | Sales Staff       | +84913287564 | olgapopova@mail.ru
+           8 | Сергей Федоров     | Warehouse Manager | +84892657481 | sergeyfedorov@mail.ru
+           9 | Николай Григорьев  | Warehouse Manager | +84652718462 | nikolaygrigoriev@mail.ru
+          10 | Владимир Николаев  | Warehouse Manager | +84187365942 | vladimirnikolaev@mail.ru
+(10 rows)
+```
+
+
+2. Lọc danh sách nhân viên có chức vụ là "Sales Staff"
+
+```sql
+SELECT Name, Position, Phone_Number, Email
+FROM Employee
+WHERE Position = 'Sales Staff';
+```
+```sql
+        name        |  position   | phone_number |           email           
+--------------------+-------------+--------------+---------------------------
+ Алексей Иванов     | Sales Staff | +84410621704 | alekseyivanov@mail.ru
+ Дмитрий Соколов    | Sales Staff | +84804504364 | dmitriysokolov@mail.ru
+ Екатерина Смирнова | Sales Staff | +84637892756 | ekaterinasmirnova@mail.ru
+ Анна Петрова       | Sales Staff | +84116278986 | annapetrova@mail.ru
+ Иван Васильев      | Sales Staff | +84463544856 | ivanvasilev@mail.ru
+ Мария Кузнецова    | Sales Staff | +84726549107 | mariyakuznetsova@mail.ru
+ Ольга Попова       | Sales Staff | +84913287564 | olgapopova@mail.ru
+(7 rows)
+```
+
+3.  Tìm danh sách các kho hàng có trạng thái "Active" cùng với tên quản lý.
+
+```sql
+SELECT w.Warehouse_ID, w.Address, w.Status, e.Name AS Manager_Name
+FROM Warehouse w
+JOIN Employee e ON w.Employee_ID = e.Employee_ID
+WHERE w.Status = 'Active';
+```
+```sql
+ warehouse_id |          address          | status |   manager_name    
+--------------+---------------------------+--------+-------------------
+            2 | ул. 38-11, Москва, Россия | Active | Николай Григорьев
+            5 | ул. 58-40, Москва, Россия | Active | Владимир Николаев
+(2 rows)
+```
+
+4.  Xem danh sách sản phẩm cùng với thông tin kho lưu trữ.
+
+```sql
+SELECT p.Product_ID, p.Product_Category_Name, p.Price, w.Address AS Warehouse_Address
+FROM Product p
+JOIN Warehouse w ON p.Warehouse_ID = w.Warehouse_ID;
+```
+```sql
+ product_id | product_category_name | price  |     warehouse_address     
+------------+-----------------------+--------+---------------------------
+          1 | Арабика               | 481.21 | ул. 97-4, Москва, Россия
+          2 | Капучино              | 549.51 | ул. 97-4, Москва, Россия
+          3 | Латте                 | 778.31 | ул. 58-40, Москва, Россия
+          4 | Капучино              | 114.89 | ул. 58-40, Москва, Россия
+          5 | Робуста               | 465.66 | ул. 58-40, Москва, Россия
+          6 | Эспрессо              | 982.47 | ул. 97-13, Москва, Россия
+          7 | Робуста               | 347.12 | ул. 38-11, Москва, Россия
+          8 | Капучино              | 853.89 | ул. 97-4, Москва, Россия
+          9 | Арабика               | 616.37 | ул. 24-37, Москва, Россия
+         10 | Латте                 | 239.44 | ул. 97-13, Москва, Россия
+(10 rows)
+```
+
+5.  Hiển thị danh sách các đơn hàng cùng với tên khách hàng đã đặt.
+
+```sql
+SELECT o.Order_ID, o.Order_Date, o.Total_Amount, c.Name AS Customer_Name, c.Email AS Customer_Email
+FROM Orders o
+JOIN Customer c ON o.Customer_ID = c.Customer_ID;
+```
+```sql
+ order_id | order_date | total_amount |   customer_name   |      customer_email      
+----------+------------+--------------+-------------------+--------------------------
+        1 | 2024-11-08 |      1039.79 | Дмитрий Григорьев | dmitriygrigorev@mail.ru
+        2 | 2024-10-28 |      1316.75 | Дмитрий Григорьев | dmitriygrigorev@mail.ru
+        3 | 2024-10-31 |      3327.25 | Ольга Николаева   | olganikolaeva@mail.ru
+        4 | 2024-10-24 |      3579.22 | Дмитрий Григорьев | dmitriygrigorev@mail.ru
+        5 | 2024-11-08 |      2161.28 | Мария Попова      | mariyapopova@mail.ru
+        6 | 2024-10-26 |      3024.59 | Петр Петров       | petrpetrov@mail.ru
+        7 | 2024-11-06 |      4376.18 | Николай Федоров   | nikolayfedorov@mail.ru
+        8 | 2024-10-29 |      2891.04 | Светлана Смирнова | svetlanasmirnova@mail.ru
+        9 | 2024-11-04 |      3561.47 | Иван Иванов       | ivanivanov@mail.ru
+       10 | 2024-10-30 |      4589.87 | Александр Соколов | aleksandrsokolov@mail.ru
+(10 rows)
+```
+
+
+6.  Lọc các đơn hàng do một nhân viên cụ thể xử lý (ví dụ `Employee_ID = 3`).
+
+```sql
+SELECT o.Order_ID, o.Order_Date, o.Total_Amount
+FROM Orders o
+WHERE o.Employee_ID = 3;
+```
+```sql
+ order_id | order_date | total_amount 
+----------+------------+--------------
+        4 | 2024-10-24 |      3579.22
+       10 | 2024-10-30 |      4589.87
+(2 rows)
+```
+
+7.  Tìm danh sách hóa đơn thuộc về một đơn hàng cụ thể (ví dụ `Order_ID = 5`).
+
+```sql
+SELECT b.Bill_ID, b.Amount, b.Payment_Method
+FROM Bill b
+WHERE b.Order_ID = 5;
+```
+```sql
+bill_id | amount  | payment_method 
+---------+---------+----------------
+       5 | 2161.28 | Bank Transfer
+(1 row)
+```
+
+8. Tìm danh sách sản phẩm liên quan đến một đơn hàng cụ thể (ví dụ `Order_ID = 3`).
+
+```sql
+SELECT p.Product_ID, p.Product_Category_Name, p.Price
+FROM Order_Product op
+JOIN Product p ON op.Product_ID = p.Product_ID
+WHERE op.Order_ID = 3;
+```
+```sql
+ product_id | product_category_name | price  
+------------+-----------------------+--------
+          3 | Латте                 | 778.31
+          7 | Робуста               | 347.12
+          8 | Капучино              | 853.89
+(3 rows)
+```
+
+9.  Xem danh sách nhà cung cấp và các sản phẩm họ cung cấp.
+
+```sql
+SELECT s.Name AS Supplier_Name, p.Product_Category_Name, p.Price
+FROM Supplier_Product sp
+JOIN Supplier s ON sp.Supplier_ID = s.Supplier_ID
+JOIN Product p ON sp.Product_ID = p.Product_ID;
+```
+```sql
+ supplier_name   | product_category_name | price  
+------------------+-----------------------+--------
+ ООО РусКофе      | Робуста               | 347.12
+ ООО РусКофе      | Арабика               | 481.21
+ ООО РусКофе      | Латте                 | 239.44
+ ЗАО ЧайКофе      | Робуста               | 347.12
+ ЗАО ЧайКофе      | Арабика               | 616.37
+ ЗАО ЧайКофе      | Капучино              | 549.51
+ ЗАО ЧайКофе      | Робуста               | 465.66
+ ИП Васильев Торг | Капучино              | 853.89
+ ИП Васильев Торг | Капучино              | 114.89
+ ИП Васильев Торг | Эспрессо              | 982.47
+ ТД Бариста       | Латте                 | 778.31
+ ТД Бариста       | Арабика               | 481.21
+ ТД Бариста       | Робуста               | 465.66
+ ТД Бариста       | Латте                 | 239.44
+ КофеТрейд        | Арабика               | 616.37
+ КофеТрейд        | Капучино              | 114.89
+ КофеТрейд        | Капучино              | 549.51
+ КофеТрейд        | Эспрессо              | 982.47
+ КофеТрейд        | Капучино              | 853.89
+(19 rows)
+```
+
+10.  Tính tổng số đơn hàng và tổng giá trị.
+
+```sql
+SELECT COUNT(Order_ID) AS Total_Orders, SUM(Total_Amount) AS Total_Amount
+FROM Orders;
+```
+```sql
+ total_orders | total_amount 
+--------------+--------------
+           10 |     29867.44
+(1 row)
+```
+
+11. Tìm các đơn hàng chứa sản phẩm có tên cụ thể (ví dụ "Арабика").
+
+```sql
+SELECT DISTINCT o.Order_ID, o.Order_Date, o.Total_Amount
+FROM Orders o
+JOIN Order_Product op ON o.Order_ID = op.Order_ID
+JOIN Product p ON op.Product_ID = p.Product_ID
+WHERE p.Product_Category_Name = 'Арабика';
+```
+```sql
+ order_id | order_date | total_amount 
+----------+------------+--------------
+        2 | 2024-10-28 |      1316.75
+        5 | 2024-11-08 |      2161.28
+        7 | 2024-11-06 |      4376.18
+        8 | 2024-10-29 |      2891.04
+(4 rows)
+```
+
+12. Hiển thị danh sách các kho hoạt động cùng với số lượng sản phẩm lưu trữ.
+
+```sql
+SELECT w.Warehouse_ID, w.Address, COUNT(p.Product_ID) AS Product_Count
+FROM Warehouse w
+LEFT JOIN Product p ON w.Warehouse_ID = p.Warehouse_ID
+WHERE w.Status = 'Active'
+GROUP BY w.Warehouse_ID, w.Address;
+```
+```sql
+ warehouse_id |          address          | product_count 
+--------------+---------------------------+---------------
+            2 | ул. 38-11, Москва, Россия |             1
+            5 | ул. 58-40, Москва, Россия |             3
+(2 rows)
+```
+
+13. Tìm danh sách khách hàng có nhiều hơn một đơn hàng.
+
+```sql
+SELECT c.Customer_ID, c.Name, COUNT(o.Order_ID) AS Order_Count
+FROM Customer c
+JOIN Orders o ON c.Customer_ID = o.Customer_ID
+GROUP BY c.Customer_ID, c.Name
+HAVING COUNT(o.Order_ID) > 1;
+```
+```sql
+customer_id |       name        | order_count 
+-------------+-------------------+-------------
+           9 | Дмитрий Григорьев |           3
+(1 row)
+```
+
+
+14. Tính tổng giá trị hóa đơn theo từng phương thức thanh toán.
+
+```sql
+SELECT b.Payment_Method, SUM(b.Amount) AS Total_Amount
+FROM Bill b
+GROUP BY b.Payment_Method;
+```
+```sql
+ payment_method | total_amount 
+----------------+--------------
+ Credit Card    |     14844.12
+ Cash           |      5915.63
+ Bank Transfer  |      9107.69
+(3 rows)
+```
 
