@@ -1298,4 +1298,282 @@ coffee_shop_db=# select * from supplier_manager_view ;
 
 # 3. Bảo mật cơ sở dữ liệu
 
+## 3.1 Giám sát cơ sở dữ liệu
+### 3.1.1 Tạo bảng log
+
+Bảng Log được sử dụng để lưu lại thông tin về các thay đổi, sự kiện, lỗi, hoặc các hành động xảy ra trong cơ sở dữ liệu. Bảng này rất hữu ích cho việc kiểm tra, theo dõi hoạt động của người dùng và phân tích.
+
+```sql
+CREATE TABLE Log_Table (
+    Log_ID SERIAL PRIMARY KEY,         -- ID duy nhất cho log
+    Log_Date TIMESTAMP DEFAULT NOW(),  -- Thời gian sự kiện
+    User_Action VARCHAR(50),           -- Hành động (INSERT, UPDATE, DELETE)
+    Table_Name VARCHAR(100),           -- Tên bảng
+    Record_ID INT,                     -- ID của bản ghi
+    Description TEXT,                  -- Mô tả sự kiện
+    Role_Name VARCHAR(100),            -- Vai trò thực hiện thay đổi
+    Old_Values JSONB,                  -- Giá trị cũ (dạng JSON)
+    New_Values JSONB                   -- Giá trị mới (dạng JSON)
+);
+```
+Dưới đây là cách thực hiện yêu cầu tạo **trigger** cho mỗi bảng chính trong cơ sở dữ liệu. Trigger sẽ ghi lại thông tin thay đổi vào bảng `Log_Table`, bao gồm:
+
+- **Thời gian thay đổi**.
+- **Nguồn gốc yêu cầu (vai trò)**.
+- **Các bản ghi bị thay đổi**.
+- **Giá trị cũ (old values)** và **giá trị mới (new values)**.
+
+
+
+
+1. Hàm ghi log
+Tạo hàm `log_changes()` để ghi thông tin vào bảng log. Hàm này sẽ xử lý các sự kiện `INSERT`, `UPDATE` và `DELETE`.
+
+```sql
+CREATE OR REPLACE FUNCTION log_changes()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO Log_Table (
+        Log_Date, 
+        User_Action, 
+        Table_Name, 
+        Record_ID, 
+        Role_Name, 
+        Old_Values, 
+        New_Values, 
+        Description
+    )
+    VALUES (
+        NOW(),                          -- Thời gian thay đổi
+        TG_OP,                          -- Hành động (INSERT, UPDATE, DELETE)
+        TG_TABLE_NAME,                  -- Tên bảng
+        CASE 
+            WHEN TG_OP = 'DELETE' THEN OLD.id -- ID bản ghi bị xóa
+            ELSE NEW.id                      -- ID bản ghi thêm/sửa
+        END,
+        SESSION_USER,                   -- Vai trò thực hiện
+        CASE 
+            WHEN TG_OP = 'INSERT' THEN NULL -- Không có giá trị cũ khi thêm mới
+            ELSE ROW_TO_JSON(OLD)           -- Giá trị cũ
+        END,
+        CASE 
+            WHEN TG_OP = 'DELETE' THEN NULL -- Không có giá trị mới khi xóa
+            ELSE ROW_TO_JSON(NEW)           -- Giá trị mới
+        END,
+        CONCAT('Thay đổi dữ liệu trong bảng ', TG_TABLE_NAME) -- Mô tả
+    );
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+
+2. Tạo trigger cho từng bảng
+
+- Trigger cho bảng `Employee`
+  
+```sql
+CREATE TRIGGER trigger_employee
+AFTER INSERT OR UPDATE OR DELETE ON Employee
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Supplier`
+ 
+```sql
+CREATE TRIGGER trigger_supplier
+AFTER INSERT OR UPDATE OR DELETE ON Supplier
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Warehouse`
+
+```sql
+CREATE TRIGGER trigger_warehouse
+AFTER INSERT OR UPDATE OR DELETE ON Warehouse
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Product`
+```sql
+CREATE TRIGGER trigger_product
+AFTER INSERT OR UPDATE OR DELETE ON Product
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Customer`
+
+```sql
+CREATE TRIGGER trigger_customer
+AFTER INSERT OR UPDATE OR DELETE ON Customer
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Orders`
+
+```sql
+CREATE TRIGGER trigger_orders
+AFTER INSERT OR UPDATE OR DELETE ON Orders
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Bill`
+
+```sql
+CREATE TRIGGER trigger_bill
+AFTER INSERT OR UPDATE OR DELETE ON Bill
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+
+- Trigger cho bảng `Order_Product`
+
+```sql
+CREATE TRIGGER trigger_order_product
+AFTER INSERT OR UPDATE OR DELETE ON Order_Product
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+
+- Trigger cho bảng `Supplier_Product`
+
+```sql
+CREATE TRIGGER trigger_supplier_product
+AFTER INSERT OR UPDATE OR DELETE ON Supplier_Product
+FOR EACH ROW
+EXECUTE FUNCTION log_changes();
+```
+### 3.1.2 Kiểm tra hoạt động của hệ thống ghi log mà chúng ta đã thiết lập, với các ví dụ cụ thể cho từng loại thao tác (`INSERT`, `UPDATE`, `DELETE`) và các quan hệ trong cơ sở dữ liệu.
+
+1. Kiểm tra ghi log cho thao tác `INSERT`**
+
+Ví dụ: Thêm một nhân viên mới
+```sql
+INSERT INTO Employee (Name, Position, Phone_Number, Email)
+VALUES ('Nhân viên thử nghiệm', 'Sales Staff', '+84912345678', 'testemployee@mail.ru');
+```
+
+
+2. Kiểm tra ghi log cho thao tác `UPDATE`**
+#Ví dụ: Cập nhật dữ liệu đơn hàng**
+```sql
+UPDATE Orders
+SET Total_Amount = 4500.00
+WHERE Order_ID = 3;
+```
+
+#Kết quả mong đợi trong bảng `Log_Table`:**
+- **User_Action**: `UPDATE`
+- **Table_Name**: `Orders`
+- **Record_ID**: `3` (ID của đơn hàng được cập nhật).
+- **Old_Values**: Giá trị cũ của đơn hàng (bao gồm giá trị trước khi cập nhật `Total_Amount`).
+- **New_Values**: Giá trị mới của đơn hàng (với `Total_Amount` đã được cập nhật).
+
+---
+
+3. Kiểm tra ghi log cho thao tác `DELETE`**
+#Ví dụ: Xóa một sản phẩm**
+```sql
+DELETE FROM Product
+WHERE Product_ID = 5;
+```
+
+#Kết quả mong đợi trong bảng `Log_Table`:**
+- **User_Action**: `DELETE`
+- **Table_Name**: `Product`
+- **Record_ID**: `5` (ID của sản phẩm bị xóa).
+- **Old_Values**: Dữ liệu đầy đủ của sản phẩm bị xóa.
+- **New_Values**: `NULL`.
+
+---
+
+4. Kiểm tra ghi log cho quan hệ phức tạp**
+#Ví dụ: Thêm liên kết giữa đơn hàng và sản phẩm**
+```sql
+INSERT INTO Order_Product (Order_ID, Product_ID)
+VALUES (1, 3);
+```
+
+#Kết quả mong đợi trong bảng `Log_Table`:**
+- **User_Action**: `INSERT`
+- **Table_Name**: `Order_Product`
+- **Record_ID**: `NULL` (không có ID cụ thể vì đây là bảng liên kết).
+- **Old_Values**: `NULL`.
+- **New_Values**: `{"Order_ID": 1, "Product_ID": 3}` (dữ liệu của liên kết vừa được tạo).
+
+---
+
+5. Kiểm tra ghi log khi xóa liên kết**
+#Ví dụ: Xóa liên kết giữa nhà cung cấp và sản phẩm**
+```sql
+DELETE FROM Supplier_Product
+WHERE Supplier_ID = 2 AND Product_ID = 7;
+```
+
+#Kết quả mong đợi trong bảng `Log_Table`:**
+- **User_Action**: `DELETE`
+- **Table_Name**: `Supplier_Product`
+- **Record_ID**: `NULL` (không có ID cụ thể vì đây là bảng liên kết).
+- **Old_Values**: `{"Supplier_ID": 2, "Product_ID": 7}` (dữ liệu của liên kết bị xóa).
+- **New_Values**: `NULL`.
+
+---
+
+6. Kiểm tra tất cả các bản ghi trong bảng log**
+#Truy vấn để kiểm tra toàn bộ dữ liệu log:**
+```sql
+SELECT * FROM Log_Table ORDER BY Log_ID DESC;
+```
+
+#Giải thích:**
+Truy vấn này sẽ hiển thị toàn bộ các bản ghi log, bao gồm:
+- **Thời gian**: Khi nào thay đổi diễn ra.
+- **Hành động**: Loại thay đổi (`INSERT`, `UPDATE`, `DELETE`).
+- **Bảng**: Tên bảng bị thay đổi.
+- **Giá trị trước và sau khi thay đổi**.
+
+---
+
+7. Kiểm tra log cho một vai trò cụ thể**
+#Ví dụ: Xem các thay đổi do vai trò `postgres` thực hiện**
+```sql
+SELECT * FROM Log_Table
+WHERE Role_Name = 'postgres'
+ORDER BY Log_Date DESC;
+```
+
+---
+
+8. Kiểm tra log cho một bảng cụ thể**
+#Ví dụ: Xem tất cả các thay đổi trong bảng `Orders`**
+```sql
+SELECT * FROM Log_Table
+WHERE Table_Name = 'Orders'
+ORDER BY Log_Date DESC;
+```
+
+---
+
+Kết luận**
+Hệ thống ghi log đã được thiết kế để:
+1. Theo dõi toàn bộ các thay đổi trong cơ sở dữ liệu (thêm, sửa, xóa).
+2. Ghi lại thông tin về người thực hiện thay đổi và giá trị trước/sau.
+3. Hỗ trợ kiểm tra log theo từng bảng, từng vai trò hoặc toàn bộ cơ sở dữ liệu.
+
+Nếu bạn cần bổ sung thêm kiểm tra hoặc mở rộng chức năng, hãy cho tôi biết!
+
+
 
