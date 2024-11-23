@@ -1,7 +1,0 @@
-2024-11-12 12:47:02,107 INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-2024-11-12 12:49:09,910 INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-2024-11-12 12:49:09,911 INFO  * Restarting with stat
-2024-11-12 12:49:20,566 INFO  * Detected change in '/home/chu/Documents/SOC/Database/BMCSDL2/Implementing_an_application_layer_with_multi_user_access/Lab_4/utils/database.py', reloading
-2024-11-12 12:49:20,668 INFO  * Restarting with stat
-2024-11-12 12:49:26,164 INFO  * Detected change in '/home/chu/Documents/SOC/Database/BMCSDL2/Implementing_an_application_layer_with_multi_user_access/Lab_4/utils/database.py', reloading
-2024-11-12 12:49:26,259 INFO  * Restarting with stat

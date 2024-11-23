@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Logs</h2>
-<ul>
-    {% for log in logs %}
-    <li>{{ log.operation }} by User ID {{ log.user_id }} at {{ log.timestamp }}</li>
-    {% endfor %}
-</ul>
-{% endblock %}
