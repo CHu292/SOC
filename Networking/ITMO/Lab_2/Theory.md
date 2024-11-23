@@ -197,3 +197,325 @@ Tiêu chuẩn mô tả mô hình OSI được công bố vào năm 1984, nhưng 
   - (Lưu ý: L5 được liệt kê hai lần, ở cả lớp ứng dụng và lớp vận chuyển trong TCP/IP).  
   - Địa chỉ tại lớp này bao gồm URL trang web, tên DNS của máy chủ, tên người dùng, địa chỉ email, v.v.
 
+
+
+## 3.3. Các giai đoạn thực hiện công việc và các tùy chọn bài tập
+
+Để thực hiện bài tập, cần cài đặt trên máy tính phần mềm miễn phí Wireshark, là một công cụ phân tích các gói mạng đi qua các giao diện của máy tính.  
+
+Bạn có thể tải Wireshark từ trang web chính thức: [https://www.wireshark.org/#download](https://www.wireshark.org/#download).  
+
+Hình 3.1 trình bày cửa sổ chính của Wireshark.
+
+
+Sử dụng mục "Menu", bạn có thể chọn giao diện mạng mà Wireshark sẽ thực hiện "lắng nghe" (nút "Capture options"). Khi thực hiện công việc, cần đảm bảo rằng giao diện được chọn đúng, vì khi có nhiều kênh truy cập Internet (Wi-Fi, 4G, FastEthernet), theo mặc định, chỉ một trong số đó được sử dụng và chính giao diện này sẽ được Wireshark "bắt" các gói tin đi qua.
+
+
+Trong trường "Filter", người dùng có thể chỉ định biểu thức logic (theo kiểu ngôn ngữ C) được sử dụng để hiển thị có chọn lọc các gói đã được bắt trong "Danh sách gói bắt được". Ví dụ, nếu trong "Filter" nhập chuỗi  
+`(ip.src==192.168.12.1) && (tcp.srcport==3128)`  
+(không bao gồm dấu ngoặc kép), thì trong "Danh sách gói bắt được" chỉ hiển thị các gói được gửi từ địa chỉ IP `192.168.12.1` và trong đó "cổng nguồn" giao thức TCP chứa số `3128`. Nếu filter nhận giá trị `http`, thì chỉ các gói được truyền sử dụng giao thức HTTP mới được hiển thị.
+
+**Tiếp theo, quá trình thực hiện công việc trong phòng thí nghiệm bao gồm các bước sau:**
+
+1. **Khởi động Wireshark** (đôi khi cần quyền quản trị). Trong cửa sổ xuất hiện, chọn giao diện để phân tích lưu lượng đi qua nó. Là giao diện, chọn bộ điều hợp vật lý, qua đó máy tính kết nối với Internet (thường là bộ điều hợp có tên "Local" hoặc "Kết nối cục bộ"). Nếu menu để chọn bộ điều hợp không xuất hiện khi khởi động Wireshark, cần chạy lệnh "Capture->Options" trong "Menu". Sau khi chọn bộ điều hợp, cần bắt đầu quá trình bắt lưu lượng (nút Start).
+
+2. **Khởi tạo quá trình truyền lưu lượng vào mạng** (ví dụ: mở trình duyệt và mở một trang được chỉ định theo tùy chọn, hoặc khởi chạy tiện ích mạng tương ứng).
+
+3. **Đặt giá trị "Filter"** để từ tất cả các gói bị bắt, Wireshark chỉ hiển thị các gói liên quan đến nhiệm vụ thực hiện. Để tạo bộ lọc chính xác, cần sử dụng các gợi ý bật lên trong khi nhập bộ lọc của Wireshark, các gợi ý này sẽ kích hoạt khi nhập các biểu thức lọc. Như một cách thay thế, có thể sử dụng trình dựng bộ lọc tương tác bằng cách nhấp vào nút "Expression" trong phần bên phải của trường "Filter".
+
+4. **Chờ gói tin xuất hiện trong danh sách gói bắt được** và đảm bảo rằng số lượng gói đủ để hoàn thành nhiệm vụ.
+
+5. **Lưu lưu lượng bắt được vào tệp theo dõi (trace file, *.pcap)** Tệp này cần được trình bày theo yêu cầu của giảng viên trong quá trình bảo vệ nếu có nhu cầu.
+
+6. **Mô tả trong báo cáo cấu trúc của các PDU quan sát được** (tức là các khối dữ liệu giao thức: khung, gói tin, đoạn) cho cả yêu cầu và phản hồi.  
+   - Ghi rõ tên và ý nghĩa của tất cả các tiêu đề của các lớp OSI trong các gói tin có tính đến thứ tự đóng gói (để làm điều này, cần mở rộng các biểu tượng tương ứng "➕" trong phần thông tin chi tiết của gói tin đã chọn).
+
+7. **Viết trong báo cáo các câu trả lời cho các câu hỏi của bài tập.**  
+   - (Để làm điều này, có thể cần tự nghiên cứu mục đích của các tiện ích mạng tương ứng được sử dụng để tạo lưu lượng).
+
+8. **Đính kèm trong báo cáo ảnh chụp màn hình cửa sổ Wireshark**, minh họa các câu trả lời cho các câu hỏi từ mục 6 và 7.
+
+**Làm địa chỉ trang web trong bài tập:**  
+Trong bài tập, cần sử dụng một trong các URL sau (chọn một mục theo thứ tự danh sách dưới đây):
+
+- Địa chỉ được giảng viên chỉ định cụ thể. Nếu giảng viên không cung cấp, hãy sử dụng các mục sau đây.  
+- Địa chỉ trang chính của trang web sinh viên. Tác giả của báo cáo phải dễ dàng nhận dạng với nội dung trang web này.  
+- Địa chỉ trang web, trong đó tiêu đề chứa họ của sinh viên (ví dụ: [www.sidorovivan.ru](http://www.sidorovivan.ru)).  
+- Địa chỉ trang web, trong đó tên viết tắt của sinh viên được đề cập (ví dụ: nếu tên là Ivanov Fyodor Mikhailovich, địa chỉ sẽ là: [http://ifmo.ru](http://ifmo.ru)).
+
+
+**Chú thích 1.** Khi phân tích lưu lượng HTTP, không nên tính đến các yêu cầu HTTP và phản hồi HTTP đối với tệp `favicon.ico`. Sự xuất hiện của liên kết đến tệp này có nghĩa là trình duyệt tự động yêu cầu từ máy chủ thông tin về biểu tượng trang web (favicon), biểu tượng này được hiển thị bởi trình duyệt trong thanh địa chỉ trước địa chỉ trang (và ở một số vị trí khác).
+
+**Chú thích 2.** Tất cả các tiện ích được sử dụng trong bài tập thực hành đều khả dụng trên cả hệ điều hành MS Windows và Linux, tuy nhiên trong các ví dụ bài tập, cú pháp và các tùy chọn dòng lệnh được trình bày cho MS Windows. Trên Linux, các lệnh có thể có cú pháp hơi khác.
+
+
+## 3.4 Quy trình thực hiện bài tập
+
+### 3.4.1 Phân tích lưu lượng của tiện ích **ping**
+
+Cần theo dõi và phân tích lưu lượng được tạo bởi tiện ích **ping**, chạy nó từ dòng lệnh với cú pháp sau:
+```bash
+ping -l kích_thước_gói địa_chỉ_trang_theo_yêu_cầu
+```
+Ví dụ:
+```bash
+ping -l 2000 wireshark.org
+```
+(không có dấu ngoặc kép).
+
+Trong vai trò của `kích_thước_gói`, cần lần lượt sử dụng các giá trị khác nhau từ 100 đến 10.000, tự chọn bước thay đổi. Theo kết quả phân tích dấu vết thu thập được, cần trả lời các câu hỏi sau và hoàn thành các nhiệm vụ được yêu cầu:
+
+1. Có xảy ra phân mảnh của gói ban đầu không? Trường nào chỉ ra điều này?
+2. Thông tin nào cho biết liệu gói tin là mảnh cuối cùng hay mảnh trung gian?
+3. Tổng số mảnh khi truyền các gói **ping** là bao nhiêu?
+4. Vẽ đồ thị mà trên trục hoành là `kích_thước_gói`, và trên trục tung là số lượng mảnh mà mỗi gói **ping** bị chia nhỏ.
+5. Làm thế nào để thay đổi trường TTL bằng tiện ích **ping**?
+6. Trường dữ liệu của gói **ping** chứa nội dung gì?
+
+
+### 3.4.2 Phân tích lưu lượng của tiện ích **tracert** (traceroute)
+
+Cần theo dõi và phân tích lưu lượng được tạo bởi tiện ích **tracert** (hoặc **traceroute** trên Linux), chạy nó từ dòng lệnh với cú pháp sau:
+```bash
+tracert -d địa_chỉ_trang_theo_yêu_cầu
+```
+Ví dụ:
+```bash
+tracert wireshark.org
+```
+
+Theo kết quả phân tích dấu vết thu thập được, hãy trả lời các câu hỏi sau:
+
+1. Có bao nhiêu byte trong tiêu đề IP? Có bao nhiêu byte trong trường dữ liệu?
+2. Trường TTL thay đổi như thế nào và tại sao ở các gói ICMP kế tiếp nhau của **tracert**? Để trả lời câu hỏi này, cần theo dõi sự thay đổi TTL khi truyền qua tuyến đường với nhiều hơn hai bước nhảy (hops).
+3. ICMP được tạo bởi tiện ích **tracert** khác gì so với ICMP được tạo bởi tiện ích **ping** (tham khảo bài trước)?
+4. Các gói nhận được dạng **ICMP reply** khác gì với **ICMP error**, và tại sao cả hai loại phản hồi này đều cần thiết?
+5. Điều gì thay đổi trong hoạt động của **tracert** nếu bỏ cờ `-d`? Loại lưu lượng bổ sung nào sẽ được tạo ra trong trường hợp này?
+
+
+
+### 3.4.3 Phân tích lưu lượng HTTP
+
+Cần theo dõi và phân tích lưu lượng HTTP được tạo bởi trình duyệt khi truy cập trang web Internet được chỉ định theo yêu cầu. Trong danh sách các gói tin đã thu thập, cần phân tích cặp thông điệp HTTP sau (yêu cầu - phản hồi):
+
+- Thông điệp **GET** từ máy khách (trình duyệt);
+- Phản hồi từ máy chủ.
+
+Để thực hiện việc này, trong trường hiển thị chi tiết thông tin gói tin, cần mở rộng chuỗi **HTTP**. Sau đó, cần làm mới trang web trong trình duyệt để thay vì **HTTP GET**, sẽ xuất hiện **HTTP CONDITIONAL GET** (được gọi là “GET có điều kiện”). Các yêu cầu GET có điều kiện chứa các trường như **If-Modified-Since**, **If-Match**, **If-Range** và các trường tương tự, cho phép không truyền dữ liệu không thay đổi trong trường hợp yêu cầu lại. Trong phản hồi với GET có điều kiện, nội dung tài nguyên chỉ được truyền nếu tài nguyên đã thay đổi kể từ ngày trong **If-Modified-Since**. Nếu tài nguyên không thay đổi, máy chủ gửi mã trạng thái **304 Not Modified**.
+
+Dựa trên kết quả phân tích dấu vết thu thập được, hãy chỉ ra cách giao thức HTTP truyền tải nội dung của trang web trong lần truy cập đầu tiên và cách giao thức hoạt động trong lần tải lại hoặc làm mới trang web từ trình duyệt (tức là giữa các loại yêu cầu GET khác nhau).
+
+
+### 3.4.4 Phân tích lưu lượng DNS
+
+Cần theo dõi và phân tích lưu lượng giao thức DNS được tạo ra từ việc thực hiện các hành động sau:
+
+- **Cấu hình bộ lọc Wireshark**: `ip.addr == ваш_IP_адрес` (thay thế bằng địa chỉ IP của bạn);
+- Xóa bộ đệm DNS bằng lệnh `ipconfig /flushdns` trong dòng lệnh;
+- Xóa bộ đệm của trình duyệt;
+- Truy cập trang web được chỉ định theo biến thể.
+
+Sau khi phân tích dấu vết được thu thập, hãy trả lời các câu hỏi sau:
+
+1. Tại sao địa chỉ mà DNS-query được gửi đi không khớp với địa chỉ của trang web được truy cập?
+2. Các loại yêu cầu DNS là gì?
+3. Trong tình huống nào cần thực hiện các yêu cầu DNS độc lập để lấy nội dung không nằm trên trang web chính?
+
+
+
+### 3.4.5 Phân tích lưu lượng ARP
+
+Cần theo dõi và phân tích lưu lượng giao thức ARP được tạo ra từ việc thực hiện các hành động sau:
+
+- Xóa bảng ARP bằng lệnh:  
+  ```bash
+  netsh interface ip delete arpcache
+  ```
+  (Kiểm tra xem bảng có được xóa chưa bằng lệnh `arp -a`, hiển thị bảng trên màn hình);
+- Xóa bộ đệm của trình duyệt;
+- Truy cập trang web được chỉ định theo biến thể.
+
+Sau khi phân tích dấu vết được thu thập, hãy trả lời các câu hỏi sau:
+
+1. Các địa chỉ MAC nào xuất hiện trong các gói ARP đã được thu thập? Các địa chỉ này có ý nghĩa gì? Chúng xác định các thiết bị nào?
+2. Các địa chỉ MAC nào xuất hiện trong các gói HTTP đã được thu thập? Các địa chỉ này có ý nghĩa gì? Chúng xác định các thiết bị nào?
+3. Tại sao yêu cầu ARP lại chứa địa chỉ IP của nguồn?
+
+
+### 3.4.6 Phân tích lưu lượng tiện ích `nslookup`
+
+**Lưu ý:** Bài tập này là **không bắt buộc**, chỉ dành cho những người muốn đạt được điểm **tốt** hoặc **xuất sắc**. Cần theo dõi và phân tích lưu lượng giao thức DNS được tạo ra từ các bước sau:
+
+1. Thiết lập bộ lọc Wireshark:  
+   ```plaintext
+   ip.addr == ваш_IP_адрес
+   ```
+2. Chạy lệnh sau trên dòng lệnh:  
+   ```plaintext
+   nslookup адрес_сайта_по_варианту
+   ```
+3. Đợi cho đến khi ba yêu cầu DNS (DNS-queries) và ba phản hồi DNS (DNS-replies) được gửi đi. Trong quá trình thực hiện, chỉ sử dụng hai yêu cầu/đáp ứng cuối cùng, vì bộ yêu cầu/đáp ứng đầu tiên là đặc trưng của `nslookup` và không được tạo bởi các ứng dụng mạng khác.
+4. Lặp lại các bước trên, nhưng sử dụng lệnh:  
+   ```plaintext
+   nslookup -type=NS имя_сайта_по_варианту
+   ```
+
+**Yêu cầu:**
+Dựa trên kết quả phân tích dấu vết, trả lời các câu hỏi sau:
+
+1. Sự khác biệt giữa lưu lượng được phân tích trong mục 2 và mục 4 là gì?
+2. Trường "Answers" trong phản hồi DNS chứa những thông tin gì?
+3. Tên của các máy chủ trả về phản hồi ủy quyền (authoritative response) là gì?
+
+
+### 3.4.7 Phân tích lưu lượng FTP
+
+**Lưu ý:** Bài tập này là **không bắt buộc**, chỉ dành cho những người muốn đạt điểm **tốt** hoặc **xuất sắc**. Cần theo dõi và phân tích lưu lượng giao thức FTP được tạo ra từ các bước sau:
+
+1. **Thiết lập bộ lọc Wireshark:**
+   ```plaintext
+   ftp || ftp-data
+   ```
+2. **Tải xuống một tệp nhỏ** từ một máy chủ FTP trên Internet:
+   - Đường dẫn đến tệp phải bắt đầu bằng `ftp://`.
+   - Chọn địa chỉ trang web theo quy tắc đã nêu trong bài tập trước.
+
+
+
+**Yêu cầu phân tích kết quả:**
+
+Sau khi thu thập dấu vết lưu lượng, trả lời các câu hỏi sau:
+
+1. **Số byte dữ liệu** chứa trong gói tin FTP-DATA là bao nhiêu?
+2. **Cổng tầng vận chuyển (transport port)** được chọn để truyền gói tin FTP là gì?
+3. **Sự khác biệt** giữa các gói FTP và FTP-DATA là gì?
+
+
+
+### **3.4.8 Phân tích lưu lượng DHCP**
+
+**Lưu ý:** Đây là bài tập không bắt buộc, dành cho những ai muốn đạt điểm **xuất sắc**. Mục tiêu là theo dõi và phân tích lưu lượng giao thức DHCP thông qua các bước:
+
+
+
+**Các bước thực hiện:**
+
+1. **Kiểm tra**: Xác minh rằng địa chỉ IP trên máy tính của bạn được cấp phát bởi DHCP và máy tính đã nhận được một địa chỉ IP hợp lệ.
+2. **Thiết lập bộ lọc Wireshark**:
+   ```plaintext
+   bootp
+   ```
+   (Trong khi bảo vệ đồ án, giải thích lý do sử dụng bộ lọc này cho lưu lượng DHCP).
+3. **Giải phóng** địa chỉ IP hiện tại bằng lệnh:
+   ```plaintext
+   ipconfig /release
+   ```
+4. **Yêu cầu** một địa chỉ IP mới bằng lệnh:
+   ```plaintext
+   ipconfig /renew
+   ```
+5. **Lặp lại các bước 3 và 4**, sau đó ghi lại quá trình giao tiếp.
+
+6. **Vẽ sơ đồ thời gian**: Minh họa chuỗi giao tiếp của các gói DHCP chính: Discover, Offer, Request, ACK.
+
+
+#### **Yêu cầu phân tích:**
+
+Trả lời các câu hỏi sau dựa trên dữ liệu thu thập được:
+
+1. **Nội dung** trong các gói tin *DHCP Discover* và *DHCP Request* là gì?
+2. **Sự thay đổi** của địa chỉ MAC và địa chỉ IP nguồn - đích trong các gói tin DHCP là gì?
+3. Địa chỉ **DHCP server** là gì?
+4. Điều gì xảy ra nếu bạn cố tình **xóa các gói tin với bộ lọc "bootp"?**
+
+### 3.4.9 Phân tích Skype-trafik
+
+
+ **Mục tiêu:**
+Nhiệm vụ này **không bắt buộc** nhưng cần thiết để đạt đánh giá **"xuất sắc"**. Phân tích các loại lưu lượng Skype (hoặc phần mềm tương tự) dựa trên các hoạt động cụ thể:
+
+1. **Gửi tin nhắn văn bản** và nhận phản hồi.
+2. Thực hiện một **cuộc gọi âm thanh ngắn**.
+3. Thực hiện một **cuộc gọi video ngắn**.
+
+
+ **Các bước thực hiện:**
+
+1. **Gửi tin nhắn văn bản** thông qua Skype hoặc phần mềm tương tự, ghi lại lưu lượng mạng liên quan.
+2. Thực hiện một **cuộc gọi âm thanh** ngắn và ghi lại lưu lượng tương ứng.
+3. Thực hiện một **cuộc gọi video** ngắn và ghi lại lưu lượng tương ứng.
+4. Tách riêng từng loại lưu lượng để phân tích, dừng và tiếp tục ghi lưu lượng mạng để có được ba tệp riêng biệt.
+
+ **Yêu cầu phân tích:**
+
+**Câu hỏi 1:** So sánh các gói tin của từng loại lưu lượng:
+- Lưu lượng **văn bản (text)**.
+- Lưu lượng **âm thanh (audio)**.
+- Lưu lượng **video**.
+
+**Câu hỏi 2:** Đề xuất bộ lọc Wireshark thích hợp để nhận diện riêng từng loại lưu lượng (văn bản, âm thanh, video).
+
+
+ **Lưu ý:**
+- Nếu không sử dụng Skype, bạn có thể dùng các ứng dụng tương tự như **Yahoo Messenger, MSN, Tox, Mail.ru Agent**, hoặc các dịch vụ nhắn tin/thông tin khác.
+- Đảm bảo chia nhỏ các tệp tin lưu lượng và phân tích độc lập từng loại để trả lời chính xác yêu cầu.
+
+## 3.5 Yêu cầu đối với nội dung báo cáo
+
+
+ **Nội dung chính cần có trong báo cáo:**
+
+1. **Phân tích lưu lượng mạng:** 
+   - Báo cáo phải phân tích lưu lượng mạng được thu thập thông qua **Wireshark**.
+   - Cung cấp **ảnh chụp màn hình** minh họa các câu trả lời cho các câu hỏi trong nhiệm vụ.
+   - Mỗi ảnh chụp màn hình phải kèm theo giải thích chi tiết, mô tả nội dung câu trả lời tương ứng.
+
+2. **Cấu trúc của các gói tin quan sát được:** 
+   - Bao gồm cấu trúc của các gói tin (**yêu cầu**, **trả lời**, và các gói tin khác).
+   - Mô tả ngắn gọn tiêu đề của tất cả các cấp độ với thứ tự của chúng trong quá trình đóng gói dữ liệu.
+   - Chỉ cần mô tả các gói tin khác biệt đáng kể về cấu trúc (các gói giống nhau không cần đưa vào), hoặc những gói có liên quan trực tiếp đến câu trả lời.
+
+3. **Dữ liệu lưu lượng:** 
+   - Báo cáo phải được cung cấp ở dạng **điện tử** hoặc **bản cứng**.
+   - Kèm theo dữ liệu lưu lượng đã thu thập, được lưu ở định dạng **pcap** (gọi là file trace, dump, hoặc traffic).
+   - Nên lưu tệp ở thiết bị lưu trữ (**flash drive**) để trình bày nếu cần.
+
+
+ **Lưu ý khi bảo vệ báo cáo:**
+- Trong buổi bảo vệ, cần có sẵn tệp lưu lượng mạng thu được ở định dạng **pcap**.
+- Tệp này là bằng chứng hỗ trợ cho nội dung báo cáo và phải minh họa đầy đủ các nhiệm vụ đã thực hiện.
+
+
+
+## 3.6 Câu hỏi kiểm tra để tự chuẩn bị
+
+Khi chuẩn bị để bảo vệ bài tập, bạn nên dựa vào danh sách các câu hỏi và nhiệm vụ sau đây để tự luyện tập:
+
+1. OSI model là gì và nó cần thiết để làm gì?  
+2. Liệt kê các tầng trong OSI model và đưa ra mô tả ngắn gọn.  
+3. Kiến trúc nhiều tầng của OSI model mang lại lợi ích gì? Những khó khăn gì sẽ phát sinh nếu quá trình truyền dữ liệu qua mạng chỉ có một tầng?  
+4. Nếu dữ liệu được nén trước khi gửi đi, thì nên thực hiện ở tầng nào trong OSI model?  
+5. Làm thế nào để so sánh OSI model với cấu trúc thực tế của các giao thức mạng hiện nay?  
+
+6. Các tầng nào trong OSI model được giao thức TCP thực hiện?  
+7. UDP, TCP, SCTP và DCCP có gì giống và khác nhau?  
+8. Đưa ra ví dụ về các giao thức (hoặc stack giao thức) không tuân theo yêu cầu chuẩn của OSI model.  
+9. Trên một ảnh chụp màn hình của Wireshark, chỉ ra các trường trong tiêu đề của các tầng khác nhau và giải thích chúng tương ứng với các chức năng của các tầng trong OSI model như thế nào.  
+10. Các chức năng chính của Wireshark là gì?  
+
+11. Có những công cụ tương tự nào như Wireshark?  
+12. Làm thế nào để xuất dữ liệu trong các gói Wireshark sang bảng MS Excel?  
+13. Wireshark có thể phân tích các tầng nào của OSI model? Đưa ra ví dụ cụ thể về các giao thức.  
+14. Sử dụng tùy chọn để hiển thị thứ tự các byte trong một gói tin trong Wireshark và giải thích trình tự truyền byte trong mạng.  
+
+   Liên kết để tham khảo thêm:  
+   - [Byte Order Wiki (RU)](https://ru.wikipedia.org/wiki/Порядок_байтов)  
+   - [Endianness Wiki (EN)](https://en.wikipedia.org/wiki/Endianness)  
+
+15. Làm thế nào để gửi gói tin từ file-trace pcap vào mạng?  
+16. Có bao nhiêu địa chỉ MAC và IP có thể được mã hóa trong một gói tin? Kích thước các trường trong tiêu đề là bao nhiêu?  
+17. Tỷ lệ dư thừa trong tiêu đề của các tầng là bao nhiêu so với dữ liệu được truyền tải?  
+18. Trường dữ liệu nào có thể được sử dụng trong các tầng để giấu thông tin (steganography)? Điều kiện nào cần đảm bảo để không ảnh hưởng đến truyền tải dữ liệu?  
+19. Ý nghĩa của sự phân biệt màu sắc trong các gói tin Wireshark là gì?  
+
+
