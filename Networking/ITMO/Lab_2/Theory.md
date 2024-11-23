@@ -419,7 +419,7 @@ Sau khi thu thập dấu vết lưu lượng, trả lời các câu hỏi sau:
 6. **Vẽ sơ đồ thời gian**: Minh họa chuỗi giao tiếp của các gói DHCP chính: Discover, Offer, Request, ACK.
 
 
-#### **Yêu cầu phân tích:**
+ **Yêu cầu phân tích:**
 
 Trả lời các câu hỏi sau dựa trên dữ liệu thu thập được:
 
