@@ -1,4 +1,6 @@
-project/
+Lab4/
+├── directory_tree.txt
+├── requirements.txt
 ├── app/
 │   ├── __init__.py
 │   ├── database.py
@@ -7,11 +9,16 @@ project/
 │   ├── routers/
 │   │   ├── __init__.py
 │   │   ├── auth.py
-│   │   ├── query.py
-│   └── templates/
-│       ├── base.html
-│       ├── login.html
-│       ├── register.html
-│       ├── dashboard.html
-├── requirements.txt
-└── README.md
+│   │   └── query.py
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   ├── register.html
+│   │   ├── dashboard.html
+│   │   └── users.html
+│   └── static/
+│       ├── scripts.js
+│       ├── styles.css
+│       └── images/
+│           ├── background.png
+│           └── coffee.jpg

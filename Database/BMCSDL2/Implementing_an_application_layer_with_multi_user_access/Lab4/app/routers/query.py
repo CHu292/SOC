@@ -144,12 +144,19 @@ async def execute_query(
         if command in ["insert", "update", "delete"]:
             await db.commit()
 
-        rows = result.fetchall() if command == "select" else []
-        column_names = result.keys()
+        rows = []
+        column_names = []
+        data = []
 
-        # Chuyển đổi kết quả thành danh sách dictionary
-        data = [dict(zip(column_names, row)) for row in rows]
-
+        if command == "select":
+            try:
+                rows = result.fetchall()
+                column_names = result.keys()
+                # Chuyển đổi kết quả thành danh sách dictionary
+                data = [dict(zip(column_names, row)) for row in rows]
+            except Exception as e:
+                logging.error(f"Error fetching rows: {str(e)}")
+        
         # Thêm truy vấn vào lịch sử
         query_history.append(query)
         if len(query_history) > 10:
@@ -161,7 +168,7 @@ async def execute_query(
             "result": data,
             "last_query": query,
             "history": query_history,
-            "total_rows": len(data),
+            "total_rows": len(data) if command == "select" else None,
             "username": username,
             "role": role,
         })

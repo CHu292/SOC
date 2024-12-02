@@ -2054,3 +2054,1030 @@ WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
 2024-11-23 22:02:29,519 - SELECT * FROM Product;
 2024-11-23 22:02:29,520 - [generated in 0.00069s] ()
 2024-11-23 22:02:29,529 - ROLLBACK
+2024-11-25 21:40:05,195 - select pg_catalog.version()
+2024-11-25 21:40:05,196 - [raw sql] ()
+2024-11-25 21:40:05,197 - select current_schema()
+2024-11-25 21:40:05,197 - [raw sql] ()
+2024-11-25 21:40:05,199 - show standard_conforming_strings
+2024-11-25 21:40:05,199 - [raw sql] ()
+2024-11-25 21:40:05,200 - BEGIN (implicit)
+2024-11-25 21:40:05,203 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 21:40:05,204 - [generated in 0.00029s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 21:40:05,207 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 21:40:05,207 - [cached since 0.003733s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 21:40:05,214 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 21:40:05,214 - [generated in 0.00033s] ('role_manager', 'role_staff')
+2024-11-25 21:40:05,216 - COMMIT
+2024-11-25 21:40:27,593 - BEGIN (implicit)
+2024-11-25 21:40:27,598 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-25 21:40:27,599 - [generated in 0.00063s] ('chu',)
+2024-11-25 21:40:27,741 - ROLLBACK
+2024-11-25 21:40:32,041 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:40:32,042 - BEGIN (implicit)
+2024-11-25 21:40:32,042 - SELECT * FROM Product;
+2024-11-25 21:40:32,042 - [generated in 0.00024s] ()
+2024-11-25 21:40:32,045 - ROLLBACK
+2024-11-25 21:40:59,706 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 21:40:59,706 - BEGIN (implicit)
+2024-11-25 21:40:59,707 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 21:40:59,707 - [generated in 0.00018s] ()
+2024-11-25 21:40:59,711 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3); - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "main_log_pkey"
+DETAIL:  Key (log_id)=(29) already exists.
+[SQL: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-25 21:40:59,712 - ROLLBACK
+2024-11-25 21:44:22,321 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 21:44:22,322 - BEGIN (implicit)
+2024-11-25 21:44:22,325 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 21:44:22,325 - [cached since 202.6s ago] ()
+2024-11-25 21:44:22,329 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3); - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "main_log_pkey"
+DETAIL:  Key (log_id)=(31) already exists.
+[SQL: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-25 21:44:22,330 - ROLLBACK
+2024-11-25 21:48:03,785 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 21:48:03,785 - BEGIN (implicit)
+2024-11-25 21:48:03,785 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 21:48:03,786 - [cached since 424.1s ago] ()
+2024-11-25 21:48:03,787 - COMMIT
+2024-11-25 21:48:03,790 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3); - This result object does not return rows. It has been closed automatically.
+2024-11-25 21:48:06,666 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:48:06,667 - BEGIN (implicit)
+2024-11-25 21:48:06,667 - SELECT * FROM Product;
+2024-11-25 21:48:06,667 - [cached since 454.6s ago] ()
+2024-11-25 21:48:06,668 - ROLLBACK
+2024-11-25 21:48:37,461 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 523525, 5);
+2024-11-25 21:48:37,462 - BEGIN (implicit)
+2024-11-25 21:48:37,462 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 523525, 5);
+2024-11-25 21:48:37,462 - [generated in 0.00013s] ()
+2024-11-25 21:48:37,464 - COMMIT
+2024-11-25 21:48:37,467 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 523525, 5); - This result object does not return rows. It has been closed automatically.
+2024-11-25 21:49:01,224 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:49:01,225 - BEGIN (implicit)
+2024-11-25 21:49:01,225 - SELECT * FROM Product;
+2024-11-25 21:49:01,225 - [cached since 509.2s ago] ()
+2024-11-25 21:49:01,228 - ROLLBACK
+2024-11-25 21:49:08,937 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:49:08,937 - BEGIN (implicit)
+2024-11-25 21:49:08,937 - SELECT * FROM Product;
+2024-11-25 21:49:08,938 - [cached since 516.9s ago] ()
+2024-11-25 21:49:08,939 - ROLLBACK
+2024-11-25 21:51:52,919 - select pg_catalog.version()
+2024-11-25 21:51:52,919 - [raw sql] ()
+2024-11-25 21:51:52,921 - select current_schema()
+2024-11-25 21:51:52,921 - [raw sql] ()
+2024-11-25 21:51:52,922 - show standard_conforming_strings
+2024-11-25 21:51:52,923 - [raw sql] ()
+2024-11-25 21:51:52,924 - BEGIN (implicit)
+2024-11-25 21:51:52,928 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 21:51:52,928 - [generated in 0.00027s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 21:51:52,931 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 21:51:52,931 - [cached since 0.00298s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 21:51:52,937 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 21:51:52,937 - [generated in 0.00028s] ('role_manager', 'role_staff')
+2024-11-25 21:51:52,938 - COMMIT
+2024-11-25 21:51:56,553 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:51:56,554 - BEGIN (implicit)
+2024-11-25 21:51:56,555 - SELECT * FROM Product;
+2024-11-25 21:51:56,555 - [generated in 0.00024s] ()
+2024-11-25 21:51:56,574 - ROLLBACK
+2024-11-25 21:52:06,103 - BEGIN (implicit)
+2024-11-25 21:52:06,105 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-25 21:52:06,105 - [generated in 0.00026s] ('chu',)
+2024-11-25 21:52:06,226 - ROLLBACK
+2024-11-25 21:52:09,480 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 21:52:09,480 - BEGIN (implicit)
+2024-11-25 21:52:09,481 - SELECT * FROM Orders;
+2024-11-25 21:52:09,481 - [generated in 0.00014s] ()
+2024-11-25 21:52:09,483 - ROLLBACK
+2024-11-25 21:52:12,884 - [ROLE_MANAGER] chu executed query: SELECT * FROM Customer;
+2024-11-25 21:52:12,884 - BEGIN (implicit)
+2024-11-25 21:52:12,885 - SELECT * FROM Customer;
+2024-11-25 21:52:12,885 - [generated in 0.00020s] ()
+2024-11-25 21:52:12,889 - ROLLBACK
+2024-11-25 21:52:15,525 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 21:52:15,525 - BEGIN (implicit)
+2024-11-25 21:52:15,526 - SELECT * FROM Orders;
+2024-11-25 21:52:15,526 - [cached since 6.045s ago] ()
+2024-11-25 21:52:15,527 - ROLLBACK
+2024-11-25 21:52:19,954 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:52:19,955 - BEGIN (implicit)
+2024-11-25 21:52:19,955 - SELECT * FROM Product;
+2024-11-25 21:52:19,955 - [cached since 23.4s ago] ()
+2024-11-25 21:52:19,956 - ROLLBACK
+2024-11-25 21:54:40,551 - [ROLE_MANAGER] chu executed query: DELETE FROM product  WHERE product_id = 15;
+
+2024-11-25 21:54:40,552 - BEGIN (implicit)
+2024-11-25 21:54:40,552 - DELETE FROM product  WHERE product_id = 15;
+
+2024-11-25 21:54:40,552 - [generated in 0.00021s] ()
+2024-11-25 21:54:40,556 - COMMIT
+2024-11-25 21:54:40,557 - Error executing query: DELETE FROM product  WHERE product_id = 15;
+ - This result object does not return rows. It has been closed automatically.
+2024-11-25 21:55:07,887 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:55:07,887 - BEGIN (implicit)
+2024-11-25 21:55:07,888 - SELECT * FROM Product;
+2024-11-25 21:55:07,888 - [cached since 191.3s ago] ()
+2024-11-25 21:55:07,890 - ROLLBACK
+2024-11-25 21:56:20,733 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 2525, 3);
+2024-11-25 21:56:20,733 - BEGIN (implicit)
+2024-11-25 21:56:20,734 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 2525, 3);
+2024-11-25 21:56:20,734 - [generated in 0.00027s] ()
+2024-11-25 21:56:20,736 - COMMIT
+2024-11-25 21:56:20,743 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 2525, 3); - This result object does not return rows. It has been closed automatically.
+2024-11-25 21:58:54,839 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 636, 3);
+2024-11-25 21:58:54,839 - BEGIN (implicit)
+2024-11-25 21:58:54,840 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 636, 3);
+2024-11-25 21:58:54,840 - [generated in 0.00022s] ()
+2024-11-25 21:58:54,843 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 636, 3); - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "main_log_pkey"
+DETAIL:  Key (log_id)=(31) already exists.
+[SQL: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 636, 3);]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-25 21:58:54,844 - ROLLBACK
+2024-11-25 21:59:10,234 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 21:59:10,235 - BEGIN (implicit)
+2024-11-25 21:59:10,235 - SELECT * FROM Product;
+2024-11-25 21:59:10,235 - [cached since 433.7s ago] ()
+2024-11-25 21:59:10,238 - ROLLBACK
+2024-11-25 22:02:56,116 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:02:56,116 - BEGIN (implicit)
+2024-11-25 22:02:56,117 - SELECT * FROM Product;
+2024-11-25 22:02:56,117 - [cached since 659.6s ago] ()
+2024-11-25 22:02:56,120 - ROLLBACK
+2024-11-25 22:03:06,224 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 252);
+
+2024-11-25 22:03:06,224 - BEGIN (implicit)
+2024-11-25 22:03:06,225 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 252);
+
+2024-11-25 22:03:06,225 - [generated in 0.00014s] ()
+2024-11-25 22:03:06,226 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 252);
+ - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: insert or update on table "product" violates foreign key constraint "fk_product_warehouse"
+DETAIL:  Key (warehouse_id)=(252) is not present in table "warehouse".
+[SQL: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 252);
+]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-25 22:03:06,227 - ROLLBACK
+2024-11-25 22:13:57,292 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 1);
+
+2024-11-25 22:13:57,292 - BEGIN (implicit)
+2024-11-25 22:13:57,293 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 1);
+
+2024-11-25 22:13:57,293 - [generated in 0.00022s] ()
+2024-11-25 22:13:57,295 - COMMIT
+2024-11-25 22:13:57,302 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 1);
+ - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:14:15,793 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:14:15,794 - BEGIN (implicit)
+2024-11-25 22:14:15,795 - SELECT * FROM Orders;
+2024-11-25 22:14:15,795 - [cached since 1326s ago] ()
+2024-11-25 22:14:15,799 - ROLLBACK
+2024-11-25 22:14:20,174 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:14:20,175 - BEGIN (implicit)
+2024-11-25 22:14:20,175 - SELECT * FROM Product;
+2024-11-25 22:14:20,176 - [cached since 1344s ago] ()
+2024-11-25 22:14:20,178 - ROLLBACK
+2024-11-25 22:15:03,456 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:15:03,456 - BEGIN (implicit)
+2024-11-25 22:15:03,456 - SELECT * FROM Orders;
+2024-11-25 22:15:03,456 - [cached since 1374s ago] ()
+2024-11-25 22:15:03,458 - ROLLBACK
+2024-11-25 22:16:51,510 - [ROLE_MANAGER] chu executed query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES (2024-11-22, 15.99, 3, 2);
+2024-11-25 22:16:51,511 - BEGIN (implicit)
+2024-11-25 22:16:51,511 - INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES (2024-11-22, 15.99, 3, 2);
+2024-11-25 22:16:51,511 - [generated in 0.00026s] ()
+2024-11-25 22:16:51,513 - Error executing query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES (2024-11-22, 15.99, 3, 2); - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.DatatypeMismatchError'>: column "order_date" is of type date but expression is of type integer
+HINT:  You will need to rewrite or cast the expression.
+[SQL: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES (2024-11-22, 15.99, 3, 2);]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-11-25 22:16:51,514 - ROLLBACK
+2024-11-25 22:17:08,976 - [ROLE_MANAGER] chu executed query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);
+2024-11-25 22:17:08,977 - BEGIN (implicit)
+2024-11-25 22:17:08,977 - INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);
+2024-11-25 22:17:08,977 - [generated in 0.00027s] ()
+2024-11-25 22:17:08,980 - COMMIT
+2024-11-25 22:17:08,986 - Error executing query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2); - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:19:27,042 - select pg_catalog.version()
+2024-11-25 22:19:27,042 - [raw sql] ()
+2024-11-25 22:19:27,044 - select current_schema()
+2024-11-25 22:19:27,044 - [raw sql] ()
+2024-11-25 22:19:27,045 - show standard_conforming_strings
+2024-11-25 22:19:27,045 - [raw sql] ()
+2024-11-25 22:19:27,046 - BEGIN (implicit)
+2024-11-25 22:19:27,050 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:19:27,050 - [generated in 0.00029s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:19:27,053 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:19:27,053 - [cached since 0.002943s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:19:27,060 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 22:19:27,060 - [generated in 0.00029s] ('role_manager', 'role_staff')
+2024-11-25 22:19:27,061 - COMMIT
+2024-11-25 22:19:36,849 - BEGIN (implicit)
+2024-11-25 22:19:36,853 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-25 22:19:36,853 - [generated in 0.00050s] ('chu',)
+2024-11-25 22:19:36,973 - ROLLBACK
+2024-11-25 22:19:49,230 - [ROLE_MANAGER] chu executed query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 4);
+2024-11-25 22:19:49,230 - BEGIN (implicit)
+2024-11-25 22:19:49,231 - INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 4);
+2024-11-25 22:19:49,231 - [generated in 0.00026s] ()
+2024-11-25 22:19:49,234 - COMMIT
+2024-11-25 22:19:49,235 - Error executing query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 4); - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:19:54,978 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:19:54,978 - BEGIN (implicit)
+2024-11-25 22:19:54,979 - SELECT * FROM Orders;
+2024-11-25 22:19:54,979 - [generated in 0.00032s] ()
+2024-11-25 22:19:54,982 - ROLLBACK
+2024-11-25 22:20:06,679 - [ROLE_MANAGER] chu executed query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);
+2024-11-25 22:20:06,679 - BEGIN (implicit)
+2024-11-25 22:20:06,680 - INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);
+2024-11-25 22:20:06,680 - [generated in 0.00019s] ()
+2024-11-25 22:20:06,681 - COMMIT
+2024-11-25 22:20:06,682 - Error executing query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2); - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:21:43,305 - [ROLE_MANAGER] chu executed query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);
+2024-11-25 22:21:43,305 - BEGIN (implicit)
+2024-11-25 22:21:43,306 - INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);
+2024-11-25 22:21:43,306 - [cached since 96.63s ago] ()
+2024-11-25 22:21:43,311 - Error executing query: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2); - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "main_log_pkey"
+DETAIL:  Key (log_id)=(31) already exists.
+[SQL: INSERT INTO orders (order_date,total_amount,customer_id, employee_id ) VALUES ('2024-11-22', 15.99, 3, 2);]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-25 22:21:43,312 - ROLLBACK
+2024-11-25 22:21:47,300 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:21:47,301 - BEGIN (implicit)
+2024-11-25 22:21:47,301 - SELECT * FROM Orders;
+2024-11-25 22:21:47,301 - [cached since 112.3s ago] ()
+2024-11-25 22:21:47,305 - ROLLBACK
+2024-11-25 22:21:53,593 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:21:53,594 - BEGIN (implicit)
+2024-11-25 22:21:53,595 - SELECT * FROM Product;
+2024-11-25 22:21:53,595 - [generated in 0.00035s] ()
+2024-11-25 22:21:53,598 - ROLLBACK
+2024-11-25 22:37:30,574 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+
+2024-11-25 22:37:30,574 - BEGIN (implicit)
+2024-11-25 22:37:30,575 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+
+2024-11-25 22:37:30,575 - [generated in 0.00024s] ()
+2024-11-25 22:37:30,577 - COMMIT
+2024-11-25 22:37:30,584 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+ - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:39:31,369 - select pg_catalog.version()
+2024-11-25 22:39:31,369 - [raw sql] ()
+2024-11-25 22:39:31,371 - select current_schema()
+2024-11-25 22:39:31,371 - [raw sql] ()
+2024-11-25 22:39:31,372 - show standard_conforming_strings
+2024-11-25 22:39:31,372 - [raw sql] ()
+2024-11-25 22:39:31,373 - BEGIN (implicit)
+2024-11-25 22:39:31,377 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:39:31,377 - [generated in 0.00028s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:39:31,379 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:39:31,380 - [cached since 0.00269s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:39:31,385 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 22:39:31,385 - [generated in 0.00026s] ('role_manager', 'role_staff')
+2024-11-25 22:39:31,386 - COMMIT
+2024-11-25 22:39:39,495 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+
+2024-11-25 22:39:39,496 - BEGIN (implicit)
+2024-11-25 22:39:39,497 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+
+2024-11-25 22:39:39,497 - [generated in 0.00043s] ()
+2024-11-25 22:39:39,503 - COMMIT
+2024-11-25 22:39:39,505 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+ - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:39:45,799 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 652, 3);
+
+2024-11-25 22:39:45,800 - BEGIN (implicit)
+2024-11-25 22:39:45,800 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 652, 3);
+
+2024-11-25 22:39:45,800 - [generated in 0.00020s] ()
+2024-11-25 22:39:45,801 - COMMIT
+2024-11-25 22:39:45,802 - Error executing query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 652, 3);
+ - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:39:57,346 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:39:57,347 - BEGIN (implicit)
+2024-11-25 22:39:57,347 - SELECT * FROM Product;
+2024-11-25 22:39:57,347 - [generated in 0.00031s] ()
+2024-11-25 22:39:57,350 - ROLLBACK
+2024-11-25 22:40:27,677 - BEGIN (implicit)
+2024-11-25 22:40:27,680 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-25 22:40:27,681 - [generated in 0.00047s] ('chu',)
+2024-11-25 22:40:27,799 - ROLLBACK
+2024-11-25 22:40:49,296 - select pg_catalog.version()
+2024-11-25 22:40:49,296 - [raw sql] ()
+2024-11-25 22:40:49,297 - select current_schema()
+2024-11-25 22:40:49,297 - [raw sql] ()
+2024-11-25 22:40:49,298 - show standard_conforming_strings
+2024-11-25 22:40:49,298 - [raw sql] ()
+2024-11-25 22:40:49,299 - BEGIN (implicit)
+2024-11-25 22:40:49,303 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:40:49,304 - [generated in 0.00040s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:40:49,307 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:40:49,307 - [cached since 0.003651s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:40:49,315 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 22:40:49,315 - [generated in 0.00039s] ('role_manager', 'role_staff')
+2024-11-25 22:40:49,317 - COMMIT
+2024-11-25 22:40:56,102 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:40:56,102 - BEGIN (implicit)
+2024-11-25 22:40:56,103 - SELECT * FROM Product;
+2024-11-25 22:40:56,103 - [generated in 0.00015s] ()
+2024-11-25 22:40:56,104 - ROLLBACK
+2024-11-25 22:41:01,616 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:41:01,617 - BEGIN (implicit)
+2024-11-25 22:41:01,617 - SELECT * FROM Orders;
+2024-11-25 22:41:01,618 - [generated in 0.00042s] ()
+2024-11-25 22:41:01,622 - ROLLBACK
+2024-11-25 22:41:06,135 - select pg_catalog.version()
+2024-11-25 22:41:06,135 - [raw sql] ()
+2024-11-25 22:41:06,138 - select current_schema()
+2024-11-25 22:41:06,139 - [raw sql] ()
+2024-11-25 22:41:06,141 - show standard_conforming_strings
+2024-11-25 22:41:06,141 - [raw sql] ()
+2024-11-25 22:41:06,143 - BEGIN (implicit)
+2024-11-25 22:41:06,149 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:41:06,149 - [generated in 0.00066s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:41:06,154 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:41:06,154 - [cached since 0.005858s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:41:06,164 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 22:41:06,165 - [generated in 0.00044s] ('role_manager', 'role_staff')
+2024-11-25 22:41:06,167 - COMMIT
+2024-11-25 22:41:07,145 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:41:07,146 - BEGIN (implicit)
+2024-11-25 22:41:07,147 - SELECT * FROM Orders;
+2024-11-25 22:41:07,147 - [generated in 0.00032s] ()
+2024-11-25 22:41:07,172 - ROLLBACK
+2024-11-25 22:41:46,926 - [ROLE_MANAGER] chu executed query:  INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 262, 3);
+2024-11-25 22:41:46,927 - BEGIN (implicit)
+2024-11-25 22:41:46,927 -  INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 262, 3);
+2024-11-25 22:41:46,927 - [generated in 0.00016s] ()
+2024-11-25 22:41:46,930 - COMMIT
+2024-11-25 22:41:46,937 - Error executing query:  INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 262, 3); - This result object does not return rows. It has been closed automatically.
+2024-11-25 22:45:48,312 - select pg_catalog.version()
+2024-11-25 22:45:48,312 - [raw sql] ()
+2024-11-25 22:45:48,313 - select current_schema()
+2024-11-25 22:45:48,313 - [raw sql] ()
+2024-11-25 22:45:48,314 - show standard_conforming_strings
+2024-11-25 22:45:48,315 - [raw sql] ()
+2024-11-25 22:45:48,315 - BEGIN (implicit)
+2024-11-25 22:45:48,319 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:45:48,319 - [generated in 0.00026s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:45:48,321 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-25 22:45:48,321 - [cached since 0.002637s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-25 22:45:48,329 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-25 22:45:48,329 - [generated in 0.00029s] ('role_manager', 'role_staff')
+2024-11-25 22:45:48,330 - COMMIT
+2024-11-25 22:45:55,959 - BEGIN (implicit)
+2024-11-25 22:45:55,962 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-25 22:45:55,962 - [generated in 0.00042s] ('chu',)
+2024-11-25 22:45:56,079 - ROLLBACK
+2024-11-25 22:46:06,798 - [ROLE_MANAGER] chu executed query: INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 22:46:06,799 - BEGIN (implicit)
+2024-11-25 22:46:06,799 - INSERT INTO product (product_category_name, price, warehouse_id) VALUES ('Random Coffee', 15.99, 3);
+2024-11-25 22:46:06,799 - [generated in 0.00024s] ()
+2024-11-25 22:46:06,802 - COMMIT
+2024-11-25 22:46:11,962 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:46:11,962 - BEGIN (implicit)
+2024-11-25 22:46:11,963 - SELECT * FROM Product;
+2024-11-25 22:46:11,963 - [generated in 0.00015s] ()
+2024-11-25 22:46:11,964 - ROLLBACK
+2024-11-25 22:46:40,317 - [ROLE_MANAGER] chu executed query: delete from product where product_id = 18;
+2024-11-25 22:46:40,317 - BEGIN (implicit)
+2024-11-25 22:46:40,317 - delete from product where product_id = 18;
+2024-11-25 22:46:40,317 - [generated in 0.00017s] ()
+2024-11-25 22:46:40,319 - COMMIT
+2024-11-25 22:46:45,587 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-25 22:46:45,587 - BEGIN (implicit)
+2024-11-25 22:46:45,587 - SELECT * FROM Product;
+2024-11-25 22:46:45,587 - [cached since 33.62s ago] ()
+2024-11-25 22:46:45,589 - ROLLBACK
+2024-11-25 22:47:35,826 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:47:35,826 - BEGIN (implicit)
+2024-11-25 22:47:35,827 - SELECT * FROM Orders;
+2024-11-25 22:47:35,827 - [generated in 0.00025s] ()
+2024-11-25 22:47:35,830 - ROLLBACK
+2024-11-25 22:48:59,414 - [ROLE_MANAGER] chu executed query: update orders set employee_id = 3 where order_id = 27;
+2024-11-25 22:48:59,414 - BEGIN (implicit)
+2024-11-25 22:48:59,414 - update orders set employee_id = 3 where order_id = 27;
+2024-11-25 22:48:59,415 - [generated in 0.00024s] ()
+2024-11-25 22:48:59,416 - COMMIT
+2024-11-25 22:49:01,921 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:49:01,921 - BEGIN (implicit)
+2024-11-25 22:49:01,922 - SELECT * FROM Orders;
+2024-11-25 22:49:01,922 - [cached since 86.1s ago] ()
+2024-11-25 22:49:01,924 - ROLLBACK
+2024-11-25 22:50:14,879 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-25 22:50:14,880 - BEGIN (implicit)
+2024-11-25 22:50:14,881 - SELECT * FROM Orders;
+2024-11-25 22:50:14,881 - [cached since 159.1s ago] ()
+2024-11-25 22:50:14,886 - ROLLBACK
+2024-11-26 15:41:12,235 - select pg_catalog.version()
+2024-11-26 15:41:12,235 - [raw sql] ()
+2024-11-26 15:41:12,237 - select current_schema()
+2024-11-26 15:41:12,237 - [raw sql] ()
+2024-11-26 15:41:12,238 - show standard_conforming_strings
+2024-11-26 15:41:12,238 - [raw sql] ()
+2024-11-26 15:41:12,239 - BEGIN (implicit)
+2024-11-26 15:41:12,243 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-26 15:41:12,243 - [generated in 0.00026s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-26 15:41:12,245 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-26 15:41:12,245 - [cached since 0.002557s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-26 15:41:12,251 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-26 15:41:12,251 - [generated in 0.00027s] ('role_manager', 'role_staff')
+2024-11-26 15:41:12,252 - COMMIT
+2024-11-26 15:41:16,090 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-26 15:41:16,091 - BEGIN (implicit)
+2024-11-26 15:41:16,091 - SELECT * FROM Orders;
+2024-11-26 15:41:16,092 - [generated in 0.00029s] ()
+2024-11-26 15:41:16,115 - ROLLBACK
+2024-11-26 15:41:25,853 - BEGIN (implicit)
+2024-11-26 15:41:25,857 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 15:41:25,857 - [generated in 0.00044s] ('chu',)
+2024-11-26 15:41:25,973 - ROLLBACK
+2024-11-26 15:41:28,285 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-26 15:41:28,285 - BEGIN (implicit)
+2024-11-26 15:41:28,286 - SELECT * FROM Orders;
+2024-11-26 15:41:28,286 - [cached since 12.19s ago] ()
+2024-11-26 15:41:28,289 - ROLLBACK
+2024-11-26 15:41:40,466 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-26 15:41:40,467 - BEGIN (implicit)
+2024-11-26 15:41:40,468 - SELECT * FROM Product;
+2024-11-26 15:41:40,469 - [generated in 0.00081s] ()
+2024-11-26 15:41:40,477 - ROLLBACK
+2024-11-26 17:51:13,353 - select pg_catalog.version()
+2024-11-26 17:51:13,353 - [raw sql] ()
+2024-11-26 17:51:13,355 - select current_schema()
+2024-11-26 17:51:13,355 - [raw sql] ()
+2024-11-26 17:51:13,356 - show standard_conforming_strings
+2024-11-26 17:51:13,356 - [raw sql] ()
+2024-11-26 17:51:13,357 - BEGIN (implicit)
+2024-11-26 17:51:13,361 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-26 17:51:13,361 - [generated in 0.00027s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-26 17:51:13,364 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-26 17:51:13,364 - [cached since 0.003109s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-26 17:51:13,369 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-26 17:51:13,370 - [generated in 0.00039s] ('role_manager', 'role_staff')
+2024-11-26 17:51:13,372 - COMMIT
+2024-11-26 17:51:37,534 - BEGIN (implicit)
+2024-11-26 17:51:37,536 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 17:51:37,536 - [generated in 0.00022s] ('chu',)
+2024-11-26 17:51:37,648 - ROLLBACK
+2024-11-26 17:51:39,810 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-26 17:51:39,810 - BEGIN (implicit)
+2024-11-26 17:51:39,810 - SELECT * FROM Orders;
+2024-11-26 17:51:39,810 - [generated in 0.00019s] ()
+2024-11-26 17:51:39,812 - ROLLBACK
+2024-11-26 17:51:43,588 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-26 17:51:43,589 - BEGIN (implicit)
+2024-11-26 17:51:43,589 - SELECT * FROM Product;
+2024-11-26 17:51:43,589 - [generated in 0.00014s] ()
+2024-11-26 17:51:43,591 - ROLLBACK
+2024-11-26 17:54:08,067 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-26 17:54:08,067 - BEGIN (implicit)
+2024-11-26 17:54:08,067 - SELECT * FROM Orders;
+2024-11-26 17:54:08,067 - [cached since 148.3s ago] ()
+2024-11-26 17:54:08,068 - ROLLBACK
+2024-11-26 17:54:42,717 - [ROLE_MANAGER] chu executed query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-25', 2525, 4, 2);
+2024-11-26 17:54:42,718 - BEGIN (implicit)
+2024-11-26 17:54:42,718 - INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-25', 2525, 4, 2);
+2024-11-26 17:54:42,718 - [generated in 0.00025s] ()
+2024-11-26 17:54:42,729 - Error executing query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-25', 2525, 4, 2); - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "main_log_pkey"
+DETAIL:  Key (log_id)=(31) already exists.
+[SQL: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-25', 2525, 4, 2);]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-11-26 17:54:42,729 - ROLLBACK
+2024-11-26 17:55:28,308 - BEGIN (implicit)
+2024-11-26 17:55:28,309 - SELECT users.id, users.username, users.password, users.role_id 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-11-26 17:55:28,309 - [generated in 0.00027s] ('miran',)
+2024-11-26 17:55:28,311 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name = $1::VARCHAR
+2024-11-26 17:55:28,311 - [generated in 0.00018s] ('role_manager',)
+2024-11-26 17:55:28,314 - INSERT INTO users (username, password, role_id) VALUES ($1::VARCHAR, $2::VARCHAR, $3::INTEGER) RETURNING users.id
+2024-11-26 17:55:28,314 - [generated in 0.00023s] ('miran', 'scrypt:32768:8:1$MjkanUm59RaqqKii$90c8ae12a82dea3bd4451b78647170f2724188eee9aa39035d1377bb4f254efdecd72b067d3635acb945a986372e1015494c6bcec3891d9fc95dbe3f7e1c1239', 1)
+2024-11-26 17:55:28,316 - COMMIT
+2024-11-26 17:55:32,032 - BEGIN (implicit)
+2024-11-26 17:55:32,033 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 17:55:32,033 - [cached since 234.5s ago] ('miran',)
+2024-11-26 17:55:32,150 - ROLLBACK
+2024-11-26 17:55:38,603 - [ROLE_MANAGER] miran executed query: SELECT * FROM Orders;
+2024-11-26 17:55:38,603 - BEGIN (implicit)
+2024-11-26 17:55:38,603 - SELECT * FROM Orders;
+2024-11-26 17:55:38,603 - [cached since 238.8s ago] ()
+2024-11-26 17:55:38,605 - ROLLBACK
+2024-11-26 17:56:15,146 - [ROLE_MANAGER] miran executed query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 5000, 2, 7);
+2024-11-26 17:56:15,147 - BEGIN (implicit)
+2024-11-26 17:56:15,148 - INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 5000, 2, 7);
+2024-11-26 17:56:15,148 - [generated in 0.00046s] ()
+2024-11-26 17:56:15,154 - COMMIT
+2024-11-26 17:56:19,065 - [ROLE_MANAGER] miran executed query: SELECT * FROM Orders;
+2024-11-26 17:56:19,065 - BEGIN (implicit)
+2024-11-26 17:56:19,065 - SELECT * FROM Orders;
+2024-11-26 17:56:19,065 - [cached since 279.3s ago] ()
+2024-11-26 17:56:19,067 - ROLLBACK
+2024-11-26 17:57:46,382 - [ROLE_MANAGER] miran executed query: delete from orders where order_id = 29;
+2024-11-26 17:57:46,382 - BEGIN (implicit)
+2024-11-26 17:57:46,382 - delete from orders where order_id = 29;
+2024-11-26 17:57:46,382 - [generated in 0.00014s] ()
+2024-11-26 17:57:46,384 - COMMIT
+2024-11-26 17:57:49,041 - [ROLE_MANAGER] miran executed query: SELECT * FROM Orders;
+2024-11-26 17:57:49,041 - BEGIN (implicit)
+2024-11-26 17:57:49,041 - SELECT * FROM Orders;
+2024-11-26 17:57:49,042 - [cached since 369.2s ago] ()
+2024-11-26 17:57:49,043 - ROLLBACK
+2024-11-26 18:24:28,748 - BEGIN (implicit)
+2024-11-26 18:24:28,749 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 18:24:28,750 - [cached since 1318s ago] ('chu',)
+2024-11-26 18:24:28,873 - ROLLBACK
+2024-11-26 18:24:36,625 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-26 18:24:36,625 - BEGIN (implicit)
+2024-11-26 18:24:36,625 - SELECT * FROM Orders;
+2024-11-26 18:24:36,625 - [cached since 1323s ago] ()
+2024-11-26 18:24:36,626 - ROLLBACK
+2024-11-26 18:24:43,837 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-26 18:24:43,838 - BEGIN (implicit)
+2024-11-26 18:24:43,838 - SELECT * FROM Product;
+2024-11-26 18:24:43,839 - [cached since 1327s ago] ()
+2024-11-26 18:24:43,842 - ROLLBACK
+2024-11-26 18:24:47,357 - [ROLE_MANAGER] chu executed query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 5000, 2, 7);
+2024-11-26 18:24:47,357 - BEGIN (implicit)
+2024-11-26 18:24:47,358 - INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 5000, 2, 7);
+2024-11-26 18:24:47,358 - [cached since 1059s ago] ()
+2024-11-26 18:24:47,361 - COMMIT
+2024-11-26 19:08:00,031 - BEGIN (implicit)
+2024-11-26 19:08:00,032 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:08:00,032 - [cached since 3929s ago] ('chuvandoan',)
+2024-11-26 19:08:00,149 - ROLLBACK
+2024-11-26 19:08:07,470 - [ROLE_MANAGER] chuvandoan executed query: SELECT * FROM Orders;
+2024-11-26 19:08:07,470 - BEGIN (implicit)
+2024-11-26 19:08:07,470 - SELECT * FROM Orders;
+2024-11-26 19:08:07,470 - [cached since 3934s ago] ()
+2024-11-26 19:08:07,471 - ROLLBACK
+2024-11-26 19:08:16,807 - [ROLE_MANAGER] chuvandoan executed query: SELECT * FROM Product;
+2024-11-26 19:08:16,808 - BEGIN (implicit)
+2024-11-26 19:08:16,809 - SELECT * FROM Product;
+2024-11-26 19:08:16,809 - [cached since 3940s ago] ()
+2024-11-26 19:08:16,811 - ROLLBACK
+2024-11-26 19:08:51,391 - BEGIN (implicit)
+2024-11-26 19:08:51,391 - SELECT users.id, users.username, users.password, users.role_id 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:08:51,391 - [cached since 3750s ago] ('user',)
+2024-11-26 19:08:51,393 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name = $1::VARCHAR
+2024-11-26 19:08:51,393 - [cached since 3750s ago] ('role_staff',)
+2024-11-26 19:08:51,394 - INSERT INTO users (username, password, role_id) VALUES ($1::VARCHAR, $2::VARCHAR, $3::INTEGER) RETURNING users.id
+2024-11-26 19:08:51,394 - [cached since 3750s ago] ('user', 'scrypt:32768:8:1$kFsLoE5kXbYox8B4$153d2143755ed02cb8af59b3bed4194db309fcd9da15e9273b9f9c00d7bda3fceecaa3f969bad136e3fe3cb615d23a5e7befc17b15534703e040831e7dead0d9', 2)
+2024-11-26 19:08:51,395 - COMMIT
+2024-11-26 19:08:57,885 - BEGIN (implicit)
+2024-11-26 19:08:57,886 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:08:57,886 - [cached since 3987s ago] ('user',)
+2024-11-26 19:08:58,002 - ROLLBACK
+2024-11-26 19:09:01,183 - [ROLE_STAFF] user executed query: SELECT * FROM sales_employee_view;
+2024-11-26 19:09:01,183 - BEGIN (implicit)
+2024-11-26 19:09:01,184 - SELECT * FROM sales_employee_view;
+2024-11-26 19:09:01,184 - [generated in 0.00039s] ()
+2024-11-26 19:09:01,190 - ROLLBACK
+2024-11-26 19:09:34,605 - [ROLE_STAFF] user executed query: SELECT * FROM customer_view;
+2024-11-26 19:09:34,605 - BEGIN (implicit)
+2024-11-26 19:09:34,606 - SELECT * FROM customer_view;
+2024-11-26 19:09:34,606 - [generated in 0.00016s] ()
+2024-11-26 19:09:34,608 - ROLLBACK
+2024-11-26 19:54:23,193 - BEGIN (implicit)
+2024-11-26 19:54:23,193 - SELECT users.id, users.username, users.password, users.role_id 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:54:23,193 - [cached since 6481s ago] ('user1',)
+2024-11-26 19:54:23,195 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name = $1::VARCHAR
+2024-11-26 19:54:23,195 - [cached since 6481s ago] ('role_manager',)
+2024-11-26 19:54:23,196 - INSERT INTO users (username, password, role_id) VALUES ($1::VARCHAR, $2::VARCHAR, $3::INTEGER) RETURNING users.id
+2024-11-26 19:54:23,196 - [cached since 6481s ago] ('user1', 'scrypt:32768:8:1$a4DPdKN6P82sGiWm$de068ccca81586c1a188896a378314344e02dd42ef137214bbc9292959861150dd50ccc25eff0a994b88540c8a18cc12964245bc0412d0846a8c1f034858915c', 1)
+2024-11-26 19:54:23,197 - COMMIT
+2024-11-26 19:54:32,005 - BEGIN (implicit)
+2024-11-26 19:54:32,006 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:54:32,006 - [cached since 6721s ago] ('user1',)
+2024-11-26 19:54:32,127 - ROLLBACK
+2024-11-26 19:54:55,910 - [ROLE_MANAGER] user1 executed query: SELECT * FROM Orders;
+2024-11-26 19:54:55,911 - BEGIN (implicit)
+2024-11-26 19:54:55,911 - SELECT * FROM Orders;
+2024-11-26 19:54:55,912 - [cached since 6743s ago] ()
+2024-11-26 19:54:55,914 - ROLLBACK
+2024-11-26 19:55:02,400 - [ROLE_MANAGER] user1 executed query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 5000, 2, 7);
+2024-11-26 19:55:02,401 - BEGIN (implicit)
+2024-11-26 19:55:02,401 - INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 5000, 2, 7);
+2024-11-26 19:55:02,402 - [cached since 6474s ago] ()
+2024-11-26 19:55:02,404 - COMMIT
+2024-11-26 19:55:13,881 - [ROLE_MANAGER] user1 executed query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 8888, 2, 7);
+2024-11-26 19:55:13,882 - BEGIN (implicit)
+2024-11-26 19:55:13,883 - INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-26', 8888, 2, 7);
+2024-11-26 19:55:13,883 - [generated in 0.00049s] ()
+2024-11-26 19:55:13,886 - COMMIT
+2024-11-26 19:55:17,284 - [ROLE_MANAGER] user1 executed query: SELECT * FROM Orders;
+2024-11-26 19:55:17,285 - BEGIN (implicit)
+2024-11-26 19:55:17,285 - SELECT * FROM Orders;
+2024-11-26 19:55:17,286 - [cached since 6764s ago] ()
+2024-11-26 19:55:17,288 - ROLLBACK
+2024-11-26 19:55:52,297 - [ROLE_MANAGER] user1 executed query: delete from orders where order_id = 32;
+2024-11-26 19:55:52,298 - BEGIN (implicit)
+2024-11-26 19:55:52,298 - delete from orders where order_id = 32;
+2024-11-26 19:55:52,298 - [generated in 0.00018s] ()
+2024-11-26 19:55:52,299 - COMMIT
+2024-11-26 19:55:57,657 - [ROLE_MANAGER] user1 executed query: SELECT * FROM Orders;
+2024-11-26 19:55:57,658 - BEGIN (implicit)
+2024-11-26 19:55:57,658 - SELECT * FROM Orders;
+2024-11-26 19:55:57,659 - [cached since 6804s ago] ()
+2024-11-26 19:55:57,662 - ROLLBACK
+2024-11-26 19:56:43,336 - BEGIN (implicit)
+2024-11-26 19:56:43,336 - SELECT users.id, users.username, users.password, users.role_id 
+FROM users 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:56:43,336 - [cached since 6622s ago] ('user2',)
+2024-11-26 19:56:43,338 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name = $1::VARCHAR
+2024-11-26 19:56:43,338 - [cached since 6622s ago] ('role_staff',)
+2024-11-26 19:56:43,339 - INSERT INTO users (username, password, role_id) VALUES ($1::VARCHAR, $2::VARCHAR, $3::INTEGER) RETURNING users.id
+2024-11-26 19:56:43,339 - [cached since 6622s ago] ('user2', 'scrypt:32768:8:1$W0ZeJ6lbxbTRPtM1$d0bfd1f52254c1b7592d1ffe16edc19669e75c610337430ebe5bc3fb110618b23ff1eaae7b172a81791670a06ddf718bf2c64770a1972720a6d22773ce089123', 2)
+2024-11-26 19:56:43,340 - COMMIT
+2024-11-26 19:56:49,712 - BEGIN (implicit)
+2024-11-26 19:56:49,713 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-26 19:56:49,713 - [cached since 6859s ago] ('user2',)
+2024-11-26 19:56:49,833 - ROLLBACK
+2024-11-26 19:57:04,167 - [ROLE_STAFF] user2 executed query: SELECT * FROM sales_employee_view;
+2024-11-26 19:57:04,168 - BEGIN (implicit)
+2024-11-26 19:57:04,169 - SELECT * FROM sales_employee_view;
+2024-11-26 19:57:04,169 - [cached since 2883s ago] ()
+2024-11-26 19:57:04,173 - ROLLBACK
+2024-11-26 19:57:13,654 - [ROLE_STAFF] user2 executed query: SELECT * FROM customer_view;
+2024-11-26 19:57:13,655 - BEGIN (implicit)
+2024-11-26 19:57:13,656 - SELECT * FROM customer_view;
+2024-11-26 19:57:13,656 - [cached since 2859s ago] ()
+2024-11-26 19:57:13,659 - ROLLBACK
+2024-11-28 12:41:54,650 - select pg_catalog.version()
+2024-11-28 12:41:54,650 - [raw sql] ()
+2024-11-28 12:41:54,652 - select current_schema()
+2024-11-28 12:41:54,652 - [raw sql] ()
+2024-11-28 12:41:54,653 - show standard_conforming_strings
+2024-11-28 12:41:54,654 - [raw sql] ()
+2024-11-28 12:41:54,655 - BEGIN (implicit)
+2024-11-28 12:41:54,659 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-28 12:41:54,659 - [generated in 0.00032s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-28 12:41:54,661 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-28 12:41:54,661 - [cached since 0.002785s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-28 12:41:54,668 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-28 12:41:54,668 - [generated in 0.00026s] ('role_manager', 'role_staff')
+2024-11-28 12:41:54,669 - COMMIT
+2024-11-28 12:42:51,075 - BEGIN (implicit)
+2024-11-28 12:42:51,082 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-28 12:42:51,082 - [generated in 0.00063s] ('chu',)
+2024-11-28 12:42:51,205 - ROLLBACK
+2024-11-28 12:43:25,899 - BEGIN (implicit)
+2024-11-28 12:43:25,900 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-28 12:43:25,901 - [cached since 34.82s ago] ('chu',)
+2024-11-28 12:43:26,030 - ROLLBACK
+2024-11-28 12:45:44,631 - BEGIN (implicit)
+2024-11-28 12:45:44,632 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-28 12:45:44,632 - [cached since 173.6s ago] ('chu',)
+2024-11-28 12:45:44,747 - ROLLBACK
+2024-11-28 12:46:40,515 - [ROLE_MANAGER] chu executed query: SELECT * FROM Product;
+2024-11-28 12:46:40,515 - BEGIN (implicit)
+2024-11-28 12:46:40,515 - SELECT * FROM Product;
+2024-11-28 12:46:40,516 - [generated in 0.00015s] ()
+2024-11-28 12:46:40,521 - ROLLBACK
+2024-11-28 12:47:12,568 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-28 12:47:12,568 - BEGIN (implicit)
+2024-11-28 12:47:12,568 - SELECT * FROM Orders;
+2024-11-28 12:47:12,568 - [generated in 0.00016s] ()
+2024-11-28 12:47:12,570 - ROLLBACK
+2024-11-28 12:47:54,118 - [ROLE_MANAGER] chu executed query: SELECT * FROM Customer;
+2024-11-28 12:47:54,119 - BEGIN (implicit)
+2024-11-28 12:47:54,120 - SELECT * FROM Customer;
+2024-11-28 12:47:54,120 - [generated in 0.00040s] ()
+2024-11-28 12:47:54,131 - ROLLBACK
+2024-11-28 12:48:47,932 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-28 12:48:47,932 - BEGIN (implicit)
+2024-11-28 12:48:47,932 - SELECT * FROM Orders;
+2024-11-28 12:48:47,932 - [cached since 95.36s ago] ()
+2024-11-28 12:48:47,934 - ROLLBACK
+2024-11-29 00:59:53,271 - select pg_catalog.version()
+2024-11-29 00:59:53,271 - [raw sql] ()
+2024-11-29 00:59:53,273 - select current_schema()
+2024-11-29 00:59:53,273 - [raw sql] ()
+2024-11-29 00:59:53,275 - show standard_conforming_strings
+2024-11-29 00:59:53,275 - [raw sql] ()
+2024-11-29 00:59:53,276 - BEGIN (implicit)
+2024-11-29 00:59:53,279 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-29 00:59:53,279 - [generated in 0.00026s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-29 00:59:53,284 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-29 00:59:53,285 - [cached since 0.005537s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-29 00:59:53,293 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-29 00:59:53,293 - [generated in 0.00039s] ('role_manager', 'role_staff')
+2024-11-29 00:59:53,296 - COMMIT
+2024-11-29 01:00:19,304 - BEGIN (implicit)
+2024-11-29 01:00:19,309 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 01:00:19,309 - [generated in 0.00046s] ('chuvandoan',)
+2024-11-29 01:00:19,425 - ROLLBACK
+2024-11-29 01:00:24,267 - [ROLE_MANAGER] chuvandoan executed query: SELECT * FROM Orders;
+2024-11-29 01:00:24,268 - BEGIN (implicit)
+2024-11-29 01:00:24,269 - SELECT * FROM Orders;
+2024-11-29 01:00:24,269 - [generated in 0.00045s] ()
+2024-11-29 01:00:24,280 - ROLLBACK
+2024-11-29 01:01:00,603 - BEGIN (implicit)
+2024-11-29 01:01:00,604 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 01:01:00,604 - [cached since 41.3s ago] ('chumrian',)
+2024-11-29 01:01:00,606 - ROLLBACK
+2024-11-29 01:01:06,824 - BEGIN (implicit)
+2024-11-29 01:01:06,825 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 01:01:06,826 - [cached since 47.52s ago] ('chumiran',)
+2024-11-29 01:01:06,831 - ROLLBACK
+2024-11-29 01:01:13,146 - BEGIN (implicit)
+2024-11-29 01:01:13,148 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 01:01:13,148 - [cached since 53.84s ago] ('miran',)
+2024-11-29 01:01:13,270 - ROLLBACK
+2024-11-29 01:01:25,279 - BEGIN (implicit)
+2024-11-29 01:01:25,281 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 01:01:25,281 - [cached since 65.97s ago] ('chudoan',)
+2024-11-29 01:01:25,399 - ROLLBACK
+2024-11-29 01:01:30,359 - [ROLE_STAFF] chudoan executed query: SELECT * FROM sales_employee_view;
+2024-11-29 01:01:30,360 - BEGIN (implicit)
+2024-11-29 01:01:30,360 - SELECT * FROM sales_employee_view;
+2024-11-29 01:01:30,361 - [generated in 0.00040s] ()
+2024-11-29 01:01:30,374 - ROLLBACK
+2024-11-29 01:01:41,996 - [ROLE_STAFF] chudoan executed query: SELECT * FROM customer_view;
+2024-11-29 01:01:41,997 - BEGIN (implicit)
+2024-11-29 01:01:41,997 - SELECT * FROM customer_view;
+2024-11-29 01:01:41,997 - [generated in 0.00018s] ()
+2024-11-29 01:01:42,001 - ROLLBACK
+2024-11-29 01:02:17,437 - [ROLE_STAFF] chudoan executed query: SELECT * FROM customer_view;
+2024-11-29 01:02:17,437 - BEGIN (implicit)
+2024-11-29 01:02:17,438 - SELECT * FROM customer_view;
+2024-11-29 01:02:17,438 - [cached since 35.44s ago] ()
+2024-11-29 01:02:17,441 - ROLLBACK
+2024-11-29 01:02:39,680 - BEGIN (implicit)
+2024-11-29 01:02:39,681 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 01:02:39,682 - [cached since 140.4s ago] ('chu',)
+2024-11-29 01:02:39,800 - ROLLBACK
+2024-11-29 01:02:44,261 - [ROLE_MANAGER] chu executed query: SELECT * FROM Customer;
+2024-11-29 01:02:44,261 - BEGIN (implicit)
+2024-11-29 01:02:44,262 - SELECT * FROM Customer;
+2024-11-29 01:02:44,262 - [generated in 0.00046s] ()
+2024-11-29 01:02:44,266 - ROLLBACK
+2024-11-29 12:51:55,786 - select pg_catalog.version()
+2024-11-29 12:51:55,787 - [raw sql] ()
+2024-11-29 12:51:55,788 - select current_schema()
+2024-11-29 12:51:55,789 - [raw sql] ()
+2024-11-29 12:51:55,789 - show standard_conforming_strings
+2024-11-29 12:51:55,790 - [raw sql] ()
+2024-11-29 12:51:55,790 - BEGIN (implicit)
+2024-11-29 12:51:55,794 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-29 12:51:55,795 - [generated in 0.00029s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-29 12:51:55,797 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-29 12:51:55,797 - [cached since 0.002881s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-29 12:51:55,804 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-29 12:51:55,804 - [generated in 0.00028s] ('role_manager', 'role_staff')
+2024-11-29 12:51:55,805 - COMMIT
+2024-11-29 12:54:43,009 - BEGIN (implicit)
+2024-11-29 12:54:43,012 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 12:54:43,012 - [generated in 0.00025s] ('chu ',)
+2024-11-29 12:54:43,015 - ROLLBACK
+2024-11-29 12:54:47,783 - BEGIN (implicit)
+2024-11-29 12:54:47,784 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 12:54:47,785 - [cached since 4.772s ago] ('chu',)
+2024-11-29 12:54:47,904 - ROLLBACK
+2024-11-29 12:55:54,363 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-29 12:55:54,364 - BEGIN (implicit)
+2024-11-29 12:55:54,365 - SELECT * FROM Orders;
+2024-11-29 12:55:54,365 - [generated in 0.00037s] ()
+2024-11-29 12:55:54,375 - ROLLBACK
+2024-11-29 12:58:00,542 - [ROLE_MANAGER] chu executed query: INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-29', 612751, 6, 3);
+2024-11-29 12:58:00,542 - BEGIN (implicit)
+2024-11-29 12:58:00,542 - INSERT INTO Orders (Order_Date, Total_Amount, Customer_ID, Employee_ID)
+VALUES ('2024-11-29', 612751, 6, 3);
+2024-11-29 12:58:00,543 - [generated in 0.00027s] ()
+2024-11-29 12:58:00,560 - COMMIT
+2024-11-29 12:59:05,190 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-29 12:59:05,190 - BEGIN (implicit)
+2024-11-29 12:59:05,191 - SELECT * FROM Orders;
+2024-11-29 12:59:05,191 - [cached since 190.8s ago] ()
+2024-11-29 12:59:05,194 - ROLLBACK
+2024-11-29 13:02:04,844 - [ROLE_MANAGER] chu executed query: update orders set customer_id = 5 where order_id = 33;
+2024-11-29 13:02:04,844 - BEGIN (implicit)
+2024-11-29 13:02:04,844 - update orders set customer_id = 5 where order_id = 33;
+2024-11-29 13:02:04,844 - [generated in 0.00016s] ()
+2024-11-29 13:02:04,852 - COMMIT
+2024-11-29 13:03:21,918 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-29 13:03:21,919 - BEGIN (implicit)
+2024-11-29 13:03:21,920 - SELECT * FROM Orders;
+2024-11-29 13:03:21,920 - [cached since 447.6s ago] ()
+2024-11-29 13:03:21,922 - ROLLBACK
+2024-11-29 13:05:35,667 - [ROLE_MANAGER] chu executed query: delete from orders where order_id = 33;
+2024-11-29 13:05:35,668 - BEGIN (implicit)
+2024-11-29 13:05:35,668 - delete from orders where order_id = 33;
+2024-11-29 13:05:35,668 - [generated in 0.00029s] ()
+2024-11-29 13:05:35,679 - COMMIT
+2024-11-29 13:06:32,565 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-11-29 13:06:32,565 - BEGIN (implicit)
+2024-11-29 13:06:32,566 - SELECT * FROM Orders;
+2024-11-29 13:06:32,566 - [cached since 638.2s ago] ()
+2024-11-29 13:06:32,569 - ROLLBACK
+2024-11-29 13:08:23,416 - BEGIN (implicit)
+2024-11-29 13:08:23,417 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-11-29 13:08:23,417 - [cached since 820.4s ago] ('chudoan',)
+2024-11-29 13:08:23,533 - ROLLBACK
+2024-11-29 13:09:10,281 - [ROLE_STAFF] chudoan executed query: SELECT * FROM sales_employee_view;
+2024-11-29 13:09:10,282 - BEGIN (implicit)
+2024-11-29 13:09:10,282 - SELECT * FROM sales_employee_view;
+2024-11-29 13:09:10,283 - [generated in 0.00033s] ()
+2024-11-29 13:09:10,286 - ROLLBACK
+2024-11-29 13:09:16,039 - [ROLE_STAFF] chudoan executed query: SELECT * FROM customer_view;
+2024-11-29 13:09:16,040 - BEGIN (implicit)
+2024-11-29 13:09:16,040 - SELECT * FROM customer_view;
+2024-11-29 13:09:16,041 - [generated in 0.00029s] ()
+2024-11-29 13:09:16,045 - ROLLBACK
+2024-11-30 17:37:41,086 - select pg_catalog.version()
+2024-11-30 17:37:41,086 - [raw sql] ()
+2024-11-30 17:37:41,089 - select current_schema()
+2024-11-30 17:37:41,089 - [raw sql] ()
+2024-11-30 17:37:41,090 - show standard_conforming_strings
+2024-11-30 17:37:41,090 - [raw sql] ()
+2024-11-30 17:37:41,092 - BEGIN (implicit)
+2024-11-30 17:37:41,096 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-30 17:37:41,097 - [generated in 0.00033s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-30 17:37:41,102 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-11-30 17:37:41,102 - [cached since 0.00594s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-11-30 17:37:41,110 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-11-30 17:37:41,111 - [generated in 0.00037s] ('role_manager', 'role_staff')
+2024-11-30 17:37:41,113 - COMMIT
+2024-12-01 21:43:36,205 - select pg_catalog.version()
+2024-12-01 21:43:36,205 - [raw sql] ()
+2024-12-01 21:43:36,208 - select current_schema()
+2024-12-01 21:43:36,208 - [raw sql] ()
+2024-12-01 21:43:36,210 - show standard_conforming_strings
+2024-12-01 21:43:36,211 - [raw sql] ()
+2024-12-01 21:43:36,212 - BEGIN (implicit)
+2024-12-01 21:43:36,216 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-12-01 21:43:36,216 - [generated in 0.00026s] ('roles', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-12-01 21:43:36,223 - SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+2024-12-01 21:43:36,223 - [cached since 0.007608s ago] ('users', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+2024-12-01 21:43:36,229 - SELECT roles.id, roles.name 
+FROM roles 
+WHERE roles.name IN ($1::VARCHAR, $2::VARCHAR)
+2024-12-01 21:43:36,229 - [generated in 0.00030s] ('role_manager', 'role_staff')
+2024-12-01 21:43:36,233 - COMMIT
+2024-12-01 21:45:44,561 - BEGIN (implicit)
+2024-12-01 21:45:44,565 - SELECT users.id, users.username, users.password, users.role_id, roles.id AS id_1, roles.name 
+FROM users JOIN roles ON users.role_id = roles.id 
+WHERE users.username = $1::VARCHAR
+2024-12-01 21:45:44,566 - [generated in 0.00094s] ('chu',)
+2024-12-01 21:45:44,687 - ROLLBACK
+2024-12-01 21:45:52,899 - [ROLE_MANAGER] chu executed query: SELECT * FROM Orders;
+2024-12-01 21:45:52,900 - BEGIN (implicit)
+2024-12-01 21:45:52,901 - SELECT * FROM Orders;
+2024-12-01 21:45:52,902 - [generated in 0.00064s] ()
+2024-12-01 21:45:52,915 - ROLLBACK
