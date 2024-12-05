@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+}
+
+.container {
+    width: 300px;
+    position: relative;
+    top: 200px;
+    padding: 70px;
+    border-radius: 20px;
+}
+
+#container {
+    background: orange;
+}
+
+.container input {
+    width: 100%;
+    height: auto;
+    background-color: orange;
+    margin-top: 20px;
+}
+
+span {
+    font-size: 35px;
+    font-family: calibri;
+    color: white;
+}
