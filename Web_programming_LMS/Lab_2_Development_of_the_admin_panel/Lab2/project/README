@@ -69,7 +69,7 @@ project/
 
 1. **Клонировать проект**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/CHu292/SOC/tree/main/Web_programming_LMS/Lab_2_Development_of_the_admin_panel/Lab2/project
    cd project
    ```
 
