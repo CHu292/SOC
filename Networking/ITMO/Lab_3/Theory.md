@@ -330,3 +330,50 @@ Công thức tính cho kịch bản V1 và V2 được đưa ra trong Mục 4.4.
 </p>
 
 <p align="center"><b>Bảng 4.1</b></p>
+
+
+---
+
+### **4.4. Trình tự thực hiện nhiệm vụ**
+
+1. **Chọn kịch bản thực hiện nhiệm vụ theo công thức**:
+   - V1 = 1 + (N mod 5), V2 = 6 + (N mod 5),  
+   trong đó V1 và V2 là số của kịch bản; N = tổng số chữ cái trong họ và tên của sinh viên; mod = phép lấy phần dư khi chia.
+
+2. **Cấu hình địa chỉ IP và IPv6 (nếu cần)**:  
+   Trên tất cả các giao diện của các máy tính trong mô hình được chỉ định, thiết lập địa chỉ IP theo định dạng:  
+   ```
+   A.B.X.Y/M
+   ```
+   trong đó:  
+   - `A` = số chữ cái trong tên;  
+   - `B` = số chữ cái trong họ;  
+   - `X, Y` = các số do sinh viên tự chọn;  
+   - `M` = mặt nạ mạng (chọn mặt nạ tối đa để đảm bảo kết nối).  
+
+   Địa chỉ IPv6 được tạo từ địa chỉ IPv4 theo ký hiệu chuyển đổi IPv4 sang IPv6. Ví dụ:  
+   - IPv4: 10.10.12.11  
+   - IPv6: 0:0:0:0:0:ffff:0a0c:b (hoặc viết tắt: `::ffff:10.10.12.11`).
+
+3. **Cấu hình bảng định tuyến**:  
+   Trên tất cả các máy tính, thiết lập bảng định tuyến sao cho đảm bảo mạng hoàn toàn khả dụng (mỗi máy tính phải có khả năng `ping` được bất kỳ máy tính nào khác).
+
+4. **Nghiên cứu tiện ích Linux `nc` (hoặc các tương tự như: netcat, ncat, pnetcat)**:  
+   - Khởi chạy tiện ích ở chế độ máy khách trên máy tính A và ở chế độ máy chủ trên máy tính B, sử dụng cổng bất kỳ (hai máy tính A và B phải ở cách xa nhau nhất có thể).  
+   - Truyền một thông điệp dạng văn bản ghi tên mình từ máy tính B đến máy tính A.
+
+5. **Thiết lập các quy tắc lọc với tiện ích iptables**:
+   - Cấm chuyển tiếp các gói tin TCP chỉ định cổng trong cấu hình tiện ích `nc`.  
+   - Cấm nhận các gói tin UDP gửi đến từ cổng được chỉ định.  
+   - Cấm chuyển tiếp các gói tin được gửi từ địa chỉ IP của máy tính A.  
+   - Cấm nhận các gói tin được gửi đến địa chỉ IP của máy tính B.  
+   - Cấm nhận và gửi các gói ICMP có kích thước lớn hơn 1000 byte, với trường TTL nhỏ hơn 10.
+
+6. **Kiểm tra hoạt động của các quy tắc lọc**:  
+   Sử dụng các lệnh `ping`, `traceroute`, hoặc `nc` để đảm bảo rằng các quy tắc lọc được cấu hình trong iptables hoạt động đúng cách. Thử gửi gói tin bị cấm trước, sau đó gửi gói tin được phép.
+
+7. **Hoàn thành các bước từ 1 đến 6 để đạt được điểm 3E**:  
+   Để đạt được điểm cao hơn, cần thực hiện thêm các nhiệm vụ bổ sung theo các kịch bản V1 và V2 (xem Bảng 4.1). Các nhiệm vụ bổ sung có thể yêu cầu thay đổi cấu hình được thực hiện ở các bước từ 2 đến 6.
+
+---
+
