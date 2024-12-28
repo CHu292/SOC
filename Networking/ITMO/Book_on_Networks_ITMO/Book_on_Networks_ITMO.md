@@ -93,5 +93,10 @@ Mạng máy tính, mà cuốn sách này đề cập đến, không phải là l
 
 Một mặt, mạng máy tính là một nhóm các máy tính được kết nối với nhau để giải quyết một tập hợp các nhiệm vụ liên quan, trao đổi dữ liệu tự động theo chế độ hoạt động nhất định. Mặt khác, mạng máy tính có thể được xem như một phương tiện truyền tải thông tin ở quy mô lớn, sử dụng các kỹ thuật mã hóa và ghép kênh dữ liệu, được ứng dụng rộng rãi trong các hệ thống viễn thông, chẳng hạn như mạng điện thoại (xem Hình 1.1).
 
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_the_first_computers_in_the_USSR_M_1.png" alt="Hình 1.1. Sự tiến hóa của mạng máy tính tại giao điểm của công nghệ tính toán và công nghệ viễn thông." width="900">
+</p>
+<p align="center"><b>Hình 1.1. Sự tiến hóa của mạng máy tính tại giao điểm của công nghệ tính toán và công nghệ viễn thông.</b></p>
+
 ### Phần VIII: Bảo mật mạng máy tính
 ...
