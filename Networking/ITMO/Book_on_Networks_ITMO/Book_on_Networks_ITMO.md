@@ -251,3 +251,84 @@ Một dấu hiệu khác của sự hội tụ giữa mạng cục bộ và mạ
 
 Các mạng này sử dụng các đường truyền số, thường là cáp quang, với tốc độ trên đường trục đạt 10 Gbit/s trở lên. Chúng cung cấp giải pháp kinh tế để kết nối các mạng cục bộ với nhau cũng như kết nối ra mạng toàn cầu. Ban đầu, các mạng MAN chỉ được thiết kế để truyền dữ liệu, nhưng hiện nay danh mục dịch vụ mà chúng cung cấp đã được mở rộng đáng kể. Đặc biệt, chúng hỗ trợ hội nghị truyền hình và truyền tải tích hợp dữ liệu thoại và văn bản. Các mạng MAN hiện đại nổi bật với sự đa dạng của các dịch vụ được cung cấp, cho phép khách hàng của chúng kết hợp các thiết bị liên lạc khác nhau, bao gồm cả tổng đài điện thoại văn phòng (ATC).
 
+
+---
+
+**Hội tụ giữa mạng máy tính và mạng viễn thông**
+
+Bắt đầu từ những năm 1980, đã có những nỗ lực tạo ra các mạng phổ quát, được gọi là **mạng đa dịch vụ**, có khả năng cung cấp các dịch vụ cho cả mạng máy tính và mạng viễn thông.
+
+Mạng viễn thông bao gồm mạng phát thanh, điện thoại và truyền hình. Điều quan trọng kết nối chúng với mạng máy tính là, xét về khía cạnh tài nguyên, chúng cung cấp thông tin cho khách hàng. Tuy nhiên, có sự khác biệt đặc thù liên quan đến dạng thức mà thông tin được trình bày trong mạng máy tính và mạng viễn thông. Ban đầu, mạng máy tính được phát triển để truyền dữ liệu chữ và số, thường được gọi đơn giản là **dữ liệu**, trong khi mạng viễn thông được tạo ra để truyền thoại và video. Vì vậy, mạng viễn thông đã được xây dựng cho việc truyền tải **thông tin liên lạc**, và mạng máy tính ban đầu chỉ dành cho việc truyền tải **dữ liệu**.
+
+Ngày nay, chúng ta chứng kiến sự hội tụ giữa mạng viễn thông và mạng máy tính, quá trình này đang diễn ra theo nhiều hướng.
+
+Trước hết, có thể quan sát thấy **sự hội tụ về các loại dịch vụ** được cung cấp cho khách hàng. Nỗ lực đầu tiên trong việc tạo ra mạng đa dịch vụ, có khả năng cung cấp các dịch vụ khác nhau, bao gồm cả dịch vụ điện thoại và truyền dữ liệu, đã dẫn đến sự xuất hiện vào những năm 1980 của công nghệ **mạng số tích hợp dịch vụ** (Integrated Services Digital Network, ISDN). Tuy nhiên, trong thực tế, mạng ISDN vẫn là mạng điện thoại, và vai trò của mạng đa dịch vụ toàn cầu thế hệ mới đã thuộc về **Internet**.
+
+Internet đã chuyển đổi từ một mạng được thiết kế chỉ để cung cấp một số lượng nhỏ dịch vụ truyền dữ liệu – với các dịch vụ chính là truyền tệp và trao đổi email – thành một mạng thực sự đa dịch vụ. Ngày nay, Internet cung cấp cả các dịch vụ viễn thông truyền thống, bao gồm tin nhắn tức thời, thoại và hội nghị video. Rõ ràng là vai trò đa dịch vụ của Internet sẽ ngày càng tăng lên trong tương lai.
+
+Một ví dụ rõ ràng về hội tụ mạng là sự xuất hiện của **smartphone** – các thiết bị đầu cuối cá nhân, kết hợp các tính năng của máy tính và điện thoại. Nền tảng của sự hội tụ này là công nghệ **mạng di động**. Trong mạng này, để truyền tải các tín hiệu dịch vụ (được gọi là tín hiệu điều khiển), các giao thức chuyển mạch gói, tương tự như trong mạng máy tính, được áp dụng, còn để truyền tải trực tiếp giọng nói giữa các thuê bao, một kênh truyền thống riêng biệt được chuyển mạch.
+
+**Sự hội tụ công nghệ** đang diễn ra theo nhiều hướng. Trước hết, điều này liên quan đến việc sử dụng truyền tải số, cụ thể là truyền tải gói, để đồng thời truyền tải dữ liệu và thoại. Điều này cho phép xây dựng các hệ thống truyền thông tổng hợp dựa trên các kênh kỹ thuật số, được sử dụng bởi cả các mạng máy tính và viễn thông. Trong mạng điện thoại số hiện đại, các giao thức truyền tải gói được áp dụng để truyền tải tín hiệu điều khiển, trong khi việc truyền tải trực tiếp giọng nói giữa các thuê bao vẫn sử dụng một kênh truyền thống được chuyển mạch.
+Dưới đây là bản dịch đầy đủ và chính xác nội dung từ hình ảnh sang tiếng Việt:
+
+Ngày nay, các phương pháp chuyển mạch gói dần thay thế các phương pháp chuyển mạch kênh truyền thống trong mạng điện thoại, ngay cả khi truyền tải giọng nói. Xu hướng này có lý do rõ ràng — dựa trên phương pháp chuyển mạch gói, có thể sử dụng hiệu quả hơn khả năng thông lượng của kênh truyền và thiết bị chuyển mạch. Ví dụ, trong cuộc trò chuyện điện thoại, các khoảng dừng có thể chiếm tới 40% tổng thời gian kết nối, nhưng chỉ có chuyển mạch gói mới cho phép “cắt bỏ” các khoảng dừng và sử dụng băng thông dư thừa của kênh để truyền tải lưu lượng đến các thuê bao khác. Một lý do khác dẫn đến việc chuyển sang sử dụng chuyển mạch gói là sự phổ biến của Internet — một mạng lưới được xây dựng dựa trên công nghệ này.
+
+Việc áp dụng công nghệ chuyển mạch gói để truyền tải hợp nhất qua các mạng hỗ trợ nhiều loại lưu lượng — giọng nói, video và văn bản — đã khiến việc phát triển các phương pháp mới để đảm bảo **chất lượng dịch vụ** (Quality of Service, QoS) trở nên cần thiết. Các phương pháp QoS được thiết kế để giảm thiểu mức độ trễ cho lưu lượng nhạy cảm, chẳng hạn như giọng nói, đồng thời đảm bảo tốc độ trung bình và sự truyền tải ổn định của dữ liệu.
+
+Tuy nhiên, không đúng khi nói rằng các phương pháp chuyển mạch kênh đã lỗi thời và không còn tương lai. Trong chu kỳ phát triển mới, chúng đang tìm thấy ứng dụng trong các công nghệ mới, chẳng hạn như công nghệ mạng lõi, được sử dụng làm cơ sở cho cả mạng máy tính và mạng điện thoại: **Mạng vận chuyển quang** (Optical Transport Networks, OTN) và **Đa phân chia bước sóng dày đặc** (Dense Wavelength Division Multiplexing, DWDM).
+
+Một biểu hiện khác của sự hội tụ công nghệ là việc sử dụng giao thức IP trong các mạng viễn thông, vốn trước đây chỉ được sử dụng trong mạng máy tính. Ví dụ, giao thức này hiện được áp dụng trong các mạng viễn thông di động thế hệ thứ 3, 4 và 5 (3G, 4G, 5G).
+
+Các mạng máy tính cũng đã áp dụng các phương pháp từ mạng viễn thông để nâng cao độ tin cậy. Trong mạng viễn thông, nơi mỗi kết nối được yêu cầu mức độ tin cậy rất cao, các phương pháp truyền tải thông tin dự phòng đã được sử dụng rộng rãi.
+
+Cân nhắc quá trình hội tụ đang diễn ra, có thể kết luận rằng các khái niệm về "mạng viễn thông" và "mạng máy tính" trong tương lai sẽ được hợp nhất — tức là ám chỉ một mạng hợp nhất duy nhất.
+Dưới đây là bản dịch đầy đủ nội dung từ hình ảnh sang tiếng Việt:
+
+
+##### Internet như một yếu tố phát triển công nghệ mạng
+
+Internet là đỉnh cao của sự tiến hóa trong các mạng viễn thông, là hệ thống kỹ thuật phát triển nhanh nhất trong lịch sử loài người. Internet liên tục phát triển cả về quy mô lẫn chất lượng, bắt đầu từ những năm 80, và theo dự báo của các chuyên gia, quá trình này sẽ tiếp tục trong tương lai.
+
+**"Quy mô"** của Internet có thể được đánh giá theo nhiều cách khác nhau, thường sử dụng các chỉ số như số lượng thiết bị đầu cuối được kết nối với Internet, số lượng người dùng, khối lượng lưu lượng truyền tải trong một đơn vị thời gian.
+
+Sự phát triển chất lượng của Internet được thể hiện ở sự xuất hiện ngày càng nhiều dịch vụ mới, ví dụ như các phiên bản Internet của điện thoại và truyền hình, cũng như các loại thiết bị đầu cuối mới. Vì vậy, ngoài các "máy tính thuần túy", ngày nay Internet đã kết nối với nhiều loại thiết bị tích hợp "máy tính" – bao gồm điện thoại thông minh, máy tính bảng, thiết bị gia dụng, ô tô, và danh sách này vẫn sẽ tiếp tục mở rộng trong thời gian dài.
+
+Hãy bắt đầu bằng cách xem xét sự phát triển về số lượng của Internet.
+
+Hình 1.6 minh họa biểu đồ tăng trưởng số lượng người dùng Internet trong 50 năm tồn tại của mạng này. Vào đầu năm 2019, con số này đã đạt 4,388 tỷ người, tương đương với 57% dân số toàn cầu.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.6.png" alt="Hình 1.6. Sự tăng trưởng số lượng người dùng và lưu lượng truy cập Internet." width="800">
+</p>
+
+Số lượng thiết bị đầu cuối thực hiện chức năng của máy chủ (không bao gồm các thiết bị của người dùng) đã tăng trưởng với tốc độ tương tự: vào năm 1980 có khoảng 1.000 máy chủ được kết nối với Internet, năm 1991 – hơn 1 triệu, vào đầu những năm 2000 – khoảng 100 triệu, và cuối cùng, vào năm 2018 – hơn 1 tỷ. Tính cả các thiết bị người dùng (máy tính để bàn, máy tính xách tay, máy tính bảng và điện thoại di động), tổng số thiết bị đầu cuối được kết nối với Internet vào năm 2018 là khoảng 23 tỷ.
+
+Sự bùng nổ tuyệt đối được ghi nhận trong tăng trưởng khối lượng lưu lượng (số byte được truyền qua các tuyến chính của Internet trong một tháng):
+
+- **1990** – 1 TB (1 terabyte = \(10^{12}\) byte, hoặc 1.000 gigabyte);
+- **1996** – 2.000 TB;
+- **2000** – 84 PB (1 petabyte = 1.000 terabyte);
+- **2008** – 10 EB (1 exabyte = 1.000 petabyte);
+- **2013** – 50 EB;
+- **2018** – 129 EB.
+
+Vào giữa những năm 1990, lưu lượng mạng tăng trưởng đặc biệt nhanh, gấp đôi mỗi năm, thể hiện sự phát triển theo cấp số nhân. Sau đó, tốc độ tăng trưởng chậm lại đôi chút, nhưng trong 5 năm qua, tổng khối lượng lưu lượng truyền tải vẫn tăng gấp 2,6 lần.
+
+Rõ ràng là Internet sẽ không thể phát triển nhanh đến vậy nếu nó không thay đổi về chất lượng và chỉ dừng lại như một công cụ để truyền tải tệp và trao đổi thư điện tử. Các dịch vụ mới và các loại thiết bị đầu cuối mới đã và đang làm cho Internet trở nên hấp dẫn hơn với số lượng lớn người dùng phổ thông, những người mà trước đây hiếm khi nghĩ đến việc sử dụng máy tính trong cuộc sống hàng ngày.
+
+Nếu chúng ta xem xét các thiết bị đầu cuối kết nối Internet, chúng ta sẽ thấy rằng ngày nay phần lớn chúng không phải là máy tính để bàn cá nhân truyền thống, mà là **các thiết bị di động** — máy tính bảng và điện thoại thông minh. Ngày càng có nhiều thiết bị đầu cuối hơn được kết nối Internet, bao gồm cả những thiết bị có tích hợp máy tính. Những thiết bị này thường không dễ thấy, chẳng hạn như máy tính bảng và điện thoại thông minh, nhưng chúng được nhúng bên trong các hệ thống và thiết bị quen thuộc, chẳng hạn như hệ thống sưởi, camera quan sát, đồng hồ thông minh hoặc các hệ thống điều khiển ô tô. Những máy tính này khởi xướng và trao đổi dữ liệu giữa chính chúng hoặc với các trung tâm điều khiển từ xa qua Internet, thực chất là không yêu cầu người dùng trực tiếp tham gia. Những thiết bị này đã làm phát sinh một thuật ngữ mới – **Internet vạn vật** (Internet of Things, IoT), hỗ trợ sự khác biệt rõ ràng giữa Internet thiết bị và Internet của con người.
+
+Kết quả là, nếu vào năm 2013 hơn một nửa lưu lượng Internet (67%) được tạo ra bởi các máy tính cá nhân, thì đến năm 2018, vị trí dẫn đầu đã nhường chỗ cho các thiết bị di động và các máy tính nhúng, chiếm tổng cộng 53% lưu lượng.
+
+Tỷ lệ các loại ứng dụng tạo ra lưu lượng cũng thay đổi đáng kể. Chẳng hạn, vào những năm 1990 và đầu những năm 2000, phần lớn lưu lượng ứng dụng đến từ việc truyền tải các tệp dữ liệu (tệp email, trang web, nhạc và phim). Nhưng đến năm 2010, vị trí dẫn đầu về lưu lượng đã thuộc về các ứng dụng truyền tải video theo thời gian thực (chẳng hạn như truyền hình Internet, phát phim trực tuyến theo yêu cầu hoặc hội nghị truyền hình).
+
+Một bước tiến mới trong sự phát triển của Internet là sự xuất hiện của **điện toán đám mây**, cho phép giảm tải máy tính cá nhân và chuyển việc lưu trữ dữ liệu cũng như thực hiện các tính toán sang các máy chủ từ xa, được kết nối với máy tính của người dùng thông qua mạng. Điện toán đám mây đã trở thành một trong những yếu tố chính thúc đẩy lưu lượng Internet, vì người dùng dịch vụ này liên tục truy cập các máy chủ bên ngoài của nhà cung cấp để thực hiện các tính toán và các thao tác khác với dữ liệu, thay vì xử lý chúng tại chỗ trên máy tính cá nhân hoặc các máy chủ nội bộ của doanh nghiệp.
+
+**Sự thay đổi về khối lượng và tính chất của lưu lượng** do sự xuất hiện của các thiết bị đầu cuối mới, các ứng dụng và dịch vụ mới trên Internet đã tạo ra những thách thức mới cho các nhà phát triển công nghệ mạng, vì các yêu cầu đối với các đặc tính của mạng trong các ứng dụng này khác biệt đáng kể so với yêu cầu của các ứng dụng truyền tải tệp dữ liệu.
+
+Ví dụ, các phương tiện không người lái hiện đang trong giai đoạn thử nghiệm và sẽ sớm trở thành hiện thực trong cuộc sống hàng ngày. Internet là một phần không thể thiếu của hệ thống điều khiển các phương tiện này, hỗ trợ trao đổi thông tin theo thời gian thực giữa máy tính trên xe và các ứng dụng từ xa, giải quyết các nhiệm vụ phức tạp có thể bao gồm cả các yếu tố trí tuệ nhân tạo, vượt ngoài khả năng của máy tính trên xe với các tài nguyên hạn chế. Rõ ràng rằng trong trường hợp này, thời gian phản hồi của mạng và độ tin cậy là các thông số quan trọng, nếu không, chiếc xe có thể trở thành một vật thể nguy hiểm trên đường. Các yêu cầu mới đối với khả năng phản hồi của mạng có thể đòi hỏi không chỉ sự phát triển của các công nghệ mạng tốc độ cao, mà còn là việc thay đổi kiến trúc của nó, chuyển các trung tâm xử lý đến gần với rìa mạng Internet hơn.
+
+Sự tăng trưởng vượt bậc và tính linh hoạt của Internet (trên nhiều khía cạnh) đã và đang có tác động lớn đến công nghệ mạng máy tính, buộc chúng phải không ngừng thay đổi và cải tiến để thích nghi với các yêu cầu mới từ người dùng về cả chất lượng và số lượng.
+
+---
+
