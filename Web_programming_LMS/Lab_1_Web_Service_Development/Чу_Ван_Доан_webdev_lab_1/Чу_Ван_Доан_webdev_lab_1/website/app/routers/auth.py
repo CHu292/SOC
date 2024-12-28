@@ -60,7 +60,7 @@ def register(
     db.commit()  # Коммитим изменения в базе данных
     db.refresh(db_user)  # Обновляем информацию о пользователе
 
-    return RedirectResponse(url="/login", status_code=303)  # Перенаправляем на страницу входа
+    return RedirectResponse(url="/login", status_code=302)  # Перенаправляем на страницу входа
 
 # Обработка GET-запроса на получение формы входа
 @router.get("/login", response_class=HTMLResponse)
@@ -89,7 +89,6 @@ async def login(
     access_token = create_access_token(data={"sub": db_user.email, "username": db_user.username})
     
     # Устанавливаем JWT токен в cookie
-    response = RedirectResponse(url="/chat", status_code=303)  # Перенаправляем на страницу чата
+    response = RedirectResponse(url="/chat", status_code=302)  # Перенаправляем на страницу чата
     response.set_cookie(key="access_token", value=f"Bearer {access_token}", httponly=True)  # Устанавливаем токен в cookie
     return response  # Возвращаем ответ
-

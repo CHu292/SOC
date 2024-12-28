@@ -13,7 +13,8 @@
             ws.onmessage = function(event) {
                 const messagesDiv = document.getElementById("messages");
                 const message = document.createElement("p");
-                message.textContent = event.data;
+                const timestamp = new Date().toLocaleTimeString(); // Thời gian hiện tại
+                message.textContent = `[${timestamp}] ${event.data}`;
                 messagesDiv.appendChild(message);
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
             };
@@ -24,6 +25,11 @@
 
             ws.onclose = function() {
                 console.log("Disconnected from room:", "{{ room.name }}");
+                const messagesDiv = document.getElementById("messages");
+                const message = document.createElement("p");
+                message.textContent = "Connection lost. Reconnecting...";
+                messagesDiv.appendChild(message);
+                setTimeout(connectToWebSocket, 3000); // Tự động kết nối lại
             };
         }
 
@@ -40,7 +46,7 @@
     <h1>Room: {{ room.name }}</h1>
     <div id="messages" style="border: 1px solid black; height: 300px; overflow-y: scroll; padding: 5px;">
         {% for message in messages %}
-            <p>{{ message.username }}: {{ message.content }}</p>
+            <p>[{{ message.timestamp }}] {{ message.username }}: {{ message.content }}</p>
         {% endfor %}
     </div>
     <input type="text" id="message-input" placeholder="Type a message..." onkeypress="if(event.key === 'Enter') sendMessage()">
