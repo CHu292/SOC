@@ -94,9 +94,45 @@ Mạng máy tính, mà cuốn sách này đề cập đến, không phải là l
 Một mặt, mạng máy tính là một nhóm các máy tính được kết nối với nhau để giải quyết một tập hợp các nhiệm vụ liên quan, trao đổi dữ liệu tự động theo chế độ hoạt động nhất định. Mặt khác, mạng máy tính có thể được xem như một phương tiện truyền tải thông tin ở quy mô lớn, sử dụng các kỹ thuật mã hóa và ghép kênh dữ liệu, được ứng dụng rộng rãi trong các hệ thống viễn thông, chẳng hạn như mạng điện thoại (xem Hình 1.1).
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/Dlink_Fundamentals_of_Network_Technology/Data_Transmission_and_Switching_in_Computer_Networks/1_Basic_concepts_of_network_technologies/image/1_the_first_computers_in_the_USSR_M_1.png" alt="Hình 1.1. Sự tiến hóa của mạng máy tính tại giao điểm của công nghệ tính toán và công nghệ viễn thông." width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.1.png" alt="Hình 1.1. Sự tiến hóa của mạng máy tính tại giao điểm của công nghệ tính toán và công nghệ viễn thông." width="500">
 </p>
 <p align="center"><b>Hình 1.1. Sự tiến hóa của mạng máy tính tại giao điểm của công nghệ tính toán và công nghệ viễn thông.</b></p>
+
+---
+
+#### Những mạng máy tính đầu tiên
+
+##### Hệ thống xử lý theo gói
+
+Hãy bắt đầu với nguồn gốc tính toán của mạng máy tính. Những máy tính đầu tiên vào những năm 1950 — lớn, cồng kềnh và đắt đỏ — được thiết kế dành cho một số ít người dùng được chọn. Thường thì những "con quái vật" này chiếm cả tòa nhà và đảm nhiệm các nhiệm vụ khổng lồ. Những máy tính như vậy không được thiết kế cho công việc tương tác với người dùng mà được sử dụng trong chế độ **xử lý theo gói**.
+
+**Hệ thống xử lý theo gói**, thông thường, được xây dựng dựa trên nền tảng mainframe — một máy tính mạnh mẽ và đáng tin cậy với mục đích sử dụng đa năng. Người dùng chuẩn bị trước thẻ lệnh (punch card), chứa dữ liệu và các lệnh của chương trình, rồi gửi chúng đến trung tâm tính toán (Hình 1.2). Các nhiệm vụ từ nhiều người dùng được nhóm lại thành một gói, sau đó được xử lý. Người vận hành máy mainframe đưa các thẻ lệnh của gói vào máy tính, thực hiện việc phân phối nhiệm vụ giữa các bộ xử lý và thiết bị nhập/xuất để tối ưu hóa hiệu suất tính toán. Kết quả thường được gửi lại cho người dùng trong vòng vài ngày, thường là với độ trễ ít nhất một ngày làm việc. Điều này đồng nghĩa với việc "tăng tốc" chỉ có thể đạt được tối thiểu trong chu kỳ xử lý hàng ngày.
+
+Tất nhiên, đối với những người dùng yêu cầu chế độ làm việc tương tác, việc xử lý theo lô này không phù hợp. Tuy nhiên, ở các giai đoạn ban đầu, phương pháp này giúp tiết kiệm đáng kể chi phí và đạt hiệu quả tính toán từ những cỗ máy đắt tiền — bộ xử lý và các thiết bị nhập/xuất được sử dụng một cách tối đa và hiệu quả cao nhất nhờ cách tiếp cận này.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.2.png" alt="Hình 1.2. Hệ thống tập trung dựa trên máy tính trung tâm (mainframe)." width="500">
+</p>
+<p align="center"><b>Hình 1.2. Hệ thống tập trung dựa trên máy tính trung tâm (mainframe).</b></p>
+
+---
+
+##### Hệ thống đa thiết bị đầu cuối — hình mẫu của mạng
+
+Với sự giảm giá của bộ xử lý vào đầu những năm 1960, xuất hiện các phương pháp tổ chức mới cho quá trình tính toán, cho phép quan tâm đến lợi ích của người dùng. Các hệ thống tương tác đa thiết bị đầu cuối với chia sẻ thời gian (Hình 1.3) bắt đầu phát triển. Trong các hệ thống này, mỗi người dùng nhận được một thiết bị đầu cuối riêng, thông qua đó họ có thể tương tác với máy tính. Số lượng người dùng làm việc đồng thời với máy tính được xác định bởi khả năng của nó: thời gian phản hồi của hệ thống tính toán phải đủ ngắn để người dùng không cảm thấy quá rõ ràng sự làm việc song song của những người dùng khác với cùng một máy tính.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.3.png" alt="Hình 1.3. Hệ thống đa thiết bị đầu cuối — hình mẫu của mạng tính toán" width="500">
+</p>
+
+
+Các thiết bị đầu cuối, khi ra khỏi phạm vi của trung tâm tính toán, đã được phân tán khắp toàn bộ doanh nghiệp. Và mặc dù khả năng tính toán vẫn hoàn toàn tập trung, một số chức năng — chẳng hạn như nhập và xuất dữ liệu — đã trở nên phân tán. Những hệ thống đa thiết bị đầu cuối tập trung này bề ngoài rất giống với các mạng tính toán cục bộ. Thực tế, người dùng bình thường cảm nhận công việc với thiết bị đầu cuối của máy tính mainframe gần giống như hiện nay họ làm việc với máy tính cá nhân kết nối với mạng. Người dùng có thể truy cập các tệp chung và thiết bị ngoại vi, trong khi vẫn duy trì ảo giác hoàn toàn về việc sở hữu riêng một máy tính, vì họ có thể chạy chương trình mong muốn bất kỳ lúc nào và gần như ngay lập tức nhận được kết quả (mặc dù một số tính toán phức tạp có thể mất nhiều thời gian và người dùng thậm chí tin rằng các phép tính này được thực hiện ngay trong thiết bị của họ).
+
+**Các hệ thống đa thiết bị đầu cuối, hoạt động trong chế độ chia sẻ thời gian, đã trở thành hình mẫu cho các mạng tính toán cục bộ.**
+
+Tuy nhiên, để xuất hiện các mạng cục bộ, cần phải đi qua một chặng đường dài nữa, vì các hệ thống đa thiết bị đầu cuối, mặc dù có các đặc điểm bề ngoài giống hệ thống phân tán, vẫn hỗ trợ xử lý dữ liệu tập trung.
+
+Hơn nữa, nhu cầu của các doanh nghiệp trong việc tạo ra các mạng cục bộ vào thời điểm đó vẫn chưa trưởng thành — trong một tòa nhà đơn lẻ, thường không có gì để kết nối thành một mạng, vì chi phí cao của công nghệ tính toán khiến các doanh nghiệp không thể mua được nhiều máy tính. Trong thời kỳ này, quy luật gọi là **quy luật Grosch** được áp dụng, phản ánh thực tế về cấp độ công nghệ đã đạt được. Theo quy luật này, **hiệu suất của một máy tính tỷ lệ thuận với bình phương chi phí của nó**. Điều này dẫn đến việc, với cùng một số tiền, việc mua một máy tính mạnh mẽ sẽ có lợi hơn so với hai máy tính yếu hơn — tổng công suất của hai máy tính yếu sẽ thấp hơn nhiều so với công suất của máy tính đắt tiền hơn.
 
 ### Phần VIII: Bảo mật mạng máy tính
 ...
