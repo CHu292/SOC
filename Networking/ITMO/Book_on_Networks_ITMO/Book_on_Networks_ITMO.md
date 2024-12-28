@@ -59,7 +59,28 @@
 # Nội dung
 
 ### Phần I: Cơ bản về mạng truyền dữ liệu
-...
+
+- [x] Chương 1: Sự phát triển của mạng máy tính
+- [x] Chương 2: Các nguyên tắc chung trong xây dựng mạng
+- [x] Chương 3: Chuyển mạch kênh và chuyển mạch gói
+- [x] Chương 4: Chuẩn hóa và phân loại mạng
+- [x] Chương 5: Các đặc tính mạng và chất lượng dịch vụ
+
+---
+
+**Quá trình nhận thức luôn phát triển theo hình xoắn ốc.** Chúng ta không thể ngay lập tức hiểu và nhận thức một hiện tượng phức tạp. Chúng ta cần xem xét nó từ nhiều góc độ khác nhau, một cách tổng thể và từng phần, một cách cô lập và trong sự tương tác với các hiện tượng khác. Bằng cách tích lũy kiến thức dần dần, đôi lúc quay trở lại với những gì đã dường như được hiểu rõ, và với mỗi vòng xoắn mới, chúng ta ngày càng thấu hiểu sâu sắc hơn về bản chất của hiện tượng đó. Một cách tiếp cận tốt là bắt đầu bằng việc nghiên cứu các nguyên tắc chung của một lĩnh vực kiến thức nào đó, sau đó mới đi sâu vào các phương pháp, công nghệ hoặc cấu trúc cụ thể. Phần đầu tiên của cuốn sách này được xây dựng như "vòng xoắn đầu tiên" trong việc nghiên cứu các mạng máy tính.
+
+Việc nghiên cứu các nguyên tắc chung trong xây dựng mạng máy tính sẽ giúp bạn dễ dàng nắm bắt các công nghệ mạng cụ thể trong tương lai. Tuy nhiên, câu nói nổi tiếng "Kiến thức về một số nguyên tắc giải phóng bạn khỏi việc ghi nhớ nhiều sự kiện" không nên được hiểu theo nghĩa đen — một chuyên gia giỏi, tất nhiên, cần biết nhiều chi tiết và sự kiện. Tuy nhiên, kiến thức về các nguyên tắc sẽ cho phép hệ thống hóa các dữ liệu riêng lẻ này, liên kết chúng thành một hệ thống mạch lạc và do đó sử dụng chúng một cách có ý thức và hiệu quả hơn. Tất nhiên, việc nghiên cứu các nguyên tắc trước khi tìm hiểu các công nghệ mạng không phải là nhiệm vụ dễ dàng, đặc biệt là đối với những độc giả có tư duy thực tế. Ngoài ra, luôn có nguy cơ hiểu sai một nguyên tắc chung nào đó nếu không được kiểm nghiệm qua thực tiễn. Vì vậy, chúng tôi yêu cầu độc giả tạm thời tin tưởng vào những khẳng định trong cuốn sách này, bởi vì chúng sẽ đáng giá; đồng thời, chúng tôi cũng khuyến khích bạn khi học các phần tiếp theo, hãy dành thời gian để liên hệ với các câu hỏi lý thuyết và kiểm tra lại chính mình, cũng như hiểu những gì bạn đã học lần đầu.
+
+Phần này, cùng với cả cuốn sách, bắt đầu bằng chương giới thiệu về sự phát triển của mạng máy tính. Lịch sử của bất kỳ ngành khoa học nào không chỉ đánh thức sự tò mò tự nhiên mà còn cho phép hiểu rõ hơn bản chất của những thành tựu chính trong lĩnh vực đó, nhận thức xu hướng phát triển và đánh giá triển vọng của những lĩnh vực và hướng nghiên cứu mới.
+
+Trong hai chương tiếp theo, các khái niệm cơ bản của mạng máy tính được xem xét — chuyển mạch, định tuyến, ghép kênh, địa chỉ hóa. Các phương pháp truyền dữ liệu qua các gói — truyền datagram, truyền qua thiết lập kết nối logic và kỹ thuật kênh ảo được nghiên cứu.
+
+Một chủ đề quan trọng của phần này được trình bày trong chương thứ tư, liên quan đến chuẩn hóa kiến trúc mạng máy tính, nền tảng tư tưởng mà mô hình tương tác hệ thống mở (OSI) dựa trên.
+
+Chương cuối cùng của phần này dành riêng cho các đặc tính của mạng và vấn đề chất lượng dịch vụ. Vai trò mới của mạng máy tính như là cơ sở cho việc tạo ra thế hệ tiếp theo của các mạng công cộng, cung cấp nhiều loại dịch vụ thông tin và truyền tải dữ liệu, cũng như lưu lượng âm thanh và video, đã dẫn đến sự thâm nhập của các phương pháp đảm bảo chất lượng dịch vụ vào hầu hết các công nghệ truyền thông. Do đó, các khái niệm về chất lượng dịch vụ, vốn từ lâu đã được coi là một hướng bổ trợ trong ngành mạng, hiện đã trở thành một trong những nguyên tắc cơ bản của xây dựng mạng máy tính.
+
+--- 
 
 ### Phần VIII: Bảo mật mạng máy tính
 ...
