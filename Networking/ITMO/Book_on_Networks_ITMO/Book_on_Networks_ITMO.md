@@ -1,4 +1,4 @@
-# Mục lục
+<h1 id="muc-luc">Mục lục</h1>
 
 ## [Phần I: Cơ bản về mạng truyền dữ liệu](#phan-i-co-ban-ve-mang-truyen-du-lieu)
 - [Chương 1: Sự phát triển của mạng máy tính](#chuong-1-su-phat-trien-cua-mang-may-tinh)
@@ -59,6 +59,8 @@
 # Nội dung
 
 <h3 id="phan-i-co-ban-ve-mang-truyen-du-lieu">Phần I: Cơ bản về mạng truyền dữ liệu</h3>
+
+[Quay lại Mục lục](#muc-luc)
 
 - [x] Chương 1: Sự phát triển của mạng máy tính
 - [x] Chương 2: Các nguyên tắc chung trong xây dựng mạng
