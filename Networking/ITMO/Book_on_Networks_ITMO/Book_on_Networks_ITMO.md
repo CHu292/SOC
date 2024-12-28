@@ -238,7 +238,6 @@ Việc hội tụ trong các phương pháp truyền dữ liệu chủ yếu x�
 Chất lượng cao của các kênh số đã thay đổi yêu cầu đối với các giao thức của mạng máy tính toàn cầu. Thay vì các quy trình đảm bảo độ tin cậy, các quy trình đảm bảo tốc độ truyền tải trung bình được đảm bảo đến người dùng đã trở thành ưu tiên hàng đầu, cùng với các cơ chế xử lý ưu tiên cho các gói tin đặc biệt nhạy cảm với độ trễ, chẳng hạn như thoại.
 
 Những thay đổi này đã được phản ánh trong các công nghệ mạng toàn cầu của những năm 90, như Frame Relay và ATM. Trong các công nghệ này, người ta giả định rằng việc méo tín hiệu bit xảy ra rất hiếm, đến mức các gói tin lỗi tốt hơn là bị hủy bỏ hoàn toàn, và tất cả các vấn đề liên quan đến việc mất gói tin được giao phó cho phần mềm ở cấp độ cao hơn, phần mềm này không thuộc về mạng Frame Relay và ATM.
-Dưới đây là bản dịch nội dung từ hình ảnh sang tiếng Việt:
 
 Sự đóng góp lớn vào việc hội tụ giữa mạng cục bộ và mạng toàn cầu là sự thống trị của giao thức IP. Giao thức này có thể hoạt động trên bất kỳ công nghệ mạng cục bộ và toàn cầu nào (Ethernet, MPLS, Token Ring, ATM, Frame Relay), kết hợp các phân đoạn mạng khác nhau thành một mạng hợp nhất.
 
