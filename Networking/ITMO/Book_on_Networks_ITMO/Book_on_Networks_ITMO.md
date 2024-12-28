@@ -58,7 +58,7 @@
 
 # Nội dung
 
-<h3 id="phan-i-co-ban-ve-mang-truyen-du-lieu">Phần I: Cơ bản về mạng truyền dữ liệu</h3>
+<h2 id="phan-i-co-ban-ve-mang-truyen-du-lieu">Phần I: Cơ bản về mạng truyền dữ liệu</h3>
 
 [Quay lại Mục lục](#muc-luc)
 
@@ -83,6 +83,15 @@ Một chủ đề quan trọng của phần này được trình bày trong chư
 Chương cuối cùng của phần này dành riêng cho các đặc tính của mạng và vấn đề chất lượng dịch vụ. Vai trò mới của mạng máy tính như là cơ sở cho việc tạo ra thế hệ tiếp theo của các mạng công cộng, cung cấp nhiều loại dịch vụ thông tin và truyền tải dữ liệu, cũng như lưu lượng âm thanh và video, đã dẫn đến sự thâm nhập của các phương pháp đảm bảo chất lượng dịch vụ vào hầu hết các công nghệ truyền thông. Do đó, các khái niệm về chất lượng dịch vụ, vốn từ lâu đã được coi là một hướng bổ trợ trong ngành mạng, hiện đã trở thành một trong những nguyên tắc cơ bản của xây dựng mạng máy tính.
 
 --- 
+<h3 id="chuong-1-su-phat-trien-cua-mang-may-tinh">CHƯƠNG 1: Sự phát triển của mạng máy tính</h3>
+
+#### Hai nguồn gốc của mạng máy tính
+
+Mạng máy tính, mà cuốn sách này đề cập đến, không phải là loại mạng duy nhất được tạo ra bởi nền văn minh nhân loại. Thậm chí, các hệ thống dẫn nước của La Mã cổ đại cũng có thể được coi là một trong những ví dụ lâu đời nhất về mạng lưới, bao phủ các khu vực rộng lớn và phục vụ nhiều người dùng. Một ví dụ khác, ít mang tính trực quan hơn, là mạng điện. Trong đó, ta có thể dễ dàng tìm thấy sự tương đồng với các thành phần của bất kỳ mạng máy tính nào: nguồn tài nguyên thông tin tương ứng với các nhà máy điện, các tuyến truyền tải cao áp tương ứng với các đường dây điện cao thế, mạng truy cập tương ứng với các trạm biến áp, và các thiết bị đầu cuối của khách hàng tương ứng với các thiết bị chiếu sáng và gia dụng.
+
+**Mạng máy tính**, còn được gọi là **mạng truyền dữ liệu**, là kết quả logic của sự phát triển từ hai ngành khoa học công nghệ quan trọng của nền văn minh hiện đại: **kỹ thuật tính toán** và **công nghệ viễn thông**.
+
+Một mặt, mạng máy tính là một nhóm các máy tính được kết nối với nhau để giải quyết một tập hợp các nhiệm vụ liên quan, trao đổi dữ liệu tự động theo chế độ hoạt động nhất định. Mặt khác, mạng máy tính có thể được xem như một phương tiện truyền tải thông tin ở quy mô lớn, sử dụng các kỹ thuật mã hóa và ghép kênh dữ liệu, được ứng dụng rộng rãi trong các hệ thống viễn thông, chẳng hạn như mạng điện thoại (xem Hình 1.1).
 
 ### Phần VIII: Bảo mật mạng máy tính
 ...
