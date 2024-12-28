@@ -1,6 +1,6 @@
 # Mục lục
 
-## [Phần I: Cơ bản về mạng truyền dữ liệu](#phần-i-cơ-bản-về-mạng-truyền-dữ-liệu)
+## [Phần I: Cơ bản về mạng truyền dữ liệu](#phan-i-co-ban-ve-mang-truyen-du-lieu)
 - [Chương 1: Sự phát triển của mạng máy tính](#chương-1-sự-phát-triển-của-mạng-máy-tính)
 - [Chương 2: Các nguyên tắc chung trong xây dựng mạng](#chương-2-các-nguyên-tắc-chung-trong-xây-dựng-mạng)
 - [Chương 3: Chuyển mạch kênh và chuyển mạch gói](#chương-3-chuyển-mạch-kênh-và-chuyển-mạch-gói)
@@ -58,7 +58,7 @@
 
 # Nội dung
 
-### Phần I: Cơ bản về mạng truyền dữ liệu
+### Phan I: Co ban ve mang truyen du lieu
 
 - [x] Chương 1: Sự phát triển của mạng máy tính
 - [x] Chương 2: Các nguyên tắc chung trong xây dựng mạng
