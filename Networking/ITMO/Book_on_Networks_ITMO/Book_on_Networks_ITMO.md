@@ -111,7 +111,7 @@ Hãy bắt đầu với nguồn gốc tính toán của mạng máy tính. Nhữ
 Tất nhiên, đối với những người dùng yêu cầu chế độ làm việc tương tác, việc xử lý theo lô này không phù hợp. Tuy nhiên, ở các giai đoạn ban đầu, phương pháp này giúp tiết kiệm đáng kể chi phí và đạt hiệu quả tính toán từ những cỗ máy đắt tiền — bộ xử lý và các thiết bị nhập/xuất được sử dụng một cách tối đa và hiệu quả cao nhất nhờ cách tiếp cận này.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.2.png" alt="Hình 1.2. Hệ thống tập trung dựa trên máy tính trung tâm (mainframe)." width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.2.png" alt="Hình 1.2. Hệ thống tập trung dựa trên máy tính trung tâm (mainframe)." width="900">
 </p>
 <p align="center"><b>Hình 1.2. Hệ thống tập trung dựa trên máy tính trung tâm (mainframe).</b></p>
 
@@ -122,7 +122,7 @@ Tất nhiên, đối với những người dùng yêu cầu chế độ làm vi
 Với sự giảm giá của bộ xử lý vào đầu những năm 1960, xuất hiện các phương pháp tổ chức mới cho quá trình tính toán, cho phép quan tâm đến lợi ích của người dùng. Các hệ thống tương tác đa thiết bị đầu cuối với chia sẻ thời gian (Hình 1.3) bắt đầu phát triển. Trong các hệ thống này, mỗi người dùng nhận được một thiết bị đầu cuối riêng, thông qua đó họ có thể tương tác với máy tính. Số lượng người dùng làm việc đồng thời với máy tính được xác định bởi khả năng của nó: thời gian phản hồi của hệ thống tính toán phải đủ ngắn để người dùng không cảm thấy quá rõ ràng sự làm việc song song của những người dùng khác với cùng một máy tính.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.3.png" alt="Hình 1.3. Hệ thống đa thiết bị đầu cuối — hình mẫu của mạng tính toán" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.3.png" alt="Hình 1.3. Hệ thống đa thiết bị đầu cuối — hình mẫu của mạng tính toán" width="800">
 </p>
 
 
@@ -134,5 +134,52 @@ Tuy nhiên, để xuất hiện các mạng cục bộ, cần phải đi qua m�
 
 Hơn nữa, nhu cầu của các doanh nghiệp trong việc tạo ra các mạng cục bộ vào thời điểm đó vẫn chưa trưởng thành — trong một tòa nhà đơn lẻ, thường không có gì để kết nối thành một mạng, vì chi phí cao của công nghệ tính toán khiến các doanh nghiệp không thể mua được nhiều máy tính. Trong thời kỳ này, quy luật gọi là **quy luật Grosch** được áp dụng, phản ánh thực tế về cấp độ công nghệ đã đạt được. Theo quy luật này, **hiệu suất của một máy tính tỷ lệ thuận với bình phương chi phí của nó**. Điều này dẫn đến việc, với cùng một số tiền, việc mua một máy tính mạnh mẽ sẽ có lợi hơn so với hai máy tính yếu hơn — tổng công suất của hai máy tính yếu sẽ thấp hơn nhiều so với công suất của máy tính đắt tiền hơn.
 
-### Phần VIII: Bảo mật mạng máy tính
-...
+---
+
+##### Những mạng toàn cầu đầu tiên
+
+Nhu cầu kết nối nhiều máy tính đặt cách xa nhau đã trở nên cấp thiết vào thời điểm đó. Mọi thứ bắt đầu bằng việc giải quyết một nhiệm vụ đơn giản hơn — truy cập từ xa đến một máy tính từ các thiết bị đầu cuối đặt cách xa hàng trăm, thậm chí hàng ngàn, km. Các thiết bị đầu cuối được kết nối với máy tính qua mạng điện thoại bằng modem, cho phép nhiều người dùng truy cập từ xa vào tài nguyên được chia sẻ của các siêu máy tính mạnh mẽ. Sau đó, xuất hiện các hệ thống mà bên cạnh các kết nối từ xa kiểu **thiết bị đầu cuối – máy tính**, còn được thực hiện các kết nối từ xa kiểu **máy tính – máy tính**.
+
+Các máy tính phân tán về mặt địa lý có khả năng trao đổi dữ liệu **một cách tự động**, điều này thực sự là đặc điểm cơ bản của bất kỳ mạng tính toán nào.
+
+Dựa trên cơ chế này, trong các mạng đầu tiên, đã xuất hiện các dịch vụ trao đổi tệp, đồng bộ hóa cơ sở dữ liệu, thư điện tử và nhiều thứ khác, giờ đây trở thành các dịch vụ mạng truyền thống.
+
+
+**Vì vậy, theo thứ tự thời gian, mạng toàn cầu (Wide Area Network, WAN) là những mạng đầu tiên, kết nối các máy tính phân tán về mặt địa lý, có thể đặt ở các thành phố và quốc gia khác nhau.**
+
+
+Chính khi xây dựng các mạng toàn cầu, nhiều ý tưởng quan trọng đã được đề xuất và phát triển, trở thành nền tảng của các mạng tính toán hiện đại. Ví dụ, việc xây dựng các giao thức truyền thông, khái niệm chuyển mạch gói và định tuyến gói đã được định hình.
+
+Mạng toàn cầu kế thừa rất nhiều từ các hệ thống lâu đời và phổ biến hơn — **điện thoại**. Đổi mới công nghệ chính mà các mạng toàn cầu đầu tiên mang lại là việc từ bỏ **nguyên tắc chuyển mạch kênh**, vốn được sử dụng thành công trong mạng điện thoại trong nhiều thập kỷ.
+
+Những thử nghiệm thực tế và mô phỏng toán học đã chỉ ra rằng các mạng hoạt động theo **nguyên tắc chuyển mạch gói** — nơi dữ liệu được chia thành các phần nhỏ gọi là gói, tự di chuyển qua mạng dựa vào địa chỉ đích trong tiêu đề gói — hiệu quả hơn rất nhiều, ngay cả khi dữ liệu bị gián đoạn và có độ trễ đáng kể.
+
+Do việc lắp đặt các đường truyền chất lượng cao cho khoảng cách xa rất đắt đỏ, trong các mạng toàn cầu đầu tiên, các kênh liên lạc hiện có, vốn được thiết kế ban đầu cho các mục đích khác, đã được sử dụng. Ví dụ, trong nhiều năm, các mạng toàn cầu được xây dựng trên các kênh điện thoại tần số âm thanh, đủ khả năng cung cấp đồng thời một cuộc gọi thoại trên kênh analog. Tuy nhiên, tốc độ truyền dữ liệu của các kênh như vậy rất thấp (chỉ vài kilobit/giây), và phạm vi dịch vụ trong các mạng như vậy bị giới hạn bởi việc trao đổi tệp và thư điện tử. Bên cạnh tốc độ thấp, các kênh này còn có nhược điểm khác — chúng làm méo tín hiệu truyền đi. Các giao thức của mạng toàn cầu, được xây dựng trên các kênh liên lạc chất lượng thấp, khác biệt bởi các thủ tục kiểm soát phức tạp và khôi phục dữ liệu. Một ví dụ điển hình của những mạng như vậy là mạng dựa trên giao thức **X.25**, được phát triển vào đầu những năm 1970.
+
+---
+
+**Ghi chú**
+
+Khi viết chương này, các tác giả đã đối mặt với một vấn đề nan giải: không thể kể câu chuyện về ngành này mà không nhắc đến các công nghệ và khái niệm cụ thể. Tuy nhiên, cũng không thể giải thích ngay lập tức các công nghệ và khái niệm đó, vì người đọc khi đọc những trang đầu tiên có thể chưa sẵn sàng tiếp thu các giải thích này. Các tác giả đã chọn giải pháp thỏa hiệp, để lại việc giải thích chi tiết nhiều thuật ngữ cho tương lai, để ở giai đoạn đầu của việc nghiên cứu mạng máy tính, người đọc có cơ hội hình dung được bức tranh tiến hóa của mạng máy tính trong toàn bộ sự phong phú của nó.
+
+---
+
+Vào năm 1969, Bộ Quốc phòng Hoa Kỳ đã khởi xướng công việc kết nối một mạng duy nhất gồm các siêu máy tính phục vụ quốc phòng và nghiên cứu khoa học. Mạng này, được gọi là **ARPANET**, đã trở thành điểm khởi đầu để tạo ra mạng toàn cầu đầu tiên và nổi tiếng nhất hiện nay — **Internet**.
+
+Mạng **ARPANET** kết nối các máy tính khác loại, hoạt động dưới sự quản lý của các hệ điều hành (OS) khác nhau, cùng với các mô-đun bổ sung để triển khai các giao thức truyền thông chung cho tất cả các máy tính trong mạng. Các hệ điều hành của các máy tính này có thể được coi là **hệ điều hành mạng đầu tiên**.
+
+Hệ điều hành mạng không chỉ phân bổ người dùng giữa nhiều máy tính (như trong các hệ thống đa thiết bị đầu cuối) mà còn tổ chức lưu trữ và xử lý dữ liệu phân tán. Bất kỳ hệ điều hành mạng nào, một mặt, thực hiện tất cả các chức năng của một hệ điều hành cục bộ, và mặt khác, có các phương tiện bổ sung để tương tác với các hệ điều hành của các máy tính khác. Các mô-đun chương trình thực hiện các chức năng mạng đã được phát triển dần dần, khi các công nghệ mạng tiến bộ, giúp các máy tính giải quyết các nhiệm vụ mới yêu cầu xử lý mạng.
+
+Sự phát triển của mạng máy tính toàn cầu theo nhiều cách gắn liền với sự tiến bộ của mạng điện thoại. Kể từ những năm 1960, mạng điện thoại đã dần chuyển sang **truyền giọng nói ở dạng số hóa**. Điều này dẫn đến sự xuất hiện của các kênh kỹ thuật số tốc độ cao kết nối các tổng đài điện thoại tự động (ATC), cho phép truyền đồng thời hàng chục và hàng trăm cuộc gọi.
+
+Đến nay, các mạng toàn cầu về sự đa dạng và chất lượng dịch vụ đã bắt kịp các mạng cục bộ, vốn từng dẫn đầu trong lĩnh vực này trong một thời gian dài, mặc dù chúng ra đời muộn hơn nhiều.
+
+---
+
+##### Những mạng cục bộ đầu tiên
+
+Một sự kiện quan trọng, ảnh hưởng đến sự phát triển của mạng máy tính, đã xảy ra vào đầu những năm 1970. Kết quả của đột phá công nghệ trong sản xuất linh kiện máy tính đã xuất hiện **các vi mạch tích hợp lớn** (Large Scale Integration - LSI). Chi phí tương đối thấp và khả năng chức năng tốt của chúng đã dẫn đến sự ra đời của **máy tính mini**, những máy tính này trở thành đối thủ thực sự của các máy mainframe. Quy luật thực nghiệm của Grosch không còn phù hợp với thực tế, vì mười máy tính mini, với cùng chi phí như một máy mainframe, có thể giải quyết một số nhiệm vụ (thường là các nhiệm vụ có thể được xử lý song song) nhanh hơn. 
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.4.png" alt="Hình 1.4. Sử dụng độc lập nhiều máy tính mini trong một doanh nghiệp" width="800">
+</p>
