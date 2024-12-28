@@ -183,3 +183,35 @@ Một sự kiện quan trọng, ảnh hưởng đến sự phát triển của m
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.4.png" alt="Hình 1.4. Sử dụng độc lập nhiều máy tính mini trong một doanh nghiệp" width="800">
 </p>
+
+
+Ngay cả những bộ phận nhỏ của doanh nghiệp cũng có cơ hội sở hữu máy tính riêng. Máy tính mini giải quyết các nhiệm vụ quản lý thiết bị công nghệ, kho bãi và các nhiệm vụ khác ở cấp độ bộ phận của doanh nghiệp. Nhờ đó, xuất hiện khái niệm phân bổ tài nguyên máy tính trên toàn doanh nghiệp. Tuy nhiên, trong tình trạng này, tất cả các máy tính của một tổ chức vẫn tiếp tục hoạt động **độc lập** (Hình 1.4).
+
+Theo thời gian, nhu cầu của người dùng đối với công nghệ tính toán tăng lên. Việc làm việc cách ly trên máy tính riêng của họ không còn đáp ứng được nhu cầu nữa; họ mong muốn được trao đổi dữ liệu một cách tự động với người dùng máy tính từ các bộ phận khác. Câu trả lời cho nhu cầu này là sự ra đời của **những mạng tính toán cục bộ đầu tiên** (Hình 1.5).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/1.5.png" alt="Hình 1.5. Các loại kết nối khác nhau trong mạng cục bộ đầu tiên" width="800">
+</p>
+
+
+**Mạng cục bộ (Local Area Network, LAN)**
+
+Mạng cục bộ là sự kết hợp của các máy tính trong một khu vực nhỏ, thường có bán kính không vượt quá 1–2 km, mặc dù trong một số trường hợp mạng cục bộ có thể lớn hơn, ví dụ như vài chục km. Thông thường, mạng cục bộ đại diện cho một hệ thống truyền thông thuộc sở hữu của một tổ chức.
+
+
+Ban đầu, để kết nối các máy tính với nhau, người ta đã sử dụng các **công nghệ mạng không chuẩn hóa**.
+
+**Công nghệ mạng** — là một tập hợp các phương tiện phần mềm và phần cứng (như trình điều khiển, card mạng, cáp và đầu nối), cũng như các cơ chế truyền dữ liệu qua các đường truyền, đủ để xây dựng một mạng tính toán.
+
+Nhiều loại thiết bị ghép nối, sử dụng các cách riêng để truyền dữ liệu trên các kênh, các loại cáp khác nhau, v.v., chỉ có thể kết nối với các kiểu máy tính cụ thể. Ví dụ, các máy PDP-11 của DEC, máy mainframe IBM 360, hoặc máy tính mini của HP với vi máy tính LSI-11. Tình trạng này tạo ra rất nhiều công việc cho sinh viên — nhiều đồ án và luận văn bắt đầu bằng cụm từ **“Thiết kế thiết bị ghép nối…”**.
+
+**Vào giữa những năm 1980**, tình hình trong mạng cục bộ đã thay đổi đáng kể. Các **công nghệ mạng chuẩn hóa** để kết nối máy tính đã được xác lập — Ethernet, Arcnet, Token Ring, và sau đó là FDDI.
+
+Một động lực mạnh mẽ cho sự xuất hiện của mạng cục bộ là sự phát triển của **máy tính cá nhân**. Những máy tính này trở thành phần tử lý tưởng để xây dựng mạng. Một mặt, chúng đủ mạnh để xử lý các phần mềm mạng, mặt khác, chúng yêu cầu sự kết nối để bù đắp thiếu sót về sức mạnh tính toán. Máy tính cá nhân không chỉ đóng vai trò như máy khách mà còn như trung tâm lưu trữ và xử lý dữ liệu, thay thế vai trò quen thuộc của các máy tính mini và mainframe.
+
+Các công nghệ mạng chuẩn hóa đã biến việc xây dựng mạng cục bộ từ một nhiệm vụ kỹ thuật phức tạp trở thành một công việc thường nhật. Để xây dựng mạng, chỉ cần có cáp tiêu chuẩn, card mạng, và phần mềm như Novell NetWare.
+
+**Vào cuối những năm 1990**, Ethernet đã khẳng định vị thế là công nghệ hàng đầu trong mạng cục bộ. Các chuẩn Ethernet bao gồm tốc độ truyền dữ liệu 10 Mbps, Fast Ethernet (100 Mbps), và Gigabit Ethernet (1000 Mbps).
+
+Thuật toán hoạt động đơn giản của Ethernet làm giảm chi phí thiết bị, và dải tốc độ rộng cho phép doanh nghiệp linh hoạt trong việc xây dựng mạng phù hợp với nhu cầu và mục tiêu của họ.
+
