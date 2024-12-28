@@ -215,3 +215,40 @@ Các công nghệ mạng chuẩn hóa đã biến việc xây dựng mạng cụ
 
 Thuật toán hoạt động đơn giản của Ethernet làm giảm chi phí thiết bị, và dải tốc độ rộng cho phép doanh nghiệp linh hoạt trong việc xây dựng mạng phù hợp với nhu cầu và mục tiêu của họ.
 
+---
+
+#### Hội tụ mạng
+##### Hội tụ giữa mạng cục bộ và mạng toàn cầu
+
+
+Vào cuối những năm 80, sự khác biệt giữa mạng cục bộ và mạng toàn cầu được thể hiện rất rõ ràng.
+
+- **Phạm vi và chất lượng đường truyền:** Mạng máy tính cục bộ về bản chất không khác nhiều so với mạng toàn cầu về khoảng cách nhỏ giữa các nút mạng. Điều này về cơ bản cho phép sử dụng các đường truyền chất lượng cao trong mạng cục bộ. Trong mạng toàn cầu những năm 80, chủ yếu sử dụng đường dây điện thoại tốc độ thấp, truyền thông tin rời rạc từ máy tính với mức méo tín hiệu tương đối cao.
+
+- **Độ phức tạp của phương pháp truyền dữ liệu:** Trong điều kiện độ tin cậy thấp của kênh vật lý trong mạng toàn cầu, các phương pháp truyền dữ liệu và thiết bị tương ứng phức tạp hơn so với mạng cục bộ.
+
+- **Tốc độ truyền dữ liệu:** Tốc độ trong mạng cục bộ (10, 16 và 100 Mbit/s) vào thời điểm đó cao hơn đáng kể so với mạng toàn cầu (2,4 Kbit/s đến 2 Mbit/s).
+
+- **Sự đa dạng dịch vụ:** Tốc độ truyền dữ liệu cao trong mạng cục bộ cho phép cung cấp một loạt các dịch vụ — trước hết, là các phương pháp khác nhau để chia sẻ tệp, truy cập vào đĩa của máy tính khác, chia sẻ thiết bị như máy in, modem, máy fax, truy cập vào cơ sở dữ liệu chung, email và nhiều dịch vụ khác. Trong khi đó, mạng toàn cầu chủ yếu chỉ cung cấp các dịch vụ thư tín và tập tin dưới dạng đơn giản (dễ sử dụng nhất cho người dùng).
+
+Dần dần, sự khác biệt giữa mạng cục bộ và mạng toàn cầu bắt đầu bị xóa nhòa. Các mạng cục bộ trước đây được cách ly bắt đầu kết nối với nhau thông qua việc sử dụng mạng toàn cầu như một môi trường liên kết. Việc tích hợp mạng cục bộ và mạng toàn cầu dẫn đến sự phát triển đáng kể trong công nghệ mạng tương ứng.
+
+Việc hội tụ trong các phương pháp truyền dữ liệu chủ yếu xảy ra do việc sử dụng các công nghệ truyền dẫn dữ liệu chung — cáp quang — và các phương pháp mã hóa dữ liệu thống nhất — mã hóa số (digital coding). Cáp quang đảm bảo truyền tải tốc độ cao trên khoảng cách xa với độ tin cậy cao. Vì vậy, các mạng không chỉ được xây dựng dựa trên nguyên lý số hóa tín hiệu mà còn kết hợp với đường truyền số hóa tốc độ cao trong mạng toàn cầu.
+
+Chất lượng cao của các kênh số đã thay đổi yêu cầu đối với các giao thức của mạng máy tính toàn cầu. Thay vì các quy trình đảm bảo độ tin cậy, các quy trình đảm bảo tốc độ truyền tải trung bình được đảm bảo đến người dùng đã trở thành ưu tiên hàng đầu, cùng với các cơ chế xử lý ưu tiên cho các gói tin đặc biệt nhạy cảm với độ trễ, chẳng hạn như thoại.
+
+Những thay đổi này đã được phản ánh trong các công nghệ mạng toàn cầu của những năm 90, như Frame Relay và ATM. Trong các công nghệ này, người ta giả định rằng việc méo tín hiệu bit xảy ra rất hiếm, đến mức các gói tin lỗi tốt hơn là bị hủy bỏ hoàn toàn, và tất cả các vấn đề liên quan đến việc mất gói tin được giao phó cho phần mềm ở cấp độ cao hơn, phần mềm này không thuộc về mạng Frame Relay và ATM.
+Dưới đây là bản dịch nội dung từ hình ảnh sang tiếng Việt:
+
+Sự đóng góp lớn vào việc hội tụ giữa mạng cục bộ và mạng toàn cầu là sự thống trị của giao thức IP. Giao thức này có thể hoạt động trên bất kỳ công nghệ mạng cục bộ và toàn cầu nào (Ethernet, MPLS, Token Ring, ATM, Frame Relay), kết hợp các phân đoạn mạng khác nhau thành một mạng hợp nhất.
+
+Bắt đầu từ những năm 90, các mạng toàn cầu dựa trên kênh số tốc độ cao đã mở rộng đáng kể phạm vi dịch vụ được cung cấp và dần dần hội tụ với mạng cục bộ. Các dịch vụ mới xuất hiện liên quan đến việc cung cấp thông tin dung lượng lớn cho người dùng trong thời gian thực – hình ảnh, video, thoại, hay nói chung là thông tin đa phương tiện. Một ví dụ điển hình là dịch vụ thông tin siêu văn bản World Wide Web (dịch vụ web), trở thành nhà cung cấp thông tin chính trên Internet. Tính tương tác của nó đã tạo cơ hội cho nhiều dịch vụ tương tự trong mạng cục bộ, buộc các nhà phát triển ứng dụng cho mạng cục bộ phải tích hợp các dịch vụ này vào mạng toàn cầu. Quá trình tích hợp công nghệ từ mạng toàn cầu Internet vào mạng cục bộ đã trở nên phổ biến đến mức xuất hiện thuật ngữ riêng - công nghệ intranet ("intra" - bên trong).
+
+Các công nghệ mạng mới đã xuất hiện, hoạt động đồng thời hiệu quả trong cả mạng cục bộ và toàn cầu. Công nghệ đầu tiên là ATM, cho phép kết hợp hiệu quả các loại lưu lượng truy cập khác nhau vào một mạng. Tuy nhiên, hệ thống mạng đa năng thực sự là công nghệ Ethernet. Sau đó, Ethernet đã được mở rộng với khả năng mới và cải tiến tốc độ, công nghệ này được gọi là Carrier Ethernet, tức là Ethernet cấp nhà mạng, và chủ yếu được sử dụng trên các tuyến mạng toàn cầu và đường trục.
+
+Kết quả là vào đầu thế kỷ XXI, việc đơn giản hóa cấu trúc mạng cục bộ và toàn cầu đã trở nên phổ biến – hầu hết các phân đoạn mạng đều hoạt động dựa trên giao thức Ethernet, được tích hợp vào mạng thông qua giao thức IP.
+
+Một dấu hiệu khác của sự hội tụ giữa mạng cục bộ và mạng toàn cầu là sự xuất hiện của các mạng nằm ở vị trí trung gian giữa hai loại mạng này, được gọi là **mạng đô thị** hoặc **mạng MAN** (Metropolitan Area Network), được thiết kế để phục vụ trên lãnh thổ của một thành phố lớn.
+
+Các mạng này sử dụng các đường truyền số, thường là cáp quang, với tốc độ trên đường trục đạt 10 Gbit/s trở lên. Chúng cung cấp giải pháp kinh tế để kết nối các mạng cục bộ với nhau cũng như kết nối ra mạng toàn cầu. Ban đầu, các mạng MAN chỉ được thiết kế để truyền dữ liệu, nhưng hiện nay danh mục dịch vụ mà chúng cung cấp đã được mở rộng đáng kể. Đặc biệt, chúng hỗ trợ hội nghị truyền hình và truyền tải tích hợp dữ liệu thoại và văn bản. Các mạng MAN hiện đại nổi bật với sự đa dạng của các dịch vụ được cung cấp, cho phép khách hàng của chúng kết hợp các thiết bị liên lạc khác nhau, bao gồm cả tổng đài điện thoại văn phòng (ATC).
+
