@@ -1471,3 +1471,130 @@ Tuy nhiên, thời gian này khó tính chính xác do tính không xác định
 $$
 T_{PS} = T_1 + (n - 1) \cdot (t_1 + t_5).
 $$
+
+---
+
+##### 3.3.3 So sánh định lượng về độ trễ. Ví dụ
+
+Để minh họa, chúng ta giải bài toán so sánh tốc độ hoạt động của mạng **chuyển mạch kênh (circuit switching)** và **chuyển mạch gói (packet switching)** thông qua một ví dụ cụ thể, với các giả định về dữ liệu đầu vào cần thiết. Giả sử, chúng ta biết các thông tin sau:
+
+- Dung lượng $$ V $$ của tin nhắn, được truyền trong cả hai loại mạng, là $$ 10^7 $$ byte.
+- Nút gửi $$ N1 $$ cách nút nhận $$ N2 $$ một khoảng cách $$ L = 5000 $$ km.
+- Tốc độ lan truyền tín hiệu $$ S $$ là $$ 200 \,000 \, \text{km/s} $$ (tương đương $$ 2/3 $$ tốc độ ánh sáng).
+- Băng thông của kênh truyền $$ C $$ là $$ 100 \, \text{Mbit/s}. $$
+
+Thời gian truyền dữ liệu qua mạng **chuyển mạch kênh (circuit switching network)** bao gồm thời gian lan truyền tín hiệu và thời gian truyền tin nhắn trong kênh. Giả sử rằng kênh là cố định, nghĩa là nó đã được chuyển mạch, do đó thời gian thiết lập kết nối bằng 0.
+
+- **Thời gian lan truyền tín hiệu (signal propagation time)** cho khoảng cách 5000 km có thể ước tính khoảng 25 ms:
+  $$
+  5000 \, \text{km} / 200\,000 \, \text{km/s} = 0,025 \, \text{s}.
+  $$
+
+- **Thời gian truyền tin nhắn trong kênh (message transmission time)** với băng thông 100 Mbit/s và kích thước tin nhắn 10 triệu byte là:
+  $$
+  (10^7 \times 8 \, \text{bit}) / (10^8 \, \text{bit/s}) = 8 \times 10^{-1} = 0,8 \, \text{s} = 800 \, \text{ms}.
+  $$
+
+Do đó, **thời gian truyền toàn bộ dữ liệu đến thuê bao $$ N2 $$ trong mạng chuyển mạch kênh là 825 ms.**
+
+Bây giờ chúng ta tính thời gian truyền dữ liệu với dung lượng $$10^7$$ byte trong mạng **chuyển mạch gói (packet switching)**, giả sử rằng:
+
+- **Băng thông của đường truyền** có cùng giá trị là 100 Mbit/s.
+- **Số lượng bộ chuyển mạch trung gian** ($$S1 - S10$$) là mười.
+- Tin nhắn ban đầu được chia thành các gói $$10^3$$ byte với tiêu đề 40 byte.
+- **Khoảng thời gian ($$t_1$$)** giữa tất cả các gói là như nhau và bằng 100 µs.
+- **Thời gian chuyển mạch ($$t_7$$)** trên mỗi bộ chuyển mạch là như nhau và bằng 50 µs.
+
+$$
+T_{N1-S1} = 100 \, \text{µs} + t_4^{(1)} + 83 \, \text{µs} + 50 \, \text{µs} = 233 \, \text{µs} + t_4^{(1)}.
+$$
+
+Thời gian $$T_{S1-S2}$$ truyền gói đầu tiên từ bộ chuyển mạch $$S1$$ đến bộ chuyển mạch $$S2$$ khác với việc không có thành phần $$t_1 = 100 \, \text{µs}$$ (gói đã được hình thành) và với thành phần $$t_4$$ phụ thuộc vào khoảng cách $$L_2$$ giữa bộ chuyển mạch $$S1$$ và $$S2$$. Điều này được ký hiệu là $$t_4^{(2)}$$.
+
+Với điều này, chúng ta có:
+$$
+T_{S1-S2} = 133 \, \text{µs} + t_4^{(2)}.
+$$
+
+Tương tự, thời gian truyền dữ liệu giữa mỗi cặp bộ chuyển mạch liền kề có thể được biểu diễn như sau:
+$$
+T_{Si-Si+1} = 133 \, \text{µs} + t_4^{(i+1)},
+$$
+với $$i$$ thay đổi từ 1 đến 10.
+
+Thời gian $$T_{S10-N2}$$ truyền gói từ bộ chuyển mạch $$S10$$ đến nút cuối $$N2$$ khác với việc không có thành phần $$t_7 = 50 \, \text{µs}$$ (tại nút cuối không có hoạt động chuyển mạch) và với thành phần $$t_4^{(11)}$$, phụ thuộc vào khoảng cách $$L_{11}$$ giữa bộ chuyển mạch $$S10$$ và nút $$N2$$.
+
+Do đó:
+$$
+T_{S10-N2} = 83 \, \text{µs} + t_4^{(11)}.
+$$
+
+Bây giờ, chúng ta tìm thời gian tổng $$T_1$$ để truyền gói đầu tiên từ nút $$N1$$ đến nút $$N2$$:
+$$
+T_1 = T_{N1-S1} + T_{S1-S2} + \ldots + T_{S10-N2} = 233 \, \text{µs} + (133 \, \text{µs} \times 9) + 83 \, \text{µs} + \sum t_4^{(i)},
+$$
+với:
+$$
+\sum t_4^{(i)} = (\sum L_i) / S,
+$$
+với $$i$$ thay đổi từ 1 đến 11. Tổng khoảng cách giữa các nút liền kề và các bộ chuyển mạch bằng khoảng cách $$L$$ giữa nguồn và đích, tức là 5000 km, và mạng có cùng tốc độ. Do đó, thời gian truyền đầy đủ của gói đầu tiên là:
+$$
+T_1 = 0,001513 \, \text{s} + (5000 \, \text{km}) / (200 \,000 \, \text{km/s}) = 0,001513 \, \text{s} + 0,025 \, \text{s} = 0,026513 \, \text{s}.
+$$
+
+
+Mỗi gói tiếp theo sẽ đến sau khoảng thời gian 100 µs và tốn thêm 83 µs để lưu trữ vào bộ đệm. Do đó, thời gian truyền tin nhắn, bao gồm 10.000 gói, có thể được ước tính như sau:
+
+$$
+T_{PS} = T_1 + (10\,000 - 1) \cdot (t_1 + t_5) = 0,026513 + 9999 \cdot (0,0001 + 0,000083) = 0,026513 + 9999 \cdot 0,000183 = 0,026513 + 1,829817 = 1,85633 \, \text{s} = 1856 \, \text{ms}.
+$$
+
+> **Như vậy**, việc truyền dữ liệu trong các điều kiện đã nêu qua mạng **chuyển mạch gói** mất 1856 ms, lâu hơn 1031 ms so với mạng **chuyển mạch kênh**, nơi quá trình truyền tương tự chỉ mất 825 ms.
+
+#### 3.4 Ethernet – một ví dụ về công nghệ tiêu chuẩn với chuyển mạch gói
+
+Hãy xem cách các khái niệm đã được mô tả trước đó được triển khai trong một trong những công nghệ mạng tiêu chuẩn đầu tiên – công nghệ **Ethernet**, hoạt động với tốc độ bit 10 Mbit/s. Trong phần này, chúng ta chỉ đề cập đến các nguyên tắc cơ bản nhất của hoạt động Ethernet (mô tả chi tiết về công nghệ Ethernet được trình bày trong Phần III của cuốn sách này).
+
+- **Tô-pô (Topology):** Có hai phiên bản công nghệ Ethernet:
+  - Ethernet với môi trường chia sẻ;
+  - Ethernet chuyển mạch (switched Ethernet).
+
+Trong trường hợp đầu tiên, tất cả các nút mạng chia sẻ một môi trường chung để truyền dữ liệu, tức là mạng được xây dựng theo tô-pô dạng bus. Hình 3.15 minh họa phiên bản tô-pô đơn giản nhất – tất cả các máy tính trong mạng được kết nối với một môi trường chia sẻ, bao gồm một đoạn cáp đồng trục duy nhất, trong trường hợp này là một kênh truyền bán song công (half-duplex).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.15.png" alt="Hình 3.15. Mạng Ethernet trên môi trường chia sẻ" width="900">
+</p>
+<p align="center"><b>Hình 3.15. Mạng Ethernet trên môi trường chia sẻ</b></p>
+
+
+Trong trường hợp mạng **Ethernet** không sử dụng môi trường chia sẻ, mà được xây dựng trên các bộ chuyển mạch (switches), được kết nối bằng các kênh truyền song công (full-duplex communication channels), thì được gọi là **Ethernet chuyển mạch (switched Ethernet)**. Tô-pô (topology) trong trường hợp này là một tô-pô cây (tree topology), tức là một cấu trúc mà giữa hai nút bất kỳ trong mạng chỉ tồn tại duy nhất một đường kết nối. Ví dụ về tô-pô của mạng **Ethernet chuyển mạch** được minh họa trong Hình 3.16.
+
+Các hạn chế về tô-pô (topological restrictions) (chỉ cho phép cấu trúc dạng cây của các kết nối bộ chuyển mạch) liên quan đến cách xây dựng bảng định tuyến (forwarding tables) của các bộ chuyển mạch Ethernet.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.16.png" alt="Hình 3.16. Topology cây của mạng Ethernet chuyển mạch" width="900">
+</p>
+<p align="center"><b>Hình 3.16. Topology cây của mạng Ethernet chuyển mạch</b></p>
+
+- **Phương pháp chuyển mạch (Switching method):** Trong công nghệ **Ethernet**, sử dụng **chuyển mạch kiểu datagram (datagram switching)**. Đơn vị dữ liệu mà các máy tính trao đổi trong mạng **Ethernet** được gọi là **khung (frame)**. Khung có định dạng cố định và, cùng với trường dữ liệu, chứa thông tin dịch vụ khác nhau. Trong trường hợp mạng **Ethernet** được xây dựng dựa trên các bộ chuyển mạch, mỗi bộ chuyển mạch sẽ chuyển tiếp các khung tuân thủ các nguyên tắc của chuyển mạch gói, như đã được mô tả trước đó. 
+
+  Nhưng trong trường hợp mạng **Ethernet** một phân đoạn với môi trường chia sẻ, câu hỏi đặt ra là: việc chuyển mạch được thực hiện ở đâu? Có tồn tại một "bộ chuyển mạch" nào, là thành phần chính của bất kỳ mạng chuyển mạch gói nào? Hay liệu **Ethernet** duy trì một loại chuyển mạch đặc biệt? Thực tế, "bộ chuyển mạch" trong mạng **Ethernet** một phân đoạn không hiện diện như một thực thể cụ thể, bởi vì các chức năng của nó được phân tán khắp mạng giữa các **bộ điều hợp mạng (network adapters)** của máy tính và bản thân môi trường chia sẻ tín hiệu. 
+
+  Các giao diện của bộ chuyển mạch "ảo" này là các bộ điều hợp mạng, và chức năng của khối chuyển mạch – truyền các khung giữa các giao diện – được thực hiện bởi môi trường chia sẻ. Các bộ điều hợp đảm nhận một phần các chức năng của khối chuyển mạch: chính chúng quyết định khung nào được gửi đến máy tính nào và khung nào thì không.
+
+- **Định địa chỉ (Addressing):** Mỗi máy tính, hoặc chính xác hơn, mỗi bộ điều hợp mạng (network adapter), có một địa chỉ phần cứng duy nhất, được gọi là **địa chỉ MAC (MAC address)**, như đã đề cập trong Chương 2. Địa chỉ **Ethernet** là địa chỉ số phẳng. Các địa chỉ hỗ trợ cả truyền thông cá nhân (individual), quảng bá (broadcast), và nhóm (multicast).
+
+- **Phân chia môi trường và đa kênh (Multiplexing):** Trong mạng **Ethernet** với bộ chuyển mạch, mỗi kênh là một kênh truyền song công (full-duplex channel), nhờ đó loại bỏ vấn đề chia sẻ môi trường giữa các giao diện của các nút. Bộ phát Ethernet của bộ chuyển mạch sử dụng các kênh truyền này để hỗ trợ các luồng khung đa kênh từ các nút khác nhau.
+
+Trong trường hợp mạng **Ethernet** sử dụng môi trường chia sẻ, các nút cuối áp dụng một phương pháp truy cập đặc biệt nhằm đồng bộ hóa việc sử dụng kênh truyền bán song công (half-duplex channel) duy nhất, liên kết tất cả các máy tính trong mạng. Trong mạng **Ethernet** với môi trường chia sẻ, không có trọng tài duy nhất; thay vào đó, tất cả các nút sử dụng một phương pháp truy cập ngẫu nhiên phân tán (distributed random access method).
+
+Các luồng thông tin từ các nút cuối của mạng **Ethernet** được **đa kênh hóa (multiplexed)** trên kênh truyền duy nhất trong chế độ phân chia thời gian (time-division). Điều này có nghĩa là các khung (frames) từ các luồng khác nhau được cấp quyền truy cập kênh theo thứ tự lần lượt. 
+
+Để nhấn mạnh sự khác biệt không phải lúc nào cũng rõ ràng giữa các khái niệm **đa kênh hóa (multiplexing)** và **phân chia môi trường (media sharing)**, hãy xem xét một tình huống khi trong toàn bộ mạng **Ethernet**, chỉ một máy tính cần truyền dữ liệu, và dữ liệu này thuộc nhiều ứng dụng khác nhau. Trong trường hợp này, vấn đề phân chia môi trường giữa các giao diện mạng không xuất hiện, nhưng bài toán truyền nhiều luồng thông tin qua cùng một kênh truyền (tức là **đa kênh hóa**) vẫn tồn tại.
+
+- **Mã hóa (Coding):** Các bộ điều hợp Ethernet hoạt động ở tần số xung nhịp 20 MHz, truyền vào môi trường các xung hình chữ nhật, tương ứng với các bit 1 và 0 từ dữ liệu của máy tính. Khi việc truyền khung (frame) bắt đầu, tất cả các bit được truyền vào mạng với tốc độ cố định là 10 Mbit/s (mỗi bit được truyền trong hai chu kỳ xung nhịp). Tốc độ này xác định băng thông (bandwidth) của kênh trong mạng Ethernet.
+
+- **Độ tin cậy (Reliability):** Để cải thiện độ tin cậy của việc truyền dữ liệu trong Ethernet, một phương pháp tiêu chuẩn được sử dụng – tính **tổng kiểm tra (checksum)** và truyền nó ở cuối mỗi khung. Nếu bộ điều hợp nhận tính lại tổng kiểm tra và phát hiện lỗi trong dữ liệu của khung, khung đó sẽ bị loại bỏ. Việc truyền lại khung không được thực hiện ở cấp độ giao thức Ethernet – nhiệm vụ này phải được giải quyết bằng các phương tiện ở cấp độ giao thức cao hơn, chẳng hạn như **giao thức TCP (Transmission Control Protocol)** trong mạng TCP/IP.
+
+- **Hàng đợi (Queues):** Trong các khoảng thời gian khi môi trường bị chiếm dụng bởi việc truyền khung từ các bộ điều hợp mạng khác, dữ liệu từ các ứng dụng (tải trọng đề xuất) vẫn tiếp tục đến bộ điều hợp mạng. Vì vậy, chúng không thể được truyền ngay lập tức, mà sẽ được lưu trữ trong bộ đệm nội bộ của bộ điều hợp Ethernet, tạo thành hàng đợi. Do đó, trong Ethernet, cũng như trong tất cả các mạng chuyển mạch gói, tồn tại các độ trễ biến đổi trong việc truyền khung.
+
