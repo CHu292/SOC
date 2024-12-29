@@ -1178,3 +1178,68 @@ Ví dụ, khi nói chuyện qua điện thoại, mọi người thường thay �
 Hiệu suất của mạng chuyển mạch kênh giảm mạnh hơn khi truyền tải cái gọi là **lưu lượng máy tính (computer traffic)**, tức là lưu lượng được tạo ra bởi các ứng dụng mà người dùng máy tính đang sử dụng. Loại lưu lượng này hầu như luôn mang tính xung nhịp. Ví dụ, khi bạn tải một trang web từ Internet, tốc độ lưu lượng tăng đột ngột, nhưng sau khi tải xong, lưu lượng giảm xuống gần như bằng không. Nếu trong phiên truy cập Internet đó bạn sử dụng mạng chuyển mạch kênh, phần lớn thời gian kênh ghép giữa máy tính của bạn và máy chủ web sẽ không được sử dụng. Đồng thời, một phần băng thông của mạng sẽ bị giữ cố định cho bạn và không thể được sử dụng bởi những người dùng khác. Mạng trong các trường hợp này giống như thang cuốn trống rỗng trong tàu điện ngầm, vẫn hoạt động nhưng không có tác dụng.
 
 Để truyền tải hiệu quả lưu lượng máy tính không đều, công nghệ **chuyển mạch gói (packet switching)** đã được phát triển đặc biệt.
+
+
+#### 3.2 Chuyển mạch gói (Packet Switching)
+
+Các mạng với công nghệ chuyển mạch gói (packet switching), giống như các mạng chuyển mạch kênh (channel switching), được tạo thành từ các bộ chuyển mạch (switch) được kết nối với nhau qua các đường truyền vật lý. Tuy nhiên, việc truyền dữ liệu trong các mạng này hoàn toàn khác biệt. Nói một cách đơn giản, so với mạng chuyển mạch kênh, mạng chuyển mạch gói hoạt động “ít trách nhiệm” hơn. Ví dụ, mạng có thể nhận dữ liệu để truyền mà không cần phải đặt trước các đường truyền trên tuyến đường của dữ liệu và không cấu hình trước băng thông yêu cầu. Mạng chuyển mạch gói không tạo các kênh liên lạc riêng biệt cho các thuê bao. Dữ liệu có thể bị trễ hoặc thậm chí bị mất trên đường truyền. Vậy làm thế nào mà với sự hỗn loạn và không chắc chắn như vậy, mạng chuyển mạch gói vẫn thực hiện chức năng truyền dữ liệu của mình?
+
+> **Nguyên tắc quan trọng nhất trong hoạt động của các mạng chuyển mạch gói là việc biểu diễn thông tin được truyền qua mạng dưới dạng các phần dữ liệu riêng lẻ có cấu trúc, được gọi là các gói (packets).**
+
+Mỗi gói có một phần **tiêu đề (header)** (Hình 3.5), trong đó chứa địa chỉ đích và các thông tin bổ sung khác (độ dài của trường dữ liệu, tổng kiểm tra (checksum), v.v.). Việc có địa chỉ trong mỗi gói là một trong những đặc điểm quan trọng nhất của công nghệ chuyển mạch gói, vì mỗi gói có thể được xử lý bởi bộ chuyển mạch một cách độc lập với các gói khác trong luồng mạng. Ngoài tiêu đề, mỗi gói còn có một trường bổ sung được đặt ở cuối gói, được gọi là **đoạn kết (trailer)**. Trong đoạn kết thường chứa một tổng kiểm tra (checksum), cho phép kiểm tra xem thông tin có bị sai lệch trong quá trình truyền hay không.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.5.png" alt="Hình 3.5. Phân chia dữ liệu thành các gói tin" width="900">
+</p>
+<p align="center"><b>Hình 3.5. Phân chia dữ liệu thành các gói tin</b></p>
+
+Tùy thuộc vào việc triển khai cụ thể công nghệ chuyển mạch gói (packet switching), các gói có thể có độ dài cố định hoặc biến đổi. Ngoài ra, thành phần thông tin trong tiêu đề của các gói cũng có thể khác nhau. Ví dụ, trong công nghệ ATM, các gói (gọi là "ô" - cells) có độ dài cố định, trong khi đó, trong công nghệ Ethernet, chỉ quy định độ dài tối thiểu và tối đa của các gói (khung - frames).
+
+Các gói được gửi vào mạng với tốc độ do nguồn (source) sinh ra. Người ta giả định rằng mạng chuyển mạch gói, không giống như mạng chuyển mạch kênh (channel switching network), luôn sẵn sàng nhận gói tại nút cuối (end node).
+
+Cũng như trong các mạng chuyển mạch kênh, trong các mạng chuyển mạch gói, tuyến đường (route) cho từng luồng dữ liệu được xác định thủ công hoặc tự động bằng các bảng chuyển mạch (switching tables) lưu trong các bộ chuyển mạch (switches). Các gói khi đến bộ chuyển mạch được xử lý và định tuyến theo tuyến đường này dựa trên thông tin trong tiêu đề của chúng, cũng như trong bảng chuyển mạch (Hình 3.6).
+
+Các gói thuộc cùng một hoặc các luồng thông tin khác nhau, khi di chuyển trong mạng, có thể "chen lấn" lẫn nhau, tạo thành hàng đợi (queues) và làm "chậm" nhau. Trên đường đi, các gói có thể gặp các đường truyền có băng thông khác nhau. Tùy thuộc vào thời gian, tốc độ của mạng có thể thay đổi đáng kể theo mức độ sử dụng và độ tải của các đường truyền. Trong các trường hợp như vậy, không loại trừ tình huống các gói, thuộc cùng một luồng dữ liệu, có thể di chuyển với các tốc độ khác nhau và thậm chí đến điểm đích không theo thứ tự ban đầu.
+
+Việc chia dữ liệu thành các gói (packets) cho phép truyền tải lưu lượng máy tính không đều một cách hiệu quả hơn so với các mạng chuyển mạch kênh (channel switching networks). Điều này được giải thích bởi sự xung nhịp (pulsation) của lưu lượng từ các máy tính riêng lẻ mang tính ngẫu nhiên và được phân bổ theo thời gian, làm cho các đỉnh của chúng hiếm khi trùng nhau. Vì vậy, khi một đường truyền chuyển tiếp lưu lượng của nhiều nút cuối (end nodes), các xung nhịp trong luồng tổng hợp trở nên mượt mà hơn và băng thông của đường truyền được sử dụng hợp lý hơn, không có tình trạng chờ đợi kéo dài.
+
+Ví dụ, trong Hình 3.7, các luồng gói không đồng đều từ các nút cuối 3, 4 và 10 trong mạng được hiển thị ở Hình 3.6. Giả sử rằng các luồng này được truyền theo hướng đến bộ chuyển mạch (switch) số 8 và do đó chồng chéo lên nhau khi đi qua đường truyền giữa các bộ chuyển mạch số 5 và số 8. Kết quả là luồng tổng hợp thu được trở nên đều đặn hơn so với từng luồng riêng lẻ hình thành nên nó.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.6.png" alt="Hình 3.6. Truyền dữ liệu qua mạng dưới dạng các gói tin" width="900">
+</p>
+<p align="center"><b>Hình 3.6. Truyền dữ liệu qua mạng dưới dạng các gói tin</b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.7.png" alt="Hình 3.7. Làm mượt lưu lượng trong các mạng chuyển mạch gói tin" width="900">
+</p>
+<p align="center"><b>Hình 3.7. Làm mượt lưu lượng trong các mạng chuyển mạch gói tin</b></p>
+
+
+##### 3.2.1 Bộ đệm gói (Packet Buffering)
+
+Tính không xác định và tính không đồng bộ trong việc di chuyển dữ liệu qua mạng chuyển mạch gói (packet switching networks) đặt ra các yêu cầu đặc biệt đối với hoạt động của các bộ chuyển mạch (switches) trong mạng này.
+
+> **Sự khác biệt chính giữa các bộ chuyển mạch gói (packet switches)** với các bộ chuyển mạch trong mạng chuyển mạch kênh là chúng có bộ nhớ đệm nội bộ (internal buffer memory) để lưu trữ tạm thời các gói.
+
+Thực sự, một bộ chuyển mạch gói không thể quyết định việc chuyển tiếp một gói mà không lưu trữ toàn bộ gói trong bộ nhớ. Bộ chuyển mạch kiểm tra **tổng kiểm tra (checksum)**; nếu nó cho thấy dữ liệu gói không bị lỗi, bộ chuyển mạch sẽ bắt đầu xử lý gói, xác định bộ chuyển mạch tiếp theo dựa trên địa chỉ đích. Do đó, **mỗi gói** được đặt lần lượt, từng bit một, vào **bộ đệm đầu vào (input buffer)**. Lưu ý rằng, với đặc điểm này, các mạng chuyển mạch gói sử dụng kỹ thuật **lưu trữ và chuyển tiếp (store-and-forward)**. Để thực hiện kỹ thuật này, bộ chuyển mạch chỉ cần có một bộ đệm có kích thước tương đương với một gói dữ liệu.
+
+Tuy nhiên, các bộ đệm cũng cần thiết cho những mục đích khác, đặc biệt là **điều chỉnh tốc độ truyền tải dữ liệu trên các đường truyền (data transmission lines)** được kết nối với giao diện của bộ chuyển mạch. Thật vậy, nếu tốc độ dòng gói trên một đường truyền trong một khoảng thời gian nào đó vượt quá khả năng truyền tải của đường truyền mà gói cần đến, thì để tránh mất mát gói trên giao diện đích, cần tổ chức một **hàng đợi đầu ra (output queue)** (Hình 3.8).
+
+Bộ đệm hóa (buffering) là cần thiết để điều chỉnh tốc độ xử lý của các gói trong bộ chuyển mạch. Nếu khối xử lý của bộ chuyển mạch không kịp xử lý các gói (phân tích tiêu đề và chuyển hướng gói đến giao diện đích), **hàng đợi đầu vào (input queues)** sẽ hình thành ở các giao diện của bộ chuyển mạch. Rõ ràng là để lưu trữ hàng đợi đầu vào, bộ đệm cần có kích thước ít nhất bằng một gói dữ liệu.
+
+Có nhiều cách tiếp cận khác nhau để xây dựng khối xử lý trong bộ chuyển mạch. Cách tiếp cận truyền thống dựa trên một bộ xử lý trung tâm duy nhất (central processor), bộ xử lý này phục vụ tất cả các hàng đợi đầu vào của bộ chuyển mạch, điều này có thể dẫn đến các hàng đợi lớn, vì hiệu suất xử lý giảm khi phải chia sẻ tài nguyên giữa nhiều giao diện. Các phương pháp hiện đại sử dụng cách tiếp cận đa xử lý (multiprocessing approach), trong đó mỗi giao diện có bộ xử lý riêng để xử lý các gói. Ngoài ra, có một bộ xử lý điều phối (coordinating processor), giúp tăng hiệu suất của bộ chuyển mạch và giảm tải cho các giao diện. Tuy nhiên, các hàng đợi vẫn có thể xuất hiện, vì bộ xử lý trung tâm phải đảm bảo sự đồng bộ hóa của tất cả các quá trình. Các vấn đề cụ thể hơn liên quan đến kiến trúc bộ đệm nội bộ sẽ được xem xét trong chương 11.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.8.png" alt="Hình 3.8. Bộ đệm và hàng đợi gói trong bộ chuyển mạch" width="900">
+</p>
+<p align="center"><b>Hình 3.8. Bộ đệm và hàng đợi gói trong bộ chuyển mạch</b></p>
+
+Do dung lượng bộ đệm (buffer) trong các bộ chuyển mạch (switch) bị giới hạn, đôi khi xảy ra hiện tượng **mất gói (packet loss)** do tràn bộ đệm khi một phần của mạng bị quá tải tạm thời, ví dụ như khi các giai đoạn xung nhịp của một số luồng thông tin trùng nhau. Để bù đắp cho những tổn thất như vậy, công nghệ chuyển mạch gói (packet switching) đã dự trù một số cơ chế đặc biệt, sẽ được xem xét chi tiết sau.
+
+Bộ chuyển mạch gói có thể hoạt động dựa trên một trong ba phương pháp chuyển tiếp gói sau:
+
+- **Chuyển tiếp dạng datagram (datagram-based forwarding);**
+- **Chuyển tiếp với thiết lập kết nối logic (logical connection establishment);**
+- **Chuyển tiếp với thiết lập kênh ảo (virtual channel establishment).**
+
