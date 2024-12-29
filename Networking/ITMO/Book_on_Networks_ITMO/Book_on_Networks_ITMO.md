@@ -305,7 +305,7 @@ Số lượng thiết bị đầu cuối thực hiện chức năng của máy c
 
 Sự bùng nổ tuyệt đối được ghi nhận trong tăng trưởng khối lượng lưu lượng (số byte được truyền qua các tuyến chính của Internet trong một tháng):
 
-- **1990** – 1 TB (1 terabyte = \(10^{12}\) byte, hoặc 1.000 gigabyte);
+- **1990** – 1 TB (1 terabyte = $$10^{12}$$ byte, hoặc 1.000 gigabyte);
 - **1996** – 2.000 TB;
 - **2000** – 84 PB (1 petabyte = 1.000 terabyte);
 - **2008** – 10 EB (1 exabyte = 1.000 petabyte);
