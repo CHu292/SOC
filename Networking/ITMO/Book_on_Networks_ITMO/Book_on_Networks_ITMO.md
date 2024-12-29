@@ -994,3 +994,187 @@ Thông tin về các tuyến đường đã chọn được biểu diễn trong 
 Mỗi bưu cục hoạt động như một bộ chuyển mạch. Các bưu gửi đến từ người gửi hoặc các bưu cục khác được phân loại (classified) thành các luồng (flows). Sau đó, các bưu gửi thuộc về một luồng cụ thể được đóng gói vào bao, được đánh dấu với bưu cục đích tiếp theo theo bảng định tuyến và gửi đi.
 
 ---
+
+<h3 id="chuong-3-chuyen-mach-kenh-va-chuyen-mach-goi">CHƯƠNG 3: Chuyển mạch kênh và chuyển mạch gói (Channel Switching and Packet Switching)</h3>
+
+
+Trong số rất nhiều phương pháp tiếp cận để giải quyết bài toán chuyển mạch thuê bao (subscriber switching) trong mạng, có hai phương pháp cơ bản được xác định — chuyển mạch kênh (channel switching) và chuyển mạch gói (packet switching).
+
+Mỗi phương pháp trong hai phương pháp này đều có ưu và nhược điểm riêng. Khi sử dụng chuyển mạch gói (packet switching), các đặc điểm của lưu lượng máy tính (computer traffic) được tính đến, do đó phương pháp này hiệu quả hơn đối với các mạng máy tính so với phương pháp chuyển mạch kênh truyền thống (traditional channel switching), vốn được sử dụng trong mạng điện thoại (telephony networks).
+
+Chuyển mạch gói đang cố gắng thay thế chuyển mạch kênh trong các lĩnh vực truyền thống của nó, chẳng hạn như điện thoại (internet telephony hoặc IP telephony), nhưng cuộc tranh luận này vẫn chưa được giải quyết, và rất có thể, cả hai kỹ thuật chuyển mạch sẽ tiếp tục tồn tại song song trong một thời gian dài, bổ sung cho nhau.
+
+---
+
+#### 3.1 Chuyển mạch kênh (Channel Switching)
+
+Về mặt lịch sử, chuyển mạch kênh xuất hiện sớm hơn nhiều so với chuyển mạch gói và có nguồn gốc từ các mạng điện thoại đầu tiên.
+
+Các mạng được xây dựng dựa trên nguyên tắc chuyển mạch kênh có lịch sử phong phú, và ngay cả ngày nay, chúng vẫn được sử dụng rộng rãi trong thế giới viễn thông (telecommunications), đóng vai trò là nền tảng của các mạng sơ cấp (primary networks), cho phép tạo ra các kênh truyền tải trục chính (high-speed backbone channels). Các phiên kết nối đầu tiên giữa các máy tính được thực hiện thông qua mạng điện thoại, nghĩa là cũng áp dụng công nghệ chuyển mạch kênh. Người dùng, những người truy cập Internet qua modem, vẫn tiếp tục sử dụng các mạng này, vì dữ liệu của họ được truyền đến thiết bị của nhà cung cấp qua mạng điện thoại cục bộ.
+
+Mạng với chuyển mạch kênh bao gồm nhiều bộ chuyển mạch (switches) và các nút cuối (end nodes) — các thuê bao (subscribers), được kết nối với nhau thông qua các đường truyền (links) hoặc các liên kết (network segments). Lưu ý rằng trong ngữ cảnh này, thuật ngữ **"đường truyền (link)"** được sử dụng để chỉ các kết nối giữa hai nút liền kề của mạng.
+
+Trong mạng chuyển mạch kênh, các nhiệm vụ riêng lẻ của chuyển mạch, đã được trình bày trước đó, được giải quyết. Ví dụ, trong vai trò của các luồng thông tin (information flows) trong mạng chuyển mạch kênh là các cặp thuê bao. Thời gian tồn tại của một luồng thông tin nằm trong phạm vi của một **phiên kết nối thuê bao (subscriber communication session)**. Đặc điểm toàn cầu của luồng là cặp địa chỉ (address pairs) của các thuê bao, xác định rõ ràng các nút kết nối.
+
+Đối với tất cả các luồng có thể, các tuyến đường (routes) được xác định trước. Trong các mạng chuyển mạch kênh (channel switching networks), các tuyến đường được thiết lập thủ công (manually) bởi quản trị viên mạng (network administrator) hoặc được tìm thấy tự động (automatically) bằng cách sử dụng các công cụ phần mềm và phần cứng đặc biệt. 
+
+Các tuyến đường được ghi lại trong các bảng chuyển mạch (switching tables), trong đó các đặc điểm của luồng (flow attributes) được liên kết với các bộ định danh của giao diện đầu ra (output interface identifiers) của bộ chuyển mạch (switch). Dựa trên các bảng này, dữ liệu được chuyển tiếp (forwarding) và ghép kênh (multiplexing) được thực hiện. Tuy nhiên, như đã đề cập trước đó, trong các mạng chuyển mạch kênh, việc giải quyết tất cả các nhiệm vụ này có các đặc điểm riêng.
+
+---
+
+##### 3.1.1 Kênh cơ bản (Elementary Channel)
+
+Một trong những đặc điểm của mạng chuyển mạch kênh (channel switching networks) là việc sử dụng khái niệm **kênh cơ bản (elementary channel)**.
+
+**Kênh cơ bản** là một đặc tính kỹ thuật cơ bản của mạng chuyển mạch kênh, đại diện cho một giá trị băng thông (bandwidth) cố định trong phạm vi của loại mạng cụ thể. Mỗi đường truyền (link) trong mạng chuyển mạch kênh có băng thông là bội số của kênh cơ bản, được chấp nhận đối với loại mạng này.
+
+Trong các phần trước, chúng ta đã sử dụng thuật ngữ "kênh" như một cách tương tự với thuật ngữ "đường truyền (link)." Khi nói đến mạng chuyển mạch kênh, thuật ngữ "kênh" được gán ý nghĩa là **đơn vị băng thông (bandwidth unit)**.
+
+Giá trị số của kênh cơ bản, hay nói cách khác, đơn vị tối thiểu của băng thông của một đường truyền, được chọn dựa trên các yếu tố khác nhau. Rõ ràng là không nên chọn giá trị kênh cơ bản nhỏ hơn băng thông tối thiểu cần thiết để truyền tải lưu lượng mong đợi. Ví dụ, trong mạng điện thoại hiện đại, giá trị phổ biến nhất của kênh cơ bản là tốc độ 64 Kbit/s — đây là tốc độ tối thiểu cần thiết để đảm bảo truyền giọng nói số chất lượng cao.
+
+Các đường truyền trong mạng chuyển mạch kênh (và trong các loại mạng máy tính khác) có băng thông khác nhau, một số lớn hơn, một số nhỏ hơn. Khi chọn đường truyền với các đặc điểm băng thông khác nhau để kết nối mạng, các chuyên gia thiết kế mạng cố gắng tính đến cường độ khác nhau của các luồng thông tin (information flows), thường phát sinh ở các đoạn mạng khác nhau: càng gần trung tâm mạng, lưu lượng càng lớn, do đó các đường truyền chính (backbone links) phải tổng hợp lưu lượng của một lượng lớn các đường truyền ngoại vi (peripheral links).
+
+**Một đặc điểm của mạng chuyển mạch kênh là băng thông của mỗi đường truyền phải là bội số của số nguyên kênh cơ bản.**
+
+Do đó, các đường truyền kết nối thuê bao trong mạng điện thoại có thể chứa 2, 24, hoặc 30 kênh cơ bản; một đường truyền kết nối các bộ chuyển mạch có thể chứa 480 hoặc 1920 kênh cơ bản.
+
+Như được suy ra từ định nghĩa, **kênh cơ bản (elementary channel)** đại diện cho một phần băng thông (bandwidth) của đường truyền (communication line). Trong các công nghệ khác nhau, việc phân chia băng thông được thực hiện theo các cách khác nhau. 
+
+Trong một số trường hợp, chẳng hạn như trong công nghệ **OTN (Optical Transport Network)**, việc phân chia được thực hiện theo thời gian (time-division), và kênh cơ bản là băng thông tương ứng với một khe thời gian (time slot), trong đó đường truyền được cấp riêng biệt cho một luồng cụ thể.
+
+Trong các công nghệ khác (ví dụ, **DWDM - Dense Wavelength Division Multiplexing**), các kênh cơ bản được xác định như là các dải tần số (frequency ranges), có thể được gán cho các luồng cụ thể. 
+
+Việc nhận dạng (identification) các kênh cơ bản cũng được thực hiện khác nhau tùy thuộc vào công nghệ. Ở giai đoạn này, chúng ta giả định rằng số hiệu kênh (channel number) được sử dụng làm định danh.
+
+---
+
+**Số hóa giọng nói (Voice Digitization)**
+
+Nhiệm vụ số hóa giọng nói là một trường hợp cụ thể của vấn đề chung hơn — **truyền thông tin analog dưới dạng rời rạc (discrete form)**. Vấn đề này đã được giải quyết vào những năm 1960, khi giọng nói bắt đầu được truyền qua các mạng điện thoại dưới dạng chuỗi các số 1 và 0. Quá trình chuyển đổi này dựa trên việc **rời rạc hóa (discretization)** các quá trình liên tục, cả về biên độ (amplitude) và thời gian (time) (Hình 3.1).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.1.png" alt="Hình 3.1. Điều chế rời rạc của quá trình liên tục" width="900">
+</p>
+<p align="center"><b>Hình 3.1. Điều chế rời rạc của quá trình liên tục</b></p>
+
+
+Biên độ của hàm liên tục ban đầu được đo ở các khoảng thời gian cố định — điều này dẫn đến **rời rạc hóa theo thời gian (time discretization)**. Sau đó, mỗi mẫu đo được biểu diễn dưới dạng một số nhị phân với một số lượng bit nhất định, điều này có nghĩa là **rời rạc hóa theo giá trị (value discretization)** — tập hợp liên tục các giá trị biên độ được thay thế bằng một tập hợp rời rạc các giá trị của nó.
+
+Để truyền giọng nói chất lượng cao, tần số lượng tử hóa (quantization frequency) của biên độ dao động âm thanh được sử dụng là 8000 Hz (**rời rạc hóa theo thời gian với khoảng thời gian 125 μs**). Để biểu diễn biên độ của một mẫu đo, 256 mức lượng tử hóa được sử dụng (**rời rạc hóa theo giá trị** với 8 bit cho mỗi mẫu). Trong trường hợp này, để truyền tải một kênh giọng nói, cần băng thông 64 Kbit/s:  
+**8000 × 8 = 64 000 bit/s hoặc 64 Kbit/s**. Kênh giọng nói như vậy được gọi là **kênh cơ bản của mạng điện thoại số (elementary channel of digital telephone networks)**.
+
+---
+
+Chuyển sang đoạn mạng được minh họa trong Hình 3.2. Giả sử rằng mạng này được đặc trưng bởi kênh cơ bản có băng thông **T = 64 Kbit/s**. Trong mạng có các đường truyền với các băng thông khác nhau, gồm 2, 3, 4 và 5 kênh cơ bản. Để xác định, giả sử rằng các giao diện là song công (duplex interfaces). Các kênh cơ bản được nhận dạng bằng các số định danh (identifiers). Ví dụ, máy chuyển mạch **S2** có quyền truy cập vào các giao diện (ports) trên cổng **P1** với các kênh cơ bản 1, 2, 3 và 4, và trên cổng **P3** với các kênh cơ bản 1, 2, 3, 4 và 5.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.2.png" alt="Hình 3.2. Kênh tổng hợp trong mạng chuyển mạch kênh" width="900">
+</p>
+<p align="center"><b>Hình 3.2. Kênh tổng hợp trong mạng chuyển mạch kênh</b></p>
+
+Hình vẽ minh họa hai thuê bao **A** và **B**, trong một phiên liên lạc (telecommunication session) tạo ra một **luồng thông tin (information flow)**, với một **tuyến đường (route)** được thiết lập trong mạng thông qua bốn bộ chuyển mạch — **S1**, **S2**, **S3**, và **S4**. Giả sử rằng cường độ của luồng thông tin giữa hai thuê bao không vượt quá **2T bit/s**.
+
+Khi đó, để trao đổi dữ liệu giữa hai thuê bao này, chỉ cần có hai kênh cơ bản (elementary channels), được "phân bổ" trên mỗi đường truyền dọc theo tuyến đường từ điểm **A** đến điểm **B**. Trong hình minh họa, các kênh cơ bản cần thiết cho các thuê bao **A** và **B** được đánh dấu bằng các đường nét dày.
+
+---
+
+##### 3.1.2 Kênh tổng hợp (Composite Channel)
+
+Một kênh được xây dựng thông qua chuyển mạch (switching) hoặc kết nối (connection) các **kênh cơ bản (elementary channels)** dành riêng cho luồng thông tin (information flow) được gọi là **kênh tổng hợp (composite channel)**.
+
+Trong ví dụ được xem xét, để kết nối hai thuê bao **A** và **B**, một kênh tổng hợp với "độ dày" là hai kênh cơ bản đã được tạo ra. Nếu thay đổi giả định và cho rằng lưu lượng được dự kiến sẽ không vượt quá **T bit/s**, thì các thuê bao chỉ cần một kênh tổng hợp với "độ dày" là một kênh cơ bản.
+
+Đồng thời, các thuê bao có cường độ trao đổi dữ liệu cao hơn có thể đưa ra yêu cầu lớn hơn về băng thông (bandwidth) của kênh tổng hợp. Để đáp ứng điều này, họ cần đặt trước nhiều kênh cơ bản hơn trên mỗi đường truyền, nhưng không nhất thiết phải giống nhau trên tất cả các đường truyền.
+
+Những đặc tính sau đây của **kênh tổng hợp (composite channel)** được nhấn mạnh:
+
+- Kênh tổng hợp trên toàn bộ chiều dài của nó bao gồm một số lượng **kênh cơ bản (elementary channels)** giống nhau;
+- Kênh tổng hợp có **băng thông cố định và không thay đổi (constant and fixed bandwidth)** trên toàn bộ chiều dài của nó;
+- Kênh tổng hợp được tạo ra **tạm thời (temporarily)** trong thời gian của phiên liên lạc giữa hai thuê bao, hay nói cách khác, chỉ trong thời gian tồn tại của luồng thông tin (information flow);
+- Trong thời gian phiên liên lạc, tất cả các **kênh cơ bản (elementary channels)** trong kênh tổng hợp được dành riêng cho các thuê bao mà kênh tổng hợp này được tạo ra;
+- Trong toàn bộ phiên liên lạc, thuê bao có thể gửi dữ liệu vào mạng với tốc độ không vượt quá băng thông của kênh tổng hợp;
+- Dữ liệu được truyền trong kênh tổng hợp được đảm bảo sẽ đến thuê bao nhận **mà không có độ trễ (without delay)**, với tốc độ không thấp hơn tốc độ nguồn (source speed), bất kể liệu có kết nối khác tồn tại trong mạng hay không;
+- Sau khi phiên liên lạc kết thúc, các **kênh cơ bản (elementary channels)** thuộc kênh tổng hợp được giải phóng và trả lại vào nhóm tài nguyên chung để sử dụng bởi các thuê bao khác.
+
+Trong mạng có thể diễn ra đồng thời nhiều phiên liên lạc (sessions) (đây là tình huống phổ biến đối với mạng điện thoại, trong đó đồng thời truyền tải các cuộc hội thoại của hàng trăm và hàng nghìn thuê bao). Việc phân chia mạng giữa các phiên liên lạc được thực hiện ở cấp độ các **kênh cơ bản (elementary channels)**. 
+
+Ví dụ, (xem Hình 3.2), chúng ta có thể giả định rằng, sau khi trên đường truyền **S2–S3** đã được phân bổ hai kênh để kết nối giữa thuê bao **A** và **B**, ba kênh cơ bản còn lại được phân bổ cho các phiên liên lạc khác, diễn ra cùng lúc trên cùng đường truyền. 
+
+Điều này có nghĩa là **ghép kênh (multiplexing)** cho phép truyền tải lưu lượng từ nhiều kết nối logic (logical connections) qua mỗi kênh vật lý (physical channel).
+
+**Ghép kênh (Multiplexing)** đồng nghĩa với việc các thuê bao phải cạnh tranh tài nguyên, trong trường hợp này là các **kênh cơ bản (elementary channels)**. Có thể xảy ra tình huống khi một đường truyền trung gian đã sử dụng hết các kênh cơ bản tự do — trong trường hợp này, một phiên liên lạc mới, với tuyến đường đi qua đường truyền này, không thể diễn ra.
+
+Để nhận diện các tình huống như vậy, việc trao đổi dữ liệu trong mạng chuyển mạch kênh bao gồm một **thủ tục thiết lập kết nối (connection establishment procedure)**. Theo thủ tục này, thuê bao khởi tạo phiên liên lạc (ví dụ, thuê bao **A** trong mạng của chúng ta), gửi một **yêu cầu (request)** vào mạng chuyển mạch, nội dung yêu cầu là địa chỉ của thuê bao được gọi, ví dụ như **B1**.
+
+Mục tiêu của yêu cầu là kiểm tra xem có thể hình thành kênh tổng hợp (composite channel) giữa thuê bao gọi và thuê bao được gọi hay không. Để làm được điều này, cần tuân thủ hai điều kiện: có đủ số lượng **kênh cơ bản tự do (free elementary channels)** trên mỗi đường truyền dọc theo tuyến đường giữa **A** và **B**, và thuê bao được gọi không bận với kết nối khác.
+
+Yêu cầu này được xử lý trên cơ sở tuyến đường (route), được xác định trước đó cho luồng thông tin của cặp thuê bao này. Tuyến đường này được ghi lại trong các **bảng chuyển mạch toàn cầu (global switching tables)**, với thông tin về các nút trung gian trên tuyến đường giữa thuê bao **A** và **B**.
+
+Ví dụ, bộ chuyển mạch (switch) **S4** trong ví dụ của chúng ta có thể có bảng định tuyến toàn cầu (global routing table) như sau:
+
+**Bảng 3.1**. Ví dụ về bảng định tuyến toàn cầu
+
+| Thuê bao (Subscriber) | Giao diện dẫn đến bộ chuyển mạch tiếp theo (Interface leading to the next switch) |
+|------------------------|-----------------------------------------------------------------------------|
+| A                      | P1                                                                          |
+| B                      | P2                                                                          |
+| C                      | P4                                                                          |
+| D                      | P3                                                                          |
+
+Nếu sau khi xử lý yêu cầu, xác định rằng không có gì ngăn cản việc thiết lập kết nối, thì **kênh tổng hợp (composite channel)** sẽ được cố định. Để thực hiện điều này, trong mỗi bộ chuyển mạch dọc theo tuyến đường từ **A** đến **B** sẽ tạo ra các bản ghi trong **bảng chuyển mạch cục bộ (local switching tables)**, trong đó chỉ ra sự tương ứng giữa **các dấu hiệu cục bộ của luồng (local flow characteristics)** — số của các **kênh cơ bản (elementary channels)** được đặt trước cho phiên liên lạc này tại bộ chuyển mạch cụ thể.
+
+Trong ví dụ của chúng ta, sau khi xử lý yêu cầu để thiết lập kết nối từ thuê bao **A** đến thuê bao **B**, các bản ghi tương ứng đã được tạo ra trong **S1**, **S2**, **S3**, và **S4** trong các **bảng chuyển mạch cục bộ (local switching tables)** của chúng.
+
+**Bảng chuyển mạch cục bộ (Local switching table)** tại bộ chuyển mạch **S4** sẽ có dạng như sau:
+
+**Bảng 3.2.** Ví dụ về bảng định tuyến cục bộ (Local Routing Table)
+
+| Kênh cơ bản đầu vào (Incoming Elementary Channels) | Kênh cơ bản đầu ra (Outgoing Elementary Channels) |
+|-----------------------------------------------------|--------------------------------------------------|
+| P1/kênh 2                                           | P2/kênh 1                                        |
+| P1/kênh 3                                           | P2/kênh 2                                        |
+
+Các bản ghi được trình bày trong ví dụ cho thấy rằng kênh cơ bản (elementary channel) 2, đến từ giao diện **P1**, được chuyển tiếp (switched) tới kênh cơ bản 1 của giao diện **P2**, và kênh cơ bản 3 của giao diện **P1** được chuyển tiếp tới kênh cơ bản 2 của giao diện **P2**.
+
+Trong ví dụ này, số của các kênh cơ bản mang các giá trị duy nhất trong phạm vi mỗi giao diện. Do đó, trong bảng định tuyến cục bộ, các kênh cơ bản được xác định thông qua cặp "số giao diện/số kênh (interface number/channel number)." Một cách tổ chức khác cũng có thể xảy ra, trong đó số của các kênh cơ bản được giữ duy nhất trong toàn bộ bộ chuyển mạch (switch). Tuy nhiên, trong trường hợp thêm hoặc xóa giao diện, điều này có thể yêu cầu đánh số lại (renumbering), gây ra sự bất tiện.
+
+Sau khi kênh tổng hợp (composite channel) được thiết lập và các bản ghi tương ứng được hình thành trong các bảng chuyển mạch cục bộ (local switching tables) của từng bộ chuyển mạch, thuê bao **A** và **B** có thể bắt đầu phiên liên lạc của mình.
+
+Như vậy, việc truyền dữ liệu trong mạng với chuyển mạch kênh (circuit switching) diễn ra theo hai giai đoạn:
+
+1. Một thông báo dịch vụ (service message) được gửi vào mạng — đó là một yêu cầu (request) mang địa chỉ của thuê bao được gọi và khởi tạo việc tạo kênh tổng hợp (composite channel).
+
+2. Qua kênh tổng hợp đã được chuẩn bị, luồng dữ liệu chính (main data flow) được truyền, mà không yêu cầu bất kỳ thông tin bổ sung nào, bao gồm cả địa chỉ của thuê bao được gọi. Việc chuyển mạch dữ liệu (data switching) trong các bộ chuyển mạch (switches) được thực hiện dựa trên các dấu hiệu cục bộ của luồng (local flow characteristics) — số của các kênh cơ bản (elementary channels) được phân bổ cho nó.
+
+Các yêu cầu thiết lập kết nối (connection establishment requests) không phải lúc nào cũng hoàn thành thành công. Nếu trên đường giữa thuê bao gọi (calling subscriber) và thuê bao được gọi (called subscriber) không có các kênh cơ bản (elementary channels) còn trống hoặc nút được gọi (called node) đang bận, thì xảy ra từ chối thiết lập kết nối (connection establishment denial). 
+
+Ví dụ, nếu trong suốt phiên liên lạc giữa thuê bao **A** và **B**, thuê bao **C** gửi yêu cầu vào mạng để thiết lập kết nối với thuê bao **D**, thì nó sẽ nhận được từ chối (denial), vì trong hai kênh cơ bản cần thiết trên tuyến liên kết **S3–S4**, chỉ có một kênh còn trống (hình 3.3). Khi từ chối thiết lập kết nối, mạng sẽ thông báo cho thuê bao gọi bằng một thông báo đặc biệt.
+
+Càng nhiều tải (load) trên mạng, nghĩa là càng nhiều kết nối mà mạng hỗ trợ tại thời điểm đó, thì khả năng từ chối đối với yêu cầu thiết lập kết nối mới càng cao.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.3.png" alt="Hình 3.3. Từ chối thiết lập kết nối trong mạng chuyển mạch kênh" width="900">
+</p>
+<p align="center"><b>Hình 3.3. Từ chối thiết lập kết nối trong mạng chuyển mạch kênh</b></p>
+
+Chúng tôi đã mô tả quy trình thiết lập kết nối trong **chế độ tự động động (automatic dynamic mode)**, dựa trên khả năng của các thuê bao gửi các tin nhắn dịch vụ (service messages) vào mạng - các yêu cầu thiết lập kết nối (connection requests), và khả năng của các nút mạng xử lý những tin nhắn này. Chế độ này được sử dụng trong các mạng điện thoại: thiết bị điện thoại tạo yêu cầu bằng cách gửi các xung (impulse) (hoặc tín hiệu âm (tone signals)), mã hóa số của thuê bao cần gọi, và mạng hoặc thiết lập kết nối, hoặc thông báo về tình trạng bận (busy signal). Trong các mạng điện thoại đầu tiên, mỗi đường dây kết nối từ thuê bao đến tổng đài trung tâm là một kênh cơ bản. Các bộ chuyển mạch (switch) là cơ điện (electromechanical), và việc kết nối được thực hiện thủ công bởi các nhân viên vận hành thông qua việc cắm dây cáp vào các cổng của bộ chuyển mạch, nơi các đường dây thuê bao được kết nối.
+
+Tuy nhiên, đây không phải là cách duy nhất để mạng với các kênh chuyển mạch hoạt động. Có tồn tại một **chế độ thủ công tĩnh (static manual mode)** để thiết lập kết nối, đặc trưng cho các trường hợp cần thiết lập một kênh ghép (compound channel) không phải chỉ trong một phiên kết nối ngắn của thuê bao, mà trong một thời gian dài hơn. Việc tạo ra kênh lâu dài như vậy không thể được khởi xướng bởi các thuê bao - nó được tạo ra bởi các quản trị viên của mạng. Rõ ràng, chế độ thủ công tĩnh không phù hợp cho mạng điện thoại truyền thống với các phiên kết nối ngắn, nhưng nó hoàn toàn phù hợp cho việc tạo ra các kênh viễn thông (telecommunication channels) tốc độ cao giữa các thành phố và quốc gia trên cơ sở tương đối ổn định.
+
+Công nghệ chuyển mạch kênh (channel switching technology) hướng đến việc giảm thiểu các sự kiện ngẫu nhiên trong mạng, nghĩa là công nghệ này nhằm đến tính quyết định (determinism). Để tránh mọi khả năng không xác định, một phần lớn công việc tổ chức trao đổi thông tin được thực hiện trước khi việc truyền dữ liệu (data transmission) thực sự bắt đầu. Trước tiên, theo địa chỉ được xác định trước, tính khả dụng của các kênh cơ bản cần thiết (elementary channels) trên toàn bộ đường từ người gửi đến người nhận được kiểm tra. Sau đó, các kênh này được gán cố định trong suốt thời gian phiên kết nối để sử dụng riêng bởi hai thuê bao và được chuyển mạch thành một đường ống liên tục (continuous pipeline) (kênh ghép - compound channel), có các “van cổng” (gateway valves) ở phía mỗi thuê bao. Sau phần công việc chuẩn bị kỹ lưỡng này, việc còn lại là thực hiện điều nhỏ nhất: “mở các van cổng” và cho phép luồng thông tin (information flow) tự do và không bị cản trở “chảy qua” giữa các điểm đã định sẵn trong mạng (Hình 3.4).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.4.png" alt="Hình 3.4. Mạng chuyển mạch kênh như một hệ thống đường ống" width="900">
+</p>
+<p align="center"><b>Hình 3.4. Mạng chuyển mạch kênh như một hệ thống đường ống</b></p>
+
+
+##### 3.1.3 Sự không hiệu quả trong việc truyền tải lưu lượng xung nhịp
+
+Các mạng sử dụng công nghệ chuyển mạch kênh (channel switching) hoạt động hiệu quả nhất khi truyền tải lưu lượng người dùng trong trường hợp tốc độ lưu lượng đó không đổi trong suốt phiên kết nối và phù hợp tối đa với khả năng truyền tải cố định (fixed bandwidth) của các đường truyền vật lý trong mạng. Hiệu suất của mạng giảm khi các luồng thông tin, được tạo bởi các thuê bao, mang tính chất xung nhịp (pulsating).
+
+Ví dụ, khi nói chuyện qua điện thoại, mọi người thường thay đổi tốc độ lời nói, xen lẫn các khoảng tạm dừng nhanh. Kết quả là các luồng thông tin "âm thanh" (voice information flows) trở nên không đều, và do đó, hiệu suất truyền dữ liệu bị giảm. Tuy nhiên, đối với các cuộc gọi thoại, sự giảm hiệu suất này vẫn được chấp nhận và cho phép sử dụng rộng rãi các mạng chuyển mạch kênh để truyền tải lưu lượng thoại.
+
+Hiệu suất của mạng chuyển mạch kênh giảm mạnh hơn khi truyền tải cái gọi là **lưu lượng máy tính (computer traffic)**, tức là lưu lượng được tạo ra bởi các ứng dụng mà người dùng máy tính đang sử dụng. Loại lưu lượng này hầu như luôn mang tính xung nhịp. Ví dụ, khi bạn tải một trang web từ Internet, tốc độ lưu lượng tăng đột ngột, nhưng sau khi tải xong, lưu lượng giảm xuống gần như bằng không. Nếu trong phiên truy cập Internet đó bạn sử dụng mạng chuyển mạch kênh, phần lớn thời gian kênh ghép giữa máy tính của bạn và máy chủ web sẽ không được sử dụng. Đồng thời, một phần băng thông của mạng sẽ bị giữ cố định cho bạn và không thể được sử dụng bởi những người dùng khác. Mạng trong các trường hợp này giống như thang cuốn trống rỗng trong tàu điện ngầm, vẫn hoạt động nhưng không có tác dụng.
+
+Để truyền tải hiệu quả lưu lượng máy tính không đều, công nghệ **chuyển mạch gói (packet switching)** đã được phát triển đặc biệt.
