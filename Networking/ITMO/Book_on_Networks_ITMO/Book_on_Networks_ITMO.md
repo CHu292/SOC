@@ -687,3 +687,310 @@ Cuối cùng, có **Cấu trúc liên kết hỗn hợp (Mixed Topology)**, tron
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.11.png" alt="Hình 2.11. Cấu trúc mạng hỗn hợp." width="900">
 </p>
 <p align="center"><b>Hình 2.11. Cấu trúc mạng hỗn hợp.</b></p>
+
+---
+
+
+##### 2.4.2 Định địa chỉ các nút mạng
+
+Một vấn đề khác cần phải tính đến khi kết nối ba hoặc nhiều máy tính là vấn đề định địa chỉ (addressing), cụ thể hơn là định địa chỉ các giao diện mạng của chúng. Một máy tính có thể có nhiều giao diện mạng. Ví dụ, để tạo một cấu trúc liên kết đầy đủ với **N** máy tính, cần mỗi máy tính có **N - 1** giao diện.
+
+Theo số lượng giao diện được định địa chỉ, địa chỉ có thể được phân loại như sau:
+
+- **Địa chỉ đơn nhất (Unicast)**: Được sử dụng để xác định một giao diện cụ thể duy nhất.
+- **Địa chỉ nhóm (Multicast)**: Xác định đồng thời nhiều giao diện, do đó dữ liệu được đánh dấu với địa chỉ nhóm sẽ được chuyển đến tất cả các nút thuộc về nhóm đó.
+- **Dữ liệu gửi đến địa chỉ quảng bá (Broadcast)**: Cần được chuyển đến tất cả các nút trong mạng.
+- **Địa chỉ bất kỳ (Anycast)**: Tương tự như địa chỉ nhóm, nhưng dữ liệu gửi tới địa chỉ này chỉ được chuyển đến một nút trong nhóm, thường là nút gần nhất theo một số quy tắc định tuyến.
+
+
+**Địa chỉ có thể là dạng số (ví dụ, 129.26.255.255 hoặc 81.1a.ff.ff) và dạng ký hiệu (site.domen.ru, willi-winki).**
+
+Địa chỉ dạng ký hiệu (tên gọi) được thiết kế để con người dễ ghi nhớ và vì vậy thường mang ý nghĩa. Đối với các mạng lớn, tên gọi dạng ký hiệu có thể có cấu trúc phân cấp, ví dụ: ftp-arch1.ucl.ac.uk. Địa chỉ này nói rằng, máy tính này hỗ trợ kho lưu trữ ftp trong mạng của một trong các trường cao đẳng thuộc Đại học London (University College London – ucl) và mạng này thuộc về nhánh học thuật (ac) của Internet ở Vương quốc Anh (United Kingdom – uk). Khi làm việc trong mạng nội bộ của Đại học London, tên dạng ký hiệu dài như vậy là dư thừa, và thay vì nó, bạn có thể sử dụng tên gọi dạng ký hiệu ngắn hơn như ftp-arch1. Mặc dù tên gọi dạng ký hiệu thuận tiện hơn cho con người, việc truyền chúng trong mạng lại không kinh tế vì có định dạng thay đổi và tiềm năng độ dài lớn.
+
+**Tập hợp tất cả các địa chỉ được cho phép trong phạm vi một sơ đồ định địa chỉ cụ thể được gọi là không gian địa chỉ (addressing space).** Không gian địa chỉ có thể có tổ chức phẳng (linear) hoặc tổ chức phân cấp (hierarchical).
+
+Với **tổ chức phẳng (flat organization)**, tập hợp các địa chỉ không có cấu trúc phân cấp nào. Một ví dụ về địa chỉ số dạng phẳng là **địa chỉ MAC (MAC address)**, được thiết kế để nhận diện duy nhất các giao diện mạng trong mạng cục bộ (local networks). Địa chỉ này chỉ được sử dụng ở cấp phần cứng (hardware), vì vậy nó thường được tạo ra để gọn nhất có thể và được ghi dưới dạng số nhị phân hoặc số thập lục phân, ví dụ: 0080105e24a8. Khi thiết lập địa chỉ MAC, không cần thêm bất kỳ công việc nào vì chúng thường được tích hợp sẵn trong phần cứng của nhà sản xuất, do đó, chúng còn được gọi là **địa chỉ phần cứng (hardware address)**. Sử dụng địa chỉ phẳng là một giải pháp cố định — khi thay đổi phần cứng, chẳng hạn như bộ chuyển đổi mạng, địa chỉ của giao diện mạng cũng thay đổi.
+
+**Với tổ chức phân cấp (hierarchical organization)**, không gian địa chỉ được cấu trúc dưới dạng các nhóm lồng nhau, lần lượt thu hẹp phạm vi địa chỉ, và cuối cùng xác định các giao diện mạng riêng biệt. Ví dụ, trong cấu trúc địa chỉ không gian ba cấp, địa chỉ của nút cuối cùng có thể được xác định bởi ba thành phần:
+
+- **Định danh nhóm (K)**, mà nút đó thuộc về;
+- **Định danh nhóm con (L)**;
+- **Định danh nút (n)**, xác định duy nhất nút trong nhóm con.
+
+Định địa chỉ phân cấp trong nhiều trường hợp tỏ ra hợp lý hơn so với tổ chức phẳng. Trong các mạng lớn với hàng nghìn nút, sử dụng địa chỉ phẳng dẫn đến chi phí lớn — các nút cuối và thiết bị truyền thông phải xử lý các bảng địa chỉ lớn chứa hàng nghìn mục. Ngược lại, hệ thống định địa chỉ phân cấp cho phép trong quá trình di chuyển dữ liệu chỉ sử dụng thành phần lớn nhất của địa chỉ (ví dụ, định danh nhóm K), sau đó (để định vị địa chỉ chi tiết hơn) sử dụng thành phần kế tiếp theo thứ bậc (L) và cuối cùng — phần nhỏ nhất (n).
+
+Một ví dụ tiêu biểu của địa chỉ số phân cấp là địa chỉ **IP (IP address)**. Trong đó hỗ trợ cấu trúc hai cấp, địa chỉ được chia thành phần lớn hơn — số mạng (K) và phần nhỏ hơn — số nút (n). Sự phân chia này cho phép chuyển tiếp dữ liệu dựa trên cơ sở số mạng mà không cần phải xác định số nút cho đến khi thông tin đã đến mạng mong muốn — tương tự như việc sử dụng mã bưu chính chỉ sau khi thư được chuyển đến thành phố cần đến.
+
+Trong thực tế, thường áp dụng đồng thời nhiều sơ đồ định địa chỉ, để giao diện mạng của máy tính có thể có nhiều địa chỉ hoặc tên cùng lúc. Mỗi địa chỉ được sử dụng trong trường hợp mà loại định địa chỉ đó thuận tiện nhất. Và để chuyển đổi địa chỉ từ loại này sang loại khác, các giao thức hỗ trợ đặc biệt được sử dụng, được gọi là **giao thức phân giải địa chỉ (address resolution protocols)**.
+
+Người dùng định địa chỉ máy tính bằng các tên ký hiệu phân cấp, những tên này tự động được thay thế trong các thông báo được truyền qua mạng bằng các địa chỉ số phân cấp. Với những địa chỉ số này, các thông báo được chuyển từ một mạng sang mạng khác, và sau khi được chuyển đến mạng đích, thay vì địa chỉ số phân cấp, địa chỉ phần cứng phẳng được sử dụng. Vấn đề thiết lập sự tương thích giữa các địa chỉ thuộc các kiểu khác nhau có thể được giải quyết bằng cách tập trung hoặc phân tán.
+
+**Với cách tiếp cận tập trung**, một hoặc nhiều máy tính (máy chủ tên - name server) trong mạng được phân bổ để lưu trữ bảng ánh xạ các tên ký hiệu và các địa chỉ số. Tất cả các máy tính khác sẽ gửi yêu cầu tới máy chủ tên để tra cứu địa chỉ số của máy tính cần thiết thông qua tên ký hiệu.
+
+**Với cách tiếp cận phân tán**, mỗi máy tính tự lưu trữ các địa chỉ được chỉ định thuộc các loại khác nhau. Khi một máy tính cần xác định địa chỉ phần cứng phẳng dựa trên địa chỉ số phân cấp của một máy tính khác, nó sẽ gửi một yêu cầu quảng bá (broadcast) vào mạng. Tất cả các máy tính trong mạng so sánh yêu cầu này với địa chỉ của chính nó. Máy tính có sự trùng khớp sẽ gửi phản hồi chứa địa chỉ phần cứng được yêu cầu. Cơ chế này được sử dụng trong **giao thức phân giải địa chỉ (Address Resolution Protocol - ARP)** thuộc bộ giao thức TCP/IP.
+
+Ưu điểm của cách tiếp cận phân tán là cho phép loại bỏ việc chỉ định một máy tính đặc biệt làm máy chủ tên, vốn thường đòi hỏi cấu hình thủ công bảng ánh xạ địa chỉ. Nhược điểm là yêu cầu phải gửi các thông báo quảng bá, làm tăng tải cho mạng. Vì vậy, cách tiếp cận phân tán thường được áp dụng trong các mạng nhỏ, trong khi cách tiếp cận tập trung phù hợp với mạng lớn.
+
+Cho đến nay, chúng ta đã nói về các địa chỉ của giao diện mạng, máy tính và các thiết bị truyền thông, nhưng mục tiêu cuối cùng của dữ liệu được truyền qua mạng là các tiến trình (process) hoạt động trên các thiết bị này và thực hiện các nhiệm vụ cụ thể. Do đó, địa chỉ được chỉ định cho các tiến trình, cùng với thông tin xác định giao diện thiết bị, phải chỉ rõ máy tính nào được gửi dữ liệu. Rõ ràng, để đảm bảo tính duy nhất của địa chỉ trong phạm vi mạng, cần thêm thông tin. Một ví dụ về các địa chỉ tiến trình là **số cổng TCP và UDP (TCP and UDP port numbers)** trong bộ giao thức TCP/IP.
+
+##### 2.4.3 Chuyển mạch (Switching)
+
+Giả sử các máy tính được liên kết vật lý với nhau theo một cấu trúc mạng nhất định, và hệ thống định địa chỉ đã được chọn. Tuy nhiên, vẫn còn một câu hỏi chưa được giải quyết: Làm cách nào để truyền dữ liệu giữa các nút cuối? Nhiệm vụ này trở nên đặc biệt phức tạp đối với mạng có cấu trúc liên kết không hoàn toàn kết nối, khi việc trao đổi dữ liệu giữa bất kỳ cặp nút cuối nào (người dùng) thường phải thông qua các nút chuyển tiếp.
+
+**Kết nối các nút cuối thông qua một mạng các nút chuyển tiếp được gọi là chuyển mạch (switching). Chuỗi các nút nằm trên đường đi từ người gửi đến người nhận tạo thành một tuyến đường (route).**
+
+Ví dụ, trong mạng được minh họa ở Hình 2.12, các nút (nodes) 2 và 4, không được kết nối trực tiếp, buộc phải truyền dữ liệu qua các nút chuyển tiếp (transit nodes), chẳng hạn như các nút 1 và 5. Nút 1 phải thực hiện việc truyền dữ liệu giữa các giao diện (interfaces) A và B, còn nút 5 — giữa các giao diện F và B. Trong trường hợp này, tuyến đường (route) là chuỗi sau: 2-1-5-4, trong đó 2 là nút gửi (sending node), 1 và 5 là các nút chuyển tiếp (transit nodes), và 4 là nút nhận (receiving node).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.12.png" alt="Hình 2.12. Chuyển mạch người dùng qua mạng các nút trung gian" width="900">
+</p>
+
+---
+
+#### 2.5 Nhiệm vụ tổng quát của chuyển mạch (General task of switching)
+
+Ở dạng tổng quát nhất, nhiệm vụ chuyển mạch (switching) có thể được trình bày dưới dạng các nhiệm vụ cụ thể có liên quan chặt chẽ sau:
+
+1. Xác định các luồng thông tin (information flows), mà đối với chúng cần thiết lập tuyến đường (routes).
+2. Định tuyến các luồng (routing of flows) — thiết lập các tuyến đường (route creation).
+3. Chuyển tiếp các luồng (forwarding of flows), tức là nhận dạng các luồng và chuyển mạch cục bộ (local switching) của chúng tại mỗi nút chuyển tiếp (transit node).
+4. Ghép kênh và tách kênh các luồng (multiplexing and demultiplexing of flows).
+
+---
+
+##### 2.5.1 Xác định các luồng thông tin (Defining information flows)
+
+Rõ ràng, qua một nút chuyển tiếp (transit node) có thể đi qua nhiều tuyến đường (routes). Ví dụ, qua nút 5 (xem Hình 2.12), đi qua ít nhất tất cả dữ liệu được nút 4 gửi tới từng nút còn lại, cũng như tất cả dữ liệu được gửi đến các nút 3, 4 và 10. Nút chuyển tiếp (transit node) phải có khả năng **nhận diện (recognize)** các luồng dữ liệu (data flows) đến nó, để đảm bảo việc truyền mỗi luồng đến đúng giao diện (interface) của nó, dẫn đến nút cần thiết, và có thể, chọn cách xử lý cụ thể cho luồng đó.
+
+**Luồng thông tin (Information flow)**, hay **luồng dữ liệu (data flow)**, là chuỗi liên tục của các dữ liệu được liên kết với nhau bởi tập hợp các đặc điểm chung, giúp phân biệt dữ liệu này khỏi luồng dữ liệu mạng tổng thể.
+
+Ví dụ, một luồng có thể được xác định là tất cả dữ liệu đến từ một máy tính; đặc điểm chung trong trường hợp này là địa chỉ nguồn (source address). Những dữ liệu này có thể đại diện cho một tập hợp các luồng con (subflows), mỗi luồng con được phân biệt bởi địa chỉ đích (destination address). Cuối cùng, mỗi luồng con này, lần lượt, có thể được chia thành các luồng con nhỏ hơn, phát sinh từ các ứng dụng mạng khác nhau — thư điện tử (email), sao chép tệp tin (file copying), hoặc máy chủ web (web server). Dữ liệu tạo thành luồng có thể được biểu diễn dưới dạng chuỗi các đơn vị thông tin khác nhau — gói tin (packets), khung (frames), hoặc ô (cells).
+
+---
+
+**Lưu ý (Note)**
+
+Trong tài liệu tiếng Anh, đối với các luồng dữ liệu (data flows) được truyền với tốc độ đều (constant speed) và không đều (variable speed), thường sử dụng các thuật ngữ khác nhau — tương ứng là **data stream** và **data flow**. Ví dụ, khi truyền tải một trang web qua Internet, tải trọng được truyền đại diện cho một luồng dữ liệu không đều (variable data flow), trong khi phát nhạc từ các trạm phát thanh qua Internet là luồng dữ liệu đều (constant data stream). Đối với các mạng truyền dữ liệu (data transmission networks), đặc trưng là tốc độ truyền không đều, vì vậy, trong phần lớn các trường hợp, thuật ngữ "luồng dữ liệu (data flow)" sẽ được hiểu là luồng dữ liệu không đều (variable data flow), và chỉ chỉ ra đặc tính đều đặn của quá trình này khi điều đó cần được nhấn mạnh.
+
+---
+
+
+Rõ ràng rằng, trong chuyển mạch (switching), địa chỉ đích (destination address) của dữ liệu đóng vai trò là một đặc điểm bắt buộc (mandatory attribute). Dựa trên đặc điểm này, toàn bộ luồng dữ liệu (data flow) đi vào nút chuyển tiếp (transit node) được chia thành các luồng con (subflows), mỗi luồng trong số đó được truyền tới một giao diện (interface) phù hợp với tuyến đường (route) đã định trước.
+
+Địa chỉ nguồn (source address) và đích (destination address) xác định luồng dữ liệu cho cặp nút cuối (end nodes) tương ứng. Tuy nhiên, thường thì việc biểu diễn luồng dữ liệu dưới dạng một số luồng con (subflows) là hữu ích hơn, và đối với mỗi luồng con, có thể cần thiết lập một tuyến đường đặc biệt. Hãy xem xét một ví dụ khi giữa một cặp nút cuối (end nodes) có một số ứng dụng mạng (network applications) đang hoạt động, mỗi ứng dụng đều đưa ra các yêu cầu đặc thù đối với mạng. Trong trường hợp này, định tuyến (routing) của luồng dữ liệu phải được thực hiện dựa trên tính chất của dữ liệu được truyền, ví dụ, đối với máy chủ tệp (file server), điều quan trọng là các khối dữ liệu lớn phải được chuyển qua các kênh có khả năng truyền tải cao (high-throughput channels), trong khi hệ thống quản lý (management systems), gửi các thông điệp ngắn vào mạng, yêu cầu xử lý ngay lập tức với độ trễ (latency) thấp nhất. Ngoài ra, thậm chí đối với dữ liệu có cùng yêu cầu mạng, có thể thiết lập nhiều tuyến đường để nhờ sự song song (parallelization) mà tăng tốc độ truyền tải.
+
+Cũng có thể thực hiện một thao tác ngược lại với việc phân chia các luồng con (subflows) — đó là **gộp luồng (aggregation of flows)**. Thao tác này thường được thực hiện trên các tuyến chính của mạng (network backbones), nơi truyền tải một lượng lớn các luồng cá nhân (individual flows). Việc gộp các luồng có cùng một phần tuyến đường (route) qua mạng giúp giảm số lượng luồng mà các nút trung gian (intermediate nodes) phải xử lý, bởi vì các luồng đã được gộp lại sẽ được mô tả như một luồng duy nhất. Kết quả là giảm tải cho các nút trung gian của mạng và tăng hiệu suất (performance) của chúng.
+
+Các đặc điểm của luồng (flow attributes) có thể mang ý nghĩa **toàn cầu (global)** hoặc **cục bộ (local)** — trong trường hợp đầu tiên, chúng xác định luồng trên phạm vi toàn mạng, trong khi trường hợp thứ hai là trong phạm vi của một nút chuyển tiếp (transit node). Một cặp địa chỉ xác định (identifying addresses) của các nút cuối (end nodes) là một ví dụ về đặc điểm toàn cầu (global attribute). Một đặc điểm cục bộ (local attribute), định nghĩa luồng trong phạm vi thiết bị, có thể là số (identifier) của giao diện (interface) mà dữ liệu đã đến.
+
+Ví dụ, quay lại Hình 2.12, nút 1 có thể được thiết lập để truyền tất cả dữ liệu đến giao diện B, mà chúng nhận từ giao diện A, và đến giao diện C, mà chúng nhận từ giao diện D. Quy tắc này cho phép phân biệt luồng dữ liệu của nút 2 khỏi luồng dữ liệu của nút 7 và định tuyến chúng qua các nút chuyển tiếp khác nhau trong mạng. Trong trường hợp này, luồng của nút 2 sẽ qua nút 5, còn luồng của nút 7 sẽ qua nút 8.
+
+**Nhãn luồng (Flow label)** là một loại đặc điểm (attribute) đặc biệt. Nó đại diện cho một số cụ thể mang theo tất cả dữ liệu của luồng (data flow). **Nhãn toàn cầu (Global label)** được gán cho dữ liệu của luồng và không thay đổi giá trị trên toàn bộ đường đi từ nút nguồn (source node) đến nút đích (destination node), do đó xác định duy nhất luồng trong phạm vi mạng (network). Trong một số công nghệ, **nhãn cục bộ (Local label)** của luồng được sử dụng, thay đổi động (dynamically) giá trị của nó trong quá trình truyền dữ liệu từ một nút đến nút khác.
+
+Như vậy, việc nhận diện luồng (flow recognition) trong quá trình chuyển mạch (switching) được thực hiện dựa trên các đặc điểm (attributes), trong đó ngoài địa chỉ đích (destination address) bắt buộc, có thể có các đặc điểm khác — chẳng hạn, như các định danh ứng dụng (application identifiers).
+
+---
+
+##### 2.5.2 Định tuyến (Routing)
+
+Nhiệm vụ định tuyến bao gồm hai công việc chính:
+
+- Xác định tuyến đường (route determination);
+- Thông báo mạng (network notification) về tuyến đường đã chọn.
+
+**Xác định tuyến đường (Determine the route)** có nghĩa là chọn thứ tự các nút chuyển tiếp (transit nodes) và giao diện (interfaces) của chúng, qua đó cần truyền dữ liệu để đến địa chỉ đích (destination address). Xác định tuyến đường là một nhiệm vụ phức tạp, đặc biệt khi cấu hình mạng (network configuration) có nhiều đường đi giữa cặp giao diện mạng (network interfaces) đang tương tác. Thông thường, việc chọn sẽ dừng lại ở một tuyến đường **tối ưu (optimal)** theo một số tiêu chí định tuyến (routing criteria).
+
+Các tiêu chí tối ưu (optimization criteria) có thể bao gồm, ví dụ:
+
+- Băng thông (bandwidth) và mức tải của các kênh liên lạc (link load);
+- Độ trễ (latency) trong các kênh truyền dẫn (transmission channels);
+- Số lượng nút trung gian (intermediate nodes);
+- Độ tin cậy (reliability) của các kênh và nút chuyển tiếp (transit nodes).
+
+Tuyến đường (route) có thể được xác định theo cách thực nghiệm (empirical) hoặc "thủ công" (manual) bởi quản trị viên mạng (network administrator) dựa trên nhiều cân nhắc khác nhau, thường không được chính thức hóa. Trong số các động cơ thúc đẩy việc lựa chọn đường đi có thể bao gồm: các yêu cầu đặc biệt từ mạng đối với các loại ứng dụng (applications) khác nhau, quyết định truyền tải lưu lượng (traffic) qua mạng của một nhà cung cấp dịch vụ (service provider) cụ thể, dự đoán về tải cao điểm (peak loads) trên một số kênh mạng (network channels), và các cân nhắc về bảo mật (security).
+
+Tuy nhiên, phương pháp thực nghiệm để xác định tuyến đường không phù hợp với các mạng lớn có cấu trúc liên kết phức tạp (complex topology). Trong trường hợp này, các phương pháp tự động (automatic methods) để xác định tuyến đường được sử dụng. Để thực hiện điều này, các nút cuối (end nodes) và các thiết bị mạng khác được trang bị các công cụ phần mềm (software tools) đặc biệt, giúp tổ chức trao đổi các thông điệp dịch vụ (service messages), cho phép mỗi nút tạo ra một "mô hình" (representation) về mạng. Sau đó, dựa trên dữ liệu thu thập được thông qua các phương pháp phần mềm, các tuyến đường hợp lý (rational routes) được xác định.
+
+Khi chọn tuyến đường, người ta thường chỉ xem xét thông tin về cấu trúc liên kết mạng (network topology). Phương pháp này được minh họa trong Hình 2.13. Để truyền tải lưu lượng giữa các nút cuối A và C, có hai tuyến đường thay thế: A-1-2-3-C và A-1-3-C. Nếu chỉ tính đến cấu trúc liên kết, lựa chọn rõ ràng là tuyến A-1-3-C, vì tuyến này có ít nút trung gian (transit nodes) hơn.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.13.png" alt="Hình 2.13. Lựa chọn tuyến đường" width="900">
+</p>
+<p align="center"><b>Hình 2.13. Lựa chọn tuyến đường (route)</b></p>
+
+Giải pháp được tìm thấy bằng cách tối thiểu hóa tiêu chí (criterion), trong trường hợp này là chiều dài của tuyến đường (route length), được đo bằng số lượng nút chuyển tiếp (transit nodes). Tuy nhiên, có thể lựa chọn của chúng ta không phải là tốt nhất. Trong hình minh họa, các kênh 1-2 và 2-3 có băng thông (bandwidth) 100 Mbit/s mỗi kênh, trong khi kênh 1-3 chỉ có 10 Mbit/s. Để thông tin của chúng ta được truyền qua mạng với tốc độ tối đa có thể, cần chọn tuyến đường A-1-2-3-C, mặc dù tuyến này đi qua nhiều nút trung gian hơn. Nói cách khác, trong trường hợp này, tuyến A-1-2-3-C tỏ ra "ngắn hơn" về mặt hiệu quả.
+
+Đánh giá trừu tượng về "khoảng cách" giữa hai nút trong mạng được gọi là **metric**. Ví dụ, để đo chiều dài của tuyến đường, có thể sử dụng các metric khác nhau — số lượng các nút chuyển tiếp (transit nodes), độ dài vật lý (physical length) của tuyến đường, hoặc thậm chí chi phí (cost) của nó tính bằng giá trị tiền tệ. Để xây dựng metric, khi tính đến băng thông (bandwidth), thường sử dụng cách tiếp cận sau: độ dài của mỗi đoạn kênh (channel segment) được đặc trưng bởi giá trị nghịch đảo của băng thông. Để làm việc với các số nguyên, giá trị này được nhân với một hằng số cố định lớn. Ví dụ, nếu chọn hằng số cố định là 100 Mbit/s, metric của kênh 1-2 và 2-3 sẽ là 1, trong khi metric của kênh 1-3 là 10. Metric của tuyến đường bằng tổng metric của tất cả các kênh cấu thành, do đó phần đường A-1-2-3 có metric là 2, trong khi phần thay thế A-1-3 có metric là 10. Chúng ta chọn tuyến đường "ngắn hơn," nghĩa là A-1-2-3-C.
+
+
+Các phương pháp đã mô tả để lựa chọn tuyến đường (route selection) không tính đến mức độ tải hiện tại (current load) của các kênh lưu lượng (traffic channels). Dùng phép so sánh với giao thông ô tô, có thể nói rằng chúng ta chọn tuyến đường dựa trên bản đồ, tính đến số lượng thành phố trung gian và độ rộng đường (tương tự như băng thông của kênh - bandwidth), bỏ qua thông tin về các vụ tắc đường qua đài phát thanh hoặc truyền hình. Vì vậy, giải pháp của chúng ta có thể không phải là tốt nhất, khi tuyến đường A-1-2-3-C đã được tải nặng với nhiều luồng (flows), còn tuyến đường A-1-3-C thì gần như không có lưu lượng.
+
+Sau khi tuyến đường được xác định (bằng tay hoặc tự động), cần thông báo (notify) về tuyến đường này cho tất cả các thiết bị trong mạng. Một thông điệp (message) về tuyến đường phải cung cấp cho mỗi thiết bị trung gian (intermediate device) thông tin như sau: "Mỗi khi dữ liệu thuộc về một luồng (flow) được gửi đến thiết bị, chúng cần được truyền tiếp trên giao diện (interface) i/f1." Mỗi thông điệp như vậy về tuyến đường được xử lý bởi thiết bị trung gian, kết quả là một mục mới được tạo trong **bảng chuyển mạch (switching table)** (còn gọi là **bảng định tuyến - routing table**) của thiết bị này. Trong bảng này, một đặc điểm cục bộ (local attribute) của luồng (ví dụ, số giao diện đầu vào hoặc địa chỉ đích - destination address) được liên kết với giao diện đầu ra (output interface), nơi mà thiết bị phải truyền dữ liệu liên quan đến luồng đó.
+
+Bảng 2.1 là một đoạn của bảng chuyển mạch (switching table), chứa mục được tạo dựa trên thông điệp về yêu cầu truyền luồng k trên giao diện i/f1.
+
+
+
+**Bảng 2.1. Mẫu bảng chuyển mạch**  
+
+| **Đặc điểm luồng**            | **Hướng truyền dữ liệu (số giao diện và/hoặc địa chỉ của nút tiếp theo)** |
+|-------------------------------|--------------------------------------------------------------------------|
+| n = (DA, SA, A)               | if/1                                                                    |
+
+- **DA**: Địa chỉ đích (Destination Address).  
+- **SA**: Địa chỉ nguồn (Source Address).  
+- **A**: Thuộc tính khác của luồng dữ liệu.  
+
+Trong bảng này, các đặc điểm (attributes) của luồng (flow) được sử dụng bao gồm địa chỉ đích (**DA - Destination Address**), địa chỉ nguồn (**SA - Source Address**) và loại ứng dụng (**A - Application**) tạo ra các gói dữ liệu của luồng.
+
+Thông báo (notification) đến các thiết bị trung gian (transit devices) trên tuyến đường được chọn, cũng như việc xác định tuyến đường (route determination), có thể được thực hiện thủ công (manual) hoặc tự động (automatic). Quản trị viên mạng (network administrator) có thể cố định tuyến đường bằng cách cấu hình thiết bị ở chế độ thủ công, ví dụ: cứng hóa kết nối giữa một số cặp giao diện đầu vào và đầu ra trong thời gian dài (giống như cách hoạt động của các **bảng chuyển mạch điện thoại - telephone switchboards** trong các bộ chuyển mạch đầu tiên). Ngoài ra, thiết bị cũng có thể tự động tạo và ghi các mục vào bảng chuyển mạch (switching table) theo sáng kiến riêng của nó.
+
+Tuy nhiên, do cấu trúc liên kết mạng (network topology) và các luồng thông tin (information flows) có thể thay đổi (ví dụ: các nút bị lỗi hoặc các nút trung gian mới xuất hiện, địa chỉ thay đổi, hoặc luồng mới được xác định), việc xác định linh hoạt tuyến đường và gán tuyến đường đòi hỏi phải phân tích liên tục trạng thái mạng (network state) và cập nhật các tuyến đường cũng như bảng chuyển mạch. Trong các trường hợp như vậy, nhiệm vụ thiết lập tuyến đường, thông thường, không thể được giải quyết mà không có các công cụ phần mềm (software tools) và phần cứng (hardware tools) phức tạp đủ mức.
+
+---
+
+##### 2.5.3 Chuyển tiếp dữ liệu (Data forwarding)
+
+Vậy là, các tuyến đường (routes) đã được xác định, các mục tương ứng đã được ghi vào bảng của tất cả các nút trung gian (transit nodes), và mọi thứ đã sẵn sàng để thực hiện thao tác chính — truyền dữ liệu giữa các thuê bao (subscribers), hay còn gọi là **chuyển mạch thuê bao (subscriber switching)**.
+
+Đối với mỗi cặp thuê bao, thao tác này có thể bao gồm một số (tùy thuộc vào số lượng nút trung gian) thao tác chuyển mạch cục bộ (local switching operations). Trước hết, thiết bị gửi phải đưa dữ liệu lên giao diện (interface) của nó, nơi bắt đầu tuyến đường đã xác định. Tất cả các nút trung gian phải thực hiện tương ứng việc "chuyển" dữ liệu từ một giao diện của chúng sang giao diện khác, hay nói cách khác, thực hiện **chuyển mạch giao diện (interface switching)**. Một thiết bị, với chức năng chính là thực hiện chuyển mạch, được gọi là **bộ chuyển mạch (switch)**. Trong Hình 2.14, một bộ chuyển mạch được minh họa, thực hiện chuyển đổi các luồng thông tin (information flows) giữa bốn giao diện của nó.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.14.png" alt="Hình 2.14. Bộ chuyển mạch (Switch)" width="900">
+</p>
+<p align="center"><b>Hình 2.14. Bộ chuyển mạch (Switch)</b></p>
+
+**Giao diện của bộ chuyển mạch (Switch interface)** (còn được gọi là **cổng - port**) là một mô-đun vật lý, bao gồm bộ thu (receiver) và bộ phát (transmitter). Trong trường hợp bộ phát và bộ thu hoạt động trên một kênh truyền song công (duplex communication channel), chúng hoạt động độc lập với nhau, đảm bảo truyền dữ liệu đồng thời theo cả hai hướng. Đôi khi, phần nhận của giao diện được gọi là **giao diện đầu vào (input interface)**, và phần phát được gọi là **giao diện đầu ra (output interface)**.
+
+Trước khi thực hiện chuyển mạch (switching), bộ chuyển mạch phải nhận diện luồng (flow). Để làm điều này, bộ chuyển mạch cố gắng tìm kiếm đặc điểm của bất kỳ luồng nào trong bảng chuyển mạch (switching table) của nó, dựa trên dữ liệu đến. Nếu có sự trùng khớp, dữ liệu này sẽ được chuyển đến giao diện đã được xác định cho nó trong tuyến đường (route).
+
+Bộ chuyển mạch (switch) có thể là một thiết bị chuyên dụng (specialized device) hoặc một máy tính đa năng (universal computer) với cơ chế chuyển mạch phần mềm (software switching mechanism) tích hợp sẵn, trong trường hợp này bộ chuyển mạch được gọi là **chuyển mạch phần mềm (software switch)**. Máy tính có thể kết hợp chức năng chuyển mạch dữ liệu (data switching) với việc thực hiện các chức năng thông thường của nó như một nút cuối (end node). 
+
+Tuy nhiên, trong nhiều trường hợp, giải pháp hợp lý hơn là chỉ định một số nút trong mạng chuyên biệt (dedicated) cho việc chuyển mạch. Những nút này tạo thành một **mạng chuyển mạch (switching network)** mà tất cả các nút khác sẽ được kết nối với. Trong Hình 2.15, một mạng chuyển mạch được minh họa, được hình thành bởi các nút 1, 5, 6 và 8, và các nút cuối (end nodes) 2, 3, 4, 7, 9 và 10 được kết nối với mạng này.
+
+---
+
+**Về các thuật ngữ (On terms)**
+
+Các thuật ngữ **"chuyển mạch (switching)"**, **"bảng chuyển mạch (switching table)"** và **"bộ chuyển mạch (switch)"** trong mạng viễn thông (telecommunication networks) có thể được hiểu theo nhiều cách khác nhau. Chúng ta đã định nghĩa chuyển mạch là một quá trình kết nối các thuê bao mạng (network subscribers) thông qua các nút trung gian (transit nodes). Thuật ngữ này cũng được sử dụng để chỉ việc kết nối các giao diện (interfaces) trong phạm vi một nút trung gian.
+
+Bộ chuyển mạch (switch), theo nghĩa rộng, là một thiết bị bất kỳ có khả năng thực hiện các thao tác chuyển dữ liệu (data forwarding) từ một giao diện sang một giao diện khác. Thao tác chuyển mạch (switching operation) có thể được thực hiện theo các quy tắc và thuật toán khác nhau. Một số phương pháp chuyển mạch và các bảng cũng như thiết bị tương ứng với chúng đã nhận được những tên gọi cụ thể. 
+
+Ví dụ, trong công nghệ IP (IP technology), các thuật ngữ **"định tuyến (routing)"**, **"bảng định tuyến (routing table)"** và **"bộ định tuyến (router)"** được sử dụng để chỉ các khái niệm tương tự. Đồng thời, trong các mạng cục bộ Ethernet, các thuật ngữ **"chuyển mạch (switching)"**, **"bảng chuyển mạch (switching table)"** và **"bộ chuyển mạch (switch)"** được sử dụng trong nghĩa hẹp, chẳng hạn như các thiết bị chuyển đổi dữ liệu giữa các giao diện của nó.
+
+Trong mạng điện thoại (telephone networks), xuất hiện từ lâu trước các mạng máy tính, thuật ngữ tương tự cũng được sử dụng, và "bộ chuyển mạch (switch)" trong ngữ cảnh này là đồng nghĩa với **"trạm điện thoại (telephone station)"**.
+
+---
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.15.png" alt="Hình 2.15. Mạng chuyển mạch (Switching network)" width="900">
+</p>
+<p align="center"><b>Hình 2.15. Mạng chuyển mạch (Switching network)</b></p>
+
+---
+
+##### 2.5.4 Ghép kênh và tách kênh (Multiplexing and Demultiplexing)
+
+Để xác định giao diện (interface) mà dữ liệu nhận được cần được truyền đến, bộ chuyển mạch (switch) phải làm rõ dữ liệu đó thuộc về luồng nào (flow). Nhiệm vụ này phải được giải quyết bất kể dữ liệu đến với bộ chuyển mạch là từ một luồng "thuần nhất" (pure flow) hay một luồng "hỗn hợp" (mixed flow), được tạo thành từ việc gộp nhiều luồng (aggregation of multiple flows).
+
+Trong trường hợp thứ hai, ngoài nhiệm vụ nhận diện luồng (flow recognition), nhiệm vụ tách kênh (demultiplexing) cũng được thêm vào.
+
+**Tách kênh (Demultiplexing)** — là việc phân tách một luồng dữ liệu tổng hợp thành nhiều luồng cấu thành.
+
+Như thường lệ, thao tác chuyển mạch (switching operation) cũng đi kèm với thao tác ngược lại — **ghép kênh (multiplexing)**.
+
+**Ghép kênh (Multiplexing)** (hay còn gọi là gộp luồng - aggregation) — là việc hợp nhất nhiều luồng dữ liệu riêng lẻ thành một luồng tổng hợp, được truyền qua một kênh truyền vật lý (physical communication channel) duy nhất.
+
+Nói cách khác, ghép kênh (multiplexing) là một phương pháp phân chia một kênh vật lý hiện có giữa nhiều phiên giao tiếp (communication sessions) đồng thời của các thuê bao mạng (network subscribers).
+
+Các thao tác ghép kênh và tách kênh (multiplexing/demultiplexing operations) có tầm quan trọng tương đương trong bất kỳ mạng nào như các thao tác chuyển mạch (switching), bởi vì nếu không có chúng, mỗi luồng sẽ yêu cầu một kênh riêng biệt, dẫn đến số lượng kết nối song song trong mạng tăng đáng kể và làm mất đi các lợi ích của mạng không hoàn toàn kết nối.
+
+Hình 2.16 minh họa một đoạn mạng bao gồm ba bộ chuyển mạch (switches). Bộ chuyển mạch 1 có bốn giao diện mạng (network interfaces). Dữ liệu từ hai giao diện — 3 và 4 — được gửi đến giao diện 1. Dữ liệu này cần được truyền qua một kênh vật lý chung, do đó phải thực hiện thao tác ghép kênh (multiplexing).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.16.png" alt="Hình 2.16. Các thao tác ghép kênh và tách kênh trong chuyển mạch" width="900">
+</p>
+<p align="center"><b>Hình 2.16. Các thao tác ghép kênh và tách kênh trong chuyển mạch</b></p>
+
+Một trong những phương pháp chính để **ghép kênh (multiplexing)** luồng là **ghép kênh phân chia theo thời gian (time-division multiplexing - TDM)**. Với phương pháp này, mỗi luồng định kỳ (với chu kỳ cố định hoặc ngẫu nhiên) sẽ được toàn quyền sử dụng kênh vật lý (physical channel) để truyền dữ liệu của nó. 
+
+Một phương pháp phổ biến khác là **ghép kênh phân chia theo tần số (frequency-division multiplexing - FDM)**, trong đó mỗi luồng sẽ truyền dữ liệu trong dải tần số (frequency range) được phân bổ riêng.
+
+Công nghệ ghép kênh cũng phải cho phép thiết bị nhận thực hiện thao tác ngược lại — **tách kênh (demultiplexing)**, tức là phân tách luồng dữ liệu tổng hợp thành các luồng cấu thành. Trên giao diện 3, bộ chuyển mạch (switch) thực hiện thao tác tách kênh (demultiplexing) một luồng thành ba luồng con (subflows). Một trong số đó được chuyển đến giao diện 1, luồng thứ hai đến giao diện 2, và luồng thứ ba đến giao diện 4.
+
+Nói chung, trên một giao diện, cả hai chức năng **ghép kênh (multiplexing)** và **tách kênh (demultiplexing)** có thể được thực hiện đồng thời.
+
+**Lưu ý**: Một trường hợp đặc biệt của bộ chuyển mạch, nơi tất cả các luồng thông tin đầu vào được chuyển mạch đến một giao diện đầu ra duy nhất, tại đó chúng được ghép lại thành một luồng tổng hợp (aggregated flow), được gọi là **bộ ghép kênh (multiplexer)**. Ngược lại, bộ chuyển mạch có một giao diện đầu vào và nhiều giao diện đầu ra được gọi là **bộ tách kênh (demultiplexer)** (Hình 2.17).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.17.png" alt="Hình 2.17. Bộ ghép kênh và bộ tách kênh" width="900">
+</p>
+<p align="center"><b>Hình 2.17. Bộ ghép kênh và bộ tách kênh</b></p>
+
+
+---
+
+##### 2.5.5 Môi trường truyền dữ liệu chia sẻ (Shared data transmission medium)
+
+Trong tất cả các ví dụ đã xem xét về ghép kênh (multiplexing) luồng, mỗi đường truyền chỉ được kết nối với hai giao diện (interfaces). Trong trường hợp đường truyền là một kênh song công (duplex communication channel), như được minh họa trong Hình 2.18, mỗi giao diện sử dụng kênh truyền độc quyền theo hướng "từ nó đi" (outgoing). Điều này được giải thích bởi thực tế rằng một kênh song công bao gồm hai môi trường truyền dữ liệu độc lập (subchannels), và vì chỉ bộ phát (transmitter) của giao diện là thiết bị chủ động (active device), còn bộ thu (receiver) thì thụ động (passive), chỉ chờ tín hiệu đến từ bộ phát, nên không có sự cạnh tranh giữa các kênh phụ (subchannels).
+
+Chế độ sử dụng môi trường truyền dữ liệu như vậy hiện nay là cơ chế cơ bản trong các mạng máy tính cục bộ (local networks) và toàn cầu (global networks).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.18.png" alt="Hình 2.18. Kênh song công - không có môi trường chia sẻ" width="900">
+</p>
+<p align="center"><b>Hình 2.18. Kênh song công - không có môi trường chia sẻ</b></p>
+
+Tuy nhiên, nếu trong các mạng toàn cầu (global networks), chế độ này luôn được sử dụng, thì trong các mạng cục bộ (local networks) cho đến giữa những năm 1990, một chế độ khác đã chiếm ưu thế, dựa trên môi trường truyền dữ liệu chia sẻ (shared data transmission medium).
+
+**Môi trường chia sẻ (shared medium)** được gọi là môi trường vật lý để truyền dữ liệu, trong đó một số bộ phát (transmitters) của các nút mạng (network nodes) được kết nối trực tiếp. Đồng thời, tại mỗi thời điểm, chỉ một trong các bộ phát của bất kỳ nút nào trong mạng được phép truy cập vào môi trường chia sẻ và sử dụng nó để truyền dữ liệu đến bộ thu (receiver) của một nút khác, cũng được kết nối với cùng môi trường này.
+
+Trong trường hợp đơn giản nhất, hiệu ứng chia sẻ môi trường xuất hiện khi hai giao diện (interfaces) được kết nối thông qua một kênh truyền bán song công (half-duplex channel), tức là một kênh có thể truyền dữ liệu theo bất kỳ hướng nào, nhưng chỉ từng hướng một (Hình 2.19). Trong trường hợp này, cùng một môi trường truyền dữ liệu (ví dụ, cáp đồng trục hoặc môi trường sóng vô tuyến chung) được kết nối với hai nút mạng độc lập.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.19.png" alt="Hình 2.19. Kênh bán song công - môi trường chia sẻ" width="900">
+</p>
+<p align="center"><b>Hình 2.19. Kênh bán song công - môi trường chia sẻ</b></p>
+
+Khi sử dụng môi trường truyền dữ liệu như vậy, một nhiệm vụ mới nảy sinh — **chia sẻ môi trường truyền dữ liệu giữa các bộ phát độc lập (independent transmitters)** sao cho tại mỗi thời điểm chỉ có dữ liệu của một bộ phát được truyền qua môi trường. Nói cách khác, cần có **một cơ chế đồng bộ hóa (synchronization mechanism)** để kiểm soát quyền truy cập của các giao diện (interfaces) vào môi trường chia sẻ.
+
+Một trường hợp tổng quát của môi trường chia sẻ là khi hơn hai giao diện được kết nối với cùng một kênh truyền (ví dụ, ba giao diện trong ví dụ minh họa ở Hình 2.20), sử dụng cấu trúc liên kết bus (bus topology).
+
+Có nhiều cách để giải quyết vấn đề tổ chức truy cập đồng thời vào các đường truyền chia sẻ. Một trong những cách đó là **phương pháp tập trung (centralized method)**, trong đó quyền truy cập vào kênh được kiểm soát bởi một thiết bị đặc biệt — **bộ điều phối (arbiter)**. Cách khác là **phương pháp phân tán (decentralized method)**. Khi quan sát cách tổ chức hoạt động của máy tính, ta thấy rằng quyền truy cập vào bus hệ thống (system bus) của máy tính, sử dụng các khối nội bộ, được kiểm soát tập trung — bởi bộ xử lý (processor) hoặc một arbiter chuyên dụng.
+
+Trong mạng, tổ chức truy cập đồng thời vào các đường truyền chia sẻ có những đặc điểm riêng do thời gian truyền tín hiệu dọc theo đường truyền. Các thủ tục đồng bộ quyền truy cập có thể yêu cầu khoảng thời gian quá lớn, dẫn đến tổn thất hiệu suất đáng kể. Chính vì lý do này, cơ chế chia sẻ môi trường trong mạng toàn cầu (global networks) hầu như không được sử dụng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.20.png" alt="Hình 2.20. Kênh với nhiều kết nối - môi trường chia sẻ" width="900">
+</p>
+<p align="center"><b>Hình 2.20. Kênh với nhiều kết nối - môi trường chia sẻ</b></p>
+
+Thoạt nhìn, có thể cho rằng cơ chế chia sẻ môi trường (medium sharing mechanism) rất giống với cơ chế ghép kênh (multiplexing mechanism) luồng, vì trong cả hai trường hợp, có nhiều luồng dữ liệu (data flows) được truyền qua đường truyền. Tuy nhiên, ở đây có một sự khác biệt cơ bản liên quan đến cách kiểm soát (control) đường truyền. Trong ghép kênh, đường truyền song công (duplex link) ở mỗi hướng đều nằm dưới sự kiểm soát hoàn toàn của một bộ chuyển mạch (switch), quyết định cách các luồng dữ liệu chia sẻ kênh chung. 
+
+Đối với mạng cục bộ (local networks), môi trường chia sẻ đã được sử dụng tương đối lâu như một cơ chế chính để tận dụng các kênh truyền (communication channels), điều này được áp dụng trong tất cả các công nghệ mạng cục bộ — **Ethernet**, **Token Ring**, **FDDI**. Trong các công nghệ này, phương pháp truy cập phân tán (decentralized access methods) được áp dụng, không yêu cầu sự hiện diện của một bộ điều phối (arbiter) trong mạng. Sự phổ biến của kỹ thuật chia sẻ môi trường trong mạng cục bộ được giải thích bởi sự đơn giản và tiết kiệm về mặt phần cứng. 
+
+Ví dụ, để tạo một mạng Ethernet trên cáp đồng trục (coaxial cable), ngoài các bộ điều hợp mạng (network adapters) và bản thân cáp, không cần thêm bất kỳ thiết bị mạng nào khác. Việc mở rộng số lượng máy tính trong mạng cục bộ Ethernet sử dụng cáp đồng trục cũng được thực hiện khá đơn giản — bằng cách kết nối thêm một đoạn cáp mới với đoạn cáp hiện có.
+
+Ngày nay, trong các mạng cục bộ có dây (wired local networks), phương pháp chia sẻ môi trường (medium sharing method) hầu như không còn được sử dụng. Nguyên nhân chính của việc từ bỏ môi trường chia sẻ là hiệu suất thấp (low performance) và khó dự đoán, cũng như khả năng mở rộng kém (poor scalability). Hiệu suất thấp được giải thích bởi thực tế rằng băng thông (bandwidth) của kênh truyền được chia sẻ giữa tất cả các máy tính trong mạng.
+
+Ví dụ, nếu một mạng cục bộ Ethernet bao gồm 100 máy tính và sử dụng cáp đồng trục (coaxial cable) cùng các bộ điều hợp mạng (network adapters) hoạt động ở tốc độ 10 Mbit/s, thì trung bình mỗi máy tính chỉ được phân bổ 0,1 Mbit/s băng thông. Việc đánh giá chính xác phần băng thông cho một máy tính trong mạng là khó khăn, vì giá trị này phụ thuộc vào nhiều yếu tố ngẫu nhiên, chẳng hạn như mức độ hoạt động của các máy tính khác. Có lẽ đến đây, người đọc đã hiểu lý do tại sao loại mạng này có khả năng mở rộng kém — càng thêm nhiều máy tính, phần băng thông dành cho mỗi máy tính càng giảm.
+
+Những nhược điểm được mô tả là hệ quả của chính nguyên tắc chia sẻ môi trường, do đó không thể khắc phục hoàn toàn. Sự xuất hiện của các bộ chuyển mạch (switches) giá rẻ cho mạng cục bộ vào đầu những năm 1990 đã dẫn đến một cuộc cách mạng thực sự trong lĩnh vực này, và dần dần, các bộ chuyển mạch đã thay thế hoàn toàn môi trường chia sẻ.
+
+Ngày nay, cơ chế chia sẻ môi trường chỉ được sử dụng trong các mạng cục bộ không dây (wireless local networks), nơi môi trường — không gian sóng radio (radio ether) — tự nhiên kết nối tất cả các nút cuối (end nodes) nằm trong vùng phủ sóng tín hiệu.
+
+---
+
+**Ví dụ - Phép so sánh (Example - Analogy)**
+
+Nhiệm vụ tổng quát của chuyển mạch (switching), đã được xem xét ở trên, là một mô hình trừu tượng đủ để áp dụng cho bất kỳ công nghệ mạng nào. Hãy giải thích mô hình này bằng ví dụ về cách hoạt động của dịch vụ bưu chính truyền thống. Bưu chính cũng xử lý các luồng thông tin (information flows), trong trường hợp này là các bưu gửi (postal items). Đặc điểm chính của luồng bưu chính là địa chỉ người nhận (recipient address). 
+
+Để đơn giản, chúng ta sẽ chỉ xem xét địa chỉ quốc gia, ví dụ như Ấn Độ, Na Uy, Nga, Brazil, v.v. Một đặc điểm bổ sung của luồng có thể là yêu cầu đặc biệt về độ tin cậy hoặc tốc độ giao hàng. Ví dụ, ghi chú "Avia" trên các bưu gửi đến Brazil sẽ tạo ra một luồng con (subflow) riêng biệt, được giao bằng máy bay.
+
+Đối với mỗi luồng, dịch vụ bưu chính cần xác định tuyến đường (route) mà bưu gửi sẽ đi qua thông qua các bưu cục (postal offices), là tương đương với các bộ chuyển mạch (switches). Kết quả của nhiều năm hoạt động, dịch vụ bưu chính đã xác định các tuyến đường cho hầu hết các địa chỉ đích (destinations). Đôi khi, các tuyến đường mới xuất hiện do các cơ hội mới — chính trị, giao thông, kinh tế. Sau khi chọn tuyến đường mới, cần thông báo (notify) về điều này đến toàn bộ mạng lưới bưu cục. Rõ ràng, các hành động này rất giống với hoạt động của mạng viễn thông (telecommunication network).
+
+Thông tin về các tuyến đường đã chọn được biểu diễn trong mỗi bưu cục dưới dạng một bảng, trong đó thiết lập sự tương ứng giữa quốc gia đích và bưu cục tiếp theo. Ví dụ, tại bưu cục ở thành phố Saratov, các thư gửi đến Ấn Độ sẽ được gửi đến bưu cục ở Ashkhabad, còn các thư gửi đến Na Uy sẽ được chuyển đến bưu cục ở Saint Petersburg. Bảng định tuyến này là một sự tương đồng trực tiếp với bảng chuyển mạch (switching table) trong mạng viễn thông.
+
+Mỗi bưu cục hoạt động như một bộ chuyển mạch. Các bưu gửi đến từ người gửi hoặc các bưu cục khác được phân loại (classified) thành các luồng (flows). Sau đó, các bưu gửi thuộc về một luồng cụ thể được đóng gói vào bao, được đánh dấu với bưu cục đích tiếp theo theo bảng định tuyến và gửi đi.
+
+---
