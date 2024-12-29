@@ -492,3 +492,83 @@ Cùng với đó, sự phức tạp của môi trường truyền tin dẫn đ�
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.4.png" alt="Hình 2.4 Dịch vụ web" width="800">
 </p>
+
+##### 2.2.2 Hệ điều hành mạng (Network Operating System)**
+
+Hệ điều hành (Operating System) của máy tính thường được định nghĩa là một tập hợp các chương trình hệ thống liên kết (interconnected system programs), cung cấp khả năng quản lý hiệu quả các tài nguyên (resources) của máy tính (bộ nhớ - memory, bộ xử lý - processor, thiết bị ngoại vi - peripheral devices, tệp - files, v.v.), đồng thời cung cấp giao diện thân thiện (user-friendly interface) cho người dùng để làm việc với phần cứng máy tính (computer hardware) và phát triển ứng dụng (application development).
+
+Khi nói về hệ điều hành mạng (Network Operating System - NOS), rõ ràng chúng ta cần mở rộng giới hạn của các tài nguyên được quản lý ra ngoài phạm vi của một máy tính duy nhất.
+
+**Hệ điều hành mạng** được định nghĩa là hệ điều hành của một máy tính, ngoài việc quản lý các tài nguyên cục bộ (local resources), còn cung cấp cho người dùng và ứng dụng khả năng truy cập hiệu quả và thuận tiện (efficient and convenient access) vào các tài nguyên thông tin (informational resources) và phần cứng (hardware resources) của các máy tính khác trong mạng (networked computers).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.5.png" alt="Hình 2.5. Các thành phần chức năng của hệ điều hành mạng." width="800">
+</p>
+
+Vị trí của hệ điều hành mạng (Network Operating System - NOS) trong danh sách chung các hệ điều hành (Operating Systems - OS) phụ thuộc vào mức độ phong phú của các dịch vụ mạng (network services) và các dịch vụ (services) mà nó cung cấp cho người dùng cuối (end users), ứng dụng (applications) và quản trị viên mạng (network administrators).
+
+Ngoài các dịch vụ mạng (network services), hệ điều hành mạng còn bao gồm các **phương tiện giao tiếp phần mềm (software communication tools)** hoặc **phương tiện truyền tải (transport tools)**, đảm bảo việc truyền tải thông điệp (messages) với sự phối hợp của các phương tiện giao tiếp phần cứng (hardware communication tools), thông qua đó các phần khách hàng (client) và phần máy chủ (server) của các dịch vụ mạng trao đổi dữ liệu với nhau. Nhiệm vụ giao tiếp giữa các máy tính trong mạng được thực hiện bởi các **trình điều khiển (drivers)** và **mô-đun giao thức (protocol modules)**. Chúng thực hiện các chức năng như: tạo thông điệp (message formation), chia nhỏ thông điệp thành các phần (packets, frames), chuyển đổi tên máy tính thành địa chỉ số (numeric addresses), nhân bản thông điệp trong trường hợp bị mất, định tuyến thông điệp trong mạng phức tạp, v.v.
+
+Cả các dịch vụ mạng và các phương tiện truyền tải có thể là các thành phần tích hợp (built-in components) của hệ điều hành (OS) hoặc tồn tại dưới dạng các sản phẩm phần mềm riêng biệt. Ví dụ, dịch vụ tệp mạng (network file service) thường được tích hợp vào hệ điều hành, trong khi trình duyệt web (web browser) thường là một ứng dụng độc lập. Một hệ điều hành mạng điển hình thường bao gồm một tập hợp đa dạng các trình điều khiển (drivers) và mô-đun giao thức (protocol modules), nhưng người dùng, như thường lệ, có thể bổ sung tập hợp tiêu chuẩn này bằng các chương trình cần thiết khác.
+
+Quyết định về cách thức triển khai (implementation) các khách hàng và máy chủ của dịch vụ mạng, cũng như các trình điều khiển và mô-đun giao thức, được đưa ra bởi các nhà phát triển, dựa trên nhiều cân nhắc khác nhau: kỹ thuật (technical), thương mại (commercial), và thậm chí pháp lý (legal). Ví dụ, dựa trên luật chống độc quyền (antitrust law) của Hoa Kỳ, Microsoft bị cấm tích hợp trình duyệt Internet Explorer của họ vào hệ điều hành của công ty.
+
+Dịch vụ mạng (network service) có thể được cung cấp trong hệ điều hành (Operating System - OS) dưới dạng cả hai phần (khách hàng - client và máy chủ - server) hoặc chỉ một trong số đó.
+
+Trong trường hợp đầu tiên, hệ điều hành, được gọi là **ngang hàng (peer-to-peer)**, không chỉ cho phép truy cập vào các tài nguyên của các máy tính khác, mà còn cung cấp các tài nguyên của chính mình để người dùng của các máy tính khác sử dụng. Ví dụ, nếu tất cả các máy tính trong mạng đều được cài đặt các thành phần khách hàng (client) và máy chủ (server) của dịch vụ tệp (file service), thì tất cả người dùng mạng có thể chia sẻ tệp với nhau. Các máy tính đồng thời thực hiện cả chức năng khách hàng và máy chủ được gọi là **nút ngang hàng (peer nodes)**.
+
+Hệ điều hành chứa chủ yếu phần khách hàng (client-side) của dịch vụ mạng được gọi là **hệ điều hành khách hàng (client OS)**. Các hệ điều hành khách hàng được cài đặt trên các máy tính gửi yêu cầu tới tài nguyên của các máy tính khác trong mạng. Những máy tính như vậy, còn được gọi là máy tính khách (client computers), thường được sử dụng bởi người dùng phổ thông. Thông thường, các hệ điều hành khách hàng được thiết kế để làm việc trên các thiết bị đơn giản.
+
+Một loại hệ điều hành khác được gọi là **hệ điều hành máy chủ (server OS)** – nó được thiết kế để xử lý các yêu cầu trong mạng và tài nguyên của máy chủ, bao gồm chủ yếu các phần máy chủ của dịch vụ mạng. Máy tính được cài đặt hệ điều hành máy chủ, chuyên phục vụ các yêu cầu từ các máy tính khác trong mạng, được gọi là **máy chủ chuyên dụng (dedicated server)**. Máy chủ chuyên dụng không được sử dụng bởi người dùng để làm việc trực tiếp.
+
+**Lưu ý**
+
+Chi tiết hơn về các hệ điều hành mạng (Network Operating Systems - NOS) và các dịch vụ mạng (network services) được tích hợp trong chúng, bạn có thể đọc trong các tài liệu chuyên ngành, cũng như trong sách giáo khoa của các tác giả với tiêu đề "Hệ điều hành mạng" (Network Operating Systems). 
+
+Các dịch vụ mạng phổ biến nhất trên Internet, chẳng hạn như email (electronic mail), dịch vụ web (web services), điện thoại IP (IP telephony), v.v., sẽ được xem xét trong phần VII của cuốn sách này.
+
+---
+
+##### 2.2.3 Ứng dụng mạng (Network Applications)
+
+Trên một máy tính được kết nối với mạng (network-connected computer), có thể chạy các loại ứng dụng khác nhau:
+
+- **Ứng dụng cục bộ (Local Application)** hoàn toàn được thực thi trên máy tính này và chỉ sử dụng các tài nguyên cục bộ (local resources) (xem Hình 2.6, a). Đối với loại ứng dụng này, không cần bất kỳ phương tiện mạng nào (network means), và nó có thể được thực thi trên một máy tính hoạt động độc lập (autonomously operating computer).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.6.a.png" alt="Hình 2.6. Các loại ứng dụng hoạt động trong mạng." width="800">
+</p>
+
+
+- **Ứng dụng mạng tập trung (Centralized Network Application)** được thực thi hoàn toàn trên một máy tính, nhưng trong quá trình hoạt động, nó truy cập vào tài nguyên của các máy tính khác trong mạng. Trong ví dụ ở Hình 2.6, b, ứng dụng được thực thi trên một máy tính khách (client computer), xử lý dữ liệu từ một tệp được lưu trữ trên máy chủ tệp (file server), sau đó in kết quả trên máy in được kết nối với máy chủ in (print server). Rõ ràng, hoạt động của loại ứng dụng này là không thể thực hiện được nếu không có sự tham gia của các dịch vụ mạng (network services) và các phương tiện truyền tải thông điệp (message transportation means).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.6.b.png" alt="Hình 2.6. Các loại ứng dụng hoạt động trong mạng." width="800">
+</p>
+
+- **Ứng dụng phân tán (Distributed Network Application)** bao gồm một số phần tương tác (interacting components), mỗi phần thực hiện một công việc cụ thể và hoàn chỉnh trong việc giải quyết nhiệm vụ ứng dụng (application task). Thông thường, mỗi phần được thực thi trên một máy tính riêng biệt trong mạng (xem Hình 2.6, c). Các phần của ứng dụng phân tán tương tác với nhau bằng cách sử dụng các dịch vụ mạng (network services) và các phương tiện truyền tải (transportation tools) của hệ điều hành (Operating System - OS). Ứng dụng phân tán thường có quyền truy cập vào tất cả các tài nguyên của mạng máy tính (computer network).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.6.c.png" alt="Hình 2.6. Các loại ứng dụng hoạt động trong mạng." width="800">
+</p>
+
+Rõ ràng, ưu điểm nổi bật của các ứng dụng phân tán (distributed applications) là khả năng phân chia tính toán (parallelization of computations), cũng như chuyên môn hóa máy tính (specialization of computers). Ví dụ, trong một ứng dụng được thiết kế để phân tích biến đổi khí hậu, có thể chia thành ba phần độc lập (xem Hình 2.6, b), cho phép phân chia. Phần đầu tiên của ứng dụng, thực thi trên một máy tính cá nhân (personal computer) có hiệu suất thấp, có thể hỗ trợ giao diện người dùng đồ họa chuyên biệt (specialized graphical user interface). Phần thứ hai có thể thực hiện xử lý thống kê dữ liệu (statistical data processing) trên một máy tính chính hiệu suất cao (high-performance mainframe). Phần thứ ba sẽ tạo ra các báo cáo trên một máy chủ với hệ quản trị cơ sở dữ liệu tiêu chuẩn (standard DBMS).
+
+Thông thường, mỗi phần của ứng dụng phân tán có thể được nhân bản thành nhiều bản sao, hoạt động trên các máy tính khác nhau. Ví dụ, trong trường hợp này, phần đầu tiên, chịu trách nhiệm hỗ trợ giao diện người dùng (user interface), có thể được chạy trên nhiều máy tính cá nhân, cho phép ứng dụng này làm việc với nhiều người dùng đồng thời.
+
+Tuy nhiên, để đạt được tất cả các lợi ích mà ứng dụng phân tán hứa hẹn, các nhà phát triển (developers) cần giải quyết nhiều vấn đề, chẳng hạn như: chia ứng dụng thành bao nhiêu phần (how many parts to divide the application into), phân bổ chức năng nào cho từng phần (what functions to assign to each part), và tổ chức sự tương tác giữa các phần như thế nào (how to organize interaction among these parts) để trong trường hợp lỗi hoặc sự cố (failures), các phần còn lại có thể hoàn thành công việc, v.v.
+
+Lưu ý rằng tất cả các dịch vụ như dịch vụ tệp (file service), dịch vụ in ấn (print service), dịch vụ thư điện tử (email service), điện thoại Internet (internet telephony), v.v., theo định nghĩa, thuộc về lớp các ứng dụng phân tán (distributed applications). Thực tế, bất kỳ dịch vụ mạng (network service) nào cũng bao gồm các phần khách hàng (client parts) và máy chủ (server parts), thường được thực thi trên các máy tính khác nhau.
+
+Trong Hình 2.7, minh họa đặc điểm phân tán (distributed nature) của các dịch vụ web (web services), chúng ta thấy các loại thiết bị khách hàng khác nhau (different types of client devices) – máy tính cá nhân (personal computers), máy tính xách tay (laptops), và điện thoại di động (mobile phones) – với trình duyệt web (web browsers) được cài đặt trên chúng, tương tác qua mạng với máy chủ web (web server). 
+
+Như vậy, một trang web (website) có thể được nhiều người dùng mạng (network users) sử dụng đồng thời – hàng trăm và thậm chí hàng nghìn.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.7.png" alt="Hình 2.6. Các loại ứng dụng hoạt động trong mạng." width="800">
+</p>
+
+Nhiều ví dụ về các ứng dụng phân tán (distributed applications) cũng có thể được tìm thấy trong các lĩnh vực như xử lý dữ liệu từ các thí nghiệm khoa học (scientific experiment data processing). Điều này không có gì đáng ngạc nhiên, bởi vì nhiều thí nghiệm tạo ra một lượng dữ liệu khổng lồ (large volumes of data), được tạo ra theo thời gian thực (real-time scale), mà không thể xử lý trên một máy tính đơn lẻ, ngay cả khi đó là một siêu máy tính (supercomputer).
+
+Ngoài ra, các thuật toán xử lý dữ liệu thí nghiệm (experimental data processing algorithms) thường dễ dàng phân chia (easily parallelized), điều này cũng rất quan trọng để áp dụng thành công các máy tính liên kết (interconnected computers) nhằm giải quyết một nhiệm vụ chung (common task). Một trong những ví dụ nổi tiếng về ứng dụng khoa học phân tán (distributed scientific application) là phần mềm xử lý dữ liệu của Máy gia tốc hạt lớn (Large Hadron Collider - LHC), được khởi chạy vào ngày 10 tháng 9 năm 2008 tại CERN. Ứng dụng này hoạt động trên hơn 30.000 máy tính (more than 30,000 computers) được liên kết thành một mạng (networked).
+
