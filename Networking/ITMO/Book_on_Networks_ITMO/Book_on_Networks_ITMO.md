@@ -331,4 +331,114 @@ Ví dụ, các phương tiện không người lái hiện đang trong giai đo�
 Sự tăng trưởng vượt bậc và tính linh hoạt của Internet (trên nhiều khía cạnh) đã và đang có tác động lớn đến công nghệ mạng máy tính, buộc chúng phải không ngừng thay đổi và cải tiến để thích nghi với các yêu cầu mới từ người dùng về cả chất lượng và số lượng.
 
 ---
+<h3 id="chuong-2-cac-nguyen-tac-chung-trong-xay-dung-mang">CHƯƠNG 2: Các nguyên tắc chung trong xây dựng mạng</h3>
+
+#### 2.1 Mạng đơn giản nhất với hai máy tính
+
+##### 2.1.2 Chia sẻ tài nguyên
+
+Về mặt lịch sử, mục tiêu chính của việc kết nối các máy tính vào mạng là **chia sẻ tài nguyên**: người dùng của các máy tính được kết nối mạng, hoặc các ứng dụng chạy trên các máy tính này, có khả năng truy cập tự động vào các tài nguyên khác nhau từ các máy tính khác trong mạng, bao gồm:
+
+- Các thiết bị ngoại vi, chẳng hạn như ổ đĩa, máy in, máy vẽ, máy quét, v.v.;
+- Dữ liệu được lưu trữ trong bộ nhớ trong hoặc trên các thiết bị lưu trữ ngoài;
+- Sức mạnh tính toán (bằng cách chạy các chương trình "của mình" trên máy tính "khác").
+
+Để cung cấp cho người dùng của các máy tính khác nhau khả năng chia sẻ tài nguyên mạng, các máy tính cần được trang bị một số phương tiện mạng bổ sung.
+
+Xem xét một mạng đơn giản nhất, bao gồm hai máy tính, trong đó một máy tính được kết nối với máy in (hình 2.1). Những phương tiện bổ sung nào cần được trang bị trong cả hai máy tính để đảm bảo rằng máy in có thể hoạt động không chỉ với người dùng của máy tính **B**, mà còn với người dùng của máy tính **A**?
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.1.png" alt="Hình 2.1. Mạng cơ bản nhất" width="800">
+</p>
+
+
+##### 2.1.2 Giao diện mạng
+
+Để kết nối các thiết bị với nhau, trước tiên chúng phải được trang bị các giao diện bên ngoài.
+
+**Giao diện** – theo nghĩa rộng – là ranh giới logic và/hoặc vật lý được xác định một cách chính thức giữa các đối tượng riêng biệt, nơi diễn ra trao đổi thông tin. Giao diện xác định các tham số, quy trình và đặc tính của sự tương tác giữa các đối tượng.
+
+---
+
+**Ghi chú**
+
+Ngoài **giao diện bên ngoài**, các thiết bị điện tử có thể sử dụng các **giao diện bên trong**, xác định ranh giới logic và vật lý giữa các mô-đun thành phần của chúng, như bộ nhớ trong, bộ xử lý, v.v.
+
+Có sự phân biệt giữa **giao diện vật lý** và **giao diện logic**:
+
+- **Giao diện vật lý** (còn được gọi là **cổng**) được xác định bởi tập hợp các kết nối điện và các đặc tính tín hiệu. Thông thường, nó là một bộ đầu nối, mỗi đầu nối trong đó có một nhiệm vụ nhất định, ví dụ, nhóm đầu nối để truyền dữ liệu, đầu nối đồng bộ hóa dữ liệu, v.v. Một cặp đầu nối được kết nối bằng **cáp**, bao gồm một tập hợp dây dẫn, mỗi dây kết nối các đầu nối tương ứng. Trong trường hợp này, người ta nói đến việc tạo ra một **đường dây** hoặc **kênh truyền** giữa hai thiết bị.
+
+- **Giao diện logic** (còn được gọi là **giao thức**) là một tập hợp các thông điệp thông tin ở định dạng cụ thể, được trao đổi giữa hai thiết bị hoặc hai chương trình, cùng với tập hợp các quy tắc xác định logic của việc trao đổi các thông điệp này.
+
+Trong hình 2.2, chúng ta thấy hai loại giao diện: giao diện **máy tính – máy tính** và **máy tính – thiết bị ngoại vi**.
+
+- **Giao diện máy tính – máy tính** cho phép hai máy tính trao đổi thông tin. Ở mỗi phía, giao diện này được thực hiện bằng một cặp:
+  - Mô-đun phần cứng, được gọi là **bộ điều hợp mạng** hoặc **card giao diện mạng** (NIC), trong tiếng Anh là **Network Interface Card**;
+  - **Trình điều khiển card giao diện mạng** – một chương trình đặc biệt quản lý hoạt động của card giao diện mạng.
+
+- **Giao diện máy tính – thiết bị ngoại vi** (trong trường hợp này, giao diện máy tính – máy in) cho phép máy tính kiểm soát hoạt động của thiết bị ngoại vi (PU). Giao diện này được thực hiện:
+  - Từ phía máy tính – qua giao diện card và trình điều khiển PU (máy in), thông qua card giao diện mạng và trình điều khiển;
+  - Từ phía PU – qua bộ điều khiển PU (máy in), thường bao gồm phần cứng xử lý, nhận **dữ liệu** (ví dụ: byte thông tin cần in lên giấy) và **lệnh** (các chỉ thị kiểm soát hoạt động điện cơ của thiết bị ngoại vi, ví dụ: nạp giấy vào máy in hoặc di chuyển đầu từ tính trên đĩa).
+  
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.2.png" alt="Hình 2.2. Sử dụng chung máy in trong mạng máy tính." width="800">
+</p>
+
+---
+
+##### 2.1.3 Kết nối máy tính với thiết bị ngoại vi
+
+Để hiểu cách giải quyết nhiệm vụ tổ chức truy cập ứng dụng, được thực thi trên máy tính **A**, vào thiết bị ngoại vi (PU) qua mạng, trước tiên hãy xem cách quản lý thiết bị này từ một ứng dụng được chạy trên máy tính **B**, nơi PU được kết nối trực tiếp (xem Hình 2.2).
+
+1. Giả sử ứng dụng trên máy tính **B** cần thực hiện việc in một số dữ liệu. Để làm điều này, ứng dụng gửi một yêu cầu thực hiện thao tác nhập/xuất đến **hệ điều hành** (thông thường, trình điều khiển không thể được khởi chạy trực tiếp từ ứng dụng). Yêu cầu này chỉ rõ địa chỉ dữ liệu cần in (địa chỉ bộ đệm của bộ nhớ trong) và thông tin về thiết bị ngoại vi nào cần thực hiện thao tác này.
+
+2. Sau khi nhận yêu cầu, hệ điều hành khởi chạy chương trình – **trình điều khiển máy in**. Từ thời điểm này, mọi hành động liên quan đến thực thi thao tác nhập/xuất từ phía máy tính chỉ được thực hiện bởi trình điều khiển máy in, hoạt động dưới sự điều khiển của mô-đun phần cứng – **card giao diện máy in**, mà không cần sự tham gia của ứng dụng hay hệ điều hành.
+
+3. Trình điều khiển máy in thực hiện các lệnh, gửi chúng đến bộ điều khiển của máy in, chẳng hạn như "In ký tự", "Chuyển dòng", "Trả con trỏ về đầu". Trình điều khiển tạo ra và gửi một loạt các mã lệnh theo thứ tự cụ thể, cũng như dữ liệu, ví dụ, các byte cần in ra giấy, đến bộ điều khiển máy in, điều này sẽ thực hiện việc in ấn.
+
+4. **Card giao diện** thực hiện công việc ở mức thấp, không đi sâu vào chi tiết liên quan đến logic quản lý thiết bị, ý nghĩa của dữ liệu và lệnh được truyền bởi trình điều khiển, coi chúng như một luồng byte đồng nhất. Sau khi nhận được từng byte từ trình điều khiển, card giao diện chỉ đơn giản là tuần tự truyền các bit vào đường truyền, biểu diễn từng bit bằng tín hiệu điện.
+
+   Để bộ điều khiển máy in hiểu rằng việc truyền dữ liệu bắt đầu, trước khi truyền bit đầu tiên, card giao diện tạo ra **tín hiệu khởi đầu** với một hình thức cụ thể, và sau khi truyền bit thông tin cuối cùng, nó tạo ra **tín hiệu kết thúc**. Các tín hiệu này đồng bộ hóa quá trình truyền byte. Bộ điều khiển, khi nhận ra tín hiệu khởi đầu, bắt đầu nhận các bit thông tin, hình thành chúng thành byte trong bộ đệm nhận của mình. Ngoài các bit thông tin, card cũng có thể truyền bit kiểm tra chẵn lẻ để tăng độ tin cậy của trao đổi. Nếu quá trình truyền diễn ra chính xác, một cờ tương ứng sẽ được thiết lập trong bộ đệm của máy in.
+
+5. Khi nhận được từng byte, bộ điều khiển diễn giải nó và thực hiện thao tác in tương ứng. Sau khi hoàn tất việc in toàn bộ ký tự của tài liệu, trình điều khiển máy in thông báo cho hệ điều hành về việc hoàn thành yêu cầu, và hệ điều hành, đến lượt mình, thông báo cho ứng dụng về sự kiện này.
+   
+---
+
+##### 2.1.4 Trao đổi dữ liệu giữa hai máy tính
+
+Các cơ chế tương tác giữa các máy tính trong mạng được vay mượn rất nhiều từ các sơ đồ tương tác giữa máy tính và thiết bị ngoại vi. Trong trường hợp đơn giản nhất, kết nối giữa hai máy tính có thể được thực hiện bằng các phương tiện tương tự như kết nối giữa máy tính và thiết bị ngoại vi, với sự khác biệt là trong trường hợp này, cả hai bên đều đóng vai trò tích cực.
+
+Các ứng dụng **A** và **B** (xem Hình 2.2) quản lý quá trình truyền dữ liệu bằng cách trao đổi **thông điệp**. Để các ứng dụng có thể "hiểu" thông tin nhận được từ nhau, các lập trình viên phát triển các ứng dụng này phải quy định nghiêm ngặt định dạng và trình tự các thông điệp mà các ứng dụng sẽ trao đổi trong quá trình thực hiện thao tác này. Ví dụ, họ có thể quy ước rằng bất kỳ thao tác trao đổi dữ liệu nào cũng bắt đầu bằng việc gửi một thông điệp yêu cầu thông tin về trạng thái của ứng dụng **B**; sau đó, thông điệp tiếp theo sẽ chứa các nhận dạng của máy tính và người dùng đang thực hiện yêu cầu; thông điệp cuối cùng có thể là dấu hiệu kết thúc thao tác trao đổi dữ liệu, v.v. Bằng cách này, một **giao thức tương tác ứng dụng** được xác định để thực hiện các thao tác kiểu này.
+
+Tương tự như cách gửi dữ liệu đến máy in yêu cầu phải truyền thêm một số thông tin phụ – dưới dạng các lệnh điều khiển máy in, thì khi truyền dữ liệu từ một máy tính đến máy tính khác cũng cần kèm theo các thông tin bổ sung dưới dạng các thông điệp giao thức mà các ứng dụng trao đổi với nhau.
+
+Lưu ý rằng để triển khai giao thức, vào thời điểm cần thiết phải trao đổi dữ liệu, cả hai ứng dụng trên cả hai máy tính (**A** và **B**) phải sẵn sàng: một bên gửi thông điệp, còn bên kia phải sẵn sàng nhận thông điệp và xử lý phản hồi từ nó.
+
+Việc truyền bất kỳ dữ liệu nào (các thông điệp giao thức cũng như dữ liệu thực tế, cấu thành thao tác trao đổi) luôn được thực hiện theo cùng một quy trình.
+
+Ở phía máy tính **A**, ứng dụng, theo logic của giao thức, đặt vào bộ đệm của bộ nhớ trong (RAM) một thông điệp tiếp theo hoặc dữ liệu của riêng nó và gửi yêu cầu tới hệ điều hành để thực hiện thao tác trao đổi dữ liệu giữa các máy tính. Hệ điều hành khởi chạy trình điều khiển card mạng, trình điều khiển này tải byte từ bộ đệm RAM vào bộ đệm của card giao diện mạng, sau đó kích hoạt hoạt động của nó. Card giao diện mạng tuần tự truyền các bit vào đường truyền, bổ sung mỗi byte mới bằng các bit khởi đầu và kết thúc.
+
+Ở phía máy tính **B**, card giao diện mạng nhận các bit từ giao diện bên ngoài, đặt chúng vào bộ đệm của nó. Sau khi nhận được bit kết thúc, card giao diện mạng thiết lập cờ hoàn tất tiếp nhận byte và thực hiện kiểm tra tính chính xác của việc tiếp nhận, chẳng hạn như kiểm tra bit chẵn lẻ. Việc tiếp nhận byte chính xác được ghi lại bởi trình điều khiển card giao diện mạng của máy tính **B**. Trình điều khiển sao chép byte nhận được từ bộ đệm của card giao diện mạng vào bộ đệm RAM đã được dành riêng của máy tính **B**. Ứng dụng **B** trích xuất dữ liệu từ bộ đệm và diễn giải chúng theo logic của giao thức, như một thông điệp hoặc dữ liệu. Nếu theo giao thức, ứng dụng **B** phải gửi lại phản hồi tới ứng dụng **A**, thì quy trình đối xứng sẽ được thực hiện.
+
+Bằng cách kết nối hai máy tính hoạt động độc lập cả về mặt điện và thông tin, chúng ta đã có được một **mạng máy tính đơn giản nhất**.
+
+---
+
+##### 2.1.5 Truy cập thiết bị ngoại vi qua mạng
+
+Vậy, chúng ta đã có trong tay một cơ chế cho phép các ứng dụng trên các máy tính khác nhau trao đổi dữ liệu. Và mặc dù ứng dụng **A** (xem Hình 2.2) vẫn không thể trực tiếp điều khiển máy in được kết nối với máy tính **B**, nhưng giờ đây nó có thể sử dụng các phương tiện trao đổi dữ liệu giữa các máy tính để gửi tới ứng dụng **B** một “yêu cầu” thực hiện thao tác cần thiết. Ứng dụng **A** cần “giải thích” cho ứng dụng **B** thao tác nào cần thực hiện, với dữ liệu nào, trên thiết bị nào có sẵn, và ở dạng nào (ví dụ: in văn bản). Trong quá trình in, có thể xảy ra các tình huống mà ứng dụng **B** cần thông báo cho ứng dụng **A**, chẳng hạn như về việc thiếu giấy trong máy in. Do đó, để giải quyết nhiệm vụ đặt ra – truy cập vào máy in qua mạng – cần phát triển một giao thức tương tác đặc biệt giữa các ứng dụng **A** và **B**.
+
+Bây giờ, hãy xem cách tất cả các thành phần của mạng máy tính đơn giản này làm việc cùng nhau khi giải quyết nhiệm vụ sử dụng chung máy in.
+
+1. Theo giao thức đã thiết lập, ứng dụng **A** tạo thông điệp yêu cầu gửi tới ứng dụng **B**, đặt thông điệp này vào bộ đệm RAM của máy tính **A** và gửi yêu cầu đến hệ điều hành, chỉ rõ thông tin cần thiết.
+
+2. Hệ điều hành khởi chạy trình điều khiển card giao diện mạng, cung cấp cho nó địa chỉ của bộ đệm RAM nơi lưu trữ thông điệp.
+
+3. Trình điều khiển và card giao diện mạng của máy tính **A**, tương tác với trình điều khiển và card giao diện mạng của máy tính **B**, truyền thông điệp từng byte vào bộ đệm RAM của máy tính **B**.
+
+4. Ứng dụng **B** trích xuất thông điệp từ bộ đệm, diễn giải nó theo giao thức và thực hiện các hành động cần thiết. Trong số các hành động đó có thể bao gồm yêu cầu tới hệ điều hành để thực hiện các thao tác nhất định với máy in được kết nối cục bộ.
+
+5. Hệ điều hành khởi chạy trình điều khiển máy in, trình điều khiển này phối hợp với card giao diện và bộ điều khiển máy in để thực hiện thao tác in cần thiết.
+
+Ngay ở giai đoạn ban đầu này, khi xem xét kết nối giữa máy tính và thiết bị ngoại vi, chúng ta đã gặp phải các khái niệm "mạng" quan trọng: giao diện và giao thức, trình điều khiển và card giao diện, cũng như các vấn đề đặc trưng của mạng máy tính: sự tương thích giao diện, đồng bộ hóa các quy trình không đồng bộ, đảm bảo tính chính xác của việc truyền dữ liệu.
 
