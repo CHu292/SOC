@@ -85,7 +85,7 @@ Chương cuối cùng của phần này dành riêng cho các đặc tính của
 --- 
 <h3 id="chuong-1-su-phat-trien-cua-mang-may-tinh">CHƯƠNG 1: Sự phát triển của mạng máy tính</h3>
 
-#### Hai nguồn gốc của mạng máy tính
+#### 1.1 Hai nguồn gốc của mạng máy tính
 
 Mạng máy tính, mà cuốn sách này đề cập đến, không phải là loại mạng duy nhất được tạo ra bởi nền văn minh nhân loại. Thậm chí, các hệ thống dẫn nước của La Mã cổ đại cũng có thể được coi là một trong những ví dụ lâu đời nhất về mạng lưới, bao phủ các khu vực rộng lớn và phục vụ nhiều người dùng. Một ví dụ khác, ít mang tính trực quan hơn, là mạng điện. Trong đó, ta có thể dễ dàng tìm thấy sự tương đồng với các thành phần của bất kỳ mạng máy tính nào: nguồn tài nguyên thông tin tương ứng với các nhà máy điện, các tuyến truyền tải cao áp tương ứng với các đường dây điện cao thế, mạng truy cập tương ứng với các trạm biến áp, và các thiết bị đầu cuối của khách hàng tương ứng với các thiết bị chiếu sáng và gia dụng.
 
@@ -100,9 +100,9 @@ Một mặt, mạng máy tính là một nhóm các máy tính được kết n�
 
 ---
 
-#### Những mạng máy tính đầu tiên
+#### 1.2 Những mạng máy tính đầu tiên
 
-##### Hệ thống xử lý theo gói
+##### 1.2.1 Hệ thống xử lý theo gói
 
 Hãy bắt đầu với nguồn gốc tính toán của mạng máy tính. Những máy tính đầu tiên vào những năm 1950 — lớn, cồng kềnh và đắt đỏ — được thiết kế dành cho một số ít người dùng được chọn. Thường thì những "con quái vật" này chiếm cả tòa nhà và đảm nhiệm các nhiệm vụ khổng lồ. Những máy tính như vậy không được thiết kế cho công việc tương tác với người dùng mà được sử dụng trong chế độ **xử lý theo gói**.
 
@@ -117,7 +117,7 @@ Tất nhiên, đối với những người dùng yêu cầu chế độ làm vi
 
 ---
 
-##### Hệ thống đa thiết bị đầu cuối — hình mẫu của mạng
+##### 1.2.2 Hệ thống đa thiết bị đầu cuối — hình mẫu của mạng
 
 Với sự giảm giá của bộ xử lý vào đầu những năm 1960, xuất hiện các phương pháp tổ chức mới cho quá trình tính toán, cho phép quan tâm đến lợi ích của người dùng. Các hệ thống tương tác đa thiết bị đầu cuối với chia sẻ thời gian (Hình 1.3) bắt đầu phát triển. Trong các hệ thống này, mỗi người dùng nhận được một thiết bị đầu cuối riêng, thông qua đó họ có thể tương tác với máy tính. Số lượng người dùng làm việc đồng thời với máy tính được xác định bởi khả năng của nó: thời gian phản hồi của hệ thống tính toán phải đủ ngắn để người dùng không cảm thấy quá rõ ràng sự làm việc song song của những người dùng khác với cùng một máy tính.
 
@@ -136,7 +136,7 @@ Hơn nữa, nhu cầu của các doanh nghiệp trong việc tạo ra các mạn
 
 ---
 
-##### Những mạng toàn cầu đầu tiên
+##### 1.2.3 Những mạng toàn cầu đầu tiên
 
 Nhu cầu kết nối nhiều máy tính đặt cách xa nhau đã trở nên cấp thiết vào thời điểm đó. Mọi thứ bắt đầu bằng việc giải quyết một nhiệm vụ đơn giản hơn — truy cập từ xa đến một máy tính từ các thiết bị đầu cuối đặt cách xa hàng trăm, thậm chí hàng ngàn, km. Các thiết bị đầu cuối được kết nối với máy tính qua mạng điện thoại bằng modem, cho phép nhiều người dùng truy cập từ xa vào tài nguyên được chia sẻ của các siêu máy tính mạnh mẽ. Sau đó, xuất hiện các hệ thống mà bên cạnh các kết nối từ xa kiểu **thiết bị đầu cuối – máy tính**, còn được thực hiện các kết nối từ xa kiểu **máy tính – máy tính**.
 
@@ -176,7 +176,7 @@ Sự phát triển của mạng máy tính toàn cầu theo nhiều cách gắn 
 
 ---
 
-##### Những mạng cục bộ đầu tiên
+##### 1.2.4 Những mạng cục bộ đầu tiên
 
 Một sự kiện quan trọng, ảnh hưởng đến sự phát triển của mạng máy tính, đã xảy ra vào đầu những năm 1970. Kết quả của đột phá công nghệ trong sản xuất linh kiện máy tính đã xuất hiện **các vi mạch tích hợp lớn** (Large Scale Integration - LSI). Chi phí tương đối thấp và khả năng chức năng tốt của chúng đã dẫn đến sự ra đời của **máy tính mini**, những máy tính này trở thành đối thủ thực sự của các máy mainframe. Quy luật thực nghiệm của Grosch không còn phù hợp với thực tế, vì mười máy tính mini, với cùng chi phí như một máy mainframe, có thể giải quyết một số nhiệm vụ (thường là các nhiệm vụ có thể được xử lý song song) nhanh hơn. 
 
@@ -217,8 +217,8 @@ Thuật toán hoạt động đơn giản của Ethernet làm giảm chi phí th
 
 ---
 
-#### Hội tụ mạng
-##### Hội tụ giữa mạng cục bộ và mạng toàn cầu
+#### 1.3 Hội tụ mạng
+##### 1.3.1 Hội tụ giữa mạng cục bộ và mạng toàn cầu
 
 
 Vào cuối những năm 80, sự khác biệt giữa mạng cục bộ và mạng toàn cầu được thể hiện rất rõ ràng.
@@ -254,7 +254,7 @@ Các mạng này sử dụng các đường truyền số, thường là cáp qu
 
 ---
 
-**Hội tụ giữa mạng máy tính và mạng viễn thông**
+##### 1.3.2 Hội tụ giữa mạng máy tính và mạng viễn thông
 
 Bắt đầu từ những năm 1980, đã có những nỗ lực tạo ra các mạng phổ quát, được gọi là **mạng đa dịch vụ**, có khả năng cung cấp các dịch vụ cho cả mạng máy tính và mạng viễn thông.
 
@@ -285,7 +285,7 @@ Cân nhắc quá trình hội tụ đang diễn ra, có thể kết luận rằn
 Dưới đây là bản dịch đầy đủ nội dung từ hình ảnh sang tiếng Việt:
 
 
-##### Internet như một yếu tố phát triển công nghệ mạng
+#### 1.4 Internet như một yếu tố phát triển công nghệ mạng
 
 Internet là đỉnh cao của sự tiến hóa trong các mạng viễn thông, là hệ thống kỹ thuật phát triển nhanh nhất trong lịch sử loài người. Internet liên tục phát triển cả về quy mô lẫn chất lượng, bắt đầu từ những năm 80, và theo dự báo của các chuyên gia, quá trình này sẽ tiếp tục trong tương lai.
 
