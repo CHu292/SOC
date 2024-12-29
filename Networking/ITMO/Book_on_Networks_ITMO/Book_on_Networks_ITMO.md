@@ -305,7 +305,7 @@ Số lượng thiết bị đầu cuối thực hiện chức năng của máy c
 
 Sự bùng nổ tuyệt đối được ghi nhận trong tăng trưởng khối lượng lưu lượng (số byte được truyền qua các tuyến chính của Internet trong một tháng):
 
-- **1990** – 1 TB (1 terabyte = $$10^{12}$$ byte, hoặc 1.000 gigabyte);
+- **1990** – 1 TB (1 terabyte =$$10^{12}$$byte, hoặc 1.000 gigabyte);
 - **1996** – 2.000 TB;
 - **2000** – 84 PB (1 petabyte = 1.000 terabyte);
 - **2008** – 10 EB (1 exabyte = 1.000 petabyte);
@@ -1389,7 +1389,7 @@ Hãy xem xét chi tiết hơn cơ chế phát sinh độ trễ khi truyền tả
 
 **Dịch đoạn văn:**
 
-Trong **mạng chuyển mạch kênh (circuit switching network)**, dữ liệu sau độ trễ, liên quan đến việc thiết lập kênh, bắt đầu được truyền với tốc độ chuẩn của kênh. Thời gian truyền dữ liệu đến địa chỉ đích $$T$$ bằng tổng thời gian lan truyền tín hiệu trong kênh $$t_{prg}$$ (prg — propagation) và thời gian truyền thông tin trong kênh $$t_{trns}$$ (trns — transmission), được gọi là **thời gian tuần tự hóa (serialization time)**.
+Trong **mạng chuyển mạch kênh (circuit switching network)**, dữ liệu sau độ trễ, liên quan đến việc thiết lập kênh, bắt đầu được truyền với tốc độ chuẩn của kênh. Thời gian truyền dữ liệu đến địa chỉ đích$$T$$bằng tổng thời gian lan truyền tín hiệu trong kênh$$t_{prg}$$(prg — propagation) và thời gian truyền thông tin trong kênh$$t_{trns}$$(trns — transmission), được gọi là **thời gian tuần tự hóa (serialization time)**.
 
 Sự hiện diện của các bộ chuyển mạch trong mạng chuyển mạch kênh không ảnh hưởng đến tổng thời gian truyền dữ liệu qua mạng.
 
@@ -1397,19 +1397,19 @@ Sự hiện diện của các bộ chuyển mạch trong mạng chuyển mạch 
 
 Thời gian truyền tin nhắn trong kênh trùng khớp hoàn toàn với thời gian nhận tin nhắn đó tại bộ đệm của nút đích, tức là với **thời gian đệm (buffering time)**.
 
-Thời gian lan truyền tín hiệu phụ thuộc vào khoảng cách giữa các thuê bao $$L$$ và tốc độ $$S$$ lan truyền sóng điện từ trong môi trường vật lý cụ thể, dao động từ 0,6 đến 0,9 tốc độ ánh sáng trong chân không:
+Thời gian lan truyền tín hiệu phụ thuộc vào khoảng cách giữa các thuê bao$$L$$và tốc độ$$S$$lan truyền sóng điện từ trong môi trường vật lý cụ thể, dao động từ 0,6 đến 0,9 tốc độ ánh sáng trong chân không:
 
 $$
 t_{prg} = L / S.
 $$
 
-Thời gian tuần tự hóa (tức là thời gian đệm tại nút đích) bằng tỷ lệ giữa kích thước tin nhắn $$V$$ tính bằng bit và băng thông của kênh $$C$$ tính bằng bit trên giây:
+Thời gian tuần tự hóa (tức là thời gian đệm tại nút đích) bằng tỷ lệ giữa kích thước tin nhắn$$V$$tính bằng bit và băng thông của kênh$$C$$tính bằng bit trên giây:
 
 $$
 t_{trns} = V / C.
 $$
 
-Trong **mạng chuyển mạch gói (packet switching network)**, việc truyền dữ liệu không yêu cầu thiết lập kết nối bắt buộc. Giả sử rằng trong mạng, được minh họa trong Hình 3.13, tin nhắn có kích thước $$V$$, giống như trong trường hợp trước (Hình 3.12), nhưng nó được chia thành các gói, mỗi gói đi kèm với một tiêu đề. Các gói được truyền từ nút N1 đến nút N2, giữa chúng có hai bộ chuyển mạch. Tại mỗi bộ chuyển mạch, mỗi gói bị giữ lại hai lần: tại thời điểm đến giao diện đầu vào và tại thời điểm truyền vào giao diện đầu ra của mạng. Như thấy rõ, bộ chuyển mạch giữ gói trong một thời gian nhất định. Ở đây, $$T_1$$ là thời gian truyền đến địa chỉ của gói đầu tiên trong tin nhắn, và $$T_{ps}$$ là toàn bộ tin nhắn.
+Trong **mạng chuyển mạch gói (packet switching network)**, việc truyền dữ liệu không yêu cầu thiết lập kết nối bắt buộc. Giả sử rằng trong mạng, được minh họa trong Hình 3.13, tin nhắn có kích thước$$V$$, giống như trong trường hợp trước (Hình 3.12), nhưng nó được chia thành các gói, mỗi gói đi kèm với một tiêu đề. Các gói được truyền từ nút N1 đến nút N2, giữa chúng có hai bộ chuyển mạch. Tại mỗi bộ chuyển mạch, mỗi gói bị giữ lại hai lần: tại thời điểm đến giao diện đầu vào và tại thời điểm truyền vào giao diện đầu ra của mạng. Như thấy rõ, bộ chuyển mạch giữ gói trong một thời gian nhất định. Ở đây,$$T_1$$là thời gian truyền đến địa chỉ của gói đầu tiên trong tin nhắn, và$$T_{ps}$$là toàn bộ tin nhắn.
 
 <p align="center">
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.13.png" alt="Hình 3.13. Biểu đồ thời gian truyền tin nhắn, được chia thành các gói, trong mạng chuyển mạch gói." width="900">
@@ -1419,9 +1419,9 @@ Trong **mạng chuyển mạch gói (packet switching network)**, việc truyề
 
 Khi so sánh biểu đồ thời gian truyền dữ liệu trong mạng **chuyển mạch kênh (circuit switching)** và **chuyển mạch gói (packet switching)**, chúng ta lưu ý hai điểm:
 
-- Giá trị **thời gian lan truyền tín hiệu $$t_{prg}$$** trong cùng một môi trường vật lý và với cùng một khoảng cách là giống nhau;
+- Giá trị **thời gian lan truyền tín hiệu$$t_{prg}$$** trong cùng một môi trường vật lý và với cùng một khoảng cách là giống nhau;
 
-- Vì băng thông của các kênh trong cả hai mạng là như nhau, giá trị **thời gian truyền tin nhắn trong kênh $$t_{prg}$$** cũng bằng nhau.
+- Vì băng thông của các kênh trong cả hai mạng là như nhau, giá trị **thời gian truyền tin nhắn trong kênh$$t_{prg}$$** cũng bằng nhau.
 
 Tuy nhiên, việc chia tin nhắn thành các gói và sau đó truyền chúng qua mạng chuyển mạch gói dẫn đến các độ trễ bổ sung. Hãy theo dõi đường đi của gói đầu tiên và lưu ý các thành phần tạo nên thời gian truyền của nó đến nút đích, và thành phần nào là đặc trưng riêng cho mạng chuyển mạch gói (Hình 3.14).
 
@@ -1432,31 +1432,31 @@ Tuy nhiên, việc chia tin nhắn thành các gói và sau đó truyền chúng
 
 **Dịch đoạn văn:**
 
-Thời gian truyền một gói từ nút $$N1$$ đến bộ chuyển mạch 1 có thể được biểu diễn dưới dạng tổng của một số thành phần:
+Thời gian truyền một gói từ nút$$N1$$đến bộ chuyển mạch 1 có thể được biểu diễn dưới dạng tổng của một số thành phần:
 
-- **Thứ nhất**, thời gian tiêu tốn tại nút gửi $$N1$$:
-  - $$t_1$$: Thời gian hình thành gói, còn được gọi là **thời gian đóng gói (packetization time)** (phụ thuộc vào các thông số hoạt động của phần mềm và phần cứng tại nút gửi và không phụ thuộc vào các tham số của mạng);
-  - $$t_2$$: Thời gian truyền tiêu đề vào kênh;
-  - $$t_3$$: Thời gian truyền dữ liệu gói vào kênh.
+- **Thứ nhất**, thời gian tiêu tốn tại nút gửi$$N1$$:
+  -$$t_1$$: Thời gian hình thành gói, còn được gọi là **thời gian đóng gói (packetization time)** (phụ thuộc vào các thông số hoạt động của phần mềm và phần cứng tại nút gửi và không phụ thuộc vào các tham số của mạng);
+  -$$t_2$$: Thời gian truyền tiêu đề vào kênh;
+  -$$t_3$$: Thời gian truyền dữ liệu gói vào kênh.
 
-- **Thứ hai**, thời gian bổ sung tiêu tốn để lan truyền tín hiệu qua kênh truyền. Gọi $$t_4$$ là thời gian lan truyền tín hiệu, biểu thị thời gian truyền một bit thông tin từ nút $$N1$$ đến bộ chuyển mạch 1.
+- **Thứ hai**, thời gian bổ sung tiêu tốn để lan truyền tín hiệu qua kênh truyền. Gọi$$t_4$$là thời gian lan truyền tín hiệu, biểu thị thời gian truyền một bit thông tin từ nút$$N1$$đến bộ chuyển mạch 1.
 
 - **Thứ ba**, thời gian bổ sung tiêu tốn tại bộ chuyển mạch trung gian:
-  - $$t_5$$: Thời gian nhận gói với tiêu đề từ kênh vào bộ đệm đầu vào của bộ chuyển mạch (như đã đề cập, bằng $$t_2 + t_3$$, tức là thời gian truyền gói với tiêu đề từ nút gửi);
-  - $$t_6$$: Thời gian chờ gói trong hàng đợi, dao động trong một phạm vi rộng và không thể biết trước, vì phụ thuộc vào tải hiện tại của mạng;
-  - $$t_7$$: Thời gian chuyển mạch gói khi nó được truyền qua cổng đầu ra, cố định cho mô hình cụ thể và thường không đáng kể (từ vài micro giây đến vài mili giây).
+  -$$t_5$$: Thời gian nhận gói với tiêu đề từ kênh vào bộ đệm đầu vào của bộ chuyển mạch (như đã đề cập, bằng$$t_2 + t_3$$, tức là thời gian truyền gói với tiêu đề từ nút gửi);
+  -$$t_6$$: Thời gian chờ gói trong hàng đợi, dao động trong một phạm vi rộng và không thể biết trước, vì phụ thuộc vào tải hiện tại của mạng;
+  -$$t_7$$: Thời gian chuyển mạch gói khi nó được truyền qua cổng đầu ra, cố định cho mô hình cụ thể và thường không đáng kể (từ vài micro giây đến vài mili giây).
 
-Gọi $$T_{N1-S1}$$ là thời gian truyền gói từ nút $$N1$$ đến cổng đầu ra của bộ chuyển mạch 1. Thời gian này bao gồm các thành phần sau:
+Gọi$$T_{N1-S1}$$là thời gian truyền gói từ nút$$N1$$đến cổng đầu ra của bộ chuyển mạch 1. Thời gian này bao gồm các thành phần sau:
 
 $$
 T_{N1-S1} = t_1 + t_4 + t_5 + t_6 + t_7.
 $$
 
-Lưu ý rằng, trong các thành phần trên không có $$t_2$$ và $$t_3$$. Từ Hình 3.14, có thể thấy rằng quá trình truyền bit từ bộ phát vào kênh trùng khớp với thời gian truyền bit vào kênh.
+Lưu ý rằng, trong các thành phần trên không có$$t_2$$và$$t_3$$. Từ Hình 3.14, có thể thấy rằng quá trình truyền bit từ bộ phát vào kênh trùng khớp với thời gian truyền bit vào kênh.
 
-Thời gian tiêu tốn trên hai đoạn đường còn lại, gọi là $$T_{S1-S2}$$ và $$T_{S2-N2}$$. Các đại lượng này có cấu trúc tương tự $$T_{N1-S1}$$, ngoại trừ:
-- $$T_{S1-S2}$$ không bao gồm thời gian đóng gói $$t_1$$;
-- $$T_{S2-N2}$$ không bao gồm thời gian chuyển mạch $$t_7$$ (vì đoạn này kết thúc tại nút cuối). 
+Thời gian tiêu tốn trên hai đoạn đường còn lại, gọi là$$T_{S1-S2}$$và$$T_{S2-N2}$$. Các đại lượng này có cấu trúc tương tự$$T_{N1-S1}$$, ngoại trừ:
+-$$T_{S1-S2}$$không bao gồm thời gian đóng gói$$t_1$$;
+-$$T_{S2-N2}$$không bao gồm thời gian chuyển mạch$$t_7$$(vì đoạn này kết thúc tại nút cuối). 
 
 Do đó, thời gian truyền một gói duy nhất qua mạng là:
 
@@ -1466,7 +1466,7 @@ $$
 
 Thời gian truyền một tin nhắn bao gồm nhiều gói sẽ bằng tổng thời gian truyền tất cả các gói? Không! Vì mạng chuyển mạch gói hoạt động như một băng chuyền (Hình 3.13): gói tin được truyền qua nhiều giai đoạn, trong đó các thiết bị thực hiện các bước này song song. Do đó, thời gian truyền tin nhắn nhỏ hơn đáng kể so với tổng thời gian truyền từng gói tin.
 
-Tuy nhiên, thời gian này khó tính chính xác do tính không xác định trong trạng thái tải của mạng và hàng đợi tại các bộ chuyển mạch. Giả sử các gói tin đứng trong hàng đợi với thời gian chờ tương đương nhau, thời gian truyền toàn bộ tin nhắn, bao gồm $$n$$ gói, có thể được ước lượng bằng:
+Tuy nhiên, thời gian này khó tính chính xác do tính không xác định trong trạng thái tải của mạng và hàng đợi tại các bộ chuyển mạch. Giả sử các gói tin đứng trong hàng đợi với thời gian chờ tương đương nhau, thời gian truyền toàn bộ tin nhắn, bao gồm$$n$$gói, có thể được ước lượng bằng:
 
 $$
 T_{PS} = T_1 + (n - 1) \cdot (t_1 + t_5).
@@ -1478,30 +1478,30 @@ $$
 
 Để minh họa, chúng ta giải bài toán so sánh tốc độ hoạt động của mạng **chuyển mạch kênh (circuit switching)** và **chuyển mạch gói (packet switching)** thông qua một ví dụ cụ thể, với các giả định về dữ liệu đầu vào cần thiết. Giả sử, chúng ta biết các thông tin sau:
 
-- Dung lượng $$ V $$ của tin nhắn, được truyền trong cả hai loại mạng, là $$ 10^7 $$ byte.
-- Nút gửi $$ N1 $$ cách nút nhận $$ N2 $$ một khoảng cách $$ L = 5000 $$ km.
-- Tốc độ lan truyền tín hiệu $$ S $$ là $$ 200 \,000 \, \text{km/s} $$ (tương đương $$ 2/3 $$ tốc độ ánh sáng).
-- Băng thông của kênh truyền $$ C $$ là $$ 100 \, \text{Mbit/s}. $$
+- Dung lượng$$V$$của tin nhắn, được truyền trong cả hai loại mạng, là$$10^7$$byte.
+- Nút gửi$$N1$$cách nút nhận$$N2$$một khoảng cách$$L = 5000$$km.
+- Tốc độ lan truyền tín hiệu$$S$$là$$200 \,000 \, \text{km/s}$$(tương đương$$2/3$$tốc độ ánh sáng).
+- Băng thông của kênh truyền$$C$$là$$100 \, \text{Mbit/s}.$$
 
 Thời gian truyền dữ liệu qua mạng **chuyển mạch kênh (circuit switching network)** bao gồm thời gian lan truyền tín hiệu và thời gian truyền tin nhắn trong kênh. Giả sử rằng kênh là cố định, nghĩa là nó đã được chuyển mạch, do đó thời gian thiết lập kết nối bằng 0.
 
 - **Thời gian lan truyền tín hiệu (signal propagation time)** cho khoảng cách 5000 km có thể ước tính khoảng 25 ms:
-  $$
+ $$
   5000 \, \text{km} / 200\,000 \, \text{km/s} = 0,025 \, \text{s}.
-  $$
+ $$
 
 - **Thời gian truyền tin nhắn trong kênh (message transmission time)** với băng thông 100 Mbit/s và kích thước tin nhắn 10 triệu byte là:
-  $$
+ $$
   (10^7 \times 8 \, \text{bit}) / (10^8 \, \text{bit/s}) = 8 \times 10^{-1} = 0,8 \, \text{s} = 800 \, \text{ms}.
-  $$
+ $$
 
-Do đó, **thời gian truyền toàn bộ dữ liệu đến thuê bao $$ N2 $$ trong mạng chuyển mạch kênh là 825 ms.**
+Do đó, **thời gian truyền toàn bộ dữ liệu đến thuê bao$$N2$$trong mạng chuyển mạch kênh là 825 ms.**
 
-Bây giờ chúng ta tính thời gian truyền dữ liệu với dung lượng $$10^7$$ byte trong mạng **chuyển mạch gói (packet switching)**, giả sử rằng:
+Bây giờ chúng ta tính thời gian truyền dữ liệu với dung lượng$$10^7$$byte trong mạng **chuyển mạch gói (packet switching)**, giả sử rằng:
 
 - **Băng thông của đường truyền** có cùng giá trị là 100 Mbit/s.
 - **Số lượng bộ chuyển mạch trung gian** ($$S1 - S10$$) là mười.
-- Tin nhắn ban đầu được chia thành các gói $$10^3$$ byte với tiêu đề 40 byte.
+- Tin nhắn ban đầu được chia thành các gói$$10^3$$byte với tiêu đề 40 byte.
 - **Khoảng thời gian ($$t_1$$)** giữa tất cả các gói là như nhau và bằng 100 µs.
 - **Thời gian chuyển mạch ($$t_7$$)** trên mỗi bộ chuyển mạch là như nhau và bằng 50 µs.
 
@@ -1509,7 +1509,7 @@ $$
 T_{N1-S1} = 100 \, \text{µs} + t_4^{(1)} + 83 \, \text{µs} + 50 \, \text{µs} = 233 \, \text{µs} + t_4^{(1)}.
 $$
 
-Thời gian $$T_{S1-S2}$$ truyền gói đầu tiên từ bộ chuyển mạch $$S1$$ đến bộ chuyển mạch $$S2$$ khác với việc không có thành phần $$t_1 = 100 \, \text{µs}$$ (gói đã được hình thành) và với thành phần $$t_4$$ phụ thuộc vào khoảng cách $$L_2$$ giữa bộ chuyển mạch $$S1$$ và $$S2$$. Điều này được ký hiệu là $$t_4^{(2)}$$.
+Thời gian$$T_{S1-S2}$$truyền gói đầu tiên từ bộ chuyển mạch$$S1$$đến bộ chuyển mạch$$S2$$khác với việc không có thành phần$$t_1 = 100 \, \text{µs}$$(gói đã được hình thành) và với thành phần$$t_4$$phụ thuộc vào khoảng cách$$L_2$$giữa bộ chuyển mạch$$S1$$và$$S2$$. Điều này được ký hiệu là$$t_4^{(2)}$$.
 
 Với điều này, chúng ta có:
 $$
@@ -1520,16 +1520,16 @@ Tương tự, thời gian truyền dữ liệu giữa mỗi cặp bộ chuyển 
 $$
 T_{Si-Si+1} = 133 \, \text{µs} + t_4^{(i+1)},
 $$
-với $$i$$ thay đổi từ 1 đến 10.
+với$$i$$thay đổi từ 1 đến 10.
 
-Thời gian $$T_{S10-N2}$$ truyền gói từ bộ chuyển mạch $$S10$$ đến nút cuối $$N2$$ khác với việc không có thành phần $$t_7 = 50 \, \text{µs}$$ (tại nút cuối không có hoạt động chuyển mạch) và với thành phần $$t_4^{(11)}$$, phụ thuộc vào khoảng cách $$L_{11}$$ giữa bộ chuyển mạch $$S10$$ và nút $$N2$$.
+Thời gian$$T_{S10-N2}$$truyền gói từ bộ chuyển mạch$$S10$$đến nút cuối$$N2$$khác với việc không có thành phần$$t_7 = 50 \, \text{µs}$$(tại nút cuối không có hoạt động chuyển mạch) và với thành phần$$t_4^{(11)}$$, phụ thuộc vào khoảng cách$$L_{11}$$giữa bộ chuyển mạch$$S10$$và nút$$N2$$.
 
 Do đó:
 $$
 T_{S10-N2} = 83 \, \text{µs} + t_4^{(11)}.
 $$
 
-Bây giờ, chúng ta tìm thời gian tổng $$T_1$$ để truyền gói đầu tiên từ nút $$N1$$ đến nút $$N2$$:
+Bây giờ, chúng ta tìm thời gian tổng$$T_1$$để truyền gói đầu tiên từ nút$$N1$$đến nút$$N2$$:
 $$
 T_1 = T_{N1-S1} + T_{S1-S2} + \ldots + T_{S10-N2} = 233 \, \text{µs} + (133 \, \text{µs} \times 9) + 83 \, \text{µs} + \sum t_4^{(i)},
 $$
@@ -1537,7 +1537,7 @@ với:
 $$
 \sum t_4^{(i)} = (\sum L_i) / S,
 $$
-với $$i$$ thay đổi từ 1 đến 11. Tổng khoảng cách giữa các nút liền kề và các bộ chuyển mạch bằng khoảng cách $$L$$ giữa nguồn và đích, tức là 5000 km, và mạng có cùng tốc độ. Do đó, thời gian truyền đầy đủ của gói đầu tiên là:
+với$$i$$thay đổi từ 1 đến 11. Tổng khoảng cách giữa các nút liền kề và các bộ chuyển mạch bằng khoảng cách$$L$$giữa nguồn và đích, tức là 5000 km, và mạng có cùng tốc độ. Do đó, thời gian truyền đầy đủ của gói đầu tiên là:
 $$
 T_1 = 0,001513 \, \text{s} + (5000 \, \text{km}) / (200 \,000 \, \text{km/s}) = 0,001513 \, \text{s} + 0,025 \, \text{s} = 0,026513 \, \text{s}.
 $$
