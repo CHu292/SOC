@@ -493,7 +493,7 @@ Cùng với đó, sự phức tạp của môi trường truyền tin dẫn đ�
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.4.png" alt="Hình 2.4 Dịch vụ web" width="800">
 </p>
 
-##### 2.2.2 Hệ điều hành mạng (Network Operating System)**
+##### 2.2.2 Hệ điều hành mạng (Network Operating System)
 
 Hệ điều hành (Operating System) của máy tính thường được định nghĩa là một tập hợp các chương trình hệ thống liên kết (interconnected system programs), cung cấp khả năng quản lý hiệu quả các tài nguyên (resources) của máy tính (bộ nhớ - memory, bộ xử lý - processor, thiết bị ngoại vi - peripheral devices, tệp - files, v.v.), đồng thời cung cấp giao diện thân thiện (user-friendly interface) cho người dùng để làm việc với phần cứng máy tính (computer hardware) và phát triển ứng dụng (application development).
 
@@ -572,3 +572,118 @@ Nhiều ví dụ về các ứng dụng phân tán (distributed applications) c�
 
 Ngoài ra, các thuật toán xử lý dữ liệu thí nghiệm (experimental data processing algorithms) thường dễ dàng phân chia (easily parallelized), điều này cũng rất quan trọng để áp dụng thành công các máy tính liên kết (interconnected computers) nhằm giải quyết một nhiệm vụ chung (common task). Một trong những ví dụ nổi tiếng về ứng dụng khoa học phân tán (distributed scientific application) là phần mềm xử lý dữ liệu của Máy gia tốc hạt lớn (Large Hadron Collider - LHC), được khởi chạy vào ngày 10 tháng 9 năm 2008 tại CERN. Ứng dụng này hoạt động trên hơn 30.000 máy tính (more than 30,000 computers) được liên kết thành một mạng (networked).
 
+---
+
+#### 2.3 Truyền dữ liệu vật lý qua đường truyền (Physical Data Transmission via Communication Lines)
+
+Ngay cả khi xem xét một mạng đơn giản nhất, chỉ bao gồm hai máy, cũng có thể phát hiện ra nhiều vấn đề liên quan đến việc truyền tín hiệu vật lý (physical signal transmission) qua các đường truyền (communication lines).
+
+##### 2.3.1 Mã hóa (Encoding)
+
+Trong kỹ thuật máy tính (computing technology), mã nhị phân (binary code) được sử dụng để biểu diễn dữ liệu. Bên trong máy tính, các số 1 và 0 trong dữ liệu tương ứng với các tín hiệu điện rời rạc (discrete electrical signals).
+
+> **Việc biểu diễn dữ liệu dưới dạng tín hiệu điện hoặc tín hiệu quang học được gọi là mã hóa (encoding).**
+
+Có nhiều phương pháp khác nhau để mã hóa (encoding) các chữ số nhị phân (binary digits), ví dụ: 
+
+- **Phương pháp điện thế (potential method)**, trong đó số 1 tương ứng với một mức điện áp (voltage level) và số 0 tương ứng với một mức khác; 
+- **Phương pháp xung (impulse method)**, khi các xung có độ phân cực khác nhau được sử dụng để biểu diễn các chữ số.
+
+Các phương pháp tương tự cũng được áp dụng để mã hóa dữ liệu (data encoding) khi truyền chúng giữa hai máy tính qua các **đường truyền (communication lines)**. Tuy nhiên, các đường truyền này khác biệt so với các đặc điểm của đường truyền bên trong máy tính. Sự khác biệt chính của các đường truyền bên ngoài là chúng có độ dài lớn hơn nhiều và thường xuyên đi qua không gian không được che chắn, dễ bị ảnh hưởng bởi nhiễu điện từ mạnh (strong electromagnetic interference). Điều này dẫn đến những biến dạng đáng kể của các xung hình chữ nhật (rectangular pulses) trên các đường truyền ngoài, ví dụ: các cạnh xung bị "nhòe" (blurring edges), so với các đường truyền bên trong máy tính.
+
+Vì vậy, để nhận dạng đáng tin cậy (reliable recognition) các xung ở đầu nhận của đường truyền, khi truyền dữ liệu trong và giữa các máy tính, không phải lúc nào cũng có thể sử dụng cùng tốc độ và phương pháp mã hóa như nhau. Ví dụ, sự tăng chậm của biên xung (slow rising edge) do tải điện dung cao (high capacitive load) trên đường truyền yêu cầu xung được truyền ở tốc độ thấp hơn, để các biên xung không chồng lấn (overlapping edges), và xung có đủ thời gian đạt đến biên độ yêu cầu.
+
+Trong mạng máy tính (computer networks), cả mã hóa xung (impulse encoding) và dữ liệu rời rạc (discrete data) đều được sử dụng, cũng như một phương pháp biểu diễn dữ liệu khác, không bao giờ được sử dụng bên trong máy tính – **điều chế (modulation)** (xem Hình 2.8). Trong điều chế, thông tin rời rạc được biểu diễn dưới dạng tín hiệu dao động (oscillating signal) của một tần số cụ thể mà đường truyền có thể truyền tốt.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.8.png" alt="Hình 2.8. Ví dụ về cách biểu diễn thông tin rời rạc" width="800">
+</p>
+
+Phương pháp mã hóa điện thế (potential encoding) và mã hóa xung (impulse encoding) được áp dụng trên các kênh truyền dẫn chất lượng cao (high-quality channels), trong khi điều chế (modulation) dựa trên tín hiệu dạng sóng hình sin (sinusoidal signals) được ưu tiên sử dụng trong trường hợp kênh truyền gây ra biến dạng đáng kể đối với các tín hiệu được truyền tải. Ví dụ, điều chế thường được sử dụng trong các mạng toàn cầu (global networks) để truyền dữ liệu qua các kênh điện thoại analog (analog telephone channels), vốn được thiết kế để truyền giọng nói dưới dạng analog, và do đó không phù hợp với việc truyền tải trực tiếp các xung tín hiệu (impulse signals).
+
+Phương pháp truyền tín hiệu (signal transmission method) và số lượng dây dẫn (number of wires) trong đường truyền giữa các máy tính cũng ảnh hưởng đáng kể. Để giảm chi phí của đường truyền (communication line cost) trong các mạng, người ta thường cố gắng giảm số lượng dây dẫn, vì vậy, tất cả các bit của một byte hoặc thậm chí nhiều byte được truyền không song song (non-parallel), như bên trong máy tính, mà theo kiểu nối tiếp (sequentially, bit by bit). Đối với cách này, chỉ cần một cặp dây dẫn (single pair of wires).
+
+Một vấn đề khác cần được giải quyết khi truyền tín hiệu là vấn đề **đồng bộ hóa (synchronization)** giữa bộ phát (transmitter) của một máy tính với bộ thu (receiver) của máy tính khác. Trong tổ chức tương tác giữa các mô-đun bên trong một máy tính, vấn đề này được giải quyết rất đơn giản, bởi vì trong trường hợp này, tất cả các mô-đun được đồng bộ hóa với một bộ tạo nhịp chung (common clock generator).
+
+Vấn đề đồng bộ hóa trên đường truyền giữa các máy tính có thể được giải quyết bằng nhiều cách – chẳng hạn, bằng cách trao đổi các xung đồng bộ đặc biệt (synchronization pulses) qua một đường truyền riêng, hoặc bằng cách đồng bộ hóa định kỳ (periodic synchronization) dựa trên các mã hoặc xung đã được định trước, với dạng đặc trưng khác biệt so với các xung tín hiệu dữ liệu.
+
+Mặc dù đã áp dụng các biện pháp (ví dụ: chọn tốc độ truyền dữ liệu phù hợp, thiết kế đường truyền với các đặc tính cụ thể, và phương pháp đồng bộ hóa giữa bộ thu và bộ phát), khả năng một số bit dữ liệu được truyền bị sai lệch (errors) vẫn có thể xảy ra. Để nâng cao độ tin cậy trong trao đổi dữ liệu giữa các máy tính, thông thường, một phương pháp tiêu chuẩn được sử dụng – **kiểm tra tổng (checksum)**, trong đó giá trị của tổng kiểm tra cho mỗi khối byte được truyền qua đường truyền. Trong giao thức truyền dữ liệu (data transmission protocol), thường bao gồm một phần tử bắt buộc gọi là **tín hiệu xác nhận (acknowledgment signal)**, được gửi từ máy nhận (receiver) tới máy phát (transmitter), để xác nhận tính chính xác của dữ liệu được truyền.
+
+
+##### 2.3.2 Đặc tính của các kênh vật lý (Characteristics of Physical Channels)
+
+Có một số lượng lớn các đặc tính liên quan đến việc truyền tải lưu lượng (traffic) qua các kênh vật lý (physical channels). Một số đặc tính quan trọng sẽ cần thiết trong thời gian gần đây, chúng ta sẽ xem xét sơ lược ngay bây giờ và sau đó nghiên cứu chúng cùng với một số đặc tính mạng khác một cách chi tiết hơn.
+
+- **Tải được cung cấp (Offered Load)** – đây là lưu lượng dữ liệu (data flow) được gửi từ ứng dụng của người dùng vào mạng, luôn sẵn sàng để nhận dữ liệu. Tải được cung cấp có thể được đặc trưng bởi **tốc độ tạo dữ liệu (data generation rate)** tính bằng bit/giây (bits per second). Đặc tính này mô tả cường độ hoạt động của nguồn thông tin và không phụ thuộc vào tính chất của các kênh vật lý.
+
+- **Thông lượng (Throughput)**, còn được gọi là **dung lượng kênh (channel capacity)**, là tốc độ tối đa (maximum possible rate) để truyền thông tin qua một kênh nhất định. Đặc tính này không liên quan đến tải được cung cấp. Nó phản ánh khả năng tốc độ của mạng, được xác định bởi các tham số của môi trường truyền vật lý (physical transmission medium) cũng như các đặc điểm của phương pháp truyền thông tin rời rạc (selected method of discrete information transmission) trong môi trường đó. Ví dụ, thông lượng của kênh truyền trong mạng Ethernet trên cáp quang là 10 Mbit/s. Đây là giới hạn tối đa đối với sự kết hợp giữa công nghệ Ethernet và môi trường truyền cáp quang. Tuy nhiên, trên cùng một loại cáp quang, có thể thiết kế các hệ thống mã hóa dữ liệu khác, các phương pháp đồng bộ tín hiệu (synchronization methods), và các tham số khác, cho phép có thông lượng cao hơn. Ví dụ, công nghệ Fast Ethernet hỗ trợ truyền dữ liệu với tốc độ tối đa 100 Mbit/s, trong khi công nghệ Gigabit Ethernet – 1000 Mbit/s.
+
+Để phân tích và cấu hình mạng, rất hữu ích khi biết thông tin về thông lượng (throughput) của các thành phần riêng lẻ trong mạng (individual network elements). Do tính chất tuần tự của việc truyền dữ liệu qua các phần tử khác nhau của mạng, thông lượng tổng thể của bất kỳ đường truyền nào trong mạng luôn bằng **giá trị nhỏ nhất** (minimum value) trong số các thông lượng của các phần tử cấu thành đường truyền đó. Để tăng thông lượng của đường truyền tổng hợp, trước tiên cần tập trung vào các phần tử chậm nhất, được gọi là **điểm nghẽn (bottlenecks)**.
+
+- **Tốc độ truyền dữ liệu (Information Rate)**, hay còn gọi là **thông lượng (Throughput)** (cả hai thuật ngữ tiếng Anh đều được sử dụng đồng nghĩa), là tốc độ thực tế (actual rate) của luồng dữ liệu qua mạng hoặc một số phần của mạng. Tốc độ của luồng thông tin, còn được gọi là tốc độ truyền dữ liệu (data transmission rate), được xác định bằng cách chia khối lượng dữ liệu được truyền trong một khoảng thời gian nhất định cho giá trị của khoảng thời gian đó.
+  Từ định nghĩa này, rõ ràng rằng đặc tính này luôn là giá trị trung bình (average value). Nó phản ánh cả tốc độ dữ liệu được đưa vào mạng – tải được cung cấp (offered load), cũng như các đặc tính tốc độ của môi trường vật lý (physical medium) – thông lượng của mạng (network capacity). Tốc độ truyền dữ liệu có thể thấp hơn tải được cung cấp, khi dữ liệu trong mạng có thể bị biến dạng hoặc mất mát, hoặc trong trường hợp khác – khi dữ liệu được bộ đệm (buffered data) trước khi truyền qua một kênh nào đó với thông lượng giới hạn.
+
+Một nhóm đặc tính khác của kênh truyền (communication channel) liên quan đến khả năng truyền thông tin qua kênh theo một hoặc hai chiều.
+
+Khi hai máy tính tương tác với nhau, thông thường cần truyền thông tin theo cả hai chiều – từ máy tính **A** đến máy tính **B** và ngược lại. Ngay cả trong trường hợp người dùng chỉ nhận thông tin (ví dụ: tải xuống một tệp nhạc từ Internet) và không truyền đi (ví dụ: gửi email), quá trình trao đổi thông tin vẫn diễn ra ở cả hai chiều. Đơn giản là ngoài luồng dữ liệu chính mà người dùng quan tâm, còn có luồng dữ liệu phụ hỗ trợ theo hướng ngược lại, tạo thành tín hiệu xác nhận (acknowledgment signal) về việc nhận dữ liệu.
+
+Các kênh truyền vật lý được chia thành nhiều loại tùy thuộc vào khả năng truyền thông tin theo cả hai chiều hay không.
+
+- **Kênh song công (Duplex Channel)** cung cấp khả năng truyền đồng thời thông tin theo cả hai chiều. Kênh song công có thể bao gồm hai môi trường vật lý (physical media), mỗi môi trường chỉ được sử dụng để truyền thông tin theo một chiều. Cũng có thể sử dụng một môi trường duy nhất để truyền đồng thời các luồng dữ liệu theo cả hai chiều. Trong trường hợp này, các phương pháp bổ sung được áp dụng để tách từng luồng dữ liệu ra khỏi tín hiệu tổng hợp.
+
+- **Kênh bán song công (Half-Duplex Channel)** cũng cung cấp khả năng truyền thông tin theo cả hai chiều, nhưng không đồng thời mà lần lượt. Nghĩa là trong một khoảng thời gian nhất định, thông tin được truyền theo một hướng, và trong khoảng thời gian tiếp theo – theo hướng ngược lại.
+
+- **Kênh đơn công (Simplex Channel)** chỉ cho phép truyền thông tin theo một chiều. Thường thì một kênh song công được tạo thành từ hai kênh đơn công.
+
+
+#### 2.4 Vấn đề kết nối nhiều máy tính (Problems of Connecting Multiple Computers)
+
+Trước đây, chúng ta đã xem xét một mạng cơ bản, bao gồm chỉ hai máy tính. Khi kết hợp nhiều máy tính hơn trong một mạng, một loạt các vấn đề mới sẽ phát sinh.
+
+##### 2.4.1 Cấu trúc liên kết của các kết nối vật lý (Topology of Physical Connections)
+
+Khi kết nối một số lượng máy tính (hơn hai) trong mạng, cần phải quyết định cách nối chúng với nhau, hay nói cách khác, lựa chọn cấu hình của các kết nối vật lý, hay Cấu trúc liên kết của chúng.
+
+> **Cấu trúc liên kết mạng (Network Topology)** là cấu hình của một đồ thị (graph), trong đó các đỉnh (vertices) tương ứng với các nút cuối (end nodes) của mạng (ví dụ: máy tính) và thiết bị truyền thông (communication devices) (ví dụ: bộ định tuyến – router), và các cạnh (edges) là các kết nối thông tin vật lý giữa các đỉnh.
+
+Số lượng các phương án cấu hình khả thi tăng mạnh khi số lượng thiết bị được kết nối tăng lên. Ví dụ, nếu có ba máy tính, chúng ta có thể kết nối chúng theo hai cách (hình 2.9, a). Nếu có bốn máy tính, đã có thể đề xuất sáu Cấu trúc liên kết với các cấu hình khác nhau (hình 2.9, b), nếu không tính đến những hạn chế thực tiễn.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.9.png" alt="Hình 2.9. Các kiểu kết nối máy tính" width="800">
+</p>
+
+Chúng ta có thể kết nối từng máy tính với mỗi máy tính khác hoặc kết nối chúng theo cách tuần tự, giả định rằng chúng sẽ giao tiếp với nhau bằng cách truyền thông điệp "qua trung gian". Các nút trung gian phải được trang bị các công cụ đặc biệt cho phép chúng thực hiện hoạt động trung gian cụ thể này. Một nút trung gian có thể là một máy tính đa năng hoặc một thiết bị chuyên dụng.
+
+Việc lựa chọn Cấu trúc liên kết kết nối có ảnh hưởng đáng kể đến các đặc tính của mạng. Ví dụ, việc có nhiều đường kết nối giữa các nút sẽ tăng độ tin cậy của mạng và cho phép phân phối tải giữa các kênh khác nhau. Sự đơn giản trong việc kết nối các nút mới, đặc trưng của một số Cấu trúc liên kết, làm cho mạng dễ dàng **mở rộng (scalable)**. Các cân nhắc kinh tế thường dẫn đến việc lựa chọn Cấu trúc liên kết với tổng chiều dài đường kết nối tối thiểu.
+
+Trong số nhiều cấu hình khả thi, có sự khác biệt giữa **mạng kết nối đầy đủ (fully connected)** và **mạng không kết nối đầy đủ (partially connected)**.
+
+
+**Cấu trúc liên kết kết nối đầy đủ (Fully Connected Topology)** tương ứng với một mạng mà mỗi máy tính được kết nối trực tiếp với tất cả các máy tính khác (hình 2.10, a). Mặc dù đơn giản về mặt logic, kiểu kết nối này lại cồng kềnh và không hiệu quả trong thực tế. Thực sự, trong trường hợp này, mỗi máy tính trong mạng cần phải có một số lượng lớn các cổng giao tiếp để kết nối với tất cả các máy tính khác trong mạng. Đối với mỗi cặp máy tính, cần có một đường truyền vật lý riêng (trong một số trường hợp, thậm chí cần hai đường, nếu không thể sử dụng đường truyền này cho truyền dữ liệu hai chiều).
+
+Cấu trúc liên kết kết nối đầy đủ hiếm khi được sử dụng trong các mạng lớn, vì với số nút là **N**, cần đến **N(N-1)/2** đường truyền vật lý hai chiều, nghĩa là có sự phụ thuộc bậc hai vào số lượng nút. Thông thường, loại Cấu trúc liên kết này chỉ được sử dụng trong các cụm máy tính (clusters) hoặc trong các mạng nhỏ, nơi chỉ có một số lượng nhỏ máy tính được kết nối.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.10.png" alt="Hình 2.10. Các loại cấu trúc mạng phổ biến" width="800">
+</p>
+
+
+Tất cả các biến thể khác đều dựa trên **Cấu trúc liên kết không đầy đủ (Non-Fully Connected Topology)**, trong đó việc trao đổi dữ liệu giữa hai máy tính có thể yêu cầu chuyển tiếp dữ liệu qua các nút khác trong mạng.
+
+
+**Cấu trúc liên kết mạng lưới (Mesh Topology)** được tạo ra từ **Cấu trúc liên kết đầy đủ (Full Topology)** bằng cách loại bỏ một số liên kết (Hình 2.10, b). Cấu trúc liên kết mạng lưới cho phép kết nối một số lượng lớn các máy tính và thường được sử dụng cho các mạng lớn.
+
+Trong mạng có **Cấu trúc liên kết vòng (Ring Topology)** (Hình 2.10, c), dữ liệu được truyền đi trong một vòng lặp từ một máy tính tới máy tính khác. Ưu điểm chính của vòng lặp là nó tự nhiên đảm bảo khả năng dự phòng kết nối. Thực tế, bất kỳ nút nào trong vòng cũng được kết nối hai chiều – theo chiều kim đồng hồ và ngược lại. Ngoài ra, vòng lặp cung cấp cấu hình thuận tiện để tổ chức việc quay lại dữ liệu, giúp đảm bảo rằng dữ liệu không bị mất. Tuy nhiên, nhược điểm là nếu một nút trong vòng bị hỏng hoặc kết nối bị ngắt, toàn bộ mạng sẽ bị ảnh hưởng.
+
+**Cấu trúc liên kết sao (Star Topology)** (Hình 2.10, d) được hình thành khi tất cả các máy tính kết nối trực tiếp với một thiết bị trung tâm gọi là **hub** hoặc **switch**. Trong trường hợp này, thông tin từ bất kỳ máy tính nào cũng phải thông qua thiết bị trung tâm. Nhược điểm của Cấu trúc liên kết này là chi phí cao cho việc trang bị thiết bị trung tâm và hạn chế số lượng cổng kết nối trên hub.
+
+Trong một số trường hợp, việc xây dựng mạng sử dụng **Cấu trúc liên kết cây (Tree Topology)** có ý nghĩa, trong đó các nút trung tâm của các cấu trúc sao được kết nối với nhau theo dạng cây phân cấp (Hình 2.10, e). Cấu trúc liên kết cây rất phổ biến trong mạng LAN và mạng WAN hiện nay.
+
+Một trường hợp đặc biệt khác là **Cấu trúc liên kết bus (Bus Topology)** (Hình 2.10, f), trong đó một dây cáp duy nhất được sử dụng như một đường dẫn chính, và tất cả các máy tính kết nối với dây này. Tuy nhiên, điểm yếu chính của Cấu trúc liên kết bus là nếu dây chính bị lỗi, toàn bộ mạng sẽ bị ảnh hưởng.
+
+Cuối cùng, có **Cấu trúc liên kết hỗn hợp (Mixed Topology)**, trong đó các phần của mạng sử dụng các Cấu trúc liên kết khác nhau, kết hợp linh hoạt để tạo thành một hệ thống phù hợp với yêu cầu cụ thể của mạng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.11.png" alt="Hình 2.11. Cấu trúc mạng hỗn hợp." width="900">
+</p>
+<p align="center"><b>Hình 2.11. Cấu trúc mạng hỗn hợp.</b></p>
