@@ -442,3 +442,53 @@ Bây giờ, hãy xem cách tất cả các thành phần của mạng máy tính
 
 Ngay ở giai đoạn ban đầu này, khi xem xét kết nối giữa máy tính và thiết bị ngoại vi, chúng ta đã gặp phải các khái niệm "mạng" quan trọng: giao diện và giao thức, trình điều khiển và card giao diện, cũng như các vấn đề đặc trưng của mạng máy tính: sự tương thích giao diện, đồng bộ hóa các quy trình không đồng bộ, đảm bảo tính chính xác của việc truyền dữ liệu.
 
+---
+
+#### 2.2 Phần mềm mạng
+
+Chúng ta vừa xem xét trường hợp sử dụng chung máy in trong một mạng đơn giản, chỉ bao gồm hai máy tính. Tuy nhiên, ngay ở giai đoạn ban đầu này, chúng ta đã có thể rút ra một số kết luận liên quan đến cấu trúc phần mềm mạng: các dịch vụ mạng, hệ điều hành mạng và các ứng dụng mạng.
+
+---
+
+##### 2.2.1 Dịch vụ và dịch vụ mạng
+
+Nhu cầu truy cập vào một máy in từ xa có thể phát sinh từ người dùng của nhiều ứng dụng khác nhau: trình soạn thảo văn bản, trình chỉnh sửa đồ họa, hệ quản trị cơ sở dữ liệu (DBMS). Rõ ràng, việc nhân đôi các chức năng chung để tổ chức in ấn từ xa trong từng ứng dụng này là không cần thiết.
+
+Một cách tiếp cận hiệu quả hơn là tách các chức năng này ra khỏi các ứng dụng và thực hiện chúng dưới dạng các cặp mô-đun chương trình chuyên dụng – **khách hàng in** và **máy chủ in** (Hình 2.3), với các chức năng được thực hiện tương ứng bởi các ứng dụng **A** và **B**. Giờ đây, cặp khách hàng – máy chủ này có thể được sử dụng bởi bất kỳ ứng dụng nào, được thực thi trên máy tính **A**.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.3.png" alt="Hình 2.3. Sử dụng chung máy in trong mạng máy tính với sự hỗ trợ của dịch vụ in ấn mạng." width="800">
+</p>
+
+Khái quát hóa cách tiếp cận này áp dụng cho các loại tài nguyên chia sẻ khác, chúng ta đưa ra các định nghĩa sau:
+
+- **Khách hàng - Client** – là một mô-đun được thiết kế để tạo và gửi các thông điệp yêu cầu tới các tài nguyên trên máy tính từ xa từ các ứng dụng khác nhau, và sau đó nhận kết quả từ mạng và chuyển chúng tới các ứng dụng tương ứng.
+
+- **Máy chủ** – là một mô-đun luôn sẵn sàng chờ nhận các yêu cầu từ mạng từ các khách hàng, và khi nhận được yêu cầu, cố gắng xử lý nó, thường với sự tham gia của hệ điều hành cục bộ. Một máy chủ có thể xử lý các yêu cầu từ nhiều khách hàng cùng lúc hoặc theo thứ tự.
+
+Một cặp khách hàng – máy chủ, cung cấp quyền truy cập tới một loại tài nguyên cụ thể của máy tính qua mạng, tạo thành một **dịch vụ mạng**.
+
+
+Mỗi dịch vụ liên kết với một loại tài nguyên mạng cụ thể. Chẳng hạn, như trong Hình 2.3, các mô-đun khách hàng và máy chủ, thực hiện truy cập từ xa tới máy in, tạo thành dịch vụ mạng in.
+
+Trong số các dịch vụ mạng, có thể phân biệt những dịch vụ không chỉ dành cho người dùng thông thường, chẳng hạn như dịch vụ tệp hoặc dịch vụ in, mà còn dành cho quản trị viên. Các dịch vụ này hướng đến việc tổ chức hoạt động của mạng. Ví dụ, **dịch vụ tra cứu** hoặc **dịch vụ danh mục** cho phép quản lý cơ sở dữ liệu về người dùng mạng, cũng như các thành phần phần mềm và phần cứng.
+
+Dịch vụ được cung cấp bởi các dịch vụ mạng được gọi là **dịch vụ (service)**.
+
+Mỗi dịch vụ đều liên quan đến một loại tài nguyên mạng cụ thể. Ví dụ, trên hình 2.3, các module của client (máy khách) và server (máy chủ), thực hiện quyền truy cập từ xa vào máy in, tạo thành dịch vụ mạng in ấn.
+
+Trong các dịch vụ mạng, có thể phân biệt những dịch vụ không hướng tới người dùng thông thường mà hướng tới quản trị viên, chẳng hạn như dịch vụ tệp tin (file service) hoặc dịch vụ in ấn (print service). Các dịch vụ như vậy được thiết kế nhằm tổ chức hoạt động của mạng. Ví dụ, dịch vụ tra cứu (directory service) được thiết kế để duy trì cơ sở dữ liệu về người dùng mạng, cũng như tất cả các thành phần phần mềm và phần cứng trong mạng.
+
+Dịch vụ mà một hệ thống cung cấp được gọi là "service".
+
+**Dịch vụ** có thể cung cấp một hoặc nhiều loại **service**. Ví dụ, trong số các dịch vụ do dịch vụ tra cứu (directory service) cung cấp, ngoài việc quản lý tài nguyên, còn có các dịch vụ kiểm toán (audit), xác thực (authentication), ủy quyền (authorization), và các dịch vụ khác.
+
+Để tìm kiếm và xem thông tin trên Internet, người ta sử dụng **dịch vụ web** (web service), bao gồm **web-server** và một chương trình máy khách được gọi là **web-browser** (trình duyệt web). Tài nguyên được chia sẻ trong trường hợp này là **web-site** (trang web) – một tập hợp các tệp được tổ chức theo cách nhất định, chứa thông tin liên quan về mặt ý nghĩa và được lưu trữ trên các thiết bị lưu trữ ngoài của web-server.
+
+Trong sơ đồ dịch vụ web được minh họa ở hình 2.4, hai máy tính không được kết nối trực tiếp mà thông qua nhiều máy tính trung gian khác, hoặc các thiết bị mạng khác thuộc về Internet. Để biểu thị điều này, chúng tôi đặt giữa hai máy tính một khái niệm đồ họa gọi là **đám mây truyền thông** (communication cloud), cho phép trừu tượng hóa tất cả các chi tiết của môi trường truyền tin. Việc trao đổi tin nhắn giữa chương trình máy khách và máy chủ của dịch vụ web được thực hiện theo giao thức tiêu chuẩn HTTP và không phụ thuộc vào việc các tin nhắn đó được truyền "trực tiếp" (từ giao diện một máy tính tới giao diện của máy khác) hay thông qua một số lượng lớn các thiết bị giao tiếp trung gian – các thiết bị truyền thông trung chuyển (transit communication devices).
+
+Cùng với đó, sự phức tạp của môi trường truyền tin dẫn đến việc phát sinh những nhiệm vụ bổ sung mới, mà các driver giao diện mạng đơn giản trước đây không được thiết kế để giải quyết. Thay vào đó, trên các máy tính tương tác, cần phải cài đặt các phương tiện phần mềm vận tải tiên tiến hơn (transport software).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/2.4.png" alt="Hình 2.4 Dịch vụ web" width="800">
+</p>
