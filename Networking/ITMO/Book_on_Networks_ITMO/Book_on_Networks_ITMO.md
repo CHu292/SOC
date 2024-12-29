@@ -1242,4 +1242,232 @@ Bộ chuyển mạch gói có thể hoạt động dựa trên một trong ba ph
 - **Chuyển tiếp dạng datagram (datagram-based forwarding);**
 - **Chuyển tiếp với thiết lập kết nối logic (logical connection establishment);**
 - **Chuyển tiếp với thiết lập kênh ảo (virtual channel establishment).**
+  
+---
 
+##### 3.2.2 Truyền tải dạng datagram
+
+> **Phương pháp truyền tải dữ liệu dạng datagram** dựa trên nguyên tắc rằng tất cả các gói dữ liệu được truyền đi (chuyển từ một nút mạng này sang nút mạng khác) một cách độc lập với nhau theo cùng một quy tắc. Không có thông tin nào về các gói đã được truyền đi trước đó được lưu trữ trong mạng và trong quá trình xử lý gói mới, thông tin về các gói trước đó không được xem xét. Nói cách khác, mỗi gói riêng lẻ được mạng xem xét như một đơn vị truyền tải hoàn toàn độc lập - **datagram.**
+
+Quyết định về việc chuyển tiếp gói được đưa ra dựa trên **bảng chuyển mạch (switching table)**, bảng này liên kết địa chỉ đích của các gói với thông tin xác định rõ ràng nút trung gian (hoặc nút cuối) tiếp theo trên tuyến đường. Dữ liệu này có thể bao gồm các **định danh giao diện (interface identifiers)** của bộ chuyển mạch hoặc địa chỉ của các giao diện đầu vào của các bộ chuyển mạch tiếp theo trên tuyến đường.
+
+Trong **Hình 3.9**, minh họa một mạng trong đó sáu nút cuối (N1-N6) được kết nối với bảy bộ chuyển mạch (S1-S7). Cũng cho thấy một số gói đang di chuyển trên các tuyến đường khác nhau với các địa chỉ đích khác nhau (N1-N6), trong đó có bộ chuyển mạch S1 nằm trên tuyến đường của chúng. Khi mỗi gói đến bộ chuyển mạch S1, nó sẽ được kiểm tra trong bảng chuyển mạch để xác định tuyến đường tiếp theo. Ví dụ, gói có địa chỉ N5 sẽ được bộ chuyển mạch S1 gửi qua giao diện dẫn đến bộ chuyển mạch S6, nơi cuối cùng gói này sẽ được chuyển đến nút cuối cùng, người nhận N5.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.9.png" alt="Hình 3.9. Minh họa nguyên tắc truyền dữ liệu kiểu datagram" width="900">
+</p>
+<p align="center"><b>Hình 3.9. Minh họa nguyên tắc truyền dữ liệu kiểu datagram</b></p>
+
+Trong bảng chuyển mạch (switching table), đối với cùng một địa chỉ đích, có thể chứa nhiều bản ghi, mỗi bản ghi tương ứng với các địa chỉ khác nhau của bộ chuyển mạch tiếp theo. Cách tiếp cận này được gọi là **cân bằng tải (load balancing)** và được sử dụng để cải thiện hiệu suất và độ tin cậy của mạng. Ví dụ, như được minh họa trong Hình 3.9, các gói đến bộ chuyển mạch S1 với địa chỉ đích N2 được phân phối giữa hai bộ chuyển mạch tiếp theo — S2 và S3, điều này giúp giảm tải cho từng bộ chuyển mạch và do đó, rút ngắn hàng đợi và tăng tốc độ truyền tải. Một số **sự đa dạng (diversity)** trong các tuyến đường mà các gói với cùng một địa chỉ đích có thể đi qua mạng là kết quả tự nhiên của nguyên tắc xử lý độc lập từng gói, đặc trưng cho phương pháp datagram.
+
+Các gói, theo cùng một địa chỉ đích, có thể đến đích thông qua các tuyến đường khác nhau do sự thay đổi trạng thái của mạng, chẳng hạn như khi một bộ chuyển mạch trung gian gặp sự cố.
+
+Phương pháp datagram hoạt động nhanh chóng, vì không cần thực hiện bất kỳ hành động chuẩn bị nào trước khi gửi dữ liệu. Tuy nhiên, với phương pháp này, rất khó để xác minh xem gói có được gửi đến đích hay không.
+
+> **Trong phương pháp datagram, việc giao gói không được đảm bảo mà được thực hiện theo khả năng — đặc tính này được mô tả bằng thuật ngữ "giao theo nỗ lực tốt nhất" (best effort).**
+
+##### 3.2.3 Truyền tải với thiết lập kết nối logic
+
+Phương pháp tiếp theo được xem xét về chuyển tiếp gói dựa trên việc các thiết bị mạng "ghi nhớ" lịch sử trao đổi dữ liệu, ví dụ, nút gửi nhớ số lượng gói đã gửi, trong khi nút nhận nhớ số lượng gói đã nhận. Loại thông tin này được ghi nhận trong phạm vi của một **kết nối logic (logical connection).**
+
+> **Quy trình thỏa thuận giữa hai nút cuối của mạng về một số tham số của quá trình trao đổi gói được gọi là thiết lập kết nối logic. Các tham số mà hai nút này thỏa thuận được gọi là các tham số của kết nối logic.**
+
+Sự tồn tại của kết nối logic cho phép xử lý gói một cách hợp lý hơn so với phương pháp datagram. Ví dụ, khi mất một số gói trước đó, tốc độ gửi các gói tiếp theo có thể bị giảm. Ngược lại, nhờ việc đánh số các gói và theo dõi số thứ tự của các gói đã gửi và nhận, có thể nâng cao độ tin cậy bằng cách loại bỏ các bản sao (duplicates), sắp xếp thứ tự của các gói đến và truyền lại các gói bị mất.
+
+Các tham số của kết nối có thể là **cố định (static)**, tức là không thay đổi trong suốt quá trình kết nối (ví dụ: định danh kết nối, phương thức mã hóa gói hoặc kích thước tối đa của gói dữ liệu), hoặc **thay đổi (dynamic)**, tức là được điều chỉnh trong suốt kết nối (ví dụ: số thứ tự gói tiếp theo được truyền).
+
+Khi người gửi và người nhận thiết lập một **bắt đầu cố định (fixed initial state)** của kết nối logic, chúng sẽ thỏa thuận về các tham số của quy trình trao đổi và chỉ sau đó bắt đầu truyền dữ liệu.
+
+**Truyền tải với thiết lập kết nối logic bao gồm ba giai đoạn (Hình 3.10):**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.10.png" alt="Hình 3.10. Truyền dữ liệu không thiết lập kết nối (a) và có thiết lập kết nối (b)" width="900">
+</p>
+<p align="center"><b>Hình 3.10. Truyền dữ liệu không thiết lập kết nối (a) và có thiết lập kết nối (b)</b></p>
+
+- **Thiết lập kết nối logic**, bắt đầu từ việc nút khởi tạo kết nối gửi đến nút nhận một gói dịch vụ với đề nghị thiết lập kết nối. Nếu nút nhận đồng ý, nó gửi lại một gói dịch vụ khác, xác nhận thiết lập kết nối và đề xuất một số tham số cần được sử dụng trong phạm vi kết nối logic này. Những tham số này có thể bao gồm, ví dụ: định danh kết nối, số lượng gói có thể được gửi mà không cần xác nhận, v.v. Nút khởi tạo kết nối có thể kết thúc quá trình thiết lập kết nối bằng cách gửi gói dịch vụ thứ ba, trong đó nó thông báo rằng các tham số đề xuất là phù hợp với nó.
+
+- **Truyền dữ liệu (Data Transmission):** Sau khi kết nối được thiết lập và tất cả các tham số được thỏa thuận, các nút cuối bắt đầu truyền dữ liệu thực tế. Kết nối logic (logical connection) có thể được thiết kế để truyền dữ liệu theo một hướng (từ nút khởi tạo kết nối - initiator) hoặc theo cả hai hướng.
+
+- **Ngắt kết nối logic (Logical Connection Termination):** Sau khi truyền tải một tập hợp dữ liệu hoàn chỉnh, ví dụ như một tệp cụ thể, nút gửi (sending node) sẽ khởi tạo quy trình ngắt kết nối logic, tương tự như quy trình thiết lập kết nối.
+
+Lưu ý rằng, không giống như truyền tải dạng datagram (datagram transmission), trong đó chỉ hỗ trợ một loại gói — gói thông tin (informational packets), truyền tải với thiết lập kết nối (connection-oriented transmission) phải hỗ trợ ít nhất hai loại gói — gói thông tin, mang dữ liệu của người dùng, và gói dịch vụ (service packets), được thiết kế để thiết lập hoặc ngắt kết nối.
+
+Các gói thông tin được các bộ chuyển mạch (switches) xử lý giống như trong truyền tải dạng datagram: từ tiêu đề của gói, địa chỉ đích được trích xuất và so sánh với các bản ghi trong bảng chuyển mạch (switching tables), chứa thông tin về các bước tiếp theo trên tuyến đường. Cũng như các datagram, các gói thuộc cùng một kết nối logic (logical connection) trong một số trường hợp (ví dụ: khi có sự cố đường truyền) có thể đến đích thông qua các tuyến đường khác nhau.
+
+Tuy nhiên, truyền tải với thiết lập kết nối có sự khác biệt quan trọng so với truyền tải dạng datagram, bởi vì ngoài việc xử lý các gói tại các bộ chuyển mạch, còn có việc **xử lý bổ sung tại các nút cuối (end nodes)**. Ví dụ, nếu khi thiết lập kết nối đã thỏa thuận rằng dữ liệu sẽ được truyền dưới dạng mã hóa, thì việc mã hóa sẽ do nút gửi thực hiện, và việc giải mã sẽ do nút nhận thực hiện. Tương tự, trong phạm vi kết nối logic, tất cả các công việc đảm bảo độ tin cậy, như đánh số gói, theo dõi các gói đã nhận và chưa nhận, gửi lại các bản sao, và loại bỏ các bản sao dư thừa, đều được thực hiện bởi các nút cuối.
+
+Cơ chế thiết lập kết nối logic cho phép thực hiện phân hóa (differentiation) trong xử lý các luồng thông tin. Ngay cả các luồng dữ liệu thuộc cùng một cặp nút cuối cũng có thể được phục vụ khác nhau. Ví dụ, một cặp nút cuối có thể thiết lập hai kết nối logic song song, trong đó dữ liệu trong một kết nối được truyền ở dạng mã hóa, và trong kết nối còn lại là dạng văn bản thuần túy.
+
+> **Như đã thấy, truyền tải với thiết lập kết nối cung cấp nhiều khả năng hơn về độ tin cậy và bảo mật trong trao đổi dữ liệu so với truyền tải dạng datagram. Tuy nhiên, phương pháp này chậm hơn, vì nó bao hàm chi phí tính toán bổ sung cho việc thiết lập và duy trì kết nối logic.**
+
+##### 3.2.4  Truyền tải với thiết lập kênh ảo (Virtual Channel Transmission)
+
+Phương pháp tiếp theo để chuyển tiếp dữ liệu trong các mạng gói dựa trên một trường hợp đặc biệt của kết nối logic (logical connection), trong đó các tham số của kết nối bao gồm tuyến đường cố định (route) cho tất cả các gói. Điều này có nghĩa là các gói, được truyền trong phạm vi kết nối này, phải đi theo một tuyến đường duy nhất đã được cố định cho kết nối đó.
+
+> **Tuyến đường cố định duy nhất được thiết lập trước, kết nối các nút cuối trong mạng chuyển mạch gói, được gọi là kênh ảo (virtual circuit hoặc virtual channel).**
+
+Các kênh ảo được thiết lập để phục vụ các luồng thông tin ổn định (stable information flows). Với mục đích phân biệt luồng dữ liệu khỏi lưu lượng chung, mỗi gói thuộc luồng này được đánh dấu bằng một nhãn đặc biệt (label).
+
+Cũng như trong mạng với thiết lập kết nối logic, việc thiết lập một kênh ảo bắt đầu bằng việc nút nguồn (source node) gửi một gói đặc biệt — yêu cầu thiết lập kết nối (connection establishment request). Trong yêu cầu này, địa chỉ đích và nhãn của luồng, mà kênh ảo này được thiết lập, được chỉ định. Yêu cầu này, khi đi qua mạng, tạo ra một bản ghi mới trong bảng của mỗi bộ chuyển mạch (switch) nằm trên tuyến đường từ nút gửi đến nút nhận. Bản ghi cho biết cách bộ chuyển mạch cần xử lý gói có nhãn đã chỉ định. Kênh ảo được thiết lập được xác định bởi nhãn này.
+
+Sau khi kênh ảo được thiết lập, luồng dữ liệu tương ứng có thể được truyền qua nó. Với mỗi gói, mang dữ liệu của người dùng, địa chỉ đích không còn được chỉ định, mà chỉ cần nhãn của kênh ảo. Khi nhận một gói, giao diện đầu vào của bộ chuyển mạch sẽ đọc giá trị nhãn từ tiêu đề gói, kiểm tra bảng chuyển mạch, và xác định giao diện đầu ra mà qua đó gói cần được chuyển tiếp.
+
+Trong **Hình 3.11**, một mạng được hiển thị, trong đó hai kênh ảo (virtual channels) được thiết lập, được xác định bởi các nhãn VC1 và VC2. Kênh đầu tiên đi từ nút cuối với địa chỉ N1 đến nút cuối với địa chỉ N2 qua các bộ chuyển mạch trung gian S1, S2 và S4. Kênh ảo thứ hai, VC2, đảm bảo việc truyền dữ liệu theo tuyến N1 → S1 → S3 → S5 → N3. 
+
+Trong trường hợp chung, giữa hai nút cuối có thể có nhiều kênh ảo, ví dụ, một kênh ảo khác giữa các nút N1 và N2 có thể đi qua bộ chuyển mạch trung gian S3. Trên hình minh họa, có hai gói dữ liệu được hiển thị, mang trong tiêu đề của chúng các nhãn luồng VC1 và VC2, các nhãn này đóng vai trò là địa chỉ đích.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.11.png" alt="Hình 3.11. Minh họa nguyên lý hoạt động của kênh ảo" width="900">
+</p>
+<p align="center"><b>Hình 3.11. Minh họa nguyên lý hoạt động của kênh ảo</b></p>
+
+Bảng chuyển mạch (switching table) trong các mạng sử dụng kênh ảo (virtual channels) khác với bảng chuyển mạch trong các mạng datagram. Nó chỉ chứa các bản ghi về **các kênh ảo đi qua bộ chuyển mạch**, chứ không phải tất cả các địa chỉ đích có thể, như trong các mạng với thuật toán datagram. Thông thường, số lượng kênh ảo đi qua một nút nhỏ hơn đáng kể so với tổng số nút trong mạng lớn, vì vậy bảng chuyển mạch trong trường hợp này ngắn hơn nhiều và do đó, việc phân tích bảng mất ít thời gian hơn tại bộ chuyển mạch. Vì lý do này, nhãn (label) ngắn hơn địa chỉ của nút đích, và tiêu đề của gói trong mạng với kênh ảo truyền tải một mã định danh dòng ngắn gọn thay vì một địa chỉ dài.
+
+**Lưu ý:**
+
+Việc sử dụng kỹ thuật kênh ảo trong mạng không làm cho chúng trở thành các mạng chuyển mạch kênh (circuit switching networks). Mặc dù các mạng này cũng có quy trình thiết lập kênh trước (pre-established channel procedure), kênh này là ảo (virtual), tức là nó được sử dụng để truyền các gói riêng lẻ, chứ không phải là một luồng thông tin cố định với tốc độ không đổi như trong mạng chuyển mạch kênh.
+
+Trong cùng một công nghệ mạng, có thể có các cách tiếp cận khác nhau để chuyển tiếp dữ liệu. Ví dụ, để truyền dữ liệu giữa các mạng riêng biệt trong Internet, giao thức datagram IP được sử dụng. Đồng thời, việc đảm bảo truyền dữ liệu đáng tin cậy giữa các nút cuối của mạng này được thực hiện bởi giao thức TCP, thiết lập kết nối logic (logical connection) mà không cố định tuyến đường. Cuối cùng, Internet cũng là ví dụ của một mạng sử dụng kỹ thuật kênh ảo, vì Internet bao gồm nhiều mạng MPLS hỗ trợ kênh ảo.
+
+#### 3.3 So sánh mạng chuyển mạch kênh và chuyển mạch gói
+
+Để so sánh các đặc tính của mạng chuyển mạch kênh (circuit switching networks) và mạng chuyển mạch gói (packet switching networks), sử dụng bảng 3.3.
+
+**Bảng 3.3. So sánh mạng chuyển mạch kênh và chuyển mạch gói**
+
+| **Chuyển mạch kênh**                                | **Chuyển mạch gói**                                        |
+|------------------------------------------------------|------------------------------------------------------------|
+| Cần thiết lập kết nối trước                         | Không cần giai đoạn thiết lập kết nối (phương pháp datagram) |
+| Địa chỉ chỉ cần tại giai đoạn thiết lập kết nối      | Địa chỉ và các thông tin dịch vụ khác được truyền với mỗi gói |
+| Mạng có thể từ chối thiết lập kết nối cho thuê bao  | Mạng luôn sẵn sàng nhận dữ liệu từ thuê bao                 |
+| Băng thông được đảm bảo (guaranteed bandwidth) cho thuê bao đang hoạt động | Băng thông cho thuê bao không được xác định, độ trễ truyền mang tính ngẫu nhiên |
+| Lưu lượng thời gian thực được truyền tải mà không có độ trễ | Tài nguyên mạng được sử dụng hiệu quả hơn khi truyền tải lưu lượng xung nhịp |
+| Độ tin cậy truyền tải cao                           | Có thể xảy ra mất dữ liệu do tràn bộ đệm                   |
+| Sử dụng không hợp lý băng thông vật lý của kênh, làm giảm hiệu quả chung của mạng | Phân bổ băng thông vật lý của kênh một cách tự động, linh hoạt giữa các thuê bao |
+
+**Lưu ý:**
+
+Trước khi thực hiện so sánh kỹ thuật giữa mạng chuyển mạch kênh và mạng chuyển mạch gói, chúng ta tiến hành so sánh không chính thức dựa trên cách mà chúng mô tả, ví dụ như một phương pháp ẩn dụ giao thông vận tải đầy hiệu quả.
+
+---
+
+##### 3.3.1 Ẩn dụ giao thông cho mạng chuyển mạch gói và kênh
+
+Đầu tiên, hãy xác nhận rằng chuyển động trên đường có nhiều điểm chung với việc di chuyển các gói trong mạng **chuyển mạch gói (packet switching network)**.
+
+Hãy giả sử rằng trong ẩn dụ này, các xe ô tô tượng trưng cho các gói (packets), đường là các kênh truyền (communication channels), và ngã tư là các bộ chuyển mạch (switches). Tương tự như các gói, các xe ô tô di chuyển độc lập với nhau, chia sẻ băng thông của đường và tạo ra sự cản trở lẫn nhau.
+
+Lưu lượng giao thông quá mức, không phù hợp với khả năng băng thông của đường, dẫn đến tắc nghẽn, tương đương với việc các gói phải chờ tại các bộ chuyển mạch.
+
+Tại ngã tư, diễn ra "chuyển mạch" các luồng xe, mỗi xe chọn hướng đi phù hợp tại ngã tư để đến đích. Tất nhiên, ngã tư đóng vai trò bị động hơn nhiều so với các bộ chuyển mạch. Vai trò tích cực của ngã tư trong việc xử lý lưu lượng có thể thấy ở các ngã tư có tín hiệu đèn giao thông, nơi dòng xe được điều phối. Một vai trò chủ động hơn nữa là của cảnh sát giao thông, người có thể sắp xếp luồng xe cho từng tuyến và từng xe riêng biệt.
+
+Cũng như trong mạng chuyển mạch gói, sự hình thành tắc nghẽn trên đường là kết quả của sự không đều trong lưu lượng xe. Ví dụ, ngay cả khi tốc độ của một xe giảm trong một đoạn đường hẹp, nó có thể tạo ra một tắc nghẽn lớn nếu các xe luôn di chuyển với cùng một tốc độ và khoảng cách đều nhau.
+
+Bây giờ, hãy tìm điểm chung giữa lưu thông xe và mạng **chuyển mạch kênh (circuit switching network).**
+
+Đôi khi trên đường, cần đảm bảo điều kiện đặc biệt cho việc di chuyển của một đoàn xe. Ví dụ, giả sử một đoàn xe buýt dài chở trẻ em từ thành phố đến trại hè trên một đường cao tốc nhiều làn. Để đoàn xe không bị cản trở, một tuyến đường được lên kế hoạch trước. 
+
+Trên toàn bộ tuyến đường, một làn đường riêng được phân bổ cho đoàn xe tại tất cả các đoạn đường. Làn đường được giải phóng trước khỏi các xe khác và không được sử dụng bởi các phương tiện khác cho đến khi đoàn xe đến đích. Trong quá trình di chuyển, các xe trong đoàn đi với tốc độ giống nhau và khoảng cách đều nhau, không cản trở lẫn nhau. Tuy nhiên, các xe trong đoàn không thể tự rời khỏi đoàn hoặc rẽ sang hướng khác. Đường trong cách tổ chức như vậy không hiệu quả – làn đường phần lớn bị bỏ trống, giống như trong các mạng **chuyển mạch kênh.**
+
+---
+
+##### 3.3.2 Cấu trúc độ trễ trong mạng chuyển mạch kênh và gói
+
+Hãy quay trở lại từ ẩn dụ xe hơi đến lưu lượng mạng. Giả sử người dùng mạng cần truyền một lưu lượng không đều đặn, bao gồm các khoảng thời gian hoạt động và tạm dừng. Giả sử thêm rằng người dùng có thể chọn, qua mạng nào (chuyển mạch kênh hoặc gói), để truyền tải lưu lượng của mình, và hiệu suất của kênh trong cả hai mạng là như nhau. 
+
+Rõ ràng, hiệu quả hơn từ góc nhìn về độ trễ thời gian đối với người dùng sẽ là việc sử dụng mạng chuyển mạch kênh, nơi một kênh được dành riêng hoàn toàn cho người dùng. Với cách này, tất cả dữ liệu được truyền đến địa chỉ đích mà không có độ trễ. Thực tế rằng một phần lớn thời gian kênh sẽ bị bỏ trống (trong các khoảng tạm dừng) không quan trọng với người dùng – điều quan trọng đối với anh ta là giải quyết nhanh chóng nhiệm vụ của mình.
+
+Nếu người dùng sử dụng dịch vụ của mạng chuyển mạch gói, thì quá trình truyền tải dữ liệu có thể chậm hơn, vì các gói của anh ta, có thể, sẽ bị chờ trong hàng đợi, đợi các tài nguyên mạng cần thiết được giải phóng, cùng với các gói của người dùng khác.
+
+Hãy xem xét chi tiết hơn cơ chế phát sinh độ trễ khi truyền tải dữ liệu trong các mạng của cả hai loại. Giả sử một tin nhắn được gửi từ nút cuối N1 đến nút cuối N2 (Hình 3.12). Trên đường truyền dữ liệu có hai bộ chuyển mạch.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.12.png" alt="Hình 3.12. Biểu đồ thời gian truyền tin trong mạng chuyển mạch kênh" width="900">
+</p>
+<p align="center"><b>Hình 3.12. Biểu đồ thời gian truyền tin trong mạng chuyển mạch kênh</b></p>
+
+**Dịch đoạn văn:**
+
+Trong **mạng chuyển mạch kênh (circuit switching network)**, dữ liệu sau độ trễ, liên quan đến việc thiết lập kênh, bắt đầu được truyền với tốc độ chuẩn của kênh. Thời gian truyền dữ liệu đến địa chỉ đích $$T$$ bằng tổng thời gian lan truyền tín hiệu trong kênh $$t_{prg}$$ (prg — propagation) và thời gian truyền thông tin trong kênh $$t_{trns}$$ (trns — transmission), được gọi là **thời gian tuần tự hóa (serialization time)**.
+
+Sự hiện diện của các bộ chuyển mạch trong mạng chuyển mạch kênh không ảnh hưởng đến tổng thời gian truyền dữ liệu qua mạng.
+
+**Lưu ý:**
+
+Thời gian truyền tin nhắn trong kênh trùng khớp hoàn toàn với thời gian nhận tin nhắn đó tại bộ đệm của nút đích, tức là với **thời gian đệm (buffering time)**.
+
+Thời gian lan truyền tín hiệu phụ thuộc vào khoảng cách giữa các thuê bao $$L$$ và tốc độ $$S$$ lan truyền sóng điện từ trong môi trường vật lý cụ thể, dao động từ 0,6 đến 0,9 tốc độ ánh sáng trong chân không:
+
+$$
+t_{prg} = L / S.
+$$
+
+Thời gian tuần tự hóa (tức là thời gian đệm tại nút đích) bằng tỷ lệ giữa kích thước tin nhắn $$V$$ tính bằng bit và băng thông của kênh $$C$$ tính bằng bit trên giây:
+
+$$
+t_{trns} = V / C.
+$$
+
+Trong **mạng chuyển mạch gói (packet switching network)**, việc truyền dữ liệu không yêu cầu thiết lập kết nối bắt buộc. Giả sử rằng trong mạng, được minh họa trong Hình 3.13, tin nhắn có kích thước $$V$$, giống như trong trường hợp trước (Hình 3.12), nhưng nó được chia thành các gói, mỗi gói đi kèm với một tiêu đề. Các gói được truyền từ nút N1 đến nút N2, giữa chúng có hai bộ chuyển mạch. Tại mỗi bộ chuyển mạch, mỗi gói bị giữ lại hai lần: tại thời điểm đến giao diện đầu vào và tại thời điểm truyền vào giao diện đầu ra của mạng. Như thấy rõ, bộ chuyển mạch giữ gói trong một thời gian nhất định. Ở đây, $$T_1$$ là thời gian truyền đến địa chỉ của gói đầu tiên trong tin nhắn, và $$T_{ps}$$ là toàn bộ tin nhắn.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.13.png" alt="Hình 3.13. Biểu đồ thời gian truyền tin nhắn, được chia thành các gói, trong mạng chuyển mạch gói." width="900">
+</p>
+<p align="center"><b>Hình 3.13. Biểu đồ thời gian truyền tin nhắn, được chia thành các gói, trong mạng chuyển mạch gói.</b></p>
+
+
+Khi so sánh biểu đồ thời gian truyền dữ liệu trong mạng **chuyển mạch kênh (circuit switching)** và **chuyển mạch gói (packet switching)**, chúng ta lưu ý hai điểm:
+
+- Giá trị **thời gian lan truyền tín hiệu $$t_{prg}$$** trong cùng một môi trường vật lý và với cùng một khoảng cách là giống nhau;
+
+- Vì băng thông của các kênh trong cả hai mạng là như nhau, giá trị **thời gian truyền tin nhắn trong kênh $$t_{prg}$$** cũng bằng nhau.
+
+Tuy nhiên, việc chia tin nhắn thành các gói và sau đó truyền chúng qua mạng chuyển mạch gói dẫn đến các độ trễ bổ sung. Hãy theo dõi đường đi của gói đầu tiên và lưu ý các thành phần tạo nên thời gian truyền của nó đến nút đích, và thành phần nào là đặc trưng riêng cho mạng chuyển mạch gói (Hình 3.14).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/3.14.png" alt="Hình 3.14. Biểu đồ thời gian truyền một gói trong mạng chuyển mạch gói" width="900">
+</p>
+<p align="center"><b>Hình 3.14. Biểu đồ thời gian truyền một gói trong mạng chuyển mạch gói</b></p>
+
+**Dịch đoạn văn:**
+
+Thời gian truyền một gói từ nút $$N1$$ đến bộ chuyển mạch 1 có thể được biểu diễn dưới dạng tổng của một số thành phần:
+
+- **Thứ nhất**, thời gian tiêu tốn tại nút gửi $$N1$$:
+  - $$t_1$$: Thời gian hình thành gói, còn được gọi là **thời gian đóng gói (packetization time)** (phụ thuộc vào các thông số hoạt động của phần mềm và phần cứng tại nút gửi và không phụ thuộc vào các tham số của mạng);
+  - $$t_2$$: Thời gian truyền tiêu đề vào kênh;
+  - $$t_3$$: Thời gian truyền dữ liệu gói vào kênh.
+
+- **Thứ hai**, thời gian bổ sung tiêu tốn để lan truyền tín hiệu qua kênh truyền. Gọi $$t_4$$ là thời gian lan truyền tín hiệu, biểu thị thời gian truyền một bit thông tin từ nút $$N1$$ đến bộ chuyển mạch 1.
+
+- **Thứ ba**, thời gian bổ sung tiêu tốn tại bộ chuyển mạch trung gian:
+  - $$t_5$$: Thời gian nhận gói với tiêu đề từ kênh vào bộ đệm đầu vào của bộ chuyển mạch (như đã đề cập, bằng $$t_2 + t_3$$, tức là thời gian truyền gói với tiêu đề từ nút gửi);
+  - $$t_6$$: Thời gian chờ gói trong hàng đợi, dao động trong một phạm vi rộng và không thể biết trước, vì phụ thuộc vào tải hiện tại của mạng;
+  - $$t_7$$: Thời gian chuyển mạch gói khi nó được truyền qua cổng đầu ra, cố định cho mô hình cụ thể và thường không đáng kể (từ vài micro giây đến vài mili giây).
+
+Gọi $$T_{N1-S1}$$ là thời gian truyền gói từ nút $$N1$$ đến cổng đầu ra của bộ chuyển mạch 1. Thời gian này bao gồm các thành phần sau:
+
+$$
+T_{N1-S1} = t_1 + t_4 + t_5 + t_6 + t_7.
+$$
+
+Lưu ý rằng, trong các thành phần trên không có $$t_2$$ và $$t_3$$. Từ Hình 3.14, có thể thấy rằng quá trình truyền bit từ bộ phát vào kênh trùng khớp với thời gian truyền bit vào kênh.
+
+Thời gian tiêu tốn trên hai đoạn đường còn lại, gọi là $$T_{S1-S2}$$ và $$T_{S2-N2}$$. Các đại lượng này có cấu trúc tương tự $$T_{N1-S1}$$, ngoại trừ:
+- $$T_{S1-S2}$$ không bao gồm thời gian đóng gói $$t_1$$;
+- $$T_{S2-N2}$$ không bao gồm thời gian chuyển mạch $$t_7$$ (vì đoạn này kết thúc tại nút cuối). 
+
+Do đó, thời gian truyền một gói duy nhất qua mạng là:
+
+$$
+T_1 = T_{N1-S1} + T_{S1-S2} + T_{S2-N2}.
+$$
+
+Thời gian truyền một tin nhắn bao gồm nhiều gói sẽ bằng tổng thời gian truyền tất cả các gói? Không! Vì mạng chuyển mạch gói hoạt động như một băng chuyền (Hình 3.13): gói tin được truyền qua nhiều giai đoạn, trong đó các thiết bị thực hiện các bước này song song. Do đó, thời gian truyền tin nhắn nhỏ hơn đáng kể so với tổng thời gian truyền từng gói tin.
+
+Tuy nhiên, thời gian này khó tính chính xác do tính không xác định trong trạng thái tải của mạng và hàng đợi tại các bộ chuyển mạch. Giả sử các gói tin đứng trong hàng đợi với thời gian chờ tương đương nhau, thời gian truyền toàn bộ tin nhắn, bao gồm $$n$$ gói, có thể được ước lượng bằng:
+
+$$
+T_{PS} = T_1 + (n - 1) \cdot (t_1 + t_5).
+$$
