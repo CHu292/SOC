@@ -1609,7 +1609,7 @@ Các luồng thông tin từ các nút cuối của mạng **Ethernet** được
 
 ---
 
-<h3 id="chuong-4-chuan-hoa-va-phan-loai-mang">Chương 4: Chuẩn hóa và phân loại mạng</h3>
+<h3 id="chuong-4-chuan-hoa-va-phan-loai-mang">CHƯƠNG 4: Chuẩn hóa và phân loại mạng</h3>
 
 #### 4.1 Phân rã nhiệm vụ của sự tương tác mạng
 
@@ -1691,6 +1691,8 @@ Ví dụ, tổ chức tương tác giữa các nút A và B có thể được r
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.4.png" alt="Hình 4.4. Tương tác của một cặp nút ngẫu nhiên" width="900">
 </p>
 <p align="center"><b>Hình 4.4. Tương tác của một cặp nút ngẫu nhiên</b></p>
+
+---
 
 ##### 4.1.2 Giao thức và chồng giao thức
 
@@ -2106,3 +2108,170 @@ Chồng TCP/IP được phát triển theo sáng kiến của **Bộ Quốc phò
 
 Ngày nay, chồng này được sử dụng để kết nối các máy tính trên Internet cũng như trong vô số mạng doanh nghiệp. Chúng tôi sẽ xem xét chi tiết chồng giao thức TCP/IP trong **Phần IV** của cuốn sách này, nơi tập trung vào các mạng đồng danh.
 
+---
+
+##### 4.3.5 Sự tương thích của các stack giao thức (protocol stacks) phổ biến với mô hình OSI
+
+Trong hình 4.12 cho thấy mức độ các stack giao thức phổ biến tương thích với các khuyến nghị của mô hình OSI (Open Systems Interconnection model). Như chúng ta thấy, điều này thường chỉ là tương thích tương đối. Trong hầu hết các trường hợp, các nhà phát triển stack ưu tiên tốc độ mạng (network speed) thay vì tính mô-đun hóa (modularity) — không một stack nào, ngoài stack OSI, được phân chia thành bảy tầng (seven layers). Thường thì trong stack chỉ rõ ràng có 3–4 tầng: tầng bộ điều hợp mạng (network adapter), nơi các giao thức (protocols) của tầng vật lý (physical layer) và tầng liên kết dữ liệu (data link layer) được thực hiện; tầng mạng (network layer); tầng vận chuyển (transport layer); và tầng dịch vụ (service layer), bao gồm các chức năng của tầng phiên (session layer), tầng trình bày (presentation layer) và tầng ứng dụng (application layer).
+
+Cấu trúc của các stack giao thức thường không phù hợp với sự phân chia theo tầng được khuyến nghị trong mô hình OSI vì các lý do khác nhau. Hãy nhớ rằng một phân cấp nhiều tầng (multilayered decomposition) lý tưởng được đặc trưng bởi: một mặt, tuân theo nguyên tắc phân cấp (hierarchy); mỗi tầng bên trên chỉ truy cập các dịch vụ của tầng ngay bên dưới nó và tầng bên dưới chỉ cung cấp các dịch vụ của nó cho tầng ngay trên. Trong các stack giao thức, điều này dẫn đến PDU (Protocol Data Unit) của tầng bên trên luôn được đóng gói vào PDU của tầng bên dưới. Mặt khác, một phân cấp lý tưởng không có giải pháp thiết kế trong đó các chức năng thuộc về một tầng lại được chuyển sang tầng khác. Tuy nhiên, các yêu cầu như vậy thường mâu thuẫn trong thực tế. Ví dụ, chức năng chính của các giao thức tầng mạng như TCP/IP (cũng như trong mô hình OSI) là chuyển tiếp các gói tin (packet forwarding) thông qua một mạng. Giải pháp này đòi hỏi các giao thức như IP (Internet Protocol) tiếp tục xử lý việc định tuyến (routing), đặc biệt là RIP (Routing Information Protocol) và OSPF (Open Shortest Path First). Nếu theo nguyên tắc phân cấp của stack, giao thức IP và giao thức định tuyến phải được gán vào một tầng duy nhất. Nhưng nếu xem xét rằng các thông điệp của giao thức RIP được đóng gói trong các datagram của tầng vận chuyển (transport layer), còn thông điệp của giao thức OSPF thì trong các gói tin IP, thì về mặt hình thức, tuân theo nguyên tắc tổ chức phân cấp của stack, OSPF nên được gán vào tầng vận chuyển, còn RIP — vào tầng ứng dụng. Tuy nhiên, trong thực tế, các giao thức định tuyến thường được gán vào tầng mạng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.12.png" alt="Hình 4.12. Tương ứng giữa các ngăn xếp giao thức phổ biến trong mô hình OSI" width="900">
+</p>
+<p align="center"><b>Hình 4.12. Tương ứng giữa các ngăn xếp giao thức phổ biến trong mô hình OSI</b></p>
+
+---
+
+#### 4.4 Dịch vụ thông tin và dịch vụ vận chuyển
+
+Các dịch vụ trong mạng máy tính (computer network services) có thể được chia thành hai loại:  
+- Dịch vụ vận chuyển (transport services);  
+- Dịch vụ thông tin (information services).
+
+**Dịch vụ vận chuyển (Transport services)** bao gồm việc truyền thông tin giữa các người dùng mạng mà không thay đổi nội dung. Trong trường hợp này, mạng nhận thông tin từ người dùng ở một trong các giao diện (interface) của nó, truyền thông tin qua các bộ chuyển mạch trung gian (intermediate switches) và chuyển đến người dùng khác qua một giao diện khác. Khi cung cấp dịch vụ vận chuyển, mạng không thực hiện bất kỳ thay đổi nào đối với thông tin được truyền đi, đảm bảo rằng thông tin được chuyển tới người nhận ở dạng ban đầu, giống như khi nó được gửi từ phía người gửi. Một ví dụ về dịch vụ vận chuyển trong mạng toàn cầu (global network) là việc liên kết các mạng cục bộ của các khách hàng (local client networks).
+
+**Dịch vụ thông tin (Information services)** bao gồm việc cung cấp cho người dùng một số thông tin mới. Dịch vụ thông tin luôn liên quan đến các thao tác xử lý thông tin: lưu trữ thông tin ở một dạng được tổ chức nào đó (hệ thống tập tin - file system, cơ sở dữ liệu - database, trang web - website), tìm kiếm thông tin cần thiết và chuyển đổi thông tin.
+
+Trong các mạng viễn thông (telecommunication networks) của thời kỳ "trước máy tính" (pre-computer era), dịch vụ vận chuyển (transport services) luôn chiếm ưu thế. Dịch vụ chính của mạng điện thoại (telephone network) là truyền tải lưu lượng thoại (voice traffic) giữa các thuê bao (subscribers), trong khi các dịch vụ tra cứu thông tin (reference services) chỉ là phụ. Với sự xuất hiện của máy tính, các dịch vụ thông tin (information services) đã trải qua một cuộc cách mạng, bởi vì máy tính đã được phát minh để xử lý thông tin tự động bằng phần mềm (automated programmatic information processing). Trong các mạng máy tính (computer networks), cả hai loại dịch vụ này đều quan trọng như nhau. Nhờ vào đặc điểm này, thế hệ mạng viễn thông mới đôi khi được gọi là **mạng thông tin liên lạc (infocommunication networks)**.
+
+---
+
+##### 4.4.1 Phân bố giao thức theo các thành phần mạng
+
+Trong hình 4.13, các thành phần chính của mạng máy tính (computer network) được trình bày:  
+- Các nút cuối (end nodes) — máy tính (computers);  
+- Các nút trung gian (intermediate nodes) — bộ chuyển mạch (switches) và bộ định tuyến (routers).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.13.png" alt="Hình 4.13. Tương ứng các chức năng của các thiết bị mạng với các tầng của mô hình OSI" width="900">
+</p>
+<p align="center"><b>Hình 4.13. Tương ứng các chức năng của các thiết bị mạng với các tầng của mô hình OSI</b></p>
+
+Từ hình vẽ có thể thấy rằng toàn bộ stack giao thức (protocol stack) chỉ được thực hiện tại các nút cuối (end nodes), trong khi các thiết bị truyền thông (communication devices) đủ chức năng để chuyển tiếp các gói tin (packet forwarding) ở ba tầng dưới. Hơn nữa, thiết bị truyền thông có thể chỉ hỗ trợ các giao thức của hai tầng dưới hoặc thậm chí chỉ một tầng vật lý (physical layer) — điều này phụ thuộc vào loại thiết bị.
+
+Cụ thể, các thiết bị hoạt động ở tầng vật lý bao gồm, ví dụ, các bộ lặp mạng (network repeaters), còn được gọi là bộ tập trung (concentrators) hoặc hub. Chúng tái tạo các tín hiệu điện (electrical signals), truyền từ một giao diện của chúng đến các giao diện khác, cải thiện các đặc điểm của tín hiệu — công suất (power), hình dạng (form), và tính đồng bộ (synchronization) của chúng.
+
+**Các bộ chuyển mạch mạng cục bộ (local network switches)** hỗ trợ các giao thức của hai tầng dưới, tầng vật lý và tầng liên kết dữ liệu (data link layer), điều này cho phép chúng hoạt động trong phạm vi các cấu trúc liên kết chuẩn (standard topologies).
+
+---
+
+**Các bộ định tuyến (routers)** phải hỗ trợ các giao thức của tất cả các tầng, vì tầng mạng (network layer) cần thiết để kết nối các mạng (networks) với các công nghệ khác nhau, và các tầng dưới (lower layers) để tương tác với các mạng cụ thể tạo thành một mạng ghép (composite network), ví dụ như Ethernet hoặc Frame Relay.
+
+**Các bộ chuyển mạch mạng toàn cầu (global network switches)** (ví dụ, MPLS - Multiprotocol Label Switching), hoạt động trên cơ sở công nghệ kênh ảo (virtual channel technology), có thể hỗ trợ cả hai hoặc ba tầng giao thức. Giao thức tầng mạng (network layer protocol) chỉ cần thiết nếu chúng hỗ trợ quy trình thiết lập tự động các kênh ảo (virtual channel establishment). Vì vậy, trong các cấu hình topological của mạng toàn cầu, không thể bỏ qua giao thức tầng mạng. Nếu các kết nối ảo (virtual connections) được thiết lập thủ công bởi các quản trị viên mạng (network administrators), thì các bộ chuyển mạch mạng toàn cầu chỉ cần hỗ trợ các giao thức của tầng vật lý (physical layer) và tầng liên kết dữ liệu (data link layer) để truyền dữ liệu qua các kênh ảo đã được thiết lập.
+
+**Máy tính (computers)**, nơi các ứng dụng mạng (network applications) hoạt động, phải hỗ trợ các giao thức của tất cả các tầng. Các giao thức tầng ứng dụng (application layer protocols), sử dụng dịch vụ của các giao thức tầng trình bày (presentation layer) và tầng phiên (session layer), cung cấp cho ứng dụng một tập hợp dịch vụ mạng (network services) dưới dạng giao diện lập trình ứng dụng mạng (API - Application Programming Interface). Giao thức tầng vận chuyển (transport layer protocols) cũng hoạt động ở tất cả các nút. Khi truyền dữ liệu qua hai mô-đun của giao thức vận chuyển hoạt động trên nút gửi và nút nhận, chúng tương tác với nhau để hỗ trợ dịch vụ vận chuyển ở chất lượng mong muốn. Các thiết bị truyền thông mạng truyền tải các thông điệp của giao thức vận chuyển một cách minh bạch, mà không cần can thiệp vào nội dung của chúng.
+
+**Các nút cuối của mạng (end nodes)** (máy tính và các thiết bị tương tự, ví dụ điện thoại di động) luôn cung cấp cả dịch vụ thông tin (information services) và dịch vụ vận chuyển (transport services), trong khi các nút trung gian của mạng (intermediate network nodes) — chỉ hỗ trợ dịch vụ vận chuyển. Khi nói rằng mạng chỉ cung cấp **dịch vụ vận chuyển**, điều đó có nghĩa là các nút cuối nằm ngoài biên giới của mạng. Điều này thường áp dụng cho các mạng phục vụ khách hàng trong môi trường thương mại.
+
+Nếu nói rằng mạng cũng cung cấp **dịch vụ thông tin**, điều đó có nghĩa là các máy tính, cung cấp các dịch vụ như vậy, được đưa vào thành phần mạng. Một ví dụ là trường hợp nhà cung cấp dịch vụ Internet (ISP) cũng hỗ trợ các máy chủ web (web servers) của chính họ.
+
+---
+
+##### 4.4.2 Các giao thức hỗ trợ (auxiliary protocols) của hệ thống vận chuyển
+
+Đã đến lúc phải nói rằng trong hình 4.13 trình bày một phiên bản đơn giản hóa của việc phân bổ giao thức (protocol distribution) giữa các thành phần mạng. Trong các mạng thực tế, một số thiết bị truyền thông (communication devices) không chỉ hỗ trợ các giao thức của ba tầng dưới (lower layers), mà còn hỗ trợ các giao thức của các tầng trên (upper layers). Ví dụ, các bộ định tuyến (routers) thực hiện các giao thức định tuyến (routing protocols), cho phép tự động xây dựng các bảng định tuyến (routing tables), trong khi các bộ tập trung (concentrators) và các bộ chuyển mạch (switches) thường hỗ trợ các giao thức như SNMP (Simple Network Management Protocol) và Telnet, vốn không cần thiết cho việc thực hiện các chức năng chính của các thiết bị này, nhưng cho phép cấu hình và quản lý từ xa. Ngoài ra còn có các máy chủ DNS (Domain Name System servers), hiển thị tên miền (symbolic hostnames) tương ứng với các địa chỉ IP (IP addresses), và không có chúng, hoạt động bình thường trên Internet sẽ gần như không thể.
+
+Phần lớn các giao thức hỗ trợ, về mặt hình thức, thuộc về tầng ứng dụng (application layer) trong mô hình OSI, vì trong hoạt động của chúng, chúng tương tác với các giao thức của các tầng dưới như TCP (Transmission Control Protocol), UDP (User Datagram Protocol) hoặc SSL (Secure Sockets Layer). Tuy nhiên, các giao thức hỗ trợ không truyền tải dữ liệu của người dùng (user data), có nghĩa là chúng không thực hiện các chức năng trực tiếp của giao thức tầng ứng dụng được mô tả trong mô hình OSI.
+
+Rõ ràng, khi xem xét các giao thức hỗ trợ (auxiliary protocols), chúng ta đối mặt với tình huống trong đó việc phân chia giao thức theo các tầng phân cấp (hierarchical layers) (nghĩa là phân chia "theo chiều dọc") trong mô hình OSI không đủ. Việc phân chia giao thức thành các nhóm "theo chiều ngang" (horizontally) trở nên hữu ích.
+
+Khi phân chia theo chiều ngang, tất cả các giao thức (bao gồm cả chính và hỗ trợ) được chia thành ba tầng (planes) (hình 4.14):  
+- **Tầng người dùng (user plane)** bao gồm nhóm các giao thức chính, tức là các giao thức truyền tải lưu lượng người dùng (user traffic);  
+- **Tầng điều khiển (control plane)** bao gồm các giao thức hỗ trợ cần thiết để hoạt động của các giao thức mạng chính, ví dụ: các giao thức định tuyến (routing protocols), các giao thức ánh xạ tên miền sang địa chỉ IP;  
+- **Tầng quản lý (management plane)** kết hợp các giao thức hỗ trợ thực hiện các hoạt động quản lý (management operations) bởi quản trị viên mạng (network administrator), chẳng hạn như giao thức SNMP (Simple Network Management Protocol) để thu thập thông tin về lỗi (errors), các giao thức cấu hình thiết bị từ xa (remote device configuration protocols).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.14.png" alt="Hình 4.14. Ba nhóm giao thức" width="900">
+</p>
+<p align="center"><b>Hình 4.14. Ba nhóm giao thức</b></p>
+
+Việc phân chia giao thức theo "chiều ngang" (horizontal division) giải quyết những phức tạp phát sinh khi liên kết một số giao thức với các tầng trong mô hình OSI. Ví dụ, trong các tài liệu của một số tác giả, các giao thức định tuyến (routing protocols) có thể được đặt ở tầng mạng (network layer), trong khi ở tài liệu của các tác giả khác, chúng lại nằm ở tầng ứng dụng (application layer). Điều này không phải do sự bất cẩn của các tác giả, mà xuất phát từ những khó khăn khách quan trong việc phân loại.
+
+Mô hình OSI rất phù hợp cho việc chuẩn hóa các giao thức truyền tải lưu lượng người dùng (user traffic), tức là các giao thức thuộc tầng người dùng (user plane). Tuy nhiên, nó không phù hợp lắm cho việc xác định vị trí của các giao thức hỗ trợ (auxiliary protocols) trong mô hình hoạt động tổng thể của mạng. Do đó, nhiều tác giả đã phải đặt các giao thức định tuyến ở tầng mạng để phản ánh mối quan hệ chức năng gần gũi của các giao thức này với các hoạt động chuyển tiếp gói tin (packet forwarding operations).
+
+---
+
+#### 4.5 Phân loại mạng máy tính
+
+**Phân loại (Classification)** là quá trình nhóm các đối tượng, tức là gán chúng vào một loại hoặc kiểu nào đó dựa trên các đặc điểm chung được nghiên cứu.
+
+Mỗi đối tượng thực tế có thể có nhiều đặc điểm. Tính chủ quan của bất kỳ quá trình phân loại nào được thể hiện ở việc có một số yếu tố nhất định được chọn từ tập hợp các đặc điểm này để sử dụng làm cơ sở phân loại, tức là việc chọn **tiêu chí phân loại (criteria for classification)**. Phân loại mạng máy tính không phải là ngoại lệ — trong các nguồn tài liệu khác (và thậm chí trong cuốn sách này), bạn có thể tìm thấy các đặc điểm khác để phân loại mạng theo kiểu hoặc loại khác nhau.
+
+Hãy bắt đầu với việc mạng máy tính — một phần của phân loại mạng viễn thông (telecommunication networks), dựa trên loại nội dung được truyền tải, được chia thành:  
+- Mạng phát thanh (radio networks);  
+- Mạng điện thoại (telephone networks);  
+- Mạng truyền hình (television networks);  
+- Mạng máy tính (computer networks).
+
+Dựa trên **phạm vi vùng phủ sóng (coverage area)**, mạng máy tính có thể được chia thành ba nhóm:  
+- **Mạng cục bộ (Local Area Network, LAN);**  
+- **Mạng diện rộng (Wide Area Network, WAN);**  
+- **Mạng đô thị (Metropolitan Area Network, MAN).**
+
+Chúng tôi đã chỉ ra các đặc điểm của các nhóm mạng này, sẽ được xem xét trong chương 1 liên quan đến mạng máy tính. Cụ thể, trong các mạng cục bộ (LAN), chất lượng đường truyền giữa các nút thường cao hơn so với mạng diện rộng (WAN). Điều này được giải thích bởi các lý do khác nhau:  
+- Độ dài ngắn hơn của các đường truyền (từ vài mét đến vài km), có nghĩa là ít méo tín hiệu (signal distortion) hơn và độ trễ truyền dẫn (transmission delay) thấp hơn;  
+- Mức độ nhiễu bên ngoài (external interference) thấp hơn, vì các mạng cục bộ thường sử dụng cáp được đặt trong môi trường được bảo vệ đặc biệt như phòng cách âm, trong khi cáp của mạng diện rộng có thể phải đi qua các khu vực có nhiễu điện từ cao như gần đường dây điện, đường hầm liên lạc, hoặc các dây cáp ngầm;  
+- Các cân nhắc kinh tế.
+
+Chất lượng cao của đường truyền và mức độ nhiễu thấp cho phép đơn giản hóa quy trình truyền dẫn trong các công nghệ mạng cục bộ, từ bỏ các thuật toán khôi phục tín hiệu phức tạp được sử dụng trong các mạng diện rộng.
+
+Lưu ý rằng quá trình hội tụ giữa công nghệ mạng cục bộ và mạng diện rộng đang dẫn đến việc sử dụng các giao thức chung cho cả hai loại mạng.
+
+**Mạng MAN** được thiết kế để phục vụ lãnh thổ của một thành phố lớn — một **đô thị lớn** (metropolis) — và kết hợp các đặc điểm của cả mạng cục bộ (LAN) và mạng diện rộng (WAN). Từ loại mạng đầu tiên, chúng thừa hưởng mật độ kết nối cao của các nút cuối và tốc độ đường truyền cao, từ loại mạng sau, chúng thừa hưởng chiều dài lớn của các đường truyền.
+
+Dựa trên các đặc điểm công nghệ, được xác định bởi **môi trường truyền dẫn (transmission medium)**, mạng máy tính được chia thành hai loại:  
+- **Mạng có dây (wired networks)** — các mạng trong đó kênh truyền dẫn được xây dựng bằng cáp đồng (copper cables) hoặc cáp quang (optical cables);  
+- **Mạng không dây (wireless networks)** — các mạng sử dụng các kênh truyền dẫn không dây, ví dụ: sóng vô tuyến (radio), sóng vi ba (microwave), tia hồng ngoại (infrared) hoặc kênh laser.
+
+Bất kỳ môi trường không dây nào — dù là sóng vô tuyến, tia hồng ngoại hay tín hiệu sóng vi ba từ vệ tinh (satellite signals) — đều chịu ảnh hưởng mạnh mẽ hơn từ các yếu tố nhiễu bên ngoài (external interference) so với các đường truyền có dây. Mưa, sương mù, bão mặt trời, hoặc thiết bị hoạt động trong cùng dải tần số đều có thể gây ra sự suy giảm nghiêm trọng chất lượng kênh không dây. Do đó, công nghệ không dây phải tính đến những yếu tố này và xây dựng các hệ thống nhằm giảm thiểu tác động của chúng, ngay cả khi phải chịu sự suy giảm hiệu suất truyền tải. Đây là lý do tại sao trong mạng diện rộng và toàn cầu, khi đối mặt với ảnh hưởng chất lượng của đường truyền không dây, các công nghệ truyền dẫn có dây vẫn được ưu tiên trong nhiều ứng dụng.
+
+Ngoài ra, còn có các đặc điểm riêng của mạng không dây, cho phép chúng được phân loại thành một nhóm riêng biệt, ví dụ như mạng di động (mobile networks); phân bổ dải tần số vô tuyến giữa các mạng cho các mục đích khác nhau như điện thoại di động hoặc mạng máy tính.
+
+Dựa trên **phương thức chuyển mạch (switching method)**, mạng được chia thành hai loại cơ bản:  
+- **Mạng chuyển mạch gói (packet-switched networks);**  
+- **Mạng chuyển mạch kênh (circuit-switched networks).**
+
+Hiện nay, trong các mạng máy tính, kỹ thuật **chuyển mạch gói (packet switching)** được sử dụng phổ biến, mặc dù kỹ thuật chuyển mạch kênh vẫn được áp dụng trong một số công nghệ cũ. Trong kỹ thuật chuyển mạch gói, các biến thể khác nhau xuất hiện, phân biệt bởi cách thức truyền tải dữ liệu:  
+- **Mạng datagram**, ví dụ như Ethernet;  
+- **Mạng dựa trên kết nối logic**, ví dụ như mạng IP trên TCP;  
+- **Mạng dựa trên các kênh ảo (virtual channels)**, ví dụ như MPLS.
+
+Các mạng có thể được phân loại thêm dựa trên **topology (cấu trúc liên kết)**. Các kiểu cấu trúc liên kết khác nhau được xác định bởi cách các nút kết nối với nhau. Trong phần này, chúng tôi chỉ liệt kê các ví dụ như: cấu trúc liên kết dạng bus (bus topology), vòng (ring topology) và sao (star topology).
+
+Ngoài ra, một đặc điểm quan trọng của mạng là **dịch vụ cung cấp cho người dùng (user-provided services)**, như lưu trữ, xử lý, hoặc truyền tải dữ liệu.
+
+**Mạng của các nhà cung cấp dịch vụ viễn thông (telecommunication operators' networks)** cung cấp dịch vụ công cộng (public services), nghĩa là bất kỳ cá nhân hoặc tổ chức nào ký hợp đồng thương mại phù hợp đều có thể trở thành khách hàng của mạng để sử dụng dịch vụ viễn thông cụ thể.
+
+Các dịch vụ truyền thống của các nhà cung cấp viễn thông bao gồm dịch vụ điện thoại (telephony services) và cho thuê kênh liên lạc (communication channels) cho các tổ chức muốn xây dựng mạng riêng trên cơ sở các kênh này. Với sự phát triển của mạng máy tính, các nhà cung cấp viễn thông đã mở rộng đáng kể phạm vi dịch vụ của họ, bổ sung thêm các dịch vụ Internet (Internet services), mạng riêng ảo (VPN - Virtual Private Network), email, IP-telephony, cũng như phát sóng đa phương tiện (broadcasting) audio và video.
+
+Ngày nay, Internet cũng là một trong các loại mạng được các nhà cung cấp dịch vụ viễn thông điều hành. Internet đã nhanh chóng chuyển đổi từ một mạng phục vụ một số ít cộng đồng học thuật sang một mạng công cộng toàn cầu, cung cấp bộ dịch vụ phổ biến nhất cho mọi người.
+
+
+- **Mạng doanh nghiệp (corporate networks)** chỉ cung cấp dịch vụ cho nhân viên của tổ chức sở hữu mạng này. Mặc dù mạng doanh nghiệp có thể có bất kỳ quy mô nào, thông thường nó được hiểu là một mạng lớn của doanh nghiệp kết hợp các mạng cục bộ và toàn cầu của mình.
+
+- **Mạng cá nhân (personal networks)** được sử dụng cho mục đích cá nhân. Chúng thường có ít nút, cấu trúc đơn giản và phạm vi hoạt động nhỏ (khoảng 30 mét). Các nút trong mạng cá nhân, bên cạnh máy tính bàn, có thể là điện thoại di động, máy tính bảng, hoặc laptop. Thường thì các mạng cá nhân được xây dựng dựa trên công nghệ không dây.
+
+Dựa trên **vai trò chức năng (functional role)**, các mạng được phân thành mạng truy cập, mạng trục chính và mạng tập hợp lưu lượng (hình 4.15).  
+Cụ thể:  
+- **Mạng truy cập (access networks)** — đây là các mạng cung cấp kết nối truy cập cá nhân và doanh nghiệp từ nơi của họ (nhà, văn phòng) đến điểm đầu tiên trong mạng của nhà cung cấp dịch vụ hoặc mạng doanh nghiệp. Nói cách khác, đây là mạng chịu trách nhiệm mở rộng mạng toàn cầu đến nơi của khách hàng.  
+- **Mạng trục chính (backbone networks)** — đây là các mạng có tốc độ cao nhất của mạng toàn cầu (global network core), kết hợp nhiều mạng truy cập vào một mạng duy nhất.  
+- **Mạng tập hợp lưu lượng (aggregation networks)** — đây là các mạng tập hợp dữ liệu từ nhiều mạng truy cập để truyền chúng với lưu lượng nhỏ qua các kênh đến mạng trục chính. Các mạng này thường chỉ được sử dụng trong các mạng toàn cầu lớn, nơi chúng đóng vai trò trung gian, giúp mạng trục chính xử lý lưu lượng từ nhiều mạng truy cập một cách hiệu quả. Trong các mạng nhỏ, mạng truy cập thường tích hợp trực tiếp vào mạng trục chính.
+
+Ngoài ra, còn có sự phân biệt giữa **mạng cơ bản (primary networks)** và **mạng phủ chồng (overlay networks)**:  
+- **Mạng cơ bản** chiếm một vị trí đặc biệt. Nó bao gồm các mạng truyền dẫn hữu tuyến (wired networks), đóng vai trò là mạng hỗ trợ, cho phép tạo các mạng phủ chồng khác nhau trên cơ sở nó.  
+- **Mạng phủ chồng** được tạo bằng cách sử dụng cơ sở hạ tầng của mạng cơ bản, ví dụ: các mạng cung cấp các kênh truyền dẫn riêng ảo (VPNs), các mạng điện thoại hoặc các mạng máy tính. Chúng dựa trên nguyên tắc mạng phủ chồng, trong đó các thành phần truyền dẫn vật lý của mạng cơ bản được sử dụng như một môi trường để tạo ra các kênh logic.
+
+**Mạng phủ chồng (overlay networks)** trong phân loại này là tất cả các mạng khác, cung cấp dịch vụ cho người dùng cuối (end users) và được xây dựng dựa trên các kênh của mạng cơ bản (primary networks) — chúng "phủ chồng" lên các mạng này. Ví dụ, các mạng máy tính (computer networks), mạng điện thoại (telephone networks) và mạng truyền hình (television networks) đều được coi là mạng phủ chồng.
+
+Cáp quang (fiber optic cables) hiện nay có đặc tính tốt nhất về khả năng truyền dữ liệu và được sử dụng cả trong các mạng có dây cục bộ (local wired networks) lẫn toàn cầu (global networks). Tuy nhiên, thuật ngữ **mạng quang học (optical networks)** thường được các chuyên gia về mạng máy tính và viễn thông sử dụng theo nghĩa hẹp như là đồng nghĩa với các mạng cơ bản (primary networks). Điều này được giải thích bởi thực tế rằng việc truyền dữ liệu qua cáp quang là cách hoạt động chính của các mạng cơ bản, trong khi việc sử dụng các phương tiện truyền dẫn khác không thể đáp ứng đầy đủ các yêu cầu hiện đại về tốc độ và độ tin cậy trong việc trao đổi thông tin giữa các nút ở xa.
+
+**Internet** là một mạng duy nhất kết hợp gần như tất cả các mạng máy tính (computer networks) trên toàn thế giới (ngoại trừ, có lẽ, các mạng vẫn còn cách ly vì lý do bảo mật cao). Nếu áp dụng các tiêu chí phân loại đã mô tả vào Internet, có thể nói rằng đây là:  
+- Một **mạng của các nhà cung cấp dịch vụ viễn thông (telecommunication operators' networks)**, cung cấp cả dịch vụ thông tin (information services) lẫn dịch vụ vận chuyển (transport services);  
+- Một **mạng chuyển mạch gói (packet-switched network)**;  
+- Một mạng bao gồm **mạng trục chính (backbone networks)**, **mạng tập hợp lưu lượng (aggregation networks)** và **mạng truy cập (access networks)**.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.15.png" alt="Hình 4.15. Mạng truy cập, mạng tổng hợp lưu lượng và mạng trục" width="900">
+</p>
+<p align="center"><b>Hình 4.15. Mạng truy cập, mạng tổng hợp lưu lượng và mạng trục</b></p>
