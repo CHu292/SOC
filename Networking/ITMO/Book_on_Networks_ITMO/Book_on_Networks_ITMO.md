@@ -1709,11 +1709,400 @@ Hình 4.5 minh họa mô hình tương tác giữa hai nút. Ở mỗi phía, c�
 
 **Tập hợp các giao thức (protocols) được tổ chức theo thứ bậc, đủ để tổ chức sự tương tác giữa các nút trong mạng, được gọi là chồng giao thức (protocol stack).**
 
-**Các giao thức (protocols) ở tầng thấp thường được hiện thực bằng sự kết hợp giữa phần mềm và phần cứng, trong khi các giao thức ở tầng cao, thông thường, được hiện thực bằng các phương tiện phần mềm. Module phần mềm hiện thực một giao thức cụ thể được gọi là thực thể giao thức (protocol entity), hoặc để ngắn gọn, cũng được gọi là giao thức (protocol). Rõ ràng, một giao thức cụ thể có thể được hiện thực với các mức độ hiệu quả khác nhau. Chính vì vậy, khi so sánh các giao thức, cần xem xét không chỉ logic hoạt động của chúng, mà còn cả chất lượng hiện thực phần mềm (quality of software implementation).**
+Các giao thức (protocols) ở tầng thấp thường được hiện thực bằng sự kết hợp giữa phần mềm và phần cứng, trong khi các giao thức ở tầng cao, thông thường, được hiện thực bằng các phương tiện phần mềm. Module phần mềm hiện thực một giao thức cụ thể được gọi là thực thể giao thức (protocol entity), hoặc để ngắn gọn, cũng được gọi là giao thức (protocol). Rõ ràng, một giao thức cụ thể có thể được hiện thực với các mức độ hiệu quả khác nhau. Chính vì vậy, khi so sánh các giao thức, cần xem xét không chỉ logic hoạt động của chúng, mà còn cả chất lượng hiện thực phần mềm (quality of software implementation).
 
-**Hơn nữa, hiệu quả tương tác của các thiết bị trong mạng phụ thuộc vào chất lượng của toàn bộ tập hợp giao thức cấu thành chồng giao thức (protocol stack) – cụ thể là mức độ hợp lý khi phân bổ chức năng giữa các giao thức ở các tầng khác nhau (rational distribution of functions across layers) và mức độ rõ ràng trong định nghĩa các giao diện (interfaces) giữa chúng.**
+Hơn nữa, hiệu quả tương tác của các thiết bị trong mạng phụ thuộc vào chất lượng của toàn bộ tập hợp giao thức cấu thành chồng giao thức (protocol stack) – cụ thể là mức độ hợp lý khi phân bổ chức năng giữa các giao thức ở các tầng khác nhau (rational distribution of functions across layers) và mức độ rõ ràng trong định nghĩa các giao diện (interfaces) giữa chúng.**
 
-**Thực thể giao thức (protocol entity) ở một tầng nhất định trao đổi các thông điệp theo định dạng được xác định bởi giao thức tầng đó. Các thông điệp bao gồm phần tiêu đề (header) và phần dữ liệu (data field) (đôi khi có thể không có). Việc trao đổi thông điệp là một loại ngôn ngữ giao tiếp riêng, qua đó mỗi bên hiểu các chỉ thị từ phía bên kia để thực hiện các bước tương tác cần thiết. Công việc của mỗi module giao thức (protocol module) là diễn giải các tiêu đề của thông điệp đến và thực hiện các hành động liên quan.**
+Thực thể giao thức (protocol entity) ở một tầng nhất định trao đổi các thông điệp theo định dạng được xác định bởi giao thức tầng đó. Các thông điệp bao gồm phần tiêu đề (header) và phần dữ liệu (data field) (đôi khi có thể không có). Việc trao đổi thông điệp là một loại ngôn ngữ giao tiếp riêng, qua đó mỗi bên hiểu các chỉ thị từ phía bên kia để thực hiện các bước tương tác cần thiết. Công việc của mỗi module giao thức (protocol module) là diễn giải các tiêu đề của thông điệp đến và thực hiện các hành động liên quan.
 
-**Tiêu đề của các thông điệp thuộc các giao thức khác nhau có cấu trúc khác nhau, tương ứng với đặc thù của từng chức năng. Rõ ràng, cấu trúc tiêu đề càng phức tạp thì chức năng được giao cho giao thức tương ứng càng lớn.**
+Tiêu đề của các thông điệp thuộc các giao thức khác nhau có cấu trúc khác nhau, tương ứng với đặc thù của từng chức năng. Rõ ràng, cấu trúc tiêu đề càng phức tạp thì chức năng được giao cho giao thức tương ứng càng lớn.
+
+Dưới đây là bản dịch đầy đủ và đúng chuyên ngành của nội dung từ hình ảnh:
+
+---
+
+#### 4.2 Mô hình OSI
+
+Việc một giao thức (protocol) là một thỏa thuận được chấp nhận bởi hai nút mạng tương tác không có nghĩa rằng nó nhất thiết phải là một tiêu chuẩn (standard). Tuy nhiên, trên thực tế, khi triển khai mạng, người ta thường cố gắng sử dụng các giao thức tiêu chuẩn (standard protocols). Đây có thể là các tiêu chuẩn của công ty, quốc gia hoặc quốc tế.
+
+Vào đầu những năm 1980, một số tổ chức quốc tế về tiêu chuẩn hóa, đặc biệt là Tổ chức Tiêu chuẩn hóa Quốc tế (International Standards Organization - ISO) và Liên minh Viễn thông Quốc tế (International Telecommunications Union - ITU), cùng với các tổ chức khác, đã phát triển một mô hình tiêu chuẩn để liên kết các hệ thống mở (Open System Interconnection - OSI). Mô hình này đóng một vai trò quan trọng trong sự phát triển của các mạng máy tính.
+
+---
+
+#####  4.2.1 Đặc điểm chung của mô hình OSI
+
+Đến cuối những năm 1970, trên thế giới đã tồn tại một số lượng lớn các chồng giao thức (protocol stacks) độc quyền, chẳng hạn như DECnet, TCP/IP và IBM SNA. Sự đa dạng này đã dẫn đến vấn đề không tương thích (incompatibility) giữa các thiết bị sử dụng các giao thức khác nhau.
+
+Một trong những cách giải quyết vấn đề này là tạo ra một chuyển đổi đồng nhất và phổ quát của tất cả các chồng giao thức (protocol stacks), vốn không được đáp ứng đầy đủ bởi các chồng giao thức hiện có. Cách tiếp cận học thuật này dẫn đến việc phát triển mô hình OSI, kéo dài từ năm 1977 đến năm 1984. Nhiệm vụ chính của mô hình OSI là cung cấp một biểu diễn tổng quát về các chức năng của các phương tiện tương tác (means of interaction), để nó có thể đóng vai trò như một hướng dẫn mang tính phổ quát cho các chuyên gia mạng trên toàn cầu.
+
+
+> **Mô hình OSI** liên quan đến chồng giao thức (protocol stack) cho các mạng chuyển mạch gói (packet-switched networks). Mô hình OSI không chứa các mô tả về cách hiện thực (implementation) một tập hợp giao thức cụ thể. Nó chỉ xác định, thứ nhất, các tầng tương tác (interaction layers), thứ hai, tên gọi tiêu chuẩn của các tầng (standard layer names), và thứ ba, các chức năng (functions) mà mỗi tầng cần thực hiện.
+
+
+Trong mô hình OSI, các phương tiện tương tác được chia thành bảy tầng:
+
+- **Тầng ứng dụng** (application layer);
+- **Тầng trình bày** (presentation layer);
+- **Тầng phiên** (session layer);
+- **Тầng vận chuyển** (transport layer);
+- **Тầng mạng** (network layer);
+- **Тầng liên kết dữ liệu** (data link layer);
+- **Тầng vật lý** (physical layer).
+
+Chính vì vậy, mô hình OSI còn được gọi là **mô hình bảy tầng (seven-layer model)**. Mỗi tầng liên quan đến một khía cạnh nhất định của tương tác giữa các thiết bị mạng.
+
+Cần nhấn mạnh rằng mô hình OSI chỉ mô tả các phương tiện hệ thống để tương tác (system interaction means), bao gồm hệ điều hành (operating system), tiện ích hệ thống (system utilities), và phương tiện phần cứng (hardware means). Mô hình không bao gồm các phương tiện tương tác của ứng dụng dành cho người dùng cuối. Do đó, cần phân biệt rõ tầng ứng dụng và tầng ứng dụng trong mô hình bảy tầng.
+
+Các ứng dụng có thể thực hiện các giao thức tương tác riêng, sử dụng tập hợp nhiều tầng của các phương tiện hệ thống. Chính vì lý do này, các lập trình viên được cung cấp **giao diện lập trình ứng dụng (Application Program Interface, API)**. Theo mô hình OSI, ứng dụng chỉ có thể gửi yêu cầu tới tầng cao nhất – tầng ứng dụng, nhưng trên thực tế, các chồng giao thức truyền thông (communication protocol stacks) cho phép lập trình viên tương tác trực tiếp với các dịch vụ và chức năng của các tầng thấp hơn.
+
+Ví dụ, một số hệ quản trị cơ sở dữ liệu (Database Management Systems - DBMS) có các công cụ tích hợp để truy cập từ xa đến tệp. Khi sử dụng các công cụ này, ứng dụng hoạt động với tài nguyên từ xa mà không sử dụng dịch vụ hệ thống tệp; nó bỏ qua các tầng cao hơn của mô hình OSI và tương tác trực tiếp với phương tiện hệ thống để vận chuyển thông điệp qua mạng, nằm ở các tầng thấp hơn của mô hình OSI.
+
+Trong các tiêu chuẩn ISO, để biểu thị đơn vị dữ liệu được trao đổi (data exchange unit) mà các giao thức của các tầng làm việc với, thuật ngữ **đơn vị dữ liệu giao thức (Protocol Data Unit, PDU)** được sử dụng. Để biểu thị đơn vị dữ liệu của các tầng cụ thể, thường sử dụng các thuật ngữ đặc thù, như **thông điệp (message), khung (frame), gói tin (packet), datagram, đoạn (segment)**.
+
+Để minh họa cấu trúc logic của mô hình OSI, hãy xem xét tương tác giữa hai ứng dụng, **A** và **B**, được chạy trên hai máy tính, lần lượt là **1** và **2** (hình 4.6). Giả sử, ứng dụng **A** thu thập dữ liệu, dựa trên đó ứng dụng **B** tạo ra một báo cáo. Việc phối hợp hoạt động của hai ứng dụng này được đảm bảo thông qua việc trao đổi các thông điệp theo một giao thức (protocol) được các lập trình viên ứng dụng thiết kế riêng cho chúng. Các thông điệp giao thức phản ánh logic hoạt động của ứng dụng, và chúng có thể có nhiều dạng khác nhau, ví dụ: "Dữ liệu cho báo cáo N đã sẵn sàng", "Không khớp kiểu dữ liệu", v.v.
+
+Các nhà phát triển của ứng dụng **A** và **B** quyết định rằng các thông điệp giao thức sẽ được truyền qua mạng dưới dạng tệp. Ví dụ, ứng dụng **A** gửi một thông điệp "Dữ liệu cho báo cáo N đã sẵn sàng" tới ứng dụng **B**. Để thực hiện điều này, ứng dụng sử dụng giao diện API và thực hiện một yêu cầu đến các phương tiện hệ thống ở **tầng ứng dụng (application layer)** của mô hình OSI (trong trường hợp này, là hệ thống tệp mạng) để yêu cầu chuyển tệp chứa thông điệp này đến máy tính từ xa **2**.
+
+Trong quá trình xử lý yêu cầu từ ứng dụng **A**, client và máy chủ của hệ thống tệp mạng sẽ trao đổi chuỗi lệnh riêng của chúng – các thông điệp giao thức (protocol messages). Trong trường dữ liệu (data field) của một trong các lệnh đó, máy khách của hệ thống tệp mạng đóng gói thông điệp từ ứng dụng **A** vào phần dữ liệu, còn trong tiêu đề (header) (trong hình 4.6, tiêu đề thuộc tầng ứng dụng – tầng thứ 7) là thông tin dịch vụ dành cho máy chủ hệ thống tệp. Để thông điệp của tầng ứng dụng được gửi đến đích, cần phải giải quyết thêm nhiều nhiệm vụ khác mà trách nhiệm thuộc về các tầng thấp hơn trong mô hình tương tác mạng.
+
+Tầng tiếp theo là **tầng trình bày (presentation layer)**. Module giao thức ở tầng ứng dụng, thông qua giao diện liên tầng, chuyển thông điệp của mình xuống tầng này, đồng thời yêu cầu thực hiện các dịch vụ cụ thể do tầng này cung cấp. Các phương tiện ở tầng trình bày thực hiện các nhiệm vụ cần thiết (ví dụ, mã hóa hoặc chuyển đổi định dạng dữ liệu) và hình thành thông điệp của mình bằng cách thêm vào thông điệp đã nhận các thông tin dịch vụ riêng (trong hình 4.6, tiêu đề của tầng trình bày – tầng 6).
+
+Thông điệp được hình thành tại tầng trình bày sẽ được chuyển xuống theo chồng giao thức tới các phương tiện của **tầng phiên (session layer)**, tầng này, sau khi thực hiện các chức năng được định nghĩa cho nó, sẽ chuyển thông điệp của mình xuống các tầng **vận chuyển (transport layer)**, **mạng (network layer)** và sau đó là **liên kết dữ liệu (data link layer)**.
+
+Cuối cùng, thông điệp đến các phương tiện ở tầng thấp nhất, **tầng vật lý (physical layer)**, nơi chúng sẽ chuyển thông điệp qua giao diện vật lý đầu ra của máy tính **1** và bắt đầu "hành trình" trên mạng. (Cho đến thời điểm này, thông điệp chỉ được truyền từ tầng này sang tầng khác trong phạm vi máy tính **1**).
+
+
+Khi một thông điệp được truyền qua mạng và đến giao diện đầu vào của máy tính **2**, tầng vật lý (physical layer) tiếp nhận nó, sau đó thông điệp sẽ được chuyển tuần tự từ tầng này lên tầng khác. Các phương tiện ở mỗi tầng sẽ phân tích và xử lý tiêu đề của tầng mình, thực hiện các chức năng tương ứng, sau đó loại bỏ tiêu đề đó và chuyển thông điệp lên tầng cao hơn, cho đến khi nó được chuyển đến ứng dụng **B**. Ứng dụng **B** sẽ diễn giải thông điệp "Dữ liệu cho báo cáo N đã sẵn sàng", ví dụ, và chuẩn bị bộ đệm để tiếp nhận dữ liệu.
+
+> Như có thể thấy từ mô tả, các thực thể giao thức (protocol entities) của một tầng không trực tiếp giao tiếp với nhau; quá trình giao tiếp luôn có sự tham gia của các tầng giao thức liền kề (adjacent layers). Chỉ các tầng vật lý (physical layers) của các nút khác nhau là tương tác trực tiếp với nhau.
+
+Các giao thức của bốn tầng thấp hơn thường được gọi chung là **vận tải mạng (network transport)** hoặc **hệ thống con vận tải (transport subsystem)**, vì chúng hoàn toàn giải quyết nhiệm vụ vận chuyển thông điệp với một mức chất lượng được xác định trong các mạng phức hợp với topologies tùy ý và các công nghệ khác nhau.
+
+Ba tầng trên cùng còn lại được thống nhất bởi việc chúng trực tiếp liên quan đến các **ứng dụng người dùng (user applications)**, cung cấp cho chúng các dịch vụ cấp cao để sử dụng tài nguyên và dịch vụ mạng. Tiếp theo, chúng ta sẽ xem xét các chức năng của tất cả bảy tầng, bắt đầu từ tầng thấp nhất, **tầng vật lý (physical layer)**.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.6.png" alt="Hình 4.6. Mô hình tương tác của các hệ thống mở ISO/OSI" width="900">
+</p>
+<p align="center"><b>Hình 4.6. Mô hình tương tác của các hệ thống mở ISO/OSI</b></p>
+
+---
+
+##### 4.2.2 Tầng vật lý (Physical Layer)
+
+**Tầng vật lý** của mô hình OSI liên quan đến việc truyền dòng bit qua các kênh truyền vật lý, chẳng hạn như cáp đồng trục (coaxial cable), cáp xoắn đôi (twisted pair), cáp quang (fiber optic cable), hoặc các đường truyền không dây (wireless communication line).
+
+
+**Chức năng của tầng vật lý** được thực hiện trên tất cả các thiết bị kết nối với mạng. Từ phía máy tính, các chức năng này được thực hiện bởi bộ điều hợp mạng (network adapter), và từ phía các thiết bị mạng trung gian – bộ chuyển mạch (switch), bộ định tuyến (router), bộ ghép kênh (multiplexer), v.v., thông qua các giao diện đầu vào và đầu ra (input/output interfaces hoặc ports). 
+
+Tầng vật lý không quan tâm đến ý nghĩa của thông tin được truyền. Đối với tầng này, dữ liệu đến từ tầng liên kết (data link layer) được coi là một dòng bit đồng nhất cần được truyền đi mà không bị méo mó, phù hợp với tần số đồng bộ hóa (clock rate) được thiết lập (khoảng cách giữa các bit liền kề) và phương pháp mã hóa được lựa chọn.
+
+Ví dụ về một tiêu chuẩn thuộc tầng vật lý có thể là **Gigabit Ethernet**, quy định việc sử dụng cáp xoắn đôi không che chắn loại 5 (Category 5 UTP) với trở kháng sóng là 100 Ohm, đầu nối kiểu RJ-45, chiều dài tối đa của phân đoạn vật lý không quá 100m, mã Manchester để biểu diễn dữ liệu trong cáp, cũng như một số đặc điểm khác của môi trường và tín hiệu điện.
+
+---
+
+##### 4.2.3 Tầng liên kết dữ liệu (Data Link Layer)
+
+**Tầng liên kết dữ liệu**, sử dụng các khả năng được cung cấp bởi tầng thấp hơn – tầng vật lý (physical layer), cung cấp các dịch vụ sau cho tầng trên – tầng mạng (network layer):  
+
+- Thiết lập kết nối logic giữa các nút tương tác;  
+- Đồng bộ hóa tốc độ giữa bộ truyền và bộ nhận thông tin trong khuôn khổ kết nối;  
+- Đảm bảo truyền tải đáng tin cậy, phát hiện và sửa lỗi.
+
+Trong các mạng dựa trên môi trường truyền chia sẻ, tầng vật lý còn thực hiện thêm một chức năng – kiểm tra tính khả dụng của môi trường chia sẻ. Chức năng này đôi khi được tách thành một phân tầng con gọi là **quản lý truy cập môi trường (Medium Access Control, MAC)**.
+
+Giao thức tầng liên kết thường hoạt động trong giới hạn của một mạng cụ thể, là một phần của mạng lớn hơn được kết nối bởi các giao thức tầng mạng (network layer). Địa chỉ mà giao thức tầng liên kết hoạt động được sử dụng để chuyển các khung (frames) chỉ trong phạm vi của mạng đó, và để di chuyển gói tin (packets) giữa các mạng thì địa chỉ của tầng mạng được sử dụng.
+
+Các giao thức của tầng liên kết được hiện thực ở cả các nút cuối (bộ điều hợp mạng và trình điều khiển của chúng), cũng như trên tất cả các thiết bị mạng trung gian (bộ chuyển mạch, bộ định tuyến, v.v.).
+
+**Đơn vị dữ liệu giao thức** ở tầng liên kết là **khung (frame)**. Trong trường dữ liệu của khung, thông điệp từ tầng mạng được đặt, còn trong tiêu đề là thông tin dịch vụ, bao gồm **địa chỉ đích (destination address)**, dựa trên đó các bộ chuyển mạch sẽ chuyển tiếp gói tin.
+
+Một trong những nhiệm vụ của tầng liên kết là **phát hiện và sửa lỗi (error detection and correction)**. Tầng liên kết có thể đảm bảo độ tin cậy của truyền tải, ví dụ, bằng cách cố định ranh giới của khung, thêm một dãy bit đặc biệt vào đầu và cuối khung, và sau đó thêm vào khung một giá trị kiểm tra (checksum). Kiểm tra được tính toán theo một thuật toán nào đó như một hàm của tất cả các byte của khung. Ở phía nhận, tầng liên kết nhóm các bit nhận được từ tầng vật lý vào các khung, tính lại giá trị kiểm tra dựa trên các bit nhận được và so sánh với giá trị kiểm tra trong khung. Nếu chúng trùng khớp, khung được coi là hợp lệ. Nếu không trùng, lỗi được phát hiện.
+
+Chức năng của tầng liên kết dữ liệu (data link layer) không chỉ bao gồm việc phát hiện lỗi (error detection) mà còn cả sửa lỗi (error correction) thông qua việc truyền lại các khung bị lỗi trong phạm vi kết nối logic. Tuy nhiên, chức năng này không phải là bắt buộc, và trong một số hiện thực của tầng liên kết, nó không được sử dụng – chẳng hạn, trong Ethernet.
+
+Trước khi chuyển một khung tới tầng vật lý để truyền trực tiếp dữ liệu vào mạng, phân tầng MAC (Medium Access Control) của tầng liên kết phải kiểm tra tính khả dụng của môi trường (media availability). Nếu môi trường chia sẻ (shared medium) sẵn sàng (khi không có ai sử dụng nó, kiểm tra này sẽ thành công), khung sẽ được gửi qua các phương tiện vật lý vào mạng.
+
+Trong các mạng cục bộ (local area networks, LANs), tầng liên kết hỗ trợ một tập hợp chức năng mạnh mẽ và hoàn thiện để chuyển tiếp thông điệp giữa các nút trong mạng. Trong một số trường hợp, các giao thức tầng liên kết của mạng cục bộ hoạt động như các phương tiện truyền tải độc lập (self-contained transport mechanisms) và có thể cho phép ứng dụng hoặc giao thức tầng ứng dụng (application layer) hoạt động trực tiếp trên chúng mà không cần sử dụng các phương tiện của tầng mạng (network layer) hoặc tầng vận chuyển (transport layer). Tuy nhiên, để đảm bảo truyền tải chất lượng cao trong các mạng có cấu trúc topo tùy ý, các chức năng của tầng liên kết thường là chưa đủ.
+
+---
+
+##### 4.2.4 Tầng mạng (Network Layer)
+
+**Tầng mạng** được sử dụng để tạo ra một hệ thống truyền tải thống nhất, kết nối nhiều mạng lại với nhau, được gọi là **mạng hợp thành (composite network)** hoặc **internet**.
+
+> **Công nghệ cho phép kết nối nhiều mạng thành một mạng thống nhất, dựa trên các công nghệ khác nhau, được gọi là công nghệ tương tác mạng (internetworking).**
+
+Trong hình 4.7, một số mạng được minh họa, mỗi mạng trong số đó sử dụng công nghệ logic tầng liên kết riêng, như: Ethernet, FDDI, Token Ring, ATM, hoặc Frame Relay. Dựa trên những công nghệ này, bất kỳ người dùng nào trong mạng có thể kết nối với nhau, nhưng chỉ trong giới hạn **mạng của họ**, và không thể truyền dữ liệu ra ngoài mạng đó.
+
+Nguyên nhân của hạn chế này là sự khác biệt đáng kể giữa các công nghệ của một mạng và mạng khác. Thậm chí các công nghệ mạng LAN gần gũi nhất – như Ethernet, FDDI, hoặc Token Ring – dù có hệ thống địa chỉ (MAC address) giống nhau, nhưng vẫn khác biệt nhau về định dạng khung (frame format) và logic hoạt động của giao thức tầng liên kết. Còn nhiều khác biệt hơn nữa giữa các công nghệ mạng LAN và mạng WAN.
+
+Để kết nối các mạng với nhau, cần sử dụng các công nghệ bổ sung được hiện thực ở **tầng mạng (network layer)**.
+
+**Các chức năng của tầng mạng (Network Layer)** được thực hiện bởi:  
+- **Nhóm các giao thức (group of protocols);**  
+- **Các thiết bị chuyên dụng – bộ định tuyến (routers).**
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.7.png" alt="Hình 4.7. Minh họa về sự cần thiết của tầng mạng" width="900">
+</p>
+<p align="center"><b>Hình 4.7. Minh họa về sự cần thiết của tầng mạng</b></p>
+
+Một trong các chức năng của bộ định tuyến (router) là **kết nối vật lý giữa các mạng (physical connection of networks)**. Bộ định tuyến có nhiều giao diện mạng (network interfaces), tương tự như các giao diện của máy tính, và mỗi giao diện có thể được kết nối với một mạng. Như vậy, các giao diện của bộ định tuyến có thể được coi là các nút của các mạng khác nhau.
+
+Bộ định tuyến có thể được thực hiện dưới dạng phần mềm trên cơ sở một máy tính đa năng (universal computer) (ví dụ, cấu hình điển hình của Unix hoặc Windows bao gồm một module phần mềm của bộ định tuyến). Tuy nhiên, thường bộ định tuyến được triển khai dựa trên các nền tảng phần cứng chuyên dụng. Các chức năng phần mềm của bộ định tuyến bao gồm các module giao thức của tầng mạng (network layer protocols).
+
+Vì vậy, để kết nối các mạng được hiển thị trong hình 4.7, cần phải kết nối tất cả các mạng qua các bộ định tuyến và cài đặt các module giao thức của tầng mạng trên các nút cuối của người dùng muốn kết nối với mạng hợp thành (composite network) (hình 4.8).
+
+Dữ liệu cần được truyền qua mạng hợp thành sẽ được gửi tới tầng mạng (network layer) từ tầng vận chuyển (transport layer) phía trên. Các dữ liệu này được bổ sung bởi một tiêu đề của tầng mạng. Dữ liệu cùng với tiêu đề tạo thành **gói tin (packet)** – đây là đơn vị dữ liệu giao thức của tầng mạng.
+
+Tiêu đề của gói tin tầng mạng (network layer packet) cùng với các thông tin dịch vụ khác mang dữ liệu về **địa chỉ đích (destination address)** của gói tin. Để các giao thức tầng mạng có thể chuyển gói tin đến bất kỳ nút nào trong mạng hợp thành (composite network), các nút này phải có các địa chỉ **duy nhất trong phạm vi toàn bộ mạng hợp thành**. Các địa chỉ này được gọi là **địa chỉ mạng (network addresses)** hoặc **địa chỉ toàn cầu (global addresses)**.
+
+Mỗi nút trong mạng hợp thành, nếu muốn trao đổi dữ liệu với các nút khác trong mạng hợp thành, bên cạnh địa chỉ được chỉ định cho nó ở tầng liên kết (data link layer), cũng phải có một địa chỉ mạng. Ví dụ, trong hình 4.8, một máy tính trong mạng Ethernet thuộc mạng hợp thành có địa chỉ tầng liên kết MAC1 và địa chỉ tầng mạng NET-A1; tương tự, trong mạng ATM, một nút được định địa chỉ bằng các nhận diện kênh ảo ID1 và ID2, có địa chỉ mạng là NET-A2.
+
+Trong gói tin, địa chỉ đích phải được chỉ định là **địa chỉ tầng mạng**, trên cơ sở đó tuyến đường của gói tin sẽ được xác định.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.8.png" alt="Hình 4.8. Ví dụ về mạng hợp thành" width="900">
+</p>
+<p align="center"><b>Hình 4.8. Ví dụ về mạng hợp thành</b></p>
+
+**Xác định tuyến đường (routing)** là một nhiệm vụ quan trọng của tầng mạng (network layer). Tuyến đường được mô tả bởi chuỗi các mạng (hoặc bộ định tuyến), qua đó gói tin phải đi qua để đến đích. Ví dụ, trong hình 4.8, các đường gạch nối biểu thị ba tuyến đường mà dữ liệu có thể được truyền từ máy tính A đến máy tính B. Bộ định tuyến thu thập thông tin về cấu trúc liên kết (topology) của các kết nối giữa các mạng và trên cơ sở thông tin này xây dựng các bảng định tuyến (routing tables), trong trường hợp này được gọi cụ thể là **bảng định tuyến (routing tables)**.
+
+Theo cách tiếp cận nhiều tầng, tầng mạng khi giải quyết nhiệm vụ của mình sẽ chuyển tiếp yêu cầu xuống tầng liên kết dữ liệu (data link layer). Toàn bộ hành trình qua mạng hợp thành được chia thành các đoạn từ một bộ định tuyến đến một bộ định tuyến khác, trong đó mỗi đoạn tương ứng với tuyến đường qua một mạng riêng lẻ.
+
+Để truyền gói tin qua mạng tiếp theo, tầng mạng đặt gói tin vào trường dữ liệu của một khung (frame) thuộc công nghệ tầng liên kết tương ứng. Trong tiêu đề của khung, **địa chỉ tầng liên kết (data link address)** của giao diện bộ định tuyến tiếp theo được chỉ định. Mạng, sử dụng công nghệ tầng liên kết của mình, chuyển tiếp khung chứa gói tin được đóng gói (encapsulated) đến địa chỉ đã định. Bộ định tuyến giải nén gói tin từ khung đã nhận và sau khi xử lý cần thiết, tiếp tục truyền gói tin đến mạng tiếp theo, trước đó đã đóng gói nó vào một khung tầng liên kết mới, thường thuộc công nghệ khác.
+
+Như vậy, tầng mạng đóng vai trò như một **người điều phối (coordinator)**, tổ chức sự hợp tác giữa các mạng được xây dựng trên các công nghệ khác nhau.
+
+###### **Ví dụ - Sự tương đồng**
+
+Có thể tìm thấy sự tương đồng giữa chức năng của tầng mạng (network layer) và dịch vụ bưu chính quốc tế, chẳng hạn như DHL hoặc TNT (hình 4.9). Hãy tưởng tượng rằng cần vận chuyển một kiện hàng từ thành phố Abra đến thành phố Kadabra, và hai thành phố này nằm trên các lục địa khác nhau. Để vận chuyển kiện hàng, dịch vụ bưu chính quốc tế sử dụng các phương tiện vận chuyển khu vực khác nhau:
+
+- Đường sắt;  
+- Vận tải đường biển;  
+- Vận tải hàng không;  
+- Vận tải đường bộ.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.9.png" alt="Hình 4.9. Hoạt động của dịch vụ bưu chính quốc tế" width="900">
+</p>
+<p align="center"><b>Hình 4.9. Hoạt động của dịch vụ bưu chính quốc tế</b></p>
+
+Những nhà vận chuyển này có thể được xem như là tương đồng với các mạng thuộc tầng liên kết dữ liệu (data link layer), mỗi "mạng" ở đây được xây dựng dựa trên công nghệ riêng của nó. Từ các dịch vụ vận chuyển khu vực này, dịch vụ bưu chính quốc tế cần tổ chức một mạng hoạt động trơn tru và thống nhất.
+
+Để làm được điều này, dịch vụ bưu chính quốc tế cần, trước tiên, lên kế hoạch tuyến đường vận chuyển thư tín; thứ hai, phối hợp hoạt động tại các điểm chuyển đổi nhà vận chuyển (ví dụ, dỡ thư từ toa tàu và đặt chúng vào khoang vận tải của máy bay). Mỗi nhà vận chuyển chỉ chịu trách nhiệm vận chuyển thư tín trên phần đường của mình và không chịu bất kỳ trách nhiệm nào về tình trạng của thư tín ngoài phạm vi phần đường của họ.
+
+Trong trường hợp tổng quát, các chức năng của tầng mạng (network layer) không chỉ dừng lại ở việc đảm bảo trao đổi dữ liệu trong phạm vi mạng hợp thành (composite network). Tầng mạng còn thực hiện nhiệm vụ tạo ra các rào cản tin cậy và linh hoạt để ngăn chặn luồng dữ liệu không mong muốn giữa các mạng.
+
+Kết luận, hãy lưu ý rằng ở tầng mạng có hai loại giao thức được xác định. Loại đầu tiên là **giao thức định tuyến (routed protocols)** – thực hiện việc chuyển tiếp các gói tin qua mạng. Đây chính là các giao thức thường được nhắc đến khi nói về các giao thức của tầng mạng. 
+
+Tuy nhiên, thường ở tầng mạng cũng có một loại giao thức khác, được gọi là **giao thức định tuyến (routing protocols)** hoặc **giao thức định tuyến mạng (network routing protocols)**. Với sự trợ giúp của các giao thức này, các bộ định tuyến thu thập thông tin về cấu trúc liên kết của các kết nối mạng, trên cơ sở đó lựa chọn tuyến đường di chuyển cho các gói tin.
+
+---
+
+##### 4.2.5 Tầng vận chuyển (Transport Layer)
+
+Trên đường truyền từ người gửi đến người nhận, các gói tin có thể bị méo mó hoặc mất mát. Mặc dù một số ứng dụng có các phương tiện riêng để xử lý lỗi, nhưng cũng có những ứng dụng khác ưu tiên việc sử dụng kết nối tin cậy.
+
+**Tầng vận chuyển** đảm bảo cho các ứng dụng và các tầng trên cùng của chồng giao thức – tầng ứng dụng, trình bày và phiên – việc truyền dữ liệu với mức độ tin cậy mà chúng yêu cầu. Mô hình OSI xác định năm **lớp dịch vụ vận chuyển (transport service classes)** từ lớp 0 đến lớp 4. Các lớp dịch vụ này khác nhau về chất lượng dịch vụ được cung cấp: độ khẩn cấp, khả năng khôi phục kết nối bị gián đoạn, khả năng ghép kênh (multiplexing) nhiều kết nối giữa các giao thức ứng dụng qua cùng một phương tiện vận chuyển, và quan trọng nhất – khả năng phát hiện và sửa lỗi truyền tải như méo mó, mất hoặc trùng lặp gói tin.
+
+**Việc lựa chọn lớp dịch vụ của tầng vận chuyển** phụ thuộc, một mặt, vào mức độ mà nhiệm vụ đảm bảo độ tin cậy được giải quyết bởi chính ứng dụng và các giao thức ở tầng cao hơn (tầng vận chuyển và trên). Mặt khác, sự lựa chọn cũng phụ thuộc vào mức độ tin cậy của hệ thống truyền tải dữ liệu trong mạng, được đảm bảo bởi các tầng thấp hơn – mạng, liên kết dữ liệu và vật lý. Ví dụ, nếu chất lượng của các kênh truyền tải rất cao và xác suất xảy ra lỗi được các giao thức ở các tầng thấp hơn phát hiện là nhỏ, thì có thể sử dụng một trong các dịch vụ nhẹ của tầng vận chuyển, không yêu cầu các kiểm tra phức tạp hoặc các biện pháp khác để đảm bảo độ tin cậy. Tuy nhiên, nếu các phương tiện truyền tải ở tầng thấp hơn không đáng tin cậy, thì việc sử dụng dịch vụ tầng vận chuyển tiên tiến hơn là hợp lý, bao gồm các cơ chế phát hiện và sửa lỗi, như thiết lập kết nối logic, kiểm soát giao hàng, kiểm tra lỗi, đánh số tuần tự cho các gói tin, đặt thời gian chờ giao hàng (timeouts), v.v.
+
+Tất cả các giao thức, bắt đầu từ tầng vận chuyển trở lên, được thực hiện bằng **các phương tiện phần mềm của các nút mạng cuối (end systems)** – các thành phần của hệ thống mạng. Ví dụ về các giao thức vận chuyển bao gồm **TCP và UDP** của chồng giao thức TCP/IP, và giao thức **SPX** của chồng giao thức Novell.
+
+---
+
+##### 4.2.6 Tầng phiên (Session Layer)
+
+**Tầng phiên** quản lý sự tương tác giữa các bên: xác định bên nào đang hoạt động tại một thời điểm và cung cấp các phương tiện để đồng bộ hóa phiên. Các phương tiện này cho phép lưu trữ thông tin về trạng thái của phiên truyền trong các lần truyền dài hạn, dưới dạng các điểm kiểm soát (checkpoints). Nhờ đó, trong trường hợp xảy ra lỗi, có thể quay lại điểm kiểm soát cuối cùng thay vì bắt đầu lại từ đầu.
+
+Trong thực tế, ít ứng dụng sử dụng tầng phiên, và tầng này hiếm khi được triển khai dưới dạng các giao thức riêng biệt. Các chức năng của tầng này thường được kết hợp với các chức năng của tầng ứng dụng (application layer) và được hiện thực trong cùng một giao thức.
+
+---
+
+##### 4.2.7 Tầng trình bày (Presentation Layer)
+
+**Tầng trình bày**, như tên gọi của nó, đảm bảo việc trình bày thông tin được truyền qua mạng, mà không thay đổi nội dung của thông tin đó. Nhờ tầng trình bày, thông tin do tầng ứng dụng của một hệ thống truyền đi luôn được hiểu bởi tầng ứng dụng của hệ thống khác.
+
+Với sự trợ giúp của tầng này, các giao thức tầng ứng dụng có thể vượt qua sự khác biệt về cú pháp trong cách trình bày dữ liệu hoặc sự khác biệt trong mã ký tự, chẳng hạn như giữa mã ASCII và EBCDIC. Ở tầng này, có thể thực hiện việc mã hóa và giải mã dữ liệu, nhờ đó đảm bảo tính bảo mật của việc trao đổi dữ liệu ngay lập tức cho tất cả các dịch vụ tầng ứng dụng. Một ví dụ về giao thức như vậy là **SSL (Secure Socket Layer)**, giao thức này đảm bảo việc trao đổi thông tin bảo mật cho các giao thức của tầng ứng dụng trong chồng TCP/IP.
+
+Để tăng hiệu quả của việc trao đổi văn bản và hình ảnh đồ họa, tầng trình bày có thể cung cấp các dịch vụ nén/giải nén thông tin. 
+
+Các chức năng của tầng trình bày còn bao gồm việc mã hóa dữ liệu hình ảnh đồ họa, âm thanh và video theo các tiêu chuẩn khác nhau, chẳng hạn như JPEG, MPEG, hoặc TIFF.
+
+---
+
+##### 4.2.8 Tầng ứng dụng (Application Layer)
+
+Các chức năng của **tầng ứng dụng** trong mô hình OSI được xác định là cung cấp các dịch vụ đa dạng cho các ứng dụng người dùng – chẳng hạn như truy cập vào các tài nguyên mạng chung (tệp, máy in, hoặc trang web) hoặc các dịch vụ mạng phân tán (thư điện tử, dịch vụ nhắn tin, cơ sở dữ liệu). Thông thường, các dịch vụ của tầng ứng dụng bao gồm nhận diện và xác thực (authentication) các bên tham gia tương tác mạng, kiểm tra khả năng truy cập và quyền hạn, cũng như xác định các yêu cầu về bảo mật của phiên trao đổi dữ liệu, v.v.
+
+Để thực hiện các yêu cầu từ tầng ứng dụng, hệ thống sử dụng các lệnh gọi hệ thống (system calls) của hệ điều hành, hình thành giao diện lập trình ứng dụng (Application Programming Interface, API). Hệ điều hành thực hiện các quy trình truy cập dịch vụ tầng ứng dụng một cách minh bạch đối với ứng dụng người dùng, che giấu toàn bộ chi tiết về cấu trúc của hệ thống vận chuyển trong mạng, cũng như hoạt động của các tầng phiên (session layer) và trình bày (presentation layer).
+
+Dưới đây là bản dịch đầy đủ và đúng chuyên ngành từ nội dung trong hình ảnh:
+
+---
+
+##### 4.2.9 Mô hình OSI và mạng chuyển mạch kênh
+
+Như đã đề cập, mô hình OSI mô tả quá trình tương tác giữa các thiết bị trong mạng chuyển mạch gói (packet-switched networks). Vậy còn đối với các mạng **chuyển mạch kênh (circuit-switched networks)** thì sao? Liệu có một mô hình tham chiếu riêng dành cho chúng không? Có thể so sánh các chức năng của công nghệ chuyển mạch kênh với các tầng của mô hình OSI không?
+
+Câu trả lời là có. Để biểu thị cấu trúc phương tiện tương tác trong các mạng chuyển mạch kênh, cũng sử dụng cách tiếp cận đa tầng (multi-layered approach), trong đó tồn tại các giao thức của nhiều tầng, tạo thành một hệ thống phân cấp. Tuy nhiên, không có một mô hình tham chiếu chung, tương tự mô hình OSI, cho các mạng chuyển mạch kênh. Ví dụ, các loại mạng điện thoại khác nhau có các bộ giao thức riêng, khác nhau về số lượng tầng và phân bố chức năng giữa chúng. Các hệ thống cấp thấp, như **SDH** hoặc **DWDM**, cũng sở hữu giao thức phân cấp riêng.
+
+Tình hình trở nên đơn giản hơn ở chỗ, trong các mạng chuyển mạch kênh hiện đại, công nghệ này chỉ được sử dụng cho việc truyền tải dữ liệu người dùng, còn việc thiết lập kết nối và quản lý chung của mạng thường áp dụng công nghệ chuyển mạch gói. Các mạng như vậy bao gồm, chẳng hạn, **ISDN**, **SDH**, và **DWDM**.
+
+> **Đối với các mạng chuyển mạch gói (packet-switched networks), các mạng chuyển mạch kênh (circuit-switched networks) cung cấp dịch vụ ở tầng vật lý (physical layer), mặc dù bản thân chúng được cấu trúc khá phức tạp và hỗ trợ một hệ thống phân cấp giao thức riêng.**
+
+
+Hãy xem xét, ví dụ, trường hợp khi một số mạng cục bộ (LAN) dựa trên chuyển mạch gói được kết nối với nhau qua một mạng điện thoại kỹ thuật số. Rõ ràng, các chức năng tạo thành mạng hợp thành (composite network) được thực hiện bởi các giao thức tầng mạng (network layer). Do đó, chúng ta cần cài đặt một bộ định tuyến (router) trong mỗi mạng LAN. Bộ định tuyến phải được trang bị giao diện (interface) có khả năng thiết lập kết nối qua mạng điện thoại với một mạng LAN khác.
+
+Sau khi thiết lập kết nối trong mạng điện thoại, một kênh dữ liệu được hình thành, truyền dữ liệu với tốc độ cố định. Kênh này cung cấp cho các bộ định tuyến dịch vụ của tầng vật lý (physical service). Để tổ chức truyền dữ liệu, các bộ định tuyến sử dụng trên kênh vật lý này một giao thức tầng liên kết dữ liệu (data link layer protocol) hai chiều bất kỳ.
+
+---
+
+#### 4.3 Tiêu chuẩn hóa mạng (Network Standardization)
+
+Nguyên lý phổ quát về lợi ích của việc tiêu chuẩn hóa, đúng với mọi ngành, có một ý nghĩa đặc biệt trong lĩnh vực mạng máy tính. Bản chất của mạng là sự kết nối giữa các thiết bị khác nhau, và do đó, vấn đề tương thích (compatibility) trở thành một trong những thách thức lớn nhất. Nếu không có sự đồng thuận của tất cả các nhà sản xuất về các tiêu chuẩn chung cho thiết bị và giao thức, việc phát triển trong lĩnh vực "xây dựng" mạng sẽ trở nên bất khả thi. 
+
+Do đó, sự phát triển của ngành công nghiệp máy tính, cuối cùng, được phản ánh trong các tiêu chuẩn – bất kỳ công nghệ mới nào chỉ có được trạng thái "hợp pháp" khi nội dung của nó được cố định trong một tiêu chuẩn tương ứng.
+
+Trong mạng máy tính, nền tảng tư tưởng của việc tiêu chuẩn hóa là **mô hình kết nối các hệ thống mở (Open System Interconnection - OSI)** đã được đề cập ở trên.
+
+---
+
+##### 4.3.1 Khái niệm về hệ thống mở (Open System)
+
+**Hệ thống mở** là gì?
+
+Hệ thống mở có thể là bất kỳ hệ thống nào (máy tính, mạng tính toán, hệ điều hành, gói phần mềm, các thiết bị phần cứng và sản phẩm phần mềm khác) được xây dựng theo các đặc tả mở (open specifications).
+
+Hãy nhớ rằng, trong lĩnh vực kỹ thuật tính toán, thuật ngữ **đặc tả (specification)** được hiểu là mô tả chính thức về các thành phần phần cứng hoặc phần mềm, cách thức hoạt động của chúng, sự tương tác với các thành phần khác, điều kiện sử dụng, và các đặc điểm cụ thể khác. Rõ ràng, không phải mọi đặc tả đều là một tiêu chuẩn.
+
+> **Đặc tả mở (open specifications)** được hiểu là các đặc tả được công bố, phổ biến rộng rãi, tuân thủ các tiêu chuẩn, và được chấp nhận sau khi đạt được sự đồng thuận thông qua thảo luận công khai với tất cả các bên liên quan.
+
+Việc sử dụng các đặc tả mở (open specifications) trong quá trình phát triển các hệ thống mở cho phép các bên thứ ba tạo ra các thiết bị phần cứng hoặc phần mềm khác nhau cho các hệ thống này, mở rộng và sửa đổi chúng. Ngoài ra, các hệ thống này còn hỗ trợ tích hợp các sản phẩm phần cứng và phần mềm từ nhiều nhà sản xuất khác nhau.
+
+Tính mở của các tiêu chuẩn và đặc tả không chỉ quan trọng đối với các giao thức truyền thông mà còn đối với các thiết bị và chương trình đa dạng được sản xuất để xây dựng mạng. Cần lưu ý rằng phần lớn các tiêu chuẩn được chấp nhận ngày nay mang tính mở. Thời đại của các hệ thống đóng, nơi các đặc tả chính xác chỉ được biết đến bởi nhà sản xuất, đã qua đi. Người ta nhận ra rằng khả năng tương tác với các sản phẩm của đối thủ cạnh tranh không làm giảm giá trị sản phẩm mà ngược lại, làm tăng giá trị của nó, vì nó cho phép sử dụng trong nhiều mạng được xây dựng từ các sản phẩm của các nhà sản xuất khác nhau. Do đó, ngay cả các công ty trước đây chỉ phát hành hệ thống đóng, như IBM và Microsoft, ngày nay cũng tích cực tham gia vào việc phát triển các tiêu chuẩn mở và áp dụng chúng trong sản phẩm của họ.
+
+Tuy nhiên, trong thực tế, sự mở hoàn toàn của các hệ thống là một lý tưởng khó đạt được. Thông thường, ngay cả trong các hệ thống được gọi là mở, định nghĩa này chỉ phù hợp với các phần hỗ trợ giao diện bên ngoài. Ví dụ, tính mở của họ Unix bao gồm, ngoài các yếu tố khác, sự tồn tại của giao diện lập trình chuẩn hóa giữa kernel và ứng dụng, cho phép dễ dàng di chuyển ứng dụng giữa các phiên bản Unix khác nhau.
+
+Mô hình OSI chỉ liên quan đến một khía cạnh của tính mở, cụ thể là tính mở của các phương tiện tương tác giữa các thiết bị được kết nối với mạng máy tính. Trong ngữ cảnh này, hệ thống mở được hiểu là một thiết bị mạng có thể tương tác với các thiết bị mạng khác theo các quy tắc tiêu chuẩn, xác định định dạng, nội dung và ý nghĩa của các thông điệp gửi và nhận.
+
+Nếu hai mạng được xây dựng tuân thủ nguyên tắc mở, điều này mang lại các lợi ích sau:
+- **Khả năng xây dựng mạng từ các thiết bị phần cứng và phần mềm của các nhà sản xuất khác nhau, tuân thủ cùng một tiêu chuẩn;**
+- **Dễ dàng thay thế các thành phần riêng lẻ bằng các thành phần tiên tiến hơn, cho phép mạng phát triển với chi phí tối thiểu;**
+- **Dễ dàng kết nối các mạng khác nhau với nhau.**
+
+---
+
+##### 4.3.2 Nguồn gốc của các tiêu chuẩn
+
+Luật **"Về quy định kỹ thuật"** ngày 27.12.2002 số 184-ФЗ định nghĩa khái niệm "tiêu chuẩn" như sau:
+
+**"Tiêu chuẩn"** là một tài liệu, trong đó, nhằm mục đích sử dụng tự nguyện, xác định các đặc điểm của sản phẩm, các quy tắc thực hiện và đặc điểm của các quá trình thiết kế (bao gồm khảo sát), sản xuất, xây dựng, lắp ráp, vận hành, bảo trì, lưu trữ, vận chuyển, tiêu thụ và tái chế, thực hiện công việc hoặc cung cấp dịch vụ. Tiêu chuẩn cũng có thể chứa các quy tắc và phương pháp nghiên cứu (thử nghiệm) và đo lường, quy tắc chọn mẫu, yêu cầu về thuật ngữ, ký hiệu, bao bì, nhãn mác hoặc nhãn dán và các quy tắc áp dụng chúng."
+
+Theo mặc định, **việc tuân thủ tiêu chuẩn không phải là bắt buộc** (trừ khi rõ ràng yêu cầu bắt buộc phải thực hiện). Tuy nhiên, có rất nhiều lý do khiến phần lớn các công ty, doanh nghiệp, cá nhân và tổ chức tự nguyện lựa chọn tuân thủ các tiêu chuẩn.
+
+Như đã đề cập trước đó, tiêu chuẩn hóa là một phương tiện để đảm bảo khả năng tương thích giữa các công nghệ thông tin, sản phẩm và thuật ngữ. Việc tuân thủ các tiêu chuẩn cũng cho phép tạo ra các công nghệ, hệ thống và dịch vụ chất lượng hơn, cạnh tranh hơn, vì tiêu chuẩn là sự biểu hiện cô đọng của những ý tưởng kỹ thuật tiên tiến, tích lũy kiến thức lý thuyết hiện đại và được gọi là **"thực hành tốt nhất (best practices)"**.
+
+Theo Luật Liên bang Nga **"Về quy định kỹ thuật"**, bất kỳ cá nhân hoặc tổ chức nào cũng có thể trở thành nhà phát triển tiêu chuẩn, nhưng thông thường, các tiêu chuẩn được phát triển bởi các nhóm làm việc (ủy ban kỹ thuật). Các nhóm này bao gồm đại diện từ các cơ quan hành pháp, tổ chức khoa học, thương mại và phi thương mại, và các hiệp hội xã hội. Một trong những nguyên tắc chính của tiêu chuẩn hóa là sự tham gia của những cá nhân và tổ chức quan tâm nhất đến tiêu chuẩn đang được phát triển. Do đó, rất thường xuyên, các nhà phát triển tiêu chuẩn chính là các công ty và tổ chức đã hoạt động thành công trong lĩnh vực mà tiêu chuẩn đó áp dụng.
+
+Tùy thuộc vào tình trạng của tổ chức phát triển, các loại tiêu chuẩn sau được phân biệt:
+
+- **Tiêu chuẩn của các công ty riêng lẻ**, ví dụ, chồng giao thức SNA của IBM hoặc giao diện đồ họa vật lý OPEN LOOK cho các hệ thống Unix của Sun;  
+- **Tiêu chuẩn của các ủy ban và hiệp hội chuyên biệt**, được phát triển bởi một số công ty, ví dụ: tiêu chuẩn công nghệ ATM được phát triển bởi diễn đàn ATM Forum (với khoảng 100 thành viên tham gia) hoặc tiêu chuẩn của liên minh Fast Ethernet Alliance, liên quan đến công nghệ 100 Mbit Ethernet;  
+- **Tiêu chuẩn quốc gia**, chẳng hạn như tiêu chuẩn FDDI, một trong nhiều tiêu chuẩn của viện ANSI (Mỹ), hoặc tiêu chuẩn an ninh cho hệ điều hành, được phát triển bởi trung tâm NCSC của Bộ Quốc phòng Hoa Kỳ;  
+- **Tiêu chuẩn quốc tế**, ví dụ, mô hình và chồng giao thức truyền thông của Tổ chức Tiêu chuẩn hóa Quốc tế (ISO), các tiêu chuẩn của Liên minh Viễn thông Quốc tế (ITU), bao gồm tiêu chuẩn mạng chuyển mạch gói X.25, các tiêu chuẩn Frame Relay, ISDN, modem, và nhiều tiêu chuẩn khác.
+
+Tại Nga, vai trò tổ chức chính trong việc tiêu chuẩn hóa thuộc về **Cơ quan Liên bang về Quy định Kỹ thuật và Đo lường (Rosstandart)**. Rosstandart thành lập và phối hợp các nhóm làm việc để phát triển tiêu chuẩn, tổ chức các cuộc thảo luận công khai và phê duyệt các tài liệu tiêu chuẩn, đồng thời xuất bản và phổ biến các tiêu chuẩn quốc gia.
+
+Một số tiêu chuẩn, phát triển liên tục, có thể chuyển từ một loại này sang loại khác. Đặc biệt, các tiêu chuẩn của công ty, sau khi sản phẩm nhận được sự phổ biến rộng rãi, thường trở thành tiêu chuẩn quốc tế trên thực tế (de-facto). Ví dụ, yêu cầu của các nhà sản xuất sử dụng các sản phẩm từ các công ty khác buộc phải tuân thủ các tiêu chuẩn công ty để đảm bảo khả năng tương thích với các sản phẩm đã phổ biến.
+
+Hơn nữa, do được sử dụng rộng rãi, một số tiêu chuẩn của công ty đã trở thành nền tảng cho các tiêu chuẩn quốc gia và quốc tế **de-jure**. Ví dụ, tiêu chuẩn **Ethernet**, ban đầu được phát triển bởi các công ty **Digital Equipment**, **Intel** và **Xerox**, sau một thời gian và với một số sửa đổi, đã được chấp nhận làm tiêu chuẩn quốc gia **IEEE 802.3**, và sau đó được tổ chức **ISO** phê chuẩn như một tiêu chuẩn quốc tế với mã hiệu **ISO 8802.3**.
+
+---
+
+##### 4.3.3 Tiêu chuẩn hóa Internet
+
+Một ví dụ điển hình về hệ thống mở là **Internet**. Mạng quốc tế này đã phát triển hoàn toàn phù hợp với các yêu cầu đặt ra cho các hệ thống mở. Hàng nghìn chuyên gia đã tham gia vào việc phát triển các tiêu chuẩn của Internet – người dùng từ các trường đại học, tổ chức khoa học và công ty khác nhau – các nhà sản xuất phần cứng và phần mềm máy tính, hoạt động tại các quốc gia khác nhau. Chính tên gọi của các tiêu chuẩn xác định hoạt động của Internet – **Request For Comments (RFC)** – cho thấy tính chất minh bạch và mở của các tiêu chuẩn được áp dụng. Kết quả là, Internet đã có thể kết hợp trong mình nhiều thiết bị và phần mềm đa dạng của vô số mạng, được phân tán trên toàn thế giới.
+
+Do sự phổ biến ngày càng tăng của Internet, các tài liệu RFC đã trở thành **tiêu chuẩn quốc tế de-facto**, nhiều trong số đó sau này có được trạng thái chính thức là **tiêu chuẩn quốc tế** thông qua sự phê chuẩn của các tổ chức tiêu chuẩn hóa, như **ISO** hoặc **ITU-T**.
+
+Hiện có một số đơn vị tổ chức phụ trách sự phát triển và, đặc biệt, tiêu chuẩn hóa kiến trúc và giao thức của Internet. Trong số đó, đơn vị chính là **Cộng đồng Internet (Internet Society, ISOC)**, một tổ chức hành chính-khoa học bao gồm khoảng 100.000 thành viên, giải quyết các vấn đề xã hội, chính trị và kỹ thuật liên quan đến sự phát triển của Internet.
+
+Dưới sự quản lý của ISOC có **Hội đồng Kiến trúc Internet (Internet Architecture Board, IAB)**. IAB giám sát hai nhóm chính:  
+- **Nhóm Nhiệm vụ Nghiên cứu Internet (Internet Research Task Force, IRTF)**: điều phối các dự án nghiên cứu dài hạn về các giao thức như TCP/IP.  
+- **Lực lượng Đặc nhiệm Kỹ thuật Internet (Internet Engineering Task Force, IETF)**: một nhóm kỹ thuật giải quyết các vấn đề kỹ thuật thực tế của Internet. Chính IETF xác định các tiêu chuẩn, sau đó trở thành **tiêu chuẩn chính thức của Internet**. Quá trình phát triển và thông qua tiêu chuẩn cho các giao thức Internet bao gồm một số giai đoạn bắt buộc, bao gồm thử nghiệm thực tế lâu dài.
+
+Tuân thủ nguyên tắc mở, các tài liệu RFC luôn được cung cấp tự do, không giống như các tiêu chuẩn ISO. Danh sách các tài liệu RFC có thể được tìm thấy trên trang **www.rfc-editor.org**.
+
+---
+
+##### 4.3.4 Các chồng giao thức truyền thông tiêu chuẩn
+
+Một hướng quan trọng nhất của việc tiêu chuẩn hóa trong lĩnh vực mạng máy tính là tiêu chuẩn hóa các **giao thức truyền thông (communication protocols)**. Những chồng giao thức nổi tiếng nhất bao gồm:  
+- **OSI**  
+- **TCP/IP**  
+- **IPX/SPX**  
+- **NetBIOS/SMB**  
+- **DECnet**  
+- **SNA**  
+
+(Lưu ý rằng không phải tất cả trong số chúng vẫn được sử dụng trong thực tế ngày nay).
+
+---
+
+###### 4.3.4.1 Chồng giao thức OSI (OSI Stack)
+
+Điều quan trọng là phải phân biệt giữa **mô hình OSI** và **chồng giao thức OSI**. Trong khi mô hình OSI là một khái niệm trừu tượng, thì chồng giao thức OSI, được xây dựng dựa trên mô hình OSI, đại diện cho một tập hợp các đặc tả cụ thể về các giao thức cũng như nhiều cách hiện thực phần mềm của các giao thức này.
+
+Không giống như các chồng giao thức khác, **chồng OSI** hoàn toàn phù hợp với mô hình OSI, bao gồm các đặc tả về giao thức cho tất cả bảy tầng tương tác, được định nghĩa trong mô hình này (hình 4.10). Điều này hoàn toàn dễ hiểu – các nhà phát triển của chồng OSI đã sử dụng mô hình OSI như một hướng dẫn hành động trực tiếp.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.10.png" alt="Hình 4.10. Ngăn xếp giao thức OSI" width="900">
+</p>
+<p align="center"><b>Hình 4.10. Ngăn xếp giao thức OSI</b></p>
+
+Các giao thức của chồng OSI được đặc trưng bởi sự phức tạp và tính không rõ ràng trong các đặc tả. Những đặc điểm này là kết quả của chính sách chung của các nhà phát triển chồng giao thức, nhằm mục đích tính đến trong các giao thức của họ mọi sự đa dạng của các công nghệ hiện có và mới xuất hiện.
+
+Ở **tầng vật lý (physical layer)** và **tầng liên kết dữ liệu (data link layer)**, chồng OSI hỗ trợ các giao thức **Ethernet**, **Token Ring**, **FDDI**, cũng như các giao thức **LLC**, **X.25** và **ISDN**. Điều này có nghĩa là, giống như hầu hết các chồng giao thức khác, chồng OSI sử dụng các giao thức phổ biến đã được phát triển bên ngoài chồng giao thức này cho các tầng thấp.
+
+**Tầng mạng (network layer)** bao gồm các giao thức tương đối ít được sử dụng như **Connection-oriented Network Protocol (CONP)** và **Connectionless Network Protocol (CLNP)**. Như tên gọi, giao thức đầu tiên định hướng kết nối (**connection-oriented**), trong khi giao thức thứ hai không dựa trên kết nối (**connectionless**).
+
+Phổ biến hơn là các giao thức định tuyến của chồng OSI:
+- Giữa hệ thống đầu cuối và hệ thống trung gian (**End System – Intermediate System, ES-IS**);
+- Giữa các hệ thống trung gian (**Intermediate System – Intermediate System, IS-IS**).
+
+**Tầng giao vận (Transport Layer)** của chồng OSI, tuân theo các chức năng được xác định trong mô hình OSI, che giấu sự khác biệt giữa các dịch vụ mạng dựa trên kết nối (**connection-oriented**) và không dựa trên kết nối (**connectionless**), đảm bảo rằng người dùng nhận được chất lượng dịch vụ mong muốn bất kể tầng mạng bên dưới hoạt động như thế nào. Để đảm bảo điều này, tầng giao vận yêu cầu người dùng xác định chất lượng dịch vụ cần thiết.
+
+**Các dịch vụ của tầng ứng dụng (Application Layer)** đảm bảo truyền tệp, giả lập terminal, dịch vụ thư mục và thư tín. Trong số đó, những dịch vụ phổ biến nhất bao gồm:
+- **Dịch vụ thư mục** (theo tiêu chuẩn X.500);
+- **Thư điện tử** (X.400);
+- **Giao thức terminal ảo (Virtual Terminal Protocol, VTP)**;
+- **Giao thức truyền, truy cập và quản lý tệp** (File Transfer, Access and Management, FTAM);
+- **Giao thức quản lý công việc** (Job Transfer and Management, JTM).
+
+---
+
+###### 4.3.4.2 Chồng NetBIOS/SMB
+
+Chồng NetBIOS/SMB là kết quả của sự hợp tác giữa các công ty **IBM** và **Microsoft** (hình 4.11). Ở các tầng vật lý (**physical layer**) và tầng liên kết dữ liệu (**data link layer**) của chồng này, các giao thức đã được phổ biến rộng rãi như **Ethernet**, **Token Ring**, và **FDDI** được sử dụng. Ở các tầng cao hơn, chồng này sử dụng các giao thức đặc thù như **NetBEUI** và **SMB**.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.11.png" alt="Hình 4.11. Ngăn xếp NetBIOS/SMB" width="900">
+</p>
+<p align="center"><b>Hình 4.11. Ngăn xếp NetBIOS/SMB</b></p>
+
+**Giao thức Network Basic Input/Output System (NetBIOS)** được giới thiệu vào năm 1984 như một phần mở rộng mạng cho các chức năng tiêu chuẩn của hệ thống đầu vào/đầu ra cơ bản (BIOS) trên máy tính IBM PC, dành cho chương trình mạng PC Network của công ty IBM. Sau đó, giao thức này được thay thế bằng **giao thức giao diện người dùng mở rộng NetBEUI (NetBIOS Extended User Interface)**. Để đảm bảo tương thích với các ứng dụng, giao diện NetBIOS đã được giữ lại trong NetBEUI. NetBEUI được phát triển như một giao thức hiệu quả, sử dụng ít tài nguyên và được thiết kế cho các mạng với tối đa 200 trạm làm việc.
+
+Giao thức này hỗ trợ nhiều chức năng mạng hữu ích, có thể gắn liền với các tầng giao vận (transport layer) và tầng phiên (session layer) trong mô hình OSI. Tuy nhiên, **NetBEUI không hỗ trợ định tuyến gói tin (packet routing)**. Điều này giới hạn việc sử dụng NetBEUI trong các mạng cục bộ (LAN), không tách rời theo phân đoạn, và khiến nó không thể sử dụng trong các mạng liên kết phức hợp.
+
+**Giao thức Server Message Block (SMB)** hỗ trợ các chức năng của tầng phiên, tầng trình bày (presentation layer), và tầng ứng dụng (application layer). Dựa trên giao thức SMB, các dịch vụ chia sẻ tệp, dịch vụ in ấn và truyền thông tin giữa các ứng dụng được thực hiện.
+
+---
+
+###### 4.3.4.3 Chồng TCP/IP
+
+Chồng TCP/IP được phát triển theo sáng kiến của **Bộ Quốc phòng Hoa Kỳ** hơn 20 năm trước để kết nối mạng thử nghiệm ARPAnet với các mạng khác như một tập hợp các giao thức chung cho các môi trường tính toán khác nhau. Đóng góp lớn vào sự phát triển của chồng TCP/IP, được đặt tên theo các giao thức phổ biến **IP** và **TCP**, đến từ **Đại học Berkeley**, khi họ triển khai các giao thức của chồng này trong phiên bản hệ điều hành UNIX của họ. Sự phổ biến của hệ điều hành này đã dẫn đến sự lan rộng rộng rãi của các giao thức **TCP**, **IP** và các giao thức khác của chồng.
+
+Ngày nay, chồng này được sử dụng để kết nối các máy tính trên Internet cũng như trong vô số mạng doanh nghiệp. Chúng tôi sẽ xem xét chi tiết chồng giao thức TCP/IP trong **Phần IV** của cuốn sách này, nơi tập trung vào các mạng đồng danh.
 
