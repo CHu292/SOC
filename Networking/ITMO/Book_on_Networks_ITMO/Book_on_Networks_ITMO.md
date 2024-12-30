@@ -1607,3 +1607,113 @@ Các luồng thông tin từ các nút cuối của mạng **Ethernet** được
 
 - **Hàng đợi (Queues):** Trong các khoảng thời gian khi môi trường bị chiếm dụng bởi việc truyền khung từ các bộ điều hợp mạng khác, dữ liệu từ các ứng dụng (tải trọng đề xuất) vẫn tiếp tục đến bộ điều hợp mạng. Vì vậy, chúng không thể được truyền ngay lập tức, mà sẽ được lưu trữ trong bộ đệm nội bộ của bộ điều hợp Ethernet, tạo thành hàng đợi. Do đó, trong Ethernet, cũng như trong tất cả các mạng chuyển mạch gói, tồn tại các độ trễ biến đổi trong việc truyền khung.
 
+---
+
+<h3 id="chuong-4-chuan-hoa-va-phan-loai-mang">Chương 4: Chuẩn hóa và phân loại mạng</h3>
+
+#### 4.1 Phân rã nhiệm vụ của sự tương tác mạng
+
+Kiến trúc mạng (network architecture) là một sơ đồ khái niệm về cách hoạt động của mạng máy tính (computer network), xác định các nguyên tắc làm việc của các thành phần phần cứng (hardware) và phần mềm mạng (network software), tổ chức các kết nối của chúng, các giao thức tương tác (interaction protocols), và cách thức truyền dữ liệu vật lý (physical data transmission).  
+
+Kiến trúc mạng phản ánh sự phân rã của nhiệm vụ chung về tương tác giữa các máy tính (computers) thành các nhiệm vụ con (subtasks), những nhiệm vụ này được giải quyết bởi các thành phần riêng biệt của mạng — các nút cuối cùng (end nodes) (máy tính - computers) và các nút trung gian (intermediate nodes) (bộ chuyển mạch - switches và bộ định tuyến - routers).
+
+---
+
+##### 4.1.1 Cách tiếp cận nhiều cấp độ
+
+Để giải quyết các nhiệm vụ phức tạp, bao gồm cả nhiệm vụ tương tác mạng (network interaction task), một phương pháp phổ biến và phổ quát được sử dụng là **phân rã (decomposition)**, tức là chia một nhiệm vụ phức tạp thành một số nhiệm vụ nhỏ hơn - các mô-đun nhiệm vụ (task-modules). Phân rã bao gồm việc xác định các chức năng của mỗi mô-đun (module functions), cũng như thứ tự tương tác của chúng (tức là các giao diện liên mô-đun - inter-module interfaces).  
+
+Với cách tiếp cận này, mỗi mô-đun có thể được coi như một “hộp đen (black box)”, trừu tượng hóa khỏi các cơ chế bên trong của nó và tập trung vào cách các mô-đun tương tác. Kết quả của sự đơn giản hóa logic nhiệm vụ này là khả năng kiểm thử (testing), phát triển (development), và sửa đổi (modification) các mô-đun một cách độc lập. Chẳng hạn, bất kỳ mô-đun nào được chỉ ra trong Hình 4.1 có thể được viết lại.  
+
+Hãy giả sử đó là mô-đun A, và nếu trong quá trình này các nhà phát triển giữ nguyên các giao diện liên mô-đun (trong trường hợp này – các giao diện A–B và A–C), thì điều này không yêu cầu bất kỳ thay đổi nào ở các mô-đun khác.
+
+Một khái niệm hiệu quả hơn, phát triển từ ý tưởng phân rã, là **cách tiếp cận nhiều cấp độ (multi-level approach)**. Sau khi biểu diễn nhiệm vụ gốc dưới dạng tập hợp các mô-đun và nhóm chúng theo cấp độ, hình thành cấu trúc phân cấp. Theo nguyên tắc phân cấp, đối với mỗi cấp độ, có thể chỉ rõ cấp độ ngay trên và ngay dưới nó (Hình 4.2).  
+
+Một mặt, theo cách tiếp cận này, mỗi nhiệm vụ cấp độ phải được mô tả bằng cách tham chiếu đến cấp độ ngay dưới nó. Mặt khác, các kết quả của việc phân rã, thuộc về một cấp độ nào đó, có thể được trình bày như là một thành phần của nhiệm vụ ở cấp độ trên. Sự phân cấp như vậy tạo điều kiện thuận lợi cho việc tổ chức phát triển và kiểm tra các giải pháp.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.1.png" alt="Hình 4.1. Ví dụ về phân tách nhiệm vụ" width="900">
+</p>
+<p align="center"><b>Hình 4.1. Ví dụ về phân tách nhiệm vụ</b></p>
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.2.png" alt="Hình 4.2. Phương pháp đa cấp — tạo dựng hệ thống phân cấp nhiệm vụ" width="900">
+</p>
+<p align="center"><b>Hình 4.2. Phương pháp đa cấp — tạo dựng hệ thống phân cấp nhiệm vụ</b></p>
+
+**Giao diện giữa các cấp độ (inter-level interface)**, còn được gọi là **giao diện dịch vụ (service interface)**, xác định tập hợp các chức năng (functions) mà cấp dưới (lower level) cung cấp cho cấp trên (upper level) (Hình 4.3).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.3.png" alt="Hình 4.3. Khái niệm tương tác đa cấp" width="900">
+</p>
+<p align="center"><b>Hình 4.3. Khái niệm tương tác đa cấp</b></p>
+
+**Cách tiếp cận này** cho phép thực hiện việc phát triển (development), kiểm thử (testing), và sửa đổi (modification) ở một cấp độ (level) riêng biệt mà không phụ thuộc vào các cấp độ khác.  
+
+**Phân rã phân cấp (hierarchical decomposition)** cho phép, khi di chuyển từ cấp độ thấp hơn (lower level) đến cấp độ cao hơn (higher level), chuyển sang các mức độ ngày càng trừu tượng (abstract) hơn, do đó làm đơn giản hóa (simplify) việc trình bày nhiệm vụ gốc.
+
+**Ví dụ**
+
+Hãy xem xét nhiệm vụ đọc bản ghi logic từ một tệp được lưu trữ trên đĩa cục bộ. Nhiệm vụ này (rất đơn giản hóa) có thể được trình bày dưới dạng phân cấp của các nhiệm vụ nhỏ như sau:
+
+1. **Tìm kiếm trong thư mục (catalog) theo tên ký hiệu của tệp và các đặc điểm của nó, cần thiết để truy cập dữ liệu (data):** thông tin về vị trí vật lý của tệp trên đĩa (disk), kích thước (size), v.v.
+
+   Vì các chức năng của cấp độ này chỉ liên quan đến việc xem thư mục (directory), cách biểu diễn hệ thống tệp (file system) trên cấp độ này là cực kỳ trừu tượng: hệ thống tệp có cấu trúc dạng đồ thị (graph), trong đó các nút (nodes) là các thư mục và các lá (leaves) là các tệp. Các chi tiết về tổ chức vật lý và logic của dữ liệu trên đĩa không thuộc mối quan tâm của cấp độ này.
+
+2. **Xác định phần cần đọc của tệp.**
+
+   Để giải quyết nhiệm vụ này, cần giảm mức độ trừu tượng của hệ thống tệp. Các chức năng ở cấp độ này hoạt động với tệp như một tập hợp cụ thể của các khối vật lý liên kết với nhau (physical blocks).
+
+3. **Đọc dữ liệu từ đĩa.**
+
+   Sau khi xác định số của khối vật lý (physical block) tệp, hệ thống tệp liên hệ với hệ thống đầu vào/đầu ra (I/O system) để thực hiện các thao tác đọc. Ở cấp độ này, xuất hiện các chi tiết cụ thể của thiết bị hệ thống tệp, chẳng hạn như số xi lanh (cylinders), đường (tracks), và các sector.
+   **Trong số các chức năng** mà một chương trình ứng dụng (application program) có thể yêu cầu khi gọi đến cấp cao nhất của hệ thống tệp (file system), có thể là, ví dụ:  
+
+**ĐỌC 22 BẢN GHI LOGIC (logical records) TỪ TỆP DIR1/MY/FILE.TXT**  
+
+Cấp độ trên cùng không thể tự thực hiện yêu cầu này "chỉ bằng khả năng của chính nó"; sau khi xác định địa chỉ vật lý (physical address) của tệp từ tên ký hiệu (symbolic name) DIR1/MY/FILE.TXT, nó sẽ chuyển yêu cầu đến cấp thấp hơn:  
+
+**ĐỌC 22 BẢN GHI LOGIC TỪ TỆP CÓ ĐỊA CHỈ VẬT LÝ 174 VÀ KÍCH THƯỚC 235**  
+
+  Khi nhận được yêu cầu, cấp độ thứ hai xác định rằng tệp có địa chỉ 174 chiếm trên đĩa năm vùng không liên tiếp, và bản ghi cần đọc nằm ở vùng thứ tư trong khối vật lý 345. Sau đó, nó gửi yêu cầu đến trình điều khiển (driver) để đọc bản ghi logic cần thiết.  
+
+  Theo sơ đồ tương tác đơn giản hóa này, các cấp độ của hệ thống tệp là hướng một chiều — từ trên xuống (top-down). Tuy nhiên, thực tế phức tạp hơn đáng kể. Thật vậy, để xác định đặc điểm của tệp, cấp độ trên phải "giải nén" (unpack) tên ký hiệu của nó, tức là lần lượt đọc chuỗi thư mục được chỉ định trong tên tệp. Điều này có nghĩa là, thay vì chỉ chuyển yêu cầu đến cấp thấp hơn, cấp trên sẽ phải "yêu cầu" trình điều khiển đọc các dữ liệu cần thiết, và một số yêu cầu như vậy có thể xảy ra từ dưới lên (bottom-up).
+
+**Nhiệm vụ tổ chức tương tác giữa các máy tính trong mạng** cũng có thể được trình bày dưới dạng tập hợp các mô-đun được tổ chức theo cấp bậc (hierarchically organized).  
+
+Ví dụ, các mô-đun cấp thấp (lower-level modules) có thể đảm nhiệm các vấn đề liên quan đến việc truyền thông tin đáng tin cậy (reliable data transfer) giữa hai nút liền kề (adjacent nodes), trong khi các mô-đun của cấp tiếp theo, cao hơn (higher-level modules), đảm nhận việc vận chuyển thông điệp (message transport) trong toàn mạng.  
+
+Rõ ràng, nhiệm vụ cuối cùng — tổ chức kết nối giữa hai nút bất kỳ, không nhất thiết phải liền kề — mang tính tổng quát hơn và do đó, có thể được giải quyết bằng cách thực hiện nhiều lần các yêu cầu tới cấp thấp hơn.  
+
+Ví dụ, tổ chức tương tác giữa các nút A và B có thể được rút gọn thành việc lần lượt tổ chức tương tác giữa các cặp nút trung gian liền kề (Hình 4.4).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.4.png" alt="Hình 4.4. Tương tác của một cặp nút ngẫu nhiên" width="900">
+</p>
+<p align="center"><b>Hình 4.4. Tương tác của một cặp nút ngẫu nhiên</b></p>
+
+##### 4.1.2 Giao thức và chồng giao thức
+
+Cách biểu diễn nhiều cấp độ của các phương tiện tương tác mạng (network interaction) có một đặc điểm riêng, liên quan đến việc trong quá trình trao đổi thông điệp (message exchange), tham gia ít nhất hai phía (sides). Điều này đòi hỏi phải tổ chức công việc phối hợp của hai hệ thống cấp bậc (hierarchies) về phần cứng (hardware) và phần mềm (software) trên các máy tính khác nhau.
+
+Cả hai phía tham gia trao đổi mạng đều phải chấp nhận một tập hợp các thỏa thuận (agreements). Ví dụ: họ cần thống nhất các tham số của tín hiệu điện (electrical signals), chiều dài thông điệp (message length), và các phương pháp kiểm tra tính chính xác (validity control), v.v. Nói cách khác, các thỏa thuận phải được thực hiện ở tất cả các cấp độ, bắt đầu từ cấp thấp nhất — cấp độ truyền bit (bit-level transmission) — và kết thúc ở cấp cao nhất, cung cấp dịch vụ cho người dùng mạng.
+
+Hình 4.5 minh họa mô hình tương tác giữa hai nút. Ở mỗi phía, các phương tiện tương tác được trình bày qua bốn cấp độ. Mỗi cấp độ hỗ trợ giao diện (interfaces) của hai loại. Thứ nhất, đó là các giao diện dịch vụ (service interfaces) với cấp trên và cấp dưới trong hệ thống cấp bậc. Thứ hai, đó là giao diện ngang cấp (peer-to-peer interfaces) với các phương tiện tương tác của phía khác, nằm ở cùng một cấp độ trong hệ thống cấp bậc. Giao diện ngang cấp này được gọi là **giao thức (protocol)**.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.5.png" alt="Hình 4.5. Tương tác giữa hai nút mạng" width="900">
+</p>
+<p align="center"><b>Hình 4.5. Tương tác giữa hai nút mạng</b></p>
+
+**Thực chất, các thuật ngữ "protocol" (giao thức) và "interface" (giao diện) đều chỉ cùng một khái niệm – mô tả chính thức về thủ tục tương tác giữa hai đối tượng, nhưng trong lĩnh vực mạng, chúng được sử dụng trong các bối cảnh ưu tiên khác nhau: giao thức (protocol) quy định các quy tắc tương tác của các module cùng cấp (cùng hạng) ở các nút khác nhau, trong khi giao diện (interface) quy định các quy tắc tương tác của các module ở các cấp độ liền kề trong cùng một nút.**
+
+**Tập hợp các giao thức (protocols) được tổ chức theo thứ bậc, đủ để tổ chức sự tương tác giữa các nút trong mạng, được gọi là chồng giao thức (protocol stack).**
+
+**Các giao thức (protocols) ở tầng thấp thường được hiện thực bằng sự kết hợp giữa phần mềm và phần cứng, trong khi các giao thức ở tầng cao, thông thường, được hiện thực bằng các phương tiện phần mềm. Module phần mềm hiện thực một giao thức cụ thể được gọi là thực thể giao thức (protocol entity), hoặc để ngắn gọn, cũng được gọi là giao thức (protocol). Rõ ràng, một giao thức cụ thể có thể được hiện thực với các mức độ hiệu quả khác nhau. Chính vì vậy, khi so sánh các giao thức, cần xem xét không chỉ logic hoạt động của chúng, mà còn cả chất lượng hiện thực phần mềm (quality of software implementation).**
+
+**Hơn nữa, hiệu quả tương tác của các thiết bị trong mạng phụ thuộc vào chất lượng của toàn bộ tập hợp giao thức cấu thành chồng giao thức (protocol stack) – cụ thể là mức độ hợp lý khi phân bổ chức năng giữa các giao thức ở các tầng khác nhau (rational distribution of functions across layers) và mức độ rõ ràng trong định nghĩa các giao diện (interfaces) giữa chúng.**
+
+**Thực thể giao thức (protocol entity) ở một tầng nhất định trao đổi các thông điệp theo định dạng được xác định bởi giao thức tầng đó. Các thông điệp bao gồm phần tiêu đề (header) và phần dữ liệu (data field) (đôi khi có thể không có). Việc trao đổi thông điệp là một loại ngôn ngữ giao tiếp riêng, qua đó mỗi bên hiểu các chỉ thị từ phía bên kia để thực hiện các bước tương tác cần thiết. Công việc của mỗi module giao thức (protocol module) là diễn giải các tiêu đề của thông điệp đến và thực hiện các hành động liên quan.**
+
+**Tiêu đề của các thông điệp thuộc các giao thức khác nhau có cấu trúc khác nhau, tương ứng với đặc thù của từng chức năng. Rõ ràng, cấu trúc tiêu đề càng phức tạp thì chức năng được giao cho giao thức tương ứng càng lớn.**
+
