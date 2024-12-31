@@ -2344,3 +2344,138 @@ Tuy nhiên, còn tồn tại một loại hợp đồng khác, gọi là **thỏ
 **SLA** có thể được ký kết không chỉ giữa các nhà cung cấp dịch vụ thương mại (commercial service providers) và khách hàng mà còn giữa các bộ phận khác nhau của một công ty. Trong trường hợp này, nhà cung cấp dịch vụ mạng có thể là, ví dụ, bộ phận công nghệ thông tin (IT department), và người dùng là bộ phận sản xuất (production department).
 
 ---
+
+#### 5.2 Hiệu suất và độ tin cậy của mạng  
+
+---
+
+##### 5.2.1 Mạng lý tưởng và thực tế
+
+Trong chương 3 (mục "So sánh định lượng về độ trễ"), chúng ta đã xem xét các thành phần khác nhau của độ trễ (delay) trong mạng chuyển mạch gói (packet-switched network), cụ thể:  
+- Thời gian truyền dữ liệu vào kênh (thời gian nối tiếp – serialization time);  
+- Thời gian lan truyền tín hiệu (signal propagation time);  
+- Thời gian chờ gói tin trong hàng đợi (queue waiting time);  
+- Thời gian chuyển mạch gói tin (packet switching time).
+
+Hai thành phần đầu tiên của độ trễ được xác định hoàn toàn bởi khả năng truyền dẫn (transmission capacity) của kênh truyền dữ liệu và là các giá trị cố định (fixed values) đối với gói tin có độ dài cố định (fixed-length packets). Hai thành phần cuối cùng phụ thuộc vào mức tải của các bộ chuyển mạch (switch load) và khả năng xử lý của chúng, và đối với gói tin có độ dài cố định, chúng thường là các giá trị thay đổi (variable values).
+
+Giả sử rằng mạng chuyển mạch gói hoạt động lý tưởng (ideal packet-switched network) nếu nó truyền từng bit thông tin với tốc độ không đổi, bằng tốc độ lan truyền ánh sáng (speed of light) trong môi trường vật lý được sử dụng. Nói cách khác, mạng lý tưởng không tạo ra bất kỳ độ trễ bổ sung nào trong việc truyền dữ liệu ngoài các độ trễ liên quan đến kênh truyền dẫn; do đó, hai thành phần độ trễ cuối cùng bằng không.
+
+Kết quả của việc truyền gói tin qua mạng lý tưởng như vậy được minh họa trong Hình 5.1. Trên trục trên cùng, thời gian gửi gói tin vào mạng từ nút gửi (sender node) được hiển thị, và trên trục dưới cùng, thời gian nhận gói tin tại nút đích (destination node) được biểu diễn. Vì vậy, trục trên tương ứng với tải trọng dự kiến (predicted load), còn trục dưới tương ứng với kết quả tải qua mạng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.1.png" alt="Hình 5.1. Truyền gói tin qua mạng lý tưởng" width="900">
+</p>
+<p align="center"><b>Hình 5.1. Truyền gói tin qua mạng lý tưởng</b></p>
+
+Xác định **thời gian trễ của gói tin (packet delay time)** như khoảng thời gian giữa thời điểm gửi **bit đầu tiên (first bit)** của gói tin vào kênh liên lạc (communication channel) tại nút gửi (sending node) và thời điểm bit đầu tiên của gói tin đến nút đích (destination node).  
+
+Trên hình minh họa, các khoảng trễ được biểu diễn bằng $$d_1$$, $$d_2$$ và $$d_3$$ tương ứng với các gói tin 1, 2 và 3. Do đó, thời gian trễ của gói tin bằng với **thời gian lan truyền tín hiệu (signal propagation time)**.
+
+Như minh họa trong hình, mạng lý tưởng (ideal network) chuyển tất cả các gói tin đến nút đích (destination node):  
+- Không mất bất kỳ gói tin nào (và không làm sai lệch thông tin trong bất kỳ gói tin nào);  
+- Theo đúng thứ tự mà chúng được gửi đi;  
+- Với cùng một độ trễ tối thiểu có thể (ví dụ, $$d_1 = d_2$$ và v.v.).
+
+Điều quan trọng là tất cả các khoảng thời gian giữa các gói tin liền kề được mạng giữ nguyên. Ví dụ, nếu khoảng thời gian giữa gói tin thứ nhất và thứ hai tại thời điểm gửi là $$\tau_1$$ giây, và giữa gói tin thứ hai và thứ ba là $$\tau_2$$, thì các khoảng thời gian này vẫn giữ nguyên tại nút đích.
+
+Việc chuyển giao đáng tin cậy (reliable delivery) của tất cả các gói tin với độ trễ tối thiểu và duy trì các khoảng thời gian không đổi giữa chúng sẽ đáp ứng nhu cầu của bất kỳ người dùng mạng nào, bất kể loại lưu lượng (traffic type) của ứng dụng mà họ truyền tải qua mạng – dù đó là dịch vụ web (web service) hay điện thoại IP (IP telephony).
+
+---
+
+**Ghi chú**
+
+> Cũng tồn tại các định nghĩa khác về thời gian trễ của gói tin (packet delay time). Ví dụ, giá trị này có thể được xác định là khoảng thời gian giữa thời điểm gửi **bit đầu tiên** của gói tin vào kênh liên lạc (communication channel) tại nút gửi (sending node) và thời điểm **bit cuối cùng** của gói tin đến nút đích (destination node) tương ứng. (Định nghĩa này được sử dụng trong tài liệu RFC 2679, mô tả các đặc tính trễ của gói IP – IP packet delay characteristics). Không khó để nhận thấy rằng trong định nghĩa này, thời gian trễ của gói tin bao gồm thời gian nối tiếp (serialization time).
+
+Bây giờ, hãy xem xét những sai lệch nào so với lý tưởng có thể xảy ra trong **mạng thực tế (real network)** và những đặc tính nào có thể được sử dụng để mô tả các sai lệch này (Hình 5.2).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.2.png" alt="Hình 5.2. Truyền gói tin qua mạng thực tế" width="900">
+</p>
+<p align="center"><b>Hình 5.2. Truyền gói tin qua mạng thực tế</b></p>
+
+Các gói tin được mạng chuyển đến nút đích (destination node) với các độ trễ khác nhau (different delays). Đây là một đặc điểm không thể tách rời của các mạng chuyển mạch gói (packet-switched networks).
+
+**Tính ngẫu nhiên (random nature)** của quá trình hình thành hàng đợi dẫn đến **độ trễ ngẫu nhiên (random delay)**, trong đó độ trễ của các gói tin riêng lẻ có thể rất đáng kể, lớn hơn nhiều so với giá trị trung bình của độ trễ $$(d_1 \neq d_2 \neq d_3 \dots)$$. Sự không đồng đều của độ trễ làm thay đổi vị trí tương đối của các gói tin trong luồng đầu ra, điều này có thể gây ảnh hưởng nghiêm trọng đến chất lượng hoạt động của một số ứng dụng. Ví dụ, trong truyền tải giọng nói số (digital voice transmission), một luồng lạnh (cold stream) đại diện cho một chuỗi gói tin đều đặn cách nhau, mang dữ liệu âm thanh. Sự không đồng đều (jitter) trong khoảng thời gian giữa các gói tin trong luồng đầu ra dẫn đến **biến dạng đáng kể của giọng nói (voice distortion)**.
+
+Các gói tin có thể được chuyển đến nút đích (destination node) **không theo thứ tự (out of order)** mà chúng được gửi đi — ví dụ, trong hình 5.2, gói tin số 4 đến nút đích trước gói tin số 3. Các tình huống như vậy thường xảy ra trong mạng dữ liệu dạng gói (packet-switched networks), khi các gói tin của một luồng được truyền qua các tuyến đường khác nhau, và vì thế, chịu sự xử lý khác nhau tại các nút mạng với các mức độ tải khác nhau. Rõ ràng, gói tin số 3 đi qua một nút mạng bị quá tải hoặc qua tuyến đường có độ trễ lớn đến mức tổng thời gian trễ của nó vượt qua thời gian trễ của gói tin số 4, dẫn đến sự sắp xếp ngược thứ tự.
+
+Các gói tin cũng có thể **bị mất (packet loss)** trong mạng hoặc đến nút đích với dữ liệu bị sai lệch (**corrupted data**), điều này tương đương với việc mất gói tin, bởi vì hầu hết các giao thức không thể khôi phục dữ liệu bị sai lệch. Những dữ liệu này chỉ được xác định là không hợp lệ dựa trên giá trị của **checksum trong tiêu đề gói (checksum in packet header)**.
+
+Các gói tin cũng có thể **bị nhân đôi (duplicated packets)** vì nhiều lý do, chẳng hạn như các nỗ lực truyền lại gói tin bị lỗi (retransmission) do giao thức thực hiện, nhằm đảm bảo tính tin cậy trong việc trao đổi dữ liệu.
+
+Trong mạng thực tế, tốc độ của luồng thông tin ở đầu vào nút đích có thể khác với tốc độ luồng đầu ra, hướng vào mạng từ nút gửi (sender node). Nguyên nhân chính là các độ trễ xảy ra tại hàng đợi và lộ trình mạng. Như trong ví dụ trong hình 5.2, **tốc độ trung bình của luồng đầu ra (average outgoing stream rate)** bị giảm do mất gói tin số 5. Càng nhiều gói tin bị mất hoặc sai lệch xảy ra trong mạng, tốc độ luồng thông tin trung bình càng giảm.
+
+Để đánh giá hiệu suất của mạng thực tế, người ta thường sử dụng các **đặc tính hiệu suất mạng (network performance metrics)**. Một số trong số đó liên quan đến tốc độ và độ trễ, một số khác liên quan đến mất mát và sai lệch, hoặc đến tính bảo mật của việc truyền dữ liệu. Tầm quan trọng tương đối của từng đặc tính phụ thuộc vào loại ứng dụng, lưu lượng mà mạng cần xử lý. Chẳng hạn, có các ứng dụng đặc biệt nhạy cảm với độ trễ, nhưng không nhạy cảm với mất mát gói tin, ví dụ: truyền phát giọng nói qua các dịch vụ thoại qua mạng (VoIP - Voice over IP). Vì vậy, trong từng trường hợp cụ thể, cần xác định các đặc tính mạng phù hợp nhất để phản ánh đúng ảnh hưởng của các yếu tố “không mong muốn” lên công việc của ứng dụng.
+
+---
+
+##### 5.2.2 Đánh giá thống kê các đặc tính mạng (Statistical Evaluation of Network Characteristics)
+
+Để đánh giá các đặc tính của **quá trình ngẫu nhiên (random processes)**, các phương pháp thống kê (statistical methods) được sử dụng, bởi vì bản chất của các quá trình truyền gói tin qua mạng là ngẫu nhiên. Chính các đặc tính hiệu suất mạng, chẳng hạn như **độ trễ gói tin (packet delay)**, là những **biến ngẫu nhiên (random variables)**. 
+
+Các đặc tính thống kê (statistical characteristics) cho phép phát hiện các quy luật trong hành vi của mạng, mà chỉ có thể xuất hiện ổn định trong các khoảng thời gian dài. Khi nói đến một khoảng thời gian dài (long period of time), ý chúng ta là một khoảng thời gian lớn hơn hàng triệu lần so với **thời gian truyền một gói tin (packet transmission time)**, vốn trong mạng hiện đại được đo bằng micro giây.
+
+Ví dụ, thời gian truyền một gói tin qua **Gigabit Ethernet** là khoảng 10 micro giây. Vì vậy, để thu được các kết quả ổn định (reliable results), cần quan sát hành vi của mạng ít nhất trong vài phút, và tốt nhất là trong vài giờ.
+
+Công cụ chính trong thống kê (statistics) là **biểu đồ tần suất (histogram)** của phân phối giá trị ngẫu nhiên được đánh giá. Hãy xem xét, ví dụ, biểu đồ tần suất của **độ trễ gói tin (packet delay)**. Giả sử rằng chúng ta đã đo được độ trễ truyền tải của mỗi gói tin trong 2600 gói tin, được truyền giữa hai nút trong mạng, và lưu lại các kết quả đo được. Mỗi kết quả đo là một **giá trị đơn lẻ của biến ngẫu nhiên (single value of a random variable)**, và tất cả chúng tạo thành **mẫu (sample)** các giá trị của biến ngẫu nhiên.
+
+Để xây dựng biểu đồ tần suất phân phối, chúng ta cần chia toàn bộ phạm vi các giá trị đo được thành nhiều khoảng (intervals) và đếm số lần các giá trị thuộc vào từng khoảng. Giả sử tất cả các giá trị độ trễ nằm trong khoảng 20–90 ms. Ta chia phạm vi này thành bảy khoảng, mỗi khoảng rộng 10 ms. Trong từng khoảng này, bắt đầu từ 20–30 ms và tiếp tục như vậy, số lượng gói tin là 100 ($$n_1$$), 200 ($$n_2$$), 300 ($$n_3$$), 300 ($$n_4$$), 400 ($$n_5$$), 800 ($$n_6$$) và 500 ($$n_7$$) gói tin tương ứng.
+
+Biểu diễn các số liệu này dưới dạng các cột ngang, chúng ta thu được biểu đồ tần suất (histogram) được trình bày trong hình 5.3, giúp mô tả ngắn gọn các đặc tính thống kê của độ trễ trong 2600 gói tin.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.3.png" alt="Hình 5.3. Biểu đồ phân bố độ trễ" width="900">
+</p>
+<p align="center"><b>Hình 5.3. Biểu đồ phân bố độ trễ</b></p>
+
+**Biểu đồ tần suất của độ trễ (Delay Histogram)** cung cấp một cái nhìn rõ ràng về hiệu suất của mạng (network performance). Từ đó, có thể đánh giá mức độ trễ nào có khả năng xảy ra cao hơn và mức độ nào ít xảy ra hơn. Khoảng thời gian càng dài (observation period) để thu thập dữ liệu nhằm xây dựng biểu đồ tần suất, thì dự đoán về hành vi của mạng trong tương lai sẽ càng chính xác hơn.
+
+Ví dụ, sử dụng biểu đồ tần suất trong hình 5.3, có thể nói rằng, trong tương lai, khi đo độ trễ của các gói tin, 65% số gói tin sẽ có độ trễ vượt quá 60 ms. Để đưa ra đánh giá này, chúng ta đã cộng tổng số gói tin mà độ trễ của chúng rơi vào tất cả các khoảng vượt quá 60 ms (1700 phép đo) và chia số này cho tổng số gói tin (2600 phép đo).
+
+Dự đoán như vậy có chính xác không? Chúng ta đã thu thập đủ dữ liệu thực nghiệm để đưa ra các dự đoán đáng tin cậy hay chưa? **Thống kê (statistics)** cho phép đánh giá điều này, tuy nhiên, ở đây chúng ta sẽ không xem xét vấn đề thú vị này (những ai quan tâm có thể tham khảo các sách chuyên ngành về thống kê).
+
+Khi tăng số lượng khoảng (intervals) và thời gian quan sát, biểu đồ tần suất (histogram) dần chuyển thành một hàm liên tục, được gọi là **mật độ phân phối (probability density function)** của độ trễ truyền tải gói tin (được biểu thị bằng đường nét đứt). Theo lý thuyết xác suất (probability theory), xác suất để giá trị của biến ngẫu nhiên (random variable) rơi vào một khoảng nhất định bằng với tích phân của mật độ phân phối (density integral) từ giới hạn dưới đến giới hạn trên của khoảng này. Như vậy, giá trị xác suất của độ trễ gói tin có thể được tính toán.
+
+Biểu đồ tần suất cung cấp một hình ảnh trực quan về các đặc tính liên quan, nhưng thường thì các **đánh giá thống kê (statistical evaluations)** của đặc tính này được sử dụng nhiều hơn. Những đánh giá này cho phép biểu diễn đặc tính dưới dạng một giá trị duy nhất (single number) dựa trên việc xử lý toán học các mẫu dữ liệu hiện có.
+
+Để mô tả các đặc tính mạng, các **đánh giá thống kê (statistical evaluations)** sau đây được sử dụng:
+
+- **Giá trị trung bình (Mean, $$D$$)** được tính bằng tổng tất cả các giá trị của biến ngẫu nhiên ($$d_i$$) chia cho tổng số lần đo ($$N$$):
+  
+  $$
+  D = \frac{\sum d_i}{N}
+ $$
+
+  Ví dụ, đối với dữ liệu được trình bày trong hình 5.3, giá trị trung bình là:
+  
+  $$
+  D = \frac{(100 \times 25 + 200 \times 35 + 300 \times 45 + 300 \times 55 + 400 \times 65 + 800 \times 75 + 500 \times 85)}{2600} = 64,6 \text{ ms}
+ $$
+
+  (Trong tính toán này, các giá trị trung bình của các khoảng đã được sử dụng).
+
+- **Median (Trung vị):** Trung vị là giá trị chia mẫu sắp xếp (ordered sample) thành hai phần bằng nhau, sao cho số lần đo có giá trị nhỏ hơn hoặc bằng trung vị bằng với số lần đo có giá trị lớn hơn hoặc bằng trung vị. Trong ví dụ này, trung vị là 70 ms, bởi vì số lần đo nhỏ hơn hoặc bằng 70 ms là 1300, và số lần đo lớn hơn hoặc bằng 70 ms cũng là 1300.
+
+- **Độ lệch chuẩn (Standard Deviation) hoặc phương sai ($$J$$):** Độ lệch chuẩn biểu thị độ lệch trung bình của mỗi lần đo khỏi giá trị trung bình của biến ngẫu nhiên:
+
+  $$
+  J = \sqrt{\frac{\sum (d_i - D)^2}{N - 1}}
+ $$
+
+  Rõ ràng, nếu không có sự khác biệt giữa các độ trễ (tất cả $$d_i = D$$), phương sai sẽ bằng 0 ($$J = 0$$).
+
+- **Hệ số biến thiên (Coefficient of Variation, $$CV$$):** Đây là một đại lượng không thứ nguyên, biểu thị tỷ lệ giữa độ lệch chuẩn và giá trị trung bình của biến ngẫu nhiên:
+
+  $$
+  CV = \frac{J}{D}
+ $$
+
+Hệ số biến thiên (Coefficient of Variation, $$CV$$) đặc trưng cho biến ngẫu nhiên mà không phụ thuộc vào giá trị tuyệt đối của nó. Ví dụ, một luồng gói tin lý tưởng, được phân bố đều, luôn có hệ số biến thiên bằng 0. Hệ số biến thiên của độ trễ gói tin bằng 1 biểu thị **luồng giao thông xung nhịp (pulsating traffic)**, khi độ lệch chuẩn của các khoảng bằng giá trị trung bình của khoảng thời gian giữa các gói tin.
+
+- **Phân vị (Quantile, Percentile):** Đây là giá trị của biến ngẫu nhiên, chia mẫu sắp xếp thành hai phần sao cho tỷ lệ phần trăm các lần đo có giá trị nhỏ hơn hoặc bằng phân vị bằng với tỷ lệ phần trăm đã định trước. Trong định nghĩa này, một con số đã định trước được đưa ra: tỷ lệ phần trăm đã định trước, và các giá trị trong mẫu được so sánh với giá trị phân vị đó. Không khó để nhận ra rằng **phân vị 50% (50th percentile)** trùng với trung vị (median). Đối với các đặc tính mạng, các phân vị với giá trị phần trăm cao hơn thường được sử dụng, chẳng hạn **phân vị 99% (99th percentile)**, cho phép đánh giá các giá trị đặc biệt cao nhất của đặc tính được đo lường.
+
+Các phương pháp thống kê (statistical methods) được áp dụng để phân tích các đặc tính hiệu suất mạng khác nhau, chẳng hạn như: tốc độ truyền dữ liệu (data transmission speed), độ trễ (delay), thời gian chờ trong bộ đệm (buffer delay), thời gian chuyển mạch (switching time), số lượng gói tin bị mất (packet loss), v.v., vì tất cả các yếu tố này đều là biến ngẫu nhiên (random variables).
+
+**Thứ tự thực hiện các phép đo (Measurement sequence):** Được khuyến nghị tiến hành tại các thời điểm ngẫu nhiên, tuân theo phân phối Poisson (Poisson distribution). Thứ tự chọn ngẫu nhiên như vậy giúp tránh sự đồng bộ hóa không mong muốn giữa các phép đo và bất kỳ biến động tuần hoàn nào trong hành vi của mạng, điều này có thể làm thay đổi đáng kể các kết quả đo lường quan sát được.
+
