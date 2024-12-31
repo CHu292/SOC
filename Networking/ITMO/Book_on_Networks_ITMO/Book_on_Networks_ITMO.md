@@ -2275,3 +2275,72 @@ Cáp quang (fiber optic cables) hiện nay có đặc tính tốt nhất về kh
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/4.15.png" alt="Hình 4.15. Mạng truy cập, mạng tổng hợp lưu lượng và mạng trục" width="900">
 </p>
 <p align="center"><b>Hình 4.15. Mạng truy cập, mạng tổng hợp lưu lượng và mạng trục</b></p>
+
+---
+
+<h3 id="chuong-5-cac-dac-tinh-mang-va-chat-luong-dich-vu">CHƯƠNG 5: Các đặc tính mạng và chất lượng dịch vụ</h3>
+
+Mạng máy tính là một hệ thống phức tạp và đắt đỏ, thực hiện các nhiệm vụ quan trọng và phục vụ một lượng lớn người dùng. Do đó, rất quan trọng để mạng không chỉ hoạt động mà còn hoạt động một cách chất lượng.
+
+Khái niệm "chất lượng dịch vụ" (Quality of Service - QoS) có thể được hiểu rất rộng, bao gồm tất cả các đặc tính (properties) mong muốn và khả thi đối với người dùng và nhà cung cấp dịch vụ (service provider), những người hỗ trợ vận hành mạng. Để người dùng và nhà cung cấp dịch vụ có thể cụ thể hơn trong việc thảo luận các vấn đề về dịch vụ (service issues) và thiết lập mối quan hệ của họ trên cơ sở chính thức, có một số đặc tính chất lượng chung được công nhận mà mạng cung cấp. Trong chương này, chúng ta sẽ chỉ xem xét các đặc tính chất lượng của dịch vụ vận chuyển (transport services), vốn dễ dàng được hình thức hóa hơn so với các đặc tính chất lượng của dịch vụ thông tin (information services). Các đặc tính chất lượng của dịch vụ vận chuyển (transport quality attributes) phản ánh những thuộc tính (attributes) quan trọng nhất của mạng, chẳng hạn như hiệu suất (performance), độ tin cậy (reliability) và độ an toàn (security).
+
+Một số đặc tính có thể được đánh giá định lượng và đo lường trong quá trình cung cấp dịch vụ. Người dùng và nhà cung cấp dịch vụ có thể ký kết thỏa thuận về mức độ dịch vụ (service level agreement - SLA), xác định rõ ràng các giá trị định lượng cho một số đặc tính nhất định, chẳng hạn như độ trễ (latency), băng thông (bandwidth) và tỷ lệ mất gói tin (packet loss rate).
+
+---
+
+#### 5.1 Các loại đặc tính
+
+---
+
+##### 5.1.1 Đánh giá chủ quan về chất lượng
+
+Nếu hỏi người dùng về những gì họ mong đợi ở khái niệm dịch vụ mạng chất lượng, chúng ta có thể nhận được một loạt các câu trả lời rất rộng. Trong số đó, có thể thấy những ý kiến sau:  
+
+- Mạng hoạt động nhanh, không có độ trễ (latency).  
+- Lưu lượng (traffic) được truyền tải đáng tin cậy, dữ liệu không bị mất.  
+- Dịch vụ được cung cấp liên tục theo chế độ 24 × 7 (nghĩa là 24 giờ mỗi ngày, bảy ngày một tuần).  
+- Dịch vụ hỗ trợ (support service) hoạt động tốt, đưa ra các lời khuyên hữu ích và giúp giải quyết các vấn đề.  
+- Dịch vụ được cung cấp theo mô hình linh hoạt (flexible scheme), tôi thích việc có thể tăng tốc độ truy cập (access speed) và mở rộng số điểm truy cập mạng (access points) bất kỳ lúc nào.  
+- Nhà cung cấp không chỉ truyền tải lưu lượng của tôi mà còn bảo vệ mạng của tôi khỏi virus (viruses) và các cuộc tấn công từ kẻ xấu (malicious attacks).  
+- Tôi luôn có thể kiểm soát (monitor) mạng của mình một cách nhanh chóng và không mất lưu lượng.  
+- Nhà cung cấp cung cấp một loạt các dịch vụ (broad range of services), đặc biệt là ngoài truy cập Internet tiêu chuẩn, họ còn cung cấp dịch vụ lưu trữ (hosting) cho trang web cá nhân của tôi và dịch vụ thoại IP (IP telephony).  
+
+Những đánh giá chủ quan này phản ánh mong muốn của người dùng đối với chất lượng của các dịch vụ mạng.  
+
+---
+
+##### 5.1.2 Yêu cầu về đặc điểm từ phía người dùng và nhà cung cấp dịch vụ
+
+Người dùng mạng (users of the network) – mặc dù là một phía quan trọng, nhưng chỉ là một phần trong lĩnh vực kinh doanh của các mạng truyền dẫn dữ liệu (data transmission networks). Phía còn lại – nhà cung cấp dịch vụ (service providers): có thể là thương mại, nếu đây là mạng công cộng (public network), hoặc phi thương mại, nếu là mạng doanh nghiệp (corporate network). Để hai phía – người dùng và nhà cung cấp dịch vụ – có thể "nói cùng một ngôn ngữ", đã tồn tại các đặc tính định lượng được chuẩn hóa (formalized quantitative characteristics) về chất lượng dịch vụ mạng (network service quality).
+
+Khi nhận các dịch vụ mạng (network services), người dùng sẽ đưa ra những yêu cầu nhất định đối với các đặc điểm của mạng (network characteristics). Ví dụ, người dùng có thể yêu cầu rằng tốc độ trung bình (average speed) truyền thông tin qua mạng không được thấp hơn 2 Mbit/s. Điều này có nghĩa là người dùng đã xác định dải giá trị (value range) cho tốc độ trung bình truyền thông tin qua mạng mà đối với họ biểu thị chất lượng tốt của dịch vụ (service quality).
+
+Toàn bộ các đặc tính định lượng về chất lượng của dịch vụ vận chuyển trên mạng có thể được tổng hợp thành các mong muốn của người dùng về việc không có sự gián đoạn hay lỗi trong quá trình phục vụ (reliability – độ tin cậy), việc truyền tải thông tin với tốc độ xác định (performance – hiệu suất), và việc bảo vệ khỏi truy cập trái phép và sửa đổi thông tin (security – an toàn).
+
+Hiển nhiên rằng nhà cung cấp dịch vụ mạng luôn cố gắng đáp ứng các yêu cầu của khách hàng, đồng thời cũng chú ý đến những đặc điểm riêng. Tuy nhiên, tồn tại một số đặc điểm quan trọng đối với nhà cung cấp mạng nhưng không quan trọng đối với người dùng. Do mạng phục vụ một số lượng lớn người dùng, các luồng thông tin (information flows) chia sẻ tài nguyên qua mạng – đường truyền (communication lines) và bộ chuyển mạch (routers and switches) – yêu cầu sự cân bằng cần thiết trong việc phân phối tài nguyên giữa các luồng cạnh tranh, để đảm bảo rằng yêu cầu của tất cả người dùng đều được tuân thủ. Nhiệm vụ này bao gồm việc lập kế hoạch (planning) và kiểm soát (control) việc sử dụng tài nguyên trong quá trình truyền tải lưu lượng thông tin của người dùng (user traffic).
+
+Liên quan đến điều này, đối với nhà cung cấp, một trong những đặc điểm quan trọng thuộc về hiệu suất thiết bị mạng (network equipment performance) – ví dụ, hiệu suất của bộ chuyển mạch (switch performance) cho phép đánh giá được số lượng luồng người dùng mà bộ chuyển mạch có thể xử lý cùng một lúc. Đối với người dùng, hiệu suất của bộ chuyển mạch không có ý nghĩa gì nhiều – điều họ quan tâm là kết quả cuối cùng: liệu luồng dữ liệu có được xử lý chất lượng hay không.
+
+--- 
+
+##### 5.1.3 Đặc điểm dài hạn, trung hạn và ngắn hạn
+
+**Đặc điểm dài hạn (Long-term characteristics)** (hoặc đặc điểm của các giải pháp thiết kế – design solution characteristics) được xác định trong các khoảng thời gian từ vài tháng đến vài năm. Ví dụ về các đặc điểm này bao gồm số lượng và sơ đồ kết nối (connection scheme) của các bộ chuyển mạch (switches) trong mạng, năng lực thông lượng (throughput capacity) của các đường truyền (communication lines), các mô hình cụ thể và các đặc điểm của thiết bị được sử dụng (network equipment characteristics). Những tham số này ảnh hưởng trực tiếp đến chất lượng của dịch vụ mạng (network service quality). Hiển nhiên rằng, việc thay thế toàn bộ hoặc nâng cấp sâu mạng lưới sẽ liên quan đến chi phí tài chính và thời gian lớn, vì vậy chúng không thể xảy ra thường xuyên, do đó, các tham số đã được lựa chọn một lần sẽ tiếp tục ảnh hưởng đến chất lượng vận hành của mạng trong một thời gian dài.
+
+**Đặc điểm trung hạn (Medium-term characteristics)** được xác định trong các khoảng thời gian từ vài giờ đến vài ngày. Như một ví dụ, trong khoảng thời gian này, việc phục vụ một lượng lớn gói tin (packets) có thể diễn ra. Một đặc điểm trung hạn có thể là giá trị trung bình của độ trễ gói tin (average packet delay) trên mẫu dữ liệu được lấy trong vòng 24 giờ.
+
+**Đặc điểm ngắn hạn (Short-term characteristics)** liên quan đến tốc độ xử lý các gói tin riêng lẻ (individual packet processing speed) trong phạm vi từ micro giây (microseconds) đến mili giây (milliseconds). Ví dụ, việc đệm (buffering) hoặc định tuyến (routing) một gói tin được xem là đặc điểm của nhóm này. Để phân tích và đảm bảo mức độ yêu cầu đối với các đặc điểm ngắn hạn, đã phát triển nhiều phương pháp, được gọi là phương pháp kiểm soát và ngăn ngừa tình trạng quá tải (methods of congestion control and prevention).
+
+---
+
+##### 5.1.4 Thỏa thuận về mức độ dịch vụ
+
+Cơ sở chính cho sự hợp tác bình thường giữa nhà cung cấp dịch vụ (service provider) và người dùng (user) là hợp đồng (contract). Loại hợp đồng này luôn được ký kết, tuy nhiên không phải lúc nào trong đó cũng nêu rõ các yêu cầu định lượng (quantitative requirements) đối với hiệu suất của dịch vụ được cung cấp (service performance). Rất thường xuyên, dịch vụ được xác định, ví dụ, như "cung cấp quyền truy cập Internet" và tương tự.
+
+Tuy nhiên, còn tồn tại một loại hợp đồng khác, gọi là **thỏa thuận về mức độ dịch vụ (Service Level Agreement, SLA)**. Trong loại thỏa thuận này, nhà cung cấp dịch vụ và khách hàng mô tả chất lượng của dịch vụ được cung cấp (service quality) bằng các thuật ngữ định lượng, sử dụng các đặc tính hiệu suất của mạng (network performance characteristics). Ví dụ, trong SLA có thể quy định rằng nhà cung cấp phải truyền dữ liệu của khách hàng không mất mát (without loss) và với tốc độ trung bình (average speed) mà khách hàng gửi vào mạng. Đồng thời, SLA quy định rằng thỏa thuận này chỉ có hiệu lực nếu tốc độ trung bình của lưu lượng người dùng (user traffic) không vượt quá, ví dụ, 3 Mbit/s; nếu không, nhà cung cấp có quyền không truyền tải lưu lượng vượt mức đó.
+
+Để đảm bảo rằng mỗi bên có thể kiểm soát sự tuân thủ thỏa thuận, cần chỉ định khoảng thời gian mà tốc độ trung bình sẽ được đo lường, ví dụ: ngày, giờ hoặc giây. Ngoài ra, một SLA trở nên rõ ràng hơn khi nó chỉ định các phương tiện và phương pháp đo lường các đặc tính của mạng (network characteristics) – để không có sự bất đồng giữa nhà cung cấp và người dùng khi kiểm soát thỏa thuận.
+
+**SLA** có thể được ký kết không chỉ giữa các nhà cung cấp dịch vụ thương mại (commercial service providers) và khách hàng mà còn giữa các bộ phận khác nhau của một công ty. Trong trường hợp này, nhà cung cấp dịch vụ mạng có thể là, ví dụ, bộ phận công nghệ thông tin (IT department), và người dùng là bộ phận sản xuất (production department).
+
+---
