@@ -2614,3 +2614,291 @@ Hình 5.7 minh họa một biểu đồ thực tế về sự thay đổi của 
   <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.7.png" alt="Hình 5.7. Tốc độ truyền tải lưu lượng. Dao động" width="900">
 </p>
 <p align="center"><b>Hình 5.7. Tốc độ truyền tải lưu lượng. Dao động</b></p>
+
+**Độ lớn của xung nhịp (Burst Size, $$B$$)** (thường được ký hiệu là $$B$$ từ tiếng Anh "Burst") được sử dụng để đánh giá dung lượng bộ đệm của bộ chuyển mạch (switch buffer capacity) cần thiết để lưu trữ dữ liệu trong quá trình tắc nghẽn. Độ lớn của xung nhịp bằng tổng khối lượng dữ liệu được gửi tới bộ chuyển mạch trong thời gian của chu kỳ xung nhịp $$T$$, với tốc độ đỉnh (**PIR**):
+
+$$
+B = PIR \times T
+$$
+
+Một đặc tính khác của sự không đồng đều trong truyền tải dữ liệu là **hệ số xung nhịp lưu lượng (Traffic Burstiness Coefficient)** — đây là tỷ lệ giữa tốc độ đỉnh tối đa (**maximum peak rate**) và tốc độ trung bình (**average rate**) của lưu lượng, được đo trên một khoảng thời gian dài. Sự không đồng đều về độ dài của các chu kỳ thời gian làm cho hệ số xung nhịp trở thành một đặc tính chất lượng (**qualitative characteristic**) của lưu lượng.
+
+Các đặc tính tốc độ truyền dữ liệu đóng vai trò quan trọng trong mối quan hệ giữa nhà cung cấp dịch vụ và khách hàng. Trong **thỏa thuận cấp độ dịch vụ (Service Level Agreement, SLA)**, nhà cung cấp chỉ định các giới hạn đối với lưu lượng được truyền bởi khách hàng, chẳng hạn như **tốc độ trung bình tối đa (maximum sustained rate)** và **tốc độ đỉnh tối đa (maximum peak rate)** trong các khoảng thời gian trung bình đã xác định. Đôi khi trong SLA, khoảng thời gian trung bình được đề cập có thể dài hơn, cho phép các giới hạn tốc độ được xác định linh hoạt hơn, ví dụ: trên các chu kỳ thời gian ngắn hơn hoặc dài hơn, điều này giúp mô tả chính xác hơn quá trình truyền tải lưu lượng xung nhịp qua mạng.
+
+Hình 5.8 minh họa các giới hạn của nhà cung cấp đối với **tốc độ trung bình tối đa cho phép (maximum allowable sustained rate)** và **tốc độ đỉnh tối đa cho phép (maximum allowable peak rate)** của lưu lượng người dùng.
+
+Tốc độ truyền dữ liệu có thể được đo giữa bất kỳ hai nút hoặc điểm nào trong mạng, ví dụ: giữa máy khách và máy chủ, hoặc giữa các cổng đầu vào và đầu ra của một bộ định tuyến.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.8.png" altHình 5.8. Hạn chế của nhà cung cấp dịch vụ về tốc độ lưu lượng người dùng" width="900">
+</p>
+<p align="center"><b>Hình 5.8. Hạn chế của nhà cung cấp dịch vụ về tốc độ lưu lượng người dùng</b></p>
+
+---
+
+##### 5.2.6 Đặc tính độ tin cậy của mạng (Network Reliability Characteristics)
+
+Trong trường hợp một gói tin (packet) không đến được nút đích trong một khoảng thời gian đủ dài (giá trị cụ thể do nhà phát triển hệ thống đo lường xác định), gói tin này được coi là bị mất (lost).
+
+Là một đặc tính để đo mức độ mất mát gói tin, **tỷ lệ gói tin mất (packet loss ratio)**, ký hiệu là $$ L $$, được tính bằng tỷ lệ giữa số lượng gói tin mất $$ N_L $$ so với tổng số gói tin được truyền đi $$ N $$:
+
+$$
+L = \frac{N_L}{N}.
+$$
+
+Có thể sử dụng các đặc tính tương tự, không dựa trên số lượng gói tin mất và truyền, mà dựa trên khối lượng dữ liệu (data volume) được chứa trong các gói tin này.
+
+Để mô tả độ tin cậy (reliability) của các thiết bị riêng lẻ, thường sử dụng các chỉ số độ tin cậy như:
+- **Thời gian trung bình giữa các lần hỏng hóc (Mean Time Between Failures - MTBF)**;
+- **Xác suất xảy ra lỗi (Probability of Failure)**;
+- **Cường độ lỗi (Failure Intensity)**.
+
+Tuy nhiên, các chỉ số này chỉ phù hợp để đánh giá độ tin cậy của các phần tử hoặc thiết bị đơn giản, nơi mà lỗi ở bất kỳ thành phần nào sẽ dẫn đến trạng thái không hoạt động (inoperable). Các hệ thống phức tạp (complex systems), bao gồm nhiều thành phần, có thể duy trì khả năng hoạt động (operability) ngay cả khi một hoặc một số thành phần bị lỗi. Do đó, để đánh giá độ tin cậy của các hệ thống phức tạp, một tập hợp các đặc tính khác được sử dụng.
+
+**Khả dụng (Availability)**
+
+**Khả dụng (availability)** có nghĩa là tỷ lệ thời gian mà hệ thống hoặc dịch vụ ở trạng thái hoạt động (operational).
+
+Khả dụng là một đặc tính thống kê dài hạn, vì vậy nó được đo lường trên một khoảng thời gian dài, có thể là ngày, tháng hoặc năm. Ví dụ, đối với các thiết bị truyền thông thuộc mạng điện thoại, các thiết bị tốt nhất đạt được khả dụng được gọi là **"năm chín" (five nines)**. Điều này có nghĩa là mức khả dụng đạt 0.99999, tương ứng với việc chỉ không hoạt động trong hơn 5 phút trong một năm. Lưu ý rằng các thiết bị và dịch vụ hiện tại đang cố gắng đạt được mức **"ba chín" (three nines)**, nhưng mức **"năm chín"** vẫn là một mục tiêu cao.
+
+Khả dụng của dịch vụ là một đặc tính mang tính chất toàn diện (universal), quan trọng cả đối với người dùng và nhà cung cấp dịch vụ.
+
+ **Khả năng chịu lỗi (Fault Tolerance)**
+
+Một đặc tính khác về độ tin cậy của các hệ thống phức tạp là **khả năng chịu lỗi (fault tolerance)**, nghĩa là khả năng của hệ thống che giấu hoặc hạn chế ảnh hưởng của lỗi ở một số phần tử.
+
+**Ví dụ về khả năng chịu lỗi (Fault Tolerance Example)**
+
+Ví dụ, nếu một bộ chuyển mạch (switch) được trang bị hai trung tâm chuyển mạch (switching centers) hoạt động song song, thì việc một trong hai trung tâm bị lỗi sẽ không dẫn đến sự ngừng hoạt động hoàn toàn của bộ chuyển mạch. Tuy nhiên, hiệu suất (performance) của bộ chuyển mạch sẽ giảm, và nó sẽ xử lý các gói tin (packets) chậm hơn gấp đôi. Trong các hệ thống chịu lỗi (fault-tolerant systems), lỗi của một trong các phần tử dẫn đến việc giảm chất lượng hoạt động (quality degradation) chứ không phải là dừng hoàn toàn. Một ví dụ khác là việc sử dụng hai kênh vật lý (physical channels) để kết nối bộ chuyển mạch. Trong chế độ hoạt động bình thường, lưu lượng (traffic) được truyền qua hai kênh với tốc độ 6 Mbit/s. Khi một trong hai kênh bị lỗi, lưu lượng sẽ được truyền qua kênh còn lại với tốc độ 3 Mbit/s. Tuy nhiên, ngay cả với tình huống này, trong nhiều trường hợp, việc xác định mức độ suy giảm (degradation) của hệ thống hoặc dịch vụ một cách định lượng là khá khó khăn. Do đó, khả năng chịu lỗi thường được sử dụng như một đặc tính định tính (qualitative characteristic).
+
+
+#### 5.3 Đặc tính mạng của nhà cung cấp dịch vụ (Network Characteristics of Service Providers)
+
+Hãy xem xét các đặc tính chính mà nhà cung cấp dịch vụ (service provider) sử dụng để đánh giá hiệu quả mạng (network efficiency) của họ. Các đặc tính này – **khả năng mở rộng (expandability)**, **khả năng mở rộng quy mô (scalability)**, **tính quản lý (manageability)**, và **tính tương thích (compatibility)** – là các đặc tính định tính (qualitative), tức là chúng không thể được biểu thị bằng các con số hoặc tỷ lệ.
+
+ **Khả năng mở rộng (Expandability)**
+
+Thuật ngữ **"khả năng mở rộng" (expandability)** và **"khả năng mở rộng quy mô" (scalability)** đôi khi được sử dụng như các từ đồng nghĩa, nhưng điều này không chính xác. Sự khác biệt về ý nghĩa chủ yếu được thể hiện như sau:
+
+> **Khả năng mở rộng (expandability)** có nghĩa là khả năng bổ sung thêm các thành phần riêng lẻ vào mạng (users, computers, applications, services), mở rộng độ dài của các phân đoạn cáp (cable segments), và thay thế các thiết bị hiện có bằng các thiết bị mạnh hơn.
+
+Điều quan trọng là khả năng mở rộng hệ thống phải nằm trong các giới hạn nhất định. Ví dụ, mạng cục bộ Ethernet được xây dựng trên cơ sở một phân đoạn cáp đồng trục chia sẻ (shared coaxial cable segment) có khả năng mở rộng hạn chế, nghĩa là có thể kết nối thêm các trạm (stations). Tuy nhiên, mạng này có một giới hạn về số lượng trạm (stations) không vượt quá 30–40. Mặc dù có thể kết nối thêm các phân đoạn cáp (segments) và tăng số lượng trạm lên đáng kể (ví dụ, đến 100), hiệu suất (performance) của mạng sẽ giảm mạnh. Sự hiện diện của các giới hạn như vậy là một dấu hiệu của khả năng mở rộng kém (poor expandability).
+
+ **Khả năng mở rộng quy mô (Scalability)**
+
+> **Khả năng mở rộng quy mô (scalability)** có nghĩa là mạng có khả năng tăng số lượng nút (nodes) và độ dài của các liên kết (connections) trong phạm vi rất rộng mà không làm giảm hiệu suất mạng (network performance).
+
+Để đảm bảo khả năng mở rộng (scalability) của mạng, cần phải sử dụng thêm các thiết bị truyền thông (communication equipment) và cấu trúc hóa mạng theo một cách đặc biệt. Thông thường, giải pháp mở rộng (scalable solution) có cấu trúc phân cấp đa tầng (multi-level hierarchical structure), cho phép thêm các thành phần vào từng cấp độ trong hệ thống mà không làm thay đổi ý tưởng chính của dự án. Ví dụ điển hình về mạng có khả năng mở rộng là Internet, công nghệ của nó (TCP/IP) đã chứng minh khả năng hỗ trợ mạng trên quy mô toàn cầu, tức là ở cấp độ hành tinh.
+
+Không chỉ bản thân mạng cần có tính mở rộng, mà cả các thiết bị (devices) trong mạng trục (backbone network) cũng cần phải có đặc tính này, vì sự phát triển của mạng không nên yêu cầu thay thế thiết bị liên tục. Do đó, các bộ chuyển mạch (switches) trong mạng trục thường được xây dựng theo nguyên tắc mô-đun (modular principle), cho phép tăng số lượng giao diện (interfaces) và khả năng xử lý gói tin (packet processing) trong phạm vi rộng.
+
+**Quản lý mạng (Network Management)** bao gồm khả năng tập trung hóa (centralization) để giám sát trạng thái (monitoring) của các thành phần chính của mạng, phát hiện và giải quyết các vấn đề phát sinh trong quá trình hoạt động của mạng, phân tích hiệu suất (performance analysis) và lập kế hoạch phát triển (planning) mạng. Việc quản lý yêu cầu có sự tích hợp một số công cụ tự động hóa (automation tools) như hệ thống quản trị (administration system), tương tác với phần mềm và phần cứng thông qua các giao thức truyền thông (communication protocols). 
+
+Một trong các chức năng chính của hệ thống quản trị là **giám sát (monitoring)** và **kiểm soát (control)** từng phần của mạng. Hệ thống có thể kích hoạt các hành động cụ thể, ví dụ: gửi thông báo (notifications) và cảnh báo (alerts) cho người quản trị về các vấn đề phát sinh. Một hệ thống quản trị tốt phải tích lũy dữ liệu (data accumulation), trên cơ sở đó có thể lập kế hoạch phát triển (development planning) mạng. Cuối cùng, hệ thống quản trị phải độc lập với nhà sản xuất (vendor-independent) và có giao diện thân thiện (user-friendly interface), cho phép thực hiện tất cả các tác vụ từ một bảng điều khiển duy nhất (single console).
+
+Việc giải quyết các vấn đề tác vụ hàng ngày của người quản trị và nhân viên kỹ thuật (technical staff) liên quan đến duy trì hoạt động của mạng đòi hỏi phải có các giải pháp kịp thời. Nhân viên quản trị mạng phải nhanh chóng phản hồi các yêu cầu từ người dùng (users) hoặc xử lý các sự cố (incidents), bao gồm cả việc triển khai các công cụ tự động hóa quản trị (administration automation tools). Dần dần, các vấn đề phức tạp hơn trở nên rõ ràng, chẳng hạn như về hiệu suất (performance), cấu hình (configuration), xử lý lỗi (fault handling), và bảo mật dữ liệu (data security), đòi hỏi một cách tiếp cận chiến lược, tức là việc **lập kế hoạch mạng (network planning)**.
+
+Lập kế hoạch không chỉ bao gồm dự báo (forecasting) các yêu cầu của người dùng đối với mạng mà còn cả khả năng thích ứng (adaptability) với các công nghệ mạng mới (new networking technologies). 
+
+Hệ thống quản trị đặc biệt quan trọng trong các mạng lớn (corporate or public global networks). Không có hệ thống quản trị, việc vận hành các mạng như vậy sẽ yêu cầu một đội ngũ lớn các nhân viên hỗ trợ (support staff). Tuy nhiên, hiện nay, hầu hết các công cụ quản trị hiện đại chỉ cung cấp chức năng **giám sát (monitoring)** và **ghi nhận (logging)** các sự kiện, thay vì xử lý chủ động (active handling). Hiếm khi các hệ thống quản trị thực hiện các hành động tự động, giúp giảm thiểu hậu quả của các sự cố không mong muốn.
+
+**Tính tương thích (compatibility)** hay **tính tích hợp (integration)** của mạng có nghĩa là khả năng tích hợp các phần mềm và phần cứng đa dạng từ các nhà sản xuất khác nhau (multi-vendor software and hardware). Điều này cho phép mạng hỗ trợ các giao thức khác nhau (protocols), cũng như các thiết bị phần cứng của nhiều nhà cung cấp. Cách tốt nhất để xây dựng các mạng tích hợp là sử dụng các mô-đun (modules) tuân thủ các tiêu chuẩn và thông số kỹ thuật mở (open standards and specifications).
+
+---
+
+#### 5.4 Ứng dụng và chất lượng dịch vụ
+
+Do các ứng dụng hiện có thường đưa ra những yêu cầu khác nhau về chất lượng dịch vụ (QoS - Quality of Service), nhiệm vụ quan trọng là phân loại chúng theo khía cạnh này.  
+Các tiêu chí phân loại sẽ sử dụng các đặc điểm sau của ứng dụng:  
+- **Mức độ đồng đều của lưu lượng mà ứng dụng sinh ra;**  
+- **Độ nhạy của ứng dụng với độ trễ của gói tin (packet delay);**  
+- **Độ nhạy của ứng dụng với mất mát (packet loss) và méo mó gói tin (packet distortion).**
+
+---
+
+##### 5.4.1 Mức độ đồng đều của lưu lượng sinh ra
+
+Về mức độ đồng đều của lưu lượng sinh ra, các ứng dụng được chia thành hai loại:  
+- **Ứng dụng với lưu lượng dòng (stream traffic);**  
+- **Ứng dụng với lưu lượng xung (burst traffic).**
+
+**Ứng dụng với lưu lượng dòng**
+
+Các ứng dụng với lưu lượng dòng (stream traffic) tạo ra một dòng dữ liệu đồng đều, được truyền vào mạng với **tốc độ bít không đổi (Constant Bit Rate, CBR)**.  
+Trong trường hợp chuyển mạch gói (packet switching), lưu lượng của ứng dụng là một chuỗi các gói dữ liệu có kích thước bằng nhau (**B bit**) và được truyền đi cách đều nhau bởi một khoảng thời gian **T (xem Hình 5.9, a)**. 
+
+
+
+HÌNH 5.9
+
+
+
+
+**CBR (lưu lượng dòng)** có thể được tính bằng cách lấy trung bình trên một khoảng thời gian:  
+
+$$
+CBR = \frac{B}{T} \text{ (bit/s)}  
+$$
+
+
+**Ứng dụng với lưu lượng xung**
+
+Ứng dụng với lưu lượng xung (**burst traffic**) đặc trưng bởi mức độ không đồng đều cao. Trong các ứng dụng này, các khoảng thời gian im lặng được xen kẽ với các khoảng thời gian lưu lượng dữ liệu được truyền đi với mật độ cao, trong đó các gói tin "sát nhau". Do đó, lưu lượng này được đặc trưng bởi **tốc độ bít thay đổi (Variable Bit Rate, VBR)**, minh họa trong Hình 5.9, b.  
+
+Ví dụ: khi ứng dụng dịch vụ tệp (file service) hoạt động, cường độ lưu lượng do ứng dụng tạo ra có thể giảm xuống 0 khi không có tệp nào được truyền. Ngược lại, cường độ này có thể tăng lên đến mức tối đa khả dụng của mạng khi tệp được máy chủ truyền đi.
+
+
+Hình minh họa ví dụ khi:  
+- Trong khoảng thời gian **5T**, 3 gói dữ liệu (có kích thước bằng nhau **B**) được truyền đi;  
+- Sau đó, trong khoảng **T**, truyền thêm 5 gói;  
+- Trong khoảng thời gian **6T − 2**, chỉ có 2 gói được truyền.
+
+**Tốc độ đỉnh của lưu lượng (Peak Information Rate, PIR)** là tốc độ trong khoảng thứ hai, khi 5 gói được truyền trong thời gian **T**, do đó: 
+
+$$
+PIR = \frac{5B}{T}
+$$  
+
+**Tốc độ trung bình (Sustained Information Rate, SIR)** cho toàn bộ thời gian quan sát là:  
+
+$$
+SIR = \frac{10B}{12T} = \frac{5B}{6T}
+$$ 
+
+Hệ số xung (**burstiness coefficient**) có thể được tính từ tỷ lệ giữa **PIR** và **SIR**. Với ví dụ trên, hệ số xung là:  
+
+$$
+\text{Hệ số xung} = \frac{PIR}{SIR} = \frac{\frac{5B}{T}}{\frac{5B}{6T}} = 6
+$$
+
+Hầu như tất cả các loại lưu lượng, ngay cả lưu lượng dòng (stream traffic), đều có hệ số xung khác 0. Tuy nhiên, giá trị hệ số này khác biệt đáng kể giữa các loại lưu lượng dòng và lưu lượng xung.  
+- Ứng dụng với lưu lượng xung thường có hệ số nằm trong khoảng **2–100**.  
+- Lưu lượng dòng thường có hệ số gần **1**.
+
+Trong các mạng thực tế, hệ số xung thường cao hơn ở các mạng nhỏ hơn, bởi vì mạng lõi toàn cầu thường truyền lưu lượng tổng hợp từ nhiều nguồn, theo định luật số lớn, làm giảm đáng kể sự biến thiên của lưu lượng.
+
+---
+
+##### 5.4.2 Độ nhạy của ứng dụng với độ trễ gói tin
+
+Một tiêu chí phân loại khác của ứng dụng là **độ nhạy của chúng với độ trễ của gói tin (packet delay)** và các biến thể của độ trễ. Dưới đây là các loại ứng dụng được liệt kê theo mức độ nhạy tăng dần với độ trễ:
+
+1. **Ứng dụng không đồng bộ (asynchronous applications)**  
+   - Gần như không bị giới hạn bởi độ trễ (còn gọi là **lưu lượng đàn hồi - elastic traffic**).  
+   - Ví dụ: **thư điện tử (email)**.
+
+2. **Ứng dụng tương tác (interactive applications)**  
+   - Độ trễ có thể được người dùng nhận thấy nhưng không ảnh hưởng nghiêm trọng đến chức năng của ứng dụng.  
+   - Ví dụ: **trình soạn thảo văn bản hoạt động với tệp từ xa**.
+
+3. **Ứng dụng thời gian thực (isochronous applications)**  
+   - Có mức độ nhạy cao với biến thể của độ trễ. Nếu vượt qua một ngưỡng nhất định, chức năng của ứng dụng sẽ bị suy giảm nghiêm trọng.  
+   - Ví dụ: **truyền giọng nói**, khi độ trễ vượt quá 100–150 ms, âm thanh sẽ bị méo và giọng nói trở nên khó nghe.
+
+
+4. **Ứng dụng siêu nhạy với độ trễ (ultra-sensitive applications)**  
+   - Với những ứng dụng này, độ trễ trong việc truyền dữ liệu có thể làm cho chúng mất toàn bộ chức năng.  
+   - Ví dụ: **ứng dụng điều khiển các thiết bị kỹ thuật trong thời gian thực (real-time)**.  
+   - Nếu tín hiệu điều khiển bị chậm trễ, sự cố nghiêm trọng có thể xảy ra tại đối tượng điều khiển.
+
+**Tính tương tác (interactivity)** của ứng dụng luôn làm tăng độ nhạy với độ trễ.  
+- Ví dụ: **phát thanh quảng bá (broadcasting)** có thể chịu được độ trễ đáng kể khi truyền gói tin (dù vẫn nhạy với biến thể của độ trễ).  
+- Nhưng các cuộc hội thoại **điện thoại hoặc truyền hình tương tác** thì không thể chịu được độ trễ lớn. Điều này đặc biệt rõ khi cuộc hội thoại được truyền qua vệ tinh: những khoảng tạm dừng dài trong hội thoại gây nhầm lẫn cho đối phương, khiến họ thường mất kiên nhẫn và bắt đầu nói chồng lên nhau.
+
+Ngoài cách phân loại này, một cách khác để phân biệt độ nhạy với độ trễ của ứng dụng là chia chúng thành **ứng dụng không đồng bộ (asynchronous)** và **ứng dụng đồng bộ (synchronous)**:  
+- **Ứng dụng không đồng bộ:** ít nhạy cảm với độ trễ, thường có thể hoạt động trên các khoảng thời gian truyền tải rộng.  
+- **Ứng dụng đồng bộ:** yêu cầu mức độ đồng bộ chính xác hơn, có độ nhạy cao với độ trễ, ví dụ như truyền âm thanh hoặc video thời gian thực.
+
+---
+
+##### 5.4.3 Độ nhạy cảm của ứng dụng đối với mất mát và biến dạng gói tin (packet loss and distortion)
+
+Và cuối cùng, tiêu chí phân loại ứng dụng là độ nhạy cảm của chúng đối với mất mát gói tin (packet loss). Trong ngữ cảnh này, các ứng dụng thường được chia thành hai nhóm:
+
+1. **Ứng dụng nhạy cảm với mất mát dữ liệu (data loss-sensitive applications).**  
+   Hầu như tất cả các ứng dụng truyền tải dữ liệu chữ và số (alphabetic-numeric data), chẳng hạn như tài liệu văn bản (text documents), mã chương trình (program code), mảng số (numeric arrays), v.v., đều có độ nhạy cảm cao với việc mất mát các phần dữ liệu (data fragments), dù là rất nhỏ. Loại mất mát này thường dẫn đến việc không thể xử lý hoặc sử dụng thông tin đã nhận. Ví dụ, việc thiếu một byte dữ liệu (byte) trong chương trình có thể khiến chương trình không thể hoạt động (inoperable). Tất cả các ứng dụng mạng truyền thống (traditional network applications) như dịch vụ tệp tin (file service), cơ sở dữ liệu (database), email, v.v., đều thuộc loại này.
+
+2. **Ứng dụng chống chịu với mất mát dữ liệu (data loss-resilient applications).**  
+   Nhóm này bao gồm nhiều ứng dụng truyền tải lưu lượng chứa thông tin về các quá trình vật lý nội tại (inherent physical processes). Khả năng chống chịu với mất mát dữ liệu được giải thích bởi việc một lượng nhỏ dữ liệu bị mất có thể không ảnh hưởng đáng kể đến mục tiêu của ứng dụng. Ví dụ, khi mất một gói tin (packet), một số mẫu âm thanh liên tiếp (sequential audio samples) trong dữ liệu âm thanh số hóa (digitized audio data) có thể được thay thế bằng các giá trị trung bình (average values). Phần lớn các ứng dụng làm việc với lưu lượng đa phương tiện (multimedia traffic) (âm thanh - audio và video - video) thuộc nhóm này. Độ nhạy cảm với mất mát dữ liệu của chúng thường thấp hơn đáng kể so với các ứng dụng thuộc nhóm đầu tiên. Cần lưu ý rằng bất kỳ ứng dụng đa phương tiện nào cũng có thể đặt ra ngưỡng về tỷ lệ mất gói tin không được vượt quá (packet loss rate threshold), ví dụ, không quá 1%. Cũng cần chú ý rằng các ứng dụng âm thanh và video nén (compressed audio and video applications) thuộc nhóm nhạy cảm với mất mát dữ liệu nhiều hơn và được xếp vào loại đầu tiên.  
+
+---
+
+#### 5.5 Phương pháp đảm bảo chất lượng dịch vụ (Quality of Service - QoS)
+
+Các phương pháp đảm bảo chất lượng dịch vụ (Quality of Service, viết tắt là QoS) hiện nay đóng vai trò quan trọng trong lĩnh vực công nghệ mạng chuyển mạch gói (packet-switched networks), vì chúng đảm bảo hoạt động ổn định của các ứng dụng đa phương tiện hiện đại (multimedia applications) như VoIP (IP-telephony), video và phát thanh qua mạng (video and radio broadcasting), học từ xa tương tác (interactive distance learning), v.v.
+
+Trong các phương pháp QoS, nhiều cơ chế khác nhau được sử dụng để giảm tác động tiêu cực của tình trạng tắc nghẽn tạm thời (temporary congestion) xảy ra trong mạng chuyển mạch gói. Các cơ chế này được chia thành:  
+
+1. **Cơ chế quản lý tắc nghẽn (congestion management):**  
+   Các cơ chế này bắt đầu hoạt động khi đã xảy ra tắc nghẽn; chúng bao gồm quản lý hàng đợi (queue management).
+
+2. **Cơ chế ngăn chặn tắc nghẽn (congestion avoidance):**  
+   Như tên gọi, các cơ chế này tập trung vào việc áp dụng biện pháp ngăn ngừa tắc nghẽn trước khi nó xảy ra. Chúng bao gồm điều hòa lưu lượng (traffic conditioning), phân bổ băng thông (bandwidth allocation), dự trữ tài nguyên (resource reservation) và kỹ thuật quản lý lưu lượng (traffic engineering).
+
+Hàng đợi (queue) là thuộc tính không thể thiếu của các mạng chuyển mạch gói. Nguyên tắc hoạt động của mạng kiểu này bao gồm việc sử dụng bộ đệm (buffer) tại các giao diện đầu vào và đầu ra (input and output interfaces) của các thiết bị chuyển mạch (switching devices). Quá trình đệm gói tin (packet buffering) trong các tình huống tắc nghẽn là cơ chế chính, đảm bảo hiệu suất cao (high performance) cho mạng thuộc loại này.
+
+Tuy nhiên, hàng đợi cũng gây ra việc giảm chất lượng dịch vụ (quality of service degradation) do độ trễ (delay) và mất mát gói tin (packet loss) trong quá trình truyền dữ liệu, đặc biệt khi hàng đợi trong bộ đệm của bộ định tuyến (router buffer) hoặc bộ chuyển mạch (switch buffer) bị đầy.
+
+Do đó, các nhà cung cấp mạng chuyển mạch gói rất quan tâm đến việc điều chỉnh lưu lượng (traffic control) để đạt được sự cân bằng (trade-off) giữa tải cao (high load) và yêu cầu về chất lượng dịch vụ từ phía khách hàng.
+
+Trong các phương pháp QoS, một loạt cơ chế được sử dụng để giảm thiểu các tác động tiêu cực của việc các gói tin bị trì hoãn (packet delay) trong hàng đợi, đồng thời vẫn đảm bảo các đặc điểm tích cực của hàng đợi. Phần lớn các cơ chế này tính đến sự tồn tại của các loại lưu lượng (traffic types) khác nhau, mỗi loại có yêu cầu riêng về đặc điểm kỹ thuật (technical characteristics) và độ tin cậy (reliability). Tuy nhiên, việc đạt được sự tuân thủ tạm thời (temporary compliance) với **tất cả** các đặc tính QoS cho **tất cả** các loại lưu lượng là rất khó.
+
+Một trong những yếu tố quan trọng nhất ảnh hưởng đến các đặc tính QoS là mức độ sử dụng khả năng truyền tải (link utilization level), hay gọi là khả năng thông lượng của mạng (network throughput). Nhắc lại, khả năng thông lượng (throughput capacity) là thông số đặc trưng cho băng thông của kênh, tức là tốc độ tối đa có thể truyền dữ liệu (maximum transmission speed).
+
+Khả năng thông lượng của mạng có thể thay đổi, nhưng không dễ dàng, vì nó phụ thuộc vào khả năng nâng cấp nhanh chóng của thiết bị mạng (networking equipment). Việc tăng thông lượng mạng là một quá trình tốn kém (costly operation), thường đi kèm với việc thay thế các thiết bị hiện có (existing equipment), điều này diễn ra không thường xuyên (vài năm một lần).
+
+Nếu mức độ sử dụng khả năng truyền tải (link utilization level) của mạng luôn ở mức đủ thấp, thì hầu hết lưu lượng (traffic) của các ứng dụng sẽ được xử lý với chất lượng cao (high quality).  
+
+Tuy nhiên, những tình huống tắc nghẽn mạng tạm thời (short-term network congestion), dẫn đến độ trễ (delay) và mất gói tin (packet loss), vẫn có thể xảy ra, dù tần suất rất thấp. Trạng thái mạng như vậy được gọi là "mạng không tải" (underloaded network) hoặc dùng thuật ngữ "mạng với khả năng truyền tải dư thừa" (network with overprovisioning). Việc duy trì tất cả các phần của mạng trong trạng thái không tải rất tốn kém, đặc biệt đối với các thành phần quan trọng nhất của mạng, chẳng hạn như các liên kết đường trục (backbone links). Cách tiếp cận này liên quan đến việc giám sát liên tục mức độ tải (load) của các liên kết đường trục và nâng cấp thiết bị với khả năng truyền tải cao hơn khi tải mạng gần đạt mức nguy hiểm. Tuy nhiên, các phương pháp QoS dựa trên một cách tiếp cận khác.  
+
+> **Ý tưởng chính của tất cả các phương pháp hỗ trợ QoS** là đảm bảo tổng năng lực của mỗi tài nguyên (resource) được phân bổ giữa các loại lưu lượng (traffic classes) một cách phân biệt (differentiated), có xét đến các yêu cầu cụ thể của các ứng dụng thuộc các lớp khác nhau.  
+
+Rõ ràng rằng những phương pháp này làm phức tạp thêm các thiết bị mạng, vì chúng cần "biết" các yêu cầu của từng loại lưu lượng, cũng như khả năng phân bổ khả năng truyền tải (capacity allocation) giữa chúng. Tính năng này thường được thực hiện bằng cách sử dụng nhiều hàng đợi (queues) cho mỗi giao diện đầu ra (output interface) của thiết bị mạng, thay vì chỉ một hàng đợi. Đồng thời, các thuật toán quản lý hàng đợi (queue management algorithms) được sử dụng để phân biệt việc xử lý lưu lượng của các lớp khác nhau. Do đó, các phương pháp QoS thường liên quan đến kỹ thuật quản lý hàng đợi (queue management techniques).  
+
+Ngoài việc tổ chức hàng đợi, các phương pháp QoS còn bao gồm các phương pháp kiểm soát luồng (traffic flow control), nhằm đảm bảo rằng các lưu lượng mạng được xử lý phù hợp với một tập hợp các ràng buộc (constraints) đã định. Nhóm phương pháp này được gọi là các phương pháp điều hòa lưu lượng (traffic conditioning methods).  
+
+Một vai trò đặc biệt thuộc về các phương pháp phản hồi ngược (feedback methods), được thiết kế để thông báo cho nguồn phát lưu lượng (traffic source) về tình trạng tắc nghẽn trong mạng. Các phương pháp này đảm bảo rằng nguồn phát giảm tốc độ gửi các gói tin (packet transmission rate) vào mạng, qua đó loại bỏ tắc nghẽn.  
+
+Các phương pháp QoS hiện đại áp dụng các kỹ thuật kỹ thuật lưu lượng tiên tiến (advanced traffic engineering), trong đó các tuyến truyền dữ liệu (data transmission paths) được điều chỉnh động (dynamically adjusted) để giảm thiểu tải trên các đoạn mạng đang bị quá tải. Điều này giúp tối ưu hóa việc sử dụng tài nguyên mạng (network resource utilization) và cải thiện chất lượng dịch vụ ngay cả trong điều kiện tải nặng.  
+
+---
+
+#### 5.6 Quản lý hàng đợi (Queue Management)
+
+Người dùng đưa ra các yêu cầu về chất lượng dịch vụ (QoS - Quality of Service) dưới dạng các giá trị giới hạn của các đặc tính QoS, mà không được vượt quá. Ví dụ, họ có thể yêu cầu rằng giá trị giới hạn của độ biến thiên độ trễ gói (packet delay variation) không được vượt quá 50 ms với xác suất 0,99. Nhưng làm thế nào để đảm bảo hệ thống xử lý được yêu cầu này? Những biện pháp nào cần được thực hiện để độ biến thiên độ trễ thực sự không vượt quá giá trị này? Để hiểu cơ chế hỗ trợ QoS, điều quan trọng là phải nghiên cứu quá trình hình thành hàng đợi trong các thiết bị mạng (network devices). Trong Chương 3 (phần "Bộ đệm hóa gói" - Packet Buffering), chúng ta đã thảo luận một số nguyên nhân hình thành hàng đợi trong các thiết bị chuyển mạch (switching devices).
+
+Hãy xem xét lại Hình 3.8, trong đó minh họa sơ đồ đơn giản nhất của bộ định tuyến (router). Thành phần trung tâm của thiết bị chuyển mạch là khối chuyển mạch (switching block), nơi truyền dữ liệu giữa ba giao diện mạng (network interfaces) của nó. Nếu cường độ của các luồng đầu vào (input flows) và hiệu suất của khối chuyển mạch như vậy mà khối này không thể xử lý tất cả các gói đầu vào, thì các gói dư thừa được lưu giữ trong hàng đợi đầu vào (input queue) hoặc bộ đệm (buffer) để chờ xử lý. Khi khối chuyển mạch giải phóng, một khối đặc biệt của bộ chuyển mạch - trình sắp xếp hàng đợi (arbiter of queues) (không được hiển thị trong hình) - theo một quy tắc xác định, chọn một gói từ hàng đợi và chuyển nó đến khối chuyển mạch để xử lý. Quy tắc này có thể là, ví dụ, FIFO ("First In, First Out" - "Vào trước, ra trước") hoặc một thuật toán phức tạp hơn có tính đến các ưu tiên (priorities).
+
+Các gói đi qua khối chuyển mạch được hướng đến một trong các giao diện đầu ra (output interfaces). Do tính ngẫu nhiên của các khoảng thời gian giữa các gói trong luồng và khả năng truyền tải hạn chế của các giao diện đầu ra, có thể xảy ra tình trạng tắc nghẽn (congestion), khi một luồng dữ liệu đầu ra bùng nổ. Khi đó, gói tin sẽ không được giao diện đầu ra chấp nhận để truyền. Do đó, cần thiết lập một bộ đệm trước mỗi giao diện đầu ra - hàng đợi đầu ra (output queue) - để lưu trữ các gói trong thời gian tắc nghẽn. Các gói được chọn từ hàng đợi đầu ra và được truyền đến luồng liên quan của giao diện đầu ra của bộ chuyển mạch theo quy tắc mà trình sắp xếp hàng đợi đầu ra (arbiter of output queues) tuân thủ.
+
+Kích thước bộ đệm (buffer size) của thiết bị phải được đặt để đảm bảo chiều dài tối đa của hàng đợi đang chờ không vượt quá một giá trị xác định. Nếu gói đến khi bộ đệm đầy, nó sẽ đơn giản bị loại bỏ.
+
+---
+
+##### 5.6.1 Phân tích hàng đợi (Queue Analysis)
+
+Có một nhánh của toán học ứng dụng, đối tượng của nó là các quá trình hình thành hàng đợi (queue formation). Ngành khoa học này được gọi là **lý thuyết hàng đợi (queue theory)**. Chúng ta sẽ không đi sâu vào các cơ sở toán học của lý thuyết này mà chỉ tập trung vào một số kết luận quan trọng đối với vấn đề QoS (Quality of Service) mà chúng ta đang xem xét.
+
+Lý thuyết hàng đợi xem xét các quá trình hình thành hàng đợi trong bộ đệm (buffer) của một thiết bị trừu tượng, nơi mà một luồng ngẫu nhiên các yêu cầu (requests) đến để được xử lý. Các mô hình lý thuyết hàng đợi cho phép ước lượng độ dài trung bình của hàng đợi (average queue length) và thời gian chờ trung bình của các yêu cầu trong hàng đợi (average waiting time), dựa trên đặc tính của luồng đầu vào (input flow) và thời gian xử lý (processing time).
+
+Khi áp dụng lý thuyết hàng đợi vào phân tích các quá trình xảy ra trong các thiết bị tính toán, các yêu cầu để được xử lý thường đại diện cho dữ liệu hoặc gói tin (packets), và các thiết bị xử lý là các **thiết bị mạng** - như các chương trình phần mềm (software programs), thiết bị mạng (network devices) hoặc các giao diện đầu ra (output interfaces). Hình 5.10 minh họa mô hình của một trong các giao diện đầu ra của bộ chuyển mạch (switch).
+
+Luồng yêu cầu đầu vào (input request flow) hiển thị trong Hình 5.10 tương ứng với luồng các gói tin giữa khối chuyển mạch (switching block) và một trong các giao diện đầu ra (output interface) của bộ chuyển mạch, như đã được mô tả trong Hình 3.8. Luồng này được đặc trưng bởi **cường độ trung bình** (average intensity) λ (lambda), tức là khoảng thời gian trung bình giữa các yêu cầu bằng $$ T = 1 / \lambda $$. **Cường độ xử lý trung bình** (average processing intensity) của luồng yêu cầu được xử lý bởi thiết bị xử lý là $$ μ = 1 / b $$, trong đó $$ b $$ là thời gian trung bình để xử lý một yêu cầu.
+
+
+HÌNH 5.10
+
+
+
+
+
+> **Hệ số tải (utilization factor)**, ký hiệu là $$ ρ $$, là một trong các yếu tố quan trọng trong mô hình. Nó bằng tỷ lệ giữa cường độ trung bình $$ λ $$ của yêu cầu đến và cường độ xử lý trung bình $$ μ $$, cụ thể là $$ ρ = λ / μ $$.
+
+Trong lý thuyết phục vụ hàng loạt (mass-service theory), một số loại mô hình cho phép xác định các phụ thuộc phân tích, chẳng hạn thời gian chờ trung bình $$ W $$ trong hàng đợi, phụ thuộc vào hệ số tải $$ ρ $$. Một trong những phụ thuộc này, mô tả hệ thống với hàng đợi đơn (single queue) theo nguyên tắc FIFO (First In, First Out - Vào trước, Ra trước), được thể hiện trong Hình 5.11.
+
+Từ đồ thị, có thể thấy rằng hệ số tải $$ ρ $$ đóng vai trò quan trọng trong việc hình thành hàng đợi. Nếu $$ ρ $$ gần bằng 0, thời gian chờ trung bình trong hàng đợi rất gần bằng 0. Điều này có nghĩa là các gói gần như không bao giờ phải chờ xử lý trong bộ đệm (buffer). Ngược lại, khi $$ ρ $$ tăng gần đến 1, thời gian chờ tăng rất mạnh và tiến đến vô hạn. Sự phụ thuộc này có ý nghĩa trực quan, vì khi khoảng cách giữa các yêu cầu đầu vào nhỏ hơn thời gian xử lý chúng, thiết bị xử lý không thể đáp ứng tải (overload).
+
+
+HÌNH 5.11
+
+
