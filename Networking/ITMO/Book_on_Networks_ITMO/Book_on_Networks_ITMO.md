@@ -2479,3 +2479,138 @@ Các phương pháp thống kê (statistical methods) được áp dụng để 
 
 **Thứ tự thực hiện các phép đo (Measurement sequence):** Được khuyến nghị tiến hành tại các thời điểm ngẫu nhiên, tuân theo phân phối Poisson (Poisson distribution). Thứ tự chọn ngẫu nhiên như vậy giúp tránh sự đồng bộ hóa không mong muốn giữa các phép đo và bất kỳ biến động tuần hoàn nào trong hành vi của mạng, điều này có thể làm thay đổi đáng kể các kết quả đo lường quan sát được.
 
+---
+
+##### 5.2.3 Đo lường chủ động và thụ động trong mạng (Active and Passive Measurements in a Network)
+
+Để đánh giá một số đặc tính hiệu suất của mạng (network performance characteristics), cần tiến hành các phép đo đối với luồng gói tin đến một giao diện cụ thể của thiết bị mạng. Có hai loại phép đo trong mạng: **chủ động (active)** và **thụ động (passive)**.
+
+---
+
+- **Đo lường chủ động (Active Measurements):** Dựa trên việc tạo ra tại nút nguồn (source node) các gói tin đặc biệt, gọi là **gói đo lường (measurement packets)**. Các gói tin này cần phải đi qua mạng giống như các gói tin thông thường mà đặc tính của chúng ta muốn đánh giá. Các phép đo tại nút đích (destination node) được thực hiện dựa trên trình tự của các gói đo lường.
+
+---
+
+Hình 5.4 minh họa ý tưởng của phép đo chủ động. Giả sử cần đo **độ trễ gói tin (packet delay)** đối với các gói tin được truyền từ máy khách của ứng dụng $$A$$ đến máy chủ của ứng dụng $$A$$ qua mạng. Thay vì sử dụng các gói tin của ứng dụng thực để đo độ trễ, chúng ta thiết lập thêm hai máy chủ bổ sung: **máy chủ phát sinh (traffic generator server)** và **máy chủ đo lường (measurement server)**. Máy chủ phát sinh tạo ra các gói đo lường (được biểu diễn trên hình với màu xám), trong khi máy chủ đo lường thực hiện đo độ trễ của các gói này.
+
+Để các giá trị đo được gần với giá trị độ trễ của các gói tin ứng dụng $$A$$, cần đảm bảo rằng các gói đo lường đi qua mạng theo cùng lộ trình mà các gói tin của ứng dụng $$A$$ thực hiện. Trong ví dụ này, mục tiêu này được đạt được thông qua việc kết nối các máy chủ bổ sung đến cùng các switch $$S_1$$ và $$S_2$$, nơi các nút gốc được kết nối.
+
+Ngoài ra, cần đảm bảo rằng các gói đo lường giống với các gói tin gốc nhất có thể — về kích thước (size), đặc điểm (attributes), và các thông tin được chèn vào tiêu đề gói tin (headers).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.4.png" alt="Hình 5.4. Sơ đồ đo lường chủ động" width="900">
+</p>
+<p align="center"><b>Hình 5.4. Sơ đồ đo lường chủ động</b></p>
+
+Các gói đo lường (measurement packets) không nên được tạo ra quá thường xuyên, nếu không tải trọng của mạng (network load) có thể thay đổi đáng kể, và kết quả đo có thể khác với những kết quả thu được khi không có gói đo lường. Nói cách khác, các phép đo không được làm thay đổi điều kiện hoạt động của mạng. Thông thường, tần suất phát sinh gói đo lường không vượt quá 20–50 gói mỗi giây.
+
+Một câu hỏi tự nhiên được đặt ra: tại sao cần phải giải quyết nhiều vấn đề như vậy — bố trí thêm thiết bị, tạo các điều kiện đặc biệt cho gói đo lường sao cho gần giống với điều kiện xử lý các gói tin thực tế, đồng thời không làm thay đổi tải trọng của mạng? Liệu có đơn giản hơn không nếu đo các tham số trên các gói tin thực tế? Câu trả lời nằm ở chỗ: **phương pháp chủ động (active scheme)** giúp đơn giản hóa quá trình đo lường và cho phép đạt được **độ chính xác cao (high accuracy)**.
+
+- Thứ nhất, vì máy chủ phát sinh (traffic generator server) tạo ra các gói tin đặc biệt dành cho phép đo, nên có thể dễ dàng thêm thông tin cần thiết vào phần dữ liệu điều khiển, chẳng hạn như **dấu thời gian (timestamp)** khi gửi gói tin, để máy chủ đo lường (measurement server) sử dụng thông tin này trong tính toán độ trễ.
+
+- Thứ hai, để các phép đo độ trễ được chính xác, cần có sự đồng bộ hóa (synchronization) tốt giữa máy chủ phát sinh và máy chủ đo lường. Vì các phương pháp đo lường chủ động sử dụng các nút chuyên biệt, việc đồng bộ hóa này dễ dàng hơn nhiều so với việc đồng bộ hóa giữa máy khách và máy chủ của ứng dụng $$A$$, vốn thường chỉ được cài đặt trên các máy tính thông thường.
+
+- Thứ ba, trong một số trường hợp, việc thực hiện các phép đo trên các gói tin thực tế không khả thi, ví dụ: không thể truy cập vào các máy tính đang chạy ứng dụng hoặc không thể thay đổi chương trình ứng dụng để thực hiện các phép đo cần thiết.
+
+- Thứ tư, các vấn đề liên quan đến quyền truy cập (access control) và khả năng hoạt động của nền tảng (platform capability) thường được giải quyết tốt hơn khi sử dụng các thiết bị chuyên dụng được tối ưu hóa cho các phép đo, thay vì phải thực hiện các thay đổi trực tiếp lên ứng dụng (ví dụ: thay đổi hàng đợi tại máy chủ hoặc xử lý trung tâm).
+
+Tuy nhiên, các ưu điểm của **phương pháp đo lường chủ động (active measurement scheme)** không phải lúc nào cũng tuyệt đối. Trong một số tình huống, **phương pháp đo lường thụ động (passive measurement scheme)** được ưu tiên hơn.
+
+---
+
+- **Đo lường thụ động (Passive Measurements):** Dựa trên việc đo các đặc tính của **luồng dữ liệu thực tế (real traffic)** (hình 5.5).
+
+---
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.5.png" alt="Hình 5.5. Sơ đồ đo lường thụ động" width="900">
+</p>
+<p align="center"><b>Hình 5.5. Sơ đồ đo lường thụ động</b></p>
+
+Khi trình bày các lập luận ủng hộ phương pháp **đo lường chủ động (active measurement scheme)**, chúng ta thực chất đã mô tả các vấn đề phải đối mặt khi sử dụng **phương pháp đo lường thụ động (passive measurement scheme)**: sự phức tạp của việc đồng bộ hóa giữa máy khách và máy chủ (synchronization between client and server), các độ trễ bổ sung và không xác định được gây ra bởi hệ điều hành đa nhiệm (multi-programming operating systems) của các máy tính này, cũng như việc không có trường dành cho **dấu thời gian (timestamp)** trong tiêu đề của các gói tin ứng dụng khi truyền qua mạng.
+
+Một phần những vấn đề này được giải quyết thông qua việc sử dụng một **máy chủ đo lường riêng biệt (dedicated measurement server)**. Máy chủ này nhận luồng gói tin giống như một trong các nút tham gia trao đổi gói tin (như trường hợp khi máy chủ đo lường được cài đặt song song với máy chủ của ứng dụng $$A$$). Để máy chủ đo lường nhận được cùng một luồng gói tin đầu vào như nút gốc, người ta thường sử dụng phương pháp **sao chép lưu lượng đo lường (traffic mirroring)** trên cổng mà máy chủ đo lường được kết nối. Chức năng này, được gọi là **port mirroring (sao chép cổng)**, được hỗ trợ bởi nhiều bộ chuyển mạch mạng cục bộ (LAN switches). Máy chủ đo lường hoạt động dưới sự quản lý của một hệ điều hành được tối ưu hóa đặc biệt cho việc thực hiện các phép đo thời gian chính xác.
+
+Giải quyết vấn đề đồng bộ hóa (synchronization) phức tạp hơn. Một số giao thức truyền dấu thời gian vào các trường dữ liệu điều khiển (control fields), nhờ đó, nếu ứng dụng $$A$$ sử dụng giao thức như vậy, một phần vấn đề có thể được giải quyết. Tuy nhiên, ngay cả trong trường hợp này, vấn đề về độ chính xác của hệ thống thời gian trên máy tính khách và ứng dụng $$A$$ vẫn còn, vì độ chính xác thường không cao. Do đó, trong chế độ đo lường thụ động, chỉ các đặc tính không yêu cầu đồng bộ hóa giữa bộ phát và bộ nhận (transmitter and receiver) mới được đo lường, chẳng hạn như **tỷ lệ mất gói tin (packet loss rate)**.
+
+Một cách tiếp cận khác trong phương pháp đo lường thụ động là không sử dụng máy chủ đo lường riêng biệt. Một số ứng dụng tự đo lường độ trễ của các gói tin đến, ví dụ: các ứng dụng **IP-telephony (điện thoại qua IP)** và **video conferencing (hội nghị truyền hình)**, nơi thông tin về độ trễ gói tin giúp xác định khả năng xảy ra các vấn đề ảnh hưởng đến chất lượng hoạt động của ứng dụng.
+
+---
+
+##### 5.2.4 Các đặc tính về độ trễ của gói tin (Packet Delay Characteristics):
+
+Để đánh giá hiệu suất của mạng (network performance), các đặc tính độ trễ sau đây được sử dụng:
+
+- Độ trễ một chiều của gói tin (**One-Way Delay Metric, OWD**);
+- Độ biến thiên của độ trễ gói tin (**Packet Delay Variation**);
+- Thời gian phản hồi của mạng (**Network Reaction Time**);
+- Thời gian quay vòng của gói tin (**Packet Round-Trip Time**).
+
+> **Định nghĩa độ trễ một chiều của gói tin (One-Way Delay Metric):** Đây là khoảng thời gian giữa thời điểm bit đầu tiên của gói tin được đưa vào đường truyền tại nút gửi (sender node) và thời điểm bit cuối cùng của gói tin được nhận tại nút đích (receiver node).
+
+Khi xác định loại gói tin, cần hiểu rằng mỗi gói tin có một tập hợp các thuộc tính được xác định trước, chẳng hạn như kích thước gói tin (packet size), loại ứng dụng tạo ra gói tin, giao thức tầng vận chuyển (transport layer protocol) truyền gói tin, và một số thuộc tính khác.
+
+Do định nghĩa này có tính đến thời gian đệm (serialization) của gói tin tại nút nhận, độ trễ phụ thuộc vào kích thước gói tin. Để có được các kết quả so sánh được, cần chỉ định một kích thước gói tin nhất định khi xác định loại gói tin. Việc này sẽ giúp đơn giản hóa phép đo thời gian đệm của gói tin, vì có thể đo thời gian hoàn tất ghi dữ liệu gói tin vào bộ đệm của hệ điều hành. Ngoài ra, nếu chỉ có một gói tin được nhận, không thể xác định rõ liệu gói tin đó có thuộc loại cần phân tích hay không.
+
+**Biến thiên độ trễ (Delay Variation):** Đối với một số ứng dụng, biến thiên độ trễ của gói tin, còn gọi là **jitter**, đóng vai trò rất quan trọng. Ví dụ, trong phát lại video clip, bản thân việc gói tin bị trễ không quá đáng kể — chẳng hạn, nếu các gói tin bị trễ đúng 10 giây, chất lượng phát lại vẫn không giảm sút vì video được phát liên tục theo thời gian đã định trước. Tuy nhiên, nếu biến thiên độ trễ không ổn định và dao động từ vài mili giây đến vài giây trong một khoảng thời gian nhất định, chất lượng phát lại sẽ bị giảm sút rõ rệt. Trong trường hợp như vậy, cần phải có bộ đệm dự đoán trước để bù đắp biến thiên độ trễ vượt ngưỡng.
+
+> **Định nghĩa độ biến thiên độ trễ:** Độ biến thiên độ trễ được xác định theo chuẩn như là sự khác biệt giữa độ trễ một chiều của các gói tin trong một khoảng thời gian đo lường $$T$$.
+
+Cũng giống như đối với độ trễ một chiều (**One-Way Delay**), loại gói tin có thể được xác định bởi bất kỳ thuộc tính nào, với điều kiện kích thước của cả hai gói tin phải giống nhau. Việc lựa chọn cặp gói tin trong khoảng thời gian đo lường $$T$$ cần được thực hiện theo một quy tắc đã được định trước.
+
+Ví dụ, các cặp gói tin có thể được hình thành từ tất cả các gói tin liên tiếp nhận được trong khoảng thời gian. Một ví dụ khác là việc chọn gói tin theo các số thứ tự cụ thể trong dãy các gói nhận được, chẳng hạn các gói có số thứ tự 1, 5, 10, 15, v.v.
+
+> **Thời gian phản hồi của mạng (Network Reaction Time)** được định nghĩa là khoảng thời gian giữa việc gửi một yêu cầu của người dùng đến một dịch vụ mạng nào đó và nhận được phản hồi cho yêu cầu đó.
+
+Thời gian phản hồi của mạng là một đặc tính tích hợp phản ánh hiệu suất của mạng từ quan điểm của người dùng. Chính đặc tính này là điều người dùng nghĩ đến khi họ nói: "Hôm nay mạng hoạt động chậm." Thời gian phản hồi có thể được biểu diễn như tổng của nhiều thành phần, ví dụ (hình 5.6):
+
+- Thời gian chuẩn bị yêu cầu trên máy tính khách (**$$t_{\text{client1}}$$**);
+- Thời gian truyền yêu cầu từ máy khách đến máy chủ qua mạng (**$$t_{\text{net}}$$**);
+- Thời gian xử lý yêu cầu trên máy chủ (**$$t_{\text{server}}$$**);
+- Thời gian truyền phản hồi từ máy chủ đến máy khách qua mạng (lại là **$$t_{\text{net}}$$**);
+- Thời gian xử lý phản hồi nhận được từ máy chủ trên máy tính khách (**$$t_{\text{client2}}$$**).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.6.png" alt="Hình 5.6. Thời gian phản hồi và thời gian vòng lặp" width="900">
+</p>
+<p align="center"><b>Hình 5.6. Thời gian phản hồi và thời gian vòng lặp</b></p>
+
+
+Thời gian phản hồi của mạng (**Network Reaction Time**) đặc trưng cho toàn bộ mạng, bao gồm cả chất lượng hoạt động của phần cứng và phần mềm của các máy chủ. Để đánh giá riêng khả năng vận chuyển của mạng, một đặc tính khác được sử dụng — **thời gian quay vòng gói tin (Round Trip Time, RTT)**.
+
+> **Thời gian quay vòng gói tin (RTT):** Được định nghĩa là khoảng thời gian giữa việc gửi **bit đầu tiên (first bit)** của gói tin thuộc một loại xác định từ nút gửi đến nút nhận và nhận lại **bit cuối cùng (last bit)** của gói tin này tại nút gửi, sau khi gói tin đã được nhận và gửi lại từ nút nhận.
+
+Thời gian quay vòng gói tin là một thành phần của thời gian phản hồi mạng. Đây là thời gian "thuần túy" dành cho việc truyền dữ liệu từ nút gửi đến nút nhận và quay trở lại, không tính đến thời gian cần thiết tại nút nhận để chuẩn bị phản hồi:
+
+$$
+RTT = 2 \times t_{\text{net}}
+$$
+
+RTT rất thuận tiện để đo lường các đặc tính mạng, vì để đo RTT không cần sự đồng bộ hóa giữa nút gửi và nút nhận. Nút gửi chỉ cần chèn **dấu thời gian (timestamp)** vào gói tin khi gửi, và khi gói tin quay lại, so sánh dấu thời gian đó với thời gian hệ thống hiện tại. Tuy nhiên, giá trị RTT chỉ cung cấp thông tin tổng hợp, không phân tách rõ ràng các thành phần độ trễ, điều này có thể gây khó khăn trong việc xác định chính xác vấn đề trong mạng.
+
+Đối với mỗi đặc tính được xem xét, các giá trị thường được tính toán dựa trên các đánh giá thống kê (**statistical evaluations**), bao gồm giá trị lớn nhất (**maximum**), nhỏ nhất (**minimum**), giá trị trung bình (**mean**), trung vị (**median**), và phân vị (**quantile**).
+
+---
+
+##### 5.2.5 Đặc tính tốc độ truyền dữ liệu (Information Rate Characteristics):
+
+**Tốc độ truyền dữ liệu (Information Rate):** Được đo trên một khoảng thời gian cụ thể và tính bằng cách chia khối lượng dữ liệu được truyền trong khoảng thời gian đó cho độ dài của khoảng thời gian. Tốc độ này có thể được đo bằng khung tin (**frames**), gói tin (**packets**), bit, hoặc byte trên giây. Đặc tính này luôn được hiểu là **tốc độ trung bình (average rate)**. Tuy nhiên, tùy thuộc vào độ dài của khoảng thời gian đo, tốc độ này thường được phân biệt thành hai khái niệm: **tốc độ trung bình (Sustained Information Rate, SIR)** và **tốc độ tức thời (Instantaneous Information Rate, IIR)**.
+
+- **Tốc độ trung bình (Sustained Information Rate, SIR):** Là một đặc tính trung hạn, được tính trên một khoảng thời gian đủ lớn để mô tả hành vi bền vững của một biến ngẫu nhiên, trong trường hợp này là tốc độ. Giá trị này cần được sử dụng cùng với tham số mô tả **chu kỳ đo (measurement period)**, ví dụ: 10 giây. Điều này có nghĩa là tốc độ của luồng dữ liệu được tính mỗi 10 giây. Nếu các phép đo như vậy không được thực hiện, người dùng có thể gặp khó khăn khi yêu cầu nhà cung cấp dịch vụ bồi thường trong một số tình huống tranh chấp. Ví dụ: nếu nhà cung cấp không truyền đủ lưu lượng trong một ngày cụ thể, nhưng lại bù đắp trong những ngày khác và tốc độ trung bình hàng tháng đạt chuẩn, thì người dùng không thể yêu cầu bồi thường.
+
+- **Tốc độ tức thời (Instantaneous Information Rate, IIR):** Là một đặc tính ngắn hạn, được tính tại một thời điểm cụ thể. Giá trị này bằng tốc độ trung bình trong một khoảng thời gian rất ngắn, ví dụ: trong khoảng thời gian truyền một gói tin. Trên tầng vật lý của mạng (**physical layer protocol**), tốc độ tức thời thường là một hằng số, chẳng hạn: tốc độ truyền bit của gói tin 1 **Gigabit Ethernet** là 1 Gbps.
+
+**Lưu ý:**
+
+> Trong các nội dung trên, chúng ta đã thảo luận về tốc độ của một luồng dữ liệu cụ thể, nhưng cần phân biệt với **tốc độ của từng gói tin riêng lẻ (per-packet rate)**. Ví dụ, khi đo tốc độ trung bình trên một khoảng thời gian dài, số lượng gói tin được truyền là yếu tố quyết định tốc độ. Tuy nhiên, nếu tốc độ truyền của từng gói tin khác nhau trên các kênh mạng, thì cần phân tích thêm khả năng của kênh.
+
+**Biến thiên của tốc độ tức thời (Instantaneous Rate Variation):** Đây là mức độ chênh lệch giữa các giá trị tốc độ tức thời so với tốc độ trung bình, đặc trưng cho sự không đồng đều của lưu lượng mạng.
+
+Hình 5.7 minh họa một biểu đồ thực tế về sự thay đổi của **tốc độ lưu lượng đầu ra (outgoing traffic rate)**, được truyền từ một khuôn viên trường đại học đến các máy chủ của nhà cung cấp dịch vụ trong một ngày làm việc (đường dưới biểu diễn lưu lượng đầu vào). Trên biểu đồ có các đoạn có hình dạng giống như các **xung nhịp (pulsations)**, được đánh dấu là xung nhịp 1 và xung nhịp 2. Mỗi xung nhịp được đặc trưng bởi **chu kỳ xung nhịp (pulsation period)** và **tốc độ đỉnh (Peak Information Rate, PIR)**.
+
+**Tốc độ đỉnh của dữ liệu (Peak Information Rate, PIR):** Là tốc độ trung bình trong chu kỳ xung nhịp. Đây là một đặc tính ngắn hạn, phản ánh khả năng của mạng trong việc xử lý các tải cao điểm (peak loads), đặc trưng cho lưu lượng mạng có tính chất xung nhịp và có thể dẫn đến hiện tượng **tắc nghẽn (congestion)**. Nếu khoảng thời gian trung bình được chọn đủ nhỏ để xác định tốc độ đỉnh, có thể nói rằng tốc độ đỉnh là giới hạn trên được đặt trước cho **tốc độ tức thời của lưu lượng người dùng (instantaneous user traffic rate)**.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.7.png" alt="Hình 5.7. Tốc độ truyền tải lưu lượng. Dao động" width="900">
+</p>
+<p align="center"><b>Hình 5.7. Tốc độ truyền tải lưu lượng. Dao động</b></p>
