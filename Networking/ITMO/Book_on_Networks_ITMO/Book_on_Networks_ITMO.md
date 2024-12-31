@@ -2443,15 +2443,15 @@ Biểu đồ tần suất cung cấp một hình ảnh trực quan về các đ�
 
 - **Giá trị trung bình (Mean, $$D$$)** được tính bằng tổng tất cả các giá trị của biến ngẫu nhiên ($$d_i$$) chia cho tổng số lần đo ($$N$$):
   
-  $$
+$$
   D = \frac{\sum d_i}{N}
- $$
+$$
 
   Ví dụ, đối với dữ liệu được trình bày trong hình 5.3, giá trị trung bình là:
-  
-  $$
+
+$$
   D = \frac{(100 \times 25 + 200 \times 35 + 300 \times 45 + 300 \times 55 + 400 \times 65 + 800 \times 75 + 500 \times 85)}{2600} = 64,6 \text{ ms}
- $$
+$$
 
   (Trong tính toán này, các giá trị trung bình của các khoảng đã được sử dụng).
 
@@ -2459,17 +2459,17 @@ Biểu đồ tần suất cung cấp một hình ảnh trực quan về các đ�
 
 - **Độ lệch chuẩn (Standard Deviation) hoặc phương sai ($$J$$):** Độ lệch chuẩn biểu thị độ lệch trung bình của mỗi lần đo khỏi giá trị trung bình của biến ngẫu nhiên:
 
-  $$
+$$
   J = \sqrt{\frac{\sum (d_i - D)^2}{N - 1}}
- $$
+$$
 
   Rõ ràng, nếu không có sự khác biệt giữa các độ trễ (tất cả $$d_i = D$$), phương sai sẽ bằng 0 ($$J = 0$$).
 
 - **Hệ số biến thiên (Coefficient of Variation, $$CV$$):** Đây là một đại lượng không thứ nguyên, biểu thị tỷ lệ giữa độ lệch chuẩn và giá trị trung bình của biến ngẫu nhiên:
 
-  $$
+$$
   CV = \frac{J}{D}
- $$
+$$
 
 Hệ số biến thiên (Coefficient of Variation, $$CV$$) đặc trưng cho biến ngẫu nhiên mà không phụ thuộc vào giá trị tuyệt đối của nó. Ví dụ, một luồng gói tin lý tưởng, được phân bố đều, luôn có hệ số biến thiên bằng 0. Hệ số biến thiên của độ trễ gói tin bằng 1 biểu thị **luồng giao thông xung nhịp (pulsating traffic)**, khi độ lệch chuẩn của các khoảng bằng giá trị trung bình của khoảng thời gian giữa các gói tin.
 
