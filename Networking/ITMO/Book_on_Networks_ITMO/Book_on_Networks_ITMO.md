@@ -2630,7 +2630,7 @@ Hình 5.8 minh họa các giới hạn của nhà cung cấp đối với **tố
 Tốc độ truyền dữ liệu có thể được đo giữa bất kỳ hai nút hoặc điểm nào trong mạng, ví dụ: giữa máy khách và máy chủ, hoặc giữa các cổng đầu vào và đầu ra của một bộ định tuyến.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.8.png" altHình 5.8. Hạn chế của nhà cung cấp dịch vụ về tốc độ lưu lượng người dùng" width="900">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.8.png" alt = "Hình 5.8. Hạn chế của nhà cung cấp dịch vụ về tốc độ lưu lượng người dùng" width="900">
 </p>
 <p align="center"><b>Hình 5.8. Hạn chế của nhà cung cấp dịch vụ về tốc độ lưu lượng người dùng</b></p>
 
@@ -2727,12 +2727,10 @@ Về mức độ đồng đều của lưu lượng sinh ra, các ứng dụng �
 Các ứng dụng với lưu lượng dòng (stream traffic) tạo ra một dòng dữ liệu đồng đều, được truyền vào mạng với **tốc độ bít không đổi (Constant Bit Rate, CBR)**.  
 Trong trường hợp chuyển mạch gói (packet switching), lưu lượng của ứng dụng là một chuỗi các gói dữ liệu có kích thước bằng nhau (**B bit**) và được truyền đi cách đều nhau bởi một khoảng thời gian **T (xem Hình 5.9, a)**. 
 
-
-
-HÌNH 5.9
-
-
-
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.9.png" alt ="Hình 5.9. Lưu lượng dạng dòng (a) và lưu lượng dạng xung (b)." width="900">
+</p>
+<p align="center"><b>Hình 5.9. Lưu lượng dạng dòng (a) và lưu lượng dạng xung (b).</b></p>
 
 **CBR (lưu lượng dòng)** có thể được tính bằng cách lấy trung bình trên một khoảng thời gian:  
 
@@ -2740,13 +2738,11 @@ $$
 CBR = \frac{B}{T} \text{ (bit/s)}  
 $$
 
-
 **Ứng dụng với lưu lượng xung**
 
 Ứng dụng với lưu lượng xung (**burst traffic**) đặc trưng bởi mức độ không đồng đều cao. Trong các ứng dụng này, các khoảng thời gian im lặng được xen kẽ với các khoảng thời gian lưu lượng dữ liệu được truyền đi với mật độ cao, trong đó các gói tin "sát nhau". Do đó, lưu lượng này được đặc trưng bởi **tốc độ bít thay đổi (Variable Bit Rate, VBR)**, minh họa trong Hình 5.9, b.  
 
 Ví dụ: khi ứng dụng dịch vụ tệp (file service) hoạt động, cường độ lưu lượng do ứng dụng tạo ra có thể giảm xuống 0 khi không có tệp nào được truyền. Ngược lại, cường độ này có thể tăng lên đến mức tối đa khả dụng của mạng khi tệp được máy chủ truyền đi.
-
 
 Hình minh họa ví dụ khi:  
 - Trong khoảng thời gian **5T**, 3 gói dữ liệu (có kích thước bằng nhau **B**) được truyền đi;  
@@ -2794,7 +2790,6 @@ Một tiêu chí phân loại khác của ứng dụng là **độ nhạy của 
 3. **Ứng dụng thời gian thực (isochronous applications)**  
    - Có mức độ nhạy cao với biến thể của độ trễ. Nếu vượt qua một ngưỡng nhất định, chức năng của ứng dụng sẽ bị suy giảm nghiêm trọng.  
    - Ví dụ: **truyền giọng nói**, khi độ trễ vượt quá 100–150 ms, âm thanh sẽ bị méo và giọng nói trở nên khó nghe.
-
 
 4. **Ứng dụng siêu nhạy với độ trễ (ultra-sensitive applications)**  
    - Với những ứng dụng này, độ trễ trong việc truyền dữ liệu có thể làm cho chúng mất toàn bộ chức năng.  
@@ -2885,20 +2880,136 @@ Khi áp dụng lý thuyết hàng đợi vào phân tích các quá trình xảy
 
 Luồng yêu cầu đầu vào (input request flow) hiển thị trong Hình 5.10 tương ứng với luồng các gói tin giữa khối chuyển mạch (switching block) và một trong các giao diện đầu ra (output interface) của bộ chuyển mạch, như đã được mô tả trong Hình 3.8. Luồng này được đặc trưng bởi **cường độ trung bình** (average intensity) λ (lambda), tức là khoảng thời gian trung bình giữa các yêu cầu bằng $$T = 1 / \lambda$$. **Cường độ xử lý trung bình** (average processing intensity) của luồng yêu cầu được xử lý bởi thiết bị xử lý là $$μ = 1 / b$$, trong đó $$b$$ là thời gian trung bình để xử lý một yêu cầu.
 
-
-HÌNH 5.10
-
-
-
-
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.10.png" alt ="Hình 5.10. Mô hình giao diện đầu ra của bộ chuyển mạch như một tài nguyên chia sẻ." width="900">
+</p>
+<p align="center"><b>Hình 5.10. Mô hình giao diện đầu ra của bộ chuyển mạch như một tài nguyên chia sẻ.</b></p>
 
 > **Hệ số tải (utilization factor)**, ký hiệu là $$ρ$$, là một trong các yếu tố quan trọng trong mô hình. Nó bằng tỷ lệ giữa cường độ trung bình $$λ$$ của yêu cầu đến và cường độ xử lý trung bình $$μ$$, cụ thể là $$ρ = λ / μ$$.
 
-Trong lý thuyết phục vụ hàng loạt (mass-service theory), một số loại mô hình cho phép xác định các phụ thuộc phân tích, chẳng hạn thời gian chờ trung bình $$ W $$ trong hàng đợi, phụ thuộc vào hệ số tải $$ρ$$. Một trong những phụ thuộc này, mô tả hệ thống với hàng đợi đơn (single queue) theo nguyên tắc FIFO (First In, First Out - Vào trước, Ra trước), được thể hiện trong Hình 5.11.
+Trong lý thuyết phục vụ hàng loạt (mass-service theory), một số loại mô hình cho phép xác định các phụ thuộc phân tích, chẳng hạn thời gian chờ trung bình $$W$$ trong hàng đợi, phụ thuộc vào hệ số tải $$ρ$$. Một trong những phụ thuộc này, mô tả hệ thống với hàng đợi đơn (single queue) theo nguyên tắc FIFO (First In, First Out - Vào trước, Ra trước), được thể hiện trong Hình 5.11.
 
 Từ đồ thị, có thể thấy rằng hệ số tải $$ρ$$ đóng vai trò quan trọng trong việc hình thành hàng đợi. Nếu $$ρ$$ gần bằng 0, thời gian chờ trung bình trong hàng đợi rất gần bằng 0. Điều này có nghĩa là các gói gần như không bao giờ phải chờ xử lý trong bộ đệm (buffer). Ngược lại, khi $$ρ$$ tăng gần đến 1, thời gian chờ tăng rất mạnh và tiến đến vô hạn. Sự phụ thuộc này có ý nghĩa trực quan, vì khi khoảng cách giữa các yêu cầu đầu vào nhỏ hơn thời gian xử lý chúng, thiết bị xử lý không thể đáp ứng tải (overload).
 
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.11.png" alt ="Hình 5.11. Mối quan hệ giữa thời gian chờ trung bình của yêu cầu và hệ số tải của tài nguyên." width="900">
+</p>
+<p align="center"><b>Hình 5.11. Mối quan hệ giữa thời gian chờ trung bình của yêu cầu và hệ số tải của tài nguyên.</b></p>
 
-HÌNH 5.11
+Các kỹ sư mạng (**network engineers**) rất quen thuộc với loại lưu lượng được thể hiện trong hình 5.12, vì nó phản ánh hành vi của các đường cong mà họ thường thấy khi phân tích kết quả giám sát độ trễ (**latency monitoring**) và mất gói (**packet loss**) trong mạng thực tế. Cụ thể, nó minh họa sự suy giảm đáng kể chất lượng dịch vụ (**Quality of Service, QoS**) khi **hệ số sử dụng thông lượng (utilization coefficient)** của các giao diện mạng đạt đến một giá trị ngưỡng nhất định.
 
+Biểu đồ này có một đặc điểm bất ngờ. Thật khó tưởng tượng rằng một thiết bị đang vận hành (tài nguyên mạng, **network resource**) hầu như ngừng hoạt động hiệu quả khi hệ số sử dụng của nó tiệm cận giá trị 1. Điều đáng nói là tải không vượt quá khả năng của thiết bị mà chỉ tiệm cận giá trị đó. Ngoài ra, cũng không rõ ràng về lý do tại sao hàng đợi (**queue**) xuất hiện đáng kể khi hệ số $$\rho$$ nằm xung quanh giá trị 0.5. Mặc dù lưu lượng xử lý tăng gấp đôi so với lưu lượng tải, các hàng đợi vẫn xuất hiện! Hiện tượng nghịch lý này, thoạt nhìn, là đặc trưng của các hệ thống mà trong đó các quá trình ngẫu nhiên (**random processes**) diễn ra. Vì chỉ **lưu lượng trung bình (average flow rate)** trên các khoảng thời gian lớn được xem xét, nên ở các khoảng thời gian ngắn, các giá trị có thể **đáng kể khác biệt (significantly deviate)** so với các giá trị trung bình này.
+
+Một tham số quan trọng khác có ảnh hưởng trực tiếp đến việc hình thành hàng đợi trong mạng là **biến thiên (variation)** của các khoảng thời gian của luồng gói tin đầu vào (**incoming traffic intervals**). Tham số này phản ánh tính chất xung nhịp (**burstiness**) của luồng gói đầu vào. Hình 5.12 minh họa mối quan hệ giữa **thời gian chờ trung bình (W)** và hệ số $$\rho$$ cho các giá trị khác nhau của **hệ số biến thiên (Coefficient of Variation, CV)**.
+
+Từ biểu đồ, có thể thấy rằng, khi luồng đầu vào ít có tính xung nhịp (CV tiến gần về 0), thì **hiệu ứng hình thành hàng đợi dạng thác lũ (avalanche queue formation)** khi hệ số tải tài nguyên tiến gần đến 1 ít xảy ra hơn. Ngược lại, khi CV càng lớn, hiệu ứng này xuất hiện sớm hơn (tại các giá trị $$\rho$$ nhỏ hơn).
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.12.png" alt ="Hình 5.12. Ảnh hưởng của mức độ dao động của lưu lượng đến độ trễ." width="900">
+</p>
+<p align="center"><b>Hình 5.12. Ảnh hưởng của mức độ dao động của lưu lượng đến độ trễ.</b></p>
+
+**"Để giảm độ trễ, cần giảm cả hệ số tải tài nguyên (utilization coefficient) lẫn tính xung nhịp của luồng (burstiness of traffic)."**
+
+Cần nhấn mạnh rằng các mô hình lý thuyết hàng đợi (**queueing theory models**) do sự đơn giản hóa các quá trình diễn ra trong các thiết bị mạng (**communication devices**) chỉ cung cấp một hình ảnh mang tính chất định tính (**qualitative picture**) về mối quan hệ giữa độ trễ (**latency**) và mất gói (**packet loss**) với các tham số lưu lượng và hiệu suất của thiết bị. Kết quả chính xác hơn có thể đạt được thông qua mô phỏng (**simulation modeling**), nhưng đáng tin cậy nhất vẫn là đo lường độ trễ và mất gói trong mạng thực tế bằng các hệ thống và thiết bị đo lường chuyên dụng (**network testers**).
+
+---
+
+##### 5.6.2 Hàng đợi và các loại lưu lượng khác nhau
+
+Hãy xem cách áp dụng kiến thức về hành vi của hàng đợi dựa trên hệ số tải để thực hiện các ý tưởng cơ bản của **phương pháp QoS (Quality of Service)**, cụ thể là phân biệt dịch vụ giữa các loại lưu lượng với yêu cầu khác nhau về hiệu suất và độ tin cậy của mạng. Để đơn giản, chúng ta tạm chia tất cả các luồng thành hai loại:
+
+1. **Nhạy cảm với độ trễ (delay-sensitive traffic):** Đây là các loại lưu lượng thời gian thực (**real-time traffic**), ví dụ: thoại qua mạng (**voice traffic**).
+2. **Đàn hồi (elastic traffic):** Loại lưu lượng cho phép độ trễ lớn hơn và không nhạy cảm với mất gói (**packet loss**).
+
+Nếu đảm bảo rằng hệ số tải tài nguyên cho lưu lượng nhạy cảm với độ trễ không vượt quá 0.2, thì rõ ràng, các hàng đợi sẽ rất nhỏ và phù hợp với hầu hết các ứng dụng thuộc loại này. Đối với lưu lượng đàn hồi, có thể cho phép hệ số tải cao hơn, ví dụ: không vượt quá 0.9. Để tránh mất dữ liệu ở loại lưu lượng này, cần cung cấp đủ bộ đệm (**buffer memory**) để lưu trữ tất cả các gói tin trong chu kỳ xung nhịp (**burst period**). Hiệu quả của việc phân bổ tải này được minh họa trong hình 5.13.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.13.png" alt ="Hình 5.13. Xử lý lưu lượng linh hoạt và nhạy cảm với độ trễ." width="900">
+</p>
+<p align="center"><b>Hình 5.13. Xử lý lưu lượng linh hoạt và nhạy cảm với độ trễ.</b></p>
+
+**Độ trễ của lưu lượng nhạy cảm với độ trễ ($$w_s$$)** và độ trễ của lưu lượng đàn hồi ($$w_e$$):  
+
+Để đạt được các hệ số sử dụng tài nguyên khác nhau cho các lớp lưu lượng khác nhau, cần phải duy trì hai hàng đợi riêng biệt cho mỗi tài nguyên tại mỗi bộ chuyển mạch (**switch**). **Thuật toán chọn gói từ hàng đợi (queue selection algorithm)** phải ưu tiên xử lý các gói tin nhạy cảm với độ trễ. Nếu các gói tin thuộc hàng đợi đầu tiên luôn được xử lý trước, thì các gói tin trong hàng đợi thứ hai chỉ được xử lý khi hàng đợi đầu tiên rỗng. Điều này dẫn đến việc lưu lượng từ hàng đợi thứ hai thực tế ngừng tồn tại.
+
+Trong trường hợp ngược lại, nếu cường độ trung bình của lưu lượng nhạy cảm ($$\lambda_1$$) và khả năng phục vụ ($$μ$$) được duy trì ở mức hệ số tải $$\rho = 0.2$$, thì lưu lượng nhạy cảm sẽ luôn được xử lý trước. Đối với lưu lượng đàn hồi, hệ số tải $$\rho = 0.9$$, thì cần duy trì cường độ lưu lượng đàn hồi ở mức $$\lambda_2$$ sao cho tổng tải của cả hai là:
+
+$$
+\rho = \frac{\lambda_1 + \lambda_2}{μ}
+$$
+
+Nếu $$\rho = 0.9$$ và $$\lambda_1 = 0.2$$, thì tỷ lệ $$\lambda_2 / μ = 0.7$$.
+
+Có thể phân bổ thêm trọng số giữa các lớp dịch vụ để đảm bảo rằng mỗi lớp hoạt động trên phần đường cong độ trễ tương ứng của nó. Nếu vấn đề này được giải quyết, có thể cải thiện đặc tính QoS (Quality of Service) thông qua các phương pháp khác, ví dụ như giảm tính xung nhịp (**burstiness**) của lưu lượng. Vẫn còn câu hỏi cần làm rõ là làm thế nào để đảm bảo các điều kiện tương ứng cho từng lớp lưu lượng tại mỗi nút mạng.
+
+---
+
+##### 5.6.3 Kỹ thuật quản lý hàng đợi (Queue Management Techniques)
+
+Quản lý hàng đợi được sử dụng để tối ưu hóa hiệu suất của các thiết bị trong giai đoạn tắc nghẽn tạm thời (**temporary congestion**), khi chúng không thể xử lý việc truyền dữ liệu đến giao diện đầu ra (**output interface**) cùng tốc độ như lúc nhận dữ liệu đầu vào. Các thuật toán quản lý hàng đợi không ngăn chặn hoàn toàn tắc nghẽn mà chỉ phân bổ tài nguyên một cách "công bằng" trong điều kiện thiếu tài nguyên, bằng cách phân chia tài nguyên giữa các luồng dữ liệu hoặc các lớp lưu lượng khác nhau.
+
+---
+
+###### Hàng đợi FIFO (First In, First Out):
+
+Trong hàng đợi FIFO, khi tắc nghẽn xảy ra, tất cả các gói tin được đưa vào **một hàng đợi duy nhất (single queue)** và được chọn xử lý theo thứ tự chúng đến (nguyên tắc "đến trước, xử lý trước"). FIFO thường được sử dụng mặc định trong các bộ chuyển mạch (**switches**) vì tính đơn giản của nó và không yêu cầu cấu hình phức tạp.
+
+Tuy nhiên, FIFO có một nhược điểm lớn: **không thể phân biệt dịch vụ giữa các lưu lượng khác nhau (non-differentiated traffic processing)**. Ví dụ, các gói tin nhạy cảm với độ trễ như thoại qua mạng (**voice traffic**) có thể bị trễ nhiều hơn do phải xếp hàng cùng với các gói lưu lượng ít nhạy cảm hơn. Điều này có thể gây ảnh hưởng tiêu cực đến các dịch vụ thời gian thực (**real-time services**).
+
+---
+
+###### Dịch vụ ưu tiên (Priority Queuing)
+
+Hàng đợi ưu tiên (**Priority Queuing, PQ**) rất phổ biến trong nhiều lĩnh vực kỹ thuật máy tính, đặc biệt trong hệ điều hành (**operating systems**) khi một ứng dụng cần được ưu tiên xử lý trước các ứng dụng khác trong môi trường đa chương trình (**multiprogramming environment**). Loại hàng đợi này cũng được sử dụng để xử lý ưu tiên cho một số lớp lưu lượng trong mạng.
+
+Cơ chế dịch vụ ưu tiên dựa trên việc phân chia lưu lượng mạng thành một số ít lớp và gán một giá trị số — **mức độ ưu tiên (priority)** — cho mỗi lớp.
+
+- **Ưu tiên (Priority):** Là một giá trị số biểu thị mức độ ưu tiên của một lớp lưu lượng khi sử dụng tài nguyên mạng. Cấp độ ưu tiên càng cao, thời gian gói tin của lớp đó phải chờ trong hàng đợi càng ít.
+
+- **Phân loại lưu lượng (Traffic Classification):** Là một nhiệm vụ riêng biệt. Gói tin có thể được phân loại vào các lớp ưu tiên dựa trên nhiều tiêu chí khác nhau, chẳng hạn như:
+  - **Địa chỉ đích (destination address);**
+  - **Địa chỉ nguồn (source address);**
+  - **Nhận dạng ứng dụng (application identifier);**
+  - **Loại giao thức (protocol type).**
+
+  Quy tắc phân loại, thường phản ánh **chính sách quản trị mạng (administrative policy)**, được thực hiện bởi các thiết bị phân loại (**classifiers**). Các thiết bị này có thể nằm ở nhiều cấp độ khác nhau trong mạng, ví dụ: tại điểm đầu vào của mạng doanh nghiệp (**corporate network**) hoặc các bộ định tuyến biên (**edge routers**) của nhà cung cấp dịch vụ.
+
+Ưu tiên được gán vào một trường đặc biệt trong tiêu đề gói (**packet header**) để các thiết bị xử lý khác trong mạng có thể nhận biết và thực hiện xử lý phù hợp. Nếu mạng không hỗ trợ xử lý ưu tiên, các thiết bị mạng sẽ bỏ qua trường này và xử lý các gói tin theo các quy tắc mặc định của chúng.
+
+Trong thiết bị mạng hỗ trợ hàng đợi ưu tiên, có nhiều hàng đợi khác nhau — mỗi hàng đợi dành cho một lớp ưu tiên cụ thể. Gói tin nhận được trong giai đoạn tắc nghẽn được đặt vào hàng đợi tương ứng với mức độ ưu tiên của nó. Ví dụ: trên hình 5.14, có các hàng đợi dành cho mức ưu tiên **cao (high)**, **trung bình (medium)**, **bình thường (normal)**, và **thấp (low)**.
+
+Gói tin từ hàng đợi ưu tiên cao nhất sẽ được xử lý trước. Thiết bị chỉ chuyển sang xử lý các gói tin trong hàng đợi ưu tiên thấp hơn khi tất cả các hàng đợi ưu tiên cao hơn đã trống. Do đó, các gói tin trong hàng đợi ưu tiên thấp chỉ được xử lý khi tất cả các hàng đợi cao hơn đã rỗng hoàn toàn.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.14.png" alt ="Hình 5.14. Hàng đợi ưu tiên" width="900">
+</p>
+<p align="center"><b>Hình 5.14. Hàng đợi ưu tiên</b></p>
+
+Thông thường, mặc định, các hàng đợi ưu tiên (**priority queues**) được cấp phát bộ đệm (**buffer**) có cùng kích thước, nhưng nhiều thiết bị cho phép quản trị viên mạng chỉ định kích thước bộ đệm riêng cho từng hàng đợi. Trong trường hợp lý tưởng, kích thước bộ đệm được xác định sao cho đủ chứa các hàng đợi có chiều dài trung bình với một lượng dự phòng nhất định. 
+
+Tuy nhiên, việc xác định chính xác kích thước này rất khó. Do đó, các quản trị viên mạng thường dựa trên các nguyên tắc sau: lưu lượng càng quan trọng đối với doanh nghiệp, với cường độ (**intensity**) và tính xung nhịp (**burstiness**) càng cao, thì kích thước bộ đệm cần thiết càng lớn. Trong ví dụ minh họa trên hình 5.14, lưu lượng thuộc các lớp ưu tiên cao và trung bình được cấp bộ đệm lớn hơn, trong khi hai lớp ưu tiên còn lại nhận bộ đệm nhỏ hơn. Quyết định này rõ ràng là phù hợp cho các lớp lưu lượng ưu tiên cao và trung bình, do tính xung nhịp cao và hệ số xung nhịp (**burstiness coefficient**) đáng kể của chúng.
+
+Dịch vụ ưu tiên (**priority service**) đảm bảo chất lượng cao cho các gói tin trong hàng đợi ưu tiên cao nhất. Nếu cường độ trung bình của các gói tin đến thấp hơn khả năng xử lý của thiết bị, thì các gói tin ưu tiên cao luôn nhận được băng thông (**bandwidth**) cần thiết. Thời gian chờ của các gói tin ưu tiên cao trong hàng đợi cũng rất ngắn. Tuy nhiên, không phải lúc nào nó cũng bằng không — mức độ xung nhịp của lưu lượng càng lớn, khả năng xuất hiện hàng đợi "cục bộ" cùng các gói tin ưu tiên cao càng cao. Lưu lượng thuộc các lớp ưu tiên khác gần như "trong suốt (**transparent**)" đối với các gói tin ưu tiên cao. Từ "gần như" ám chỉ các tình huống khi gói tin ưu tiên cao buộc phải chờ xử lý các gói tin ưu tiên thấp đã bắt đầu được xử lý.
+
+Đối với các lớp ưu tiên khác, chất lượng dịch vụ sẽ thấp hơn so với các gói tin của lớp ưu tiên cao nhất. Mức độ giảm này có thể khác nhau đáng kể. Nếu hệ số xung nhịp (**burstiness coefficient**) của các gói tin ưu tiên cao tiệm cận đến 1, thì lưu lượng của các lớp ưu tiên thấp hơn có thể tạm dừng hoàn toàn trong một khoảng thời gian nào đó. Do đó, cần đảm bảo kích thước bộ đệm đủ lớn để duy trì lưu lượng trong lớp ưu tiên thấp hơn.
+
+Ví dụ, đối với một lớp lưu lượng có hệ số xung nhịp không đáng kể (**low burstiness coefficient**), các dịch vụ cung cấp một kích thước bộ đệm nhỏ sẽ không ảnh hưởng nhiều đến lưu lượng đó. Chẳng hạn, việc sử dụng bộ đệm chỉ cần đủ lưu trữ từ 8–16 KB cho mỗi cổng có thể giảm thiểu tối đa tác động đến chất lượng của lưu lượng thuộc lớp này.
+
+---
+
+###### Hàng đợi có trọng số (Weighted Queues)
+
+**Cơ chế hàng đợi có trọng số (Weighted Queuing Mechanism)** được phát triển để đảm bảo rằng tất cả các lớp lưu lượng (**traffic classes**) nhận được một mức tối thiểu nhất định về **băng thông (bandwidth)**. Trọng số của một lớp được hiểu là tỷ lệ băng thông được phân bổ cho lớp lưu lượng đó so với **tổng băng thông của giao diện đầu ra (total bandwidth of the output interface)**.
+
+Trong dịch vụ hàng đợi có trọng số, cũng giống như dịch vụ ưu tiên (**priority queuing**), lưu lượng được chia thành nhiều lớp, mỗi lớp được xử lý trong một hàng đợi riêng biệt. Tuy nhiên, đối với mỗi hàng đợi, thay vì chỉ dựa vào mức ưu tiên, băng thông được phân bổ dựa trên tỷ lệ trọng số đã định trước. 
+
+**Trọng số (Weight):** Được liên kết với một lớp lưu lượng và tỷ lệ phần trăm băng thông tài nguyên được đảm bảo cho lớp lưu lượng đó trong trường hợp tắc nghẽn tài nguyên. Trong các bộ chuyển mạch (**switches**), tài nguyên chính là khối giao tiếp (**switching fabric**) cho luồng đầu vào và giao diện đầu ra (**output interface**) cho luồng đầu ra.
+
+Để làm rõ hơn, thuật toán quản lý hàng đợi này được minh họa trong ví dụ sau. Trong hình 5.15, năm hàng đợi được hỗ trợ trên một giao diện đầu ra của bộ chuyển mạch. Trong trường hợp tắc nghẽn, băng thông được phân bổ như sau: 10%, 10%, 30%, 20%, và 30% tổng băng thông của giao diện đầu ra.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.15.png" alt ="Hình 5.15. Hàng đợi có trọng số" width="900">
+</p>
+<p align="center"><b>Hình 5.15. Hàng đợi có trọng số</b></p>
 
