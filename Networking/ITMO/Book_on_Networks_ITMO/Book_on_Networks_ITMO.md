@@ -2883,7 +2883,7 @@ Lý thuyết hàng đợi xem xét các quá trình hình thành hàng đợi tr
 
 Khi áp dụng lý thuyết hàng đợi vào phân tích các quá trình xảy ra trong các thiết bị tính toán, các yêu cầu để được xử lý thường đại diện cho dữ liệu hoặc gói tin (packets), và các thiết bị xử lý là các **thiết bị mạng** - như các chương trình phần mềm (software programs), thiết bị mạng (network devices) hoặc các giao diện đầu ra (output interfaces). Hình 5.10 minh họa mô hình của một trong các giao diện đầu ra của bộ chuyển mạch (switch).
 
-Luồng yêu cầu đầu vào (input request flow) hiển thị trong Hình 5.10 tương ứng với luồng các gói tin giữa khối chuyển mạch (switching block) và một trong các giao diện đầu ra (output interface) của bộ chuyển mạch, như đã được mô tả trong Hình 3.8. Luồng này được đặc trưng bởi **cường độ trung bình** (average intensity) λ (lambda), tức là khoảng thời gian trung bình giữa các yêu cầu bằng $$T = 1 / \lambda$$. **Cường độ xử lý trung bình** (average processing intensity) của luồng yêu cầu được xử lý bởi thiết bị xử lý là $$μ = 1 / b$$, trong đó $$ b $$ là thời gian trung bình để xử lý một yêu cầu.
+Luồng yêu cầu đầu vào (input request flow) hiển thị trong Hình 5.10 tương ứng với luồng các gói tin giữa khối chuyển mạch (switching block) và một trong các giao diện đầu ra (output interface) của bộ chuyển mạch, như đã được mô tả trong Hình 3.8. Luồng này được đặc trưng bởi **cường độ trung bình** (average intensity) λ (lambda), tức là khoảng thời gian trung bình giữa các yêu cầu bằng $$T = 1 / \lambda$$. **Cường độ xử lý trung bình** (average processing intensity) của luồng yêu cầu được xử lý bởi thiết bị xử lý là $$μ = 1 / b$$, trong đó $$b$$ là thời gian trung bình để xử lý một yêu cầu.
 
 
 HÌNH 5.10
@@ -2892,11 +2892,11 @@ HÌNH 5.10
 
 
 
-> **Hệ số tải (utilization factor)**, ký hiệu là $$ρ$$, là một trong các yếu tố quan trọng trong mô hình. Nó bằng tỷ lệ giữa cường độ trung bình $$ λ $$ của yêu cầu đến và cường độ xử lý trung bình $$μ$$, cụ thể là $$ρ = λ / μ$$.
+> **Hệ số tải (utilization factor)**, ký hiệu là $$ρ$$, là một trong các yếu tố quan trọng trong mô hình. Nó bằng tỷ lệ giữa cường độ trung bình $$λ$$ của yêu cầu đến và cường độ xử lý trung bình $$μ$$, cụ thể là $$ρ = λ / μ$$.
 
 Trong lý thuyết phục vụ hàng loạt (mass-service theory), một số loại mô hình cho phép xác định các phụ thuộc phân tích, chẳng hạn thời gian chờ trung bình $$ W $$ trong hàng đợi, phụ thuộc vào hệ số tải $$ρ$$. Một trong những phụ thuộc này, mô tả hệ thống với hàng đợi đơn (single queue) theo nguyên tắc FIFO (First In, First Out - Vào trước, Ra trước), được thể hiện trong Hình 5.11.
 
-Từ đồ thị, có thể thấy rằng hệ số tải $$ρ$$ đóng vai trò quan trọng trong việc hình thành hàng đợi. Nếu $$ ρ $$ gần bằng 0, thời gian chờ trung bình trong hàng đợi rất gần bằng 0. Điều này có nghĩa là các gói gần như không bao giờ phải chờ xử lý trong bộ đệm (buffer). Ngược lại, khi $$ ρ $$ tăng gần đến 1, thời gian chờ tăng rất mạnh và tiến đến vô hạn. Sự phụ thuộc này có ý nghĩa trực quan, vì khi khoảng cách giữa các yêu cầu đầu vào nhỏ hơn thời gian xử lý chúng, thiết bị xử lý không thể đáp ứng tải (overload).
+Từ đồ thị, có thể thấy rằng hệ số tải $$ρ$$ đóng vai trò quan trọng trong việc hình thành hàng đợi. Nếu $$ρ$$ gần bằng 0, thời gian chờ trung bình trong hàng đợi rất gần bằng 0. Điều này có nghĩa là các gói gần như không bao giờ phải chờ xử lý trong bộ đệm (buffer). Ngược lại, khi $$ρ$$ tăng gần đến 1, thời gian chờ tăng rất mạnh và tiến đến vô hạn. Sự phụ thuộc này có ý nghĩa trực quan, vì khi khoảng cách giữa các yêu cầu đầu vào nhỏ hơn thời gian xử lý chúng, thiết bị xử lý không thể đáp ứng tải (overload).
 
 
 HÌNH 5.11
