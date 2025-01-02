@@ -3013,3 +3013,75 @@ Trong dịch vụ hàng đợi có trọng số, cũng giống như dịch vụ 
 </p>
 <p align="center"><b>Hình 5.15. Hàng đợi có trọng số</b></p>
 
+Mục tiêu được đạt được thông qua việc các hàng đợi (**queues**) được xử lý tuần tự và theo chu kỳ (**cyclically**). Trong mỗi chu kỳ, từ mỗi hàng đợi, một số byte (**bytes**) được chọn tương ứng với trọng số (**weight**) của hàng đợi đó. Ví dụ, nếu chu kỳ xử lý hàng đợi trong ví dụ này là một giây, và tốc độ của giao diện đầu ra (**output interface**) là 1000 Mbps, thì trong trường hợp tắc nghẽn, mỗi chu kỳ, hàng đợi đầu tiên được cấp phát 10% thời gian, tức là 0.1 giây, tương ứng với việc chọn 100 MB dữ liệu. Tương tự, từ hàng đợi thứ hai — cũng 100 MB, từ hàng đợi thứ ba — 300 MB, từ hàng đợi thứ tư — 200 MB, và từ hàng đợi thứ năm — 300 MB.
+
+**Kết quả:** Mỗi lớp lưu lượng (**traffic class**) nhận được **băng thông tối thiểu được đảm bảo (guaranteed minimum bandwidth)**, điều này trong nhiều trường hợp là giải pháp mong muốn hơn so với việc loại bỏ hoàn toàn các lớp ưu tiên thấp bởi các lớp ưu tiên cao.
+
+Do dữ liệu được chọn từ hàng đợi theo gói tin (**packets**) chứ không phải bit (**bits**), nên việc phân bổ băng thông thực tế giữa các lớp lưu lượng luôn có sự khác biệt nhỏ so với kế hoạch. Ví dụ, trong trường hợp trên, thay vì 10%, lớp lưu lượng đầu tiên có thể nhận được 9% hoặc 12% trong điều kiện tắc nghẽn. Thời gian chu kỳ càng lớn, sự tuân thủ yêu cầu về tỷ lệ giữa các lớp lưu lượng càng chính xác, vì mỗi hàng đợi sẽ được chọn nhiều gói hơn, làm trung bình kích thước của từng gói.
+
+Tuy nhiên, một chu kỳ dài cũng dẫn đến độ trễ (**delay**) lớn trong việc truyền gói tin. Với chu kỳ một giây như trong ví dụ trên, độ trễ có thể đạt tới một hoặc vài giây — bởi bộ chọn (**arbiter**) không quay lại hàng đợi thường xuyên hơn một lần mỗi giây. Do đó, tại một thời điểm, có thể chọn không quá vài gói từ mỗi hàng đợi. Vì lý do này, chu kỳ ngắn hơn sẽ đảm bảo tốt hơn sự cân bằng giữa yêu cầu băng thông và mục tiêu giảm độ trễ.
+
+Đối với ví dụ của chúng ta, thời gian chu kỳ hợp lý hơn sẽ là từ **$$1^{-6}$$ giây** (1 microsecond) hoặc **1000 ms**. Một mặt, thời gian này đảm bảo mức độ trễ hàng đợi (queue delay) thấp hơn, vì các hàng đợi (queues) được kiểm tra thường xuyên hơn, ví dụ như mỗi chu kỳ một giây. Mặt khác, khoảng thời gian này đủ để chọn một vài gói tin (packets) từ mỗi hàng đợi, ví dụ: trong hàng đợi đầu tiên của chúng ta, sẽ cần **100 ms** để truyền dữ liệu, chẳng hạn như để truyền mười gói tin qua kênh ra (output channel) với tốc độ Gigabit Ethernet.
+
+Mức độ trễ gói tin (packet delay) và các biến thể của một lớp lưu lượng (traffic class) cụ thể khi sử dụng cân bằng trọng số (Weighted Fair Queuing - WFQ) phụ thuộc lớn vào hệ số tải tương đối (relative load coefficient). Trong trường hợp này, hệ số này được tính bằng tỷ lệ giữa cường độ lưu lượng đầu vào (incoming traffic intensity) của một lớp lưu lượng cụ thể và năng lực xử lý (processing capacity) được cấp phát cho lớp đó tương ứng với trọng số của nó. Ví dụ, nếu giao diện có băng thông (bandwidth) **100 Mbit/s**, và một lớp cụ thể chỉ chiếm **10%**, thì cường độ lưu lượng trung bình (average traffic intensity) của nó là **10 Mbit/s**. Nếu lưu lượng đến thuộc lớp này trung bình là **30 Mbit/s**, thì hệ số tải tương đối sẽ là **30/10 = 3**. Chất lượng hành vi của hàng đợi (queue quality behavior), và do đó, độ trễ hàng đợi (queue delay), trong các hàng đợi kiểu FIFO sẽ càng thấp nếu hệ số tải thấp hơn, chiều dài hàng đợi (queue length) ngắn hơn, và độ trễ giảm đi.
+
+Một trong những cơ chế công bằng là cân bằng công bằng trọng số (Weighted Fair Queuing - WFQ). Trong trường hợp tải đầy đủ (full load), năng lực xử lý của tài nguyên (resource processing capacity) được chia đều giữa các luồng (flows), tức là một cách "công bằng". Cân bằng công bằng trọng số chỉ đảm bảo trạng thái cân bằng trong các chu kỳ (periods) của quá tải (overload), khi tất cả các hàng đợi được lấp đầy liên tục. Nếu bất kỳ hàng đợi nào trống (idle), thì lưu lượng thuộc chu kỳ đó không bị xem xét trong thời gian cân bằng, và năng lực xử lý (processing capacity) sẽ được chia đều cho các hàng đợi còn lại theo trọng số của chúng.
+
+---
+
+###### Các thuật toán kết hợp trong xử lý hàng đợi
+
+Mỗi phương pháp được mô tả đều có ưu điểm và nhược điểm riêng. Xử lý ưu tiên (priority scheduling), đảm bảo mức độ trễ tối thiểu (minimum delay) cho hàng đợi có mức ưu tiên cao nhất, nhưng không cung cấp bất kỳ sự đảm bảo nào liên quan đến thông lượng trung bình (average throughput) đối với lưu lượng của các hàng đợi có mức ưu tiên thấp hơn. Xử lý theo cân bằng trọng số (weighted scheduling) đảm bảo sự phân bổ thông lượng trung bình đã định (average throughput), nhưng không đảm bảo việc đáp ứng các yêu cầu về độ trễ (delay requirements).
+
+Có các **thuật toán kết hợp trong xử lý hàng đợi**. Ví dụ, trong một thuật toán thuộc loại này, một hàng đợi ưu tiên (priority queue) được duy trì, trong khi các hàng đợi khác được xử lý theo một thuật toán cân bằng trọng số (weighted algorithm). Thông thường, hàng đợi ưu tiên được sử dụng để xử lý lưu lượng nhạy cảm với độ trễ (delay-sensitive traffic), trong khi các hàng đợi khác được dùng để xử lý lưu lượng co giãn (elastic traffic) của nhiều lớp. Mỗi lớp lưu lượng co giãn nhận được một lượng thông lượng tối thiểu (minimum throughput) trong các giai đoạn quá tải (overload). Lượng tối thiểu này thường được xác định như một phần của năng lực thông lượng (throughput capacity) còn lại sau khi xử lý lưu lượng ưu tiên. Rõ ràng, cần có giới hạn đối với lưu lượng ưu tiên, để nó không chiếm toàn bộ tài nguyên.
+
+Thông thường, các cơ chế điều chỉnh lưu lượng (traffic conditioning mechanisms) được sử dụng để thực hiện điều này, và sẽ được thảo luận trong phần sau.
+
+---
+
+#### 5.7 Các cơ chế điều chỉnh lưu lượng (Traffic Conditioning Mechanisms)
+
+Như chúng ta đã biết, ý tưởng chính của các phương pháp QoS (Quality of Service - Chất lượng dịch vụ) là phân bổ một phần năng lực truyền tải (bandwidth) cụ thể cho một luồng lưu lượng (traffic flow) nhất định, trong đó lượng tài nguyên được phân bổ cần đủ lớn để đảm bảo chất lượng dịch vụ của luồng lưu lượng đó ở mức thỏa đáng. Các hàng đợi (queues) với các thuật toán xử lý khác nhau chỉ thực hiện một phần ý tưởng này – chúng chỉ định một phần năng lực truyền tải cho một số luồng gói tin (packet flows) nhất định. Tuy nhiên, nếu cường độ của lưu lượng đầu vào (incoming traffic intensity) vì lý do nào đó vượt quá phần năng lực đã được phân bổ trong một số giai đoạn nhất định, ví dụ, dưới dạng các xung nhịp (burst), thì các tham số chất lượng dịch vụ được yêu cầu đối với luồng lưu lượng này (mức độ trễ, tỷ lệ mất gói, v.v.) sẽ không được đảm bảo.
+
+Để tránh điều này, người ta khuyến nghị sử dụng các cơ chế **điều chỉnh lưu lượng (traffic conditioning)**, bao gồm:
+- Phân loại (classification);
+- Hồ sơ hóa (profiling);
+- Làm phẳng lưu lượng (traffic smoothing).
+
+Chúng ta đã gặp khái niệm **phân loại lưu lượng (traffic classification)** khi nghiên cứu các hàng đợi ưu tiên (priority queues) và cân bằng trọng số (weighted queues), trong đó giả định sự hiện diện của một cơ chế xác định gói tin cần được gửi vào hàng đợi này hay hàng đợi khác. Trong trường hợp điều chỉnh lưu lượng, các cơ chế phân loại lưu lượng thực hiện một nhiệm vụ lớn hơn – chúng thực hiện phân tích động các luồng lưu lượng đi qua mạng, nhằm phân loại chúng theo lớp (class). Mỗi lớp sẽ được phục vụ bởi mạng theo một cách cụ thể. Ví dụ, một lớp lưu lượng cần được phục vụ để giảm thiểu tối đa tỷ lệ mất gói (packet loss rate), một lớp khác – giảm thiểu độ trễ (delay), lớp thứ ba – giảm thiểu sự biến thiên độ trễ (jitter), và lớp thứ tư cần đảm bảo thông lượng (throughput). Để phân loại lưu lượng, người ta sử dụng các đặc điểm khác nhau của gói tin, ví dụ, địa chỉ nguồn (source address) và địa chỉ đích (destination address), giao thức tầng truyền tải (transport layer protocol) hoặc tầng ứng dụng (application layer protocol). Phân loại được thực hiện trên cơ sở các chính sách QoS.
+
+**Hồ sơ hóa (Profiling)** là một loại tác động chủ động vào luồng lưu lượng, nhằm mục đích hạn chế các thông số của luồng gói tin. Hồ sơ hóa bao gồm việc xác định một tập hợp các thông số lưu lượng (traffic parameters), chẳng hạn như tốc độ dữ liệu trung bình (average data rate), tốc độ đỉnh (peak rate), và sự thay đổi (burstiness). Nếu các tham số này vượt quá giới hạn được chỉ định, cơ chế điều chỉnh lưu lượng sẽ thực hiện các biện pháp hạn chế, chẳng hạn như giảm tốc độ truyền tải của luồng.
+
+Khi phần cứng mạng (network hardware) không thay đổi, tốc độ dòng gói tin (packet flow rate) chỉ có thể được giảm bằng hai cách: hoặc bắt ứng dụng nguồn (source application) giảm cường độ tạo gói tin (packet generation intensity) – **kiểm soát nguồn (source suppression)**, hoặc "định hình" luồng lưu lượng (traffic shaping). Thao tác thứ hai này có thể được thực hiện theo hai cách: hoặc **loại bỏ (discard)** một số gói tin khỏi luồng, hoặc **trì hoãn (delay)** chúng trong một thời gian trong bộ đệm (buffer). Loại bỏ gói tin và lưu giữ gói tin trong bộ đệm tạo thành bản chất của các phương pháp hồ sơ hóa (profiling) và làm phẳng lưu lượng (traffic smoothing) tương ứng, những phương pháp mà chúng ta đang xem xét ở đây (về kiểm soát nguồn, hãy tham khảo phần "Phản hồi để ngăn chặn tình trạng quá tải").
+
+Hình 5.16 minh họa hoạt động của cơ chế hồ sơ hóa (profiling mechanism), hiển thị các giá trị tốc độ lưu lượng (traffic rate) được đo trên các khoảng thời gian đủ nhỏ trước và sau khi thực hiện hồ sơ hóa. Như minh họa trong hình, luồng lưu lượng ban đầu có các xung nhịp (bursts) với mức đỉnh cao hơn, vượt quá giới hạn cụ thể được đặt ra cho luồng đối với năng lực truyền tải (bandwidth capacity). Khi thực hiện hồ sơ hóa, một số gói tin trong các xung nhịp bị loại bỏ (discarded), dẫn đến việc duy trì tốc độ lưu lượng ở mức quy định ngay cả trong các khoảng thời gian xảy ra xung nhịp, đồng thời giữ nguyên tốc độ lưu lượng gốc ở các khoảng thời gian khác.
+
+Lưu lượng, được điều chỉnh theo cách này, không phá vỡ các tính toán được lập kế hoạch cho tải mạng (network load). Tuy nhiên, đối với một số loại lưu lượng, việc loại bỏ gói tin có thể là vấn đề nghiêm trọng.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.16.png" alt ="Hình 5.16. Hiệu ứng phân tích - loại bỏ lưu lượng dư thừa" width="900">
+</p>
+<p align="center"><b>Hình 5.16. Hiệu ứng phân tích - loại bỏ lưu lượng dư thừa</b></p>
+
+**Hồ sơ hóa (Profiling)** thường được sử dụng để hạn chế lưu lượng (traffic) đi vào hàng đợi ưu tiên (priority queue), vì chỉ bằng cách này mới có thể ngăn chặn lưu lượng ưu tiên chiếm toàn bộ tài nguyên, đẩy các lưu lượng khác ra khỏi hệ thống.
+
+**Làm phẳng lưu lượng (Traffic Shaping)**, theo một nghĩa nào đó, tương tự với hồ sơ hóa, vì nó cũng có mục tiêu tương tự – điều chỉnh các tham số của luồng lưu lượng (traffic flow parameters) sao cho phù hợp với cấu hình tốc độ được chỉ định. Tuy nhiên, điều này đạt được theo cách khác. Thay vì loại bỏ (discard) các gói tin dư thừa, tức là các gói tin mà việc truyền tải có thể dẫn đến vượt quá giới hạn tốc độ, cơ chế làm phẳng lưu lượng sẽ **trì hoãn (delay)** các gói tin vi phạm trong một bộ đệm (buffer) đặc biệt, sao cho tốc độ luồng lưu lượng cuối cùng vẫn nằm trong giới hạn đã đặt ra.
+
+Các gói tin cũng có thể **bị hạ cấp (downgrade)**, tức là được chuyển sang một lớp dịch vụ (service class) có mức ưu tiên thấp hơn, ví dụ, chuyển từ lớp ưu tiên (priority class) sang lớp tiêu chuẩn (standard class), nơi dịch vụ được cung cấp theo nguyên tắc "tốt nhất có thể" (best effort).
+
+Hiệu quả của cơ chế làm phẳng lưu lượng được minh họa trong Hình 5.17. Đồ thị tốc độ làm phẳng được định hình bằng cách "cắt bớt" các đỉnh nhô ra (peaks) và lấp đầy các vùng trũng (valleys) bằng cách trì hoãn các gói tin vượt quá giới hạn tốc độ đỉnh, đồng thời chuyển chúng sang các khoảng thời gian khác, trong đó tốc độ thấp hơn mức giới hạn được đặt ra. Như có thể thấy, cơ chế này hoạt động như một phương pháp điều chỉnh lưu lượng (traffic conditioning mechanism) mềm hơn – các gói tin được trì hoãn nhưng không bị loại bỏ.
+
+<p align="center">
+  <img src="https://github.com/CHu292/SOC/blob/main/Networking/ITMO/Book_on_Networks_ITMO/img/5.17.png" alt ="Hình 5.17. Hiệu ứng làm mượt lưu lượng." width="900">
+</p>
+<p align="center"><b>Hình 5.17. Hiệu ứng làm mượt lưu lượng.</b></p>
+
+Cả hồ sơ hóa (profiling) và làm phẳng lưu lượng (traffic shaping) đều loại bỏ các đỉnh tốc độ (speed peaks), **giảm tốc độ đỉnh (peak rate)** của luồng lưu lượng được điều chỉnh. Tuy nhiên, chúng có những ảnh hưởng khác nhau đến tốc độ trung bình (average rate) của luồng. Rõ ràng, do gói tin bị loại bỏ trong quá trình hồ sơ hóa, **tốc độ trung bình giảm (average rate decreases)**. Nhưng điều gì xảy ra với tốc độ trong quá trình làm phẳng lưu lượng? Vì trong trường hợp này, các gói tin tạo thành xung nhịp (burst) được giữ tạm thời trong bộ đệm (buffer) chứ không bị loại bỏ hoàn toàn khỏi luồng, nên **tốc độ trung bình không thay đổi (average rate remains unchanged)**.
+
+Thông thường, hồ sơ hóa lưu lượng (traffic profiling) được thực hiện bởi bộ định tuyến của nhà cung cấp dịch vụ (provider router), nơi nhận lưu lượng từ mạng của người dùng. Điều này được thực hiện để bảo vệ mạng khỏi lưu lượng người dùng vượt quá các tham số (parameters) đã được thỏa thuận trong hợp đồng giữa nhà cung cấp dịch vụ và khách hàng. Hơn nữa, nếu không thực hiện hồ sơ hóa, mạng sẽ chịu tình trạng quá tải (overload), làm ảnh hưởng đến tất cả người dùng.
+
+Làm phẳng lưu lượng (traffic shaping) được xem là nhiệm vụ của chính người dùng, và thường được thực hiện bởi bộ định tuyến biên (edge router) của người dùng, nơi gửi dữ liệu vào mạng của nhà cung cấp. Nếu cấu hình của làm phẳng lưu lượng trùng khớp với cấu hình của hồ sơ hóa, điều này đảm bảo rằng không có gói tin nào bị loại bỏ do vượt quá giới hạn.
+
+Một thuật toán nổi tiếng được sử dụng cho cả làm phẳng lưu lượng và hồ sơ hóa là **thuật toán xô dấu (token bucket algorithm)**.
+
+---
