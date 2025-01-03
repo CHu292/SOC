@@ -1,4 +1,4 @@
-# Introduction
+#### Introduction
 
 ```python
 print(2 + 3) 	# addition(+)
@@ -9,10 +9,10 @@ print(3 ** 2) 	# exponential(**)
 print(5 % 3)	# modulus(%)
 print(3 // 2)	# Floor division operator(//) - Toán tử chia làm tròn xuống.
 ```
-# ví dụ : 0.57 -> 0; -0.7 -> -1
+#### ví dụ : 0.57 -> 0; -0.7 -> -1
 
 
-# Checking data types
+#### Checking data types
 
 ```python
 print(type(10))			# int
