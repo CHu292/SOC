@@ -1,3 +1,5 @@
+
+
 # 2.1 Built in Functions - Hàm tích hợp sẵn
 
 Có rất nhiều hàm có sẵn như: print(), len(), type(), int(), float(), str(), input(), list(), dict(), min(), max(), sum(), sorted(), open(), file(), help(),  dir()
