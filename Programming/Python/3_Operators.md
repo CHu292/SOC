@@ -164,13 +164,13 @@ print('False == False:', False == False)
   - not in: Trả về True nếu danh sách được truy vấn không có mục nào đó (x not in y)
 
 ```python3
-print('1 is 1', 1 is 1)                   # True - because the data values are the same
-print('1 is not 2', 1 is not 2)           # True - because 1 is not 2
-print('A in Asabeneh', 'A' in 'Asabeneh') # True - A found in the string
-print('B in Asabeneh', 'B' in 'Asabeneh') # False - there is no uppercase B
-print('coding' in 'coding for all') # True - because coding for all has the word coding
-print('a in an:', 'a' in 'an')      # True
-print('4 is 2 ** 2:', 4 is 2 ** 2)   # True
+print('1 là 1', 1 is 1)                # True - vì giá trị dữ liệu là giống nhau
+print('1 không phải là 2', 1 is not 2)  # True - vì 1 không phải là 2
+print('A có trong Asabeneh', 'A' in 'Asabeneh')  # True - tìm thấy A trong chuỗi
+print('B có trong Asabeneh', 'B' in 'Asabeneh')  # False - không có chữ B hoa
+print('coding có trong "coding for all"', 'coding' in 'coding for all')  # True - vì "coding for all" có từ "coding"
+print('a có trong an:', 'a' in 'an')     # True
+print('4 là 2 ** 2:', 4 is 2 ** 2)      # True
 ```
 
 ## 3.5 Logical Operators - Toán tử logic
@@ -180,16 +180,16 @@ Khác với các ngôn ngữ lập trình khác, Python sử dụng các từ kh
 ![Logical Operators - Toán tử logic](./img/3.4.png)
 
 ```python
-print(3 > 2 and 4 > 3) # True - because both statements are true
-print(3 > 2 and 4 < 3) # False - because the second statement is false
-print(3 < 2 and 4 < 3) # False - because both statements are false
+print(3 > 2 and 4 > 3) # True - vì cả hai câu đều đúng
+print(3 > 2 and 4 < 3) # False - vì câu thứ hai sai
+print(3 < 2 and 4 < 3) # False - vì cả hai câu đều sai
 print('True and True: ', True and True)
-print(3 > 2 or 4 > 3)  # True - because both statements are true
-print(3 > 2 or 4 < 3)  # True - because one of the statements is true
-print(3 < 2 or 4 < 3)  # False - because both statements are false
+print(3 > 2 or 4 > 3)  # True - vì cả hai câu đều đúng
+print(3 > 2 or 4 < 3)  # True - vì một trong hai câu đúng
+print(3 < 2 or 4 < 3)  # False - vì cả hai câu đều sai
 print('True or False:', True or False)
-print(not 3 > 2)     # False - because 3 > 2 is true, then not True gives False
-print(not True)      # False - Negation, the not operator turns true to false
+print(not 3 > 2)     # False - vì 3 > 2 là đúng, nên not True sẽ ra False
+print(not True)      # False - Phủ định, toán tử not sẽ chuyển True thành False
 print(not False)     # True
 print(not not True)  # True
 print(not not False) # False
