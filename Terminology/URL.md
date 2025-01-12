@@ -1,3 +1,5 @@
+# URL (Uniform Resource Locator)
+
 URL (Uniform Resource Locator) là Định vị Tài nguyên Thống nhất, thường được gọi là địa chỉ web, dùng để xác định và truy cập các tài nguyên trên Internet. Mỗi URL trỏ đến một tài nguyên duy nhất, như trang HTML, tài liệu CSS, hình ảnh hoặc video. 
 
 **Cấu trúc của URL:**
