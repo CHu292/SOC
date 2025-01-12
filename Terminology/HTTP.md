@@ -80,4 +80,4 @@ HTTPS (HTTP Secure) là phiên bản bảo mật của HTTP, sử dụng mã hó
 4. **Thân phản hồi (Response Body):**
    - Chứa dữ liệu được yêu cầu, như nội dung HTML, hình ảnh, hoặc dữ liệu khác.
 
-![Cấu trúc cơ bản của HTTP](./image/cau_truc_co_ban_HTTP.png)
+![Cấu trúc cơ bản của HTTP](./img/HTTP/cau_truc_co_ban_HTTP.png)
