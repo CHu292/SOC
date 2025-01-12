@@ -7,7 +7,7 @@
 - [Chương 1: HTTP là gì?](#chuong-1)
 - [Chương 2: Cấu trúc cơ bản của HTTP](#chuong-2)
 - [Chương 3: Kết nối của HTTP](#chuong-3)
-- [Chương 4: Chuẩn hóa và phân loại mạng](#chuong-4-chuan-hoa-va-phan-loai-mang)
+- [Chương 4: HTTP Status Code – Mã trạng thái HTTP là gì?](#chuong-4)
 - [Chương 5: Các đặc tính mạng và chất lượng dịch vụ](#chuong-5-cac-dac-tinh-mang-va-chat-luong-dich-vu)
 - [Câu hỏi cho Phần I](#cau-hoi-cho-phan-i)
 
@@ -89,7 +89,11 @@ HTTPS (HTTP Secure) là phiên bản bảo mật của HTTP, sử dụng mã hó
 
 ![Cấu trúc cơ bản của HTTP](./img/HTTP/cau_truc_co_ban_HTTP.png)
 
+---
+
 <h3 id="chuong-3">Chương 3: Kết nối của HTTP</h3>
+
+---
 
 Kết nối trong HTTP được thiết lập qua các phương thức sau:
 
@@ -106,3 +110,88 @@ Kết nối trong HTTP được thiết lập qua các phương thức sau:
 - HTTP/2 nâng cao hiệu quả bằng cách cho phép gửi nhiều yêu cầu và nhận nhiều phản hồi đồng thời qua một kết nối duy nhất, sử dụng kỹ thuật ghép kênh (multiplexing). Điều này giúp giảm độ trễ và tăng tốc độ truyền tải dữ liệu. 
 
 - HTTP/3, dựa trên giao thức QUIC, tiếp tục cải thiện hiệu suất và bảo mật bằng cách sử dụng UDP thay vì TCP, giúp thiết lập kết nối nhanh hơn và giảm độ trễ trong truyền tải dữ liệu. 
+
+---
+
+<h3 id="chuong-4">Chương 4: HTTP Status Code – Mã trạng thái HTTP là gì?</h3>
+
+---
+
+Mã trạng thái HTTP (HTTP Status Codes) là các mã số gồm ba chữ số được máy chủ web trả về để thông báo về kết quả xử lý yêu cầu từ phía máy khách (client). Các mã này được chia thành năm nhóm chính, dựa trên chữ số đầu tiên:
+
+**1xx – Phản hồi thông tin (Informational):**
+
+- *100 Continue:* Tiếp tục.
+- *101 Switching Protocols:* Đang chuyển đổi giao thức.
+- *102 Processing (WebDAV):* Đang xử lý.
+- *103 Early Hints:* Gợi ý sớm.
+
+**2xx – Phản hồi thành công (Successful):**
+
+- *200 OK:* Thành công.
+- *201 Created:* Đã tạo.
+- *202 Accepted:* Đã chấp nhận.
+- *203 Non-Authoritative Information:* Thông tin không có thẩm quyền.
+- *204 No Content:* Không có nội dung.
+- *205 Reset Content:* Đặt lại nội dung.
+- *206 Partial Content:* Nội dung một phần.
+- *207 Multi-Status (WebDAV):* Trạng thái đa phần.
+- *208 Already Reported (WebDAV):* Đã được báo cáo.
+- *226 IM Used:* Đã sử dụng IM.
+
+**3xx – Chuyển hướng (Redirection):**
+
+- *300 Multiple Choices:* Nhiều lựa chọn.
+- *301 Moved Permanently:* Đã chuyển vĩnh viễn.
+- *302 Found:* Đã tìm thấy.
+- *303 See Other:* Xem tài nguyên khác.
+- *304 Not Modified:* Không thay đổi.
+- *305 Use Proxy:* Sử dụng proxy.
+- *306 Switch Proxy:* Chuyển proxy.
+- *307 Temporary Redirect:* Chuyển hướng tạm thời.
+- *308 Permanent Redirect:* Chuyển hướng vĩnh viễn.
+
+**4xx – Lỗi phía khách hàng (Client Error):**
+
+- *400 Bad Request:* Yêu cầu không hợp lệ.
+- *401 Unauthorized:* Chưa được xác thực.
+- *402 Payment Required:* Yêu cầu thanh toán.
+- *403 Forbidden:* Bị cấm.
+- *404 Not Found:* Không tìm thấy.
+- *405 Method Not Allowed:* Phương thức không được phép.
+- *406 Not Acceptable:* Không chấp nhận.
+- *407 Proxy Authentication Required:* Yêu cầu xác thực proxy.
+- *408 Request Timeout:* Hết thời gian yêu cầu.
+- *409 Conflict:* Xung đột.
+- *410 Gone:* Đã biến mất.
+- *411 Length Required:* Yêu cầu độ dài.
+- *412 Precondition Failed:* Điều kiện tiên quyết thất bại.
+- *413 Payload Too Large:* Tải trọng quá lớn.
+- *414 URI Too Long:* URI quá dài.
+- *415 Unsupported Media Type:* Loại phương tiện không được hỗ trợ.
+- *416 Range Not Satisfiable:* Phạm vi không thỏa mãn.
+- *417 Expectation Failed:* Mong đợi thất bại.
+- *418 I'm a teapot:* Tôi là một ấm trà.
+- *421 Misdirected Request:* Yêu cầu sai hướng.
+- *422 Unprocessable Entity (WebDAV):* Thực thể không xử lý được.
+- *423 Locked (WebDAV):* Bị khóa.
+- *424 Failed Dependency (WebDAV):* Phụ thuộc thất bại.
+- *425 Too Early:* Quá sớm.
+- *426 Upgrade Required:* Yêu cầu nâng cấp.
+- *428 Precondition Required:* Yêu cầu điều kiện tiên quyết.
+- *429 Too Many Requests:* Quá nhiều yêu cầu.
+- *431 Request Header Fields Too Large:* Trường tiêu đề yêu cầu quá lớn.
+- *451 Unavailable For Legal Reasons:* Không khả dụng vì lý do pháp lý.
+
+**5xx – Lỗi phía máy chủ (Server Error):**
+
+- *500 Internal Server Error:* Lỗi máy chủ nội bộ.
+- *501 Not Implemented:* Chưa được triển khai.
+- *502 Bad Gateway:* Cổng xấu.
+- *503 Service Unavailable:* Dịch vụ không khả dụng.
+- *504 Gateway Timeout:* Hết thời gian cổng.
+- *505 HTTP Version Not Supported:* Phiên bản HTTP không được hỗ trợ.
+- *506 Variant Also Negotiates:* Biến thể cũng đàm phán.
+- *507 Insufficient Storage (WebDAV):* Lưu trữ không đủ.
+- *508 Loop Detected (WebDAV):* Phát hiện vòng lặp.
+- *510 Not Extended:* Không mở 
