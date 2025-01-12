@@ -62,14 +62,14 @@ Dưới đây là hướng dẫn cụ thể cách xóa Cookies trên các trình
 3. Chọn mục **Privacy & Security**.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_1.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_1.png" alt="" width="500">
 </p>
 
 4. Trong phần **Cookies and Site Data**, bấm vào nút **Clear Data...**.
 5. Cửa sổ **Clear Data** sẽ hiện ra. Tick vào các phần dữ liệu cần xóa, bao gồm **Cookies** nếu muốn. Sau đó, bấm **Clear** để hoàn tất.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_2.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_2.png" alt="" width="500">
 </p>
 
 ---
@@ -81,14 +81,14 @@ Dưới đây là hướng dẫn cụ thể cách xóa Cookies trên các trình
 3. Chọn **History**.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_3.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_3.png" alt="" width="500">
 </p>
 
 4. Chọn **Clear Browsing Data** ở cột bên trái. Trong ô **Time range**, chọn **All time**.
 5. Tick vào **Cookies and other site data** cùng với **Cached images and files**. Sau đó bấm nút **Clear data** để hoàn tất.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_4.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_4.png" alt="" width="500">
 </p>
 
 ---
@@ -99,21 +99,21 @@ Dưới đây là hướng dẫn cụ thể cách xóa Cookies trên các trình
 2. Bấm vào menu **Tools** (biểu tượng 3 chấm nằm ngang), sau đó chọn **Settings**.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_5.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_5.png" alt="" width="500">
 </p>
 
 3. Bấm vào **Privacy, search, and services** trong menu bên trái.
 4. Dưới mục **Clear browsing data**, bấm vào nút **Choose what to clear**.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_6.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_6.png" alt="" width="500">
 </p>
 
 5. Chọn **Cookies and other site data** và **Cached images and files**.
 6. Bấm **Clear now** để hoàn tất.
 
 <p align="center">
-  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/igmae/Cookies/xoa_cookie_7.png" alt="" width="500">
+  <img src="https://github.com/CHu292/SOC/blob/main/Terminology/img/Cookies/xoa_cookie_7.png" alt="" width="500">
 </p>
 
 7. Khởi động lại Microsoft Edge để thay đổi này có hiệu lực.
