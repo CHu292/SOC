@@ -6,7 +6,7 @@
 ## [Phần I: HTTP là gì? Các khía cạnh cơ bản của HTTP](#http-la-gi)
 - [Chương 1: HTTP là gì?](#chuong-1)
 - [Chương 2: Cấu trúc cơ bản của HTTP](#chuong-2)
-- [Chương 3: Chuyển mạch kênh và chuyển mạch gói](#chuong-3-chuyen-mach-kenh-va-chuyen-mach-goi)
+- [Chương 3: Kết nối của HTTP](#chuong-3)
 - [Chương 4: Chuẩn hóa và phân loại mạng](#chuong-4-chuan-hoa-va-phan-loai-mang)
 - [Chương 5: Các đặc tính mạng và chất lượng dịch vụ](#chuong-5-cac-dac-tinh-mang-va-chat-luong-dich-vu)
 - [Câu hỏi cho Phần I](#cau-hoi-cho-phan-i)
@@ -80,4 +80,23 @@ HTTPS (HTTP Secure) là phiên bản bảo mật của HTTP, sử dụng mã hó
 4. **Thân phản hồi (Response Body):**
    - Chứa dữ liệu được yêu cầu, như nội dung HTML, hình ảnh, hoặc dữ liệu khác.
 
+
 ![Cấu trúc cơ bản của HTTP](./img/HTTP/cau_truc_co_ban_HTTP.png)
+
+<h3 id="chuong-3">Chương 3: Kết nối của HTTP</h3>
+
+Kết nối trong HTTP được thiết lập qua các phương thức sau:
+
+**Kết nối không liên tục (Non-Persistent Connection):**
+
+- Trong HTTP/1.0, mỗi yêu cầu từ máy khách đến máy chủ thiết lập một kết nối TCP riêng biệt. Sau khi máy chủ phản hồi, kết nối này sẽ được đóng lại. Phương thức này không hiệu quả khi cần tải nhiều tài nguyên, do phải thiết lập nhiều kết nối liên tiếp, tăng độ trễ và tải cho máy chủ. 
+
+**Kết nối liên tục (Persistent Connection):**
+
+- Để cải thiện hiệu suất, HTTP/1.1 giới thiệu kết nối liên tục, cho phép sử dụng một kết nối TCP duy nhất cho nhiều yêu cầu và phản hồi giữa máy khách và máy chủ. Điều này giảm thiểu thời gian thiết lập kết nối mới cho mỗi yêu cầu, tăng tốc độ tải trang và giảm tải cho máy chủ. 
+
+**Kết nối trong HTTP/2 và HTTP/3:**
+
+- HTTP/2 nâng cao hiệu quả bằng cách cho phép gửi nhiều yêu cầu và nhận nhiều phản hồi đồng thời qua một kết nối duy nhất, sử dụng kỹ thuật ghép kênh (multiplexing). Điều này giúp giảm độ trễ và tăng tốc độ truyền tải dữ liệu. 
+
+- HTTP/3, dựa trên giao thức QUIC, tiếp tục cải thiện hiệu suất và bảo mật bằng cách sử dụng UDP thay vì TCP, giúp thiết lập kết nối nhanh hơn và giảm độ trễ trong truyền tải dữ liệu. 
