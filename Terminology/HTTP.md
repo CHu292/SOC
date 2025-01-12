@@ -5,7 +5,7 @@
 
 ## [Phần I: HTTP là gì? Các khía cạnh cơ bản của HTTP](#http-la-gi)
 - [Chương 1: HTTP là gì?](#chuong-1)
-- [Chương 2: Các nguyên tắc chung trong xây dựng mạng](#chuong-2-cac-nguyen-tac-chung-trong-xay-dung-mang)
+- [Chương 2: Cấu trúc cơ bản của HTTP](#chuong-2)
 - [Chương 3: Chuyển mạch kênh và chuyển mạch gói](#chuong-3-chuyen-mach-kenh-va-chuyen-mach-goi)
 - [Chương 4: Chuẩn hóa và phân loại mạng](#chuong-4-chuan-hoa-va-phan-loai-mang)
 - [Chương 5: Các đặc tính mạng và chất lượng dịch vụ](#chuong-5-cac-dac-tinh-mang-va-chat-luong-dich-vu)
@@ -45,4 +45,39 @@ HTTP (HyperText Transfer Protocol) là giao thức truyền tải siêu văn b�
 
 HTTPS (HTTP Secure) là phiên bản bảo mật của HTTP, sử dụng mã hóa TLS (Transport Layer Security) để bảo vệ dữ liệu trong quá trình truyền tải, đảm bảo tính toàn vẹn và bảo mật thông tin giữa máy khách và máy chủ. 
 
-Hiểu rõ về HTTP giúp bạn nắm bắt cách thức hoạt động của web và tầm quan trọng của việc bảo mật thông tin trực tuyến. 
+<h3 id="chuong-2">Chương 2: Cấu trúc cơ bản của HTTP</h3>
+
+
+**Cấu trúc của một yêu cầu HTTP (HTTP Request):**
+
+1. **Dòng yêu cầu (Request Line):**
+   - **Phương thức HTTP (HTTP Method):** Xác định hành động cần thực hiện, như GET, POST, PUT, DELETE.
+   - **Đường dẫn tài nguyên (Request-URI):** Địa chỉ của tài nguyên trên máy chủ.
+   - **Phiên bản HTTP (HTTP Version):** Ví dụ: HTTP/1.1.
+
+2. **Tiêu đề yêu cầu (Request Headers):**
+   - Chứa các cặp khóa-giá trị cung cấp thông tin bổ sung về yêu cầu, như loại trình duyệt, định dạng dữ liệu chấp nhận.
+
+3. **Dòng trống:**
+   - Phân tách phần tiêu đề và thân yêu cầu.
+
+4. **Thân yêu cầu (Request Body) (tùy chọn):**
+   - Chứa dữ liệu gửi kèm, thường dùng trong các yêu cầu POST hoặc PUT.
+
+**Cấu trúc của một phản hồi HTTP (HTTP Response):**
+
+1. **Dòng trạng thái (Status Line):**
+   - **Phiên bản HTTP (HTTP Version):** Ví dụ: HTTP/1.1.
+   - **Mã trạng thái (Status Code):** Cho biết kết quả xử lý, như 200 (OK), 404 (Not Found).
+   - **Thông điệp trạng thái (Reason Phrase):** Mô tả ngắn gọn về mã trạng thái.
+
+2. **Tiêu đề phản hồi (Response Headers):**
+   - Cung cấp thông tin về máy chủ, loại nội dung, độ dài nội dung.
+
+3. **Dòng trống:**
+   - Phân tách phần tiêu đề và thân phản hồi.
+
+4. **Thân phản hồi (Response Body):**
+   - Chứa dữ liệu được yêu cầu, như nội dung HTML, hình ảnh, hoặc dữ liệu khác.
+
+![Cấu trúc cơ bản của HTTP](./image/cau_truc_co_ban_HTTP.png)
