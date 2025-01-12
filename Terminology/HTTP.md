@@ -17,8 +17,11 @@
 
 <h2 id="http-la-gi">Phần I: HTTP là gì? Các khía cạnh cơ bản của HTTP</h3>
 
+---
 
 <h3 id="chuong-1">Chương 1: HTTP là gì?</h3>
+
+---
 
 
 HTTP (HyperText Transfer Protocol) là giao thức truyền tải siêu văn bản, được sử dụng để trao đổi thông tin giữa máy khách (client) và máy chủ (server) trên World Wide Web. HTTP hoạt động theo mô hình yêu cầu-phản hồi: máy khách gửi yêu cầu (request) đến máy chủ, và máy chủ phản hồi (response) với dữ liệu tương ứng. 
@@ -45,8 +48,11 @@ HTTP (HyperText Transfer Protocol) là giao thức truyền tải siêu văn b�
 
 HTTPS (HTTP Secure) là phiên bản bảo mật của HTTP, sử dụng mã hóa TLS (Transport Layer Security) để bảo vệ dữ liệu trong quá trình truyền tải, đảm bảo tính toàn vẹn và bảo mật thông tin giữa máy khách và máy chủ. 
 
+---
+
 <h3 id="chuong-2">Chương 2: Cấu trúc cơ bản của HTTP</h3>
 
+---
 
 **Cấu trúc của một yêu cầu HTTP (HTTP Request):**
 
