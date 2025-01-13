@@ -60,3 +60,23 @@
 
 ### Nội dung
 
+<h1 id="3-yếu-tố-bảo-mật-tính-bảo-mật-tính-toàn-vẹn-và-tính-sẵn-sàng-là-gì">Phần 1: 3 yếu tố bảo mật “tính bảo mật”, “tính toàn vẹn” và “tính sẵn sàng” là gì?</h1>
+
+SMS (ISO 27001) yêu cầu xây dựng một hệ thống có thể duy trì 3 yếu tố “tính bảo mật”, “tính toàn vẹn” và “tính sẵn sàng”. Đây là 3 yếu tố ngăn chặn việc làm sai lệch, thất thoát, mất mát, hư hỏng các thông tin quan trọng và xử lý thông tin một cách an toàn.
+
+Ba yếu tố bảo mật, toàn vẹn và sẵn sàng thường được gọi bằng từ viết tắt tiếng Anh là “CIA”.
+
+- “Tính bảo mật”: confidentiality
+- “Tính toàn vẹn”: integrity
+- “Tính sẵn sàng”: availability
+
+<h1 id="tính-bảo-mật-confidentiality-là-gì">Phần 2: Tính bảo mật: Confidentiality là gì?</h1>
+
+Tính bảo mật tức là, đảm bảo thông tin chỉ được phép truy cập bởi những đối tượng được cấp phép, hay nói cách khác, là việc đảm bảo thông tin được bảo vệ sao cho không bị tiết lộ cho những đối tượng không được cấp phép.
+
+Tính bí mật của thông tin có thể đạt được bằng cách sử dụng các biện pháp như xác thực, giới hạn truy cập và mã hóa.
+
+Nếu tính bảo mật của thông tin được đảm bảo, thì có thể ngăn chặn sự xâm nhập từ bên ngoài và giảm thiểu khả năng rò rỉ, mất mát, thất thoát hoặc hư hỏng thông tin.
+
+<h2 id="tài-sản-thông-tin-cần-được-bảo-mật">2.1 Tài sản thông tin cần được bảo mật</h2>
+
