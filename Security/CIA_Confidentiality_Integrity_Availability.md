@@ -155,3 +155,53 @@ Thường xuyên xem lại và cải thiện chính sách để thích nghi vớ
 ### Kiểm tra và đánh giá bảo mật
 
 Thực hiện kiểm tra và đánh giá bảo mật định kỳ để xác minh hiệu quả của các biện pháp bảo mật thông tin.
+
+<h1 id="tính-toàn-vẹn-integrity-là-gì">Phần 3: Tính toàn vẹn: Integrity là gì?</h1>
+
+Tính toàn vẹn là trạng thái mà thông tin được lưu trữ hoặc truyền tải một cách chính xác và nhất quán. Điều này giúp ngăn chặn việc dữ liệu bị thay đổi sai hoặc bị sửa đổi một cách trái phép. Khi tính toàn vẹn không được đảm bảo, độ chính xác và đáng tin cậy của thông tin sẽ bị mất đi.
+
+Nói một cách đơn giản, việc duy trì sự chính xác, sự cập nhật và sự đầy đủ trong thông tin là mục tiêu của tính toàn vẹn.
+
+Ví dụ, nếu áp dụng vào tính toán lương, khi tính toàn vẹn không được đảm bảo, có thể xảy ra các vấn đề sau:
+
+– Số tiền lương sai lệch: Nếu thời gian làm việc và thời gian làm thêm của nhân viên không được ghi chính xác, có thể dẫn đến sai sót trong tính toán lương. Điều này có thể ảnh hưởng đến động lực làm việc và gánh nặng trong cuộc sống của nhân viên, gây ảnh hưởng tiêu cực đến năng suất của tổ chức.
+
+– Vi phạm pháp luật: Một số trường hợp sẽ bị quy cho là không tuân thủ các quy định pháp luật về mức lương tối thiểu hoặc giới hạn thời gian làm việc đã được quy định. Điều này không chỉ khiến công ty bị xử phạt mà danh tiếng của công ty cũng sẽ bị tổn hại.
+
+<h1 id="tài-sản-thông-tin-cần-duy-trì-tính-toàn-vẹn">3.1 Tài sản thông tin cần duy trì tính toàn vẹn</h1>
+
+### Thông tin tài chính
+Thông tin liên quan đến giao dịch tài chính như thông tin tài khoản ngân hàng, thông tin thẻ tín dụng, lịch sử thanh toán, cần phải đảm bảo tính toàn vẹn vì sự thay đổi hoặc sửa đổi sai sót có thể dẫn đến thiệt hại lớn.
+
+### Thông tin khách hàng
+Thông tin về cá nhân khách hàng, lịch sử giao dịch, nội dung hợp đồng và các thông tin liên quan đến khách hàng đòi hỏi tính chính xác để duy trì mối quan hệ tin cậy.
+
+### Thông tin nhân viên
+Thông tin về cá nhân nhân viên, quản lý chấm công, thông tin về lương và các thông tin liên quan đến nhân viên yêu cầu tính toàn vẹn để đảm bảo độ chính xác và đáng tin cậy của dữ liệu liên quan đến nhân viên.
+
+### Thông tin sản phẩm và dịch vụ
+Thông tin về thông số kỹ thuật sản phẩm, giá cả, thông tin kho hàng và các chi tiết khác liên quan trực tiếp đến hoạt động kinh doanh cần đảm bảo tính chính xác.
+
+### Thông tin liên quan đến pháp luật và quy định
+Thông tin liên quan đến pháp luật, quy định và tuân thủ pháp lý yêu cầu tính toàn vẹn để thực hiện hoạt động đúng quy định.
+
+### Tài sản trí tuệ
+Thông tin về tài sản trí tuệ như bằng sáng chế, quyền tác giả, quyền thương hiệu là quan trọng cho sự cạnh tranh của công ty, và do đó, yêu cầu tính toàn vẹn.
+
+### Thông tin kế toán và tài chính
+Sổ sách kế toán, báo cáo tài chính, ngân sách và các thông tin tài chính khác ảnh hưởng đến quản lý doanh nghiệp, yêu cầu tính chính xác và đáng tin cậy.
+
+<h2 id="các-biện-pháp-cụ-thể">3.2 Các biện pháp cụ thể</h2>
+
+### Kiểm soát truy cập
+Quản lý quyền truy cập thông tin và ngăn chặn sự thay đổi hoặc sửa đổi trái phép.
+
+### Sao lưu dữ liệu
+Thực hiện sao lưu định kỳ dữ liệu để khôi phục thông tin chính xác trong trường hợp dữ liệu bị hỏng.
+
+### Tổng kiểm và hàm băm
+Xác minh tính toàn vẹn của dữ liệu bằng cách tổng kiểm tra và sử dụng hàm băm.
+
+### Xác minh nhập và chỉnh sửa dữ liệu
+Đảm bảo rằng dữ liệu được nhập và chỉnh sửa chính xác bằng cách thiết lập các kiểm tra hợp lệ trên biểu mẫu nhập liệu, theo dõi và kiểm tra lịch sử thay đổi của dữ liệu để bảo đảm tính toàn vẹn.
+
