@@ -72,7 +72,7 @@
 | `command > file.txt`              | Ghi kết quả lệnh vào tệp (ghi đè).                                                                 |
 | `command >> file.txt`             | Ghi kết quả lệnh vào tệp (thêm vào cuối tệp).                                                      |
 | `command 2> error.log`            | Ghi lỗi của lệnh vào tệp log lỗi.                                                                  |
-| `command | another_command`       | Chuyển kết quả lệnh đầu tiên làm đầu vào cho lệnh thứ hai.                                          |
+| `command \| another_command`       | Chuyển kết quả lệnh đầu tiên làm đầu vào cho lệnh thứ hai.                                          |
 
 ---
 
