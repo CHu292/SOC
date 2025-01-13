@@ -1,4 +1,6 @@
-# Mục lục
+# Tam Giác Bảo Mật CIA
+
+### Mục lục
 
 1. [3 yếu tố bảo mật “tính bảo mật”, “tính toàn vẹn” và “tính sẵn sàng” là gì?](#3-yếu-tố-bảo-mật-tính-bảo-mật-tính-toàn-vẹn-và-tính-sẵn-sàng-là-gì)
 2. [Tính bảo mật: Confidentiality là gì?](#tính-bảo-mật-confidentiality-là-gì)
@@ -54,3 +56,7 @@
    - [Tính đáng tin cậy (Reliability)](#tính-đáng-tin-cậy-reliability)
    - [Tính trách nhiệm (Accountability)](#tính-trách-nhiệm-accountability)
    - [Tính không thể chối bỏ (Non-repudiation)](#tính-không-thể-chối-bỏ-non-repudiation)
+
+
+### Nội dung
+
