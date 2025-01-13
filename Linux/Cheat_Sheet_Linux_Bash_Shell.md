@@ -1,4 +1,4 @@
-### **Cheat Sheet: Linux Bash Shell 
+### Cheat Sheet: Linux Bash Shell 
 
 #### **1. Giới thiệu**
 - **Bash Shell Cheat Sheet** cung cấp các lệnh cơ bản để làm việc hiệu quả trên Linux.
