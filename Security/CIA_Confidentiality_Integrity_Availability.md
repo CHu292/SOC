@@ -317,3 +317,4 @@ Theo dõi hoạt động của các công ty hoặc cá nhân. Điều này giú
 
 Chứng minh rằng thông tin không thể bị phủ nhận sau này. Điều này đảm bảo rằng thông tin không bị sửa đổi hoặc chối bỏ sau khi được sử dụng. Việc ghi log hệ thống là một biện pháp phòng ngừa chống lại sự chối bỏ.
 
+[Bài viết được tham khảo tại đây](https://3ac.vn/tam-giac-bao-mat-cia-tinh-bao-mat-tinh-toan-ven-tinh-san-sang-la-gi/#1_Tai_san_thong_tin_can_duoc_bao_mat)
