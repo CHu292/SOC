@@ -82,9 +82,11 @@ Nếu tính bảo mật của thông tin được đảm bảo, thì có thể n
 
 
 ### Thông tin cá nhân
+
 Thông tin cá nhân của khách hàng và nhân viên, bao gồm địa chỉ, số điện thoại, địa chỉ email và thông tin nhận dạng cá nhân khác, phải được bảo vệ dưới góc độ quyền riêng tư.
 
 ### Bí mật kinh doanh
+
 Thông tin liên quan đến bí mật thương mại cần được bảo vệ, bao gồm:
 - Nghiên cứu và phát triển
 - Thông tin kỹ thuật
@@ -92,24 +94,64 @@ Thông tin liên quan đến bí mật thương mại cần được bảo vệ,
 - Thông tin về sản phẩm và dịch vụ mới
 
 ### Thông tin hợp đồng
+
 Các thông tin liên quan đến hợp đồng cần được bảo mật, bao gồm:
 - Hợp đồng với đối tác kinh doanh và công ty đối tác
 - Thông tin dự án trong quá trình đàm phán kinh doanh
 
 ### Thông tin tài chính
+
 Thông tin liên quan đến tình hình tài chính của một tổ chức cần được giữ bí mật, bao gồm:
 - Dữ liệu kế toán
 - Ngân sách và dự toán
 - Kế hoạch tài trợ
 
 ### Thông tin pháp lý và luật định
+
 Thông tin cần bảo vệ bao gồm các yêu cầu pháp lý và luật định, chẳng hạn như:
 - Tài liệu pháp lý
 - Thông tin kiện tụng
 - Báo cáo kiểm toán
 
 ### Thông tin bảo mật
+
 Tính bảo mật rất quan trọng đối với các thông tin sau:
 - Sơ đồ cấu hình mạng
 - Thông tin lỗ hổng hệ thống
 - Mật khẩu
+
+<h2 id="các-biện-pháp-cụ-thể">2.2 Các biện pháp cụ thể</h2>
+
+### Kiểm soát truy cập
+
+Giới hạn quyền truy cập thông tin chỉ cho những người có quyền hạn tối thiểu cần thiết, nhằm ngăn chặn truy cập trái phép và rò rỉ thông tin.  
+Áp dụng danh sách kiểm soát truy cập (ACL) và chỉ cho phép truy cập đối với người dùng cụ thể hoặc nhóm cụ thể.
+
+### Mã hóa
+
+Áp dụng công nghệ mã hóa cho việc truyền tải và lưu trữ dữ liệu, nhằm đảm bảo rằng thông tin không thể đọc được ngay cả khi xảy ra truy cập trái phép hoặc rò rỉ.  
+Nên sử dụng các phương pháp mã hóa phù hợp như mã hóa toàn bộ thiết bị hoặc mã hóa tệp tin.
+
+### Phân loại dữ liệu
+
+Phân loại tài sản thông tin theo mức độ bảo mật và áp dụng các biện pháp bảo vệ phù hợp cho mỗi mức độ.  
+Lập chính sách phân loại dữ liệu và thông báo rõ ràng cho nhân viên.
+
+### Giáo dục và đào tạo về an toàn thông tin
+
+Tổ chức các chương trình giáo dục và đào tạo về an toàn thông tin nhằm nâng cao nhận thức của nhân viên.  
+Thực hiện đào tạo nâng cao kiến thức định kỳ và liên tục, nhằm cải thiện liên tục các biện pháp bảo mật.
+
+### An ninh vật lý
+
+Lưu trữ tài sản thông tin trong các cơ sở và phòng được áp dụng biện pháp bảo mật, nhằm ngăn chặn truy cập trái phép và mất mát do trộm cắp.  
+Nên áp dụng các biện pháp bảo mật vật lý như camera an ninh và thẻ truy cập.
+
+### Thiết lập chính sách và quy trình an toàn thông tin
+
+Xây dựng chính sách an toàn thông tin cho toàn bộ tổ chức và đề ra các quy trình và quy tắc cụ thể.  
+Thường xuyên xem lại và cải thiện chính sách để thích nghi với tình hình an ninh.
+
+### Kiểm tra và đánh giá bảo mật
+
+Thực hiện kiểm tra và đánh giá bảo mật định kỳ để xác minh hiệu quả của các biện pháp bảo mật thông tin.
