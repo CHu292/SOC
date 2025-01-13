@@ -80,3 +80,36 @@ Nếu tính bảo mật của thông tin được đảm bảo, thì có thể n
 
 <h2 id="tài-sản-thông-tin-cần-được-bảo-mật">2.1 Tài sản thông tin cần được bảo mật</h2>
 
+
+## Thông tin cá nhân
+Thông tin cá nhân của khách hàng và nhân viên, bao gồm địa chỉ, số điện thoại, địa chỉ email và thông tin nhận dạng cá nhân khác, phải được bảo vệ dưới góc độ quyền riêng tư.
+
+## Bí mật kinh doanh
+Thông tin liên quan đến bí mật thương mại cần được bảo vệ, bao gồm:
+- Nghiên cứu và phát triển
+- Thông tin kỹ thuật
+- Chiến lược kinh doanh
+- Thông tin về sản phẩm và dịch vụ mới
+
+## Thông tin hợp đồng
+Các thông tin liên quan đến hợp đồng cần được bảo mật, bao gồm:
+- Hợp đồng với đối tác kinh doanh và công ty đối tác
+- Thông tin dự án trong quá trình đàm phán kinh doanh
+
+## Thông tin tài chính
+Thông tin liên quan đến tình hình tài chính của một tổ chức cần được giữ bí mật, bao gồm:
+- Dữ liệu kế toán
+- Ngân sách và dự toán
+- Kế hoạch tài trợ
+
+## Thông tin pháp lý và luật định
+Thông tin cần bảo vệ bao gồm các yêu cầu pháp lý và luật định, chẳng hạn như:
+- Tài liệu pháp lý
+- Thông tin kiện tụng
+- Báo cáo kiểm toán
+
+## Thông tin bảo mật
+Tính bảo mật rất quan trọng đối với các thông tin sau:
+- Sơ đồ cấu hình mạng
+- Thông tin lỗ hổng hệ thống
+- Mật khẩu
