@@ -130,7 +130,7 @@ Hãy xem bảng và ảnh chụp màn hình dưới đây làm ví dụ. Ở đ�
 | CMNatic-PC         | 192.168.1.74  | Private          |
 | CMNatic-PC         | 86.157.52.21  | Public           |
 
-![Địa chỉ IP](./img/1_What_is_Networking/3.2.png)
+![Địa chỉ IP](./img/1_What_is_Networking/3.3.png)
 
 Hai thiết bị này có thể sử dụng địa chỉ IP riêng của mình để giao tiếp với nhau. Tuy nhiên, bất kỳ dữ liệu nào được gửi lên Internet từ một trong hai thiết bị này sẽ được nhận dạng bằng cùng một địa chỉ IP công cộng. Địa chỉ IP công cộng được cung cấp bởi Nhà cung cấp Dịch vụ Internet của bạn (ISP) với một khoản phí hàng tháng (hóa đơn của bạn!).
 
