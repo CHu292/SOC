@@ -132,4 +132,25 @@ Hãy đến đó ngay và xác nhận bạn đã nhận được tiền! *(Có t
 
 TỔNG KẾT: Nếu bạn là một người kiểm tra xâm nhập hoặc tư vấn bảo mật, đây là một bài tập bạn sẽ thực hiện cho các công ty để kiểm tra lỗ hổng trong ứng dụng web của họ và tìm các trang ẩn để điều tra các lỗ hổng.  
 
+# Task 3: Careers in Cyber Security
 
+### **Làm thế nào để bắt đầu học?**  
+
+Mọi người thường tự hỏi làm thế nào người khác trở thành hacker (tư vấn viên bảo mật) hoặc người bảo vệ (chuyên gia phân tích bảo mật chống tội phạm mạng), và câu trả lời rất đơn giản:  
+**Chia nhỏ vấn đề, tìm hiểu một lĩnh vực an ninh mạng mà bạn quan tâm và thường xuyên thực hành thông qua các bài tập thực tế.** Hình thành thói quen học một chút mỗi ngày trên TryHackMe, và bạn sẽ tích lũy đủ kiến thức để có được công việc đầu tiên trong ngành.  
+
+Hãy tin chúng tôi; bạn có thể làm được! Hãy xem một số người đã sử dụng TryHackMe để đạt được công việc bảo mật đầu tiên của họ:  
+
+- **Paul**: Từ công nhân xây dựng trở thành kỹ sư bảo mật. [Xem thêm](https://tryhackme.com/r/resources/blog/construction-worker-to-security-engineer-how-paul-used-tryhackme-to-land-his-first-job-in-security)  
+- **Kassandra**: Từ giáo viên âm nhạc trở thành chuyên gia bảo mật. [Xem thêm](https://tryhackme.com/r/resources/blog/the-teacher-becomes-the-student)  
+- **Brandon**: Sử dụng TryHackMe khi còn đi học để có được công việc đầu tiên trong lĩnh vực an ninh mạng. [Xem thêm](https://tryhackme.com/r/resources/blog/brandons-success-story)  
+
+---
+
+### **Có những nghề nghiệp nào?**  
+
+Phòng học về **nghề nghiệp trong lĩnh vực an ninh mạng** (Cyber Careers Room) sẽ đi sâu hơn vào các công việc khác nhau trong ngành. Tuy nhiên, đây là mô tả ngắn gọn về một số vai trò trong lĩnh vực an ninh tấn công:  
+
+- **Penetration Tester (Người kiểm tra xâm nhập)**: Chịu trách nhiệm kiểm tra các sản phẩm công nghệ để tìm các lỗ hổng bảo mật có thể khai thác.  
+- **Red Teamer**: Đóng vai trò là một kẻ tấn công, tấn công vào tổ chức và cung cấp phản hồi từ góc nhìn của đối thủ.  
+- **Security Engineer (Kỹ sư bảo mật)**: Thiết kế, giám sát và duy trì các biện pháp bảo mật, mạng và hệ thống để giúp ngăn chặn các cuộc tấn công mạng.  
