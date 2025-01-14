@@ -36,7 +36,7 @@ Tùy chọn nào dưới đây đại diện tốt hơn cho quá trình bạn m�
 
 Trong phòng học này, chúng tôi đã chuẩn bị một ứng dụng ngân hàng giả lập mang tên Fakebank:
 
-![Ứng dụng Ngân Hàng giả lập](.///img/2.1.png)
+![Ứng dụng Ngân Hàng giả lập](.///1_Offensive_Security_Intro/2.1.png)
 
 
 ### **Lần hack đầu tiên của bạn**  
