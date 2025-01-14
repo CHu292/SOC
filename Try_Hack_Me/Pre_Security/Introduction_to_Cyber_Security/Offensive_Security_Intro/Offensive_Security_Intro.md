@@ -1,5 +1,5 @@
 # Offensive Security Intro
-
+> Hack một trang web đầu tiên của bạn (một cách hợp pháp trong một môi trường an toàn) và trải nghiệm công việc của một hacker có đạo đức.
 
 ## Mục Lục
 
