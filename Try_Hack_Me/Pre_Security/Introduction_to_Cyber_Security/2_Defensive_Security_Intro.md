@@ -75,7 +75,7 @@ Một **Trung tâm Điều hành An ninh (SOC)** là một nhóm các chuyên gi
 
 ---
 
-### **Tình báo mối đe dọa (Threat Intelligence)**  
+#### **Tình báo mối đe dọa (Threat Intelligence)**  
 Tình báo mối đe dọa tập trung vào việc thu thập thông tin về các mối đe dọa hiện tại và tiềm năng, nhằm chuẩn bị tốt hơn cho công ty chống lại các đối thủ.  
 Ví dụ:  
 
@@ -131,6 +131,8 @@ Ví dụ về một cuộc tấn công mạng bao gồm:
 2. **Phát hiện và Phân tích (Detection and Analysis):** Nhóm phải có các nguồn lực cần thiết để phát hiện bất kỳ sự cố nào; hơn nữa, điều quan trọng là phải phân tích sâu hơn sự cố được phát hiện để tìm hiểu về mức độ nghiêm trọng của nó.  
 3. **Kiểm soát, Loại bỏ và Phục hồi (Containment, Eradication, and Recovery):** Một khi sự cố được xác định, điều quan trọng là phải ngăn chặn nó ảnh hưởng đến các hệ thống khác, loại bỏ nó và phục hồi các hệ thống bị ảnh hưởng. Ví dụ, khi nhận thấy rằng một hệ thống bị nhiễm virus máy tính, chúng ta sẽ muốn dừng (kiểm soát) virus khỏi lan sang các hệ thống khác, làm sạch (loại bỏ) virus, và đảm bảo khôi phục hệ thống.  
 4. **Hoạt động sau sự cố (Post-Incident Activity):** Sau khi phục hồi thành công, một báo cáo được tạo ra và bài học rút ra được chia sẻ để ngăn chặn các sự cố tương tự trong tương lai.
+
+![4 giai đoạn ứng phó sự cố](./img/2_Defensive_Security_Intro/2.1.png)
 
 #### **Phân tích phần mềm độc hại (Malware Analysis)**  
 
