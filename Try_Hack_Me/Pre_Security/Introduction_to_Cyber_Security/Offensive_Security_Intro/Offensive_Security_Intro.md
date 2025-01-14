@@ -21,13 +21,19 @@
 
 Trong phòng TryHackMe này, bạn sẽ được hướng dẫn cách hack một trang web đầu tiên trong một môi trường hợp pháp và an toàn. Mục tiêu là chỉ ra cách một hacker có đạo đức hoạt động.  
 
-Nhưng trước khi làm điều đó, hãy ôn lại bằng cách trả lời các câu hỏi bên dưới. Gõ câu trả lời của bạn vào ô văn bản sau câu hỏi và nhấp vào nút "Nộp bài" (Submit). Khi hoàn thành, tiếp tục sang Nhiệm vụ 2.  
-
 **Trả lời các câu hỏi sau**  
 Tùy chọn nào dưới đây đại diện tốt hơn cho quá trình bạn mô phỏng hành động của một hacker để tìm ra các lỗ hổng trong hệ thống?  
 
 - An ninh Tấn công (Offensive Security)  
 - An ninh Phòng thủ (Defensive Security)
 
-Đáp án: Offensive Security
+<details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: Offensive Security
+</details>
 
+# Task 2: Hacking your first machine
+
+Trong phòng học này, chúng tôi đã chuẩn bị một ứng dụng ngân hàng giả lập mang tên Fakebank:
+
+![Ứng dụng Ngân Hàng giả lập](.///img/2.1.png)
