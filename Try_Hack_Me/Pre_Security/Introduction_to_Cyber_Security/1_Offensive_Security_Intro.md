@@ -36,7 +36,7 @@ Tùy chọn nào dưới đây đại diện tốt hơn cho quá trình bạn m�
 
 Trong phòng học này, chúng tôi đã chuẩn bị một ứng dụng ngân hàng giả lập mang tên Fakebank:
 
-![Ứng dụng Ngân Hàng giả lập](.////1_Offensive_Security_Intro/2.1.png)
+![Ứng dụng Ngân Hàng giả lập](./img/1_Offensive_Security_Intro/2.1.png)
 
 
 ### **Lần hack đầu tiên của bạn**  
@@ -88,13 +88,13 @@ Trong lệnh trên:
 
 Bạn sẽ thấy Gobuster quét trang web với từng từ trong danh sách, tìm các trang tồn tại trên trang web. Gobuster sẽ cho bạn biết các trang trong danh sách các tên trang/thư mục (được chỉ định bằng **Status: 200**).  
 
-![Gobuster trả về status 200](.///img/2.2.png)
+![Gobuster trả về status 200](./img/1_Offensive_Security_Intro/2.2.png)
 
 #### **Bước 3. Hack Ngân hàng**  
 
 Bạn sẽ tìm thấy một trang chuyển khoản bí mật cho phép bạn chuyển tiền giữa các tài khoản ngân hàng (**/bank-transfer**). Nhập trang ẩn này vào trang web FakeBank bằng thanh địa chỉ của trình duyệt.  
 
-![Nhập trang ẩn vào link của trang web](.///img/2.3.png)
+![Nhập trang ẩn vào link của trang web](./img/1_Offensive_Security_Intro/2.3.png)
 
 Từ trang này, kẻ tấn công có thể truy cập trái phép và đánh cắp tiền từ bất kỳ tài khoản ngân hàng nào.
 
@@ -107,15 +107,15 @@ Hãy đến đó ngay và xác nhận bạn đã nhận được tiền! *(Có t
 
 - Sau khi truy cập được vào trang ẩn ta có như sau:
 
-![Sau khi vào trang ẩn bank-transfer](.///img/2.4.png)
+![Sau khi vào trang ẩn bank-transfer](./img/1_Offensive_Security_Intro/2.4.png)
 
 - Nhập thông tin chuyển khoản:
 
-![Nhập thông tin chuyển khoản](.///img/2.5.png)
+![Nhập thông tin chuyển khoản](./img/1_Offensive_Security_Intro/2.5.png)
 
 - Kết quả:
 
-![Kết quả](.///img/2.6.png)
+![Kết quả](./img/1_Offensive_Security_Intro/2.6.png)
 
 ---
 
@@ -123,7 +123,7 @@ Hãy đến đó ngay và xác nhận bạn đã nhận được tiền! *(Có t
 
  Trên số dư tài khoản của bạn, bạn sẽ thấy một thông báo chỉ ra câu trả lời cho câu hỏi này. Bạn có thể tìm thấy câu trả lời cần thiết không?  
 
-![Câu hỏi 1](.///img/2.7.png)
+![Câu hỏi 1](./img/1_Offensive_Security_Intro/2.7.png)
 
 <details>
   <summary>Hiển thị đáp án</summary>
