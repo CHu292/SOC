@@ -174,3 +174,79 @@ Phân tích phần mềm độc hại nhằm tìm hiểu về các chương trì
   <summary>Hiển thị đáp án</summary>
   Đáp án: ransomware
 </details>
+
+# Task 3: Practical Example of Defensive Security
+
+### **Tình huống**  
+
+Hãy giả sử bạn là một nhà phân tích tại **Trung tâm Điều hành An ninh (SOC)**, chịu trách nhiệm bảo vệ một ngân hàng. SOC của ngân hàng này sử dụng một công cụ **Quản lý Thông tin và Sự kiện Bảo mật - Security Information and Event Management (SIEM)**, công cụ này thu thập các thông tin và sự kiện liên quan đến bảo mật từ nhiều nguồn khác nhau và hiển thị chúng trên một bảng điều khiển duy nhất. Nếu SIEM phát hiện điều gì đó đáng ngờ, nó sẽ tạo ra một cảnh báo.  
+
+Tuy nhiên, không phải tất cả các cảnh báo đều mang tính chất độc hại. Chính các nhà phân tích sẽ sử dụng kiến thức chuyên môn của mình trong lĩnh vực an ninh mạng để điều tra và xác định những cảnh báo nào là nguy hiểm.  
+
+Ví dụ, bạn có thể gặp một cảnh báo về việc một người dùng không thành công trong nhiều lần đăng nhập. Mặc dù điều này đáng nghi ngờ, nhưng đôi khi nó xảy ra, đặc biệt khi người dùng quên mật khẩu và tiếp tục cố gắng đăng nhập.  
+
+Ngoài ra, có thể xuất hiện các cảnh báo liên quan đến kết nối từ các địa chỉ IP không xác định. **Địa chỉ IP** giống như địa chỉ nhà của máy tính bạn trên Internet—nó cho các máy tính khác biết nơi gửi thông tin mà bạn yêu cầu. Khi các địa chỉ này không xác định, điều đó có thể có nghĩa là có người mới đang cố gắng kết nối hoặc ai đó đang cố gắng truy cập trái phép.  
+
+![](./img/2_Defensive_Security_Intro/3.1.png)
+
+### **Mô phỏng SIEM**  
+
+Chúng tôi đã chuẩn bị một mô phỏng tương tác, đơn giản hóa hệ thống **SIEM** (Quản lý Thông tin và Sự kiện Bảo mật) để mang đến cho bạn trải nghiệm thực tế tương tự như những gì các nhà phân tích an ninh mạng gặp phải.  
+
+Hành động này sẽ mở một "trang tĩnh" ở phía bên phải màn hình của bạn. Hãy làm theo các hướng dẫn từng bước được cung cấp trong mô phỏng để duyệt qua các sự kiện và tìm **"flag"** (lá cờ). Một flag là một chuỗi ký tự với định dạng như sau: **"THM{RANDOM_WORDS}"**. Sử dụng flag này để trả lời các câu hỏi từ các phòng học tại TryHackMe, chẳng hạn như câu hỏi bên dưới.  
+
+1. Kiểm tra các cảnh báo trong bảng điều khiển SIEM của bạn. Tìm địa chỉ IP độc hại từ các cảnh báo, ghi chú lại, sau đó nhấp vào cảnh báo để tiếp tục.
+
+![Kiểm tra cảnh báo](./img/2_Defensive_Security_Intro/3.2.png)
+
+Ta thấy rằng có một phát hiện nỗ lực kết nối trái phép từ địa chỉ IP 143.110.250.149 tới cổng 22. 
+
+Ngày: undefined 1th 2025, 11:49:45:147
+Thông báo: Unauthorized connection attempt detected from IP address 143.110.250.149 to port 22
+
+2. Kiểm tra
+
+Có những trang web trên Internet cho phép bạn kiểm tra uy tín của một địa chỉ IP để xem liệu địa chỉ đó có độc hại hay đáng ngờ hay không.
+
+![Kiểm tra địa chỉ IP đáng ngờ ](./img/2_Defensive_Security_Intro/3.3.png)
+
+kết quả: 
+
+Có nhiều cơ sở dữ liệu nguồn mở, như AbuseIPDB và Cisco Talos Intelligence, nơi bạn có thể thực hiện kiểm tra danh tiếng và vị trí cho địa chỉ IP. Hầu hết các nhà phân tích bảo mật sử dụng các công cụ này để hỗ trợ họ trong các cuộc điều tra cảnh báo. Bạn cũng có thể làm cho Internet an toàn hơn bằng cách báo cáo các IP độc hại, ví dụ, trên AbuseIPDB.
+Bây giờ chúng ta đã biết địa chỉ IP là độc hại, chúng ta cần chuyển nó đến một nhân viên!
+
+![Kết quả](./img/2_Defensive_Security_Intro/3.4.png)
+
+3. Chọn người phụ trách
+
+Chúng ta không nên quá lo lắng nếu đó là một nỗ lực xác thực không thành công, nhưng có lẽ bạn đã nhận thấy nỗ lực xác thực thành công từ địa chỉ IP độc hại. Hãy khai báo một sự cố nhỏ và nâng cấp nó. Có một số nhân viên tuyệt vời làm việc tại công ty, nhưng bạn sẽ không muốn nâng cấp điều này cho người không phù hợp không phụ trách nhóm hoặc phòng ban của bạn.
+
+![Chọn người phụ trách](./img/2_Defensive_Security_Intro/3.5.png)
+
+Ở đây ta cần chọn SOC Team Lead
+
+4. Chặn IP độc hại
+
+Bạn đã có quyền chặn địa chỉ IP độc hại và bây giờ bạn có thể tiến hành và triển khai quy tắc chặn. Chặn địa chỉ IP độc hại trên tường lửa và tìm hiểu xem họ đã để lại tin nhắn gì cho bạn.
+
+![Chặn IP độc hại](./img/2_Defensive_Security_Intro/3.6.png)
+
+5. Nhận kết quả cho flag
+
+![kết quả](./img/2_Defensive_Security_Intro/3.7.png)
+
+---
+
+### **Tiếp theo là gì?**  
+
+Trong phòng học này, chúng ta đã thảo luận về các lĩnh vực con khác nhau (**SOC, Threat Intelligence, Malware Analysis, và DFIR**) và trải nghiệm trực tiếp cách xử lý các cảnh báo trong môi trường SIEM mô phỏng. Mặc dù chúng ta đã đề cập nhiều nội dung, độ sâu và sự phức tạp của lĩnh vực này đòi hỏi còn nhiều điều phải học hỏi và khám phá. Những bài học ở đây sẽ là nền tảng của bạn khi các mối đe dọa mạng phát triển, đòi hỏi việc học tập liên tục, sự cảnh giác và khả năng thích nghi.  
+
+Hãy tiếp tục học bằng cách kiểm tra phòng học tiếp theo trong chuỗi này, **"Search Skills"**. Phòng học này sẽ dạy bạn các kỹ thuật có giá trị để tìm kiếm thông tin trực tuyến nhằm hỗ trợ các cuộc điều tra và việc học của bạn.  
+
+Nếu bạn muốn học trước và tìm hiểu thêm về các chủ đề đã thảo luận trong phòng học này, các phòng học sau được đề xuất:  
+
+- **[Introduction to SIEM](https://tryhackme.com/r/room/introtosiem):** Giới thiệu về Quản lý Thông tin và Sự kiện Bảo mật  
+- **[Security Operations](https://tryhackme.com/r/why-subscribe?roomCode=securityoperations):** Tìm hiểu về Trung tâm Điều hành An ninh (SOC), trách nhiệm, dịch vụ, và các nguồn dữ liệu của SOC  
+- **[DFIR: An Introduction](https://tryhackme.com/r/room/introductoryroomdfirmodule):** Phòng học giới thiệu về mô-đun DFIR  
+- **[Intro to Malware Analysis](https://tryhackme.com/r/why-subscribe?roomCode=intromalwareanalysis):** Những gì cần làm khi bạn gặp một phần mềm độc hại nghi ngờ
+
