@@ -609,6 +609,77 @@ Vấn đề đồng bộ hóa trên đường truyền giữa các máy tính c�
 
 Mặc dù đã áp dụng các biện pháp (ví dụ: chọn tốc độ truyền dữ liệu phù hợp, thiết kế đường truyền với các đặc tính cụ thể, và phương pháp đồng bộ hóa giữa bộ thu và bộ phát), khả năng một số bit dữ liệu được truyền bị sai lệch (errors) vẫn có thể xảy ra. Để nâng cao độ tin cậy trong trao đổi dữ liệu giữa các máy tính, thông thường, một phương pháp tiêu chuẩn được sử dụng – **kiểm tra tổng (checksum)**, trong đó giá trị của tổng kiểm tra cho mỗi khối byte được truyền qua đường truyền. Trong giao thức truyền dữ liệu (data transmission protocol), thường bao gồm một phần tử bắt buộc gọi là **tín hiệu xác nhận (acknowledgment signal)**, được gửi từ máy nhận (receiver) tới máy phát (transmitter), để xác nhận tính chính xác của dữ liệu được truyền.
 
+---
+
+### **1. Phương pháp điện thế (Potential Method)**
+
+Phương pháp này mã hóa dữ liệu bằng cách sử dụng các mức điện thế khác nhau để biểu diễn các giá trị dữ liệu. 
+
+- **Nguyên lý hoạt động:**  
+  - Mỗi mức điện áp cụ thể được ánh xạ đến một giá trị dữ liệu (như 0 hoặc 1 trong hệ nhị phân).
+  - Ví dụ: +5V biểu diễn bit `1`, 0V biểu diễn bit `0`.
+
+- **Ưu điểm:**  
+  - Đơn giản và dễ triển khai.  
+  - Ít tiêu tốn năng lượng.
+
+- **Nhược điểm:**  
+  - Nhạy cảm với nhiễu.  
+  - Không phù hợp cho truyền dẫn đường dài do suy hao tín hiệu.
+
+---
+
+### **2. Phương pháp xung (Impulse Method)**
+
+Phương pháp này sử dụng các xung tín hiệu để truyền thông tin.
+
+- **Nguyên lý hoạt động:**  
+  - Mỗi xung tín hiệu hoặc chuỗi xung được sử dụng để biểu diễn các giá trị dữ liệu.  
+  - Ví dụ: Sự xuất hiện của một xung biểu diễn `1`, còn không có xung biểu diễn `0`.
+
+- **Ví dụ cụ thể:**  
+  - **Pulse Code Modulation (PCM):** Tín hiệu được mã hóa thành chuỗi các xung dựa trên giá trị của chúng.
+  - **Manchester Encoding:** Xung tăng hoặc giảm trong một chu kỳ để biểu diễn các bit khác nhau.
+
+- **Ưu điểm:**  
+  - Chống nhiễu tốt hơn phương pháp điện thế.  
+  - Dễ dàng nhận biết tín hiệu.
+
+- **Nhược điểm:**  
+  - Yêu cầu băng thông lớn hơn để truyền tải.  
+  - Cần đồng bộ hóa tốt giữa máy phát và máy thu.
+
+---
+
+### **3. Điều chế (Modulation)**
+
+Phương pháp này mã hóa dữ liệu bằng cách điều chỉnh các đặc tính của sóng mang (carrier wave), như biên độ, tần số, hoặc pha.
+
+- **Các loại điều chế phổ biến:**  
+  - **Amplitude Modulation (AM):** Điều chỉnh biên độ của sóng mang theo dữ liệu.  
+  - **Frequency Modulation (FM):** Điều chỉnh tần số của sóng mang theo dữ liệu.  
+  - **Phase Modulation (PM):** Điều chỉnh pha của sóng mang.  
+  - **Quadrature Amplitude Modulation (QAM):** Kết hợp điều chế biên độ và pha để truyền dữ liệu hiệu quả hơn.
+
+- **Ưu điểm:**  
+  - Hiệu quả cho truyền tải dữ liệu qua khoảng cách xa (như sóng radio, viễn thông).  
+  - Hỗ trợ truyền tín hiệu analog và số.  
+
+- **Nhược điểm:**  
+  - Phức tạp hơn trong triển khai.  
+  - Dễ bị ảnh hưởng bởi nhiễu và suy giảm tín hiệu nếu không có biện pháp xử lý tốt.
+
+---
+
+### **So sánh chung:**
+
+| Phương pháp       | Đặc điểm chính                                   | Ưu điểm                      | Nhược điểm                     |
+|--------------------|------------------------------------------------|------------------------------|--------------------------------|
+| Điện thế          | Dựa trên mức điện áp                          | Đơn giản, tiết kiệm năng lượng | Nhạy cảm với nhiễu            |
+| Xung              | Sử dụng chuỗi xung để biểu diễn dữ liệu        | Chống nhiễu tốt, dễ nhận biết | Yêu cầu băng thông lớn        |
+| Điều chế          | Điều chỉnh sóng mang theo dữ liệu              | Hiệu quả cho truyền xa        | Phức tạp, nhạy cảm với suy hao |
+
+
 
 ##### 2.3.2 Đặc tính của các kênh vật lý (Characteristics of Physical Channels)
 
