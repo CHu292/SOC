@@ -86,7 +86,7 @@ Nhiệm vụ chính của tường lửa (Firewall) là bảo vệ mạng và c�
 
 Nó hoạt động như một bức tường ảo giữa mạng của bạn và mạng bên ngoài, kiểm soát lưu lượng mạng đi qua và quyết định cho phép hoặc chặn các gói dữ liệu dựa trên các quy tắc bảo mật được cấu hình.
 
-Tuy nhiên, VinaHost sẽ liệt kê các nhiệm vụ chính của tường lửa cụ thể như sau:
+Các nhiệm vụ chính của tường lửa cụ thể như sau:
 
 Kiểm soát truy cập: Tường lửa kiểm soát truy cập vào mạng hoặc vào các thiết bị trong mạng bằng cách quản lý các quy tắc truy cập dựa trên địa chỉ IP, cổng mạng, giao thức và các luật quy định khác.
 
