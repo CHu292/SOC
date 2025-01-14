@@ -163,14 +163,14 @@ Phân tích phần mềm độc hại nhằm tìm hiểu về các chương trì
 
 2. **DFIR là viết tắt của gì?**
 
-   <details>
+<details>
   <summary>Hiển thị đáp án</summary>
   Đáp án: Digital Forensics and Incident Response
 </details>
 
 3. **Loại phần mềm độc hại nào yêu cầu người dùng trả tiền để lấy lại quyền truy cập vào tệp của họ?**  
 
-   <details>
+<details>
   <summary>Hiển thị đáp án</summary>
   Đáp án: ransomware
 </details>
