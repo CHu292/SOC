@@ -56,3 +56,119 @@ Trả lời các câu hỏi dưới đây:
 
 # Task 2: Areas of Defensive Security
 
+**Nhiệm vụ 2: Các lĩnh vực của An ninh Phòng thủ**  
+
+Trong nhiệm vụ này, chúng ta sẽ khám phá hai chủ đề chính liên quan đến an ninh phòng thủ:  
+
+- **Security Operations Center - Trung tâm Điều hành An ninh (SOC)**, nơi chúng ta tìm hiểu về **Tình báo mối đe dọa (Threat Intelligence)**  
+- **Digital Forensics and Incident Response - Phân tích pháp y số và ứng phó sự cố (DFIR)**, nơi chúng ta cũng tìm hiểu về **Phân tích phần mềm độc hại (Malware Analysis)**  
+
+---
+
+### **Trung tâm Điều hành An ninh (SOC)**  
+Một **Trung tâm Điều hành An ninh (SOC)** là một nhóm các chuyên gia an ninh mạng, chịu trách nhiệm giám sát mạng và hệ thống để phát hiện các sự kiện an ninh mạng độc hại. Một số lĩnh vực chính mà SOC tập trung gồm:  
+
+- **Lỗ hổng bảo mật (Vulnerabilities):** Khi phát hiện một lỗ hổng hệ thống, cần phải sửa chữa nó bằng cách cài đặt bản cập nhật hoặc vá lỗi phù hợp. Nếu không thể sửa ngay, các biện pháp cần thiết phải được áp dụng để ngăn chặn kẻ tấn công khai thác.  
+- **Vi phạm chính sách (Policy violations):** Một chính sách bảo mật là tập hợp các quy tắc được yêu cầu để bảo vệ mạng và hệ thống. Ví dụ, nếu người dùng tải dữ liệu công ty nhạy cảm lên dịch vụ lưu trữ trực tuyến, đây là một vi phạm chính sách.  
+- **Hoạt động trái phép (Unauthorized activity):** Xem xét trường hợp thông tin đăng nhập của người dùng bị đánh cắp và kẻ tấn công sử dụng chúng để đăng nhập vào mạng. SOC phải phát hiện và chặn sự kiện này ngay khi có thể để ngăn chặn thiệt hại thêm.  
+- **Xâm nhập mạng (Network intrusions):** Dù bảo mật tốt đến đâu, luôn có khả năng bị xâm nhập, ví dụ, khi người dùng nhấp vào liên kết độc hại hoặc kẻ tấn công khai thác máy chủ công cộng. SOC phải phát hiện và ứng phó nhanh chóng.  
+
+---
+
+### **Tình báo mối đe dọa (Threat Intelligence)**  
+Tình báo mối đe dọa tập trung vào việc thu thập thông tin về các mối đe dọa hiện tại và tiềm năng, nhằm chuẩn bị tốt hơn cho công ty chống lại các đối thủ.  
+Ví dụ:  
+
+- Một số đối thủ có thể đánh cắp dữ liệu khách hàng từ nhà cung cấp dịch vụ di động.  
+- Một số khác có thể nhằm mục đích ngừng sản xuất tại một nhà máy lọc dầu.  
+
+**Quy trình:**  
+
+1. **Thu thập dữ liệu:** Từ nhật ký mạng, nguồn công khai (như diễn đàn), và các nguồn khác.  
+2. **Phân tích:** Tạo thông tin chi tiết về động cơ và phương pháp của kẻ tấn công.  
+3. **Hành động:** Đưa ra khuyến nghị và các bước giảm thiểu rủi ro.
+
+---
+
+### **Phân tích pháp y số và Ứng phó Sự cố - Digital Forensics and Incident Response (DFIR)**  
+
+
+Phần này nói về **Phân tích pháp y số (Digital Forensics)** và **Ứng phó sự cố (Incident Response)**, đồng thời bao gồm:  
+
+- Phân tích pháp y số  (Digital Forensics)
+- Ứng phó sự cố  (Incident Response)
+- Phân tích phần mềm độc hại  (Malware Analysis)
+
+---
+
+#### **Phân tích pháp y số (Digital Forensics)**  
+
+Pháp y là việc áp dụng khoa học để điều tra tội phạm và xác lập sự thật. Với sự sử dụng và phổ biến của các hệ thống số như máy tính và điện thoại thông minh, một nhánh mới của pháp y đã ra đời để điều tra tội phạm liên quan: pháp y máy tính, sau này phát triển thành pháp y số.  
+
+Trong an ninh phòng thủ, trọng tâm của pháp y số chuyển sang phân tích bằng chứng về các cuộc tấn công và thủ phạm, cùng các lĩnh vực khác như trộm cắp sở hữu trí tuệ, gián điệp mạng và xử lý nội dung không được phép. Kết quả là, pháp y số tập trung vào các lĩnh vực khác nhau như sau:  
+
+- **Hệ thống tệp (File System):** Phân tích một bản sao pháp y số cấp thấp (low-level copy) của hệ thống lưu trữ tiết lộ nhiều thông tin, chẳng hạn như chương trình đã cài đặt, tập tin được tạo, các tập tin bị ghi đè một phần và các tập tin bị xóa.  
+- **Bộ nhớ hệ thống (System Memory):** Nếu kẻ tấn công chạy chương trình độc hại của họ trong bộ nhớ mà không lưu nó vào đĩa, việc tạo một hình ảnh pháp y (bản sao cấp thấp) của bộ nhớ hệ thống là cách tốt nhất để phân tích nội dung và tìm hiểu về cuộc tấn công.  
+- **Nhật ký hệ thống (System Logs):** Mỗi máy khách và máy chủ duy trì các tệp nhật ký khác nhau về những gì đã xảy ra. Các tệp nhật ký cung cấp rất nhiều thông tin về những gì đã xảy ra trên hệ thống. Ngay cả khi kẻ tấn công cố xóa dấu vết, một số dấu vết vẫn sẽ còn lại.  
+- **Nhật ký mạng (Network Logs):** Nhật ký của các gói tin mạng đã truyền qua mạng sẽ giúp trả lời thêm nhiều câu hỏi về việc liệu có một cuộc tấn công đang xảy ra hay không và nó bao gồm những gì.  
+
+---
+
+#### **Ứng phó sự cố (Incident Response)**  
+Một **sự cố (incident)** thường liên quan đến một vụ vi phạm dữ liệu hoặc tấn công mạng; tuy nhiên, trong một số trường hợp, nó có thể là một vấn đề ít nghiêm trọng hơn, chẳng hạn như cấu hình sai, cố gắng xâm nhập hoặc vi phạm chính sách.  
+
+Ví dụ về một cuộc tấn công mạng bao gồm:  
+
+- Kẻ tấn công làm cho mạng hoặc hệ thống của bạn không thể truy cập được  
+- Thay đổi (defacing) trang web công khai  
+- Vi phạm dữ liệu (đánh cắp dữ liệu công ty)  
+
+**Bạn sẽ phản hồi như thế nào trước một cuộc tấn công mạng?** Ứng phó sự cố chỉ ra phương pháp cần được thực hiện để xử lý trường hợp như vậy. Mục tiêu là giảm thiểu thiệt hại và phục hồi trong thời gian ngắn nhất có thể. Lý tưởng nhất, bạn sẽ phát triển một kế hoạch sẵn sàng cho việc ứng phó sự cố.  
+
+**Bốn giai đoạn chính của quy trình ứng phó sự cố:**  
+
+1. **Chuẩn bị (Preparation):** Điều này yêu cầu một nhóm được đào tạo và sẵn sàng xử lý các sự cố. Lý tưởng nhất, các biện pháp khác nhau sẽ được đưa ra để ngăn chặn các sự cố xảy ra ngay từ đầu.  
+2. **Phát hiện và Phân tích (Detection and Analysis):** Nhóm phải có các nguồn lực cần thiết để phát hiện bất kỳ sự cố nào; hơn nữa, điều quan trọng là phải phân tích sâu hơn sự cố được phát hiện để tìm hiểu về mức độ nghiêm trọng của nó.  
+3. **Kiểm soát, Loại bỏ và Phục hồi (Containment, Eradication, and Recovery):** Một khi sự cố được xác định, điều quan trọng là phải ngăn chặn nó ảnh hưởng đến các hệ thống khác, loại bỏ nó và phục hồi các hệ thống bị ảnh hưởng. Ví dụ, khi nhận thấy rằng một hệ thống bị nhiễm virus máy tính, chúng ta sẽ muốn dừng (kiểm soát) virus khỏi lan sang các hệ thống khác, làm sạch (loại bỏ) virus, và đảm bảo khôi phục hệ thống.  
+4. **Hoạt động sau sự cố (Post-Incident Activity):** Sau khi phục hồi thành công, một báo cáo được tạo ra và bài học rút ra được chia sẻ để ngăn chặn các sự cố tương tự trong tương lai.
+
+#### **Phân tích phần mềm độc hại (Malware Analysis)**  
+
+**Malware** là viết tắt của **malicious software** (phần mềm độc hại). **Software** đề cập đến các chương trình, tài liệu, và tệp tin mà bạn có thể lưu trữ trên đĩa hoặc gửi qua mạng. Malware bao gồm nhiều loại khác nhau, chẳng hạn như:  
+
+- **Virus:** Là một đoạn mã (một phần của chương trình) tự gắn vào một chương trình. Nó được thiết kế để lan truyền từ máy tính này sang máy tính khác và hoạt động bằng cách thay đổi, ghi đè, và xóa tệp tin sau khi lây nhiễm máy tính. Kết quả có thể khiến máy tính trở nên chậm hoặc không sử dụng được.  
+- **Trojan Horse (Ngựa Trojan):** Là một chương trình hiển thị một chức năng mong muốn nhưng ẩn chứa một chức năng độc hại bên trong. Ví dụ, nạn nhân có thể tải về một trình phát video từ một trang web không đáng tin cậy mà thực chất là một phần mềm độc hại, cho phép kẻ tấn công kiểm soát hoàn toàn hệ thống của họ.  
+- **Ransomware:** Là một chương trình độc hại mã hóa các tệp tin của người dùng. Mã hóa khiến các tệp tin không thể đọc được nếu không có mật khẩu giải mã. Kẻ tấn công sẽ yêu cầu người dùng trả một khoản tiền chuộc để lấy lại mật khẩu giải mã.  
+
+---
+
+Phân tích phần mềm độc hại nhằm tìm hiểu về các chương trình độc hại này bằng các phương pháp khác nhau, như:  
+
+1. **Phân tích tĩnh (Static Analysis):**  
+   Phân tích tĩnh được thực hiện bằng cách kiểm tra chương trình độc hại mà không chạy nó. Điều này thường yêu cầu kiến thức vững chắc về ngôn ngữ assembly (tập lệnh của bộ xử lý, tức là các chỉ dẫn cơ bản của máy tính).  
+
+2. **Phân tích động (Dynamic Analysis):**  
+   Phân tích động được thực hiện bằng cách chạy phần mềm độc hại trong một môi trường được kiểm soát và giám sát các hoạt động của nó. Điều này cho phép bạn quan sát cách phần mềm độc hại hoạt động khi chạy.
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Bạn sẽ gọi nhóm các chuyên gia an ninh mạng giám sát mạng và hệ thống để phát hiện các sự kiện độc hại là gì?**  
+
+<details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: Security Operations Center
+</details>
+
+2. **DFIR là viết tắt của gì?**
+
+   <details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: Digital Forensics and Incident Response
+</details>
+
+3. **Loại phần mềm độc hại nào yêu cầu người dùng trả tiền để lấy lại quyền truy cập vào tệp của họ?**  
+
+   <details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: ransomware
+</details>
