@@ -112,7 +112,7 @@ Router có nhiệm vụ kết nối các mạng và truyền dữ liệu giữa 
 
 ---
 
-### Thực hành  
+## Thực hành  
 Đính kèm trong nhiệm vụ này là một bài thực hành tương tác về các mô hình LAN đã thảo luận. Tìm hiểu về các cách khác nhau mà chúng dễ bị phá vỡ. Phá vỡ các mô hình LAN để nhận flag.  
 
 1 – LAN viết tắt của từ gì?  
@@ -217,7 +217,7 @@ Mạng hiện đã ngừng hoạt động.
 
 # Task 2: A Primer on Subnetting
 
-**Giới Thiệu Về Subnetting**
+## **Giới Thiệu Về Subnetting**
 
 Như đã thảo luận trước đó trong module, mạng có thể được tìm thấy với mọi hình dạng và kích thước - từ nhỏ đến lớn. **Subnetting** là thuật ngữ chỉ việc chia một mạng thành các mạng nhỏ hơn, giống như chia một chiếc bánh cho bạn bè của bạn. Chỉ có một lượng bánh nhất định, và ai cũng muốn một phần. Subnetting là cách bạn quyết định ai sẽ nhận phần nào và dành riêng một phần của "chiếc bánh ẩn dụ" này.
 
@@ -268,7 +268,7 @@ Chúng ta sẽ tìm hiểu chi tiết cách subnetting mang lại những lợi 
 
 Subnetting cho phép bạn tách biệt hai trường hợp sử dụng này, đồng thời vẫn tận hưởng lợi ích của việc kết nối với các mạng lớn hơn, chẳng hạn như Internet.
 
-**Câu hỏi**
+## **Câu hỏi**
 
 Câu hỏi 1 – Thuật ngữ kỹ thuật để chia một mạng thành các phần nhỏ hơn là gì?  
 
@@ -306,3 +306,55 @@ Câu hỏi 6 – Tên gọi của thiết bị chịu trách nhiệm gửi dữ 
   <summary>Hiển thị đáp án</summary>  
   Đáp án: Default Gateway  
 </details>  
+
+# Task 3: The ARP Protocol
+
+**Giao thức ARP**
+
+Hồi tưởng lại từ các nhiệm vụ trước, chúng ta biết rằng các thiết bị có thể có hai định danh: một địa chỉ MAC và một địa chỉ IP. Giao thức ARP, hay **Address Resolution Protocol**, là công nghệ chịu trách nhiệm cho phép các thiết bị tự nhận dạng trong một mạng.
+
+Một cách đơn giản, giao thức ARP cho phép một thiết bị liên kết địa chỉ MAC của nó với một địa chỉ IP trong mạng. Mỗi thiết bị trong một mạng sẽ duy trì một bản ghi các địa chỉ MAC liên kết với các thiết bị khác.
+
+Khi các thiết bị muốn giao tiếp với nhau, chúng sẽ gửi một **broadcast** đến toàn bộ mạng để tìm kiếm thiết bị cụ thể. Các thiết bị có thể sử dụng giao thức ARP để tìm địa chỉ MAC (và do đó là định danh vật lý) của thiết bị cần liên lạc.
+
+## Giao thức ARP hoạt động như thế nào?
+
+Mỗi thiết bị trong mạng có một bảng để lưu trữ thông tin, được gọi là **cache**. Trong ngữ cảnh của giao thức ARP, bảng cache này lưu trữ các định danh của các thiết bị khác trong mạng.
+
+Để ánh xạ hai định danh này (địa chỉ IP và địa chỉ MAC), giao thức ARP gửi hai loại thông điệp:
+
+1. **ARP Request**  
+2. **ARP Reply**
+
+Khi một **ARP Request** được gửi, một thông điệp được phát (broadcast) đến tất cả các thiết bị khác trên mạng, yêu cầu kiểm tra xem địa chỉ MAC của thiết bị có khớp với địa chỉ IP được yêu cầu hay không. Nếu thiết bị đó có địa chỉ IP được yêu cầu, một **ARP Reply** sẽ được gửi trở lại cho thiết bị ban đầu để xác nhận. Thiết bị ban đầu sẽ ghi nhớ thông tin này và lưu trữ nó trong bảng cache của mình (một mục nhập ARP - ARP entry).
+
+Quá trình này được minh họa trong sơ đồ bên dưới:
+
+![ARP](./img/2_Intro_to_LAN/3.1.png)
+
+## Câu hỏi
+
+**Câu hỏi 1 – ARP là viết tắt của gì?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Address Resolution Protocol  
+</details>  
+
+**Câu hỏi 2 – Loại gói tin ARP nào yêu cầu một thiết bị kiểm tra xem nó có một địa chỉ IP cụ thể hay không?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Request  
+</details>  
+
+**Câu hỏi 3 – Địa chỉ nào được sử dụng làm định danh vật lý cho một thiết bị trong mạng?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: MAC Address  
+</details>  
+
+**Câu hỏi 4 – Địa chỉ nào được sử dụng làm định danh logic cho một thiết bị trong mạng?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: IP Address  
+</details>  
+
