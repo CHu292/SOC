@@ -12,8 +12,6 @@
 
 4. [Task 4: Ping (ICMP)](#task-4-ping-icmp)
 
-5. [Task 5: Continue Your Learning: Intro to LAN](#task-5-continue-your-learning-intro-to-lan)
-
 ## Nội dung
 
 # Task 1: What is Networking?
@@ -278,6 +276,4 @@ Hãy xem điều này trong hành động qua ảnh chụp màn hình bên dư�
   Đáp án: THM{I_PINGED_THE_SERVER}
 </details>
 
-# Task 5: Continue Your Learning: Intro to LAN
 
-[Trả xiền để đc học :)](https://tryhackme.com/r/why-subscribe?roomCode=introtolan)
