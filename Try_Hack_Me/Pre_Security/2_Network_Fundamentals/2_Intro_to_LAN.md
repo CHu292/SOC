@@ -10,8 +10,6 @@
 
 4. [Task 4: The DHCP Protocol](#task-4-the-dhcp-protocol)
 
-5. [Task 5: Continue Your Learning: OSI Model](#task-5-continue-your-learning-osi-model)
-
 ## Nội dung
 
 # Task 1: Introducing LAN Topologies
@@ -358,3 +356,34 @@ Quá trình này được minh họa trong sơ đồ bên dưới:
   Đáp án: IP Address  
 </details>  
 
+# Task 4: The DHCP Protocol
+
+**Giao thức DHCP**
+
+## Khái niêmk
+
+Địa chỉ IP có thể được gán theo hai cách: bằng cách nhập thủ công vào thiết bị hoặc tự động, phổ biến nhất là sử dụng máy chủ **DHCP** (Dynamic Host Configuration Protocol). Khi một thiết bị kết nối với mạng, nếu chưa được gán địa chỉ IP thủ công, nó sẽ gửi một yêu cầu (**DHCP Discover**) để kiểm tra xem có máy chủ DHCP nào trên mạng hay không.  
+
+Máy chủ DHCP sau đó phản hồi với một địa chỉ IP mà thiết bị có thể sử dụng (**DHCP Offer**). Thiết bị sẽ gửi lại phản hồi xác nhận rằng nó muốn sử dụng địa chỉ IP được cung cấp (**DHCP Request**), và cuối cùng, máy chủ DHCP gửi một thông báo xác nhận rằng quá trình này đã hoàn tất (**DHCP ACK**). Sau đó, thiết bị có thể bắt đầu sử dụng địa chỉ IP đó. 
+
+![DHCP](./img/2_Intro_to_LAN/4.1.png)
+
+## Câu hỏi
+
+**Câu hỏi 1 – Loại gói tin DHCP nào được một thiết bị sử dụng để lấy một địa chỉ IP?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: DHCP Discover  
+</details>  
+
+**Câu hỏi 2 – Loại gói tin DHCP nào được một thiết bị gửi sau khi nhận được địa chỉ IP từ máy chủ DHCP?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: DHCP Request  
+</details>  
+
+**Câu hỏi 3 – Cuối cùng, gói tin DHCP nào được máy chủ DHCP gửi đến thiết bị để hoàn tất quá trình cấp phát địa chỉ IP?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: DHCP Ack  
+</details>  
