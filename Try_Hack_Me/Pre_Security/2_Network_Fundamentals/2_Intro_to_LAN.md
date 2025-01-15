@@ -360,7 +360,7 @@ Quá trình này được minh họa trong sơ đồ bên dưới:
 
 **Giao thức DHCP**
 
-## Khái niêmk
+## Khái niệm
 
 Địa chỉ IP có thể được gán theo hai cách: bằng cách nhập thủ công vào thiết bị hoặc tự động, phổ biến nhất là sử dụng máy chủ **DHCP** (Dynamic Host Configuration Protocol). Khi một thiết bị kết nối với mạng, nếu chưa được gán địa chỉ IP thủ công, nó sẽ gửi một yêu cầu (**DHCP Discover**) để kiểm tra xem có máy chủ DHCP nào trên mạng hay không.  
 
