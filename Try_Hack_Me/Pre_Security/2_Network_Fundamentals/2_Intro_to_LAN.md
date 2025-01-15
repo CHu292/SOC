@@ -244,11 +244,12 @@ Các subnet sử dụng địa chỉ IP theo ba cách khác nhau:
 
 Hãy chia ba phần này ra để hiểu rõ mục đích của chúng trong bảng dưới đây: 
 
-| Loại                | Mục đích                                                                                              | Giải thích                                                                                                                                              | Ví dụ           |
-|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| Địa chỉ Mạng         | Địa chỉ này xác định điểm bắt đầu của mạng thực tế và được sử dụng để nhận diện sự tồn tại của một mạng. | Ví dụ: Một thiết bị có địa chỉ IP là 192.168.1.100 sẽ thuộc mạng được xác định bởi địa chỉ mạng 192.168.1.0                                               | 192.168.1.0     |
-| Địa chỉ Host         | Địa chỉ IP ở đây được dùng để nhận diện một thiết bị trong mạng con.                                  | Ví dụ: Một thiết bị sẽ có địa chỉ host là 192.168.1.100 và thuộc mạng 192.168.1.1                                                                         | 192.168.1.100   |
-| Cổng Mặc Định (Gateway)       | Địa chỉ cổng mặc định là một địa chỉ đặc biệt được gán cho một thiết bị trên mạng để gửi thông tin ra mạng khác. | Bất kỳ dữ liệu nào cần chuyển đến thiết bị không nằm trong cùng một mạng (ví dụ: không phải mạng 192.168.1.0) sẽ được gửi đến thiết bị này. Thường sử dụng địa chỉ đầu (.1) hoặc cuối (.254) của mạng. | 192.168.1.254   |
+| Loại             | Mục đích                                                                                 | Giải thích                                                                                                                                           | Ví dụ           |
+|-------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| Địa chỉ Mạng      | Địa chỉ này xác định điểm bắt đầu của mạng thực tế và được sử dụng để nhận dạng sự tồn tại của một mạng. | Ví dụ: Một thiết bị có địa chỉ IP 192.168.1.100 sẽ thuộc về mạng được xác định bởi 192.168.1.0                                                        | 192.168.1.0     |
+| Địa chỉ Máy Chủ   | Địa chỉ IP ở đây được sử dụng để nhận dạng một thiết bị trong mạng con.                   | Ví dụ: Một thiết bị sẽ có địa chỉ máy chủ là 192.168.1.100                                                                                             | 192.168.1.100   |
+| Cổng Mặc Định  (Default Gateway)   | Địa chỉ cổng mặc định là một địa chỉ đặc biệt được gán cho thiết bị trên mạng có khả năng gửi thông tin đến mạng khác. | Bất kỳ dữ liệu nào cần được gửi đến một thiết bị không nằm trong cùng mạng (ví dụ: không thuộc 192.168.1.0) sẽ được gửi tới thiết bị này. Những thiết bị này thường sử dụng địa chỉ đầu tiên hoặc cuối cùng trong mạng (như .1 hoặc .254). | 192.168.1.254   |
+
 
 Trong các mạng nhỏ, chẳng hạn như mạng tại nhà, bạn sẽ chỉ cần một subnet vì khả năng cần hơn 254 thiết bị kết nối cùng lúc là rất thấp.
 
