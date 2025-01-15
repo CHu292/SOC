@@ -38,3 +38,42 @@ Mô hình OSI bao gồm **bảy lớp** được minh họa trong sơ đồ dư�
 Ở mỗi lớp mà dữ liệu đi qua, các quy trình cụ thể sẽ diễn ra và những thông tin bổ sung sẽ được thêm vào dữ liệu. Đây chính là quá trình mà chúng ta sẽ thảo luận trong các nhiệm vụ tiếp theo trong phần này. Tuy nhiên, hiện tại, chúng ta chỉ cần hiểu rằng quá trình này được gọi là **encapsulation** (đóng gói) và mô hình OSI trông như thế nào qua sơ đồ dưới đây:  
 
 ![OSI](./img/3_OSI_Model/1.1.png)
+
+**Đây là một khái niệm rất quan trọng trong các khái niệm về mạng. Việc ghi nhớ các lớp theo đúng thứ tự được khuyến nghị mạnh mẽ.**
+
+**Mẹo:** Hãy ghi nhớ câu này — **"Anxious Pale Ceaser Treated Nervous Drunks Patiently."**  
+
+Bây giờ, chữ cái đầu tiên của mỗi từ trong câu tương ứng với mỗi lớp trong mô hình OSI:
+
+- **A** → Application (Lớp 7 - Ứng dụng)  
+- **P** → Presentation (Lớp 6 - Trình bày)  
+- **C** → Session (Lớp 5 - Phiên)  
+- **T** → Transport (Lớp 4 - Vận chuyển)  
+- **N** → Network (Lớp 3 - Mạng)  
+- **D** → Data Link (Lớp 2 - Liên kết dữ liệu)  
+- **P** → Physical (Lớp 1 - Vật lý)  
+
+Cách ghi nhớ này sẽ giúp bạn dễ dàng nhớ các lớp trong mô hình OSI theo đúng thứ tự!
+
+**Câu hỏi:**  
+
+**1. "OSI" trong "Mô hình OSI" là viết tắt của gì?**  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Open System Interconnection 
+</details>  
+
+**2. Mô hình OSI có bao nhiêu lớp (số dạng chữ số)?**  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: 7
+</details>  
+
+**3. Thuật ngữ chính cho quá trình khi các mảnh thông tin được thêm vào dữ liệu là gì?**  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Encapsulation
+</details>  
