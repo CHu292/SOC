@@ -247,7 +247,7 @@ Hãy chia ba phần này ra để hiểu rõ mục đích của chúng trong b�
 | Loại             | Mục đích                                                                                 | Giải thích                                                                                                                                           | Ví dụ           |
 |-------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
 | Địa chỉ Mạng      | Địa chỉ này xác định điểm bắt đầu của mạng thực tế và được sử dụng để nhận dạng sự tồn tại của một mạng. | Ví dụ: Một thiết bị có địa chỉ IP 192.168.1.100 sẽ thuộc về mạng được xác định bởi 192.168.1.0                                                        | 192.168.1.0     |
-| Địa chỉ Máy Chủ   | Địa chỉ IP ở đây được sử dụng để nhận dạng một thiết bị trong mạng con.                   | Ví dụ: Một thiết bị sẽ có địa chỉ máy chủ là 192.168.1.100                                                                                             | 192.168.1.100   |
+| Địa chỉ Máy Chủ   | Địa chỉ IP ở đây được sử dụng để nhận dạng một thiết bị trong mạng con.                   | Ví dụ: Một thiết bị sẽ có địa chỉ máy chủ là 192.168.1.1                                                                                             | 192.168.1.100   |
 | Cổng Mặc Định  (Default Gateway)   | Địa chỉ cổng mặc định là một địa chỉ đặc biệt được gán cho thiết bị trên mạng có khả năng gửi thông tin đến mạng khác. | Bất kỳ dữ liệu nào cần được gửi đến một thiết bị không nằm trong cùng mạng (ví dụ: không thuộc 192.168.1.0) sẽ được gửi tới thiết bị này. Những thiết bị này thường sử dụng địa chỉ đầu tiên hoặc cuối cùng trong mạng (như .1 hoặc .254). | 192.168.1.254   |
 
 
@@ -268,3 +268,41 @@ Chúng ta sẽ tìm hiểu chi tiết cách subnetting mang lại những lợi 
 
 Subnetting cho phép bạn tách biệt hai trường hợp sử dụng này, đồng thời vẫn tận hưởng lợi ích của việc kết nối với các mạng lớn hơn, chẳng hạn như Internet.
 
+**Câu hỏi**
+
+Câu hỏi 1 – Thuật ngữ kỹ thuật để chia một mạng thành các phần nhỏ hơn là gì?  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Subnetting  
+</details>  
+
+Câu hỏi 2 – Một subnet mask có bao nhiêu bit?  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: 32  
+</details>  
+
+Câu hỏi 3 – Phạm vi của một phần (octet) trong subnet mask là gì?  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: 0-255  
+</details>  
+
+Câu hỏi 4 – Địa chỉ nào được sử dụng để xác định điểm bắt đầu của một mạng?  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Network Address  
+</details>  
+
+Câu hỏi 5 – Địa chỉ nào được sử dụng để xác định các thiết bị trong một mạng?  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Host Address  
+</details>  
+
+Câu hỏi 6 – Tên gọi của thiết bị chịu trách nhiệm gửi dữ liệu đến một mạng khác là gì?  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Default Gateway  
+</details>  
