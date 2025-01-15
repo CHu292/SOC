@@ -229,3 +229,55 @@ Kết quả:
   Đáp án: THM{YOU_GOT_ON_TRYHACKME}
 </details>
 
+# Task 4: Ping (ICMP)
+
+**Ping** là một trong những công cụ mạng cơ bản nhất mà chúng ta có thể sử dụng. Ping sử dụng các gói ICMP (**Internet Control Message Protocol**) để xác định hiệu suất của kết nối giữa các thiết bị, ví dụ, kiểm tra xem kết nối có tồn tại hoặc đáng tin cậy không.  
+
+Thời gian cần thiết để các gói ICMP di chuyển giữa các thiết bị được đo bằng lệnh ping, như minh họa trong ảnh chụp màn hình bên dưới. Phép đo này được thực hiện bằng cách sử dụng gói phản hồi ICMP (ICMP echo packet) và sau đó nhận phản hồi từ thiết bị đích.  
+
+
+**Ping** có thể được thực hiện đối với các thiết bị trong mạng, chẳng hạn như mạng gia đình của bạn hoặc các tài nguyên như trang web. Công cụ này có thể dễ dàng sử dụng và được cài đặt sẵn trên các hệ điều hành (OS) như **Linux** và **Windows**.  
+
+Cú pháp để thực hiện một lệnh ping đơn giản là:  
+
+```bash
+ping <địa chỉ IP hoặc URL của trang web>
+```
+
+Hãy xem điều này trong hành động qua ảnh chụp màn hình bên dưới:  
+
+![Ping](./img/1_What_is_Networking/4.1.png)
+
+Ở đây, chúng ta đang ping một thiết bị có địa chỉ IP riêng là **192.168.1.254**. Ping cho chúng ta biết rằng chúng ta đã gửi **sáu gói ICMP**, tất cả đều được nhận lại với thời gian trung bình là **4,16 mili-giây**.  
+
+
+**Bây giờ bạn sẽ thực hiện lệnh ping đến địa chỉ "8.8.8.8" trên trang web triển khai trong nhiệm vụ này. Lệnh ping địa chỉ đúng sẽ tiết lộ một flag để trả lời câu hỏi sau đây.**  
+
+![Ping](./img/1_What_is_Networking/4.2.png)
+
+### **Trả lời các câu hỏi dưới đây**
+
+1. **Ping sử dụng giao thức nào?**  
+
+<details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: ICMP
+</details>
+
+2. **Cú pháp để ping đến địa chỉ 10.10.10.10 là gì?**  
+
+<details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: ping 10.10.10.10
+</details>
+
+3. **Flag bạn nhận được khi ping đến địa chỉ 8.8.8.8 là gì?**  
+
+<details>
+  <summary>Hiển thị đáp án</summary>
+  Đáp án: THM{I_PINGED_THE_SERVER}
+</details>
+
+# Task 5: Continue Your Learning: Intro to LAN
+
+[Trả xiền để đc học :)](https://tryhackme.com/r/why-subscribe?roomCode=introtolan)
