@@ -214,3 +214,56 @@ Mạng hiện đã ngừng hoạt động.
   <summary>Hiển thị đáp án</summary>
   Đáp án: THM{TOPOLOGY_FLAWS}
 </details>
+
+# Task 2: A Primer on Subnetting
+
+**Giới Thiệu Về Subnetting**
+
+Như đã thảo luận trước đó trong module, mạng có thể được tìm thấy với mọi hình dạng và kích thước - từ nhỏ đến lớn. **Subnetting** là thuật ngữ chỉ việc chia một mạng thành các mạng nhỏ hơn, giống như chia một chiếc bánh cho bạn bè của bạn. Chỉ có một lượng bánh nhất định, và ai cũng muốn một phần. Subnetting là cách bạn quyết định ai sẽ nhận phần nào và dành riêng một phần của "chiếc bánh ẩn dụ" này.
+
+Lấy một doanh nghiệp làm ví dụ, bạn sẽ có các phòng ban khác nhau như:  
+- Kế toán  
+- Tài chính  
+- Nhân sự
+
+![](./img/2_Intro_to_LAN/2.1.png)
+
+Trong thực tế, bạn biết cách gửi thông tin đến đúng bộ phận, thì trong mạng máy tính, mạng cũng cần biết điều này. Các quản trị viên mạng sử dụng phương pháp chia subnet (subnetting) để phân loại và gán các phần cụ thể của mạng nhằm phản ánh điều đó.
+
+Subnetting được thực hiện bằng cách chia nhỏ số lượng host có thể tồn tại trong một mạng, được biểu diễn bằng một giá trị gọi là **subnet mask** (mặt nạ mạng con). Hãy cùng quay lại sơ đồ từ phần đầu tiên của mô-đun này:
+
+![](./img/2_Intro_to_LAN/2.2.png)
+
+Như chúng ta có thể nhớ, một địa chỉ IP được tạo thành từ bốn phần gọi là **octet**. Tương tự, **subnet mask** cũng được biểu diễn dưới dạng một số bao gồm bốn byte (32 bit), với giá trị trong khoảng từ 0 đến 255 (0-255).
+
+Các subnet sử dụng địa chỉ IP theo ba cách khác nhau:
+
+- Xác định địa chỉ mạng (**network address**).
+- Xác định địa chỉ host (**host address**).
+- Xác định cổng mặc định (**default gateway**).
+
+Hãy chia ba phần này ra để hiểu rõ mục đích của chúng trong bảng dưới đây: 
+
+| Loại                | Mục đích                                                                                              | Giải thích                                                                                                                                              | Ví dụ           |
+|---------------------|-------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
+| Địa chỉ Mạng         | Địa chỉ này xác định điểm bắt đầu của mạng thực tế và được sử dụng để nhận diện sự tồn tại của một mạng. | Ví dụ: Một thiết bị có địa chỉ IP là 192.168.1.100 sẽ thuộc mạng được xác định bởi địa chỉ mạng 192.168.1.0                                               | 192.168.1.0     |
+| Địa chỉ Host         | Địa chỉ IP ở đây được dùng để nhận diện một thiết bị trong mạng con.                                  | Ví dụ: Một thiết bị sẽ có địa chỉ host là 192.168.1.100 và thuộc mạng 192.168.1.1                                                                         | 192.168.1.100   |
+| Cổng Mặc Định (Gateway)       | Địa chỉ cổng mặc định là một địa chỉ đặc biệt được gán cho một thiết bị trên mạng để gửi thông tin ra mạng khác. | Bất kỳ dữ liệu nào cần chuyển đến thiết bị không nằm trong cùng một mạng (ví dụ: không phải mạng 192.168.1.0) sẽ được gửi đến thiết bị này. Thường sử dụng địa chỉ đầu (.1) hoặc cuối (.254) của mạng. | 192.168.1.254   |
+
+Trong các mạng nhỏ, chẳng hạn như mạng tại nhà, bạn sẽ chỉ cần một subnet vì khả năng cần hơn 254 thiết bị kết nối cùng lúc là rất thấp.
+
+Tuy nhiên, ở những nơi như doanh nghiệp và văn phòng, nơi có nhiều thiết bị hơn (PC, máy in, camera và cảm biến), subnetting sẽ được sử dụng.
+
+**Subnetting** mang lại nhiều lợi ích, bao gồm:
+
+- Hiệu quả (**Efficiency**).
+- Bảo mật (**Security**).
+- Kiểm soát toàn diện (**Full control**).
+
+Chúng ta sẽ tìm hiểu chi tiết cách subnetting mang lại những lợi ích này vào một thời điểm sau. Tuy nhiên, hiện tại, điều cần hiểu là yếu tố bảo mật của nó. Hãy lấy ví dụ về một quán cà phê điển hình:
+
+1. Một mạng dành cho nhân viên, máy tính tiền và các thiết bị khác trong cơ sở.
+2. Một mạng dành cho công chúng để sử dụng như điểm truy cập (**hotspot**).
+
+Subnetting cho phép bạn tách biệt hai trường hợp sử dụng này, đồng thời vẫn tận hưởng lợi ích của việc kết nối với các mạng lớn hơn, chẳng hạn như Internet.
+
