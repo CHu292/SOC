@@ -6,22 +6,15 @@
 ## Mục Lục
 
 1. [Task 1: What is the OSI Model?](#task-1-what-is-the-osi-model)
+2. [Task 2: Layer 7 - Application](#task-2-layer-7---application)
+3. [Task 3: Layer 6 - Presentation](#task-3-layer-6---presentation)
+4. [Task 4: Layer 5 - Session](#task-4-layer-5---session)
+5. [Task 5: Layer 4 - Transport](#task-5-layer-4---transport)
+6. [Task 6: Layer 3 - Network](#task-6-layer-3---network)
+7. [Task 7: Layer 2 - Data Link](#task-7-layer-2---data-link)
+8. [Task 8: Layer 1 - Physical](#task-8-layer-1---physical)
+9. [Task 9: Practical - OSI Game](#task-9-practical---osi-game)
 
-2. [Task 2: Layer 7 - Application](#task-2-layer-7-application)
-
-3. [Task 3: Layer 6 - Presentation](#task-3-layer-6-presentation)
-
-4. [Task 4: Layer 5 - Session](#task-4-layer-5-session)
-
-5. [Task 5: Layer 4 - Transport](#task-5-layer-4-transport)
-
-6. [Task 6: Layer 3 - Network](#task-6-layer-3-network)
-
-7. [Task 7: Layer 2 - Data Link](#task-7-layer-2-data-link)
-
-8. [Task 8: Layer 1 - Physical](#task-8-layer-1-physical)
-
-9. [Task 9: Practical - OSI Game](#task-9-practical-osi-game)
 
 ## Nội dung
 
