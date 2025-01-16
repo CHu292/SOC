@@ -132,6 +132,8 @@ Vì TCP giữ lại tài nguyên hệ thống trên một thiết bị, nên vi�
 
 Hãy minh họa quá trình này bằng cách sử dụng ví dụ **Alice và Bob**, như chúng ta đã làm trước đây.
 
+![Đóng kết nối TCP](./img/4_Packets_Frames/2.2.png)
+
 Trong hình minh họa, chúng ta có thể thấy rằng **Alice** đã gửi một gói tin **“FIN”** cho **Bob**. Vì **Bob** đã nhận được gói tin này, anh ấy sẽ thông báo cho **Alice** rằng anh ấy đã nhận được và cũng muốn đóng kết nối (bằng cách sử dụng **FIN**). **Alice** đã nhận rõ thông báo của **Bob** và sẽ cho **Bob** biết rằng cô ấy **xác nhận** (**acknowledge**) điều này.
 
 **Câu hỏi:**  
