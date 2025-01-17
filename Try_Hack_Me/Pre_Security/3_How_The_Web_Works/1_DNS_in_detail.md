@@ -155,3 +155,195 @@ Các bản ghi DNS đều đi kèm với một giá trị TTL (Time To Live). Gi
 Đáp án: authoritative  
 </details>  
 
+# Task 5: Practical
+
+Sử dụng trang web ở bên phải, chúng ta có thể tạo các yêu cầu để thực hiện truy vấn DNS và xem kết quả. Trang web cũng sẽ hiển thị lệnh mà bạn cần chạy trên máy tính của mình nếu bạn muốn tự thực hiện các yêu cầu này.
+
+**Câu hỏi 1:** CNAME của shop.website.thm là gì?  
+
+![Thực hành](./img/1_DNS_in_detail/5.1.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: shops.myshopify.com  
+</details>  
+
+> Dưới đây là giải thích chi tiết về tập lệnh và kết quả:
+
+ **Tập lệnh:**
+```bash
+nslookup --type=CNAME shop.website.thm
+```
+
+1. **`nslookup`**: Công cụ dùng để tra cứu thông tin DNS (Domain Name System) từ dòng lệnh.
+2. **`--type=CNAME`**: Chỉ định loại bản ghi DNS mà bạn muốn tra cứu, trong trường hợp này là bản ghi **CNAME** (Canonical Name).
+3. **`shop.website.thm`**: Tên miền bạn muốn kiểm tra bản ghi CNAME.
+
+**Kết quả:**
+
+```bash
+Server: 127.0.0.53
+Address: 127.0.0.53#53
+```
+
+1. **`Server`**: Hiển thị địa chỉ máy chủ DNS đang được sử dụng để tra cứu, ở đây là **127.0.0.53**, một địa chỉ loopback (local DNS resolver trên máy).
+2. **`Address: 127.0.0.53#53`**: Máy chủ DNS đang lắng nghe ở cổng 53 (cổng mặc định cho giao thức DNS).
+
+ **Non-authoritative answer:**
+ 
+```bash
+shop.website.thm canonical name = shops.myshopify.com
+```
+
+1. **`Non-authoritative answer`**: Kết quả này được trả về bởi một máy chủ DNS **không phải máy chủ gốc** (non-authoritative). Máy chủ DNS này lưu thông tin từ một máy chủ DNS khác (có thể là authoritative) trong bộ nhớ đệm (cache).
+2. **`shop.website.thm canonical name = shops.myshopify.com`**:
+   - **`canonical name`**: Kết quả chỉ ra rằng **shop.website.thm** không có bản ghi A (địa chỉ IP) trực tiếp, mà là một bí danh (CNAME) trỏ đến **shops.myshopify.com**.
+   - Điều này có nghĩa là khi bạn truy cập **shop.website.thm**, DNS sẽ tự động chuyển hướng đến **shops.myshopify.com**.
+
+ **Ý nghĩa:**
+- **Bản ghi CNAME** được dùng để tạo bí danh cho một tên miền khác. Trong trường hợp này, **shop.website.thm** không trỏ trực tiếp đến địa chỉ IP, mà nó được liên kết với **shops.myshopify.com**.
+- Điều này giúp quản lý dễ dàng hơn, đặc biệt khi địa chỉ IP của **shops.myshopify.com** thay đổi, bạn chỉ cần cập nhật ở đó mà không cần sửa bản ghi cho **shop.website.thm**.
+
+
+**Câu hỏi 2:** Giá trị của bản ghi TXT của website.thm là gì?  
+
+![Thực hành](./img/1_DNS_in_detail/5.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{7012BBA60997F35A9516C2E16D2944FF}  
+</details>  
+
+> Dưới đây là giải thích chi tiết cho tập lệnh và kết quả:
+
+**Tập lệnh:**
+
+```bash
+nslookup --type=TXT website.thm
+```
+
+1. **`nslookup`**: Công cụ để tra cứu thông tin DNS từ dòng lệnh.
+2. **`--type=TXT`**: Chỉ định loại bản ghi DNS mà bạn muốn tra cứu, trong trường hợp này là bản ghi **TXT** (Text Record).
+3. **`website.thm`**: Tên miền bạn muốn kiểm tra bản ghi TXT.
+
+**Kết quả:**
+
+```bash
+Server: 127.0.0.53
+Address: 127.0.0.53#53
+```
+
+1. **`Server`**: Địa chỉ máy chủ DNS được sử dụng để tra cứu là **127.0.0.53** (loopback address, sử dụng local DNS resolver).
+2. **`Address: 127.0.0.53#53`**: Máy chủ DNS đang sử dụng cổng 53 (cổng mặc định của giao thức DNS).
+
+**Non-authoritative answer:**
+
+```bash
+website.thm text = "THM{7012BBA60997F35A9516C2E16D2944FF}"
+```
+
+1. **`Non-authoritative answer`**: Kết quả được trả về bởi một máy chủ DNS không phải là authoritative (máy chủ không lưu trữ trực tiếp thông tin này, mà lấy từ bộ nhớ đệm của một máy chủ authoritative).
+2. **`website.thm text = "THM{7012BBA60997F35A9516C2E16D2944FF}"`**:
+   - Loại bản ghi được truy vấn là **TXT**.
+   - Giá trị của bản ghi **TXT** liên kết với **website.thm** là chuỗi ký tự:  
+     **`"THM{7012BBA60997F35A9516C2E16D2944FF}"`**.
+
+**Ý nghĩa:**
+- **Bản ghi TXT** được dùng để lưu trữ văn bản tùy ý trong DNS. Loại bản ghi này thường được dùng cho:
+  - **Xác thực email** (SPF, DKIM, DMARC).
+  - **Xác minh miền** (như trong cấu hình Google Workspace hoặc Microsoft 365).
+  - **Thông tin tùy chỉnh** như mã xác thực, hướng dẫn, hoặc metadata khác.
+
+
+**Câu hỏi 3:** Giá trị ưu tiên số của bản ghi MX là gì?  
+
+![Thực hành](./img/1_DNS_in_detail/5.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: 30  
+</details>  
+
+> Dưới đây là giải thích chi tiết cho tập lệnh và kết quả:
+
+**Tập lệnh:**
+
+```bash
+nslookup --type=MX website.thm
+```
+
+1. **`nslookup`**: Công cụ dùng để tra cứu thông tin DNS từ dòng lệnh.
+2. **`--type=MX`**: Chỉ định loại bản ghi DNS mà bạn muốn tra cứu, trong trường hợp này là bản ghi **MX** (Mail Exchanger Record).
+3. **`website.thm`**: Tên miền bạn muốn kiểm tra bản ghi MX.
+
+**Kết quả:**
+```bash
+Server: 127.0.0.53
+Address: 127.0.0.53#53
+```
+
+1. **`Server`**: Địa chỉ máy chủ DNS được sử dụng là **127.0.0.53** (loopback address, sử dụng local DNS resolver).
+2. **`Address: 127.0.0.53#53`**: Máy chủ DNS đang lắng nghe ở cổng 53 (cổng mặc định của giao thức DNS).
+
+**Non-authoritative answer:**
+
+```bash
+website.thm mail exchanger = 30 alt4.aspmx.l.google.com
+```
+
+1. **`Non-authoritative answer`**: Kết quả được trả về bởi một máy chủ DNS không phải là authoritative, mà lấy thông tin từ bộ nhớ đệm của một máy chủ authoritative.
+2. **`website.thm mail exchanger = 30 alt4.aspmx.l.google.com`**:
+   - **`mail exchanger`**: Đây là bản ghi MX (Mail Exchanger) của miền **website.thm**.
+   - **`30`**: Đây là giá trị **priority** (độ ưu tiên) của bản ghi MX. Giá trị nhỏ hơn sẽ được ưu tiên hơn khi gửi email. Trong trường hợp này, độ ưu tiên của bản ghi là **30**.
+   - **`alt4.aspmx.l.google.com`**: Đây là tên của máy chủ mail mà tất cả email gửi đến **website.thm** sẽ được chuyển đến. Máy chủ này có vẻ là một phần của hệ thống **Google Workspace** (trước đây là G Suite).
+
+**Ý nghĩa:**
+- Bản ghi **MX** được dùng để định tuyến email đến các máy chủ email của một miền.
+- Trong kết quả này, bất kỳ email nào gửi đến miền **website.thm** sẽ được chuyển đến máy chủ **alt4.aspmx.l.google.com**.
+- Giá trị **priority (30)** chỉ ra thứ tự ưu tiên nếu miền có nhiều bản ghi MX. Máy chủ với giá trị ưu tiên thấp hơn sẽ được sử dụng trước.
+  
+**Câu hỏi 4:** Địa chỉ IP của bản ghi A cho www.website.thm là gì?  
+
+![Thực hành](./img/1_DNS_in_detail/5.4.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: 10.10.10.10  
+</details>  
+
+> Dưới đây là giải thích chi tiết cho tập lệnh và kết quả:
+
+ **Tập lệnh:**
+```bash
+nslookup --type=A website.thm
+```
+
+1. **`nslookup`**: Công cụ dùng để tra cứu thông tin DNS từ dòng lệnh.
+2. **`--type=A`**: Chỉ định loại bản ghi DNS mà bạn muốn tra cứu, trong trường hợp này là bản ghi **A** (Address Record).
+3. **`website.thm`**: Tên miền bạn muốn kiểm tra bản ghi A.
+
+**Kết quả:**
+```bash
+Server: 127.0.0.53
+Address: 127.0.0.53#53
+```
+
+1. **`Server`**: Địa chỉ máy chủ DNS được sử dụng là **127.0.0.53** (loopback address, sử dụng local DNS resolver).
+2. **`Address: 127.0.0.53#53`**: Máy chủ DNS đang lắng nghe ở cổng 53 (cổng mặc định của giao thức DNS).
+
+**Non-authoritative answer:**
+```bash
+Name: website.thm
+Address: 10.10.10.10
+```
+
+1. **`Non-authoritative answer`**: Kết quả này được trả về bởi một máy chủ DNS không phải là authoritative (lấy từ bộ nhớ đệm hoặc chuyển tiếp từ máy chủ authoritative).
+2. **`Name: website.thm`**: Đây là tên miền bạn đã tra cứu.
+3. **`Address: 10.10.10.10`**:
+   - Đây là địa chỉ **IPv4** liên kết với tên miền **website.thm**.
+   - Bản ghi **A** ánh xạ tên miền **website.thm** đến địa chỉ IP cụ thể là **10.10.10.10**.
+
+**Ý nghĩa:**
+- **Bản ghi A** là loại bản ghi DNS dùng để ánh xạ tên miền (domain) đến địa chỉ IP cụ thể.
+- Trong trường hợp này, khi bạn truy cập **website.thm**, DNS sẽ phân giải tên miền này thành địa chỉ IP **10.10.10.10**. Điều này cho phép máy tính hoặc trình duyệt của bạn gửi yêu cầu đến máy chủ đích qua địa chỉ IP này.
+
