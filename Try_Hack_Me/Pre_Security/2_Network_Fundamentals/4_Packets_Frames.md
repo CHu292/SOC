@@ -227,3 +227,54 @@ Sơ đồ dưới đây minh họa một kết nối UDP thông thường giữa
   Đáp án: UDP  
 </details>  
 
+# Task 5: Ports 101 (Practical)
+
+Có lẽ đúng như tên gọi, **cổng** (**ports**) là một điểm thiết yếu để trao đổi dữ liệu. Hãy tưởng tượng một bến cảng và các cổng. Các con tàu muốn cập bến phải đi đến một cổng tương thích với kích thước và cơ sở vật chất trên tàu. Khi con tàu căn chỉnh, nó sẽ kết nối với một cổng tại bến cảng. Ví dụ, một tàu du lịch không thể cập bến tại cổng dành cho tàu đánh cá và ngược lại.
+
+Những cổng này thực thi các quy tắc về những gì có thể "đỗ" và ở đâu — nếu không tương thích, nó không thể "đỗ" ở đây. Các thiết bị mạng cũng sử dụng **cổng** để thực thi các quy tắc nghiêm ngặt khi giao tiếp với nhau. Khi một kết nối được thiết lập (hồi tưởng từ phòng **mô hình OSI**), bất kỳ dữ liệu nào được gửi hoặc nhận bởi một thiết bị sẽ được truyền qua các cổng này. Trong máy tính, các cổng là một giá trị số nằm trong khoảng từ **0 đến 65535** (65,535).
+
+Vì các cổng có phạm vi từ **0–65535**, nguy cơ mất kiểm soát về ứng dụng nào đang sử dụng cổng nào sẽ tăng lên nhanh chóng. Một bến cảng bận rộn sẽ rất hỗn loạn! May mắn thay, chúng ta liên kết các ứng dụng, phần mềm và hành vi với một tập hợp các quy tắc tiêu chuẩn. Ví dụ, bằng cách thực thi rằng bất kỳ dữ liệu trình duyệt web nào cũng được gửi qua **cổng 80**, các nhà phát triển phần mềm có thể thiết kế trình duyệt web như **Google Chrome** hoặc **Firefox** để diễn giải dữ liệu theo cùng một cách.
+
+Điều này có nghĩa là tất cả các trình duyệt web giờ đây chia sẻ một quy tắc chung: **dữ liệu được gửi qua cổng 80**. Cách các trình duyệt hiển thị, cảm giác khi sử dụng và mức độ dễ sử dụng tùy thuộc vào quyết định của nhà thiết kế hoặc người dùng.
+
+Mặc dù quy tắc tiêu chuẩn cho dữ liệu web là **cổng 80**, một số giao thức khác cũng đã được phân bổ quy tắc tiêu chuẩn. Bất kỳ cổng nào nằm trong khoảng **0 đến 1024** (1,024) được gọi là **cổng phổ biến** (**common port**). Hãy cùng khám phá một số giao thức khác dưới đây:
+
+| **Giao thức**                      | **Số cổng** | **Mô tả**                                                                                                                                                    |
+|------------------------------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **File Transfer Protocol (FTP)**   | 21          | Giao thức này được sử dụng bởi các ứng dụng chia sẻ tệp dựa trên mô hình máy khách-máy chủ, nghĩa là bạn có thể tải tệp từ một vị trí trung tâm.               |
+| **Secure Shell (SSH)**             | 22          | Giao thức này được sử dụng để đăng nhập an toàn vào các hệ thống qua giao diện dựa trên văn bản dành cho quản trị.                                            |
+| **HyperText Transfer Protocol (HTTP)** | 80          | Giao thức này là nền tảng của World Wide Web (WWW)! Trình duyệt của bạn sử dụng nó để tải văn bản, hình ảnh và video từ các trang web.                         |
+| **HyperText Transfer Protocol Secure (HTTPS)** | 443         | Giao thức này thực hiện chính xác những gì như trên, nhưng sử dụng mã hóa để đảm bảo an toàn.                                                                 |
+| **Server Message Block (SMB)**     | 445         | Giao thức này tương tự như File Transfer Protocol (FTP); tuy nhiên, ngoài tệp, SMB cho phép bạn chia sẻ các thiết bị như máy in.                             |
+| **Remote Desktop Protocol (RDP)**  | 3389        | Giao thức này là phương tiện an toàn để đăng nhập vào một hệ thống bằng giao diện desktop trực quan (khác với giới hạn giao diện văn bản của giao thức SSH). |
+
+Chúng ta chỉ mới đề cập ngắn gọn đến các giao thức phổ biến trong lĩnh vực an ninh mạng. Bạn có thể tìm thấy một bảng danh sách 1024 cổng phổ biến để biết thêm thông tin. [Xem tại đây](https://www.vmaxx.net/techinfo/ports.htm)
+
+Điều đáng lưu ý ở đây là các giao thức này chỉ tuân theo các tiêu chuẩn. Ví dụ: bạn có thể quản trị các ứng dụng tương tác với các giao thức này trên một cổng khác với cổng tiêu chuẩn (chạy một máy chủ web trên cổng **8080** thay vì cổng tiêu chuẩn **80**). Tuy nhiên, hãy lưu ý rằng các ứng dụng sẽ giả định rằng tiêu chuẩn đang được tuân theo, vì vậy bạn sẽ cần cung cấp dấu hai chấm (:) cùng với số cổng.
+
+**Thử thách thực tế:**
+
+Mở trang web được đính kèm trong nhiệm vụ này và kết nối đến địa chỉ IP **“8.8.8.8”** trên cổng **“1234”**, bạn sẽ nhận được một **flag**.
+
+![thực hành](./img/4_Packets_Frames/5.1.png)
+
+Câu lệnh **`nc 8.8.8.8 1234`** sử dụng công cụ **Netcat (nc)**, một tiện ích dòng lệnh phổ biến trong lĩnh vực mạng và bảo mật, để thực hiện kết nối đến một địa chỉ IP và cổng cụ thể. Dưới đây là ý nghĩa chi tiết của từng phần trong câu lệnh:
+
+**Giải thích:**
+1. **`nc` (Netcat):**
+   - Đây là lệnh gọi công cụ **Netcat**.
+   - Netcat được sử dụng để tạo kết nối TCP hoặc UDP giữa các thiết bị, gửi và nhận dữ liệu, kiểm tra các cổng mạng hoặc thực hiện các kiểm tra bảo mật.
+
+2. **`8.8.8.8`:**
+   - Đây là địa chỉ IP mà bạn muốn kết nối đến.
+   - Trong ví dụ này, **8.8.8.8** là một địa chỉ IP công khai, thường được sử dụng bởi DNS của Google.
+
+3. **`1234`:**
+   - Đây là số **cổng** (port) mà bạn muốn kết nối đến trên thiết bị hoặc máy chủ có địa chỉ IP là **8.8.8.8**.
+   - Cổng **1234** ở đây là nơi dịch vụ hoặc ứng dụng đang chạy và lắng nghe kết nối.
+
+**Cách hoạt động:**
+- Lệnh **`nc 8.8.8.8 1234`** sẽ gửi một yêu cầu kết nối **TCP** (theo mặc định) từ máy của bạn đến máy chủ tại **8.8.8.8** trên cổng **1234**.
+- Nếu kết nối thành công, bạn sẽ được kết nối đến dịch vụ đang chạy tại địa chỉ IP và cổng này.
+- Sau khi kết nối, bạn có thể gửi hoặc nhận dữ liệu qua kết nối này (tùy thuộc vào yêu cầu hoặc dịch vụ tại máy chủ).
+
