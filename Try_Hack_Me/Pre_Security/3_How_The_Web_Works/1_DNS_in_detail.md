@@ -86,21 +86,21 @@ Tuy nhiên, độ dài tối đa phải dưới **253 ký tự**. Không có gi�
 
 # Task 3: Record Types
 
-### Các loại bản ghi DNS
+ **Các loại bản ghi DNS**
 
-#### **Bản ghi A**
+## **Bản ghi A**
 Những bản ghi này ánh xạ tới địa chỉ IPv4, ví dụ: 104.26.10.229.
 
-#### **Bản ghi AAAA**
+## **Bản ghi AAAA**
 Những bản ghi này ánh xạ tới địa chỉ IPv6, ví dụ: 2606:4700:20::681a:be5.
 
-#### **Bản ghi CNAME**
+## **Bản ghi CNAME**
 Những bản ghi này ánh xạ tới một tên miền khác, ví dụ: cửa hàng trực tuyến của TryHackMe có tên miền phụ `store.tryhackme.com`, ánh xạ tới bản ghi CNAME `shops.shopify.com`. Một yêu cầu DNS khác sau đó sẽ được thực hiện để tìm địa chỉ IP.
 
-#### **Bản ghi MX**
+## **Bản ghi MX**
 Những bản ghi này ánh xạ tới địa chỉ của các máy chủ xử lý email cho tên miền bạn truy vấn, ví dụ: một phản hồi bản ghi MX cho `tryhackme.com` có thể giống như `alt1.aspmx.l.google.com`. Những bản ghi này cũng đi kèm với cờ ưu tiên. Điều này cho biết khách hàng nên thử các máy chủ theo thứ tự nào, rất hữu ích nếu máy chủ chính bị lỗi và email cần được gửi tới máy chủ dự phòng.
 
-#### **Bản ghi TXT**
+## **Bản ghi TXT**
 Bản ghi TXT là các trường văn bản tự do nơi dữ liệu dựa trên văn bản có thể được lưu trữ. Các bản ghi TXT có nhiều ứng dụng, một số trong đó là liệt kê các máy chủ có thẩm quyền gửi email thay mặt cho tên miền (hữu ích trong việc chống lại thư rác và email giả mạo). Chúng cũng có thể được sử dụng để xác minh quyền sở hữu tên miền khi đăng ký các dịch vụ bên thứ ba.
 
 **Câu hỏi:**
@@ -116,3 +116,42 @@ Bản ghi TXT là các trường văn bản tự do nơi dữ liệu dựa trên
   <summary>Hiển thị đáp án</summary>  
   Đáp án: AAAA  
 </details>  
+
+# Task 4: Making A Request
+
+**Điều gì xảy ra khi bạn thực hiện một yêu cầu DNS**
+
+**1.** Khi bạn yêu cầu một tên miền, máy tính của bạn sẽ kiểm tra bộ nhớ đệm cục bộ để xem liệu bạn đã tra cứu địa chỉ này gần đây hay chưa. Nếu không, một yêu cầu sẽ được gửi đến Máy chủ DNS Đệ quy của bạn.
+
+**2.** Máy chủ DNS Đệ quy thường được cung cấp bởi nhà cung cấp dịch vụ Internet (ISP) của bạn, nhưng bạn cũng có thể chọn máy chủ riêng của mình. Máy chủ này cũng có bộ nhớ đệm cục bộ chứa các tên miền đã được tra cứu gần đây. Nếu kết quả được tìm thấy trong bộ nhớ đệm cục bộ, kết quả này sẽ được gửi lại cho máy tính của bạn và yêu cầu của bạn kết thúc tại đây (điều này thường xảy ra với các dịch vụ phổ biến và có nhiều yêu cầu như Google, Facebook, Twitter). Nếu không tìm thấy kết quả trong bộ nhớ cục bộ, một hành trình sẽ bắt đầu để tìm câu trả lời chính xác, bắt đầu từ các máy chủ DNS gốc của internet.
+
+**3.** Các máy chủ gốc (root servers) hoạt động như xương sống DNS của internet; nhiệm vụ của chúng là chuyển hướng bạn đến Máy chủ Miền Cấp Cao Nhất (Top Level Domain Server) phù hợp, tùy thuộc vào yêu cầu của bạn. Ví dụ: nếu bạn yêu cầu **www.tryhackme.com**, máy chủ gốc sẽ nhận ra Tên Miền Cấp Cao Nhất là **.com** và chuyển bạn đến máy chủ TLD phù hợp xử lý các địa chỉ **.com**.
+
+**4.** Máy chủ TLD lưu trữ các bản ghi chỉ dẫn nơi tìm thấy máy chủ có thẩm quyền (authoritative server) để trả lời yêu cầu DNS. Máy chủ có thẩm quyền thường được gọi là nameserver của tên miền. Ví dụ: nameserver cho **tryhackme.com** là **kip.ns.cloudflare.com** và **uma.ns.cloudflare.com**. Bạn thường thấy nhiều nameserver cho một tên miền để hoạt động như bản sao lưu trong trường hợp một máy chủ gặp sự cố.
+
+**5.** Máy chủ DNS có thẩm quyền (authoritative DNS server) là máy chủ chịu trách nhiệm lưu trữ các bản ghi DNS cho một tên miền cụ thể và nơi thực hiện bất kỳ cập nhật nào đối với các bản ghi DNS của tên miền đó. Tùy thuộc vào loại bản ghi, bản ghi DNS sau đó được gửi lại tới Máy chủ DNS Đệ quy (Recursive DNS Server), nơi một bản sao cục bộ sẽ được lưu trữ tạm thời (cached) để sử dụng cho các yêu cầu trong tương lai và sau đó được chuyển tiếp lại tới máy khách ban đầu đã thực hiện yêu cầu.
+
+Các bản ghi DNS đều đi kèm với một giá trị TTL (Time To Live). Giá trị này được biểu diễn bằng số giây mà phản hồi sẽ được lưu trữ cục bộ cho đến khi bạn cần tra cứu lại. Việc lưu trữ tạm thời (caching) giúp giảm nhu cầu phải gửi yêu cầu DNS mỗi khi bạn giao tiếp với một máy chủ.
+
+![DNS request](./img/1_DNS_in_detail/4.1.png)
+
+**Câu hỏi:**
+
+**Câu hỏi 1:** Trường nào xác định thời gian một bản ghi DNS được lưu trong bộ nhớ đệm?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: TTL  
+</details>  
+
+**Câu hỏi 2:** Loại máy chủ DNS nào thường được nhà cung cấp dịch vụ Internet (ISP) cung cấp?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: recursive  
+</details>  
+
+**Câu hỏi 3:** Loại máy chủ nào lưu trữ tất cả các bản ghi cho một tên miền?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: authoritative  
+</details>  
+
