@@ -238,7 +238,6 @@ Nhật ký mạng (Network Log)
 - **ARP REQUEST:** Ai là **máy tính 3**, hãy báo cho **router**.
 - **ARP RESPONSE:** Này **router**, tôi là **máy tính 3**.  
 - **HANDSHAKE:** **Máy tính 3** đã nhận được gói **SYN** từ **máy tính 1**, đang gửi gói **SYN/ACK** đến **máy tính 1**.
-- **HANDSHAKE:** **Máy tính 3** đã nhận được gói **SYN** từ **máy tính 1**, đang gửi gói **SYN/ACK** đến **máy tính 1**.  
 - **HANDSHAKE:** **Máy tính 1** đã nhận được gói **SYN/ACK** từ **máy tính 3**, đang gửi gói **ACK** đến **máy tính 3**.
 - **HANDSHAKE:** **Máy tính 3** đã nhận được gói **ACK** từ **máy tính 1**, quá trình bắt tay hoàn tất.  
 - **TCP:** Đang gửi gói **TCP** từ **máy tính 1** đến **máy tính 3**.  
