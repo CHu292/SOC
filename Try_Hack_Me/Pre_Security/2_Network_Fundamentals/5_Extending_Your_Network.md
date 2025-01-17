@@ -37,3 +37,46 @@ Tên của thiết bị được sử dụng để cấu hình **chuyển tiếp
   <summary>Hiển thị đáp án</summary>  
   Đáp án: router  
 </details>  
+
+# Task 2: Firewalls 101
+
+**Tường lửa (Firewall)** là một thiết bị trong mạng chịu trách nhiệm xác định loại lưu lượng nào được phép ra vào mạng. Hãy nghĩ về tường lửa như một lớp bảo vệ biên giới cho mạng. Quản trị viên có thể cấu hình tường lửa để **cho phép (permit)** hoặc **từ chối (deny)** lưu lượng truy cập vào hoặc ra khỏi mạng dựa trên nhiều yếu tố như:
+
+- **Lưu lượng đến từ đâu?** (Tường lửa đã được cấu hình để chấp nhận/từ chối lưu lượng từ một mạng cụ thể chưa?)  
+- **Lưu lượng đi đến đâu?** (Tường lửa đã được cấu hình để chấp nhận/từ chối lưu lượng đến một mạng cụ thể chưa?)  
+- **Lưu lượng truy cập đến cổng nào?** (Tường lửa đã được cấu hình để chấp nhận/từ chối lưu lượng đến cổng 80 chưa?)  
+- **Lưu lượng sử dụng giao thức nào?** (Tường lửa đã được cấu hình để chấp nhận/từ chối lưu lượng sử dụng giao thức **UDP**, **TCP** hay cả hai chưa?)  
+
+Tường lửa thực hiện kiểm tra gói tin (**packet inspection**) để trả lời các câu hỏi trên.
+
+**Tường lửa** có nhiều kích thước và hình dạng khác nhau. Từ các thiết bị phần cứng chuyên dụng (thường được tìm thấy trong các mạng lớn như doanh nghiệp) có thể xử lý lượng dữ liệu khổng lồ, đến các bộ định tuyến dân dụng (như tại nhà bạn!) hoặc phần mềm như **Snort**, tường lửa có thể được phân loại thành **2 đến 5 loại**.
+
+Chúng ta sẽ khám phá **hai loại chính** của tường lửa trong bảng dưới đây:
+
+| **Loại tường lửa** | **Mô tả**                                                                                                                                       |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Stateful**        | Loại tường lửa này sử dụng toàn bộ thông tin từ một kết nối; thay vì kiểm tra từng gói tin riêng lẻ, tường lửa này xác định hành vi của một thiết bị dựa trên toàn bộ kết nối. <br><br> Loại tường lửa này tiêu thụ nhiều tài nguyên hơn so với tường lửa không trạng thái vì quá trình ra quyết định là động. Ví dụ: một tường lửa có thể cho phép các phần đầu tiên của quá trình bắt tay TCP, nhưng sau đó phát hiện và chặn nếu kết nối thất bại. <br><br>  Nếu một kết nối từ một host là xấu, nó sẽ chặn toàn bộ thiết bị. |
+| **Stateless**       | Loại tường lửa này sử dụng một tập hợp quy tắc tĩnh để xác định liệu các gói tin riêng lẻ (individual packets) có được chấp nhận hay không. Ví dụ: một thiết bị gửi một gói tin xấu sẽ không đồng nghĩa với việc toàn bộ thiết bị đó bị chặn. <br><br> Mặc dù các tường lửa này sử dụng ít tài nguyên hơn so với các lựa chọn khác, nhưng chúng kém thông minh hơn. Ví dụ: các tường lửa này chỉ hiệu quả nếu các quy tắc được định nghĩa chính xác. Nếu quy tắc không khớp chính xác, tường lửa sẽ không hoạt động hiệu quả. <br><br> Tuy nhiên, các tường lửa này rất hiệu quả khi xử lý lượng lớn lưu lượng từ một tập hợp các host (chẳng hạn như trong một cuộc tấn công từ chối dịch vụ phân tán - DDoS).|
+
+**Câu hỏi :**  
+
+1. Tường lửa hoạt động ở những lớp nào trong mô hình OSI?
+   
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Layer 3, Layer 4  
+</details>  
+
+2. Loại tường lửa nào kiểm tra toàn bộ kết nối?  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: stateful  
+</details>  
+
+3. Loại tường lửa nào kiểm tra từng gói tin riêng lẻ?  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: stateless  
+</details>  
