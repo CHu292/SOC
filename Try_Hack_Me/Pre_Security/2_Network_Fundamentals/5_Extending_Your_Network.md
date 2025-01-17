@@ -90,8 +90,12 @@ Trang web tại 203.0.110.1 đang bị tấn công! Hãy nhanh chóng thêm mộ
 Các gói tin màu đỏ đến từ máy của kẻ tấn công!
 
 ![thực hành](./img/5_Extending_Your_Network/3.1.png)
+
 ![thực hành](./img/5_Extending_Your_Network/3.2.png)
+
 Lựa chọn cổng 80 vì cổng này dành cho HyperText Transfer Protocol (HTTP).
+
 ![thực hành](./img/5_Extending_Your_Network/3.3.png)
+
 ![thực hành](./img/5_Extending_Your_Network/3.4.png)
 
