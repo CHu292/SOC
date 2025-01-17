@@ -1,5 +1,7 @@
 # Extending Your Network
 
+> Tìm hiểu về một số công nghệ được sử dụng để mở rộng mạng ra Internet và các động cơ đằng sau việc này.
+
 ## Mục Lục
 
 1. [Task 1: Introduction to Port Forwarding](#task-1-introduction-to-port-forwarding)  
@@ -80,3 +82,16 @@ Chúng ta sẽ khám phá **hai loại chính** của tường lửa trong bản
   <summary>Hiển thị đáp án</summary>  
   Đáp án: stateless  
 </details>  
+
+# Task 3: Practical — Firewall
+
+Trang web tại 203.0.110.1 đang bị tấn công! Hãy nhanh chóng thêm một số quy tắc tường lửa để ngăn máy chủ bị sập!
+
+Các gói tin màu đỏ đến từ máy của kẻ tấn công!
+
+![thực hành](./img/5_Extending_Your_Network/3.1.png)
+![thực hành](./img/5_Extending_Your_Network/3.2.png)
+Lựa chọn cổng 80 vì cổng này dành cho HyperText Transfer Protocol (HTTP).
+![thực hành](./img/5_Extending_Your_Network/3.3.png)
+![thực hành](./img/5_Extending_Your_Network/3.4.png)
+
