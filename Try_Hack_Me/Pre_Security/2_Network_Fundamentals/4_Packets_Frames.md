@@ -102,11 +102,13 @@ Tiếp theo, chúng ta sẽ thảo luận về **Three-way handshake** — thu�
 | **5**    | **FIN**        | Finish - Kết thúc: Gói tin này được sử dụng để **đóng kết nối một cách gọn gàng** sau khi quá trình truyền tải đã hoàn tất.                                                                          |
 | **#**    | **RST**        | Reset - Đặt lại: Gói tin này đột ngột chấm dứt toàn bộ giao tiếp. Đây là biện pháp cuối cùng và cho thấy đã xảy ra một vấn đề trong quá trình thực hiện. Ví dụ: dịch vụ hoặc ứng dụng không hoạt động đúng, hoặc hệ thống gặp lỗi như thiếu tài nguyên. |  
 
-Khi dữ liệu được gửi, nó được gán một chuỗi số ngẫu nhiên (**Sequence Number**) và được tái cấu trúc bằng cách sử dụng chuỗi số này, tăng dần lên 1. Cả hai máy tính phải đồng ý về cùng một chuỗi số để dữ liệu được gửi theo đúng thứ tự. Trình tự này được thống nhất qua ba bước:
+Sơ đồ bên dưới hiển thị quá trình bắt tay ba bước thông thường giữa Alice và Bob. Trong thực tế, điều này sẽ diễn ra giữa hai thiết bị.
 
-1. **SYN — Client:** Đây là **Initial Sequence Number (ISN)** của tôi để đồng bộ hóa (**SYNchronise**) (0).  
-2. **SYN/ACK — Server:** Đây là **Initial Sequence Number (ISN)** của tôi để đồng bộ hóa (**SYNchronise**) (5.000), và tôi **ACKnowledge** chuỗi số ban đầu của bạn (0).  
-3. **ACK — Client:** Tôi **ACKnowledge** **Initial Sequence Number (ISN)** của bạn là (5.000), đây là một số dữ liệu với ISN của tôi +1 (5.000 + 1).
+Bất kỳ dữ liệu nào được gửi đều được gán một **chuỗi số ngẫu nhiên** (**Number Sequence**) và được tái cấu trúc bằng cách sử dụng chuỗi số này, tăng dần lên 1. Cả hai máy tính phải đồng ý về cùng một chuỗi số để dữ liệu được gửi theo đúng thứ tự. Thứ tự này được thống nhất thông qua ba bước:
+
+1. **SYN — Client:** Đây là **Initial Sequence Number (ISN)** của tôi để đồng bộ hóa (**SYNchronise**) với (0).  
+2. **SYN/ACK — Server:** Đây là **Initial Sequence Number (ISN)** của tôi để đồng bộ hóa (**SYNchronise**) với (5.000), và tôi **ACKnowledge** chuỗi số ban đầu của bạn (0).  
+3. **ACK — Client:** Tôi **ACKnowledge** chuỗi số ban đầu của bạn (**Initial Sequence Number (ISN)**) là (5.000), đây là dữ liệu của tôi với ISN+1 (5.000 + 1).  
 
 ![](./img/4_Packets_Frames/2.1.png)
 
