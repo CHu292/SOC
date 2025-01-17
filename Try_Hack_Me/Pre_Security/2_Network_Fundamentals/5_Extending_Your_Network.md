@@ -154,3 +154,65 @@ PPP không phải là một công nghệ VPN độc lập mà là một giao th�
   <summary>Hiển thị đáp án</summary>  
   Đáp án: IPSec  
 </details>  
+
+# Task 5: LAN Networking Devices
+
+## **Router là gì?**
+
+Công việc của một **router** là kết nối các mạng và truyền dữ liệu giữa chúng. Router thực hiện điều này bằng cách sử dụng quá trình định tuyến (**routing**) (do đó có tên là **router**).
+
+**Routing** là thuật ngữ chỉ quá trình dữ liệu di chuyển qua các mạng. Quá trình này bao gồm việc tạo ra một đường dẫn giữa các mạng để dữ liệu có thể được truyền thành công. Các router hoạt động tại **Layer 3** của mô hình OSI. Chúng thường có giao diện tương tác (chẳng hạn như một trang web hoặc giao diện điều khiển) cho phép quản trị viên cấu hình các quy tắc khác nhau như **chuyển tiếp cổng (port forwarding)** hoặc **tường lửa (firewalling)**.
+
+Routing đặc biệt hữu ích khi các thiết bị được kết nối qua nhiều đường dẫn, như trong sơ đồ ví dụ bên dưới, nơi mà con đường tối ưu nhất được chọn.
+
+![Router](./img/5_Extending_Your_Network/5.1.png)
+
+**Router** là các thiết bị chuyên dụng và không thực hiện các chức năng giống như **switch**.
+
+Chúng ta có thể thấy rằng mạng của **Máy tính A** được kết nối với mạng của **Máy tính B** thông qua hai **router** ở giữa. Câu hỏi đặt ra là: **đường dẫn nào sẽ được chọn?** Các giao thức khác nhau sẽ quyết định đường dẫn nào nên được sử dụng, nhưng các yếu tố bao gồm:
+
+- Đường dẫn nào là **ngắn nhất**?  
+- Đường dẫn nào là **đáng tin cậy nhất**?  
+- Đường dẫn nào sử dụng phương tiện nhanh hơn (ví dụ: **dây đồng** hay **cáp quang**)?
+
+## **Switch là gì?**
+
+**Switch** là một thiết bị mạng chuyên dụng chịu trách nhiệm cung cấp phương tiện kết nối nhiều thiết bị. Switch có thể kết nối nhiều thiết bị (từ 3 đến 63 thiết bị) bằng cáp Ethernet.
+
+Switch có thể hoạt động ở cả **Layer 2** và **Layer 3** của mô hình OSI. Tuy nhiên, điều này mang tính đặc thù ở chỗ **Switch Layer 2** không thể hoạt động ở **Layer 3**.
+
+Ví dụ, hãy xem một **Switch Layer 2** trong sơ đồ dưới đây. Các switch này sẽ chuyển tiếp các **frame** (hãy nhớ rằng chúng không còn là các gói tin vì giao thức IP đã được loại bỏ) đến các thiết bị được kết nối bằng địa chỉ **MAC** của chúng.
+
+![Switch](./img/5_Extending_Your_Network/5.2.png)
+
+**Switch này chỉ chịu trách nhiệm gửi frame đến đúng thiết bị.**
+
+Bây giờ, hãy chuyển sang **switch ở Layer 3**. Các switch này tinh vi hơn **Layer 2**, vì chúng có thể thực hiện **một số** trách nhiệm của router. Cụ thể, các switch này sẽ gửi frame đến thiết bị (như Layer 2 thực hiện) và định tuyến các packet đến các thiết bị khác bằng giao thức IP.
+
+Hãy xem sơ đồ bên dưới về hoạt động của một **switch ở Layer 3**. Chúng ta có thể thấy rằng có hai địa chỉ IP:
+- **192.168.1.1**  
+- **192.168.2.1**  
+
+Một công nghệ được gọi là **VLAN** (**Virtual Local Area Network**) cho phép các thiết bị cụ thể trong một mạng được phân chia ảo. Sự phân chia này có nghĩa là tất cả thiết bị có thể tận dụng các lợi ích như kết nối Internet nhưng được quản lý tách biệt.  
+
+Sự phân tách mạng này cung cấp bảo mật vì nó đặt ra các quy tắc xác định cách các thiết bị cụ thể giao tiếp với nhau. Sự phân chia này được minh họa trong sơ đồ bên dưới.
+
+![Switch](./img/5_Extending_Your_Network/5.3.png)
+
+Trong bối cảnh của sơ đồ ở trên, **"Phòng Kinh doanh" (Sales Department)** và **"Phòng Kế toán" (Accounting Department)** sẽ có thể truy cập Internet nhưng không thể giao tiếp với nhau (mặc dù cả hai đều được kết nối đến cùng một switch).
+
+**Câu hỏi:**  
+
+1. Động từ mô tả hành động mà router thực hiện là gì?  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: routing  
+</details>  
+
+2. Hai lớp khác nhau của switch là gì? (Ngăn cách bằng dấu phẩy, ví dụ: LayerX,LayerY)  
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Layer2,Layer3  
+</details>  
