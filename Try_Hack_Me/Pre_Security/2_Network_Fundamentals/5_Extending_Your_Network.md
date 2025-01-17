@@ -216,3 +216,30 @@ Trong bối cảnh của sơ đồ ở trên, **"Phòng Kinh doanh" (Sales Depar
   <summary>Hiển thị đáp án</summary>  
   Đáp án: Layer2,Layer3  
 </details>  
+
+# Task 6: Practical — Network Simulator
+
+Triển khai trang tĩnh được đính kèm với nhiệm vụ này và thử nghiệm với trình mô phỏng mạng. Trình mô phỏng sẽ phân tích từng bước mà một gói tin cần thực hiện để di chuyển từ điểm A đến điểm B. Hãy thử gửi một gói **TCP** từ **máy tính 1** đến **máy tính 3** để tiết lộ một flag.
+
+**Lưu ý:** Vui lòng sử dụng trình duyệt **Chrome** hoặc **Firefox** để hoàn thành bài thực hành này.
+
+
+![Thực hành](./img/5_Extending_Your_Network/6.1.png)
+![Thực hành](./img/5_Extending_Your_Network/6.2.png)
+![Thực hành](./img/5_Extending_Your_Network/6.3.png)
+
+Nhật ký mạng (Network Log)
+
+- **HANDSHAKE:** Bắt đầu quá trình bắt tay TCP/IP giữa **máy tính 1** và **máy tính 3**.  
+- **HANDSHAKE:** Gửi gói **SYN** từ **máy tính 1** đến **máy tính 3**.  
+- **ROUTING:** **Máy tính 1** báo rằng **máy tính 3** không nằm trong mạng cục bộ, đang gửi đến gateway: **router**.
+- **ARP REQUEST:** Ai là **router**, hãy báo cho **máy tính 1**.  
+- **ARP RESPONSE:** Này **máy tính 1**, tôi là **router**.  
+- **ARP REQUEST:** Ai là **máy tính 3**, hãy báo cho **router**.
+- **ARP RESPONSE:** Này **router**, tôi là **máy tính 3**.  
+- **HANDSHAKE:** **Máy tính 3** đã nhận được gói **SYN** từ **máy tính 1**, đang gửi gói **SYN/ACK** đến **máy tính 1**.
+- **HANDSHAKE:** **Máy tính 3** đã nhận được gói **SYN** từ **máy tính 1**, đang gửi gói **SYN/ACK** đến **máy tính 1**.  
+- **HANDSHAKE:** **Máy tính 1** đã nhận được gói **SYN/ACK** từ **máy tính 3**, đang gửi gói **ACK** đến **máy tính 3**.
+- **HANDSHAKE:** **Máy tính 3** đã nhận được gói **ACK** từ **máy tính 1**, quá trình bắt tay hoàn tất.  
+- **TCP:** Đang gửi gói **TCP** từ **máy tính 1** đến **máy tính 3**.  
+- **TCP:** **Máy tính 3** đã nhận được gói **TCP** từ **máy tính 1**, đang gửi gói **ACK** đến **máy tính 1**.  
