@@ -170,3 +170,60 @@ Hãy giúp Alice và Bob giao tiếp bằng cách lắp ráp lại bắt tay TCP
 
 # Task 4: UDP/IP
 
+**Giao thức User Datagram Protocol (UDP)** là một giao thức khác được sử dụng để truyền dữ liệu giữa các thiết bị.
+
+Khác với "người anh em" TCP, **UDP** là một giao thức không trạng thái (**stateless protocol**), không yêu cầu kết nối liên tục giữa hai thiết bị để gửi dữ liệu. Ví dụ, quá trình **bắt tay ba bước (Three-way handshake)** không xảy ra, và cũng không có bất kỳ sự đồng bộ hóa nào giữa hai thiết bị.
+
+Hãy nhớ lại một số so sánh đã được thực hiện về hai giao thức này trong **Phòng 3: "Mô hình OSI"**. Cụ thể, **UDP** được sử dụng trong các tình huống mà ứng dụng có thể chấp nhận mất dữ liệu (chẳng hạn như truyền phát video hoặc trò chuyện thoại) hoặc trong các kịch bản mà kết nối không ổn định không phải là vấn đề quá lớn. Một bảng so sánh các ưu điểm và nhược điểm của UDP được trình bày bên dưới:
+
+| **Ưu điểm của UDP**                                                       | **Nhược điểm của UDP**                                                                                      |
+|---------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| **UDP nhanh hơn nhiều so với TCP.**                                       | **UDP không quan tâm liệu dữ liệu có được nhận hay không.**                                                |
+| **UDP để ứng dụng (phần mềm người dùng) quyết định có kiểm soát tốc độ gửi gói tin hay không.** | **Điều này khá linh hoạt đối với các nhà phát triển phần mềm trong ngữ cảnh này.**                        |
+| **UDP không duy trì kết nối liên tục trên thiết bị như TCP.**             | **Điều này có nghĩa là các kết nối không ổn định sẽ mang lại trải nghiệm tồi tệ cho người dùng.**           |
+
+Như đã đề cập, không có quá trình nào diễn ra để thiết lập kết nối giữa hai thiết bị. Điều này có nghĩa là không quan tâm liệu dữ liệu có được nhận hay không, và không có các cơ chế bảo vệ như TCP, chẳng hạn như đảm bảo tính toàn vẹn của dữ liệu.
+
+Các gói tin UDP đơn giản hơn nhiều so với các gói tin TCP và có ít tiêu đề (**headers**) hơn. Tuy nhiên, cả hai giao thức đều chia sẻ một số tiêu đề chuẩn, như được chú thích trong bảng dưới đây:
+
+| **Tiêu đề**                | **Mô tả**                                                                                                                                                     |
+|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Time to Live (TTL)**     | Trường này đặt bộ đếm thời gian hết hạn cho gói tin, để tránh làm tắc nghẽn mạng nếu gói tin không bao giờ đến được host hoặc thoát khỏi mạng.                |
+| **Source Address**         | Địa chỉ IP của thiết bị mà gói tin được gửi đi, để dữ liệu biết nơi cần quay lại.                                                                             |
+| **Destination Address**    | Địa chỉ IP của thiết bị mà gói tin được gửi đến, để dữ liệu biết nơi cần truyền tiếp theo.                                                                     |
+| **Source Port**            | Giá trị này là cổng được mở bởi thiết bị gửi để gửi gói tin TCP. Giá trị này được chọn ngẫu nhiên (trong các cổng từ 0-65535 chưa được sử dụng tại thời điểm đó). |
+| **Destination Port**       | Giá trị này là số cổng mà một ứng dụng hoặc dịch vụ đang chạy trên máy chủ từ xa (máy nhận dữ liệu); ví dụ, một máy chủ web chạy trên cổng 80. Không giống cổng nguồn, giá trị này không được chọn ngẫu nhiên. |
+| **Data**                   | Tiêu đề này là nơi chứa dữ liệu, ví dụ: các byte của một tệp đang được truyền.                                                                               |
+
+Tiếp theo, chúng ta sẽ thảo luận về cách quá trình kết nối qua **UDP** khác với một giao thức như **TCP**. Hãy nhớ rằng **UDP** là giao thức **không trạng thái (stateless)**. Không có bất kỳ gói tin xác nhận nào được gửi trong suốt quá trình kết nối.
+
+Sơ đồ dưới đây minh họa một kết nối UDP thông thường giữa **Alice** và **Bob**. Trong thực tế, điều này sẽ diễn ra giữa hai thiết bị.
+
+![UDP](./img/4_Packets_Frames/4.1.png)
+
+**Câu hỏi:**  
+
+**1. Thuật ngữ “UDP” là viết tắt của gì?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: User Datagram Protocol  
+</details>  
+
+**2. Loại kết nối nào được “UDP” sử dụng?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: Stateless  
+</details>  
+
+**3. Bạn sẽ sử dụng giao thức nào để chuyển tệp?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: TCP  
+</details>  
+
+**4. Bạn sẽ sử dụng giao thức nào để thực hiện cuộc gọi video?**  
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: UDP  
+</details>  
+
