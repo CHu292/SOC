@@ -133,6 +133,12 @@ Công nghệ VPN đã được cải tiến qua các năm. Hãy cùng khám phá
 | **PPTP**          | **Point-to-Point Tunneling Protocol (PPTP)** là công nghệ cho phép dữ liệu từ PPP di chuyển và thoát khỏi mạng. <br> <br> PPTP rất dễ thiết lập và được hầu hết các thiết bị hỗ trợ. Tuy nhiên, nó được mã hóa yếu hơn so với các lựa chọn thay thế. |
 | **IPSec**         | **Internet Protocol Security (IPSec)** mã hóa dữ liệu bằng cách sử dụng cấu trúc giao thức Internet (**IP**) hiện có. <br> <br> IPSec khó thiết lập hơn so với các lựa chọn khác; tuy nhiên, nếu thành công, nó cung cấp mã hóa mạnh mẽ và được hỗ trợ trên nhiều thiết bị. |
 
+**PPP** là viết tắt của **Point-to-Point Protocol**, một giao thức được sử dụng để truyền dữ liệu giữa hai thiết bị trực tiếp kết nối với nhau.  
+
+Trong bối cảnh VPN, **PPP** được sử dụng bởi các giao thức như **PPTP (Point-to-Point Tunneling Protocol)** để cung cấp **mã hóa** và **xác thực dữ liệu** trước khi dữ liệu được truyền qua mạng.  
+
+PPP không phải là một công nghệ VPN độc lập mà là một giao thức cơ sở hỗ trợ các công nghệ VPN khác như PPTP.
+
 **Câu hỏi:**  
 
 1. Công nghệ VPN nào chỉ mã hóa và cung cấp xác thực dữ liệu?  
