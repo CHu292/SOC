@@ -149,4 +149,24 @@ Trong hình minh họa, chúng ta có thể thấy rằng **Alice** đã gửi m
   Đáp án: SYN, SYN/ACK, ACK  
 </details>  
 
+# Task 3: Practical - Handshake
+
+Hãy giúp Alice và Bob giao tiếp bằng cách lắp ráp lại bắt tay TCP theo đúng thứ tự trong phòng thí nghiệm tĩnh được đính kèm vào nhiệm vụ này!
+
+![TCP](./img/4_Packets_Frames/3.1.png)
+![TCP](./img/4_Packets_Frames/3.2.png)
+![TCP](./img/4_Packets_Frames/3.3.png)
+![TCP](./img/4_Packets_Frames/3.4.png)
+![TCP](./img/4_Packets_Frames/3.5.png)
+![TCP](./img/4_Packets_Frames/3.6.png)
+![TCP](./img/4_Packets_Frames/3.7.png)
+![TCP](./img/4_Packets_Frames/3.8.png)
+![TCP](./img/4_Packets_Frames/3.9.png)
+
+<details>  
+  <summary>Hiển thị đáp án</summary>  
+  Đáp án: THM{TCP_CHATTER} 
+</details>  
+
+# Task 4: UDP/IP
 
