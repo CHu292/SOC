@@ -121,9 +121,9 @@ Bản ghi TXT là các trường văn bản tự do nơi dữ liệu dựa trên
 
 **Điều gì xảy ra khi bạn thực hiện một yêu cầu DNS**
 
-**1.** Khi bạn yêu cầu một tên miền, máy tính của bạn sẽ kiểm tra bộ nhớ đệm cục bộ để xem liệu bạn đã tra cứu địa chỉ này gần đây hay chưa. Nếu không, một yêu cầu sẽ được gửi đến Máy chủ DNS Đệ quy của bạn.
+**1.** Khi bạn yêu cầu một tên miền, máy tính của bạn sẽ kiểm tra bộ nhớ đệm cục bộ để xem liệu bạn đã tra cứu địa chỉ này gần đây hay chưa. Nếu không, một yêu cầu sẽ được gửi đến Máy chủ DNS Đệ quy (Recursive DNS Server) của bạn.
 
-**2.** Máy chủ DNS Đệ quy thường được cung cấp bởi nhà cung cấp dịch vụ Internet (ISP) của bạn, nhưng bạn cũng có thể chọn máy chủ riêng của mình. Máy chủ này cũng có bộ nhớ đệm cục bộ chứa các tên miền đã được tra cứu gần đây. Nếu kết quả được tìm thấy trong bộ nhớ đệm cục bộ, kết quả này sẽ được gửi lại cho máy tính của bạn và yêu cầu của bạn kết thúc tại đây (điều này thường xảy ra với các dịch vụ phổ biến và có nhiều yêu cầu như Google, Facebook, Twitter). Nếu không tìm thấy kết quả trong bộ nhớ cục bộ, một hành trình sẽ bắt đầu để tìm câu trả lời chính xác, bắt đầu từ các máy chủ DNS gốc của internet.
+**2.** Máy chủ DNS Đệ quy thường được cung cấp bởi nhà cung cấp dịch vụ Internet (ISP -  Internet Service Provider) của bạn, nhưng bạn cũng có thể chọn máy chủ riêng của mình. Máy chủ này cũng có bộ nhớ đệm cục bộ chứa các tên miền đã được tra cứu gần đây. Nếu kết quả được tìm thấy trong bộ nhớ đệm cục bộ, kết quả này sẽ được gửi lại cho máy tính của bạn và yêu cầu của bạn kết thúc tại đây (điều này thường xảy ra với các dịch vụ phổ biến và có nhiều yêu cầu như Google, Facebook, Twitter). Nếu không tìm thấy kết quả trong bộ nhớ cục bộ, một hành trình sẽ bắt đầu để tìm câu trả lời chính xác, bắt đầu từ các máy chủ DNS gốc của internet.
 
 **3.** Các máy chủ gốc (root servers) hoạt động như xương sống DNS của internet; nhiệm vụ của chúng là chuyển hướng bạn đến Máy chủ Miền Cấp Cao Nhất (Top Level Domain Server) phù hợp, tùy thuộc vào yêu cầu của bạn. Ví dụ: nếu bạn yêu cầu **www.tryhackme.com**, máy chủ gốc sẽ nhận ra Tên Miền Cấp Cao Nhất là **.com** và chuyển bạn đến máy chủ TLD phù hợp xử lý các địa chỉ **.com**.
 
