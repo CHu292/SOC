@@ -86,6 +86,8 @@ Host: tryhackme.com
 User-Agent: Mozilla/5.0 Firefox/87.0
 
 Referer: https://tryhackme.com/
+
+
 ```
 
 **Để phân tích từng dòng của yêu cầu này:**
