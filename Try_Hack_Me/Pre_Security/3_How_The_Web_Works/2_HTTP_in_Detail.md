@@ -164,3 +164,46 @@ Content-Length: 98
 Đáp án: Content-Length  
 </details>  
 
+# Task 3: HTTP Methods
+
+Các phương thức HTTP là cách mà client (máy khách) thể hiện hành động dự định của mình khi thực hiện một yêu cầu HTTP. Có rất nhiều phương thức HTTP, nhưng chúng ta sẽ tập trung vào những phương thức phổ biến nhất, đặc biệt là **GET** và **POST**.
+
+- **GET Request:**  
+  Được sử dụng để lấy thông tin từ máy chủ web.
+
+- **POST Request:**  
+  Được sử dụng để gửi dữ liệu tới máy chủ web và có thể tạo ra các bản ghi mới.
+
+- **PUT Request:**  
+  Được sử dụng để gửi dữ liệu tới máy chủ web để cập nhật thông tin.
+
+- **DELETE Request:**  
+  Được sử dụng để xóa thông tin hoặc bản ghi từ máy chủ web.
+
+**Câu hỏi:**
+
+**Câu hỏi 1:** Phương thức nào được sử dụng để tạo một tài khoản người dùng mới?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: POST  
+</details>  
+
+**Câu hỏi 2:** Phương thức nào được sử dụng để cập nhật địa chỉ email của bạn?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: PUT  
+</details>  
+
+**Câu hỏi 3:** Phương thức nào được sử dụng để xóa một hình ảnh bạn đã tải lên tài khoản của mình?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: DELETE  
+</details>  
+
+**Câu hỏi 4:** Phương thức nào được sử dụng để xem một bài báo tin tức?  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: GET  
+</details>  
+
+
