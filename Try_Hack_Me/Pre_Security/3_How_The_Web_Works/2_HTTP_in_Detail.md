@@ -206,4 +206,43 @@ Các phương thức HTTP là cách mà client (máy khách) thể hiện hành 
 Đáp án: GET  
 </details>  
 
+# Task 4: HTTP Status Codes
+
+## HTTP Status Codes:
+
+Trong nhiệm vụ trước, bạn đã học rằng khi một máy chủ HTTP phản hồi, dòng đầu tiên luôn chứa mã trạng thái, thông báo cho client về kết quả của yêu cầu và cũng có thể cách xử lý tiếp theo. Các mã trạng thái này có thể được phân loại thành 5 phạm vi khác nhau:
+
+**Phạm vi mã trạng thái HTTP**
+
+| Phạm vi          | Mô tả                                                                                           |
+|-------------------|-------------------------------------------------------------------------------------------------|
+| **100-199 - Information Response (Phản hồi thông tin)** | Được gửi để thông báo cho client rằng phần đầu tiên của yêu cầu đã được chấp nhận và họ nên tiếp tục gửi phần còn lại của yêu cầu. Các mã này không còn phổ biến nữa. |
+| **200-299 - Success (Thành công)**          | Phạm vi mã trạng thái này được dùng để thông báo cho client rằng yêu cầu của họ đã thành công.                   |
+| **300-399 - Redirection (Chuyển hướng)**        | Dùng để chuyển hướng yêu cầu của client đến một tài nguyên khác. Điều này có thể là một trang web khác hoặc một trang web hoàn toàn khác. |
+| **400-499 - Client Errors (Lỗi client)**          | Dùng để thông báo cho client rằng đã xảy ra lỗi với yêu cầu của họ.                                     |
+| **500-599 - Server Errors (Lỗi server)**          | Dành riêng cho các lỗi xảy ra ở phía server và thường chỉ ra một vấn đề nghiêm trọng với server xử lý yêu cầu.   |
+
+
+## Common HTTP Status Codes:
+
+Có rất nhiều mã trạng thái HTTP khác nhau, chưa kể đến việc các ứng dụng thậm chí có thể tự định nghĩa mã của riêng chúng. Dưới đây là những phản hồi HTTP phổ biến nhất mà bạn có thể gặp:
+
+**Mã trạng thái HTTP phổ biến**
+
+| Mã trạng thái                  | Mô tả                                                                                 |
+|--------------------------------|---------------------------------------------------------------------------------------|
+| **200 - Thành công (OK)**      | Yêu cầu đã được hoàn thành thành công.                                                |
+| **201 - Đã tạo (Created)**     | Một tài nguyên đã được tạo (ví dụ như người dùng mới hoặc bài đăng blog mới).          |
+| **301 - Chuyển hướng vĩnh viễn (Moved Permanently)** | Chuyển hướng trình duyệt của client đến một trang web mới hoặc báo cho công cụ tìm kiếm rằng trang đã di chuyển. |
+| **302 - Đã tìm thấy (Found)**  | Tương tự như chuyển hướng vĩnh viễn, nhưng đây chỉ là thay đổi tạm thời và có thể thay đổi trong tương lai gần. |
+| **400 - Yêu cầu không hợp lệ (Bad Request)** | Báo cho trình duyệt rằng có lỗi hoặc thiếu sót trong yêu cầu. Ví dụ, tham số cần thiết không được gửi. |
+| **401 - Chưa được xác thực (Not Authorised)** | Bạn không được phép xem tài nguyên này cho đến khi bạn đã xác thực với ứng dụng web (thường với tên người dùng và mật khẩu). |
+| **403 - Bị cấm (Forbidden)**   | Bạn không có quyền xem tài nguyên này dù đã đăng nhập hay chưa.                     |
+| **405 - Phương thức không được phép (Method Not Allowed)** | Tài nguyên không cho phép yêu cầu phương thức này. Ví dụ, bạn gửi yêu cầu `GET` trong khi server yêu cầu `POST`. |
+| **404 - Không tìm thấy (Page Not Found)** | Trang hoặc tài nguyên bạn yêu cầu không tồn tại.                                      |
+| **500 - Lỗi dịch vụ nội bộ (Internal Service Error)** | Server gặp lỗi với yêu cầu của bạn mà không biết cách xử lý đúng cách.                |
+| **503 - Dịch vụ không khả dụng (Service Unavailable)** | Server không thể xử lý yêu cầu của bạn vì quá tải hoặc đang bảo trì.                  |
+
+
+
 
