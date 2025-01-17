@@ -244,5 +244,24 @@ Có rất nhiều mã trạng thái HTTP khác nhau, chưa kể đến việc c�
 | **503 - Dịch vụ không khả dụng (Service Unavailable)** | Server không thể xử lý yêu cầu của bạn vì quá tải hoặc đang bảo trì.                  |
 
 
+# Task 5: Headers
 
+- Tiêu đề là các phần thông tin bổ sung bạn có thể gửi tới máy chủ web khi thực hiện yêu cầu.
+
+- Mặc dù không bắt buộc phải có tiêu đề khi gửi yêu cầu HTTP, bạn sẽ gặp khó khăn khi xem trang web nếu không sử dụng tiêu đề.
+
+## Các tiêu đề yêu cầu phổ biến:
+
+- **Host**: Một số máy chủ web lưu trữ nhiều trang web, do đó bằng cách cung cấp tiêu đề host, bạn có thể cho máy chủ biết bạn cần truy cập trang nào, nếu không bạn sẽ chỉ nhận được trang web mặc định của máy chủ.
+- **User-Agent**: Đây là thông tin về phần mềm và phiên bản trình duyệt của bạn, giúp máy chủ web định dạng trang web đúng cách cho trình duyệt của bạn, đồng thời hỗ trợ một số phần tử HTML, JavaScript và CSS mà chỉ có trên các trình duyệt nhất định.
+- **Content-Length**: Khi gửi dữ liệu đến máy chủ web, ví dụ như trong biểu mẫu, độ dài nội dung sẽ cho biết máy chủ biết phải mong đợi bao nhiêu dữ liệu trong yêu cầu. Bằng cách này, máy chủ có thể đảm bảo rằng không thiếu dữ liệu.
+- **Accept-Encoding**: Cho máy chủ biết loại phương pháp nén nào mà trình duyệt hỗ trợ, để dữ liệu có thể được nén nhỏ hơn trước khi gửi qua internet.
+- **Cookie**: Dữ liệu được gửi đến máy chủ để giúp ghi nhớ thông tin của bạn (xem bài học về cookie để biết thêm thông tin).
+
+## Các tiêu đề phản hồi phổ biến:
+
+- **Set-Cookie**: Thông tin để lưu trữ và được gửi trở lại máy chủ web trong mỗi yêu cầu (xem bài học về cookie để biết thêm thông tin).
+- **Cache-Control**: Cho biết thời gian lưu trữ nội dung phản hồi trong bộ nhớ đệm của trình duyệt trước khi cần yêu cầu lại.
+- **Content-Type**: Thông báo cho client biết loại dữ liệu nào đang được trả về, ví dụ: HTML, CSS, JavaScript, Hình ảnh, PDF, Video, v.v. Sử dụng tiêu đề content-type giúp trình duyệt biết cách xử lý dữ liệu.
+- **Content-Encoding**: Phương pháp được sử dụng để nén dữ liệu để làm cho dữ liệu nhỏ hơn trước khi gửi qua internet.
 
