@@ -20,8 +20,6 @@
 
 8. [Task 8: Conclusions & Summaries](#task-8-conclusions-summaries)
 
-9. [Task 9: Linux Fundamentals Part 2](#task-9-linux-fundamentals-part-2)
-
 ## Nội dung
 
 # Task 1: Introduction
@@ -350,4 +348,38 @@ Toán tử `>>` cho phép thêm kết quả đầu ra vào cuối tệp — thay
 
 ![toán tử >>](./img/1_Linux_Fundamentals_Part_1/7.2.png)
 
+**Trả lời các câu hỏi dưới đây**  
 
+1. **Nếu chúng ta muốn chạy một lệnh trong nền, chúng ta sẽ sử dụng toán tử nào?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: &  
+</details>  
+
+2. **Nếu tôi muốn thay thế nội dung của một tệp có tên là "passwords" bằng từ "password123", lệnh của tôi sẽ là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: echo password123 > passwords  
+</details>  
+
+3. **Bây giờ, nếu tôi muốn thêm "tryhackme" vào tệp này có tên là "passwords" nhưng vẫn giữ lại "password123", lệnh của tôi sẽ là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: echo tryhackme >> passwords  
+</details>  
+
+# Task 8: Conclusions & Summaries
+
+Làm tốt lắm khi đã đến được giai đoạn này! Chúng ta đã bao quát khá nhiều nội dung trong lần đầu bạn làm quen với Linux. Tuy nhiên, đây là những chức năng/công cụ cơ bản nhất mà bạn sẽ sử dụng mỗi khi làm việc với một máy Linux.
+
+Hy vọng rằng căn phòng này không quá khó khăn để bạn vượt qua. Như tôi đã đề cập trước đó, bạn sẽ nhanh chóng làm quen với những điều này nhờ tần suất bạn sẽ sử dụng chúng.
+
+Hãy cùng nhanh chóng điểm lại, chúng ta đã học những nội dung sau:
+
+- Hiểu tại sao Linux lại phổ biến như ngày nay.  
+- Tương tác với máy Linux đầu tiên của bạn!  
+- Chạy một số lệnh cơ bản nhất.  
+- Giới thiệu cách điều hướng trong hệ thống tệp và cách sử dụng các lệnh như `find` và `grep` để tìm dữ liệu hiệu quả hơn!  
+- Tăng cường sức mạnh cho các lệnh của bạn bằng cách tìm hiểu một số toán tử shell quan trọng.  
+
+Hãy dành thời gian thực hành thêm trong căn phòng này. Khi bạn cảm thấy tự tin hơn, hãy tiếp tục với **Linux Fundamentals Part 2**.
