@@ -34,6 +34,7 @@ Có nhiều quy trình khác liên quan đến việc trình duyệt của bạn
 **Trả lời các câu hỏi dưới đây**  
 
 **Thuật ngữ nào mô tả tốt nhất thành phần của một ứng dụng web được hiển thị bởi trình duyệt của bạn?**  
+
 <details>  
 <summary>Hiển thị đáp án</summary>  
 Đáp án: Front End  
@@ -62,7 +63,7 @@ Trang web chủ yếu được tạo bằng:
 </html>
 ```
 
-Cấu trúc HTML (như được hiển thị trong ảnh chụp màn hình) bao gồm các thành phần sau:
+Cấu trúc HTML (như được hiển thị bên trên) bao gồm các thành phần sau:
 
 - **`<!DOCTYPE html>`** xác định rằng trang là một tài liệu HTML5. Điều này giúp chuẩn hóa giữa các trình duyệt khác nhau và cho trình duyệt biết sử dụng HTML5 để diễn giải trang.
 - **`<html>`** là phần tử gốc của trang HTML - tất cả các phần tử khác sẽ nằm bên trong phần tử này.
@@ -79,4 +80,25 @@ Cấu trúc HTML (như được hiển thị trong ảnh chụp màn hình) bao 
 
 Bạn có thể xem HTML của bất kỳ trang web nào bằng cách nhấp chuột phải và chọn **"View Page Source"** (Chrome) / **"Show Page Source"** (Safari).
 
+**Câu hỏi:**
+
+![HTML](./img/3_How_Websites_Work/2.1.png)
+
+1. Một trong những hình ảnh trên trang web về mèo bị hỏng - hãy sửa nó và hình ảnh sẽ hiển thị câu trả lời bằng văn bản ẩn!
+
+![HTML](./img/3_How_Websites_Work/2.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: HTMLHERO
+</details>  
+
+2. Thêm hình ảnh con chó vào trang bằng cách thêm thẻ img khác (<img>) vào dòng 11. Vị trí hình ảnh con chó là img/dog-1.png. Văn bản trong hình ảnh con chó là gì?
+
+![HTML](./img/3_How_Websites_Work/2.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: DOGHTML
+</details>  
 
