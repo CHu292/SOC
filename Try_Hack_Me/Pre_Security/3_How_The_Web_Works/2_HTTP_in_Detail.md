@@ -299,7 +299,7 @@ Hãy xem ví dụ sau về một yêu cầu HTTP:
 
 ### Xem Cookie Của Bạn
 
-Bạn có thể dễ dàng xem cookie mà trình duyệt của bạn gửi đến một trang web bằng cách sử dụng công cụ dành cho nhà phát triển (developer tools) trong trình duyệt của bạn. Nếu bạn không chắc cách mở công cụ dành cho nhà phát triển trong trình duyệt của mình, hãy nhấp vào nút **"View Site"** ở đầu nhiệm vụ này để xem hướng dẫn.
+Bạn có thể dễ dàng xem cookie mà trình duyệt của bạn gửi đến một trang web bằng cách sử dụng công cụ dành cho nhà phát triển (developer tools) trong trình duyệt của bạn.
 
 Khi bạn đã mở công cụ dành cho nhà phát triển, hãy nhấp vào tab **"Network"**. Tab này sẽ hiển thị danh sách tất cả các tài nguyên mà trình duyệt của bạn đã yêu cầu. Bạn có thể nhấp vào từng tài nguyên để nhận được phân tích chi tiết về yêu cầu và phản hồi. Nếu trình duyệt của bạn đã gửi một cookie, bạn sẽ thấy chúng trong tab **"Cookies"** của yêu cầu đó.
 
@@ -326,4 +326,51 @@ Khi bạn đã mở công cụ dành cho nhà phát triển, hãy nhấp vào ta
 Đáp án: Set-Cookie  
 </details>  
 
+# Task 7: Making Requests
+
+
+1. **Thực hiện yêu cầu GET tới `/room`**  
+
+![Thực hành](./img/2_HTTP_in_Detail/7.1.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{YOU'RE_IN_THE_ROOM}  
+</details>  
+
+2. **Thực hiện yêu cầu GET tới `/blog` và sử dụng biểu tượng bánh răng để đặt tham số `id` thành `1` trong trường URL**  
+
+![Thực hành](./img/2_HTTP_in_Detail/7.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{YOU_FOUND_THE_BLOG}  
+</details>  
+
+3. **Thực hiện yêu cầu DELETE tới `/user/1`**  
+
+![Thực hành](./img/2_HTTP_in_Detail/7.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{USER_IS_DELETED}  
+</details>  
+
+4. **Thực hiện yêu cầu PUT tới `/user/2` với tham số `username` được đặt là `admin`**  
+
+![Thực hành](./img/2_HTTP_in_Detail/7.4.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{USER_HAS_UPDATED}  
+</details>  
+
+5. **Gửi POST với `username` là `thm` và `password` là `letmein` tới `/login`**  
+
+![Thực hành](./img/2_HTTP_in_Detail/7.5.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{HTTP_REQUEST_MASTER}  
+</details>  
 
