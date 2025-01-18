@@ -303,8 +303,6 @@ Bạn có thể dễ dàng xem cookie mà trình duyệt của bạn gửi đế
 
 Khi bạn đã mở công cụ dành cho nhà phát triển, hãy nhấp vào tab **"Network"**. Tab này sẽ hiển thị danh sách tất cả các tài nguyên mà trình duyệt của bạn đã yêu cầu. Bạn có thể nhấp vào từng tài nguyên để nhận được phân tích chi tiết về yêu cầu và phản hồi. Nếu trình duyệt của bạn đã gửi một cookie, bạn sẽ thấy chúng trong tab **"Cookies"** của yêu cầu đó.
 
-![Cookie](./img/2_HTTP_in_Detail/6.1.png)
-
 ![Cookie](./img/2_HTTP_in_Detail/6.2.png)
 
 ![Cookie](./img/2_HTTP_in_Detail/6.3.png)
