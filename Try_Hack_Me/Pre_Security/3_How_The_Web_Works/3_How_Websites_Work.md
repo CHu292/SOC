@@ -123,3 +123,61 @@ Các phần tử HTML cũng có thể có các sự kiện, chẳng hạn như *
 ```
 
 Các sự kiện **onclick** cũng có thể được định nghĩa trong các thẻ script JavaScript thay vì gắn trực tiếp trên các phần tử.
+
+**Thực hành:**
+
+![JS](./img/3_How_Websites_Work/3.1.png)
+
+1. Ở phía bên phải, thêm JavaScript để thay đổi nội dung của phần tử demo thành "Hack the Planet"
+
+![JS](./img/3_How_Websites_Work/3.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: JSISFUN
+</details>  
+
+2. Thêm nút HTML từ tác vụ này để thay đổi văn bản của phần tử thành "Button Clicked" trên trình chỉnh sửa bên phải, cập nhật mã bằng cách nhấp vào nút "Render HTML+JS Code" rồi nhấp vào nút.
+
+![JS](./img/3_How_Websites_Work/3.3.png)
+
+# Task 4: Sensitive Data Exposure
+
+**Lộ dữ liệu nhạy cảm**
+
+Lộ dữ liệu nhạy cảm xảy ra khi một trang web không bảo vệ đúng cách (hoặc không loại bỏ) thông tin rõ ràng, nhạy cảm khỏi người dùng cuối; vấn đề này thường được tìm thấy trong mã nguồn frontend của trang web.
+
+Chúng ta đã biết rằng các trang web được xây dựng bằng nhiều phần tử HTML (thẻ), tất cả những phần tử này có thể được xem đơn giản bằng cách "xem nguồn trang". Một nhà phát triển trang web có thể đã quên loại bỏ thông tin đăng nhập, các liên kết ẩn dẫn đến các phần riêng tư của trang web, hoặc dữ liệu nhạy cảm khác được hiển thị trong HTML hoặc JavaScript.
+
+Thông tin nhạy cảm có thể bị khai thác tiềm năng để giúp kẻ tấn công xâm nhập sâu hơn vào các phần khác nhau của ứng dụng web. Ví dụ, có thể có các bình luận HTML chứa thông tin đăng nhập tạm thời, và nếu bạn xem mã nguồn của trang và tìm thấy thông tin này, bạn có thể sử dụng thông tin đó để đăng nhập vào các phần khác của ứng dụng (hoặc tệ hơn, dùng để truy cập vào các thành phần backend khác của trang web).
+
+Bất cứ khi nào bạn kiểm tra một ứng dụng web để tìm các vấn đề bảo mật, một trong những việc đầu tiên bạn nên làm là xem mã nguồn của trang để kiểm tra xem liệu có thông tin đăng nhập hoặc các liên kết ẩn bị lộ hay không.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fake Website</title>
+  </head>
+  <body>
+    <form>
+      <input type='text' name='username'>
+      <input type='password' name='password'>
+      <button>Login</button>
+      <!-- TODO: remove test credentials admin:password123 -->
+    </form>
+  </body>
+</html>
+```
+
+**Trả lời câu hỏi bên dưới:**  
+
+*Mật khẩu được ẩn trong mã nguồn là gì?*
+
+Ta có trang web sau:
+
+![Thực hành](./img/3_How_Websites_Work/4.1.png)
+
+Các bước thực hiện: Click chuột phải > Inspect > chọn Select an element in the page to inspect it > trỏ con trỏ chuột đến phần password trên web > Tại mục elements ta sẽ thấy phần code trong thẻ div có phần comments về mật khẩu:
+
+![Thực hành](./img/3_How_Websites_Work/4.2.png)
