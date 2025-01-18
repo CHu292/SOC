@@ -120,8 +120,7 @@ Như tôi đã nói, việc có thể điều hướng trên máy mà bạn đan
 | **cat**     | concatenate   (nối)          |
 | **pwd**     | print working directory (hiển thị thư mục đang làm việc |
 
-
-# Liệt Kê Tệp Trong Thư Mục Hiện Tại (ls)
+## Liệt Kê Tệp Trong Thư Mục Hiện Tại (ls)
 
 Trước khi chúng ta có thể làm bất cứ điều gì, chẳng hạn như xem nội dung của bất kỳ tệp hay thư mục nào, chúng ta cần biết những gì đang có trong đó. Để làm điều này, bạn có thể dùng lệnh “ls” (viết tắt của “listing”).
 
