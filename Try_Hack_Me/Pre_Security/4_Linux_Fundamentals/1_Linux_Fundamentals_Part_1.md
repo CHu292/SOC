@@ -224,5 +224,71 @@ Với ví dụ máy trước đây, chúng ta đang ở trong thư mục “Docu
 Đáp án: /home/tryhackme/folder4  
 </details>  
 
+# Task 6: Searching for Files
 
+Mặc dù đến thời điểm hiện tại có thể trông không rõ lắm, nhưng một trong những điểm nổi bật của Linux chính là bạn có thể làm việc vô cùng hiệu quả với nó. Tất nhiên, mức độ hiệu quả cũng phụ thuộc vào việc bạn thành thạo hệ điều hành này đến đâu. Khi bạn tương tác với những Hệ điều hành như Ubuntu qua thời gian, các lệnh cơ bản mà chúng ta vừa tìm hiểu sẽ dần trở thành “phản xạ tự nhiên”.
+
+Một cách tuyệt vời để thể hiện bạn có thể làm việc hiệu quả thế nào với hệ thống như thế này là sử dụng một bộ lệnh giúp tìm kiếm nhanh các tệp trên toàn bộ hệ thống mà người dùng có quyền truy cập. Không còn cần phải liên tục sử dụng `cd` và `ls` để tìm xem tệp nằm ở đâu. Thay vào đó, chúng ta có thể dùng các lệnh như `find` để tự động hóa việc này!
+
+Đây là lúc Linux bắt đầu trở nên có vẻ hơi đáng sợ để bắt đầu — nhưng chúng ta sẽ phân tích rõ và giúp bạn làm quen dần.
+
+## Sử Dụng `find`
+
+Lệnh `find` rất tuyệt vời ở chỗ nó có thể được dùng một cách đơn giản hoặc khá phức tạp, tùy thuộc vào mục đích cụ thể của bạn. Dù sao, trước hết hãy tập trung vào những kiến thức căn bản.
+
+Hãy xem đoạn mã dưới đây; chúng ta sẽ thấy danh sách các thư mục sẵn có:
+
+![find](./img/1_Linux_Fundamentals_Part_1/6.1.png)
+
+1. Desktop  
+2. Documents  
+3. Pictures  
+4. folder1  
+
+Tất nhiên, các thư mục có thể chứa thêm những thư mục khác bên trong. Việc phải lần tìm qua từng thư mục chỉ để cố gắng tìm đúng tệp cần thiết đúng là đau đầu. Chúng ta có thể dùng lệnh **`find`** để thực hiện việc này!
+
+Hãy bắt đầu đơn giản, giả sử chúng ta đã biết tên của tệp mà mình đang tìm — nhưng lại không nhớ chính xác nó nằm ở đâu! Trong trường hợp này, chúng ta đang tìm tệp “passwords.txt”.
+
+Nếu nhớ tên tệp, bạn chỉ cần dùng:  
+
+```
+find -name passwords.txt
+```
+Lệnh này sẽ tìm qua mọi thư mục trong thư mục hiện tại để tìm tệp cụ thể đó, ví dụ như sau:
+
+![find](./img/1_Linux_Fundamentals_Part_1/6.2.png)
+
+“Find” đã tìm được tệp — hóa ra nó nằm ở đường dẫn `folder1/passwords.txt` — thật tuyệt. Nhưng giả sử chúng ta không biết tên tệp, hoặc muốn tìm tất cả những tệp có phần mở rộng như “.txt”. May mắn thay, lệnh **find** cũng cho phép chúng ta làm điều đó!
+
+Chúng ta chỉ cần dùng ký tự đại diện (*), gọi là **wildcard**, để tìm mọi thứ có đuôi `.txt`. Trong trường hợp này, chúng ta muốn tìm tất cả các tệp `.txt` có trong thư mục hiện tại. Ta sẽ xây dựng lệnh như sau:  
+
+```
+find -name *.txt
+```
+Lúc này, “Find” sẽ tìm tất cả tệp `.txt` và sau đó trả về vị trí của mỗi tệp.
+
+![find](./img/1_Linux_Fundamentals_Part_1/6.3.png)
+
+**Find** đã tìm được:
+
+1. “passwords.txt” nằm trong “folder1”  
+2. “todo.txt” nằm trong “Documents”  
+
+Không quá khó, phải không nào!
+
+## Sử Dụng `grep`
+
+Một tiện ích tuyệt vời khác rất đáng để tìm hiểu là **grep**. Lệnh **grep** cho phép chúng ta tìm kiếm nội dung bên trong các tệp để tìm những giá trị cụ thể mà ta cần.
+
+Ví dụ, hãy xem xét tệp nhật ký truy cập (access log) của một máy chủ web. Trong trường hợp này, tệp `access.log` của máy chủ web có 244 dòng mục nhập.
+
+![grep](./img/1_Linux_Fundamentals_Part_1/6.4.png)
+
+Dùng một lệnh như **`cat`** sẽ không mấy hiệu quả trong trường hợp này. Lấy ví dụ, giả sử chúng ta muốn tìm kiếm trong tệp nhật ký này để xem những nội dung mà một người dùng hoặc một địa chỉ IP cụ thể đã truy cập? Việc lục soát 244 dòng mục nhập không thật sự tiện lợi khi ta chỉ muốn tìm đúng một giá trị cụ thể.
+
+Chúng ta có thể sử dụng **`grep`** để tìm kiếm trong toàn bộ nội dung của tệp nhằm tìm bất kỳ dòng nào chứa giá trị mà ta đang cần. Với ví dụ về nhật ký truy cập của máy chủ web, chúng ta muốn xem tất cả những gì mà địa chỉ IP **"81.143.211.90"** đã truy cập (lưu ý rằng đây là dữ liệu giả định).
+
+![grep](./img/1_Linux_Fundamentals_Part_1/6.5.png)
+
+"Grep" đã tìm kiếm trong tệp này và hiển thị cho chúng tôi mọi mục nhập mà chúng tôi đã cung cấp và có trong tệp nhật ký này cho IP.
 
