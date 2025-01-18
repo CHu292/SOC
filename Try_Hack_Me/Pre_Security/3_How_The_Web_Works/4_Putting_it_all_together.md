@@ -143,3 +143,55 @@ Bạn sẽ nhận thấy rằng máy khách không nhìn thấy bất kỳ mã P
 Nhấp vào nút "Xem trang web" ở bên phải. Sử dụng mọi thứ bạn đã học được từ các mô-đun khác, kéo và thả các ô theo đúng thứ tự về cách yêu cầu đến một trang web hoạt động để hiển thị cờ.
 
 Lưu ý: Khi đặt một ô vào đúng vị trí, nó sẽ được tô sáng màu xanh lá cây. Khi một ô ở sai vị trí, nó sẽ được tô sáng màu đỏ. Đảm bảo không làm mới trang, vì nó sẽ đặt lại tất cả các ô về trạng thái trống một lần nữa
+
+![Quiz](./img/4_Putting_it_all_together/4.1.png)
+
+![Quiz](./img/4_Putting_it_all_together/4.2.png)
+
+![Quiz](./img/4_Putting_it_all_together/4.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{YOU_GOT_THE_ORDER}  
+</details> 
+
+Dưới đây là mô tả chi tiết hơn về quy trình từ lúc bạn gõ địa chỉ trang web trong trình duyệt cho đến khi trang web hiển thị:
+
+1. **Gõ địa chỉ (URL) vào trình duyệt**  
+   - Bạn nhập “tryhackme.com” vào thanh địa chỉ. Trình duyệt sẽ bắt đầu quá trình tìm địa chỉ IP tương ứng với tên miền này.
+
+2. **Kiểm tra bộ nhớ đệm (cache) cục bộ**  
+   - Trình duyệt hoặc hệ điều hành có thể đã lưu trữ sẵn địa chỉ IP của “tryhackme.com” nếu bạn đã truy cập trước đó. Nếu tìm thấy bản ghi hợp lệ, quá trình phân giải tên miền (DNS resolution) sẽ kết thúc tại đây. Nếu không, chuyển sang bước tiếp theo.
+
+3. **Kiểm tra máy chủ DNS đệ quy (recursive DNS server)**  
+   - Nếu trình duyệt không có thông tin trong cache cục bộ, nó sẽ gửi truy vấn tới máy chủ DNS đệ quy mà bạn đang sử dụng (thường là máy chủ DNS của nhà cung cấp dịch vụ Internet hoặc DNS công cộng như 8.8.8.8 của Google).
+   - Máy chủ DNS đệ quy sẽ kiểm tra cache của chính nó. Nếu máy chủ này đã biết địa chỉ IP của “tryhackme.com”, nó sẽ trả về kết quả ngay. Nếu không, nó chuyển sang bước truy vấn các máy chủ DNS cao hơn (root server).
+
+4. **Truy vấn máy chủ gốc (root server) để tìm máy chủ DNS thẩm quyền (authoritative DNS server)**  
+   - Máy chủ DNS đệ quy đầu tiên sẽ hỏi các máy chủ gốc về tên miền “.com”. Từ đó, root server sẽ trả về danh sách máy chủ DNS chịu trách nhiệm cho miền “.com”.
+   - Máy chủ DNS đệ quy tiếp tục truy vấn máy chủ DNS của miền “tryhackme.com” (tức máy chủ DNS thẩm quyền) để lấy chính xác địa chỉ IP.
+
+5. **Máy chủ DNS thẩm quyền trả về địa chỉ IP**  
+   - Máy chủ DNS thẩm quyền của “tryhackme.com” sẽ gửi lại địa chỉ IP chính xác của trang web. Máy chủ DNS đệ quy lưu nó vào cache của mình để phục vụ các yêu cầu tương lai.
+
+6. **Yêu cầu qua Tường lửa Ứng dụng Web (Web Application Firewall - WAF)**  
+   - Sau khi đã có địa chỉ IP, trình duyệt sẽ gửi gói tin đến server. Nếu nhà cung cấp dịch vụ hoặc tổ chức sử dụng WAF ở lớp ngoài, gói tin sẽ đi qua WAF trước. WAF sẽ kiểm tra và lọc các yêu cầu đáng ngờ, bảo vệ ứng dụng khỏi các tấn công phổ biến (SQL Injection, XSS, v.v.).
+
+7. **Yêu cầu qua Bộ cân bằng tải (Load Balancer)**  
+   - Nếu hạ tầng của trang web có sử dụng Load Balancer, yêu cầu tiếp tục được phân phối đến một trong nhiều máy chủ web (webserver) chạy phía sau. Load Balancer giúp chia tải, đảm bảo tính sẵn sàng và hiệu suất cho hệ thống.
+
+8. **Kết nối đến máy chủ web (Webserver) trên cổng 80 (HTTP) hoặc 443 (HTTPS)**  
+   - Máy chủ web lắng nghe kết nối trên cổng 80 (nếu dùng HTTP) hoặc cổng 443 (nếu dùng HTTPS). Sau khi Load Balancer (nếu có) định tuyến, yêu cầu sẽ đến được máy chủ web cụ thể.
+
+9. **Máy chủ web nhận yêu cầu GET**  
+   - Máy chủ web nhận và xử lý yêu cầu HTTP GET (hoặc các phương thức khác nếu có). Trong quá trình này, máy chủ web sẽ xác định nội dung cần trả về.
+
+10. **Ứng dụng web trao đổi với cơ sở dữ liệu (Database)**  
+   - Nếu trang web cần dữ liệu (vd: nội dung bài viết, thông tin người dùng, v.v.), ứng dụng web sẽ kết nối và truy vấn cơ sở dữ liệu. Sau đó nó xây dựng (hoặc tạo động) trang HTML hoàn chỉnh.
+
+11. **Trình duyệt của bạn kết xuất (render) mã HTML thành trang web hiển thị**  
+   - Máy chủ web gửi phản hồi (thường là HTML, kèm CSS, JavaScript, hình ảnh, v.v.).  
+   - Trình duyệt nhận dữ liệu, parse (phân tích) mã HTML, tải các tài nguyên liên quan, sau đó dựng (render) giao diện cuối cùng.  
+   - Kết quả là bạn thấy được trang “tryhackme.com” hoàn chỉnh trên màn hình.
+
+Như vậy, toàn bộ quy trình bao gồm: phân giải tên miền (DNS resolution) → lọc và phân phối yêu cầu (WAF, Load Balancer) → xử lý trên máy chủ (webserver, ứng dụng web, cơ sở dữ liệu) → trả kết quả (HTML/CSS/JS) về cho trình duyệt. Trình duyệt cuối cùng sẽ hiển thị trang web hoàn chỉnh để người dùng tương tác.
