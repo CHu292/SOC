@@ -265,3 +265,67 @@ Có rất nhiều mã trạng thái HTTP khác nhau, chưa kể đến việc c�
 - **Content-Type**: Thông báo cho client biết loại dữ liệu nào đang được trả về, ví dụ: HTML, CSS, JavaScript, Hình ảnh, PDF, Video, v.v. Sử dụng tiêu đề content-type giúp trình duyệt biết cách xử lý dữ liệu.
 - **Content-Encoding**: Phương pháp được sử dụng để nén dữ liệu để làm cho dữ liệu nhỏ hơn trước khi gửi qua internet.
 
+**Câu hỏi:**
+
+1. **Header nào cho máy chủ web biết trình duyệt nào đang được sử dụng?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: User-Agent  
+</details>  
+
+2. **Header nào cho trình duyệt biết loại dữ liệu nào đang được trả về?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Content-Type  
+</details>  
+
+3. **Header nào cho máy chủ web biết website nào đang được yêu cầu?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Host  
+</details>  
+
+# Task 6: Cookies
+
+Bạn có thể đã nghe nói về **cookies** trước đây, chúng chỉ là một mẩu dữ liệu nhỏ được lưu trữ trên máy tính của bạn. **Cookies** được lưu khi bạn nhận được tiêu đề `"Set-Cookie"` từ một máy chủ web. Sau đó, với mỗi yêu cầu tiếp theo mà bạn thực hiện, bạn sẽ gửi dữ liệu cookie trở lại máy chủ web.  
+
+Vì HTTP là giao thức **stateless** (không theo dõi các yêu cầu trước đó của bạn), **cookies** có thể được sử dụng để giúp máy chủ web nhớ bạn là ai, một số cài đặt cá nhân cho trang web hoặc liệu bạn đã truy cập trang web đó trước đây hay chưa.  
+
+Hãy xem ví dụ sau về một yêu cầu HTTP:
+
+![Cookie](./img/2_HTTP_in_Detail/6.1.png)
+
+**Cookies** có thể được sử dụng cho nhiều mục đích, nhưng phổ biến nhất là dùng để xác thực trên trang web. Giá trị của cookie thường sẽ không phải là một chuỗi văn bản rõ ràng mà bạn có thể thấy mật khẩu, mà sẽ là một **token** (mã bí mật duy nhất không dễ dàng đoán được bởi con người).
+
+### Xem Cookie Của Bạn
+
+Bạn có thể dễ dàng xem cookie mà trình duyệt của bạn gửi đến một trang web bằng cách sử dụng công cụ dành cho nhà phát triển (developer tools) trong trình duyệt của bạn. Nếu bạn không chắc cách mở công cụ dành cho nhà phát triển trong trình duyệt của mình, hãy nhấp vào nút **"View Site"** ở đầu nhiệm vụ này để xem hướng dẫn.
+
+Khi bạn đã mở công cụ dành cho nhà phát triển, hãy nhấp vào tab **"Network"**. Tab này sẽ hiển thị danh sách tất cả các tài nguyên mà trình duyệt của bạn đã yêu cầu. Bạn có thể nhấp vào từng tài nguyên để nhận được phân tích chi tiết về yêu cầu và phản hồi. Nếu trình duyệt của bạn đã gửi một cookie, bạn sẽ thấy chúng trong tab **"Cookies"** của yêu cầu đó.
+
+![Cookie](./img/2_HTTP_in_Detail/6.1.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.2.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.3.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.4.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.5.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.6.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.7.png)
+
+![Cookie](./img/2_HTTP_in_Detail/6.8.png)
+
+
+**Cây hỏi:**
+
+**Header nào được sử dụng để lưu cookie vào máy tính của bạn?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Set-Cookie  
+</details>  
+
+
