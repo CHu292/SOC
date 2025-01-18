@@ -102,3 +102,24 @@ Bạn có thể xem HTML của bất kỳ trang web nào bằng cách nhấp chu
 Đáp án: DOGHTML
 </details>  
 
+# Task 3: JavaScript
+
+JavaScript (JS) là một trong những ngôn ngữ lập trình phổ biến nhất trên thế giới và cho phép các trang web trở nên tương tác. HTML được sử dụng để tạo cấu trúc và nội dung cho trang web, trong khi JavaScript được sử dụng để kiểm soát chức năng của các trang web - nếu không có JavaScript, một trang web sẽ không có các yếu tố tương tác và sẽ luôn là tĩnh. JS có thể cập nhật trang web theo thời gian thực, cung cấp các chức năng như thay đổi kiểu dáng của một nút khi một sự kiện cụ thể trên trang xảy ra (chẳng hạn như khi người dùng nhấp vào nút) hoặc hiển thị các hình ảnh động.
+
+JavaScript được thêm vào trong mã nguồn của trang và có thể được tải trong các thẻ **`<script>`** hoặc được liên kết từ xa bằng thuộc tính **`src`**, như sau:  
+
+```javascript
+<script src="/location/of/javascript_file.js"></script>`**
+```
+
+Ví dụ sau đây trong JavaScript tìm một phần tử HTML trên trang với **id** là "demo" và thay đổi nội dung của phần tử đó thành "Hack the Planet":  
+```javascript
+document.getElementById("demo").innerHTML = "Hack the Planet";
+```
+
+Các phần tử HTML cũng có thể có các sự kiện, chẳng hạn như **"onclick"** hoặc **"onhover"**, để thực thi JavaScript khi sự kiện xảy ra. Ví dụ sau thay đổi nội dung của phần tử với ID "demo" thành "Button Clicked" khi nhấp vào nút:  
+```html
+<button onclick='document.getElementById("demo").innerHTML = "Button Clicked";'>Click Me!</button>
+```
+
+Các sự kiện **onclick** cũng có thể được định nghĩa trong các thẻ script JavaScript thay vì gắn trực tiếp trên các phần tử.
