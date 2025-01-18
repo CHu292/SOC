@@ -185,3 +185,44 @@ Với ví dụ máy trước đây, chúng ta đang ở trong thư mục “Docu
    cd /home/ubuntu/Documents
    ```  
    để thay đổi thư mục làm việc về “Documents”.
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Trên máy Linux mà bạn triển khai, có bao nhiêu thư mục?**  
+
+![](./img/1_Linux_Fundamentals_Part_1/5.5.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: 4  
+</details>  
+
+2. **Thư mục nào chứa một tệp?**  
+
+![](./img/1_Linux_Fundamentals_Part_1/5.6.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: folder4  
+</details>  
+
+3. **Nội dung của tệp này là gì?**  
+
+![](./img/1_Linux_Fundamentals_Part_1/5.7.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Hello World  
+</details>  
+
+4. **Sử dụng lệnh `cd` để điều hướng đến tệp này và tìm ra thư mục làm việc hiện tại mới. Đường dẫn là gì?**  
+
+![](./img/1_Linux_Fundamentals_Part_1/5.8.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: /home/tryhackme/folder4  
+</details>  
+
+
+
