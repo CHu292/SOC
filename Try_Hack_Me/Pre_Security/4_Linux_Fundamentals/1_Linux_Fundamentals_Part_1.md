@@ -64,3 +64,40 @@ Tương tự như việc Windows có nhiều phiên bản khác nhau (7, 8 và 1
   Đáp án: 1991
 </details>
 
+# Task 3: Interacting With Your First Linux Machine (In-Browser)
+
+# Task 4: Running Your First Few Commands
+
+Như đã đề cập trước đó, một ưu điểm lớn khi sử dụng những Hệ điều hành như Ubuntu là khả năng hoạt động rất “nhẹ” của chúng. Dĩ nhiên, điều này không phải là không có nhược điểm. Chẳng hạn, thường thì không có giao diện đồ họa (GUI – Graphical User Interface), hay còn được gọi là môi trường desktop, để chúng ta tương tác với máy (trừ khi nó đã được cài đặt). Phần lớn việc tương tác với những hệ thống này được thực hiện qua “Terminal”.
+
+“Terminal” hoàn toàn dựa trên văn bản (text-based) và ban đầu có thể khiến bạn e ngại. Tuy nhiên, nếu chúng ta phân tích một số lệnh, sau một thời gian, bạn sẽ nhanh chóng quen thuộc với việc sử dụng terminal!
+
+![Terminal](./img/1_Linux_Fundamentals_Part_1/4.1.png)
+
+Chúng ta cần có khả năng thực hiện những thao tác cơ bản như di chuyển đến các tệp, xuất nội dung của chúng và tạo tệp! Các lệnh để làm việc này khá dễ hiểu (một khi bạn biết chúng là gì, tất nhiên…).
+
+Hãy bắt đầu với hai lệnh đầu tiên mà tôi đã trình bày trong bảng dưới đây:
+
+**Lệnh** | **Mô tả**  
+--- | ---  
+**echo** | Xuất (in) bất kỳ đoạn văn bản nào mà chúng ta chỉ định  
+**whoami** | Cho biết chúng ta đang đăng nhập bằng tài khoản người dùng nào  
+
+![Terminal](./img/1_Linux_Fundamentals_Part_1/4.2.png)
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Nếu chúng ta muốn xuất ra dòng chữ "TryHackMe", lệnh của chúng ta sẽ là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: echo "TryHackMe"  
+</details>  
+
+2. **Tên người dùng mà bạn đang đăng nhập trên máy Linux đã triển khai là gì?**
+
+![Terminal](./img/1_Linux_Fundamentals_Part_1/4.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: tryhackme  
+</details>  
