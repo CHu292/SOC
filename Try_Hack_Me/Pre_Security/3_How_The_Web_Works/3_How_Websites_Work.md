@@ -205,7 +205,15 @@ Quy tắc chung là **không bao giờ tin tưởng vào dữ liệu đầu vào
 
 **Câu hỏi: Xem trang web này trên tác vụ này và chèn HTML để hiển thị liên kết độc hại tới http://hacker.com.**
 
+Chúng ta chèn một thẻ HTML có chứa liên kết đến link http://hacker.com
+
+```HTML
+<a href = " http://hacker.com"> "hi" </a>
+```
+
+![Chèn HTML](./img/3_How_Websites_Work/5.2.png)
+
 <details>  
 <summary>Hiển thị đáp án</summary>  
-Đáp án: testpasswd  
+Đáp án: HTML_INJ3CTI0N  
 </details>  
