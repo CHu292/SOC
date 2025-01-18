@@ -118,3 +118,28 @@ Kết quả trả về cho máy khách sẽ là:
 Bạn sẽ nhận thấy rằng máy khách không nhìn thấy bất kỳ mã PHP nào bởi vì nó được thực hiện ở **Backend**. Tính tương tác này mở ra nhiều vấn đề bảo mật hơn đối với các ứng dụng web chưa được xây dựng một cách an toàn, như bạn sẽ tìm hiểu trong các module tiếp theo.
 
 
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Phần mềm máy chủ web sử dụng gì để lưu trữ nhiều website?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Virtual Hosts  
+</details>  
+
+2. **Tên của loại nội dung có thể thay đổi là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Dynamic  
+</details>  
+
+3. **Khách hàng có nhìn thấy mã nguồn của backend không? Yay/Nay**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Nay  
+</details>  
+
+# Task 4: Quiz
+
+Nhấp vào nút "Xem trang web" ở bên phải. Sử dụng mọi thứ bạn đã học được từ các mô-đun khác, kéo và thả các ô theo đúng thứ tự về cách yêu cầu đến một trang web hoạt động để hiển thị cờ.
+
+Lưu ý: Khi đặt một ô vào đúng vị trí, nó sẽ được tô sáng màu xanh lá cây. Khi một ô ở sai vị trí, nó sẽ được tô sáng màu đỏ. Đảm bảo không làm mới trang, vì nó sẽ đặt lại tất cả các ô về trạng thái trống một lần nữa
