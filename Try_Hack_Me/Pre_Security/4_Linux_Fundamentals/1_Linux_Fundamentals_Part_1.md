@@ -292,3 +292,62 @@ Chúng ta có thể sử dụng **`grep`** để tìm kiếm trong toàn bộ n�
 
 "Grep" đã tìm kiếm trong tệp này và hiển thị cho chúng tôi mọi mục nhập mà chúng tôi đã cung cấp và có trong tệp nhật ký này cho IP.
 
+**Câu hỏi: Sử dụng grep trên "access.log" để tìm cờ có tiền tố là "THM". Cờ đó là gì?**
+
+![grep](./img/1_Linux_Fundamentals_Part_1/6.6.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{ACCESS}  
+</details>  
+
+# Task 7: An Introduction to Shell Operators
+
+**Giới Thiệu Về Các Toán Tử Trong Shell**
+
+**Các toán tử (operators) của Linux** là một cách tuyệt vời để nâng cao kiến thức làm việc với Linux. Có một vài toán tử quan trọng bạn cần lưu ý. Chúng ta sẽ tìm hiểu những điều cơ bản và chia nhỏ chúng thành những phần ngắn gọn dễ hiểu.  
+
+Về tổng quan, tôi sẽ giới thiệu các toán tử sau:
+
+| **Ký hiệu / Toán tử** | **Mô tả**                                                                                                                |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| **&**                | Cho phép bạn chạy lệnh dưới nền (background) của terminal.                                                                |
+| **&&**               | Cho phép bạn kết hợp nhiều lệnh lại trong cùng một dòng trên terminal.                                                   |
+| **>**                | Đây là toán tử dùng để chuyển hướng (redirector) — nghĩa là chúng ta có thể lấy đầu ra của một lệnh (ví dụ dùng `cat` để xuất nội dung tệp) rồi chuyển nó đi nơi khác. |
+| **>>**               | Có chức năng giống với toán tử **>** nhưng thay vì ghi đè, nó nối thêm đầu ra vào cuối tệp (nghĩa là không có gì bị ghi đè).                        |
+
+Hãy tìm hiểu chi tiết hơn về chúng.
+
+## Toán Tử “&”
+
+Toán tử này cho phép chúng ta thực thi các lệnh dưới nền. Lấy ví dụ, giả sử ta muốn sao chép một tệp lớn. Điều này rõ ràng sẽ mất khá nhiều thời gian và sẽ khiến ta không thể làm gì khác cho đến khi quá trình sao chép hoàn tất.
+
+Toán tử “&” trong shell cho phép chúng ta chạy một lệnh và để nó chạy dưới nền (chẳng hạn quá trình sao chép tệp), nhờ vậy ta có thể làm việc khác trong lúc chờ!
+
+## **Toán tử "&&"**  
+Toán tử shell này hơi dễ gây hiểu lầm nếu bạn đã quen với người anh em của nó là "&". Không giống như toán tử "&", chúng ta có thể sử dụng "&&" để tạo danh sách các lệnh sẽ được thực thi, ví dụ: `command1 && command2`. Tuy nhiên, cần lưu ý rằng `command2` chỉ được chạy nếu `command1` đã thành công.
+
+
+## **Toán tử ">"**  
+Toán tử này được gọi là công cụ chuyển hướng đầu ra. Điều này có nghĩa là chúng ta lấy kết quả đầu ra của một lệnh và gửi kết quả đó đến một nơi khác.  
+
+Một ví dụ tuyệt vời là chuyển hướng kết quả đầu ra của lệnh `echo` mà chúng ta đã học trong Bài 4. Tất nhiên, chạy một lệnh như `echo howdy` sẽ trả về "howdy" trên terminal — điều đó không thực sự hữu ích. Thay vào đó, chúng ta có thể "chuyển hướng" "howdy" vào một tệp mới!  
+
+Giả sử chúng ta muốn tạo một tệp có tên là "welcome" với nội dung "hey". Chúng ta có thể chạy lệnh `echo hey > welcome` để tạo tệp với nội dung "hey", như sau:
+
+![toán tử >](./img/1_Linux_Fundamentals_Part_1/7.1.png)
+
+**Lưu ý:** Nếu tệp, ví dụ: "welcome", đã tồn tại, nội dung sẽ bị ghi đè!  
+
+
+## **Toán tử ">>"**  
+
+Toán tử này cũng là một công cụ chuyển hướng đầu ra, giống như toán tử `>` đã đề cập trước đó. Tuy nhiên, điều làm cho toán tử này khác biệt là nó không ghi đè bất kỳ nội dung nào trong tệp, mà thay vào đó chỉ thêm nội dung mới vào cuối tệp.  
+
+Theo ví dụ trước, chúng ta có tệp "welcome" chứa nội dung là "hey". Nếu chúng ta sử dụng lệnh `echo` để thêm "hello" vào tệp bằng toán tử `>` thì tệp này sẽ chỉ còn nội dung "hello" và không còn "hey".  
+
+Toán tử `>>` cho phép thêm kết quả đầu ra vào cuối tệp — thay vì thay thế nội dung, như sau:  
+
+![toán tử >>](./img/1_Linux_Fundamentals_Part_1/7.2.png)
+
+
