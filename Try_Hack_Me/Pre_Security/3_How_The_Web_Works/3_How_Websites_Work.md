@@ -181,3 +181,31 @@ Ta có trang web sau:
 Các bước thực hiện: Click chuột phải > Inspect > chọn Select an element in the page to inspect it > trỏ con trỏ chuột đến phần password trên web > Tại mục elements ta sẽ thấy phần code trong thẻ div có phần comments về mật khẩu:
 
 ![Thực hành](./img/3_How_Websites_Work/4.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: testpasswd  
+</details>  
+
+# Task 5: HTML Injection
+
+**Chèn mã HTML (HTML Injection)**
+
+Chèn mã HTML là một lỗ hổng xảy ra khi dữ liệu đầu vào của người dùng không được lọc và được hiển thị trực tiếp trên trang web. Nếu một trang web không thực hiện việc lọc dữ liệu đầu vào của người dùng (loại bỏ bất kỳ nội dung "độc hại" nào mà người dùng nhập vào), và dữ liệu đầu vào đó được sử dụng trên trang, kẻ tấn công có thể chèn mã HTML vào trang web bị tổn thương.
+
+Việc lọc dữ liệu đầu vào là rất quan trọng để bảo vệ trang web, vì thông tin mà người dùng nhập vào trang web thường được sử dụng trong nhiều chức năng ở cả giao diện phía trước (frontend) và phía sau (backend). Một lỗ hổng khác mà bạn sẽ khám phá trong một bài thực hành khác là **chèn mã vào cơ sở dữ liệu** (database injection), nơi bạn có thể thao túng truy vấn tìm kiếm trong cơ sở dữ liệu để đăng nhập dưới danh nghĩa người dùng khác bằng cách kiểm soát dữ liệu đầu vào được sử dụng trực tiếp trong truy vấn - nhưng hiện tại, chúng ta sẽ tập trung vào việc chèn mã HTML (một vấn đề phía giao diện người dùng).
+
+Khi người dùng có quyền kiểm soát cách dữ liệu đầu vào của họ được hiển thị, họ có thể gửi mã HTML (hoặc JavaScript), và trình duyệt sẽ sử dụng chúng trên trang, cho phép người dùng kiểm soát giao diện và chức năng của trang.
+
+Hình ảnh trên minh họa cách một biểu mẫu hiển thị văn bản lên trang web. Bất kỳ nội dung nào người dùng nhập vào trường "What's your name" sẽ được truyền tới một hàm JavaScript và hiển thị trên trang web. Điều này có nghĩa là nếu người dùng thêm mã HTML hoặc JavaScript của riêng họ vào trường nhập liệu, nó sẽ được sử dụng trong hàm `sayHi` và được thêm vào trang - điều này cho phép bạn chèn mã HTML của riêng mình (chẳng hạn như thẻ `<h1>`) và nội dung bạn nhập sẽ được hiển thị như mã HTML thuần.
+
+Quy tắc chung là **không bao giờ tin tưởng vào dữ liệu đầu vào của người dùng**. Để ngăn chặn nội dung độc hại, nhà phát triển trang web nên lọc tất cả dữ liệu mà người dùng nhập vào trước khi sử dụng chúng trong hàm JavaScript; trong trường hợp này, nhà phát triển có thể loại bỏ bất kỳ thẻ HTML nào.
+
+![Chèn HTML](./img/3_How_Websites_Work/5.1.png)
+
+**Câu hỏi: Xem trang web này trên tác vụ này và chèn HTML để hiển thị liên kết độc hại tới http://hacker.com.**
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: testpasswd  
+</details>  
