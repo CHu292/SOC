@@ -54,3 +54,67 @@ Các trang web thường cần một cách để lưu trữ thông tin cho ngư�
 WAF nằm giữa yêu cầu web của bạn và máy chủ web; mục đích chính của nó là bảo vệ máy chủ web khỏi bị tấn công hoặc từ chối dịch vụ (DoS). Nó phân tích các yêu cầu web để phát hiện các kỹ thuật tấn công phổ biến, bất kể yêu cầu đến từ trình duyệt thực hay từ bot. Nó cũng kiểm tra xem có quá nhiều yêu cầu web được gửi đi hay không bằng cách sử dụng một phương pháp gọi là **giới hạn tốc độ (rate limiting)**, chỉ cho phép một số lượng yêu cầu nhất định từ một địa chỉ IP trong mỗi giây. Nếu một yêu cầu bị coi là tiềm năng tấn công, nó sẽ bị loại bỏ và không bao giờ được gửi đến máy chủ web.
 
 ![Tường lửa](./img/4_Putting_it_all_together/2.2.png)
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Cái gì có thể được sử dụng để lưu trữ các tệp tĩnh và tăng tốc truy cập của khách hàng đến một website?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: CDN  
+</details>  
+
+2. **Trình cân bằng tải thực hiện điều gì để đảm bảo một máy chủ vẫn hoạt động?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: health check  
+</details>  
+
+3. **Cái gì có thể được sử dụng để chống lại việc tấn công một website?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: WAF  
+</details>  
+
+# Task 3: How Web Servers Work
+
+**Cách hoạt động của máy chủ web**
+
+## **Máy chủ web là gì?**
+
+Máy chủ web là một phần mềm lắng nghe các kết nối đến và sau đó sử dụng giao thức **HTTP** để cung cấp nội dung web đến cho các máy khách. Các phần mềm máy chủ web phổ biến nhất mà bạn sẽ gặp bao gồm Apache, Nginx, IIS và NodeJS. Một máy chủ web cung cấp các tệp từ cái gọi là thư mục gốc của nó, được định nghĩa trong cài đặt của phần mềm. Ví dụ, Nginx và Apache chia sẻ cùng một vị trí mặc định là **/var/www/html** trong các hệ điều hành Linux, còn IIS sử dụng **C:\inetpub\wwwroot** cho hệ điều hành Windows. Vì vậy, ví dụ, nếu bạn yêu cầu tệp **http://www.example.com/picture.jpg**, nó sẽ gửi tệp **/var/www/html/picture.jpg** từ ổ cứng cục bộ của nó.
+
+## **Máy chủ ảo (Virtual Hosts)**
+
+Máy chủ web có thể lưu trữ nhiều trang web với các tên miền khác nhau; để thực hiện điều này, nó sử dụng máy chủ ảo. Phần mềm máy chủ web kiểm tra tên máy chủ (hostname) được yêu cầu từ các tiêu đề HTTP và so sánh nó với danh sách các máy chủ ảo của nó (máy chủ ảo chỉ là các tệp cấu hình dựa trên văn bản). Nếu tìm thấy một khớp, trang web chính xác sẽ được cung cấp. Nếu không tìm thấy khớp nào, trang web mặc định sẽ được cung cấp thay thế.
+
+Máy chủ ảo có thể có thư mục gốc của chúng được ánh xạ đến các vị trí khác nhau trên ổ cứng. Ví dụ: **one.com** được ánh xạ đến **/var/www/website_one**, và **two.com** được ánh xạ đến **/var/www/website_two**.
+
+Không có giới hạn về số lượng các trang web khác nhau mà bạn có thể lưu trữ trên một máy chủ web.
+
+## **Nội dung tĩnh và nội dung động**
+
+Nội dung tĩnh, như tên gọi, là nội dung không bao giờ thay đổi. Ví dụ phổ biến của nội dung này bao gồm hình ảnh, JavaScript, CSS, v.v., nhưng cũng có thể bao gồm các tệp HTML không thay đổi. Hơn nữa, đây là những tệp được gửi trực tiếp từ máy chủ web mà không có bất kỳ thay đổi nào.
+
+Ngược lại, nội dung động là nội dung có thể thay đổi tùy theo từng yêu cầu khác nhau. Lấy ví dụ, một blog. Trên trang chủ của blog, nó sẽ hiển thị các bài viết mới nhất. Nếu có một bài viết mới được tạo, trang chủ sẽ được cập nhật với bài viết mới nhất, hoặc một ví dụ khác là trang tìm kiếm trên blog. Tùy thuộc vào từ khóa mà bạn tìm kiếm, kết quả khác nhau sẽ được hiển thị.
+
+Những thay đổi đối với những gì bạn nhìn thấy được thực hiện thông qua cái được gọi là **Backend** (phần nền) bằng cách sử dụng các ngôn ngữ lập trình và kịch bản. Nó được gọi là Backend bởi vì tất cả những gì được thực hiện đều xảy ra phía sau. Bạn không thể xem mã nguồn HTML của trang web và biết điều gì đang xảy ra trong Backend, trong khi HTML là kết quả của quá trình xử lý từ Backend. Tất cả những gì bạn thấy trong trình duyệt được gọi là **Frontend**.
+
+## **Ngôn ngữ kịch bản và Backend**
+
+Không có giới hạn lớn nào đối với những gì một ngôn ngữ Backend có thể đạt được, và chính điều này làm cho một trang web có tính tương tác với người dùng. Một số ví dụ về các ngôn ngữ này (không theo thứ tự cụ thể) là **PHP**, Python, Ruby, NodeJS, Perl và nhiều ngôn ngữ khác. Những ngôn ngữ này có thể tương tác với cơ sở dữ liệu, gọi các dịch vụ bên ngoài, xử lý dữ liệu từ người dùng, và còn nhiều nữa. Một ví dụ cơ bản về **PHP** sẽ là khi bạn yêu cầu trang web **http://example.com/index.php?name=adam**.
+
+Nếu tệp **index.php** được xây dựng như sau:
+
+```php
+<html><body>Hello <?php echo $_GET["name"]; ?></body></html>
+```
+
+Kết quả trả về cho máy khách sẽ là:
+
+```html
+<html><body>Hello adam</body></html>
+```
+
+Bạn sẽ nhận thấy rằng máy khách không nhìn thấy bất kỳ mã PHP nào bởi vì nó được thực hiện ở **Backend**. Tính tương tác này mở ra nhiều vấn đề bảo mật hơn đối với các ứng dụng web chưa được xây dựng một cách an toàn, như bạn sẽ tìm hiểu trong các module tiếp theo.
+
+
