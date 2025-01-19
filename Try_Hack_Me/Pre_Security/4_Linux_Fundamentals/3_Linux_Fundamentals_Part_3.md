@@ -102,3 +102,40 @@ nano task3
 Đáp án: IHM{TEXT_EDITORS} 
 </details>  
 
+# Task 4: General/Useful Utilities
+
+## **Tải xuống tệp (Wget)**  
+
+Một tính năng cơ bản của máy tính là khả năng truyền tải tệp. Ví dụ, bạn có thể muốn tải xuống một chương trình, một script, hoặc thậm chí một bức ảnh. May mắn thay, chúng ta có nhiều cách để tải các tệp này về.  
+
+Chúng ta sẽ tìm hiểu cách sử dụng lệnh **wget**. Lệnh này cho phép chúng ta tải các tệp từ web qua HTTP — giống như khi bạn truy cập tệp trong trình duyệt của mình. Chúng ta chỉ cần cung cấp địa chỉ của tài nguyên mà mình muốn tải xuống. Ví dụ, nếu tôi muốn tải xuống một tệp có tên là "myfile.txt" vào máy của mình, giả sử tôi biết địa chỉ web của tệp đó — nó sẽ trông như thế này:  
+
+```  
+wget https://assets.tryhackme.com/additional/linux-fundamentals/part3/myfile.txt  
+```  
+
+## **Truyền tệp từ máy của bạn - SCP (SSH)**  
+
+**SCP** (Secure Copy) là một phương pháp sao chép tệp an toàn. Không giống như lệnh **cp** thông thường, lệnh này cho phép bạn truyền tệp giữa hai máy tính bằng giao thức **SSH**, cung cấp cả xác thực và mã hóa.  
+
+Dựa trên mô hình **SOURCE - NGUỒN** và **DESTINATION - ĐÍCH**, SCP cho phép bạn:  
+
+- Sao chép tệp và thư mục từ hệ thống hiện tại của bạn sang một hệ thống từ xa.  
+- Sao chép tệp và thư mục từ hệ thống từ xa về hệ thống hiện tại của bạn.  
+
+Nếu chúng ta biết tên đăng nhập và mật khẩu của một người dùng trên hệ thống hiện tại và người dùng trên hệ thống từ xa, chúng ta có thể thực hiện sao chép. Ví dụ, hãy sao chép một tệp từ máy của chúng ta sang một máy từ xa, như minh họa trong bảng dưới đây.  
+
+| **Biến**                      | **Giá trị**                   |
+|-------------------------------|-------------------------------|
+| Địa chỉ IP của hệ thống từ xa | 192.168.1.30                 |
+| Người dùng trên hệ thống từ xa| ubuntu                       |
+| Tên của tệp trên hệ thống cục bộ | important.txt                |
+| Tên muốn lưu tệp trên hệ thống từ xa | transferred.txt           |
+
+Với thông tin này, chúng ta hãy tạo lệnh **scp** của mình (nhớ rằng định dạng của **scp** chỉ là NGUỒN và ĐÍCH):
+
+```bash
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+```
+
+Và bây giờ, hãy đảo ngược điều này và trình bày cú pháp để sử dụng **scp** để sao chép một tệp từ máy tính từ xa mà chúng ta không đăng nhập vào:
