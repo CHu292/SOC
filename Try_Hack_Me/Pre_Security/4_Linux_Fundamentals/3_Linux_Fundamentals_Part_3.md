@@ -54,11 +54,11 @@ Có một số tùy chọn mà bạn có thể sử dụng, với mức độ th
 
 Thật dễ dàng để bắt đầu với Nano! Để tạo hoặc chỉnh sửa một tệp bằng nano, chúng ta chỉ cần sử dụng lệnh `nano tên_tệp` — thay thế "tên_tệp" bằng tên của tệp mà bạn muốn chỉnh sửa.
 
-![nano](./img/2_Linux_Fundamentals_Part_2/3.1.png)
+![nano](./img/3_Linux_Fundamentals_Part_3/3.1.png)
 
 Khi chúng ta nhấn `enter` để thực hiện lệnh, `nano` sẽ khởi chạy! Nơi chúng ta có thể bắt đầu nhập hoặc sửa đổi văn bản của mình. Bạn có thể điều hướng từng dòng bằng phím mũi tên "lên" và "xuống" hoặc bắt đầu một dòng mới bằng phím "Enter" trên bàn phím.
 
-![nano](./img/2_Linux_Fundamentals_Part_2/3.2.png)
+![nano](./img/3_Linux_Fundamentals_Part_3/3.2.png)
 
 **Nano** có một vài tính năng dễ nhớ và bao quát những điều cơ bản nhất mà bạn mong đợi từ một trình chỉnh sửa văn bản, bao gồm:
 
@@ -73,7 +73,7 @@ Bạn có thể sử dụng những tính năng này của nano bằng cách nh�
 
 VIM là một trình chỉnh sửa văn bản tiên tiến hơn nhiều. Mặc dù bạn không bắt buộc phải biết tất cả các tính năng nâng cao, nhưng việc tìm hiểu nó sẽ rất hữu ích để nâng cao kỹ năng Linux của bạn.  
 
-![vim](./img/2_Linux_Fundamentals_Part_2/3.3.png)
+![vim](./img/3_Linux_Fundamentals_Part_3/3.3.png)
 
 Một số lợi ích của VIM, mặc dù mất nhiều thời gian hơn để làm quen, bao gồm:
 
@@ -95,7 +95,7 @@ Có rất nhiều tài nguyên như bảng hướng dẫn, hướng dẫn và c�
 nano task3
 ```
 
-![nano](./img/2_Linux_Fundamentals_Part_2/3.4.png)
+![nano](./img/3_Linux_Fundamentals_Part_3/3.4.png)
 
 <details>  
 <summary>Hiển thị đáp án</summary>  
