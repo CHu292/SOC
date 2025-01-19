@@ -301,3 +301,62 @@ Tuy nhiên, bây giờ, sau khi sử dụng tùy chọn **-l**, phiên làm vi�
 Đáp án: THM{SU_USER2}  
 </details>  
 
+# Task 6: Common Directories
+
+**Các Thư mục Chung**
+
+## **/etc**
+
+Thư mục gốc này là một trong những thư mục gốc quan trọng nhất trên hệ thống của bạn. Thư mục **etc** (viết tắt của "et cetera") là một vị trí phổ biến để lưu trữ các tệp hệ thống được sử dụng bởi hệ điều hành của bạn.
+
+Ví dụ, tệp **sudoers** được đánh dấu trong ảnh chụp màn hình bên dưới chứa danh sách các người dùng và nhóm có quyền chạy lệnh **sudo** hoặc một tập lệnh dưới quyền người dùng root.
+
+Ngoài ra, cũng được đánh dấu bên dưới là các tệp **passwd** và **shadow**. Hai tệp này đặc biệt quan trọng trong Linux vì chúng hiển thị cách hệ thống lưu trữ mật khẩu của từng người dùng dưới định dạng mã hóa được gọi là **sha512**.
+
+![etc](./img/2_Linux_Fundamentals_Part_2/6.1.png)
+
+## **/var**
+
+Thư mục **/var**, với "var" là viết tắt của **variable data** (dữ liệu thay đổi), là một trong những thư mục gốc chính được tìm thấy trên một hệ thống Linux. Thư mục này lưu trữ dữ liệu thường xuyên được truy cập hoặc ghi bởi các dịch vụ hoặc ứng dụng đang chạy trên hệ thống.
+
+Ví dụ, các tệp nhật ký (log files) từ các dịch vụ và ứng dụng đang chạy được ghi tại đây (**/var/log**), hoặc các dữ liệu khác không nhất thiết phải liên quan đến một người dùng cụ thể (ví dụ: cơ sở dữ liệu và các loại dữ liệu tương tự).
+
+![var](./img/2_Linux_Fundamentals_Part_2/6.2.png)
+
+## **/root**
+
+Khác với thư mục **/home**, thư mục **/root** thực sự là thư mục chính (home directory) của người dùng hệ thống "root". Không có gì đặc biệt về thư mục này ngoài việc hiểu rằng đây là thư mục chính dành cho người dùng "root".
+
+Tuy nhiên, điều này đáng được đề cập vì giả định hợp lý là người dùng này sẽ có dữ liệu của họ trong một thư mục như **/home/root** theo mặc định.
+
+![root](./img/2_Linux_Fundamentals_Part_2/6.3.png)
+
+## **/tmp**
+
+Đây là một thư mục gốc đặc biệt được tìm thấy trên một hệ thống Linux. Viết tắt của "temporary" (tạm thời), thư mục **/tmp** có tính chất tạm thời và được sử dụng để lưu trữ dữ liệu chỉ cần truy cập một hoặc hai lần. Tương tự như bộ nhớ trên máy tính của bạn, khi máy tính khởi động lại, nội dung trong thư mục này sẽ bị xóa sạch.
+
+Điều hữu ích cho chúng ta trong kiểm thử bảo mật (pentesting) là bất kỳ người dùng nào cũng có thể ghi dữ liệu vào thư mục này theo mặc định. Điều này có nghĩa là một khi chúng ta có quyền truy cập vào máy, nó có thể là một nơi tốt để lưu trữ các tập lệnh kiểm kê (enumeration scripts) của chúng ta.
+
+![tmp](./img/2_Linux_Fundamentals_Part_2/6.4.png)
+
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Đường dẫn thư mục nào mà chúng ta mong đợi nhật ký (logs) được lưu trữ?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: /var/log  
+</details>  
+
+2. **Thư mục gốc nào tương tự cách hoạt động của RAM trên máy tính?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: /tmp  
+</details>  
+
+3. **Tên thư mục chính (home directory) của người dùng root là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: /root  
+</details>  
+
