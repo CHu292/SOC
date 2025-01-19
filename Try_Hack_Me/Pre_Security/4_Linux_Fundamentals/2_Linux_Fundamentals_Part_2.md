@@ -223,3 +223,81 @@ Cho đến nay, các tệp mà chúng ta đã sử dụng trong các ví dụ kh
 Đáp án: THM{FILESYSTEM}  
 </details>  
 
+# Task 5: Permissions 101
+
+**Quyền truy cập 101**
+
+Như bạn có thể đã nhận ra, một số người dùng không thể truy cập vào một số tệp hoặc thư mục nhất định. Chúng ta đã tìm hiểu một số lệnh có thể được sử dụng để xác định quyền truy cập mà chúng ta có và những giới hạn của chúng.
+
+Trong các nhiệm vụ trước, chúng ta đã học cách mở rộng việc sử dụng các lệnh thông qua các cờ (flags) và tùy chọn (switches). Ví dụ, lệnh **ls** liệt kê nội dung của thư mục hiện tại. Khi sử dụng tùy chọn **-l**, chúng ta có thể thấy mười cột như trong ảnh chụp màn hình bên dưới. Tuy nhiên, chúng ta chỉ quan tâm đến ba cột đầu tiên:
+
+![Quyền truy cập](./img/2_Linux_Fundamentals_Part_2/5.1.png)
+
+Mặc dù có vẻ phức tạp, nhưng ba cột này rất quan trọng trong việc xác định các đặc điểm nhất định của một tệp hoặc thư mục và liệu chúng ta có quyền truy cập vào nó hay không. Một tệp hoặc thư mục có thể có một số đặc điểm xác định những hành động nào được phép và người dùng hoặc nhóm nào có quyền thực hiện hành động đó – như sau:
+
+- Đọc (Read)  
+- Ghi (Write)  
+- Thực thi (Execute)  
+
+Sử dụng **su** để chuyển sang **user2**.
+
+![Quyền truy cập](./img/2_Linux_Fundamentals_Part_2/5.2.png)
+
+Hãy sử dụng tệp "cmnatic.pem" trong ảnh chụp màn hình ban đầu của nhiệm vụ này. Nó có ký hiệu "-" để chỉ rằng đây là một tệp và tiếp theo là "rw". Điều này có nghĩa là chỉ chủ sở hữu của tệp mới có thể đọc và ghi vào tệp "cmnatic.pem" này nhưng không thể thực thi nó.
+
+## **Tóm tắt: Sự khác biệt giữa Người dùng và Nhóm**
+
+Điều tuyệt vời về Linux là quyền truy cập có thể được phân chia chi tiết đến mức, mặc dù một người dùng về mặt kỹ thuật sở hữu một tệp, nếu quyền đã được thiết lập, thì một nhóm người dùng cũng có thể có cùng hoặc khác bộ quyền truy cập đối với cùng một tệp mà không ảnh hưởng đến chính chủ sở hữu tệp.
+
+Hãy đặt điều này vào ngữ cảnh thực tế: người dùng hệ thống chạy một máy chủ web phải có quyền đọc và ghi tệp để ứng dụng web hoạt động hiệu quả. Tuy nhiên, các công ty như các nhà cung cấp dịch vụ lưu trữ web (web hosting) sẽ muốn cho phép khách hàng của họ tải lên các tệp riêng cho trang web của họ mà không cần dùng đến người dùng hệ thống web server – điều này nhằm tránh ảnh hưởng đến bảo mật của những khách hàng khác.
+
+Chúng ta sẽ học các lệnh cần thiết để chuyển đổi giữa các người dùng ở phần dưới đây.
+
+## **Chuyển đổi giữa các người dùng**
+
+Việc chuyển đổi giữa các người dùng trên một hệ thống Linux rất đơn giản nhờ vào lệnh **su**. Trừ khi bạn là người dùng root (hoặc sử dụng quyền root thông qua sudo), bạn cần biết hai điều để thực hiện việc chuyển đổi tài khoản người dùng này:
+
+- Người dùng mà bạn muốn chuyển sang.
+- Mật khẩu của người dùng đó.
+
+Lệnh **su** có một số tùy chọn (switches) có thể hữu ích cho bạn. Ví dụ, thực thi một lệnh ngay khi bạn đăng nhập hoặc chỉ định một shell cụ thể để sử dụng. Tôi khuyến khích bạn đọc tài liệu hướng dẫn (man page) của **su** để tìm hiểu thêm. Tuy nhiên, tôi sẽ trình bày về tùy chọn **-l** hoặc **--login**.
+
+Đơn giản, bằng cách cung cấp tùy chọn **-l** cho lệnh **su**, chúng ta bắt đầu một shell tương tự như việc người dùng thực sự đăng nhập vào hệ thống – điều này cho phép chúng ta kế thừa nhiều thuộc tính của người dùng mới, ví dụ như các biến môi trường (environment variables) và các đặc điểm tương tự.
+
+![Quyền truy cập](./img/2_Linux_Fundamentals_Part_2/5.3.png)
+
+Ví dụ, khi sử dụng lệnh **su** để chuyển sang "user2", phiên làm việc mới của chúng ta sẽ đưa chúng ta vào thư mục chính (home directory) của người dùng trước đó.
+
+![Quyền truy cập](./img/2_Linux_Fundamentals_Part_2/5.4.png)
+
+Tuy nhiên, bây giờ, sau khi sử dụng tùy chọn **-l**, phiên làm việc mới của chúng ta đã tự động đưa chúng ta vào thư mục chính (home directory) của "user".
+
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Trên máy được triển khai, ai là chủ sở hữu của "important"?**  
+
+![Quyền truy cập](./img/2_Linux_Fundamentals_Part_2/5.5.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: user2  
+</details>  
+
+2. **Lệnh để chuyển sang người dùng "user2" là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: su user2  
+</details>  
+
+3. **Bây giờ, hãy chuyển sang người dùng "user2" bằng mật khẩu "user2"**  
+
+4. **Xuất nội dung của "important", cờ là gì?**  
+
+![Quyền truy cập](./img/2_Linux_Fundamentals_Part_2/5.6.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM{SU_USER2}  
+</details>  
+
