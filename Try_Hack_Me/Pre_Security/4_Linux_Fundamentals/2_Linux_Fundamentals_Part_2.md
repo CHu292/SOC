@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9e165570-de84-450b-bde2-fb944c18861b)# Linux Fundamentals Part 2
+# Linux Fundamentals Part 2
 
 > Tiếp tục hành trình học Linux của bạn với phần hai. Bạn sẽ học cách đăng nhập vào máy Linux bằng SSH, cách nâng cao lệnh của bạn, tương tác hệ thống tệp.
 
