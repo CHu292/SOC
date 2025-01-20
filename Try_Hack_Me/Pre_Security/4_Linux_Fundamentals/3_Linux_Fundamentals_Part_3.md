@@ -457,3 +457,17 @@ Ví dụ:
 ```
 apt remove sublime-text
 ```
+
+# Task 8: Maintaining Your System: Logs
+
+**Duy trì Hệ thống của bạn: Nhật ký**
+
+Chúng ta đã đề cập sơ qua về các tệp nhật ký (log) và nơi chúng có thể được tìm thấy trong phần Linux Fundamentals Phần 1. Tuy nhiên, hãy nhanh chóng ôn lại. Nằm trong thư mục **/var/log**, các tệp và thư mục này chứa thông tin ghi nhật ký cho các ứng dụng và dịch vụ đang chạy trên hệ thống của bạn. Hệ điều hành (OS) đã khá tốt trong việc tự động quản lý các tệp nhật ký này bằng một quy trình được gọi là **xoay vòng nhật ký (rotating)**.
+
+Tôi đã liệt kê một số nhật ký từ ba dịch vụ chạy trên một máy Ubuntu:
+
+- Máy chủ web Apache2
+- Nhật ký cho dịch vụ **fail2ban**, được sử dụng để giám sát các cuộc tấn công brute force, chẳng hạn
+- Dịch vụ **UFW**, được sử dụng như một tường lửa
+
+![log](./img/3_Linux_Fundamentals_Part_3/8.1.png)
