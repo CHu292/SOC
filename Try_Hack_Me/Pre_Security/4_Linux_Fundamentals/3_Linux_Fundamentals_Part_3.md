@@ -341,4 +341,42 @@ Với tiến trình của chúng ta được đưa vào chế độ chạy nền
    Đáp án: fg  
    </details>  
 
-   
+# Task 6: Maintaining Your System: Automation
+
+**Duy trì Hệ thống của bạn: Tự động hóa**
+
+Người dùng có thể muốn lên lịch một hành động hoặc nhiệm vụ nào đó diễn ra sau khi hệ thống đã khởi động. Ví dụ: chạy các lệnh, sao lưu tệp hoặc khởi động các chương trình yêu thích của bạn, chẳng hạn như Spotify hoặc Google Chrome.
+
+Chúng ta sẽ nói về tiến trình **cron**, cụ thể hơn là cách chúng ta có thể tương tác với nó thông qua việc sử dụng **crontab**. Crontab là một trong những tiến trình được khởi động trong quá trình boot, chịu trách nhiệm hỗ trợ và quản lý các tác vụ cron. 
+
+![crontab](./img/3_Linux_Fundamentals_Part_3/6.1.png)
+
+**Crontab** chỉ đơn giản là một tệp đặc biệt với định dạng được tiến trình **cron** nhận diện để thực thi từng dòng theo từng bước. Crontab yêu cầu 6 giá trị cụ thể:
+
+| Giá trị | Mô tả                                  |
+|--------|----------------------------------------|
+| MIN    | Phút nào sẽ thực thi                   |
+| HOUR   | Giờ nào sẽ thực thi                    |
+| DOM    | Ngày nào trong tháng sẽ thực thi       |
+| MON    | Tháng nào trong năm sẽ thực thi        |
+| DOW    | Ngày nào trong tuần sẽ thực thi        |
+| CMD    | Lệnh thực tế sẽ được thực thi          |
+
+Dưới đây là bản dịch tiếng Việt của nội dung trong ảnh:
+
+---
+
+Hãy sử dụng ví dụ về sao lưu tệp. Bạn có thể muốn sao lưu thư mục **Documents** của "cmnatic" sau mỗi 12 giờ. Chúng ta sẽ sử dụng định dạng sau:
+
+```
+0 */12 * * * cp -R /home/cmnatic/Documents /var/backups/
+```
+
+Một tính năng thú vị của crontab là nó hỗ trợ ký tự đại diện hoặc dấu hoa thị (**\***). Nếu bạn không muốn cung cấp giá trị cho một trường cụ thể nào đó, ví dụ: bạn không quan tâm đến tháng, ngày hoặc năm mà nó được thực thi – chỉ cần nó được thực thi mỗi 12 giờ – thì bạn chỉ cần đặt một dấu hoa thị.
+
+Điều này có thể gây nhầm lẫn ban đầu, vì vậy có một số tài nguyên tuyệt vời như **"[Crontab Generator](https://crontab-generator.org/)"** trực tuyến, cho phép bạn sử dụng một ứng dụng thân thiện để tạo định dạng của mình! Ngoài ra còn có trang web **"[Cron Guru](https://crontab.guru/)"**.
+
+Crontab có thể được chỉnh sửa bằng cách sử dụng lệnh **crontab -e**, nơi bạn có thể chọn một trình chỉnh sửa (chẳng hạn như Nano) để chỉnh sửa crontab của mình.
+
+![crontab](./img/3_Linux_Fundamentals_Part_3/6.2.png)
+
