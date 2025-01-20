@@ -376,3 +376,84 @@ Crontab có thể được chỉnh sửa bằng cách sử dụng lệnh **cront
 
 ![crontab](./img/3_Linux_Fundamentals_Part_3/6.2.png)
 
+**Câu hỏi:**
+
+**Khi nào crontab trên instance được triển khai (10.10.141.159) sẽ chạy?**  
+
+![crontab](./img/3_Linux_Fundamentals_Part_3/6.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: @reboot  
+</details>  
+
+# Task 7: Maintaining Your System: Package Management
+
+**Duy trì Hệ thống của bạn: Quản lý Gói**
+
+## **Giới thiệu về Gói & Kho phần mềm**
+
+Khi các nhà phát triển muốn gửi phần mềm tới cộng đồng, họ sẽ gửi nó vào một kho lưu trữ **"apt"**. Nếu được phê duyệt, chương trình và công cụ của họ sẽ được phát hành ra cộng đồng. Hai trong số những tính năng đáng giá nhất của Linux được thể hiện ở đây: Khả năng truy cập của người dùng và giá trị của các công cụ mã nguồn mở.
+
+Khi sử dụng lệnh **ls** trên máy Ubuntu 20.04 Linux, các tệp này đóng vai trò như cổng truy cập hoặc sổ đăng ký.
+
+![apt](./img/3_Linux_Fundamentals_Part_3/7.1.png)
+
+Mặc dù các nhà cung cấp hệ điều hành sẽ duy trì các kho lưu trữ riêng của họ, bạn cũng có thể thêm các kho lưu trữ cộng đồng vào danh sách của mình! Điều này cho phép bạn mở rộng khả năng của hệ điều hành của mình. Các kho lưu trữ bổ sung có thể được thêm vào bằng cách sử dụng lệnh **add-apt-repository** hoặc bằng cách liệt kê một nhà cung cấp khác! Ví dụ, một số nhà cung cấp sẽ có một kho lưu trữ gần với vị trí địa lý của họ hơn.
+
+## **Quản lý các Kho lưu trữ của bạn (Thêm và Xóa)**
+
+Thông thường, chúng ta sử dụng lệnh **apt** để cài đặt phần mềm vào hệ thống Ubuntu của mình. Lệnh **apt** là một phần của phần mềm quản lý gói cũng có tên là apt. Apt chứa một bộ công cụ cho phép chúng ta quản lý các gói và nguồn của phần mềm, cũng như cài đặt hoặc gỡ bỏ phần mềm cùng một lúc.
+
+Một phương pháp để thêm kho lưu trữ là sử dụng lệnh **add-apt-repository** mà chúng ta đã minh họa ở trên, nhưng ở đây chúng ta sẽ hướng dẫn cách thêm và xóa một kho lưu trữ một cách thủ công. Mặc dù bạn có thể cài đặt phần mềm thông qua các công cụ cài đặt gói như **dpkg**, lợi ích của apt là mỗi khi chúng ta cập nhật hệ thống của mình – các kho lưu trữ mà chúng ta thêm vào cũng sẽ được kiểm tra để cập nhật.
+
+Trong ví dụ này, chúng ta sẽ thêm trình chỉnh sửa văn bản Sublime Text vào máy Ubuntu của mình như một kho lưu trữ, vì nó không phải là một phần của các kho lưu trữ mặc định của Ubuntu. Khi thêm phần mềm, tính toàn vẹn của những gì chúng ta tải xuống được đảm bảo bằng cách sử dụng cái gọi là các khóa GPG (Gnu Privacy Guard). Các khóa này thực chất là một bước kiểm tra an toàn từ các nhà phát triển, nói rằng, "đây là phần mềm của chúng tôi". Nếu các khóa không khớp với những gì hệ thống của bạn tin tưởng và những gì các nhà phát triển đã sử dụng, thì phần mềm sẽ không được tải xuống.
+
+**Bắt đầu:**
+1. Đầu tiên, chúng ta cần thêm khóa GPG cho các nhà phát triển Sublime Text 3. (Lưu ý: Các máy TryHackMe không có quyền truy cập Internet, vì vậy bạn không cần thực hiện bước này trên máy triển khai, vì nó sẽ thất bại.)
+
+   Chạy lệnh sau để tải khóa GPG và sử dụng apt-key để tin tưởng nó:
+   ```
+   wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+   ```
+
+2. Bây giờ, sau khi chúng ta đã thêm khóa này vào danh sách đáng tin cậy, chúng ta có thể thêm kho lưu trữ của Sublime Text 3 vào danh sách nguồn apt của mình. Một thực hành tốt là tạo một tệp riêng cho từng kho lưu trữ của cộng đồng/bên thứ ba mà chúng ta thêm vào.
+
+   **2.1.** Hãy tạo một tệp có tên `sublime-text.list` trong `/etc/apt/sources.list.d` và nhập thông tin kho lưu trữ vào như sau:
+
+![](./img/3_Linux_Fundamentals_Part_3/7.2.png)
+
+   **2.2.** Và bây giờ, hãy sử dụng Nano hoặc bất kỳ trình chỉnh sửa văn bản nào bạn chọn để thêm và lưu kho lưu trữ Sublime Text 3 vào tệp mới tạo này:
+
+![](./img/3_Linux_Fundamentals_Part_3/7.3.png)
+
+   **2.3.** Sau khi đã thêm mục nhập này, chúng ta cần cập nhật apt để nhận ra mục nhập mới – điều này được thực hiện bằng cách sử dụng lệnh:
+
+```
+apt update
+```
+
+  **2.4.** Sau khi cập nhật thành công, bây giờ chúng ta có thể tiến hành cài đặt phần mềm mà chúng ta đã tin tưởng và thêm vào apt bằng lệnh:
+
+```
+apt install sublime-text
+```
+
+**Xóa gói phần mềm:**
+Việc xóa gói phần mềm đơn giản như thao tác ngược lại. Quá trình này được thực hiện bằng cách sử dụng lệnh:
+
+```
+add-apt-repository --remove ppa:PPA_Name/ppa
+```
+
+hoặc bằng cách xóa thủ công tệp mà chúng ta đã thêm trước đó. Sau khi xóa, chúng ta chỉ cần sử dụng:
+
+```
+apt remove [software-name-here]
+```
+
+Ví dụ:
+
+```
+apt remove sublime-text
+```
