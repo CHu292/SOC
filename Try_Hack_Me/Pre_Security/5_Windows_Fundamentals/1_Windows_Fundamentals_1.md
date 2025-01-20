@@ -94,3 +94,110 @@ Sự khác biệt chính về khả năng mã hóa giữa Windows **Pro** và **
 
 Nếu bạn cần một giải pháp mã hóa mạnh mẽ với khả năng quản lý nâng cao (ví dụ: quản lý qua Group Policy, tích hợp với Active Directory, hoặc mã hóa đồng loạt nhiều ổ đĩa), thì **Windows Pro** là lựa chọn phù hợp hơn.
 
+# Task 3: The Desktop (GUI)
+
+Windows Desktop, hay còn gọi là giao diện người dùng đồ họa hoặc GUI (graphical user interface), là màn hình chào đón bạn sau khi bạn đăng nhập vào máy tính Windows 10.
+
+Theo truyền thống, trước tiên bạn cần phải vượt qua màn hình đăng nhập. Màn hình đăng nhập là nơi bạn cần nhập thông tin đăng nhập tài khoản hợp lệ; thường là tên người dùng và mật khẩu của tài khoản Windows đã tồn tại trước đó trên hệ thống cụ thể đó hoặc trong môi trường Active Directory (nếu đó là máy tính đã tham gia miền).
+
+![GUI](./img/1_Windows_Fundamentals_1/2.1.png)
+
+Ảnh chụp màn hình ở trên là ví dụ về một **Màn hình Desktop Windows** điển hình. Mỗi thành phần tạo nên giao diện người dùng đồ họa (GUI) được giải thích ngắn gọn dưới đây:
+
+1. Màn hình Desktop  
+2. Menu Start  
+3. Hộp tìm kiếm (Cortana)  
+4. Chế độ xem tác vụ (Task View)  
+5. Thanh tác vụ (Taskbar)  
+6. Thanh công cụ (Toolbars)  
+7. Khu vực thông báo (Notification Area)  
+
+## **Màn hình Desktop**
+
+Màn hình Desktop là nơi bạn sẽ có các lối tắt (shortcut) đến chương trình, thư mục, tệp, v.v. Các biểu tượng này sẽ được tổ chức gọn gàng trong các thư mục được sắp xếp theo thứ tự bảng chữ cái hoặc phân tán ngẫu nhiên mà không có tổ chức cụ thể nào trên màn hình. Dù thế nào, các mục này thường được đặt trên màn hình Desktop để truy cập nhanh.
+
+Giao diện và cách bố trí của màn hình Desktop có thể được thay đổi để phù hợp với sở thích của bạn. Bằng cách nhấp chuột phải vào bất kỳ đâu trên màn hình Desktop, một menu ngữ cảnh sẽ xuất hiện. Menu này cho phép bạn thay đổi kích thước các biểu tượng trên màn hình Desktop, sắp xếp chúng theo ý muốn, sao chép/dán các mục vào màn hình Desktop, và tạo các mục mới như thư mục, lối tắt, hoặc tài liệu văn bản.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.2.png)
+
+Dưới **Cài đặt Màn hình** (Display settings), bạn có thể thay đổi độ phân giải và hướng của màn hình. Trong trường hợp bạn có nhiều màn hình máy tính, bạn có thể thực hiện cấu hình cho thiết lập đa màn hình tại đây.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.3.png)
+
+Lưu ý: Trong phiên làm việc **Remote Desktop**, một số cài đặt hiển thị sẽ bị vô hiệu hóa.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.4.png)
+
+Bạn cũng có thể thay đổi hình nền bằng cách chọn **Cá nhân hóa** (Personalize).
+
+![GUI](./img/1_Windows_Fundamentals_1/2.5.png)
+
+Trong mục **Cá nhân hóa** (Personalize), bạn có thể thay đổi hình nền cho Màn hình Desktop, thay đổi phông chữ, chủ đề, bảng màu, v.v.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.6.png)
+
+## **Menu Start**
+
+Trong các phiên bản trước của Windows, từ **Start** xuất hiện ở góc dưới bên trái của giao diện đồ họa (GUI) trên màn hình Desktop. Trong các phiên bản Windows hiện đại, chẳng hạn như Windows 10, từ "Start" không còn xuất hiện nữa, thay vào đó là biểu tượng logo Windows. Mặc dù giao diện của Menu Start đã thay đổi, mục đích chính của nó vẫn giữ nguyên.
+
+Menu Start cung cấp quyền truy cập vào tất cả các ứng dụng/chương trình, tệp, công cụ tiện ích, v.v., hữu ích nhất.
+
+Khi nhấp vào biểu tượng logo Windows, Menu Start sẽ mở ra. Menu Start được chia thành các phần khác nhau. Xem chi tiết bên dưới.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.7.png)
+
+1. Phần này của Menu Start cung cấp các phím tắt nhanh để thực hiện các hành động liên quan đến tài khoản hoặc phiên đăng nhập của bạn, chẳng hạn như thay đổi thông tin tài khoản người dùng, khóa màn hình hoặc đăng xuất khỏi tài khoản. Các phím tắt khác dành riêng cho tài khoản của bạn bao gồm thư mục **Documents** (biểu tượng tài liệu) và thư mục **Pictures** (biểu tượng hình ảnh). Cuối cùng, biểu tượng bánh răng/cơ sẽ đưa bạn đến màn hình **Cài đặt (Settings)**, và biểu tượng nguồn sẽ cho phép bạn **ngắt kết nối khỏi phiên Remote Desktop**, tắt máy tính hoặc khởi động lại máy tính.
+
+Trong hình bên dưới, bạn có thể thấy mỗi biểu tượng đại diện cho chức năng nào. Để mở rộng phần này, hãy nhấp vào biểu tượng giống như một chiếc bánh hamburger ở phía trên.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.8.png)
+
+2. Phần này sẽ hiển thị tất cả các ứng dụng/chương trình **mới được thêm gần đây** (Recently added) ở phía trên cùng và tất cả các ứng dụng/chương trình đã cài đặt (được cấu hình để xuất hiện trong Menu Start). Trong phần này, bạn cũng sẽ thấy các ứng dụng/chương trình được liệt kê theo thứ tự bảng chữ cái. Mỗi chữ cái sẽ có một phần riêng. Xem chi tiết bên dưới.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.9.png)
+
+Trong hình trên, ô đầu tiên là nơi hiển thị các ứng dụng/chương trình **mới được thêm gần đây**. Ô thứ hai là nơi hiển thị tất cả các ứng dụng/chương trình đã được cài đặt.
+
+**Lưu ý:** Trong máy ảo (VM) của bạn, Google Chrome sẽ không còn hiển thị dưới dạng chương trình **Recently Added** nữa.
+
+Nếu bạn có một danh sách **dài** các ứng dụng/chương trình đã cài đặt, bạn có thể nhanh chóng chuyển đến một phần cụ thể trong danh sách bằng cách nhấp vào các chữ cái đầu để hiển thị lưới bảng chữ cái. Xem chi tiết bên dưới.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.10.png)
+
+**Lưu ý:** Các chữ cái màu trắng tương ứng với các tiêu đề chữ cái.
+
+3. Phía bên phải của **Menu Start** là nơi bạn sẽ tìm thấy các biểu tượng cho các ứng dụng/chương trình hoặc tiện ích cụ thể. Các biểu tượng này được gọi là **tiles** (ô vuông). Một số ô vuông được thêm vào phần này theo mặc định. Nếu bạn nhấp chuột phải vào bất kỳ ô vuông nào, một menu sẽ xuất hiện cho phép bạn thực hiện thêm các hành động trên ô được chọn; chẳng hạn như thay đổi kích thước ô, gỡ ghim khỏi Menu Start, xem thuộc tính (Properties) của nó, v.v. Xem chi tiết bên dưới.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.11.png)
+
+Các ứng dụng/chương trình có thể được thêm vào phần này của Menu Start bằng cách nhấp chuột phải vào ứng dụng/chương trình và chọn **Pin to Start**. Xem chi tiết bên dưới.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.12.png)
+
+![GUI](./img/1_Windows_Fundamentals_1/2.13.png)
+
+## **Thanh tác vụ (Taskbar)**
+
+Một số thành phần được kích hoạt và hiển thị theo mặc định. Ví dụ, **Thanh công cụ (Toolbar)** (mục 6), được kích hoạt để minh họa mục đích sử dụng.
+
+Nếu bạn giống tôi và muốn tắt một số thành phần này, bạn có thể nhấp chuột phải vào **Thanh tác vụ** để mở menu ngữ cảnh, cho phép bạn thực hiện các thay đổi.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.14.png)
+
+Bất kỳ ứng dụng/chương trình, thư mục, tệp, v.v., nào mà bạn mở/chạy sẽ xuất hiện trên **Thanh tác vụ** (Taskbar).
+
+![GUI](./img/1_Windows_Fundamentals_1/2.15.png)
+
+Khi di chuột qua biểu tượng, một hình thu nhỏ xem trước sẽ xuất hiện, cùng với một chú thích (tooltip). Chú thích này rất hữu ích nếu bạn có nhiều ứng dụng/chương trình đang mở, chẳng hạn như Google Chrome, và bạn muốn tìm xem phiên bản nào của Google Chrome cần được đưa lên trước.
+
+Khi bạn đóng bất kỳ mục nào trong số này, chúng sẽ biến mất khỏi thanh tác vụ (trừ khi bạn đã ghim chúng vào thanh tác vụ).
+
+## **Khu vực Thông báo (Notification Area)**
+
+Khu vực Thông báo, thường nằm ở góc dưới bên phải của màn hình Windows, là nơi hiển thị ngày và giờ. Các biểu tượng khác có thể hiển thị trong khu vực này bao gồm biểu tượng âm lượng, biểu tượng mạng/không dây, để nêu một vài ví dụ. Các biểu tượng có thể được thêm vào hoặc xóa khỏi Khu vực Thông báo trong cài đặt **Taskbar settings**.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.16.png)
+
+Từ đó, cuộn xuống phần **Khu vực Thông báo** (Notification Area) để thực hiện các thay đổi.
+
+![GUI](./img/1_Windows_Fundamentals_1/2.17.png)
