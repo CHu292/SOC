@@ -299,3 +299,46 @@ Bây giờ chúng ta có một tiến trình đang chạy trong nền, ví dụ 
 Với tiến trình của chúng ta được đưa vào chế độ chạy nền bằng cách sử dụng **Ctrl + Z** hoặc toán tử **&**, chúng ta có thể sử dụng lệnh **fg** để đưa tiến trình này trở lại foreground như bên dưới. Tại đây, chúng ta có thể thấy lệnh **fg** được sử dụng để đưa tiến trình chạy nền quay trở lại sử dụng trên terminal, nơi mà đầu ra của script bây giờ được trả về cho chúng ta.
 
 ![](./img/3_Linux_Fundamentals_Part_3/5.8.png)
+
+**Câu hỏi:**
+
+1. **Nếu chúng ta khởi chạy một tiến trình mới trong đó ID trước đó là "300", ID của tiến trình mới này sẽ là gì?**  
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: 301  
+   </details>  
+
+2. **Nếu chúng ta muốn dừng tiến trình một cách sạch sẽ, tín hiệu nào sẽ được gửi đi?**  
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: SIGTERM  
+   </details>  
+
+3. **Xác định tiến trình đang chạy trên instance được triển khai (10.10.141.159). Flag được cung cấp là gì?**  
+
+![](./img/3_Linux_Fundamentals_Part_3/5.9.png)
+
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: THM{PROCESSES}  
+   </details>  
+
+5. **Lệnh nào chúng ta sẽ sử dụng để dừng dịch vụ "myservice"?**  
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: systemctl stop myservice  
+   </details>  
+
+6. **Lệnh nào chúng ta sẽ sử dụng để khởi động cùng một dịch vụ khi hệ thống khởi động?**  
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: systemctl enable myservice  
+   </details>  
+
+7. **Lệnh nào chúng ta sẽ sử dụng để đưa một tiến trình đang chạy nền quay trở lại foreground?**  
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: fg  
+   </details>  
+
+   
