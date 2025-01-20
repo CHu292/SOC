@@ -139,3 +139,41 @@ scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
 ```
 
 Và bây giờ, hãy đảo ngược điều này và trình bày cú pháp để sử dụng **scp** để sao chép một tệp từ máy tính từ xa mà chúng ta không đăng nhập vào:
+
+| Biến số                         | Giá trị               |
+|--------------------------------|-----------------------|
+| Địa chỉ IP của hệ thống từ xa  | 192.168.1.30         |
+| Người dùng trên hệ thống từ xa | ubuntu               |
+| Tên tệp trên hệ thống từ xa    | documents.txt        |
+| Tên mà chúng ta muốn lưu tệp trên hệ thống của mình | notes.txt |
+
+Lệnh sẽ có dạng như sau:  
+`scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt`
+
+
+## **Phục Vụ Tệp Từ Máy Chủ Của Bạn - WEB**
+
+Các máy Ubuntu đi kèm sẵn với Python3. Python cung cấp một module nhẹ và dễ sử dụng gọi là "HTTPServer". Module này biến máy tính của bạn thành một máy chủ web nhanh và dễ dàng, mà bạn có thể sử dụng để phục vụ các tệp của mình, nơi chúng có thể được tải xuống bởi một máy tính khác bằng cách sử dụng các lệnh như `curl` và `wget`.
+
+"HTTPServer" của Python3 sẽ phục vụ các tệp trong thư mục nơi bạn chạy lệnh, nhưng điều này có thể được thay đổi bằng cách cung cấp các tùy chọn có thể tìm thấy trong tài liệu hướng dẫn. Đơn giản, tất cả những gì chúng ta cần làm là chạy lệnh sau trong terminal để khởi động module:  
+```python
+python3 -m http.server
+```
+Trong đoạn mã dưới đây, chúng ta đang phục vụ từ một thư mục có tên "webserver", trong đó chứa một tệp duy nhất được gọi là "file".
+
+![](./img/3_Linux_Fundamentals_Part_3/4.1.png)
+
+Bây giờ, hãy sử dụng `wget` để tải xuống tệp bằng địa chỉ `10.10.141.159` và tên tệp. Hãy nhớ rằng, vì máy chủ python3 đang chạy cổng 8000, bạn sẽ cần chỉ định điều này trong lệnh wget của mình. Ví dụ:
+
+![](./img/3_Linux_Fundamentals_Part_3/4.2.png)
+
+Lưu ý, bạn sẽ cần mở một terminal mới để sử dụng wget và để terminal mà bạn đã khởi động máy chủ web Python3. Điều này là do, sau khi bạn khởi động máy chủ web Python3, nó sẽ chạy trong terminal đó cho đến khi bạn hủy. Chúng ta hãy xem đoạn trích dưới đây làm ví dụ:
+
+![](./img/3_Linux_Fundamentals_Part_3/4.3.png)
+
+Hãy nhớ rằng, bạn sẽ cần chạy lệnh `wget` trong một terminal khác (trong khi vẫn giữ terminal đang chạy máy chủ Python3 hoạt động). Một ví dụ về điều này trên Try Hack Me Attack Box được minh họa bên dưới:
+
+![](./img/3_Linux_Fundamentals_Part_3/4.4.png)
+
+Một nhược điểm của module này là bạn không có cách lập chỉ mục, vì vậy bạn phải biết chính xác tên và vị trí của tệp mà bạn muốn sử dụng. Đó là lý do tại sao tôi thích sử dụng **Updog**. **Updog là gì?** Một máy chủ web tiên tiến hơn nhưng vẫn nhẹ. Tuy nhiên, hiện tại, chúng ta hãy tiếp tục sử dụng "HTTP Server" của Python.
+
