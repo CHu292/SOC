@@ -177,3 +177,25 @@ Hãy nhớ rằng, bạn sẽ cần chạy lệnh `wget` trong một terminal kh
 
 Một nhược điểm của module này là bạn không có cách lập chỉ mục, vì vậy bạn phải biết chính xác tên và vị trí của tệp mà bạn muốn sử dụng. Đó là lý do tại sao tôi thích sử dụng **Updog**. **Updog là gì?** Một máy chủ web tiên tiến hơn nhưng vẫn nhẹ. Tuy nhiên, hiện tại, chúng ta hãy tiếp tục sử dụng "HTTP Server" của Python.
 
+
+**Trả lời các câu hỏi bên dưới**
+
+1. **Đảm bảo bạn đã kết nối với instance được triển khai (10.10.141.159).**  
+ 
+2. **Bây giờ, sử dụng module "HTTPServer" của Python 3 để khởi động một máy chủ web trong thư mục chính của người dùng "tryhackme" trên instance được triển khai.**  
+
+![](./img/3_Linux_Fundamentals_Part_3/4.5.png)
+
+3. **Tải xuống tệp [http://10.10.141.159:8000/flag.txt](http://10.10.141.159:8000/flag.txt) vào TryHackMe AttackBox. Hãy nhớ rằng bạn sẽ cần thực hiện điều này trong một terminal mới. Nội dung là gì?**  
+
+ ![](./img/3_Linux_Fundamentals_Part_3/4.6.png)
+
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: THM{WGET_WEBSERVER}  
+   </details>  
+
+4. **Tạo và tải xuống các tệp để áp dụng thêm kiến thức của bạn -- xem cách bạn có thể đọc tài liệu về module "HTTPServer" của Python 3.**  
+   **Sử dụng Ctrl + C để dừng module HTTPServer của Python 3 sau khi bạn hoàn thành.**  
+
+![](./img/3_Linux_Fundamentals_Part_3/4.7.png)
