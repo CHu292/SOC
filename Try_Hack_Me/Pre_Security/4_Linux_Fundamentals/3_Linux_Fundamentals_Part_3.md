@@ -198,4 +198,104 @@ Một nhược điểm của module này là bạn không có cách lập chỉ 
 4. **Tạo và tải xuống các tệp để áp dụng thêm kiến thức của bạn -- xem cách bạn có thể đọc tài liệu về module "HTTPServer" của Python 3.**  
    **Sử dụng Ctrl + C để dừng module HTTPServer của Python 3 sau khi bạn hoàn thành.**  
 
-![](./img/3_Linux_Fundamentals_Part_3/4.7.png)
+
+
+# Task 5: Processes 101
+
+Các tiến trình (Processes) là các chương trình đang chạy trên máy của bạn. Chúng được quản lý bởi kernel, trong đó mỗi tiến trình sẽ có một ID liên kết với nó, còn được gọi là PID. PID tăng dần theo thứ tự mà tiến trình được khởi chạy. Ví dụ: tiến trình thứ 60 sẽ có PID là 60.
+
+## **Xem các tiến trình**
+
+Chúng ta có thể sử dụng lệnh thân thiện `ps` để hiển thị danh sách các tiến trình đang chạy dưới phiên làm việc của người dùng, cùng với một số thông tin bổ sung như mã trạng thái của nó, phiên đang chạy tiến trình, lượng thời gian CPU mà tiến trình sử dụng và tên của chương trình hoặc lệnh thực sự đang được thực thi:
+
+![ps](./img/3_Linux_Fundamentals_Part_3/5.1.png)
+
+Lưu ý rằng trong ảnh chụp màn hình phía trên, quá trình thứ hai `ps` có **PID** là 204, và trong lệnh bên dưới, giá trị này được tăng lên thành 205.  
+
+Để xem các tiến trình do người dùng khác chạy và những tiến trình không chạy từ một phiên (ví dụ: các tiến trình hệ thống), chúng ta cần thêm **aux** vào lệnh `ps`, như sau:  
+
+```
+ps aux
+```  
+![ps aux](./img/3_Linux_Fundamentals_Part_3/5.2.png)
+
+Lưu ý rằng chúng ta có thể thấy tổng cộng 5 tiến trình -- chú ý cách chúng ta hiện có "root" và "cmnatic".
+
+Một lệnh rất hữu ích khác là lệnh `top`; `top` cung cấp các số liệu thống kê thời gian thực về các tiến trình đang chạy trên hệ thống của bạn thay vì chỉ xem một lần. Các số liệu này sẽ được làm mới sau mỗi 10 giây, nhưng cũng sẽ làm mới khi bạn sử dụng các phím mũi tên để duyệt qua các hàng khác nhau. Một lệnh tuyệt vời khác để tìm hiểu sâu hơn về hệ thống của bạn là lệnh `top`.
+
+![top](./img/3_Linux_Fundamentals_Part_3/5.3.png)
+
+## Quản lý tiến trình
+
+Bạn có thể gửi tín hiệu để kết thúc tiến trình; có nhiều loại tín hiệu khác nhau liên quan đến mức độ "sạch sẽ" mà hệ điều hành nhân (kernel) xử lý tiến trình. Để kết thúc một tiến trình, chúng ta có thể sử dụng lệnh có tên phù hợp là `kill` cùng với PID (Process ID) của tiến trình mà chúng ta muốn dừng. Ví dụ, để dừng tiến trình có ID 1337, chúng ta sử dụng:  
+```bash
+kill 1337
+```
+
+Dưới đây là một số tín hiệu mà chúng ta có thể gửi đến một tiến trình khi dừng nó:
+
+- **SIGTERM** - Kết thúc tiến trình nhưng cho phép nó thực hiện một số nhiệm vụ dọn dẹp trước khi dừng.
+- **SIGKILL** - Kết thúc tiến trình mà không thực hiện bất kỳ nhiệm vụ dọn dẹp nào.
+- **SIGSTOP** - Dừng hoặc tạm dừng tiến trình.
+
+## Tiến trình bắt đầu như thế nào?
+
+Hãy bắt đầu với khái niệm **namespace**. Hệ điều hành (Operating System - **OS**) sử dụng namespace để chia nhỏ các tài nguyên có sẵn trên máy tính (như CPU, RAM và ưu tiên xử lý) cho các tiến trình. Hãy tưởng tượng việc chia nhỏ máy tính của bạn thành các lát, giống như bánh. Các tiến trình trong mỗi lát sẽ được truy cập vào một lượng tài nguyên nhất định, nhưng chỉ là một phần nhỏ trong tổng số tài nguyên có sẵn cho tất cả các tiến trình.
+
+Namespace rất hữu ích cho bảo mật vì nó là một cách để cô lập các tiến trình với nhau — chỉ các tiến trình trong cùng một namespace mới có thể nhìn thấy nhau.
+
+Chúng ta đã nói về cách PID hoạt động, và đây là nơi nó được sử dụng. Tiến trình có ID là 0 là một tiến trình bắt đầu khi hệ thống khởi động. Tiến trình này là tiến trình `init` của hệ thống trên Ubuntu, ví dụ như **systemd**, được sử dụng để quản lý các tiến trình của người dùng và nằm giữa hệ điều hành và người dùng.
+
+Ví dụ, khi hệ thống khởi động và được khởi tạo, **systemd** là một trong những tiến trình đầu tiên được khởi động. Bất kỳ chương trình hoặc phần mềm nào mà chúng ta muốn khởi động sẽ bắt đầu như một tiến trình con của **systemd**. Điều này có nghĩa là nó được kiểm soát bởi **systemd**, nhưng sẽ chạy như một tiến trình độc lập (mặc dù chia sẻ tài nguyên từ **systemd**) để dễ dàng nhận dạng và quản lý.
+
+![Tiến trình](./img/3_Linux_Fundamentals_Part_3/5.4.png)
+
+## Khởi động tiến trình/dịch vụ khi hệ thống khởi động
+
+Một số ứng dụng có thể được khởi động ngay khi hệ thống khởi động. Ví dụ như máy chủ web, máy chủ cơ sở dữ liệu hoặc máy chủ truyền tệp. Phần mềm này thường rất quan trọng và được cấu hình để khởi động khi hệ thống bắt đầu bởi các quản trị viên.
+
+Trong ví dụ này, chúng ta sẽ thiết lập máy chủ web Apache để khởi động thủ công và sau đó hướng dẫn hệ thống khởi động Apache2 khi hệ thống khởi động.
+
+Lệnh **`systemctl`** được sử dụng để tương tác với tiến trình/dịch vụ **systemd**.  
+Định dạng của lệnh như sau:
+```
+systemctl [tùy chọn] [dịch vụ]
+```
+
+Ví dụ, để yêu cầu Apache khởi động, chúng ta sử dụng:  
+```bash
+systemctl start apache2
+```
+Để dừng Apache, chúng ta chỉ cần thay **[tùy chọn]** bằng **stop** thay vì **start**.
+
+Chúng ta có thể sử dụng bốn tùy chọn với lệnh **systemctl**:
+- **Start** - Khởi động dịch vụ.
+- **Stop** - Dừng dịch vụ.
+- **Enable** - Bật dịch vụ để tự động khởi động cùng hệ thống.
+- **Disable** - Tắt dịch vụ không cho tự động khởi động.
+
+## **Giới thiệu về chạy nền và chạy tiền cảnh trong Linux**
+
+Các tiến trình trong Linux có thể chạy ở hai trạng thái: trong nền (background) và trong tiền cảnh (foreground). Ví dụ, các lệnh mà bạn chạy trong terminal như lệnh `echo` hoặc những lệnh tương tự sẽ chạy trong tiền cảnh của terminal vì đó là lệnh duy nhất được cung cấp mà chưa được chỉ định chạy trong nền. `echo` là một ví dụ tuyệt vời, bởi vì kết quả của lệnh echo sẽ được trả về cho bạn trong tiền cảnh, nhưng sẽ không xảy ra nếu nó chạy trong nền. Hãy tham khảo ảnh chụp màn hình bên dưới để minh họa.
+
+![echo](./img/3_Linux_Fundamentals_Part_3/5.5.png)
+
+Ở đây, chúng ta đang chạy lệnh `echo "Hi THM"`, nơi mà chúng ta mong đợi kết quả sẽ được trả về giống như ban đầu. Nhưng sau khi thêm toán tử `&` vào lệnh, thay vì nhận được kết quả thực tế, chúng ta chỉ nhận được ID của tiến trình echo, vì nó đang chạy ở chế độ nền.
+
+Điều này rất hữu ích đối với các lệnh như sao chép tệp, vì nó cho phép chúng ta chạy lệnh trong nền và tiếp tục thực hiện bất kỳ lệnh nào khác mà chúng ta muốn (mà không cần phải chờ quá trình sao chép tệp hoàn tất trước).
+
+Chúng ta cũng có thể làm điều tương tự khi thực thi các tập lệnh (scripts) — thay vì dựa vào toán tử `&`, chúng ta có thể sử dụng tổ hợp phím `Ctrl + Z` trên bàn phím để chuyển tiến trình sang chế độ nền. Đây cũng là một cách hiệu quả để "tạm dừng" việc thực thi của một tập lệnh hoặc lệnh, như trong ví dụ dưới đây.
+
+![](./img/3_Linux_Fundamentals_Part_3/5.6.png)
+
+Script này sẽ tiếp tục lặp lại "This will keep on looping until I stop!" cho đến khi tôi dừng hoặc tạm ngưng tiến trình. Bằng cách sử dụng **Ctrl + Z** (được biểu thị bằng **T^Z**), terminal của chúng ta sẽ không còn bị lấp đầy bởi các tin nhắn nữa – cho đến khi chúng ta đưa nó trở lại foreground, điều này sẽ được thảo luận bên dưới.
+
+## **Đưa tiến trình trở lại tiền cảnh**
+
+Bây giờ chúng ta có một tiến trình đang chạy trong nền, ví dụ như tập lệnh "background.sh", và có thể xác nhận điều này bằng cách sử dụng lệnh `ps aux`. Chúng ta có thể quay lại và đưa tiến trình này trở lại chế độ tiền cảnh để tương tác.
+
+![](./img/3_Linux_Fundamentals_Part_3/5.7.png)
+
+Với tiến trình của chúng ta được đưa vào chế độ chạy nền bằng cách sử dụng **Ctrl + Z** hoặc toán tử **&**, chúng ta có thể sử dụng lệnh **fg** để đưa tiến trình này trở lại foreground như bên dưới. Tại đây, chúng ta có thể thấy lệnh **fg** được sử dụng để đưa tiến trình chạy nền quay trở lại sử dụng trên terminal, nơi mà đầu ra của script bây giờ được trả về cho chúng ta.
+
+![](./img/3_Linux_Fundamentals_Part_3/5.8.png)
