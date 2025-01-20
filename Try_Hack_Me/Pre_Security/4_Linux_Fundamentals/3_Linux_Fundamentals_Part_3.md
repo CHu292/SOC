@@ -471,3 +471,13 @@ Tôi đã liệt kê một số nhật ký từ ba dịch vụ chạy trên mộ
 - Dịch vụ **UFW**, được sử dụng như một tường lửa
 
 ![log](./img/3_Linux_Fundamentals_Part_3/8.1.png)
+
+Các dịch vụ và nhật ký này là một cách tuyệt vời để giám sát sức khỏe hệ thống của bạn và bảo vệ nó. Không chỉ vậy, các nhật ký của những dịch vụ như máy chủ web còn chứa thông tin về mọi yêu cầu – cho phép các nhà phát triển hoặc quản trị viên chẩn đoán các vấn đề về hiệu suất hoặc điều tra hoạt động của kẻ xâm nhập. Ví dụ, hai loại tệp nhật ký dưới đây rất đáng quan tâm:
+
+- **Nhật ký truy cập (access log)**  
+- **Nhật ký lỗi (error log)**  
+
+![log](./img/3_Linux_Fundamentals_Part_3/8.2.png)
+
+Tất nhiên, có các bản ghi lưu trữ thông tin về cách hệ điều hành chạy và các hành động được người dùng thực hiện, chẳng hạn như các nỗ lực xác thực.
+
