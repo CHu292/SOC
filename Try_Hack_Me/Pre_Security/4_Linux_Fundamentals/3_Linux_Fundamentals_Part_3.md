@@ -362,10 +362,6 @@ Chúng ta sẽ nói về tiến trình **cron**, cụ thể hơn là cách chún
 | DOW    | Ngày nào trong tuần sẽ thực thi        |
 | CMD    | Lệnh thực tế sẽ được thực thi          |
 
-Dưới đây là bản dịch tiếng Việt của nội dung trong ảnh:
-
----
-
 Hãy sử dụng ví dụ về sao lưu tệp. Bạn có thể muốn sao lưu thư mục **Documents** của "cmnatic" sau mỗi 12 giờ. Chúng ta sẽ sử dụng định dạng sau:
 
 ```
