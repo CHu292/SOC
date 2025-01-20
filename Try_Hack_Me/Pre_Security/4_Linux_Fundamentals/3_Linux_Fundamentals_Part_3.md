@@ -481,3 +481,44 @@ Các dịch vụ và nhật ký này là một cách tuyệt vời để giám s
 
 Tất nhiên, có các bản ghi lưu trữ thông tin về cách hệ điều hành chạy và các hành động được người dùng thực hiện, chẳng hạn như các nỗ lực xác thực.
 
+**Câu hỏi:**
+
+1. **Tìm nhật ký apache2 trên máy Linux có thể triển khai.**  
+
+
+2. **Địa chỉ IP của người dùng đã truy cập vào trang web là gì?**  
+
+![log](./img/3_Linux_Fundamentals_Part_3/8.3.png)
+
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: 10.9.232.111  
+   </details>  
+
+4. **Họ đã truy cập tệp nào?**  
+
+![log](./img/3_Linux_Fundamentals_Part_3/8.4.png)
+
+   <details>  
+   <summary>Hiển thị đáp án</summary>  
+   Đáp án: catsanddogs.jpg  
+   </details>  
+
+# Task 9: Conclusions & Summaries
+
+Chào mừng bạn đã hoàn thành module Linux Fundamentals. Sự quen thuộc của bạn với Linux sẽ được cải thiện khi bạn tiếp tục tương tác với nó theo thời gian. Linux có tiềm năng thực hiện những việc rất mạnh mẽ một cách tương đối dễ dàng (như bạn hy vọng đã khám phá được trong suốt module này).
+
+Để tổng kết, phòng học này đã giới thiệu cho bạn các chủ đề sau:
+
+- Sử dụng các trình chỉnh sửa văn bản trong terminal
+- Các tiện ích chung như tải xuống và phục vụ nội dung bằng một máy chủ web Python
+- Tìm hiểu về các tiến trình
+- Duy trì và tự động hóa hệ thống của bạn thông qua crontab, quản lý gói và xem xét các nhật ký
+
+Hãy tiếp tục học tập trong một số phòng khác của TryHackMe dành riêng cho các công cụ hoặc tiện ích Linux:
+
+- **Bash Scripting** - [https://tryhackme.com/room/bashscripting](https://tryhackme.com/room/bashscripting)  
+- **Regular Expressions** - [https://tryhackme.com/room/catregex](https://tryhackme.com/room/catregex)
+
+
+
