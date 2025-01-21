@@ -281,4 +281,85 @@ Bảng dưới đây liệt kê ý nghĩa của từng quyền và cách chúng 
 **Modify (Chỉnh sửa)** | Cho phép đọc, ghi tệp và thư mục con; cho phép xóa thư mục | Cho phép đọc, ghi tệp và xóa tệp
 **Full Control (Toàn quyền kiểm soát)** | Cho phép đọc, ghi, chỉnh sửa và xóa tệp, thư mục con | Cho phép đọc, ghi, chỉnh sửa và xóa tệp
 
+**Làm thế nào để bạn xem quyền của một tệp hoặc thư mục?**
+
+- Nhấp chuột phải vào tệp hoặc thư mục mà bạn muốn kiểm tra quyền.  
+- Từ menu ngữ cảnh, chọn **Properties** (Thuộc tính).  
+- Trong cửa sổ **Properties**, nhấp vào tab **Security** (Bảo mật).  
+- Trong danh sách **Group or user names** (Nhóm hoặc tên người dùng), chọn người dùng, máy tính, hoặc nhóm mà bạn muốn xem quyền.  
+
+Trong hình dưới, bạn có thể thấy các quyền của nhóm **Users** đối với thư mục Windows.
+
+![NTFS](./img/1_Windows_Fundamentals_1/4.2.png)
+
+**Tham khảo tài liệu của Microsoft để hiểu rõ hơn về quyền NTFS đối với các **Special Permissions** (Quyền đặc biệt).**
+
+Một tính năng khác của NTFS là **Alternate Data Streams** (ADS).
+
+**Alternate Data Streams** (ADS) là một thuộc tính tệp đặc biệt của hệ thống NTFS trên Windows.
+
+- Mỗi tệp có ít nhất một luồng dữ liệu (ví dụ: **$DATA**), và ADS cho phép các tệp chứa nhiều luồng dữ liệu khác nhau.  
+- Theo mặc định, **[Window Explorer](https://support.microsoft.com/en-us/windows/file-explorer-in-windows-ef370130-1cca-9dc5-e0df-2f7416fe1cb1)** không hiển thị ADS cho người dùng. Có các công cụ từ bên thứ ba để xem dữ liệu này, nhưng **[Powershell](https://learn.microsoft.com/en-us/powershell/scripting/overview?view=powershell-7.4&viewFallbackFrom=powershell-7.1)** cung cấp khả năng kiểm tra ADS cho các tệp.
+
+Từ góc độ bảo mật, các nhà phát triển mã độc đã lợi dụng ADS để ẩn dữ liệu.
+
+- Tuy nhiên, không phải tất cả các ứng dụng của ADS đều xấu. Ví dụ: khi bạn tải xuống một tệp từ Internet, ADS có thể chứa thông tin xác định rằng tệp đó được tải xuống từ Internet.
+
+Để tìm hiểu thêm về ADS, hãy tham khảo liên kết từ MalwareBytes [tại đây](https://www.malwarebytes.com/blog/101/2015/07/introduction-to-alternate-data-streams).
+
+**Bonus:** Nếu bạn muốn thực hành tương tác với ADS, hãy khám phá **Day 21** của sự kiện **[Advent of Cyber 2](https://tryhackme.com/r/room/adventofcyber2)**.
+
+
+**Câu hỏi: Ý nghĩa của NTFS là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: New Technology File System  
+</details>  
+
+# Task 5: The Windows\System32 Folders
+
+**Thư mục Windows\System32**
+
+Thư mục Windows (**C:\Windows**) thường được biết đến như là thư mục chứa hệ điều hành Windows.
+
+- Thư mục này không nhất thiết phải nằm trong ổ đĩa C. Nó có thể nằm ở bất kỳ ổ đĩa nào khác và về mặt kỹ thuật có thể được đặt trong một thư mục khác.  
+
+Đây cũng là nơi mà các **biến môi trường** (environment variables), đặc biệt là biến môi trường hệ thống, được áp dụng. Dù chưa được thảo luận chi tiết, biến môi trường hệ thống cho thư mục Windows là **%windir%**.
+
+Theo **Microsoft**, “**Environment variables** lưu trữ thông tin về môi trường hệ điều hành. Thông tin này bao gồm các chi tiết như đường dẫn hệ điều hành, số lượng bộ xử lý được sử dụng bởi hệ điều hành, và vị trí của các thư mục tạm thời.”
+
+Có rất nhiều thư mục con trong thư mục **Windows**. Xem chi tiết bên dưới.
+
+![system32](./img/1_Windows_Fundamentals_1/5.1.png)
+
+Một trong nhiều thư mục là System32.
+
+![system32](./img/1_Windows_Fundamentals_1/5.2.png)
+
+Thư mục **System32** chứa các tệp quan trọng đóng vai trò thiết yếu đối với hệ điều hành.
+
+- Bạn nên hết sức cẩn thận khi tương tác với thư mục này. Việc vô tình xóa bất kỳ tệp hoặc thư mục nào trong **System32** có thể khiến hệ điều hành Windows không thể hoạt động. Tìm hiểu thêm về điều này [tại đây](https://www.howtogeek.com/346997/what-is-the-system32-directory-and-why-you-shouldnt-delete-it/).  
+
+**Lưu ý:** Nhiều công cụ sẽ được đề cập trong loạt bài về **Windows Fundamentals** nằm trong thư mục **System32**.
+
+**Câu hỏi: Biến hệ thống cho thư mục Windows là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: %windir%  
+</details>  
+
+# Task 6: User Accounts, Profiles, and Permissions
+
+**Tài khoản Người dùng, Hồ sơ và Quyền**
+
+Tài khoản người dùng trên hệ thống Windows địa phương thường thuộc một trong hai loại: **Administrator** (Quản trị viên) và **Standard User** (Người dùng thông thường).
+
+Loại tài khoản sẽ quyết định các hành động mà người dùng có thể thực hiện trên hệ thống Windows cụ thể đó:
+
+- **Administrator** có thể thực hiện các thay đổi hệ thống: thêm người dùng, xóa người dùng, sửa đổi nhóm, thay đổi cài đặt hệ thống, v.v.
+- **Standard User** chỉ có thể thực hiện các thay đổi đối với tệp/thư mục được gán cho họ và không thể thực hiện các thay đổi cấp hệ thống, chẳng hạn như cài đặt chương trình.
+
+Hiện tại, bạn đang đăng nhập với tư cách là **Administrator**. Có một số cách để xác định tài khoản người dùng nào đang tồn tại trên hệ thống.
+
+Một cách là nhấp vào **Start Menu** và gõ **Other User**. Một lối tắt đến **System Settings > Other users** sẽ xuất hiện.
 
