@@ -201,3 +201,34 @@ Khu vực Thông báo, thường nằm ở góc dưới bên phải của màn h
 Từ đó, cuộn xuống phần **Khu vực Thông báo** (Notification Area) để thực hiện các thay đổi.
 
 ![GUI](./img/1_Windows_Fundamentals_1/2.17.png)
+
+
+**Câu hỏi:**
+
+**Câu hỏi 1: Tùy chọn nào sẽ ẩn/vô hiệu hóa hộp tìm kiếm?**  
+
+![GUI](./img/1_Windows_Fundamentals_1/3.1.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Hidden  
+</details>  
+
+**Câu hỏi 2: Tùy chọn nào sẽ ẩn/vô hiệu hóa nút Task View?**  
+
+![GUI](./img/1_Windows_Fundamentals_1/3.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Show Task View button  
+</details>  
+
+**Câu hỏi 3: Ngoài Đồng hồ và Mạng, biểu tượng nào khác hiển thị trong khu vực Thông báo?**  
+
+![GUI](./img/1_Windows_Fundamentals_1/3.3.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Action Center  
+</details>  
+
