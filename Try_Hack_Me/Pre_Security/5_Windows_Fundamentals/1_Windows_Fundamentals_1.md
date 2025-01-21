@@ -232,3 +232,53 @@ Từ đó, cuộn xuống phần **Khu vực Thông báo** (Notification Area) �
 Đáp án: Action Center  
 </details>  
 
+# Task 4: The File System
+
+**Hệ Thống Tệp**
+
+Hệ thống tệp được sử dụng trong các phiên bản hiện đại của Windows là **New Technology File System** hoặc đơn giản là **NTFS**.
+
+Trước NTFS, đã có các hệ thống tệp **FAT16/FAT32** (File Allocation Table) và **HPFS** (High Performance File System).
+
+Bạn vẫn có thể thấy các phân vùng FAT được sử dụng ngày nay. Ví dụ, các phân vùng FAT thường thấy trong thiết bị USB, thẻ MicroSD, v.v., nhưng thường không xuất hiện trên các máy tính cá nhân/laptop Windows hoặc máy chủ Windows.
+
+NTFS được biết đến là một hệ thống tệp ghi nhật ký. Trong trường hợp xảy ra lỗi, hệ thống tệp có thể tự động sửa chữa các thư mục/tệp trên đĩa bằng cách sử dụng thông tin được lưu trữ trong một tệp nhật ký. Chức năng này không khả dụng với FAT.
+
+NTFS khắc phục nhiều hạn chế của các hệ thống tệp trước đây, chẳng hạn như:
+
+- Hỗ trợ tệp có dung lượng lớn hơn 4GB  
+- Thiết lập quyền riêng biệt trên thư mục và tệp  
+- Nén thư mục và tệp  
+- Mã hóa (Hệ thống Mã hóa Tệp - **Encryption File System** hoặc **EFS**)  
+
+Nếu bạn đang sử dụng Windows, hệ thống tệp nào đang được cài đặt trong Windows của bạn? Bạn có thể kiểm tra bằng cách nhấp chuột phải vào ổ đĩa mà hệ điều hành của bạn được cài đặt, thường là ổ đĩa C (C:\), và chọn **Properties**.
+
+![NTFS](./img/1_Windows_Fundamentals_1/4.1.png)
+
+**Bạn có thể đọc tài liệu chính thức của Microsoft về FAT, HPFS và NTFS [tại đây](https://learn.microsoft.com/en-us/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems).**
+
+Hãy nói ngắn gọn về một số tính năng đặc trưng của NTFS.
+
+Trên các phân vùng NTFS, bạn có thể thiết lập quyền để cấp hoặc từ chối quyền truy cập vào tệp và thư mục.
+
+Các quyền bao gồm:
+
+- **Full control** (Toàn quyền kiểm soát)  
+- **Modify** (Chỉnh sửa)  
+- **Read & Execute** (Đọc và Thực thi)  
+- **List folder contents** (Liệt kê nội dung thư mục)  
+- **Read** (Đọc)  
+- **Write** (Ghi)  
+
+Bảng dưới đây liệt kê ý nghĩa của từng quyền và cách chúng được áp dụng cho tệp và thư mục. *(Nguồn: Microsoft)*
+
+**Quyền** | **Ý nghĩa đối với Thư mục** | **Ý nghĩa đối với Tệp**
+---|---|---
+**Read (Đọc)** | Cho phép xem và liệt kê các tệp cũng như thư mục con | Cho phép xem hoặc truy cập nội dung của tệp
+**Write (Ghi)** | Cho phép thêm tệp và thư mục con | Cho phép ghi vào tệp
+**Read & Execute (Đọc và Thực thi)** | Cho phép xem, liệt kê tệp, thư mục con và thực thi tệp; quyền này được kế thừa bởi tệp và thư mục | Cho phép xem nội dung và thực thi tệp
+**List Folder Contents (Liệt kê nội dung thư mục)** | Cho phép xem, liệt kê các tệp, thư mục con, cũng như thực thi tệp; quyền này chỉ được kế thừa bởi thư mục | N/A
+**Modify (Chỉnh sửa)** | Cho phép đọc, ghi tệp và thư mục con; cho phép xóa thư mục | Cho phép đọc, ghi tệp và xóa tệp
+**Full Control (Toàn quyền kiểm soát)** | Cho phép đọc, ghi, chỉnh sửa và xóa tệp, thư mục con | Cho phép đọc, ghi, chỉnh sửa và xóa tệp
+
+
