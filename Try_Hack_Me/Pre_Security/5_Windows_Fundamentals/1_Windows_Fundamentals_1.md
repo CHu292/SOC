@@ -456,3 +456,49 @@ Khi quay lại **lusrmgr**, bạn sẽ thấy hai thư mục: **Users** (Ngườ
 Đáp án: window$Fun1!  
 </details>  
 
+# Task 7: User Account Control
+
+Phần lớn người dùng gia đình đăng nhập vào hệ thống Windows của họ với tư cách là **local administrators** (quản trị viên cục bộ). Hãy nhớ rằng bất kỳ người dùng nào có loại tài khoản quản trị viên đều có thể thực hiện thay đổi đối với hệ thống.
+
+Tuy nhiên, người dùng không cần chạy với quyền cao (elevated privileges) trên hệ thống để thực hiện các tác vụ không yêu cầu quyền này, chẳng hạn như duyệt web, làm việc trên tài liệu Word, v.v. Quyền cao này làm tăng nguy cơ hệ thống bị xâm phạm, vì mã độc có thể lợi dụng quyền hạn của tài khoản người dùng đã đăng nhập. Do đó, phần mềm độc hại có thể chạy với quyền hạn của người dùng.
+
+Để bảo vệ người dùng cục bộ với các quyền như vậy, Microsoft đã giới thiệu **User Account Control (UAC)**. Khái niệm này lần đầu được giới thiệu với **Windows Vista** và tiếp tục được áp dụng trong các phiên bản Windows tiếp theo.
+
+**Lưu ý:** UAC (theo mặc định) không áp dụng cho tài khoản quản trị viên cục bộ tích hợp sẵn.
+
+**Cách UAC hoạt động:**  
+Khi một người dùng với loại tài khoản quản trị viên đăng nhập vào hệ thống, phiên làm việc hiện tại không chạy với quyền cao. Khi một tác vụ yêu cầu quyền cao cần được thực thi, hệ thống sẽ nhắc người dùng xác nhận nếu họ cho phép tác vụ đó chạy.
+
+Hãy xem xét chương trình trên tài khoản bạn hiện đang đăng nhập. Đối với tài khoản quản trị viên tích hợp sẵn, nhấp chuột phải để xem **Properties** (Thuộc tính).
+
+Trong tab **Security** (Bảo mật), bạn có thể thấy danh sách người dùng/nhóm và quyền của họ đối với tệp. Lưu ý rằng người dùng thông thường không được liệt kê ở đây.
+
+![UAC](./img/1_Windows_Fundamentals_1/7.1.png)
+
+**Đăng nhập với tư cách là người dùng thông thường và thử cài đặt chương trình này.**  
+
+- Để thực hiện việc này, bạn có thể sử dụng **remote desktop** để đăng nhập vào máy tính với tài khoản người dùng thông thường.  
+
+**Lưu ý:** Bạn có tên người dùng và mật khẩu cho tài khoản người dùng thông thường. Thông tin này có thể được xem trong **lusrmgr.msc**.
+
+Trước khi cài đặt chương trình, hãy chú ý đến biểu tượng của chương trình. Bạn có nhận ra sự khác biệt không? Khi bạn đăng nhập bằng tài khoản người dùng thông thường, biểu tượng chiếc khiên xuất hiện trên biểu tượng mặc định của chương trình. Xem chi tiết bên dưới.
+
+![UAC](./img/1_Windows_Fundamentals_1/7.2.png)
+
+Biểu tượng lá chắn này là dấu hiệu cho biết UAC sẽ nhắc cấp quyền cao hơn để cài đặt chương trình.
+
+![UAC](./img/1_Windows_Fundamentals_1/7.3.png)
+
+Nhấp đúp vào chương trình và bạn sẽ thấy lời nhắc UAC. Lưu ý rằng tài khoản quản trị viên tích hợp đã được đặt làm tên người dùng và nhắc nhập mật khẩu của tài khoản. Xem bên dưới.
+
+![UAC](./img/1_Windows_Fundamentals_1/7.4.png)
+
+Sau một thời gian, nếu không nhập mật khẩu, lời nhắc UAC sẽ biến mất và chương trình không được cài đặt. Tính năng này làm giảm khả năng phần mềm độc hại xâm nhập thành công vào hệ thống của bạn. Bạn có thể đọc thêm về UAC [tại đây](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/how-it-works).
+
+**Câu hỏi:UAC có nghĩa là gì?**
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: User Account Control  
+</details>  
+
