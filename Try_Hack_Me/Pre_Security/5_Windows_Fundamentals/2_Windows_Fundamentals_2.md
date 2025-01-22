@@ -422,3 +422,93 @@ Mặc dù không được hiển thị trong bất kỳ hình ảnh nào ở tr�
 <summary>Hiển thị đáp án</summary>  
 Đáp án: resmon.exe  
 </details>  
+
+# Task 7: Command Prompt
+
+
+Chúng ta tiếp tục với các công cụ có sẵn thông qua bảng **System Configuration**.
+
+**Command Prompt** (**cmd**) thoạt nhìn có vẻ khó hiểu, nhưng thực sự nó không quá phức tạp khi bạn hiểu cách tương tác với nó.
+
+Trong các hệ điều hành cũ, dòng lệnh là cách duy nhất để tương tác với hệ điều hành.  
+Khi giao diện người dùng đồ họa (**GUI**) được giới thiệu, nó cho phép người dùng thực hiện các tác vụ phức tạp chỉ với vài cú nhấp chuột thay vì nhập lệnh trong dòng lệnh.
+
+Mặc dù **GUI** là cách chính để tương tác với hệ điều hành, người dùng máy tính vẫn có thể tương tác qua **Command Prompt**.
+
+Trong nhiệm vụ này, chúng ta sẽ chỉ đề cập đến một vài lệnh cơ bản mà người dùng máy tính có thể chạy trong **Command Prompt** để thu thập thông tin về hệ thống.
+
+Hãy bắt đầu với một vài lệnh đơn giản, chẳng hạn như:  
+- **hostname**  
+- **whoami**  
+
+Lệnh **hostname** sẽ xuất ra tên máy tính.
+
+![cmd](./img/2_Windows_Fundamentals_2/7.1.png)
+
+Lệnh **whoami** sẽ xuất ra tên của người dùng hiện đang đăng nhập.
+
+![whoami](./img/2_Windows_Fundamentals_2/7.2.png)
+
+Tiếp theo, hãy xem xét một số lệnh hữu ích khi khắc phục sự cố.  
+
+Một lệnh được sử dụng thường xuyên là **ipconfig**. Lệnh này sẽ hiển thị các thiết lập địa chỉ mạng cho máy tính.
+
+![ipconfig](./img/2_Windows_Fundamentals_2/7.3.png)
+
+Mỗi lệnh sẽ có một hướng dẫn trợ giúp để giải thích cú pháp cần thiết để thực hiện đúng lệnh, cùng với các tham số bổ sung có thể được thêm vào để mở rộng chức năng của lệnh.
+
+Một lệnh để lấy hướng dẫn trợ giúp cho một lệnh là **/?**.
+
+Ví dụ, để xem hướng dẫn trợ giúp cho **ipconfig**, bạn có thể sử dụng lệnh sau:  
+**ipconfig /?**
+
+![ipconfig](./img/2_Windows_Fundamentals_2/7.4.png)
+
+**Lưu ý:** Để xóa màn hình dòng lệnh, sử dụng lệnh **cls**.  
+
+Lệnh tiếp theo là **netstat**. Theo hướng dẫn trợ giúp, lệnh này sẽ hiển thị thống kê giao thức và các kết nối mạng TCP/IP hiện tại.
+
+![netstat](./img/2_Windows_Fundamentals_2/7.5.png)
+
+Trong hình trên, dòng nằm trong khung đỏ cho thấy một ví dụ về cú pháp của lệnh.
+
+Cấu trúc này cho chúng ta biết lệnh **netstat** có thể chạy độc lập hoặc đi kèm với các tham số, như **-a**, **-b**, **-e**, v.v.
+
+Khi bất kỳ tham số nào được thêm vào lệnh gốc (**netstat** trong trường hợp này), đầu ra sẽ thay đổi. Hãy thử vài tham số để xem kết quả.
+
+Lệnh **net** chủ yếu được sử dụng để quản lý các tài nguyên mạng. Lệnh này hỗ trợ các lệnh con (**sub-commands**).  
+
+Nếu bạn nhập **net** mà không có lệnh con, đầu ra sẽ hiển thị cú pháp cho lệnh gốc, bao gồm một vài lệnh con mà bạn có thể sử dụng.
+
+![net](./img/2_Windows_Fundamentals_2/7.6.png)
+
+Đối với lệnh **net**, để hiển thị hướng dẫn trợ giúp, tham số **/?** sẽ không hoạt động. Trong trường hợp này, bạn cần sử dụng cú pháp khác, đó là:  
+**net help**.
+
+![net](./img/2_Windows_Fundamentals_2/7.7.png)
+
+Vì vậy, nếu bạn muốn xem thông tin trợ giúp cho lệnh **net user**, lệnh cần sử dụng là:  
+**net help user**.
+
+Bạn có thể sử dụng cùng một lệnh để xem thông tin trợ giúp cho các lệnh con khác hữu ích của **net**, chẳng hạn như **localgroup**, **use**, **share**, và **session**.  
+
+Tham khảo liên kết sau để xem danh sách đầy đủ các lệnh bạn có thể thực thi trong Command Prompt [tại đây](https://ss64.com/nt/).
+
+![net](./img/2_Windows_Fundamentals_2/7.8.png)
+
+**Câu hỏi:**
+
+**Câu hỏi 1: Trong System Configuration, lệnh đầy đủ cho Internet Protocol Configuration là gì?**  
+
+![](./img/2_Windows_Fundamentals_2/7.9.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: C:\Windows\System32\cmd.exe /k %windir%\system32\ipconfig.exe  
+</details>  
+
+**Câu hỏi 2: Với lệnh ipconfig, làm thế nào để hiển thị thông tin chi tiết?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: ipconfig /all  
+</details>  
