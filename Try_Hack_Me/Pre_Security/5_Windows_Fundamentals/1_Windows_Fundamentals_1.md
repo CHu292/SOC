@@ -352,7 +352,7 @@ Thư mục **System32** chứa các tệp quan trọng đóng vai trò thiết y
 
 **Tài khoản Người dùng, Hồ sơ và Quyền**
 
-Tài khoản người dùng trên hệ thống Windows địa phương thường thuộc một trong hai loại: **Administrator** (Quản trị viên) và **Standard User** (Người dùng thông thường).
+Tài khoản người dùng trên hệ thống Windows cục bộ thường thuộc một trong hai loại: **Administrator** (Quản trị viên) và **Standard User** (Người dùng thông thường).
 
 Loại tài khoản sẽ quyết định các hành động mà người dùng có thể thực hiện trên hệ thống Windows cụ thể đó:
 
@@ -363,3 +363,62 @@ Hiện tại, bạn đang đăng nhập với tư cách là **Administrator**. C
 
 Một cách là nhấp vào **Start Menu** và gõ **Other User**. Một lối tắt đến **System Settings > Other users** sẽ xuất hiện.
 
+![user](./img/1_Windows_Fundamentals_1/6.1.png)
+
+Nếu bạn nhấp vào đó, cửa sổ Cài đặt sẽ xuất hiện. Xem bên dưới.
+
+![user](./img/1_Windows_Fundamentals_1/6.2.png)
+
+**Vì bạn là Administrator (Quản trị viên), bạn sẽ thấy tùy chọn để **Add someone else to this PC** (Thêm người khác vào máy tính này).**
+
+**Lưu ý:** Một **Standard User** (Người dùng thông thường) sẽ không thấy tùy chọn này.
+
+Nhấp vào tài khoản người dùng địa phương. Các tùy chọn khác sẽ xuất hiện: **Change account type** (Thay đổi loại tài khoản) và **Remove** (Xóa).
+
+![user](./img/1_Windows_Fundamentals_1/6.3.png)
+
+Nhấp vào **Change account type** (Thay đổi loại tài khoản). Giá trị trong hộp thả xuống (hoặc giá trị được đánh dấu nếu bạn nhấp vào hộp thả xuống) là loại tài khoản hiện tại.
+
+![user](./img/1_Windows_Fundamentals_1/6.4.png)
+
+Khi một tài khoản người dùng được tạo, một hồ sơ (profile) cũng được tạo cho người dùng đó. Vị trí của thư mục hồ sơ người dùng sẽ nằm trong **C:\Users**.
+
+- Ví dụ: Thư mục hồ sơ người dùng cho tài khoản có tên Max sẽ là **C:\Users\Max**.
+
+Hồ sơ của người dùng được tạo trong lần đăng nhập đầu tiên. Khi một tài khoản người dùng mới đăng nhập vào hệ thống cục bộ lần đầu, họ sẽ thấy một số thông báo trên màn hình đăng nhập. Một trong những thông báo đó là **User Profile Service**, thể hiện quá trình hệ thống đang tạo hồ sơ người dùng. Xem chi tiết bên dưới.
+
+![user](./img/1_Windows_Fundamentals_1/6.5.png)
+
+Khi đã đăng nhập, người dùng sẽ thấy một hộp thoại tương tự như hình bên dưới, thông báo rằng hồ sơ đang được tạo.
+
+![user](./img/1_Windows_Fundamentals_1/6.6.png)
+
+Mỗi hồ sơ người dùng sẽ có cùng các thư mục mặc định; một số trong đó là:
+
+- **Desktop**  
+- **Documents**  
+- **Downloads**  
+- **Music**  
+- **Pictures**  
+
+Một cách khác để truy cập thông tin này, và nhiều tính năng khác, là sử dụng **Local User and Group Management**.
+
+- Nhấp chuột phải vào **Start Menu** và chọn **Run**.  
+- Nhập **lusrmgr.msc** và nhấn Enter. Xem chi tiết bên dưới.
+
+![user](./img/1_Windows_Fundamentals_1/6.7.png)
+
+![user](./img/1_Windows_Fundamentals_1/6.8.png)
+
+![user](./img/1_Windows_Fundamentals_1/6.9.png)
+
+**Lưu ý:** Hộp thoại **Run** cho phép chúng ta mở nhanh các mục.
+
+Khi quay lại **lusrmgr**, bạn sẽ thấy hai thư mục: **Users** (Người dùng) và **Groups** (Nhóm).
+
+- Nếu bạn nhấp vào **Groups**, bạn sẽ thấy tất cả tên của các nhóm người dùng cục bộ cùng với một mô tả ngắn gọn cho từng nhóm.
+- Mỗi nhóm có các quyền được thiết lập, và người dùng được gán/thêm vào các nhóm bởi **Administrator** (Quản trị viên). Khi một người dùng được gán vào một nhóm, họ sẽ kế thừa các quyền của nhóm đó. Một người dùng có thể được gán vào nhiều nhóm.
+
+**Lưu ý:** Nếu bạn nhấp vào **Add someone else to this PC** từ **Other users**, nó sẽ mở công cụ **Local Users and Management**.
+
+  
