@@ -87,3 +87,40 @@ Lưu ý phần **Selected command** (Lệnh được chọn). Thông tin trong h
 
 Để chạy một công cụ, bạn có thể sử dụng lệnh để khởi chạy công cụ qua **Run prompt**, **Command Prompt**, hoặc bằng cách nhấp vào nút **Launch**.
 
+**Câu hỏi:**
+
+**Câu hỏi 1: Tên của dịch vụ liệt kê Systems Internals là nhà sản xuất là gì?**  
+
+![system configuration](./img/2_Windows_Fundamentals_2/2.7.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: PsShutdown  
+</details>  
+
+**Câu hỏi 2: Windows được đăng ký cho ai?**  
+
+![system configuration](./img/2_Windows_Fundamentals_2/2.8.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Windows User  
+</details>  
+
+**Câu hỏi 3: Lệnh cho Windows Troubleshooting là gì?**  
+
+![system configuration](./img/2_Windows_Fundamentals_2/2.9.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: `C:\Windows\System32\control.exe /name Microsoft.Troubleshooting`  
+</details>  
+
+**Câu hỏi 4: Lệnh nào sẽ mở Control Panel? (Câu trả lời là tên file .exe, không phải đường dẫn đầy đủ)**  
+
+![system configuration](./img/2_Windows_Fundamentals_2/2.10.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: control.exe  
+</details>  
