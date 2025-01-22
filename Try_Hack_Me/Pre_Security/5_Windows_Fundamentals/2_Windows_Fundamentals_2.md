@@ -282,4 +282,59 @@ Theo Wikipedia:
 Đáp án: sh4r3dF0Ld3r  
 </details>  
 
+# Task 5: System Information
+
+**Chúng ta tiếp tục với các công cụ có sẵn thông qua bảng System Configuration.**
+
+**System Information** (msinfo32) là gì?
+
+Theo Microsoft:  
+“**Windows** bao gồm một công cụ được gọi là **Microsoft System Information** (Msinfo32.exe). Công cụ này thu thập thông tin về máy tính của bạn và hiển thị cái nhìn tổng quan toàn diện về phần cứng, các thành phần hệ thống và môi trường phần mềm, giúp bạn chẩn đoán các vấn đề của máy tính.”
+
+Thông tin trong **System Summary** (Tóm tắt Hệ thống) được chia thành ba phần chính:  
+
+- **Hardware Resources** (Tài nguyên Phần cứng)  
+- **Components** (Các Thành phần)  
+- **Software Environment** (Môi trường Phần mềm)  
+
+**System Summary** sẽ hiển thị các thông số kỹ thuật chung của máy tính, chẳng hạn như nhãn hiệu và mẫu của bộ xử lý.
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.1.png)
+
+Thông tin hiển thị trong **Hardware Resources** (Tài nguyên Phần cứng) không dành cho người dùng máy tính phổ thông. Nếu bạn muốn tìm hiểu thêm về phần này, hãy tham khảo [trang chính thức của Microsoft](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/hardware-resources).
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.2.png)
+
+Trong mục **Components** (Các Thành phần), bạn có thể xem thông tin chi tiết về các thiết bị phần cứng được cài đặt trên máy tính. Một số mục có thể không hiển thị bất kỳ thông tin nào, nhưng một số mục như **Display** (Hiển thị) và **Input** (Thiết bị đầu vào) sẽ có thông tin.
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.3.png)
+
+Trong mục **Software Environment** (Môi trường Phần mềm), bạn có thể xem thông tin về phần mềm được tích hợp trong hệ điều hành và các phần mềm bạn đã cài đặt. Các chi tiết khác cũng có thể thấy trong phần này, chẳng hạn như **Environment Variables** (Biến Môi trường) và **Network Connections** (Kết nối Mạng).
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.4.png)
+
+Nhớ lại từ **Windows Fundamentals 1 room** (nhiệm vụ **Windows\System32 Folder**) nơi **Environment Variables** (Biến Môi trường) đã được đề cập ngắn gọn.
+
+Theo Microsoft:  
+**"Environment variables** lưu trữ thông tin về môi trường của hệ điều hành. Thông tin này bao gồm các chi tiết như đường dẫn hệ điều hành, số lượng bộ xử lý được sử dụng bởi hệ điều hành và vị trí của các thư mục tạm thời.  
+
+Các biến môi trường lưu trữ dữ liệu được sử dụng bởi hệ điều hành và các chương trình khác. Ví dụ, biến môi trường **WINDIR** chứa vị trí của thư mục cài đặt Windows. Các chương trình có thể truy vấn giá trị của biến này để xác định nơi các tệp hệ điều hành Windows được đặt."
+
+Nhấp vào **Environment Variables** để xem các giá trị được gán cho máy ảo.
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.5.png)
+
+Một phương pháp khác để xem **Environment Variables** (Biến Môi trường) là:  
+
+- **Control Panel** > **System and Security** > **System** > **Advanced system settings** > **Environment Variables**  
+Hoặc:  
+- **Settings** > **System** > **About** > **System info** > **Advanced system settings** > **Environment Variables**.
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.6.png)
+
+Đã hết phần chuyển hướng, chúng ta hãy quay trở lại với **msinfo32** và tiếp tục từ nơi đã dừng.
+
+Ở phần dưới cùng của tiện ích này, có một thanh tìm kiếm. Hãy thử sử dụng nó. Chọn **Components** (Thành phần) và tìm kiếm **IP address** (Địa chỉ IP).
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.7.png)
 
