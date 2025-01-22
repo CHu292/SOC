@@ -252,3 +252,34 @@ Theo Wikipedia:
 
 **Lưu ý:** Công cụ **WMIC** đã bị ngừng sử dụng trong Windows 10, phiên bản 21H1. **Windows PowerShell** thay thế công cụ này cho **WMI**.
 
+
+**Câu hỏi:**
+
+**Câu hỏi 1: Lệnh để mở Computer Management là gì? (Câu trả lời là tên file .msc, không phải đường dẫn đầy đủ)**  
+
+![](./img/2_Windows_Fundamentals_2/4.9.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: compmgmt.msc  
+</details>  
+
+**Câu hỏi 2: GoogleUpdateTaskMachineUA được cấu hình chạy vào thời gian nào mỗi ngày?**  
+
+![](./img/2_Windows_Fundamentals_2/4.10.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: 6:15 AM  
+</details>  
+
+**Câu hỏi 3: Tên của thư mục ẩn được chia sẻ là gì?**  
+
+![](./img/2_Windows_Fundamentals_2/4.11.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: sh4r3dF0Ld3r  
+</details>  
+
+
