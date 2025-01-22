@@ -502,3 +502,56 @@ Sau một thời gian, nếu không nhập mật khẩu, lời nhắc UAC sẽ b
 Đáp án: User Account Control  
 </details>  
 
+# Task 8: Settings and the Control Panel
+
+**Cài đặt và Control Panel**
+
+Trên hệ thống Windows, các vị trí chính để thực hiện thay đổi là **Settings** (Cài đặt) và **Control Panel** (Bảng điều khiển).
+
+- Trong một thời gian dài, **Control Panel** là nơi người dùng thường sử dụng để thay đổi cài đặt hệ thống, chẳng hạn như thêm máy in, gỡ cài đặt chương trình, v.v.
+- **Settings menu** được giới thiệu lần đầu trong **Windows 8**, hệ điều hành Windows đầu tiên được thiết kế cho máy tính bảng màn hình cảm ứng, và vẫn có sẵn trong **Windows 10**. Trên thực tế, **Settings menu** hiện là nơi chính mà người dùng tìm đến để thay đổi hệ thống.
+
+Có sự tương đồng và khác biệt giữa hai menu này. Dưới đây là ảnh chụp màn hình của từng menu.
+
+## Settings:
+
+![setting](./img/1_Windows_Fundamentals_1/8.1.png)
+
+## Control Panel: 
+
+![control panel](./img/1_Windows_Fundamentals_1/8.2.png)
+
+**Lưu ý:** Biểu tượng của **Settings** (Cài đặt) có thể khác nhau tùy thuộc vào phiên bản Windows trên thiết bị cá nhân của bạn.
+
+Cả hai menu **Settings** và **Control Panel** đều có thể truy cập từ **Start Menu**. Xem chi tiết bên dưới.
+
+![control panel](./img/1_Windows_Fundamentals_1/8.3.png)
+
+**Control Panel** là menu nơi bạn có thể truy cập các cài đặt phức tạp hơn và thực hiện các tác vụ nâng cao hơn. Trong một số trường hợp, bạn có thể bắt đầu từ **Settings** và cuối cùng sẽ chuyển đến **Control Panel**.
+
+Ví dụ: Trong **Settings**, nhấp vào **Network & Internet**. Từ đây, chọn **Change adapter options**.
+
+![control panel](./img/1_Windows_Fundamentals_1/8.4.png)
+
+Lưu ý rằng cửa sổ tiếp theo bật lên là từ **Control Panel**.
+
+![control panel](./img/1_Windows_Fundamentals_1/8.5.png)
+
+Nếu bạn không chắc nên mở gì khi muốn thay đổi một cài đặt, hãy sử dụng **Start menu** và tìm kiếm cài đặt đó.
+
+Ví dụ: Trong trường hợp này, tìm kiếm từ khóa **"wallpaper"** (hình nền). Lưu ý rằng có rất ít kết quả được trả về.
+
+![control panel](./img/1_Windows_Fundamentals_1/8.6.png)
+
+Nếu chúng ta nhấp vào mục Phù hợp nhất, một cửa sổ trong menu Cài đặt sẽ xuất hiện để thực hiện thay đổi cho hình nền.
+
+![control panel](./img/1_Windows_Fundamentals_1/8.7.png)
+
+**Câu hỏi: Trong Control Panel, thay đổi chế độ hiển thị sang Small icons. Thiết lập cuối cùng trong chế độ xem Control Panel là gì?**  
+
+![control panel](./img/1_Windows_Fundamentals_1/8.8.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Windows Defender Firewall  
+</details>  
