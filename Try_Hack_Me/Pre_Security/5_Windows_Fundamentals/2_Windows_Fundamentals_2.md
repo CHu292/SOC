@@ -368,3 +368,57 @@ Hoặc:
 Đáp án: %SystemRoot%\system32\cmd.exe  
 </details>  
 
+# Task 6: Resource Monitor
+
+Chúng ta tiếp tục với các công cụ có sẵn thông qua bảng **System Configuration**.
+
+**Resource Monitor** (**resmon**) là gì?
+
+Theo Microsoft:  
+**"Resource Monitor hiển thị thông tin sử dụng CPU, bộ nhớ, ổ đĩa, và mạng theo từng quy trình và tổng hợp, bên cạnh việc cung cấp chi tiết về quy trình nào đang sử dụng từng tệp hoặc mô-đun cụ thể. Tính năng lọc nâng cao cho phép người dùng cô lập dữ liệu liên quan đến một hoặc nhiều quy trình (dù là ứng dụng hay dịch vụ), khởi động, dừng, tạm dừng, và tiếp tục các dịch vụ, và đóng các ứng dụng không phản hồi từ giao diện người dùng. Nó cũng bao gồm tính năng phân tích quy trình giúp xác định các quy trình bị khóa và các xung đột khóa tệp để người dùng có thể cố gắng giải quyết xung đột mà không cần đóng ứng dụng và có nguy cơ mất dữ liệu."**
+
+Như một số công cụ khác được đề cập trong phần này, tiện ích này chủ yếu dành cho người dùng nâng cao cần thực hiện các thao tác khắc phục sự cố trên hệ thống máy tính.
+
+Trong thẻ **Overview** (Tổng quan), **Resmon** có bốn phần chính:
+
+- **CPU**  
+- **Disk** (Ổ đĩa)  
+- **Network** (Mạng)  
+- **Memory** (Bộ nhớ)
+
+![resmon](./img/2_Windows_Fundamentals_2/6.1.png)
+
+Bốn phần tương ứng cũng có các thẻ riêng ở phía trên cùng. Xem bên dưới để biết thêm chi tiết.
+
+![resmon](./img/2_Windows_Fundamentals_2/6.2.png)
+
+Lưu ý rằng mỗi thẻ có thông tin bổ sung riêng. Một hình ảnh được hiển thị bên dưới cho từng thẻ.
+
+## CPU
+
+![resmon](./img/2_Windows_Fundamentals_2/6.3.png)
+
+## Memory
+
+![resmon](./img/2_Windows_Fundamentals_2/6.4.png)
+
+## Disk
+
+![resmon](./img/2_Windows_Fundamentals_2/6.5.png)
+
+## Network
+
+![resmon](./img/2_Windows_Fundamentals_2/6.6.png)
+
+Mặc dù không được hiển thị trong bất kỳ hình ảnh nào ở trên, **Resource Monitor** có một khung ở bên phải cùng. Khung này hiển thị một chế độ xem đồ họa theo thời gian thực cho từng phần.
+
+**Lưu ý:** Thông tin hiển thị trong **Resource Monitor** sẽ khác nhau tùy vào hệ thống của bạn so với các hình ảnh minh họa ở trên.
+
+**Câu hỏi: Lệnh để mở Resource Monitor là gì? (Câu trả lời là tên file .exe, không phải đường dẫn đầy đủ)** 
+
+![resmon](./img/2_Windows_Fundamentals_2/6.7.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: resmon.exe  
+</details>  
