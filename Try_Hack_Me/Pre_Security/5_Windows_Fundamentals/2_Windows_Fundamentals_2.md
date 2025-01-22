@@ -148,3 +148,107 @@ Bạn có thể di chuyển thanh trượt để xem cách cài đặt sẽ thay
 Đáp án: UserAccountControlSettings.exe  
 </details>  
 
+# Task 4: Computer Management
+
+Chúng ta tiếp tục với các công cụ có sẵn thông qua bảng **System Configuration**.
+
+Tiện ích **Computer Management** (**compmgmt**) có ba phần chính:  
+1. **System Tools** (Công cụ Hệ thống)  
+2. **Storage** (Lưu trữ)  
+3. **Services and Applications** (Dịch vụ và Ứng dụng).
+
+![Computer Management](./img/2_Windows_Fundamentals_2/4.1.png)
+
+## **System Tools - Công cụ Hệ thống**
+
+Hãy bắt đầu với **Task Scheduler** (Trình lập lịch tác vụ). Theo Microsoft, với **Task Scheduler**, chúng ta có thể tạo và quản lý các tác vụ thông thường mà máy tính sẽ thực hiện tự động vào các thời điểm chúng ta chỉ định.
+
+- Một tác vụ có thể chạy một ứng dụng, một tập lệnh, v.v., và các tác vụ có thể được cấu hình để chạy tại bất kỳ thời điểm nào.  
+- Một tác vụ có thể chạy khi đăng nhập hoặc đăng xuất.  
+- Tác vụ cũng có thể được cấu hình để chạy theo lịch trình cụ thể, ví dụ: cứ năm phút một lần.
+
+Để tạo một tác vụ cơ bản, nhấp vào **Create Basic Task** trong mục **Actions** (khung bên phải).
+
+![System Tools](./img/2_Windows_Fundamentals_2/4.2.png)
+
+## **Event Viewer**
+
+**Event Viewer** (Trình xem sự kiện) cho phép chúng ta xem các sự kiện đã xảy ra trên máy tính. Những bản ghi sự kiện này có thể được xem như một bản nhật ký kiểm toán, được sử dụng để hiểu hoạt động của hệ thống máy tính. Thông tin này thường được sử dụng để chẩn đoán các vấn đề và điều tra các hành động đã được thực hiện trên hệ thống.
+
+![Event Viewer](./img/2_Windows_Fundamentals_2/4.3.png)
+
+**Event Viewer** có ba khung chính:
+
+1. Khung bên trái cung cấp danh sách dạng cây phân cấp của các nhà cung cấp nhật ký sự kiện (như hiển thị trong hình trên).  
+2. Khung ở giữa hiển thị tổng quan chung và tóm tắt về các sự kiện cụ thể từ một nhà cung cấp được chọn.  
+3. Khung bên phải là khung hành động (**actions pane**).  
+
+Có năm loại sự kiện có thể được ghi lại. Bên dưới là một bảng từ [docs.microsoft.com](https://learn.microsoft.com/en-us/windows/win32/eventlog/event-types) cung cấp mô tả ngắn gọn cho từng loại.
+
+Bảng dưới đây mô tả năm loại sự kiện được sử dụng trong ghi nhật ký sự kiện:
+
+| **Loại sự kiện** | **Mô tả** |
+|------------------|-----------|
+| **Error** (Lỗi) | Một sự kiện chỉ ra vấn đề nghiêm trọng như mất dữ liệu hoặc mất chức năng. Ví dụ: nếu một dịch vụ không thể tải trong khi khởi động, một sự kiện lỗi sẽ được ghi lại. |
+| **Warning** (Cảnh báo) | Một sự kiện không nhất thiết là nghiêm trọng nhưng có thể chỉ ra vấn đề tiềm ẩn trong tương lai. Ví dụ: khi dung lượng đĩa thấp, một sự kiện cảnh báo sẽ được ghi lại. Nếu một ứng dụng có thể phục hồi từ một sự kiện mà không mất dữ liệu hoặc chức năng, nó thường được phân loại là một sự kiện cảnh báo. |
+| **Information** (Thông tin) | Một sự kiện mô tả hoạt động thành công của một ứng dụng, trình điều khiển hoặc dịch vụ. Ví dụ: khi một trình điều khiển mạng tải thành công, một sự kiện thông tin sẽ được ghi lại. Lưu ý rằng việc ghi lại mỗi lần khởi động của một ứng dụng không được khuyến nghị đối với các ứng dụng trên máy tính để bàn. |
+| **Success Audit** (Kiểm tra thành công) | Một sự kiện ghi lại một lần truy cập bảo mật đã được kiểm tra và thành công. Ví dụ: nỗ lực đăng nhập thành công của người dùng sẽ được ghi lại là một sự kiện kiểm tra thành công. |
+| **Failure Audit** (Kiểm tra thất bại) | Một sự kiện ghi lại một lần truy cập bảo mật đã được kiểm tra và thất bại. Ví dụ: nếu một người dùng cố gắng truy cập ổ đĩa mạng và thất bại, nỗ lực này sẽ được ghi lại là một sự kiện kiểm tra thất bại. |
+
+**Các nhật ký chuẩn có thể được xem trong mục Windows Logs.** Dưới đây là một bảng từ [docs.microsoft.com](https://learn.microsoft.com/en-us/windows/win32/eventlog/eventlog-key) cung cấp mô tả ngắn gọn cho từng loại nhật ký:
+
+| **Loại nhật ký**    | **Mô tả** |
+|---------------------|-----------|
+| **Application**     | Chứa các sự kiện được ghi bởi các ứng dụng. Ví dụ: một ứng dụng cơ sở dữ liệu có thể ghi lại lỗi tệp. Nhà phát triển ứng dụng quyết định sự kiện nào sẽ được ghi lại. |
+| **Security**        | Chứa các sự kiện như các lần đăng nhập hợp lệ và không hợp lệ, cũng như các sự kiện liên quan đến việc sử dụng tài nguyên như tạo, mở hoặc xóa tệp hoặc đối tượng khác. Quản trị viên có thể bắt đầu kiểm tra để ghi lại các sự kiện trong nhật ký bảo mật. |
+| **System**          | Chứa các sự kiện được ghi lại bởi các thành phần hệ thống, chẳng hạn như lỗi của trình điều khiển hoặc thành phần hệ thống khác không thể tải khi khởi động. |
+| **CustomLog**       | Chứa các sự kiện được ghi bởi các ứng dụng tạo nhật ký tùy chỉnh. Sử dụng nhật ký tùy chỉnh cho phép một ứng dụng kiểm soát kích thước nhật ký hoặc gắn ACL (Access Control List) cho mục đích bảo mật mà không ảnh hưởng đến các ứng dụng khác. |
+
+Để biết thêm thông tin về **Event Viewer** và **Event Logs**, vui lòng tham khảo **[Windows Event Log room](https://tryhackme.com/r/why-subscribe?roomCode=windowseventlogs)**.
+
+**Shared Folders** (Thư mục được chia sẻ) là nơi bạn có thể xem danh sách đầy đủ các thư mục và tài nguyên được chia sẻ mà người khác có thể kết nối đến.
+
+![Event Viewer](./img/2_Windows_Fundamentals_2/4.4.png)
+
+Trong hình trên, trong mục **Shares** (Chia sẻ), có các chia sẻ mặc định của Windows như **C$** và các chia sẻ quản trị từ xa mặc định được tạo bởi Windows, chẳng hạn như **ADMIN$**.
+
+- Giống như bất kỳ đối tượng nào trong Windows, bạn có thể nhấp chuột phải vào một thư mục để xem thuộc tính của nó, chẳng hạn như **Permissions** (Quyền truy cập) để xác định ai có thể truy cập tài nguyên chia sẻ.
+
+- Trong mục **Sessions**, bạn sẽ thấy danh sách những người dùng hiện đang kết nối đến các tài nguyên chia sẻ. Trong máy ảo (VM) này, bạn sẽ không thấy ai đang kết nối.
+
+- Tất cả các thư mục và/hoặc tệp mà người dùng kết nối có thể truy cập sẽ được liệt kê trong **Open Files**.
+
+- Phần **Local Users and Groups** (Người dùng và nhóm cục bộ) bạn có thể đã quen thuộc từ **Windows Fundamentals 1**, vì nó là **lusrmgr.msc**.
+
+- Trong **Performance**, bạn sẽ thấy một tiện ích gọi là **Performance Monitor** (**perfmon**).
+
+**Performance Monitor** được sử dụng để xem dữ liệu hiệu suất theo thời gian thực hoặc từ một tệp nhật ký. Tiện ích này rất hữu ích trong việc khắc phục các vấn đề hiệu suất trên hệ thống máy tính, dù là hệ thống cục bộ hay từ xa.
+
+![Event Viewer](./img/2_Windows_Fundamentals_2/4.5.png)
+
+**Device Manager** (Trình quản lý Thiết bị) cho phép chúng ta xem và cấu hình phần cứng, chẳng hạn như vô hiệu hóa bất kỳ thiết bị phần cứng nào được kết nối với máy tính.
+
+![Event Viewer](./img/2_Windows_Fundamentals_2/4.6.png)
+
+**Disk Management** (Quản lý Đĩa) là một tiện ích hệ thống trong Windows cho phép bạn thực hiện các tác vụ lưu trữ nâng cao. Một số tác vụ bao gồm:
+
+- Thiết lập một ổ đĩa mới.  
+- Mở rộng một phân vùng.  
+- Thu nhỏ một phân vùng.  
+- Gán hoặc thay đổi ký tự ổ đĩa (ví dụ: E:).  
+
+## **Dịch vụ và Ứng dụng (Services and Applications)**
+
+![Services and Applications](./img/2_Windows_Fundamentals_2/4.7.png)
+
+Nhớ lại từ nhiệm vụ trước, **một dịch vụ** là một loại ứng dụng đặc biệt chạy ở chế độ nền. Tại đây, bạn có thể làm nhiều hơn ngoài việc bật hoặc tắt một dịch vụ, chẳng hạn như xem **Properties** (Thuộc tính) của dịch vụ đó.
+
+![Services and Applications](./img/2_Windows_Fundamentals_2/4.8.png)
+
+**WMI Control** cấu hình và kiểm soát dịch vụ **Windows Management Instrumentation (WMI)**.
+
+Theo Wikipedia:  
+“**WMI** cho phép các ngôn ngữ kịch bản (như VBScript hoặc Windows PowerShell) quản lý máy tính cá nhân và máy chủ Windows của Microsoft, cả cục bộ và từ xa. Microsoft cũng cung cấp một giao diện dòng lệnh cho WMI gọi là **Windows Management Instrumentation Command-line (WMIC)**.”
+
+**Lưu ý:** Công cụ **WMIC** đã bị ngừng sử dụng trong Windows 10, phiên bản 21H1. **Windows PowerShell** thay thế công cụ này cho **WMI**.
+
