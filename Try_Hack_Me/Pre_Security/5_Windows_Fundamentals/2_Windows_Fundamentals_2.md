@@ -512,3 +512,32 @@ Tham khảo liên kết sau để xem danh sách đầy đủ các lệnh bạn 
 <summary>Hiển thị đáp án</summary>  
 Đáp án: ipconfig /all  
 </details>  
+
+# Task 8: Registry Editor
+
+Windows Registry (theo Microsoft) là một cơ sở dữ liệu phân cấp trung tâm được sử dụng để lưu trữ thông tin cần thiết nhằm cấu hình hệ thống cho một hoặc nhiều người dùng, ứng dụng, và các thiết bị phần cứng.
+
+Registry chứa các thông tin mà Windows tham chiếu liên tục trong quá trình hoạt động, chẳng hạn như:
+
+- Hồ sơ cho từng người dùng.
+- Các ứng dụng được cài đặt trên máy tính và loại tài liệu mà mỗi ứng dụng có thể tạo.
+- Cài đặt tệp thuộc tính cho thư mục và biểu tượng ứng dụng.
+- Những phần cứng nào đang tồn tại trên hệ thống.
+- Các cổng đang được sử dụng.
+
+**Cảnh báo:** Registry dành cho người dùng nâng cao. Việc thay đổi trong registry có thể ảnh hưởng đến hoạt động bình thường của máy tính.
+
+Có nhiều cách để xem/chỉnh sửa registry. Một cách là sử dụng công cụ **Registry Editor** (regedit).
+
+![registry editor](./img/2_Windows_Fundamentals_2/8.1.png)
+
+Để tìm hiểu thêm về Windows Registry, bạn có thể tham khảo tài liệu của Microsoft thông qua liên kết [tại đây](https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users).
+
+**Câu hỏi: Lệnh để mở Registry Editor là gì? (Câu trả lời là tên file .exe, không phải đường dẫn đầy đủ)**  
+
+![registry editor](./img/2_Windows_Fundamentals_2/8.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: regedt32.exe  
+</details>  
