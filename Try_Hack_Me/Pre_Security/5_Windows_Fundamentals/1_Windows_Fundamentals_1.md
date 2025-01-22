@@ -555,3 +555,42 @@ Nếu chúng ta nhấp vào mục Phù hợp nhất, một cửa sổ trong menu
 <summary>Hiển thị đáp án</summary>  
 Đáp án: Windows Defender Firewall  
 </details>  
+
+# Task 9: Task Manager
+
+Chủ đề cuối cùng được đề cập trong module này là **Task Manager**.
+
+**Task Manager** cung cấp thông tin về các ứng dụng và quy trình hiện đang chạy trên hệ thống. Ngoài ra, bạn có thể xem thông tin khác, chẳng hạn như mức sử dụng **CPU** và **RAM**, được liệt kê trong phần **Performance** (Hiệu suất).
+
+Bạn có thể truy cập **Task Manager** bằng cách nhấp chuột phải vào **taskbar** (thanh tác vụ).
+
+![task manager](./img/1_Windows_Fundamentals_1/9.1.png)
+
+**Task Manager** sẽ mở ở chế độ **Simple View** (Chế độ Đơn giản) và sẽ không hiển thị nhiều thông tin.
+
+![task manager](./img/1_Windows_Fundamentals_1/9.2.png)
+
+Nhấp vào **More details** (Chi tiết hơn), và chế độ hiển thị sẽ thay đổi.
+
+![task manager](./img/1_Windows_Fundamentals_1/9.3.png)
+
+Bạn có thể tham khảo [blog post](https://www.howtogeek.com/405806/windows-task-manager-the-complete-guide/) này để biết thêm thông tin chi tiết về **Task Manager**.
+
+Nếu bạn muốn tìm hiểu thêm về các quy trình cốt lõi của Windows và chức năng của từng quy trình, hãy truy cập [Core Windows Processes room](https://tryhackme.com/r/why-subscribe).
+
+
+**Câu hỏi: Phím tắt nào để mở Task Manager?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Ctrl+Shift+Esc  
+</details>  
+
+# Task 10: Conclusion
+
+Như đã đề cập, đây là một cái nhìn tổng quan cơ bản về hệ điều hành Windows.
+
+Có các chủ đề ở mức độ trung cấp và nâng cao cho mỗi nội dung (nhiệm vụ) đã được đề cập trong phần này.
+
+Do đó, **Task 9** đã kết thúc với một bài viết chi tiết giải thích **Task Manager** một cách cụ thể.
+
+Trong các module tiếp theo, chúng ta sẽ tìm hiểu các chủ đề như thư mục Windows, bảng điều khiển quản lý, công cụ bảo mật (**Windows Defender**, **Windows Firewall**, v.v.), để kể tên một vài nội dung.
