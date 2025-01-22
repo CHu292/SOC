@@ -338,3 +338,33 @@ Hoặc:
 
 ![System Infomation](./img/2_Windows_Fundamentals_2/5.7.png)
 
+
+**Câu hỏi:**
+
+**Câu hỏi 1: Lệnh để mở System Information là gì? (Câu trả lời là tên file .exe, không phải đường dẫn đầy đủ)**  
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.8.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: msinfo32.exe  
+</details>  
+
+**Câu hỏi 2: Dưới System Name, thông tin nào được liệt kê?**  
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.9.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: THM-WINFUN2  
+</details>  
+
+**Câu hỏi 3: Trong Environment Variables, giá trị cho ComSpec là gì?**  
+
+![System Infomation](./img/2_Windows_Fundamentals_2/5.10.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: %SystemRoot%\system32\cmd.exe  
+</details>  
+
