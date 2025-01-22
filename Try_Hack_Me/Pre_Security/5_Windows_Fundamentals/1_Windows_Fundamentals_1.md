@@ -421,4 +421,38 @@ Khi quay lại **lusrmgr**, bạn sẽ thấy hai thư mục: **Users** (Ngườ
 
 **Lưu ý:** Nếu bạn nhấp vào **Add someone else to this PC** từ **Other users**, nó sẽ mở công cụ **Local Users and Management**.
 
-  
+**Câu hỏi:**
+
+**Câu hỏi 1: Tên tài khoản người dùng khác là gì?**  
+
+![user](./img/1_Windows_Fundamentals_1/6.10.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: tryhackmebilly  
+</details>  
+
+**Câu hỏi 2: Người dùng này là thành viên của những nhóm nào?**  
+
+![user](./img/1_Windows_Fundamentals_1/6.11.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Remote Desktop Users, Users  
+</details>  
+
+**Câu hỏi 3: Tài khoản tích hợp nào dùng để truy cập khách vào máy tính?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Guest  
+</details>  
+
+**Câu hỏi 4: Mô tả của tài khoản là gì?**  
+
+![user](./img/1_Windows_Fundamentals_1/6.12.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: window$Fun1!  
+</details>  
+
