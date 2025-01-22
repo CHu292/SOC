@@ -124,3 +124,27 @@ Lưu ý phần **Selected command** (Lệnh được chọn). Thông tin trong h
 <summary>Hiển thị đáp án</summary>  
 Đáp án: control.exe  
 </details>  
+
+# Task 3: Change UAC Settings
+
+**Thay đổi cài đặt UAC**
+
+Chúng ta tiếp tục với các công cụ có sẵn thông qua bảng **System Configuration**.
+
+**User Account Control (UAC)** đã được trình bày chi tiết trong **Windows Fundamentals 1**.
+
+Cài đặt UAC có thể được thay đổi hoặc thậm chí tắt hoàn toàn (không được khuyến nghị).
+
+Bạn có thể di chuyển thanh trượt để xem cách cài đặt sẽ thay đổi UAC và quan điểm của Microsoft về cài đặt này.
+
+![Change UAC Settings](./img/2_Windows_Fundamentals_2/3.1.png)
+
+**Câu hỏi: Lệnh để mở User Account Control Settings là gì? (Câu trả lời là tên file .exe, không phải đường dẫn đầy đủ)**  
+
+![Change UAC Settings](./img/2_Windows_Fundamentals_2/3.2.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: UserAccountControlSettings.exe  
+</details>  
+
