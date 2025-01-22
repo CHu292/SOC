@@ -541,3 +541,18 @@ Có nhiều cách để xem/chỉnh sửa registry. Một cách là sử dụng 
 <summary>Hiển thị đáp án</summary>  
 Đáp án: regedt32.exe  
 </details>  
+
+# Task 9: Conclusion
+
+**Kết luận:**
+
+Hãy nhớ rằng các nhiệm vụ được đề cập trong phần này là một số công cụ có thể được khởi chạy từ **MSConfig**.
+
+Trong suốt phần này, các lệnh và phím tắt đã được chia sẻ để sử dụng các tiện ích. Điều này có nghĩa là bạn không nhất thiết phải khởi chạy **MSConfig** để sử dụng chúng.
+
+Bạn cũng có thể chạy một số tiện ích này trực tiếp từ **Start Menu**. 
+
+![](./img/2_Windows_Fundamentals_2/9.1.png)
+
+**Lưu ý:** Một số công cụ được liệt kê trong **MSConfig**, nhưng không được đề cập ở đây, đã được đề cập trong **Windows Fundamentals 1** hoặc để bạn tự khám phá thêm.
+
