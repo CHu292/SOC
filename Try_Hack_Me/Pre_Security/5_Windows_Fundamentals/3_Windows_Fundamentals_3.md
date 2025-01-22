@@ -11,7 +11,7 @@
 
 3. [Task 3: Windows Security](#task-3-windows-security)
 
-4. [Task 4: Virus & Threat Protection](#task-4-virus-threat-protection)
+4. [Task 4: Virus and Threat Protection](#task-4-virus-and-threat-protection)
 
 5. [Task 5: Firewall & Network Protection](#task-5-firewall-network-protection)
 
@@ -126,7 +126,7 @@ Tiếp theo, chúng ta sẽ tìm hiểu về Bảo vệ chống virus và mối 
 Đáp án: Virus & threat protection  
 </details>  
 
-# Task 4: Virus & Threat Protection
+# Task 4: Virus and Threat Protection
 
 Phần **Bảo vệ chống virus và mối đe dọa** được chia thành hai phần:
 
