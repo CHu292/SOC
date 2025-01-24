@@ -231,3 +231,44 @@ Nhiều người thường sử dụng cùng một mật khẩu trên nhiều n�
 <summary>Hiển thị đáp án</summary>  
 Đáp án: Android.Riskware.Agent.LHH  
 </details>  
+
+# Task 5: Vulnerabilities and Exploits
+
+## **CVE (Lỗ hổng và Khai thác)**
+
+Chúng ta có thể coi **Common Vulnerabilities and Exposures (CVE)** như một "từ điển" về các lỗ hổng bảo mật. Nó cung cấp một định danh chuẩn hóa cho các lỗ hổng và vấn đề bảo mật trong các sản phẩm phần mềm và phần cứng. Mỗi lỗ hổng được gán một mã định danh CVE với định dạng chuẩn, ví dụ: **[CVE-2024-29988](https://nvd.nist.gov/vuln/detail/CVE-2024-29988)**. 
+
+Mã định danh duy nhất này (**CVE ID**) đảm bảo rằng mọi người, từ các nhà nghiên cứu bảo mật đến các chuyên gia CNTT, đều đang tham chiếu đến cùng một lỗ hổng, chẳng hạn **CVE-2024-29988**.
+
+Hệ thống CVE được duy trì bởi **Tập đoàn MITRE**. Để biết thêm thông tin và tìm kiếm các lỗ hổng đã tồn tại, bạn có thể truy cập vào:
+- [Trang CVE Program](https://www.cve.org/)
+- [National Vulnerability Database - Cơ sở dữ liệu về lỗ hổng của NVD](https://nvd.nist.gov/)
+
+Ảnh chụp bên dưới minh họa CVE-2014-0160, còn được gọi là **Heartbleed**.
+
+![CVE](./img/5.1.png)
+
+## Exploit Database (Cơ sở Dữ liệu Khai thác)
+
+Có nhiều lý do tại sao bạn muốn khai thác một ứng dụng dễ bị tổn thương; một trong số đó có thể là để đánh giá mức độ an toàn của công ty như một phần của nhóm an ninh **red team**. Nói không cần thiết, chúng ta không nên cố gắng khai thác một hệ thống dễ bị tổn thương trừ khi được cấp phép, thường thông qua một thỏa thuận pháp lý ràng buộc.
+
+Bây giờ khi chúng ta có sự cho phép để khai thác một hệ thống dễ bị tổn thương, có thể cần tìm mã khai thác (exploit) hoạt động. Một nguồn tài nguyên hữu ích là [Exploit Database](https://www.exploit-db.com/). **Exploit Database** liệt kê các mã khai thác từ nhiều tác giả; một số mã khai thác này đã được kiểm tra và đánh dấu là **đã xác minh**.
+
+![exploit database](./img/5.2.png)
+
+## GitHub
+
+**GitHub**, một nền tảng dựa trên web dành cho phát triển phần mềm, có thể chứa nhiều công cụ liên quan đến **CVE**, bao gồm cả các bằng chứng khái niệm (**Proof-of-Concept - PoC**) và mã khai thác (**exploit codes**). 
+
+Để minh họa ý tưởng này, bạn có thể xem ảnh chụp màn hình dưới đây với kết quả tìm kiếm trên **GitHub** liên quan đến lỗ hổng **Heartbleed**.
+
+![github](./img/5.3.png)
+
+**Câu hỏi: CVE-2024-3094 đề cập đến tiện ích nào?**  
+
+![](./img/5.4.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: xz  
+</details>  
