@@ -265,3 +265,38 @@ Vui lòng tham khảo tài liệu chính thức của Microsoft để biết th�
 
 **Cảnh báo:** Trừ khi bạn hoàn toàn **100% tự tin** vào những gì mình đang làm, bạn nên giữ nguyên các thiết lập mặc định.
 
+# Task 7: Device Security](#task-7-device-security
+
+**Bảo mật thiết bị**  
+
+Mặc dù bạn có thể sẽ không bao giờ thay đổi bất kỳ thiết lập nào trong số này, nhưng để hoàn thành đầy đủ, chúng tôi sẽ đề cập ngắn gọn.
+
+![device security](./img/3_Windows_Fundamentals_3/7.1.png)
+
+**Cách ly nhân (Core isolation)**  
+
+- **Tích hợp bộ nhớ (Memory Integrity)**: Ngăn chặn các cuộc tấn công bằng cách chèn mã độc hại vào các quy trình bảo mật cao.
+
+![device security](./img/3_Windows_Fundamentals_3/7.2.png)
+
+**Cảnh báo:** Trừ khi bạn hoàn toàn **100%** tự tin với những gì mình đang làm, khuyến nghị nên giữ nguyên các cài đặt mặc định.
+
+Các hình ảnh bên dưới được lấy từ một máy khác để minh họa một tính năng bảo mật khác, tính năng này nên có trên thiết bị Windows 10 cá nhân.
+
+**Bộ xử lý bảo mật (Security processor)**
+
+![device security](./img/3_Windows_Fundamentals_3/7.3.png)
+
+**Bên dưới là các chi tiết về Bộ xử lý bảo mật (Security processor details).**
+
+![device security](./img/3_Windows_Fundamentals_3/7.4.png)
+
+**TPM (Trusted Platform Module) là gì?**
+
+Theo Microsoft, "Công nghệ Trusted Platform Module (TPM) được thiết kế để cung cấp các chức năng bảo mật dựa trên phần cứng. Một chip TPM là một bộ xử lý mật mã an toàn được thiết kế để thực hiện các thao tác mật mã. Chip này bao gồm nhiều cơ chế bảo mật vật lý nhằm làm cho nó có khả năng chống lại sự can thiệp, và phần mềm độc hại không thể can thiệp vào các chức năng bảo mật của TPM."
+
+**Câu hỏi: TPM là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Trusted Platform Module  
+</details>  
