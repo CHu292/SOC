@@ -211,4 +211,5 @@ Thỉnh thoảng, một tệp có thể bị gắn cờ là virus hoặc Trojan;
 
 Nhiều người thường sử dụng cùng một mật khẩu trên nhiều nền tảng. Do đó, nếu một nền tảng bị xâm phạm, mật khẩu của họ trên các nền tảng khác cũng có nguy cơ bị tiết lộ. Mặc dù mật khẩu thường được lưu trữ ở định dạng mã hóa, nhưng nhiều mật khẩu không đủ phức tạp và có thể bị khôi phục bằng nhiều phương pháp tấn công khác nhau.
 
-![virustotal](./img/4.4.png)
+![hibp](./img/4.4.png)
+
