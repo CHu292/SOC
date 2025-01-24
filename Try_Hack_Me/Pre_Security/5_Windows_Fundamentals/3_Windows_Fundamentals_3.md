@@ -15,7 +15,7 @@
 
 5. [Task 5: Firewall & Network Protection](#task-5-firewall-network-protection)
 
-6. [Task 6: App & Browser Control](#task-6-app-browser-control)
+6. [Task 6: App and Browser Control](#task-6-app-and-browser-control)
 
 7. [Task 7: Device Security](#task-7-device-security)
 
@@ -241,7 +241,7 @@ Lệnh để mở **Windows Defender Firewall** là:
 Đáp án: Public network  
 </details>  
 
-# Task 6: App & Browser Control
+# Task 6: App and Browser Control
 
 Phần này cho phép bạn thay đổi các thiết lập của **Microsoft Defender SmartScreen**.
 
