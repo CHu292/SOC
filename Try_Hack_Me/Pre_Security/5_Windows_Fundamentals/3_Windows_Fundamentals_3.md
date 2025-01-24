@@ -228,7 +228,7 @@ Bạn có thể xem các cài đặt hiện tại cho bất kỳ hồ sơ tườ
 
 ![firewall](./img/3_Windows_Fundamentals_3/5.4.png)
 
-Việc cấu hình **Windows Defender Firewall** dành cho người dùng Windows nâng cao. Vui lòng tham khảo tài liệu chính thức của Microsoft về các phương pháp tốt nhất tại [đây](#).
+Việc cấu hình **Windows Defender Firewall** dành cho người dùng Windows nâng cao. Vui lòng tham khảo tài liệu chính thức của Microsoft về các phương pháp tốt nhất tại [đây](https://learn.microsoft.com/en-us/windows/security/operating-system-security/network-security/windows-firewall/configure).
 
 **Mẹo:**
 
@@ -240,3 +240,28 @@ Lệnh để mở **Windows Defender Firewall** là:
 <summary>Hiển thị đáp án</summary>  
 Đáp án: Public network  
 </details>  
+
+# Task 6: App & Browser Control
+
+Phần này cho phép bạn thay đổi các thiết lập của **Microsoft Defender SmartScreen**.
+
+Theo Microsoft, **Microsoft Defender SmartScreen** "bảo vệ chống lại các trang web hoặc ứng dụng chứa mã độc hoặc lừa đảo, và ngăn chặn việc tải xuống các tệp có thể gây hại".
+
+Vui lòng tham khảo tài liệu chính thức của Microsoft để biết thêm thông tin chi tiết về **Microsoft Defender SmartScreen** tại [đây](https://feedback.smartscreen.microsoft.com/smartscreenfaq.aspx).
+
+![app và browser control](./img/3_Windows_Fundamentals_3/6.1.png)
+
+## **Kiểm tra ứng dụng và tệp**
+
+- **Windows Defender SmartScreen** giúp bảo vệ thiết bị của bạn bằng cách kiểm tra các ứng dụng và tệp không được nhận diện từ web.
+
+![app và browser control](./img/3_Windows_Fundamentals_3/6.2.png)
+
+## **Bảo vệ khai thác (Exploit protection)**
+
+- Bảo vệ khai thác được tích hợp sẵn trong Windows 10 (và trong trường hợp này là Windows Server 2019) để giúp bảo vệ thiết bị của bạn khỏi các cuộc tấn công.
+
+![app và browser control](./img/3_Windows_Fundamentals_3/6.3.png)
+
+**Cảnh báo:** Trừ khi bạn hoàn toàn **100% tự tin** vào những gì mình đang làm, bạn nên giữ nguyên các thiết lập mặc định.
+
