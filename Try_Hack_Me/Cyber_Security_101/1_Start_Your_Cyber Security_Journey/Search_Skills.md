@@ -213,3 +213,21 @@ Nhiều người thường sử dụng cùng một mật khẩu trên nhiều n�
 
 ![hibp](./img/4.4.png)
 
+
+**Câu hỏi 1: Quốc gia hàng đầu với các máy chủ `lighttpd` là gì?**  
+
+![](./img/4.5.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: United States  
+</details>  
+
+**Câu hỏi 2: BitDefenderFalx phát hiện file có hash `2de78ca737c1f4602517c555ddd54165432cf231ffc0e21fb2e23b9dd14e7fb4` là gì?**  
+
+![](./img/4.6.png)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Android.Riskware.Agent.LHH  
+</details>  
