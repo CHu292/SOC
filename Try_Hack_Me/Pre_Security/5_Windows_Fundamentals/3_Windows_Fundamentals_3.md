@@ -265,7 +265,7 @@ Vui lòng tham khảo tài liệu chính thức của Microsoft để biết th�
 
 **Cảnh báo:** Trừ khi bạn hoàn toàn **100% tự tin** vào những gì mình đang làm, bạn nên giữ nguyên các thiết lập mặc định.
 
-# Task 7: Device Security](#task-7-device-security
+# Task 7: Device Security
 
 **Bảo mật thiết bị**  
 
