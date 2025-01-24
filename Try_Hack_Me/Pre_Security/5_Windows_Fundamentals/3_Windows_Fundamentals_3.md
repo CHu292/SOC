@@ -192,3 +192,53 @@ Bạn có thể thực hiện quét theo yêu cầu trên bất kỳ tệp hoặ
 <summary>Hiển thị đáp án</summary>  
 Đáp án: Real-time protection  
 </details>  
+
+# Task 5: Firewall & Network Protection
+
+**Tường lửa và bảo vệ mạng (Firewall & network protection):**
+
+### Tường lửa là gì?
+Theo Microsoft, **"Lưu lượng mạng đi vào và ra khỏi các thiết bị thông qua các cổng mà chúng ta gọi là ports. Tường lửa là thứ kiểm soát những gì được - và quan trọng hơn là không được - phép đi qua những cổng này. Bạn có thể hình dung nó như một nhân viên bảo vệ đứng trước cửa, kiểm tra ID của mọi thứ cố gắng đi vào hoặc rời khỏi"**.
+
+Hình ảnh minh họa phía dưới cho thấy giao diện khi bạn điều hướng đến **Firewall & network protection**.
+
+![firewall](./img/3_Windows_Fundamentals_3/5.1.png)
+
+**Lưu ý:** Mỗi mạng có thể có các biểu tượng trạng thái khác nhau.
+
+### Sự khác biệt giữa ba loại cấu hình mạng (Domain, Private và Public) là gì?
+
+Theo Microsoft, **"Tường lửa Windows cung cấp ba cấu hình (firewall profiles): domain, private và public"**.
+
+- **Domain**: Cấu hình miền áp dụng cho các mạng mà hệ thống máy chủ có thể xác thực với bộ điều khiển miền (domain controller).  
+- **Private**: Cấu hình riêng tư do người dùng gán và được sử dụng để chỉ định các mạng riêng tư hoặc mạng tại nhà.  
+- **Public**: Cấu hình mặc định là cấu hình công khai, được sử dụng để chỉ định các mạng công cộng như điểm phát Wi-Fi tại quán cà phê, sân bay và các địa điểm khác.  
+
+Nếu bạn nhấp vào bất kỳ cấu hình tường lửa nào, màn hình khác sẽ xuất hiện với hai tùy chọn: **bật/tắt tường lửa (turn the firewall on/off)** và **chặn tất cả kết nối đến (block all incoming connections)**.
+
+![firewall](./img/3_Windows_Fundamentals_3/5.2.png)
+
+**Cảnh báo:** Trừ khi bạn hoàn toàn **100% tự tin** về những gì bạn đang làm, **khuyến nghị** rằng bạn nên giữ Tường lửa Windows Defender được bật.  
+
+### Cho phép ứng dụng thông qua tường lửa  
+
+![firewall](./img/3_Windows_Fundamentals_3/5.3.png)
+
+Bạn có thể xem các cài đặt hiện tại cho bất kỳ hồ sơ tường lửa nào. Trong hình trên, một số ứng dụng có quyền truy cập vào hồ sơ tường lửa **Private** và/hoặc **Public**. Một số ứng dụng sẽ cung cấp thông tin bổ sung nếu có sẵn thông qua nút **Details**.
+
+### Cài đặt nâng cao
+
+![firewall](./img/3_Windows_Fundamentals_3/5.4.png)
+
+Việc cấu hình **Windows Defender Firewall** dành cho người dùng Windows nâng cao. Vui lòng tham khảo tài liệu chính thức của Microsoft về các phương pháp tốt nhất tại [đây](#).
+
+**Mẹo:**
+
+Lệnh để mở **Windows Defender Firewall** là:  
+`WF.msc`.
+
+**Câu hỏi: Nếu bạn kết nối với Wi-Fi ở sân bay, hồ sơ tường lửa nào có khả năng hoạt động nhất?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Public network  
+</details>  
