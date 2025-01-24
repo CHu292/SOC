@@ -345,3 +345,31 @@ Luôn đáng giá khi kiểm tra tài liệu chính thức vì đây là nguồn
 <summary>Hiển thị đáp án</summary>  
 Đáp án: -b  
 </details>  
+
+# Task 7: Social Media
+
+Có hàng tỷ người dùng đã đăng ký trên các nền tảng mạng xã hội như **[Facebook](https://www.facebook.com/people/Tryhackme/100069557747714/)**, **[Twitter](https://x.com/RealTryHackMe)**, và **[LinkedIn](https://www.linkedin.com/company/tryhackme/)**. Chúng tôi mong rằng bạn đã quen thuộc với các nền tảng phổ biến này. Tuy nhiên, nếu bạn chưa biết rõ về bất kỳ nền tảng nào, chúng tôi khuyên bạn nên kiểm tra và tìm hiểu. Lý tưởng nhất, bạn nên khám phá một nền tảng mà không cần tạo tài khoản; tuy nhiên, điều này sẽ hạn chế trải nghiệm của bạn. Thay vào đó, một gợi ý là sử dụng địa chỉ email tạm thời để khám phá các nền tảng này mà không cần liên kết với địa chỉ email thực của bạn; khi xong, bạn có thể hủy tài khoản và địa chỉ email liên quan. Một lý do để không sử dụng tài khoản chính là bạn không muốn bạn bè của mình bắt đầu kết nối với bạn khi bạn chỉ đang khám phá nền tảng tạm thời.
+
+Sức mạnh của mạng xã hội là khả năng kết nối với các công ty và những người bạn quan tâm. Hơn nữa, mạng xã hội cung cấp rất nhiều thông tin hữu ích cho các chuyên gia an ninh mạng, dù họ đang tìm kiếm con người hay thông tin kỹ thuật. Bạn hỏi tại sao việc tìm kiếm con người lại quan trọng?
+
+Khi bảo vệ một công ty, bạn nên đảm bảo rằng những người bạn bảo vệ không chia sẻ quá mức trên mạng xã hội. Ví dụ, thông tin mạng xã hội của họ có thể tiết lộ câu trả lời cho các câu hỏi bảo mật như, *"Bạn học trường nào khi còn nhỏ?"*. Thông tin như vậy có thể giúp kẻ tấn công đặt lại mật khẩu và dễ dàng chiếm quyền truy cập tài khoản của họ.
+
+Hơn nữa, với tư cách là một chuyên gia an ninh mạng, bạn cần cập nhật các xu hướng, công nghệ, và sản phẩm an ninh mạng mới. Theo dõi các kênh và nhóm phù hợp có thể tạo môi trường thuận lợi để nâng cao chuyên môn kỹ thuật của bạn.
+
+Ngoài việc cập nhật thông tin qua các kênh và nhóm mạng xã hội, chúng ta nên đề cập đến các trang tin tức. Hàng trăm trang tin tức sẽ cung cấp thông tin giá trị liên quan đến an ninh mạng. Hãy thử khám phá và chọn những nguồn bạn thích nhất.
+
+**Câu hỏi 1: Bạn được thuê để đánh giá bảo mật của một công ty. Trang web mạng xã hội phổ biến nào bạn sẽ sử dụng để tìm hiểu về nền tảng kỹ thuật của một nhân viên của họ?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: LinkedIn  
+</details>  
+
+**Câu hỏi 2: Tiếp tục với kịch bản trước, bạn đang cố gắng tìm câu trả lời cho câu hỏi bảo mật: “Trường nào bạn đã học khi còn nhỏ?”. Trang web mạng xã hội nào bạn sẽ cân nhắc kiểm tra để tìm câu trả lời cho các câu hỏi bảo mật như vậy?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Facebook  
+</details>  
+
+# Task 8: Conclusion
+
+Phòng này tập trung vào các nguồn thông tin phổ biến nhất dành cho các chuyên gia an ninh mạng. Vẫn còn rất nhiều nguồn khác. Khi bối cảnh thông tin không ngừng thay đổi, thật không thể bao quát hết tất cả các nguồn. Tuy nhiên, bằng cách đăng ký vào các nhóm liên quan đến an ninh mạng, bạn có thể luôn đi trước và nhận biết khi có những nguồn thông tin thú vị mới xuất hiện.
