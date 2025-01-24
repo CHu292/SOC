@@ -152,11 +152,9 @@ Hình ảnh dưới đây chỉ tập trung vào **Các mối đe dọa hiện t
 ### Cảnh báo:
 Chỉ cho phép một mục chạy nếu nó đã được xác định là mối đe dọa khi bạn **hoàn toàn chắc chắn (100%)** về những gì bạn đang làm.
 
-Tiếp theo là **Cài đặt bảo vệ chống virus và mối đe dọa** (*Virus & threat protection settings*).
+## **Cài đặt bảo vệ chống virus và mối đe dọa** (*Virus & threat protection settings*).
 
 ![virus and threat protection](./img/3_Windows_Fundamentals_3/4.2.png)
-
-## **Cài đặt bảo vệ chống virus và mối đe dọa (Virus & threat protection settings):**
 
 ### Quản lý cài đặt (*Manage settings*):
 - **Real-time protection (Bảo vệ thời gian thực):** Xác định và ngăn chặn phần mềm độc hại khỏi cài đặt hoặc chạy trên thiết bị của bạn.
