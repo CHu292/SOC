@@ -123,5 +123,44 @@ Lệnh `netstat` được coi là đã **lỗi thời** trên các hệ thống 
 
 ---
 
+# Task 3: Search Engines
 
+**Công cụ tìm kiếm**
+
+Mỗi chúng ta đều đã từng sử dụng công cụ tìm kiếm trên Internet; tuy nhiên, không phải ai cũng cố gắng khai thác hết sức mạnh của chúng. Hầu hết các công cụ tìm kiếm trên Internet đều cho phép bạn thực hiện tìm kiếm nâng cao. Hãy xem xét các ví dụ sau:
+
+- **[Google](https://www.google.com/advanced_search)**  
+- **[Bing](https://support.microsoft.com/en-us/topic/advanced-search-options-b92e25f1-0085-4271-bdf9-14aaea720930)**  
+- **[DuckDuckGo](https://duckduckgo.com/duckduckgo-help-pages/results/syntax/)**  
+
+Hãy xem các toán tử tìm kiếm được hỗ trợ bởi Google.
+
+- **"exact phrase - cụm từ chính xác"**: Dấu ngoặc kép cho biết bạn đang tìm kiếm các trang chứa từ hoặc cụm từ chính xác. Ví dụ, bạn có thể tìm kiếm `"passive reconnaissance"` để tìm các trang chứa cụm từ chính xác này.   
+
+- **site:** Toán tử này cho phép bạn giới hạn tìm kiếm trong một tên miền cụ thể. Ví dụ, chúng ta có thể tìm kiếm các câu chuyện thành công trên TryHackMe bằng cách sử dụng  
+  `site:tryhackme.com success stories`.
+
+- **-**: Dấu trừ cho phép bạn loại bỏ các kết quả tìm kiếm có chứa một từ hoặc cụm từ cụ thể. Ví dụ, bạn có thể quan tâm đến việc tìm hiểu về kim tự tháp, nhưng không muốn xem các trang web về du lịch; một cách tiếp cận là tìm kiếm:  
+  `pyramids -tourism`  
+  hoặc  
+  `-tourism pyramids`.
+
+- **filetype:** Toán tử tìm kiếm này rất hữu ích để tìm kiếm tệp thay vì các trang web. Một số loại tệp bạn có thể tìm kiếm bằng Google bao gồm Tài liệu PDF, Tài liệu Microsoft Word (DOC), Bảng tính Excel (XLS), và Bài thuyết trình PowerPoint (PPT). Ví dụ, để tìm các bài thuyết trình về an ninh mạng, hãy thử tìm kiếm:  
+  `filetype:ppt cyber security`.
+
+Bạn có thể kiểm tra thêm các điều khiển nâng cao trên các công cụ tìm kiếm khác trong [danh sách các toán tử tìm kiếm nâng cao](https://github.com/cipher387/Advanced-search-operators-list); tuy nhiên, các ví dụ trên cung cấp một điểm khởi đầu tốt. Hãy kiểm tra công cụ tìm kiếm yêu thích của bạn để biết các toán tử tìm kiếm được hỗ trợ.
+
+---
+
+**Câu hỏi 1: Làm thế nào để giới hạn tìm kiếm Google của bạn chỉ trong các file PDF chứa các từ khóa "cyber warfare report"?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: filetype:pdf cyber warfare report  
+</details>  
+
+**Câu hỏi 2: Cụm từ nào là ý nghĩa của lệnh `ss` trong Linux?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: socket statistics  
+</details>  
 
