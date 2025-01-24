@@ -28,7 +28,7 @@ Một tìm kiếm nhanh trên Google với cụm từ "learn cyber security - h�
 
 Chúng ta đang sống trong một thế giới tràn ngập thông tin. Bạn có chọn cách đầu hàng trước tình trạng quá tải thông tin và chấp nhận những kết quả đầu tiên bạn tìm thấy? Hay bạn muốn học các kỹ năng cần thiết để tìm và truy cập những gì mình đang tìm kiếm? Phòng này nhằm giúp bạn thực hiện điều thứ hai.  
 
-### **Mục tiêu học tập**  
+## **Mục tiêu học tập**  
 Mục tiêu của phòng này là dạy bạn:  
 - Đánh giá các nguồn thông tin  
 - Sử dụng công cụ tìm kiếm hiệu quả  
@@ -170,7 +170,7 @@ Bạn có thể kiểm tra thêm các điều khiển nâng cao trên các công
 
 Bạn đã quen thuộc với các công cụ tìm kiếm Internet; tuy nhiên, bạn đã quen thuộc bao nhiêu với các công cụ tìm kiếm chuyên biệt? Đây là những công cụ tìm kiếm được sử dụng để tìm các loại kết quả cụ thể.
 
-### Shodan
+## Shodan
 
 Hãy bắt đầu với **[Shodan](https://www.shodan.io/)**, một công cụ tìm kiếm dành cho các thiết bị kết nối Internet. Nó cho phép bạn tìm kiếm các loại và phiên bản cụ thể của máy chủ, thiết bị mạng, hệ thống điều khiển công nghiệp, và các thiết bị IoT. 
 
@@ -182,7 +182,7 @@ kết quả sẽ trả về danh sách các máy chủ với chuỗi `"apache 2.
 
 **Hãy xem thêm các ví dụ về Shodan tại** [Shodan Search Query Examples](https://www.shodan.io/search/examples) **để biết thêm. Ngoài ra, bạn có thể kiểm tra** [Shodan trends](https://trends.shodan.io/) **để có cái nhìn lịch sử nếu bạn có đăng ký tài khoản.**
 
-### Censys
+## Censys
 
 **Thoạt nhìn**, [Censys](https://search.censys.io/) **tương tự với Shodan. Tuy nhiên, Shodan tập trung vào các thiết bị và hệ thống kết nối Internet, chẳng hạn như máy chủ, bộ định tuyến, webcam và thiết bị IoT. Ngược lại, Censys tập trung vào các máy chủ kết nối Internet, trang web, chứng chỉ, và các tài sản Internet khác.**
 
@@ -195,7 +195,7 @@ Bạn có thể muốn xem thêm [Censys Search Use Cases](https://support.censy
 
 ![censys](./img/4.2.png)
 
-### VirusTotal
+## VirusTotal
 
 [**VirusTotal**](https://www.virustotal.com/gui/) là một trang web trực tuyến cung cấp dịch vụ quét virus cho các tệp bằng cách sử dụng nhiều công cụ diệt virus khác nhau. Nó cho phép người dùng tải lên tệp hoặc cung cấp URL để quét chúng bằng nhiều công cụ diệt virus và máy quét trang web trong một thao tác. Người dùng thậm chí có thể nhập hàm băm của tệp để kiểm tra kết quả của các tệp đã được tải lên trước đó.
 
@@ -205,7 +205,7 @@ Thỉnh thoảng, một tệp có thể bị gắn cờ là virus hoặc Trojan;
 
 ![virustotal](./img/4.3.png)
 
-### Have I Been Pwned
+## Have I Been Pwned
 
 [**Have I Been Pwned** (HIBP)](https://haveibeenpwned.com/) là một công cụ đơn giản nhưng mạnh mẽ, giúp bạn kiểm tra xem địa chỉ email của mình có xuất hiện trong các vụ rò rỉ dữ liệu hay không. Việc phát hiện email của bạn nằm trong dữ liệu bị rò rỉ đồng nghĩa với việc thông tin cá nhân, và quan trọng hơn, mật khẩu của bạn có thể đã bị lộ.
 
