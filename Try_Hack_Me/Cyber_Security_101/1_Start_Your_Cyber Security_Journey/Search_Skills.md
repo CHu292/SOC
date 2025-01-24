@@ -164,3 +164,51 @@ Bạn có thể kiểm tra thêm các điều khiển nâng cao trên các công
 Đáp án: socket statistics  
 </details>  
 
+# Task 4: Specialized Search Engines
+
+**Công cụ tìm kiếm chuyên biệt**
+
+Bạn đã quen thuộc với các công cụ tìm kiếm Internet; tuy nhiên, bạn đã quen thuộc bao nhiêu với các công cụ tìm kiếm chuyên biệt? Đây là những công cụ tìm kiếm được sử dụng để tìm các loại kết quả cụ thể.
+
+### Shodan
+
+Hãy bắt đầu với **[Shodan](https://www.shodan.io/)**, một công cụ tìm kiếm dành cho các thiết bị kết nối Internet. Nó cho phép bạn tìm kiếm các loại và phiên bản cụ thể của máy chủ, thiết bị mạng, hệ thống điều khiển công nghiệp, và các thiết bị IoT. 
+
+Bạn có thể muốn xem có bao nhiêu máy chủ vẫn đang chạy **Apache 2.4.1** và sự phân bố của chúng trên các quốc gia. Để tìm câu trả lời, chúng ta có thể tìm kiếm với từ khóa  
+**apache 2.4.1**,  
+kết quả sẽ trả về danh sách các máy chủ với chuỗi `"apache 2.4.1"` trong tiêu đề của chúng.
+
+![shodan](./img/4.1.png)
+
+**Hãy xem thêm các ví dụ về Shodan tại** [Shodan Search Query Examples](https://www.shodan.io/search/examples) **để biết thêm. Ngoài ra, bạn có thể kiểm tra** [Shodan trends](https://trends.shodan.io/) **để có cái nhìn lịch sử nếu bạn có đăng ký tài khoản.**
+
+### Censys
+
+**Thoạt nhìn**, [Censys](https://search.censys.io/) **tương tự với Shodan. Tuy nhiên, Shodan tập trung vào các thiết bị và hệ thống kết nối Internet, chẳng hạn như máy chủ, bộ định tuyến, webcam và thiết bị IoT. Ngược lại, Censys tập trung vào các máy chủ kết nối Internet, trang web, chứng chỉ, và các tài sản Internet khác.**
+
+Một số trường hợp sử dụng của nó bao gồm:  
+- Liệt kê các tên miền đang được sử dụng,  
+- Kiểm tra các cổng và dịch vụ đang mở,  
+- Phát hiện các tài sản không mong muốn trong mạng.  
+
+Bạn có thể muốn xem thêm [Censys Search Use Cases](https://support.censys.io/hc/en-us/articles/20720064229140-Censys-Search-Use-Cases) để biết thêm chi tiết.
+
+![censys](./img/4.2.png)
+
+### VirusTotal
+
+[**VirusTotal**](https://www.virustotal.com/gui/) là một trang web trực tuyến cung cấp dịch vụ quét virus cho các tệp bằng cách sử dụng nhiều công cụ diệt virus khác nhau. Nó cho phép người dùng tải lên tệp hoặc cung cấp URL để quét chúng bằng nhiều công cụ diệt virus và máy quét trang web trong một thao tác. Người dùng thậm chí có thể nhập hàm băm của tệp để kiểm tra kết quả của các tệp đã được tải lên trước đó.
+
+Ảnh chụp màn hình bên dưới minh họa kết quả quét tệp đã gửi qua 67 công cụ diệt virus. Ngoài ra, người dùng có thể xem các bình luận từ cộng đồng để có thêm thông tin chi tiết.  
+
+Thỉnh thoảng, một tệp có thể bị gắn cờ là virus hoặc Trojan; tuy nhiên, điều này có thể không chính xác vì nhiều lý do. Đây là lúc các thành viên cộng đồng có thể cung cấp những giải thích chi tiết hơn.
+
+![virustotal](./img/4.3.png)
+
+### Have I Been Pwned
+
+[**Have I Been Pwned** (HIBP)](https://haveibeenpwned.com/) là một công cụ đơn giản nhưng mạnh mẽ, giúp bạn kiểm tra xem địa chỉ email của mình có xuất hiện trong các vụ rò rỉ dữ liệu hay không. Việc phát hiện email của bạn nằm trong dữ liệu bị rò rỉ đồng nghĩa với việc thông tin cá nhân, và quan trọng hơn, mật khẩu của bạn có thể đã bị lộ.
+
+Nhiều người thường sử dụng cùng một mật khẩu trên nhiều nền tảng. Do đó, nếu một nền tảng bị xâm phạm, mật khẩu của họ trên các nền tảng khác cũng có nguy cơ bị tiết lộ. Mặc dù mật khẩu thường được lưu trữ ở định dạng mã hóa, nhưng nhiều mật khẩu không đủ phức tạp và có thể bị khôi phục bằng nhiều phương pháp tấn công khác nhau.
+
+![virustotal](./img/4.4.png)
