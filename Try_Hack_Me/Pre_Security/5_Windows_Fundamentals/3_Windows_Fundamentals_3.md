@@ -300,3 +300,82 @@ Theo Microsoft, "Công nghệ Trusted Platform Module (TPM) được thiết k�
 <summary>Hiển thị đáp án</summary>  
 Đáp án: Trusted Platform Module  
 </details>  
+
+# Task 8: BitLocker
+
+**BitLocker là gì?**
+
+Theo Microsoft, "BitLocker Drive Encryption là một tính năng bảo vệ dữ liệu được tích hợp vào hệ điều hành, nhằm giải quyết các mối đe dọa về trộm cắp dữ liệu hoặc tiết lộ dữ liệu do mất, bị đánh cắp, hoặc các máy tính bị loại bỏ không đúng cách."
+
+Trên các thiết bị được cài đặt TPM, BitLocker cung cấp mức bảo vệ tốt nhất.
+
+Cụ thể, Microsoft cho biết, "BitLocker cung cấp sự bảo vệ tốt nhất khi được sử dụng với Trusted Platform Module (TPM) phiên bản 1.2 trở lên. TPM là một thành phần phần cứng được cài đặt trong nhiều máy tính mới bởi các nhà sản xuất. BitLocker hoạt động với TPM để giúp bảo vệ dữ liệu người dùng và đảm bảo rằng máy tính không bị can thiệp khi hệ thống đang ở trạng thái ngoại tuyến."
+
+**Lưu ý:** Tính năng BitLocker không được bao gồm trong máy ảo đính kèm.
+
+Tham khảo tài liệu chính thức của Microsoft để tìm hiểu thêm về BitLocker [tại đây](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/).
+
+**Câu hỏi: Chúng ta nên sử dụng ổ đĩa di động trên hệ thống không có TPM phiên bản 1.2 hoặc mới hơn. Ổ đĩa di động này chứa gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: startup key  
+</details>  
+
+Trên các hệ thống không có **TPM (Trusted Platform Module)** phiên bản 1.2 hoặc mới hơn, một **ổ đĩa rời** (ví dụ như USB) thường được sử dụng để lưu trữ **khóa khởi động (startup key)** hoặc **khóa mã hóa** khi sử dụng BitLocker. Khóa này rất cần thiết để mở khóa ổ đĩa được mã hóa và khởi động hệ điều hành.
+
+**Lý do cần ổ đĩa rời:**
+
+- TPM là một phần cứng bảo mật chuyên dụng, được thiết kế để lưu trữ khóa mã hóa một cách an toàn. Nếu hệ thống không có TPM, sẽ không có nơi lưu trữ an toàn cho các khóa này.
+- Trong trường hợp này, ổ đĩa rời sẽ đóng vai trò lưu trữ khóa mã hóa, và hệ thống sẽ đọc khóa này trong quá trình khởi động để mở khóa ổ đĩa.
+
+**Lưu ý quan trọng:**
+
+1. **Vấn đề bảo mật**: Ổ đĩa rời này cần được bảo quản cẩn thận, vì nếu ai đó có được nó, họ có thể dùng nó để truy cập vào hệ thống được mã hóa.
+2. **Yêu cầu khi khởi động**: Nếu BitLocker được kích hoạt, hệ thống sẽ không thể khởi động nếu không cắm ổ đĩa rời có chứa khóa khởi động.
+3. **Khóa khôi phục**: Bạn vẫn cần sao lưu khóa khôi phục BitLocker (recovery key) ở nơi an toàn để phòng trường hợp mất hoặc hỏng ổ đĩa rời.
+
+# Task 9: Volume Shadow Copy Service
+
+Theo **Microsoft**, **Volume Shadow Copy Service (VSS)** phối hợp các hành động cần thiết để tạo một bản sao bóng nhất quán (còn được gọi là snapshot hoặc bản sao tại một thời điểm cụ thể) của dữ liệu cần được sao lưu.
+
+Các bản sao bóng (Volume Shadow Copies) được lưu trong thư mục **System Volume Information** trên mỗi ổ đĩa có tính năng bảo vệ được bật.
+
+Nếu VSS được kích hoạt (**System Protection** được bật), bạn có thể thực hiện các tác vụ sau trong **advanced system settings**:
+
+- Tạo điểm khôi phục (Create a restore point)  
+- Thực hiện khôi phục hệ thống (Perform system restore)  
+- Cấu hình các cài đặt khôi phục (Configure restore settings)  
+- Xóa điểm khôi phục (Delete restore points)  
+
+Từ góc độ bảo mật, các tác giả phần mềm độc hại biết về tính năng này của Windows và viết mã trong phần mềm độc hại của họ để tìm các tệp này và xóa chúng. Điều này làm cho việc khôi phục từ một cuộc tấn công ransomware trở nên bất khả thi nếu bạn không có bản sao lưu ngoại tuyến hoặc bên ngoài.
+
+Nếu bạn muốn cấu hình Shadow Copies trong máy ảo được đính kèm, vui lòng tham khảo hình minh họa bên dưới.
+
+![VSS](./img/3_Windows_Fundamentals_3/9.1.png)
+
+![VSS](./img/3_Windows_Fundamentals_3/9.2.png)
+
+**Bonus**  
+Nếu bạn muốn tương tác thực hành với **VSS**, tôi đề xuất khám phá **Day 23** trong chuỗi **[Advent of Cyber 2](https://tryhackme.com/r/room/adventofcyber2)**.
+
+**Câu hỏi: VSS là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Volume Shadow Copy Service  
+</details>  
+
+# Task 10: Conclusion
+
+Trong phòng này, chúng ta đã thảo luận về một số công cụ bảo mật tích hợp trong Windows được đi kèm với hệ điều hành để giúp giữ thiết bị được bảo vệ.  
+
+Vẫn còn rất nhiều điều để giải thích và bao quát về Windows **OS**. Như đã đề cập trong phòng **Windows Fundamentals 1**, "*Nội dung này nhằm vào những ai muốn hiểu và sử dụng Windows OS ở cấp độ thoải mái hơn.*"  
+
+Để tìm hiểu thêm về Windows **OS**, bạn sẽ cần tiếp tục hành trình tự khám phá.  
+
+**Tài liệu tham khảo thêm:**
+- **[Antimalware Scan Interface](https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal)**  
+- **[Credential Guard](https://learn.microsoft.com/en-us/windows/security/identity-protection/credential-guard/configure?tabs=intune)**  
+- **[Windows 10 Hello](https://support.microsoft.com/en-us/windows/configure-windows-hello-dae28983-8242-bb2a-d3d1-87c9d265a5f0#:~:text=Windows%2010,in%20with%20just%20your%20PIN.)**  
+- **[CSO Online - Các tính năng bảo mật mới tốt nhất của Windows 10](https://www.csoonline.com/article/564531/the-best-new-windows-10-security-features.html)**  
+
+**Lưu ý:** Kẻ tấn công sử dụng các công cụ và tiện ích tích hợp của Windows để cố gắng ẩn mình trong môi trường của nạn nhân. Chiến thuật này được gọi là **Living Off The Land**. Hãy tham khảo tài liệu sau [tại đây](https://lolbas-project.github.io/) để tìm hiểu thêm về vấn đề này.
