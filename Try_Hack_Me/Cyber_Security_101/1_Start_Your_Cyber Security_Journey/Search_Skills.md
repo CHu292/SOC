@@ -272,3 +272,76 @@ Bây giờ khi chúng ta có sự cho phép để khai thác một hệ thống 
 <summary>Hiển thị đáp án</summary>  
 Đáp án: xz  
 </details>  
+
+# Task 6: Technical Documentation
+
+**Tài liệu Kỹ thuật**
+
+Một kỹ năng quan trọng cần học là tra cứu tài liệu chính thức. Chúng ta sẽ xem qua một số ví dụ về trang tài liệu chính thức.
+
+## **Trang hướng dẫn sử dụng Linux (Linux Manual Pages)**
+
+Trước khi Internet phổ biến, làm thế nào bạn có thể tìm trợ giúp khi sử dụng một lệnh trong hệ thống Linux hoặc Unix-like? Câu trả lời là kiểm tra **trang hướng dẫn sử dụng**, thường gọi là **man page**.
+
+Trong Linux (và các hệ thống tương tự Unix), mỗi lệnh đều có **man page**. Thậm chí, **man pages** cũng tồn tại cho các cuộc gọi hệ thống, các hàm thư viện, và các tệp cấu hình.
+
+Ví dụ: Giả sử chúng ta muốn kiểm tra **man page** của lệnh `ip`. Chúng ta sẽ chạy lệnh sau:
+
+```bash
+man ip
+```
+
+Ảnh chụp màn hình dưới đây hiển thị **man page** mà chúng ta nhận được. Khi sử dụng, bạn có thể nhấn phím `q` để thoát khỏi giao diện.
+
+![linux](./img/6.1.png)
+
+Nếu bạn muốn đọc **man page** của lệnh `ip` trên trình duyệt web, chỉ cần gõ:
+
+```bash
+man ip
+```
+
+trong công cụ tìm kiếm ưa thích của bạn. Trang [này](https://linux.die.net/man/8/ip) có thể sẽ hiển thị ở đầu kết quả tìm kiếm.
+
+
+**AttackBox** 
+
+**AttackBox** là một hệ thống Linux có thể truy cập từ trình duyệt của bạn. Khi nhấn vào nút **Start AttackBox**, giao diện **AttackBox** sẽ hiển thị trên màn hình chia đôi, giúp bạn tiện lợi hơn trong việc đọc hướng dẫn và áp dụng các lệnh trong cùng một cửa sổ trình duyệt.
+
+Nếu bạn ẩn cửa sổ **AttackBox**, bạn có thể mở lại bằng cách nhấn nút **Show Split View** màu xanh ở phía trên. Trong bài tập này, bạn có thể bắt đầu **AttackBox** và sử dụng nó để thử các lệnh Linux như `man`.
+
+## **Microsoft Windows**
+
+Microsoft cũng cung cấp [trang tài liệu kỹ thuật chính thức](https://learn.microsoft.com/vi-vn/) cho các sản phẩm của mình. Ảnh chụp bên dưới hiển thị kết quả tìm kiếm cho lệnh:
+
+```cmd
+ipconfig
+```
+
+![windows](./img/6.2.png)
+
+## Tài liệu Sản phẩm
+
+Mỗi sản phẩm phổ biến đều cần có tài liệu được tổ chức tốt. Tài liệu này cung cấp nguồn thông tin chính thức và đáng tin cậy về các tính năng và chức năng của sản phẩm. Ví dụ bao gồm:
+
+- [Tài liệu chính thức của Snort](https://www.snort.org/documents)
+- [Tài liệu Apache HTTP Server](https://httpd.apache.org/docs/)
+- [Tài liệu PHP](https://www.php.net/manual/en/index.php)
+- [Tài liệu Node.js](https://nodejs.org/docs/latest/api/)
+
+Luôn đáng giá khi kiểm tra tài liệu chính thức vì đây là nguồn thông tin mới nhất và đầy đủ nhất về sản phẩm.
+
+**Câu hỏi 1: Lệnh `cat` trong Linux có nghĩa là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: concatenate  
+</details>  
+
+**Câu hỏi 2: Tham số nào của `netstat` trong MS Windows hiển thị tệp thực thi liên kết với mỗi kết nối đang hoạt động và cổng lắng nghe?**  
+
+[Xem thêm tại đây](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat)
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: -b  
+</details>  
