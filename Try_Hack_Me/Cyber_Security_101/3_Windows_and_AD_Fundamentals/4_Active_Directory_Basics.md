@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/75e428ad-4ab4-4188-bd60-abf5905d00f5)# Active Directory Basics
+# Active Directory Basics
 
 > Phòng này sẽ giới thiệu các khái niệm và chức năng cơ bản được cung cấp bởi Active Directory.
 
