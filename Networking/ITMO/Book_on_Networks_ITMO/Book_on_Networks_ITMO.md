@@ -58,7 +58,7 @@
 
 # Nội dung
 
-<h2 id="phan-i-co-ban-ve-mang-truyen-du-lieu">Phần I: Cơ bản về mạng truyền dữ liệu</h3>
+<h2 id="phan-i-co-ban-ve-mang-truyen-du-lieu">Phần I: Cơ bản về mạng truyền dữ liệu</h2>
 
 [Quay lại Mục lục](#muc-luc)
 
