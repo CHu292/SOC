@@ -3156,4 +3156,5 @@ Làm phẳng lưu lượng (traffic shaping) được xem là nhiệm vụ của
 Một thuật toán nổi tiếng được sử dụng cho cả làm phẳng lưu lượng và hồ sơ hóa là **thuật toán xô dấu (token bucket algorithm)**.
 
 ---
-  
+
+
