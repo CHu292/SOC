@@ -117,7 +117,183 @@ Hình 1.5. Các loại kết nối khác nhau trong mạng cục bộ đầu ti�
 - Ô tô tự hành cần kết nối Internet tốc độ cao và độ trễ thấp để xử lý dữ liệu AI theo thời gian thực.  
 - Tăng trưởng và biến đổi liên tục của Internet buộc công nghệ mạng phải thích ứng, phát triển kiến trúc điện toán biên để đáp ứng yêu cầu độ trễ thấp. 
 
-![Hình 1.6. Sự tăng trưởng số lượng người dùng và lưu lượng truy cập Internet.](./img/1.5.png)
+![Hình 1.6. Sự tăng trưởng số lượng người dùng và lưu lượng truy cập Internet.](./img/1.6.png)
 
 Hình 1.6. Sự tăng trưởng số lượng người dùng và lưu lượng truy cập Internet.
 
+<h1 id="chuong-2-cac-nguyen-tac-chung-trong-xay-dung-mang">CHƯƠNG 2: Các nguyên tắc chung trong xây dựng mạng</h1>
+
+## 2.1 Mạng đơn giản nhất với hai máy tính
+
+### 2.1.2 Chia sẻ tài nguyên
+
+Nguyên tắc cơ bản của mạng máy tính với mô hình kết nối đơn giản giữa hai máy tính để chia sẻ tài nguyên. Tài nguyên chia sẻ gồm thiết bị ngoại vi (ổ đĩa, máy in, máy quét), dữ liệu (bộ nhớ trong, thiết bị lưu trữ ngoài) và khả năng tính toán (chạy chương trình từ xa). Máy tính cần kết nối bằng phương tiện mạng để chia sẻ tài nguyên. Minh họa mô tả hai máy tính, một máy kết nối trực tiếp với máy in, máy còn lại sử dụng máy in qua mạng.
+
+![Hình 2.1. Mạng cơ bản nhất](./img/2.1.png)
+
+Hình 2.1. Mạng cơ bản nhất
+
+### 2.1.2 Giao diện mạng
+
+Phân loại và nguyên tắc hoạt động của giao diện mạng.  
+
+- **Giao diện vật lý (cổng)**: Tập hợp các kết nối điện và tín hiệu truyền thông, thường là cổng kết nối với các chân tiếp xúc, dây cáp hoặc kênh truyền dữ liệu.  
+- **Giao diện logic (giao thức)**: Tập hợp quy tắc truyền thông, định dạng dữ liệu và cách thức trao đổi thông tin giữa các thiết bị.  
+
+Hai loại giao diện mạng chính:  
+1. **Giao diện máy tính - máy tính**:  
+   - Thành phần phần cứng: Card mạng (NIC - Network Interface Card).  
+   - Thành phần phần mềm: Trình điều khiển card mạng.  
+
+2. **Giao diện máy tính - thiết bị ngoại vi (máy in)**:  
+   - Từ máy tính: Trình điều khiển card mạng và trình điều khiển máy in.  
+   - Từ thiết bị ngoại vi: Giao diện máy in nhận dữ liệu, lệnh và thực thi tác vụ in.  
+
+Hình minh họa mô tả cách hai máy tính giao tiếp với nhau và với máy in thông qua các tầng giao diện mạng.
+
+![Hình 2.2. Sử dụng chung máy in trong mạng máy tính.](./img/2.2.png)
+
+Hình 2.2. Sử dụng chung máy in trong mạng máy tính.
+
+### 2.1.3 Kết nối máy tính với thiết bị ngoại vi
+
+Quy trình kết nối máy tính với thiết bị ngoại vi (máy in) qua mạng:  
+
+1. **Yêu cầu in dữ liệu**  
+   - Ứng dụng trên máy B cần in dữ liệu, gửi yêu cầu đến hệ điều hành.  
+   - Yêu cầu chứa địa chỉ dữ liệu cần in và thông tin thiết bị in.  
+
+2. **Xử lý yêu cầu bởi hệ điều hành**  
+   - Hệ điều hành kích hoạt trình điều khiển máy in.  
+   - Trình điều khiển tương tác với giao diện mạng để gửi dữ liệu đến máy in.  
+
+3. **Gửi lệnh in qua trình điều khiển**  
+   - Trình điều khiển máy in dịch lệnh in thành các lệnh điều khiển cụ thể như "In ký tự", "Xuống dòng", "Trả đầu dòng".  
+   - Dữ liệu in được truyền vào bộ đệm của card mạng và gửi tới máy in.  
+
+4. **Xử lý dữ liệu bởi card mạng**  
+   - Card mạng truyền dữ liệu tuần tự dưới dạng tín hiệu điện.  
+   - Mỗi byte dữ liệu được đánh dấu bằng tín hiệu bắt đầu và kết thúc.  
+
+5. **Xử lý dữ liệu bởi bộ điều khiển máy in**  
+   - Máy in nhận tín hiệu, ghép thành byte và kiểm tra tính toàn vẹn dữ liệu.  
+   - Nếu hợp lệ, máy in thực thi lệnh in và thông báo trạng thái hoàn thành.
+
+### 2.1.4 Trao đổi dữ liệu giữa hai máy tính
+
+Trao đổi dữ liệu giữa hai máy tính:  
+
+- **Cơ chế trao đổi dữ liệu**  
+  - Hai máy tính giao tiếp bằng cách trao đổi thông điệp.  
+  - Ứng dụng trên mỗi máy phải tuân thủ giao thức chung để hiểu và phản hồi đúng cách.  
+
+- **Quy trình gửi dữ liệu**  
+  - Ứng dụng A gửi thông điệp vào bộ đệm RAM.  
+  - Hệ điều hành kích hoạt trình điều khiển card mạng.  
+  - Card mạng truyền dữ liệu tuần tự dưới dạng tín hiệu.  
+
+- **Quy trình nhận dữ liệu**  
+  - Card mạng máy B nhận dữ liệu, kiểm tra lỗi và lưu vào bộ đệm.  
+  - Hệ điều hành truyền dữ liệu cho ứng dụng B.  
+  - Ứng dụng B xử lý và phản hồi nếu cần.  
+
+- **Tính đồng bộ và xác nhận**  
+  - Mỗi byte dữ liệu có tín hiệu bắt đầu và kết thúc.  
+  - Máy nhận xác nhận từng gói dữ liệu để đảm bảo truyền tải chính xác.  
+
+Cơ chế này đảm bảo ứng dụng trên hai máy tính có thể giao tiếp chính xác qua mạng.
+
+### 2.1.5 Truy cập thiết bị ngoại vi qua mạng
+
+Truy cập thiết bị ngoại vi qua mạng:  
+
+1. **Ứng dụng A gửi yêu cầu**  
+   - Ứng dụng A tạo thông điệp yêu cầu in, chứa thông tin cần thiết.  
+   - Lưu thông điệp vào bộ đệm RAM và gửi yêu cầu đến hệ điều hành.  
+
+2. **Hệ điều hành truyền dữ liệu qua mạng**  
+   - Kích hoạt trình điều khiển card mạng trên máy A.  
+   - Card mạng A gửi dữ liệu đến card mạng B, chuyển vào bộ đệm RAM máy B.  
+
+3. **Ứng dụng B xử lý yêu cầu**  
+   - Ứng dụng B nhận dữ liệu từ bộ đệm, phân tích và xác định hành động.  
+   - Gửi yêu cầu đến hệ điều hành để thực hiện tác vụ in.  
+
+4. **Thực thi lệnh in**  
+   - Hệ điều hành máy B gọi trình điều khiển máy in.  
+   - Trình điều khiển giao tiếp với card mạng và bộ điều khiển máy in.  
+
+5. **Máy in thực hiện lệnh in**  
+   - Máy in nhận dữ liệu, kiểm tra và tiến hành in theo yêu cầu.  
+
+Cơ chế này cho phép thiết bị ngoại vi (máy in) được sử dụng từ xa thông qua mạng máy tính.
+
+## 2.2 Phần mềm mạng
+
+### 2.2.1 Dịch vụ và dịch vụ mạng
+
+- **Dịch vụ và dịch vụ mạng**  
+  - Các ứng dụng có thể cần truy cập từ xa đến tài nguyên như máy in, tệp tin hoặc cơ sở dữ liệu.  
+  - Thay vì mỗi ứng dụng tự xử lý, chức năng này được tách thành **mô-đun khách hàng (client)** và **mô-đun máy chủ (server)**.  
+  - Ví dụ: Dịch vụ in mạng gồm **client in** gửi yêu cầu và **server in** xử lý yêu cầu.  
+
+![Hình 2.3. Sử dụng chung máy in trong mạng máy tính với sự hỗ trợ của dịch vụ in ấn mạng.](./img/2.3.png)
+
+Hình 2.3. Sử dụng chung máy in trong mạng máy tính với sự hỗ trợ của dịch vụ in ấn mạng.
+
+- **Khách hàng (Client)**  
+  - Gửi yêu cầu truy cập tài nguyên từ xa.  
+  - Nhận và xử lý phản hồi từ máy chủ.  
+
+- **Máy chủ (Server)**  
+  - Luôn sẵn sàng nhận yêu cầu từ client.  
+  - Xử lý yêu cầu và trả kết quả.  
+
+- **Dịch vụ Web**  
+  - Gồm **web-server** (máy chủ cung cấp nội dung web) và **web-browser** (trình duyệt truy cập nội dung).  
+  - Giao tiếp qua giao thức HTTP.  
+  - Có thể lưu trữ dữ liệu trên **web-site** hoặc dịch vụ đám mây.  
+
+- **Truyền thông qua mạng**  
+  - Dữ liệu có thể đi trực tiếp giữa client và server hoặc qua nhiều thiết bị trung gian.  
+  - Sử dụng **phương tiện truyền thông mạng** để đảm bảo truyền tải dữ liệu ổn định.  
+
+Hệ thống phần mềm mạng giúp tổ chức truy cập tài nguyên hiệu quả thông qua các dịch vụ chuyên biệt.
+
+![Hình 2.4 Dịch vụ web](./img/2.4.png)
+
+Hình 2.4 Dịch vụ web
+
+### 2.2.2 Hệ điều hành mạng (Network Operating System)
+
+Hệ điều hành mạng (Network Operating System - NOS):  
+
+- **Khái niệm**  
+  - Mở rộng khả năng quản lý tài nguyên của hệ điều hành đến nhiều máy tính trong mạng.  
+  - Cung cấp giao diện và công cụ giúp người dùng, ứng dụng truy cập tài nguyên từ xa.  
+
+- **Thành phần chính của hệ điều hành mạng**  
+  - **Dịch vụ mạng (Network Services)**: Quản lý các tài nguyên chia sẻ (máy in, tệp tin, cơ sở dữ liệu).  
+  - **Giao tiếp mạng (Networking Communication)**: Gồm các trình điều khiển giao diện mạng và giao thức truyền thông.  
+  - **Quản lý tài nguyên cục bộ**: Điều khiển các thiết bị và tài nguyên trên chính máy tính.  
+
+- **Phân loại hệ điều hành mạng**  
+  1. **Hệ điều hành đồng đẳng (Peer-to-Peer OS)**  
+     - Các máy tính vừa có thể làm máy khách (client), vừa có thể làm máy chủ (server).  
+     - Thường dùng trong mạng nhỏ, chia sẻ tài nguyên đơn giản.  
+  2. **Hệ điều hành máy khách (Client OS)**  
+     - Máy tính chạy client OS có thể truy cập tài nguyên mạng nhưng không cung cấp dịch vụ mạng.  
+  3. **Hệ điều hành máy chủ (Server OS)**  
+     - Cung cấp dịch vụ mạng như lưu trữ tệp, quản lý người dùng, xử lý yêu cầu từ client.  
+     - Máy chủ thường không dùng cho tác vụ cá nhân mà tập trung vào phục vụ mạng.  
+
+- **Vai trò của hệ điều hành mạng**  
+  - Hỗ trợ dịch vụ mạng như web, email, tệp tin, in ấn.  
+  - Tích hợp các giao thức truyền thông để đảm bảo kết nối hiệu quả.  
+  - Quản lý tài nguyên và người dùng trong mạng một cách bảo mật.  
+
+Hệ điều hành mạng là nền tảng quan trọng giúp các thiết bị và ứng dụng giao tiếp, chia sẻ tài nguyên trong hệ thống mạng.
+
+![Hình 2.5. Các thành phần chức năng của hệ điều hành mạng.](./img/2.5.png)
+
+Hình 2.5. Các thành phần chức năng của hệ điều hành mạng.
