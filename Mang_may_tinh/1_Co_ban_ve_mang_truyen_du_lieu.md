@@ -500,3 +500,172 @@ Chuyển mạch giúp định tuyến dữ liệu trong các mạng không hoàn
 
 Hình 2.12. Chuyển mạch người dùng qua mạng các nút trung gian
 
+## 2.5 Nhiệm vụ tổng quát của chuyển mạch (General task of switching)
+
+**Tổng quát về nhiệm vụ chuyển mạch:**  
+
+1. **Xác định luồng thông tin:** Xác định các dòng dữ liệu cần định tuyến qua mạng.  
+2. **Định tuyến luồng:** Xác định tuyến đường dữ liệu đi qua các nút mạng.  
+3. **Truyền dữ liệu qua mạng:** Chuyển tiếp dữ liệu tại các nút trung gian.  
+4. **Ghép kênh và tách kênh dữ liệu:** Quản lý nhiều luồng dữ liệu đi qua cùng một nút mạng.  
+
+### 2.5.1 Xác định các luồng thông tin (Defining information flows)
+
+**Xác định luồng thông tin:**  
+- **Luồng thông tin** là chuỗi liên tục của các đơn vị dữ liệu (gói, khung).  
+- Các luồng có thể phân biệt bằng địa chỉ nguồn, đích, số hiệu cổng, ứng dụng, v.v.  
+- Một luồng có thể được chia thành nhiều **luồng con**, mỗi luồng con có thể đi theo tuyến khác nhau.  
+
+**Phân loại dấu hiệu luồng:**  
+- **Dấu hiệu toàn cục:** Xác định duy nhất trong toàn mạng, thường là địa chỉ nguồn và đích.  
+- **Dấu hiệu cục bộ:** Chỉ có ý nghĩa trong phạm vi một nút hoặc liên kết cụ thể.  
+
+**Gán nhãn dữ liệu (Labeling):**  
+- Một số hệ thống dùng **nhãn định danh (label)** để xác định và tối ưu hóa xử lý dữ liệu.  
+- **Nhãn tĩnh:** Không thay đổi trong toàn bộ tuyến truyền.  
+- **Nhãn động:** Có thể thay đổi tại mỗi nút mạng.  
+
+Chuyển mạch dữ liệu dựa trên các tiêu chí như địa chỉ, nhãn, hoặc định danh ứng dụng, giúp tối ưu hóa hiệu suất và độ tin cậy của mạng.
+
+### 2.5.2 Định tuyến (Routing)
+
+- **Nhiệm vụ chính:**  
+  1. **Xác định tuyến đường:** Chọn dãy nút trung gian để truyền dữ liệu.  
+  2. **Thông báo tuyến:** Cập nhật bảng định tuyến trên các thiết bị mạng.  
+
+- **Tiêu chí chọn tuyến đường tối ưu:**  
+  - Băng thông kênh truyền.  
+  - Độ trễ truyền tải.  
+  - Số lượng nút trung gian.  
+  - Độ tin cậy của tuyến.  
+
+- **Phương pháp xác định tuyến:**  
+  - **Thủ công:** Do quản trị viên cài đặt cố định (ít linh hoạt).  
+  - **Tự động:** Dùng thuật toán và giao thức để cập nhật động.  
+
+- **Sử dụng metric để đánh giá tuyến:**  
+  - Metric là giá trị xác định độ dài tuyến (dựa trên độ trễ, chi phí, số nút, băng thông, v.v.).  
+  - Ví dụ: Đường có ít nút trung gian hơn nhưng băng thông thấp hơn có thể không phải là lựa chọn tốt nhất.  
+
+- **Bảng định tuyến:**  
+  - Ghi lại thông tin tuyến đường cho từng luồng dữ liệu.  
+  - Khi có dữ liệu đến, dựa vào bảng này để xác định hướng đi tiếp theo.  
+
+**Bảng 2.1. Mẫu bảng chuyển mạch**  
+
+| **Đặc điểm luồng**            | **Hướng truyền dữ liệu (số giao diện và/hoặc địa chỉ của nút tiếp theo)** |
+|-------------------------------|--------------------------------------------------------------------------|
+| n = (DA, SA, A)               | if/1                                                                    |
+
+- **DA**: Địa chỉ đích (Destination Address).  
+- **SA**: Địa chỉ nguồn (Source Address).  
+- **A**: Thuộc tính khác của luồng dữ liệu. 
+
+Định tuyến giúp tối ưu hóa việc truyền dữ liệu qua mạng, đảm bảo hiệu suất và độ tin cậy trong hệ thống mạng phức tạp.
+
+### 2.5.3 Chuyển tiếp dữ liệu (Data forwarding)
+
+**Truyền dữ liệu qua mạng (Data Forwarding):**  
+
+- **Quy trình truyền dữ liệu:**  
+  1. Gói tin được gửi từ nguồn qua giao diện đầu ra theo tuyến đã xác định.  
+  2. Các nút trung gian chuyển tiếp dữ liệu qua các giao diện tương ứng.  
+  3. Mỗi nút trung gian sử dụng **bảng chuyển mạch (switching table)** để xác định giao diện đầu ra.  
+  4. Gói tin đến đích theo đúng tuyến.  
+
+![Hình 2.14. Bộ chuyển mạch (Switch)](./img/2.14.png)
+
+Hình 2.14. Bộ chuyển mạch (Switch)
+
+- **Thiết bị chuyển mạch (Switch):**  
+  - **Chuyển mạch (Switching):** Quá trình di chuyển dữ liệu từ một giao diện sang giao diện khác trong cùng thiết bị.  
+  - **Giao diện switch (Switch Interface):** Cổng vật lý để nhận và gửi dữ liệu.  
+  - **Switch có thể là thiết bị chuyên dụng hoặc phần mềm trong máy tính.**  
+
+- **Phân loại chuyển mạch:**  
+  - **Chuyển mạch phần cứng:** Sử dụng thiết bị mạng như switch Ethernet.  
+  - **Chuyển mạch phần mềm:** Thực hiện trên máy tính với cơ chế định tuyến phần mềm.  
+
+- **Mạng chuyển mạch (Switching Network):**  
+  - Một tập hợp các nút chuyển mạch kết nối với nhau.  
+  - Ví dụ: Hình 2.15 mô tả một mạng chuyển mạch gồm các nút trung gian truyền tải dữ liệu giữa các điểm cuối.  
+
+![Hình 2.15. Mạng chuyển mạch (Switching network)](./img/2.15.png)
+
+Hình 2.15. Mạng chuyển mạch (Switching network)
+
+Chuyển mạch là bước quan trọng trong quá trình truyền dữ liệu, giúp tối ưu hiệu suất và đảm bảo thông tin đến đúng địa chỉ.
+
+### 2.5.4 Ghép kênh và tách kênh (Multiplexing and Demultiplexing)
+
+- **Ghép kênh (Multiplexing):**  
+  - Kết hợp nhiều luồng dữ liệu thành một dòng duy nhất để truyền qua một kênh vật lý.  
+  - Giảm số lượng đường truyền, tối ưu hóa tài nguyên mạng.  
+
+- **Tách kênh (Demultiplexing):**  
+  - Phân tách dữ liệu nhận được từ một dòng tổng hợp thành các luồng riêng biệt.  
+  - Đảm bảo dữ liệu đến đúng đích.  
+
+Hình 2.16 minh họa một đoạn mạng bao gồm ba bộ chuyển mạch (switches). Bộ chuyển mạch 1 có bốn giao diện mạng (network interfaces). Dữ liệu từ hai giao diện — 3 và 4 — được gửi đến giao diện 1. Dữ liệu này cần được truyền qua một kênh vật lý chung, do đó phải thực hiện thao tác ghép kênh (multiplexing).
+
+![Hình 2.16. Các thao tác ghép kênh và tách kênh trong chuyển mạch](./img/2.16.png)
+
+Hình 2.16. Các thao tác ghép kênh và tách kênh trong chuyển mạch
+
+- **Các phương pháp ghép kênh phổ biến:**  
+  1. **Ghép kênh theo thời gian (TDM - Time Division Multiplexing):**  
+     - Mỗi luồng dữ liệu sử dụng kênh vật lý vào những khoảng thời gian riêng biệt.  
+  2. **Ghép kênh theo tần số (FDM - Frequency Division Multiplexing):**  
+     - Mỗi luồng dữ liệu được truyền trên một dải tần riêng biệt.  
+  3. **Ghép kênh theo mã (CDM - Code Division Multiplexing):**  
+     - Sử dụng mã duy nhất để phân biệt từng luồng dữ liệu trên cùng một kênh.  
+
+![Hình 2.17. Bộ ghép kênh và bộ tách kênh](./img/2.17.png)
+
+Hình 2.17. Bộ ghép kênh và bộ tách kênh
+
+- **Ứng dụng:**  
+  - Sử dụng trong mạng viễn thông, truyền hình cáp, truyền dữ liệu internet.  
+  - Cần thiết để tối ưu băng thông trong mạng phức tạp.  
+
+Ghép kênh giúp tận dụng hiệu quả tài nguyên truyền dẫn, trong khi tách kênh đảm bảo dữ liệu được phân phối chính xác.
+
+### 2.5.5 Môi trường truyền dữ liệu chia sẻ (Shared data transmission medium)
+
+- **Môi trường không chia sẻ (Dedicated Medium):**  
+  - Mỗi đường truyền chỉ kết nối hai giao diện.  
+  - Dữ liệu được truyền theo mô hình song công (full-duplex).  
+
+- **Môi trường chia sẻ (Shared Medium):**  
+  - Một kênh vật lý kết nối nhiều thiết bị mạng.  
+  - Chỉ một thiết bị có thể truyền dữ liệu tại một thời điểm.  
+
+- **Loại kênh truyền:**  
+  1. **Kênh song công (Full-duplex):** Mỗi thiết bị có kênh riêng biệt cho gửi và nhận.  
+ 
+ ![Hình 2.18. Kênh song công - không có môi trường chia sẻ](./img/2.18.png)
+
+Hình 2.18. Kênh song công - không có môi trường chia sẻ
+
+  2. **Kênh bán song công (Half-duplex):** Dữ liệu được gửi từng lượt trên cùng một kênh.  
+  
+![Hình 2.19. Kênh bán song công - môi trường chia sẻ](./img/2.19.png)
+
+Hình 2.19. Kênh bán song công - môi trường chia sẻ
+
+  3. **Kênh nhiều thiết bị (Multiple Access Channel):** Một kênh được chia sẻ giữa nhiều thiết bị.  
+
+![Hình 2.20. Kênh với nhiều kết nối - môi trường chia sẻ](./img/2.20.png)
+
+Hình 2.20. Kênh với nhiều kết nối - môi trường chia sẻ
+
+- **Nhược điểm của môi trường chia sẻ:**  
+  - Dễ xảy ra xung đột khi nhiều thiết bị cùng gửi dữ liệu.  
+  - Băng thông bị chia sẻ giữa các thiết bị, làm giảm hiệu suất.  
+  - Cần cơ chế điều phối truy cập (ví dụ: CSMA/CD trong Ethernet).  
+
+- **Ứng dụng:**  
+  - Môi trường chia sẻ chủ yếu được sử dụng trong mạng không dây.  
+  - Mạng có dây hiện nay chủ yếu sử dụng mô hình chuyển mạch thay vì chia sẻ kênh.  
+
+Công nghệ chuyển mạch đã thay thế dần môi trường chia sẻ trong mạng có dây để tăng hiệu suất và khả năng mở rộng.
