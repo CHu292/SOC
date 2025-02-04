@@ -12,7 +12,7 @@
 
 # Phần I: Cơ bản về mạng truyền dữ liệu
 
-## Chương 1: Sự phát triển của mạng máy tính
+<h2 id="chuong-1-su-phat-trien-cua-mang-may-tinh">CHƯƠNG 1: Sự phát triển của mạng máy tính</h2>
 
 ### 1.1 Hai nguồn gốc của mạng máy tính
  
@@ -22,3 +22,5 @@
   2. **Phương tiện truyền thông tin (information transmission medium)** giúp mã hóa, truyền và xử lý dữ liệu trong các hệ thống **viễn thông (telecommunication systems)** như mạng điện thoại.
 
 ![Nguồn gốc của mạng máy tính](./img/1.1.png)
+
+Hình 1.1. Sự tiến hóa của mạng máy tính tại giao điểm của công nghệ tính toán và công nghệ viễn thông.
