@@ -669,3 +669,427 @@ Hình 2.20. Kênh với nhiều kết nối - môi trường chia sẻ
   - Mạng có dây hiện nay chủ yếu sử dụng mô hình chuyển mạch thay vì chia sẻ kênh.  
 
 Công nghệ chuyển mạch đã thay thế dần môi trường chia sẻ trong mạng có dây để tăng hiệu suất và khả năng mở rộng.
+
+<h1 id="chuong-3-chuyen-mach-kenh-va-chuyen-mach-goi">CHƯƠNG 3: Chuyển mạch kênh và chuyển mạch gói (Channel Switching and Packet Switching)</h1>
+
+- Hai phương pháp này đều có ưu và nhược điểm riêng.  
+- **Chuyển mạch kênh** phù hợp với các mạng điện thoại truyền thống, đảm bảo một kênh cố định cho mỗi cuộc gọi.  
+- **Chuyển mạch gói** tối ưu hơn cho lưu lượng mạng máy tính, đặc biệt là trong các hệ thống như Internet hay VoIP, do khả năng sử dụng băng thông hiệu quả hơn.  
+- Cuộc tranh luận về phương pháp nào tối ưu hơn vẫn chưa có kết luận rõ ràng, và cả hai công nghệ này sẽ tiếp tục cùng tồn tại trong thời gian dài.  
+
+### 3.1 Chuyển mạch kênh (Channel Switching)
+
+- Xuất hiện sớm hơn nhiều so với chuyển mạch gói, có nguồn gốc từ mạng điện thoại đầu tiên.  
+- Được sử dụng rộng rãi trong viễn thông, cung cấp các kênh kết nối ổn định và tốc độ cao.  
+- Ban đầu, kết nối giữa các máy tính sử dụng đường truyền điện thoại, sau đó mở rộng sang mạng truy cập Internet.  
+- Mạng chuyển mạch kênh bao gồm **các bộ chuyển mạch (switching nodes)** và **các nút cuối (end nodes)**, được kết nối thông qua **các đường truyền vật lý (lines)**.  
+- Khác với mạng chuyển mạch gói, mạng chuyển mạch kênh tạo ra **một kênh liên tục (circuit session)** giữa hai thuê bao trong suốt thời gian liên lạc.  
+- Quản lý luồng dữ liệu và định tuyến trong mạng chuyển mạch kênh có thể do quản trị viên thiết lập thủ công hoặc thông qua hệ thống định tuyến tự động.  
+
+### 3.1.1 Kênh sơ cấp (Elementary Channel)
+
+#### **Khái niệm kênh sơ cấp**
+- Trong mạng viễn thông với **chuyển mạch kênh** (channel switching), có một khái niệm quan trọng là **kênh sơ cấp**.
+- **Kênh sơ cấp** là một đặc tính kỹ thuật cơ bản của mạng chuyển mạch kênh, biểu thị một giá trị cố định về băng thông trong phạm vi mạng đó. 
+- Mọi tuyến liên kết trong mạng **chuyển mạch kênh** đều có thông lượng (băng thông) là **bội số nguyên của kênh sơ cấp**.
+
+#### **Định nghĩa kênh sơ cấp**
+- **Kênh sơ cấp** là đơn vị tối thiểu về **băng thông** của một tuyến liên kết trong mạng chuyển mạch kênh.
+- Khi thiết kế mạng, ta **chọn giá trị kênh sơ cấp sao cho không nhỏ hơn mức cần thiết để truyền dữ liệu với tải trọng dự kiến**.
+- **Ví dụ trong mạng điện thoại số hiện đại**:
+  - Kênh sơ cấp thường có tốc độ **64 kbit/s**.
+  - Đây là tốc độ tối thiểu đủ để truyền thoại số chất lượng tốt.
+
+#### **Đặc điểm của mạng chuyển mạch kênh**
+- Các tuyến liên kết có thể có băng thông khác nhau, nhưng luôn là **bội số nguyên của kênh sơ cấp**.
+- **Ví dụ**:
+  - Tuyến kết nối thuê bao điện thoại có thể có **2, 24, 30 kênh sơ cấp**.
+  - Tuyến kết nối giữa các tổng đài có thể có **480 hoặc 1920 kênh sơ cấp**.
+
+> **“Băng thông của mỗi tuyến liên kết trong mạng chuyển mạch kênh luôn bằng một số nguyên lần của kênh sơ cấp.”**
+
+#### **Cách chia băng thông theo công nghệ**
+- Kênh sơ cấp thực chất là **phần chia của băng thông tuyến liên kết**.
+- Tùy từng công nghệ, cách chia băng thông này có thể khác nhau:
+  - **Công nghệ phân chia theo thời gian (TDM - Time Division Multiplexing)**:  
+    - Dữ liệu được chia thành các khe thời gian cố định trên một đường truyền.
+  - **Công nghệ OTN (Optical Transport Network)**:  
+    - Mỗi kênh sơ cấp được ánh xạ vào một khung thời gian nhất định.
+  - **Công nghệ DWDM (Dense Wavelength Division Multiplexing)**:  
+    - Kênh sơ cấp được xác định dựa trên dải tần số hoặc bước sóng.
+
+---
+
+#### **Số hóa tiếng nói (Voice Digitization)**
+
+##### **Vấn đề số hóa tiếng nói**
+- **Truyền thông tin thoại dưới dạng tín hiệu số** là một bước tiến quan trọng trong viễn thông.
+- Vào những năm 1960, tiếng nói bắt đầu được truyền trong mạng điện thoại dưới dạng **chuỗi bit nhị phân** (0 và 1).
+- Quá trình này dựa trên nguyên lý **rời rạc hóa tín hiệu** (*discretization*), bao gồm:
+  1. **Rời rạc hóa theo thời gian** (*sampling in time*):  
+     - Lấy mẫu tín hiệu âm thanh với một khoảng thời gian cố định.
+  2. **Rời rạc hóa theo biên độ** (*sampling in amplitude*):  
+     - Chuyển đổi mỗi giá trị mẫu thành dạng số.
+
+##### **Nguyên lý rời rạc hóa**
+- **Hình 3.1** minh họa quá trình số hóa tiếng nói:
+  - **Trục hoành (thời gian)**: Các thời điểm t1, t2, t3... khi tín hiệu được lấy mẫu.
+  - **Trục tung (biên độ)**: Giá trị của tín hiệu tại mỗi thời điểm được lượng tử hóa thành số nhị phân.
+
+- **Để đảm bảo chất lượng thoại tốt, ta dùng:**
+  - **Tần số lấy mẫu 8000 Hz** (8 kHz) → tức **8000 mẫu/giây**.
+  - **Mỗi mẫu được mã hóa bằng 8 bit** → có tổng cộng **256 mức biên độ**.
+  - **Băng thông cần thiết cho một kênh thoại số hóa**:  
+    \[
+    8000 \times 8 = 64,000 \text{ bit/s} = 64 \text{ kbit/s}
+    \]
+  - **Kênh thoại số 64 kbit/s** này chính là **kênh sơ cấp** trong mạng điện thoại số.
+
+![Hình 3.1. Điều chế rời rạc của quá trình liên tục](./img/3.1.png)
+
+Hình 3.1. Điều chế rời rạc của quá trình liên tục
+
+---
+
+#### **3. Ví dụ về mạng chuyển mạch kênh (Hình 3.2)**
+
+##### **Giả định về một mạng chuyển mạch kênh**
+- Giả sử một đoạn mạng có **kênh sơ cấp 7 bit/s**.
+- Các tuyến liên kết có băng thông là **bội số của kênh sơ cấp**:  
+  - Có tuyến **2 kênh sơ cấp** (2 × 7 bit/s).  
+  - Có tuyến **3 kênh sơ cấp** (3 × 7 bit/s).  
+  - Có tuyến **4 kênh sơ cấp** (4 × 7 bit/s).  
+  - Có tuyến **5 kênh sơ cấp** (5 × 7 bit/s).  
+
+- **Mỗi tổng đài có các giao tiếp riêng (port)**, ví dụ:
+  - Tổng đài **S2**:
+    - **Port P1** có các kênh **1, 2, 3, 4**.
+    - **Port P3** có các kênh **1, 2, 3, 4, 5**.
+
+##### **Thiết lập kênh ghép (Composite Channel)**
+- **Mục tiêu**: Kết nối giữa thuê bao **A và B** qua mạng.
+- **Lộ trình truyền tín hiệu**:  
+  - Tín hiệu thoại từ A đến B sẽ đi qua **4 tổng đài (switch)**: **S1, S2, S3, S4**.
+  - Giả sử **luồng dữ liệu giữa A và B là 2T bit/s**.
+  - Khi đó, ta cần **2 kênh sơ cấp** để đảm bảo đủ băng thông.
+
+- **Cách thiết lập kênh ghép**:
+  - Trên mỗi tuyến liên kết, ta **cấp phát 2 kênh sơ cấp** cho phiên truyền dữ liệu.
+  - Các kênh sơ cấp này **được ghép lại** thành một **kênh tổng hợp**, giúp đảm bảo luồng dữ liệu trôi chảy.
+
+### **Kết luận**
+- Trong mạng chuyển mạch kênh, **mỗi kết nối cần một số kênh sơ cấp nhất định trên mọi tuyến liên kết**.
+- Khi cuộc gọi hoặc phiên truyền kết thúc, **các kênh sơ cấp được giải phóng và sẵn sàng sử dụng cho phiên khác**.
+
+![Hình 3.2. Kênh tổng hợp trong mạng chuyển mạch kênh](./img/3.2.png)
+
+### 3.1.2 Kênh tổng hợp (Composite Channel)
+
+#### **Định nghĩa**
+- **Kênh hợp thành** là một kênh được thiết lập bằng cách **ghép nối các kênh sơ cấp** dành riêng cho luồng thông tin cụ thể.
+- Trong ví dụ đang xét, kết nối giữa hai thuê bao **A và B** được thiết lập thông qua **kênh hợp thành có "độ dày" bằng hai kênh sơ cấp**.
+- Nếu lưu lượng truyền tải giữa A và B không vượt quá **T bit/s**, chỉ cần một kênh sơ cấp trong kênh hợp thành.
+
+#### **Yêu cầu băng thông**
+- Khi thuê bao trao đổi dữ liệu với **lưu lượng lớn hơn**, yêu cầu băng thông cao hơn.
+- Để đảm bảo thông lượng, cần dự trữ **số lượng kênh sơ cấp phù hợp trên mỗi tuyến truyền**.
+
+---
+
+#### **Đặc điểm của kênh hợp thành**
+
+Kênh hợp thành có những đặc điểm quan trọng sau:
+
+1. **Cấu trúc ổn định**:  
+   - Kênh hợp thành **luôn có cùng số lượng kênh sơ cấp trên toàn bộ tuyến đường**.
+
+2. **Dung lượng cố định**:  
+   - Kênh hợp thành có **băng thông cố định và không thay đổi** trong suốt phiên kết nối.
+
+3. **Tính tạm thời**:  
+   - Kênh hợp thành **chỉ tồn tại trong suốt phiên liên lạc** giữa hai thuê bao.
+
+4. **Dữ liệu truyền trong kênh hợp thành được sử dụng độc quyền**:  
+   - Không có ai khác được dùng những kênh sơ cấp đã cấp phát.
+
+5. **Dữ liệu được truyền không bị mất mát hoặc trễ**:  
+   - Dữ liệu đến thuê bao đích **với tốc độ nguồn gửi**, **không bị ảnh hưởng bởi lưu lượng mạng khác**.
+
+6. **Sau khi kết thúc phiên kết nối, các kênh sơ cấp được giải phóng**:  
+   - Chúng sẽ quay trở lại **bộ tài nguyên chung** để được tái sử dụng.
+
+---
+
+#### **Quá trình thiết lập kết nối trong mạng chuyển mạch kênh**
+
+- **Trong mạng điện thoại, có thể có nhiều cuộc gọi đồng thời**.
+- Mạng phải đảm bảo **chia sẻ tài nguyên hợp lý** để các thuê bao có thể thiết lập phiên kết nối.
+
+##### **Mô hình thiết lập kết nối**
+1. **Yêu cầu kết nối**:  
+   - Khi thuê bao muốn thiết lập cuộc gọi, một **yêu cầu được gửi vào mạng**.
+   - Mạng sẽ kiểm tra xem **có đủ kênh sơ cấp trên toàn bộ tuyến không**.
+
+2. **Xử lý khi tài nguyên không đủ**:  
+   - Nếu không còn đủ kênh sơ cấp, kết nối sẽ **bị từ chối** và báo lại cho thuê bao gọi đi.
+
+3. **Mạng chuyển mạch kênh hoạt động theo nguyên tắc định sẵn**:  
+   - **Các cuộc gọi đang hoạt động có ưu tiên cao hơn** so với cuộc gọi mới.
+
+---
+
+#### **Bảng định tuyến và quản lý tài nguyên**
+
+- Mỗi **tổng đài (switch) trong mạng** có **bảng định tuyến toàn cục** để xác định đường truyền kết nối.
+- **Ví dụ bảng định tuyến của tổng đài S4**:
+
+| Thuê bao | Cổng đầu ra (Giao tiếp) |
+|----------|-------------------------|
+| A        | P1                      |
+| B        | P2                      |
+| C        | P4                      |
+| D        | P3                      |
+
+- Khi một yêu cầu kết nối được xử lý:
+  - Mạng sẽ **ghi nhận thông tin kết nối** vào **bảng định tuyến cục bộ** trên từng tổng đài.
+  - Ví dụ bảng định tuyến của tổng đài S4:
+
+| Kênh sơ cấp đầu vào | Kênh sơ cấp đầu ra |
+|--------------------|------------------|
+| P1/Kênh 2        | P2/Kênh 1        |
+| P1/Kênh 3        | P2/Kênh 2        |
+
+- Các bảng này giúp **tổng đài quản lý các kênh sơ cấp đã cấp phát**.
+
+---
+
+#### **Từ chối kết nối trong mạng chuyển mạch kênh**
+
+- **Không phải mọi yêu cầu kết nối đều được chấp nhận**.
+- Nếu **không có đủ kênh sơ cấp trên toàn bộ tuyến truyền**, mạng sẽ từ chối kết nối.
+
+##### **Ví dụ về từ chối kết nối (Hình 3.3)**
+- Nếu **thuê bao C gửi yêu cầu kết nối đến thuê bao D** khi mạng đang bận:
+  - Tổng đài kiểm tra và thấy **chỉ còn 1 kênh sơ cấp trống, trong khi cần 2 kênh sơ cấp**.
+  - **Yêu cầu bị từ chối** và thuê bao C được thông báo rằng kết nối không thể thực hiện.
+
+- **Khi mạng bị quá tải, tỷ lệ từ chối kết nối tăng lên**.
+
+![Hình 3.3. Từ chối thiết lập kết nối trong mạng chuyển mạch kênh](./img/3.3.png)
+
+Hình 3.3. Từ chối thiết lập kết nối trong mạng chuyển mạch kênh
+
+---
+
+#### **Hai chế độ thiết lập kết nối**
+
+- **Chế độ tự động động (Dynamic Automatic Mode)**:  
+  - Thuê bao gửi yêu cầu và **mạng tự động kiểm tra, cấp phát tài nguyên**.
+  - Đây là cách hoạt động phổ biến trong **hệ thống điện thoại hiện đại**.
+
+- **Chế độ thủ công tĩnh (Static Manual Mode)**:  
+  - Trước đây, mạng điện thoại hoạt động theo cách thủ công:
+    - **Tổng đài viên gán kênh bằng tay** thông qua các **cáp kết nối**.
+    - **Ít linh hoạt, khó mở rộng**, nhưng phù hợp với **các kênh thuê riêng**.
+
+- Ngày nay, mạng **ưu tiên chế độ tự động**, nhưng **chế độ thủ công vẫn được dùng cho các kết nối cố định dài hạn**.
+
+---
+
+#### **Mạng chuyển mạch kênh như hệ thống đường ống dữ liệu (Hình 3.4)**
+
+- **Mạng chuyển mạch kênh có thể so sánh với một hệ thống đường ống dữ liệu**.
+- Quá trình thiết lập kết nối gồm hai bước:
+  1. **Xác minh đường truyền**:
+     - Kiểm tra **tính khả dụng của kênh sơ cấp trên toàn tuyến**.
+  2. **Cố định kênh sơ cấp**:
+     - Các kênh sơ cấp được **cấp phát độc quyền** cho cuộc gọi.
+
+- **Sau khi thiết lập kết nối, dữ liệu được truyền tự do mà không cần kiểm tra lại đường truyền**.
+
+- **So sánh với mạng dữ liệu gói**:
+  - Mạng chuyển mạch kênh **định tuyến cố định**, giống như hệ thống đường ống **có van đóng/mở**.
+  - Trái lại, **mạng chuyển mạch gói không có tuyến cố định**, giống như việc **gửi từng gói hàng qua nhiều tuyến đường khác nhau**.
+
+![Hình 3.4. Mạng chuyển mạch kênh như một hệ thống đường ống](./img/3.4.png)
+
+Hình 3.4. Mạng chuyển mạch kênh như một hệ thống đường ống
+
+---
+
+#### **8. Kết luận**
+- **Kênh hợp thành (Composite Channel)** giúp ghép nhiều kênh sơ cấp để đảm bảo băng thông đủ lớn.
+- **Quá trình thiết lập kết nối trong mạng chuyển mạch kênh gồm hai bước**:
+  1. Gửi yêu cầu kết nối.
+  2. Kiểm tra và cấp phát tài nguyên.
+- **Mạng có thể từ chối kết nối nếu không còn đủ kênh sơ cấp**.
+- **Có hai chế độ kết nối**:
+  - **Tự động động**: Phổ biến trong mạng hiện đại.
+  - **Thủ công tĩnh**: Dùng cho các kênh thuê riêng.
+- **Mạng chuyển mạch kênh có thể được so sánh với hệ thống đường ống dữ liệu**:
+  - **Sau khi kết nối được thiết lập, dữ liệu truyền tải diễn ra liền mạch mà không cần xử lý lại việc định tuyến**.
+
+---
+
+### 3.1.3 Hiệu suất kém khi truyền tải lưu lượng xung nhịp (Pulsing Traffic)**
+
+#### **Hiệu suất tối ưu của mạng chuyển mạch kênh**
+- **Mạng chuyển mạch kênh hoạt động hiệu quả nhất khi lưu lượng người dùng có tốc độ ổn định trong suốt phiên kết nối.**
+- Lý do là vì **băng thông của đường truyền đã được cố định trước**, tương ứng với **khả năng truyền tải tối đa của mạng**.
+- Khi **dữ liệu truyền tải không ổn định** (tức là có lúc cao, lúc thấp), hiệu suất sử dụng tài nguyên mạng bị giảm.
+
+#### **Lưu lượng thoại trong mạng chuyển mạch kênh**
+- Trong các cuộc gọi thoại:
+  - **Người dùng không nói liên tục** mà có những khoảng dừng giữa các câu.
+  - **Cường độ giọng nói thay đổi liên tục**, không phải lúc nào cũng sử dụng hết băng thông đường truyền.
+- Điều này làm cho **dữ liệu thoại trở nên không đều**, gây ra lãng phí tài nguyên đường truyền.
+- Tuy nhiên, **mạng chuyển mạch kênh vẫn phù hợp để truyền thoại**, vì:
+  - Dữ liệu thoại **có tính liên tục ở mức tương đối**.
+  - **Tốc độ truyền tải cần thiết không quá lớn** so với băng thông đã cấp phát.
+  - **Sự lãng phí tài nguyên là chấp nhận được**, vì không ảnh hưởng nghiêm trọng đến hiệu suất toàn hệ thống.
+
+---
+
+#### Hiệu suất kém hơn khi truyền tải dữ liệu máy tính (Computer Traffic)
+
+- **Lưu lượng dữ liệu máy tính có đặc tính xung nhịp mạnh hơn rất nhiều so với thoại.**
+- Điều này làm giảm đáng kể hiệu suất của mạng chuyển mạch kênh khi xử lý loại lưu lượng này.
+
+##### **Đặc điểm của lưu lượng dữ liệu máy tính**
+- Lưu lượng máy tính **luôn có tính xung nhịp**, ví dụ:
+  - Khi tải một trang web từ Internet, **tốc độ truyền dữ liệu tăng đột ngột** trong một khoảng thời gian ngắn.
+  - Sau khi tải xong, **tốc độ truyền giảm về 0** cho đến khi có một yêu cầu tải dữ liệu tiếp theo.
+- **Sự gián đoạn này làm lãng phí tài nguyên mạng chuyển mạch kênh**, vì:
+  - **Băng thông đã cấp phát không được sử dụng liên tục**.
+  - **Các kênh sơ cấp vẫn bị chiếm giữ ngay cả khi không có dữ liệu truyền tải**.
+
+##### **Ví dụ về sự lãng phí tài nguyên**
+- **Tưởng tượng bạn sử dụng thang máy trong một ga tàu điện ngầm:**
+  - Khi có người bước vào, thang máy hoạt động.
+  - Khi không có ai sử dụng, thang máy **vẫn chiếm không gian, nhưng không thực hiện chức năng nào cả**.
+- **Mạng chuyển mạch kênh cũng vậy:**
+  - Nếu sử dụng nó để tải dữ liệu từ Internet, kênh vẫn bị giữ nguyên dù **không có dữ liệu được truyền tải liên tục**.
+
+---
+
+#### 3. Kết luận
+- **Mạng chuyển mạch kênh không phù hợp để truyền tải lưu lượng dữ liệu máy tính**, vì:
+  - **Lưu lượng có đặc tính xung nhịp, không sử dụng hết băng thông cố định**.
+  - **Dữ liệu chỉ truyền trong một khoảng thời gian ngắn, sau đó dừng hẳn**.
+  - **Duy trì kênh cố định gây lãng phí tài nguyên mạng**.
+- Vì vậy, để truyền tải dữ liệu máy tính hiệu quả hơn, **cần có các giải pháp mạng phù hợp hơn**, chẳng hạn như:
+  - **Mạng chuyển mạch gói (Packet Switching)**:  
+    - Cấp phát tài nguyên theo nhu cầu, không giữ cố định kênh.
+  - **Công nghệ tối ưu hóa lưu lượng** để thích ứng với tính chất không liên tục của dữ liệu máy tính.
+
+---
+## 3.2 Chuyển mạch gói (Packet Switching)
+
+#### **Sự khác biệt giữa chuyển mạch gói và chuyển mạch kênh**
+- **Mạng chuyển mạch gói**, cũng như mạng chuyển mạch kênh, **bao gồm các bộ chuyển mạch được kết nối với nhau bằng các tuyến liên kết vật lý**.
+- Tuy nhiên, **cách truyền dữ liệu trong hai loại mạng này hoàn toàn khác nhau**:
+  - **Trong mạng chuyển mạch kênh**, trước khi truyền dữ liệu, **một kênh cố định được thiết lập và giữ nguyên trong suốt phiên kết nối**.
+  - **Trong mạng chuyển mạch gói**, **dữ liệu được chia thành các gói nhỏ**, có thể được truyền theo **các tuyến khác nhau mà không cần kênh cố định**.
+
+#### **Tính linh hoạt của chuyển mạch gói**
+- **Không cần đặt trước kênh cố định cho từng kết nối**, giúp sử dụng tài nguyên mạng hiệu quả hơn.
+- **Dữ liệu có thể đi theo nhiều tuyến khác nhau**, nghĩa là:
+  - **Một số gói có thể đến đích nhanh hơn gói khác**.
+  - **Có thể xảy ra mất gói hoặc tắc nghẽn mạng**, nhưng có cơ chế kiểm soát lỗi để khắc phục.
+
+---
+
+#### Nguyên lý hoạt động của chuyển mạch gói
+
+**Khái niệm gói tin (Packet)**
+- **Mọi dữ liệu được truyền qua mạng chuyển mạch gói đều được chia thành các gói nhỏ**.
+- **Mỗi gói gồm hai phần chính**:
+  1. **Phần tiêu đề (Header)**:
+     - Chứa địa chỉ đích và các thông tin điều khiển khác.
+  2. **Phần dữ liệu (Payload)**:
+     - Chứa nội dung thực tế được truyền tải.
+
+- **Một số gói còn có phần "đuôi" (Trailer)**:
+  - Phần này thường chứa **tổng kiểm tra lỗi (Checksum)** để xác định xem dữ liệu có bị lỗi khi truyền qua mạng hay không.
+
+ **Hình 3.5: Quá trình chia dữ liệu thành các gói**
+
+- **Quy trình truyền dữ liệu theo gói bao gồm 4 bước**:
+  1. **Bước 1**: Dữ liệu ban đầu được chuẩn bị để gửi.
+  2. **Bước 2**: Dữ liệu được chia nhỏ thành nhiều phần nhỏ.
+  3. **Bước 3**: Tạo các gói tin bằng cách thêm tiêu đề vào từng phần dữ liệu.
+  4. **Bước 4**: Ở đầu nhận, các gói tin được tập hợp lại để khôi phục dữ liệu gốc.
+
+![Hình 3.5. Phân chia dữ liệu thành các gói tin](./img/3.5.png)
+
+Hình 3.5. Phân chia dữ liệu thành các gói tin
+
+---
+
+**. Các loại gói tin trong mạng chuyển mạch gói**
+
+- **Độ dài gói tin có thể khác nhau tùy vào công nghệ sử dụng**:
+  - **ATM (Asynchronous Transfer Mode)**: Gói tin có độ dài cố định, gọi là **cell**.
+  - **Ethernet**: Có giới hạn độ dài tối thiểu và tối đa cho mỗi gói tin.
+
+- **Tốc độ truyền gói tin phụ thuộc vào nguồn phát**:
+  - Khác với mạng chuyển mạch kênh, nơi kênh truyền luôn sẵn sàng, **mạng chuyển mạch gói có thể tiếp nhận dữ liệu không đồng đều theo thời gian**.
+
+---
+
+**. Định tuyến gói tin trong mạng**
+
+- **Mạng chuyển mạch gói quyết định tuyến đường của từng gói dữ liệu theo hai cách**:
+  1. **Định tuyến tĩnh (Static Routing)**:
+     - Các tuyến đường được thiết lập trước và không thay đổi.
+  2. **Định tuyến động (Dynamic Routing)**:
+     - Các gói có thể được định tuyến theo **tình trạng hiện tại của mạng**.
+
+- **Một gói tin có thể đi qua nhiều bộ chuyển mạch trước khi đến đích**.
+- **Khác với chuyển mạch kênh, các gói tin không nhất thiết phải đi theo cùng một tuyến đường**.
+
+**Hình 3.6: Mô hình truyền gói tin trong mạng**
+
+- Gói tin từ **nhiều nút đầu cuối khác nhau** được gửi đến mạng chuyển mạch gói.
+- Mỗi gói có thể đi theo **những tuyến đường khác nhau** trước khi đến đích.
+
+![Hình 3.6. Truyền dữ liệu qua mạng dưới dạng các gói tin](./img/3.6.png)
+
+Hình 3.6. Truyền dữ liệu qua mạng dưới dạng các gói tin
+
+---
+
+#### Hiệu suất sử dụng băng thông trong mạng chuyển mạch gói
+
+- **Gói tin từ nhiều nguồn khác nhau có thể được truyền qua cùng một tuyến liên kết**, làm **tận dụng tối đa băng thông sẵn có**.
+- **Không giống mạng chuyển mạch kênh, băng thông không bị lãng phí khi không có dữ liệu cần truyền**.
+
+**Hình 3.7: Hiện tượng san bằng lưu lượng mạng**
+
+- Dữ liệu từ nhiều nguồn khác nhau được trộn vào nhau, giúp **giảm thiểu hiện tượng tắc nghẽn** và **sử dụng băng thông hiệu quả hơn**.
+
+![Hình 3.7. Làm mượt lưu lượng trong các mạng chuyển mạch gói tin](./img/3.7.png)
+
+Hình 3.7. Làm mượt lưu lượng trong các mạng chuyển mạch gói tin
+
+---
+
+#### **6. Kết luận**
+- **Mạng chuyển mạch gói linh hoạt hơn mạng chuyển mạch kênh**, do:
+  - **Không cần thiết lập trước một kênh cố định**.
+  - **Có thể truyền dữ liệu theo nhiều tuyến khác nhau**.
+  - **Sử dụng tài nguyên mạng hiệu quả hơn**.
+
+- **Tuy nhiên, nhược điểm của mạng chuyển mạch gói là**:
+  - **Gói tin có thể bị trễ hoặc mất mát**.
+  - **Cần cơ chế kiểm soát lỗi và sắp xếp lại gói tin**.
+
+- **Ứng dụng chính của chuyển mạch gói**:
+  - **Internet** hoạt động dựa trên nguyên lý này.
+  - **Các mạng truyền dữ liệu tốc độ cao** sử dụng để tối ưu hóa tài nguyên.
+
+---
+
+### 3.2.1 Bộ đệm gói (Packet Buffering)
+
+
