@@ -297,3 +297,206 @@ Hệ điều hành mạng là nền tảng quan trọng giúp các thiết bị 
 ![Hình 2.5. Các thành phần chức năng của hệ điều hành mạng.](./img/2.5.png)
 
 Hình 2.5. Các thành phần chức năng của hệ điều hành mạng.
+
+### 2.2.3 Ứng dụng mạng (Network Applications)
+
+- **Ứng dụng cục bộ (Local Application)**  
+  - Chạy hoàn toàn trên một máy tính, chỉ sử dụng tài nguyên cục bộ.  
+  - Không yêu cầu kết nối mạng để hoạt động.  
+
+![Hình 2.6 a. Các loại ứng dụng hoạt động trong mạng.](./img/2.6.a.png)
+
+Hình 2.6 a. Các loại ứng dụng hoạt động trong mạng.
+
+- **Ứng dụng mạng tập trung (Centralized Network Application)**  
+  - Chạy trên một máy tính nhưng truy cập tài nguyên từ các máy khác trong mạng.  
+  - Ví dụ: Một ứng dụng trên máy khách lấy dữ liệu từ máy chủ tệp và gửi lệnh in đến máy chủ in.  
+
+![Hình 2.6 b. Các loại ứng dụng hoạt động trong mạng.](./img/2.6.b.png)
+
+Hình 2.6 b. Các loại ứng dụng hoạt động trong mạng.
+
+- **Ứng dụng mạng phân tán (Distributed Network Application)**  
+  - Bao gồm nhiều phần chạy trên các máy tính khác nhau, cùng phối hợp xử lý nhiệm vụ.  
+  - Ví dụ: Một hệ thống phân tích dữ liệu có thể chia các phần xử lý giao diện, phân tích dữ liệu và lưu trữ lên nhiều máy chủ khác nhau.  
+
+![Hình 2.6 c. Các loại ứng dụng hoạt động trong mạng.](./img/2.6.c.png)
+
+Hình 2.6 c. Các loại ứng dụng hoạt động trong mạng.
+
+- **Dịch vụ web phân tán (Distributed Web Services)**  
+  - Một dạng ứng dụng mạng phân tán, với máy chủ web xử lý hàng trăm, hàng nghìn yêu cầu từ trình duyệt của các thiết bị khác nhau.  
+  - Ví dụ: Hệ thống xử lý dữ liệu của CERN với hơn 30.000 máy tính được kết nối.  
+
+![**Hình 2.7.** Dịch vụ web như một ứng dụng phân tán.](./img/2.7.png)
+
+**Hình 2.7.** Dịch vụ web như một ứng dụng phân tán.
+
+Ứng dụng mạng giúp tối ưu hóa hiệu suất, phân tán tài nguyên và hỗ trợ nhiều người dùng đồng thời.
+
+## 2.3 Truyền dữ liệu vật lý qua đường truyền (Physical Data Transmission via Communication Lines)
+
+### 2.3.1 Mã hóa (Encoding) 
+
+- **Mã hóa tín hiệu**  
+  - Dữ liệu trong máy tính được biểu diễn bằng **mã nhị phân (0,1)** dưới dạng tín hiệu điện hoặc quang.  
+  - Có nhiều phương pháp mã hóa:  
+    - **Mã hóa tiềm năng**: 0 và 1 được biểu diễn bằng các mức điện áp khác nhau.  
+    - **Mã hóa xung**: Sử dụng các xung có cường độ khác nhau để biểu diễn bit dữ liệu.  
+    - **Điều chế (Modulation)**: Biểu diễn dữ liệu bằng sóng sin để truyền trên kênh có chất lượng thấp.  
+
+![Hình 2.8. Ví dụ về cách biểu diễn thông tin rời rạc](./img/2.8.png)
+
+Hình 2.8. Ví dụ về cách biểu diễn thông tin rời rạc
+
+- **Vấn đề suy giảm tín hiệu và nhiễu**  
+  - Truyền dữ liệu qua dây dẫn dài dễ bị nhiễu và biến dạng tín hiệu.  
+  - Giải pháp: Dùng các phương pháp mã hóa phù hợp và bổ sung cơ chế kiểm tra lỗi.  
+
+- **Đồng bộ hóa tín hiệu (Synchronization)**  
+  - Tránh lỗi do lệch pha hoặc mất đồng bộ giữa máy phát và máy thu.  
+  - Có thể sử dụng tín hiệu xung đồng bộ hoặc mã đồng bộ trong dữ liệu truyền.  
+
+- **Kiểm tra lỗi truyền dữ liệu**  
+  - **Tính tổng kiểm tra (Checksum)**: Tính toán và gửi kèm dữ liệu để phát hiện lỗi.  
+  - **Tín hiệu xác nhận (Acknowledgment Signal)**: Máy thu phản hồi để xác nhận dữ liệu nhận đúng.  
+
+Những cơ chế này giúp truyền dữ liệu qua mạng ổn định, chính xác, giảm thiểu lỗi và mất dữ liệu.
+
+### 2.3.2 Đặc tính của các kênh vật lý (Characteristics of Physical Channels)
+
+**Đặc điểm của kênh truyền vật lý:**  
+
+- **Tải dữ liệu đầu vào (Offered Load):**  
+  - Tổng lượng dữ liệu mà ứng dụng gửi vào mạng.  
+  - Được đo bằng tốc độ tạo dữ liệu (bit/s).  
+
+- **Băng thông (Throughput Capacity):**  
+  - Tốc độ tối đa mà kênh có thể truyền dữ liệu.  
+  - Không phụ thuộc vào tải đầu vào mà do đặc tính vật lý của kênh quyết định.  
+  - Ví dụ: Ethernet quang có thể đạt 10 Gbit/s, Fast Ethernet đạt 100 Mbit/s, Gigabit Ethernet đạt 1 Gbit/s.  
+
+- **Tắc nghẽn và nút cổ chai (Bottleneck):**  
+  - Tốc độ truyền của một đường dẫn bị giới hạn bởi thành phần chậm nhất trong tuyến.  
+
+- **Tốc độ truyền dữ liệu thực tế (Information Rate):**  
+  - Tổng lượng dữ liệu thực tế truyền qua kênh trong một khoảng thời gian.  
+  - Bị ảnh hưởng bởi lỗi truyền, mất gói, nghẽn mạng.  
+
+**Các kiểu kênh truyền:**  
+
+- **Kênh song công (Full-duplex):**  
+  - Truyền dữ liệu đồng thời theo cả hai hướng.  
+  - Ví dụ: Cáp quang có hai sợi riêng biệt cho hai chiều truyền.  
+
+- **Kênh bán song công (Half-duplex):**  
+  - Truyền theo hai hướng nhưng không đồng thời, từng bên lần lượt truyền.  
+  - Ví dụ: Bộ đàm.  
+
+- **Kênh đơn công (Simplex):**  
+  - Chỉ truyền theo một chiều duy nhất.  
+  - Ví dụ: Truyền hình cáp.  
+
+Các đặc điểm này giúp đánh giá hiệu suất và lựa chọn phương thức truyền phù hợp trong mạng.
+
+## 2.4 Vấn đề kết nối nhiều máy tính
+
+### 2.4.1 Cấu trúc liên kết của các kết nối vật lý (Topology of Physical Connections)
+ 
+ > **Cấu trúc liên kết mạng (Network Topology)** là cấu hình của một đồ thị (graph), trong đó các đỉnh (vertices) tương ứng với các nút cuối (end nodes) của mạng (ví dụ: máy tính) và thiết bị truyền thông (communication devices) (ví dụ: bộ định tuyến – router), và các cạnh (edges) là các kết nối thông tin vật lý giữa các đỉnh.
+
+- **Tôpô mạng:**  
+  - Cấu trúc kết nối giữa các máy tính và thiết bị mạng.  
+  - Xác định cách dữ liệu được truyền giữa các thiết bị.  
+
+![Hình 2.9. Các kiểu kết nối máy tính](./img/2.9.png)
+
+Hình 2.9. Các kiểu kết nối máy tính
+
+
+- **Các kiểu tôpô phổ biến:**  
+  1. **Tôpô hoàn toàn liên kết (Fully Connected)**  
+     - Mỗi máy kết nối trực tiếp với tất cả các máy khác.  
+     - Tăng độ tin cậy nhưng tốn nhiều cổng kết nối và dây cáp.  
+
+  2. **Tôpô hình lưới (Mesh Topology)**  
+     - Một số nút kết nối trực tiếp với nhau, các nút khác sử dụng đường dẫn trung gian.  
+     - Cải thiện khả năng chịu lỗi, thường dùng trong mạng lớn.  
+
+  3. **Tôpô vòng (Ring Topology)**  
+     - Các thiết bị kết nối theo vòng khép kín.  
+     - Dữ liệu đi theo một hướng cố định, cần có cơ chế kiểm soát lỗi.  
+
+  4. **Tôpô hình sao (Star Topology)**  
+     - Mỗi thiết bị kết nối với một trung tâm (hub/switch).  
+     - Dễ dàng mở rộng, nhưng nếu trung tâm hỏng, toàn mạng ngừng hoạt động.  
+
+  5. **Tôpô cây (Hierarchical Star/Tree Topology)**  
+     - Kết hợp nhiều tôpô hình sao thành hệ thống phân cấp.  
+     - Dùng trong mạng LAN lớn.  
+
+  6. **Tôpô bus (Bus Topology)**  
+     - Tất cả thiết bị chia sẻ một đường truyền chính.  
+     - Dễ triển khai nhưng hiệu suất giảm khi số nút tăng.  
+
+![Hình 2.10. Các loại cấu trúc mạng phổ biến](./img/2.10.png)
+
+Hình 2.10. Các loại cấu trúc mạng phổ biến
+
+  7. **Tôpô hỗn hợp (Hybrid Topology)**  
+     - Kết hợp nhiều kiểu tôpô khác nhau.  
+     - Phù hợp với hệ thống mạng lớn và phức tạp.  
+
+![Hình 2.11. Cấu trúc mạng hỗn hợp.](./img/2.11.png)
+
+Hình 2.11. Cấu trúc mạng hỗn hợp.
+
+Việc lựa chọn tôpô phù hợp giúp tối ưu hiệu suất, độ tin cậy và khả năng mở rộng của mạng.
+
+### 2.4.2 Định địa chỉ các nút mạng
+
+**Định địa chỉ nút mạng (Network Node Addressing):**  
+
+- **Các loại địa chỉ mạng:**  
+  1. **Địa chỉ đơn nhất (Unicast Address):** Gán cho một thiết bị duy nhất trong mạng.  
+  2. **Địa chỉ nhóm (Multicast Address):** Xác định một nhóm thiết bị, dữ liệu gửi đến tất cả các nút trong nhóm.  
+  3. **Địa chỉ quảng bá (Broadcast Address):** Gửi đến toàn bộ thiết bị trong mạng.  
+  4. **Địa chỉ phát tán ngẫu nhiên (Anycast Address):** Chỉ gửi đến một nút gần nhất trong nhóm.  
+
+- **Loại địa chỉ:**  
+  - **Địa chỉ số (Numeric Address):** Ví dụ: 192.168.1.1.  
+  - **Địa chỉ ký hiệu (Symbolic Address):** Ví dụ: `ftp.arch1.ucl.ac.uk`.  
+
+- **Tổ chức địa chỉ:**  
+  - **Địa chỉ phẳng (Flat Addressing):** Không có cấu trúc phân cấp, như địa chỉ MAC.  
+  - **Địa chỉ phân cấp (Hierarchical Addressing):** Chia thành nhóm, miền, nút giúp dễ quản lý và định tuyến.  
+
+- **Dịch địa chỉ:**  
+  - **Phương pháp tập trung:** Máy chủ lưu trữ bảng ánh xạ tên và địa chỉ số (DNS).  
+  - **Phương pháp phân tán:** Máy tính tự xác định địa chỉ phần cứng bằng giao thức ARP.  
+
+- **Số hiệu cổng (Port Number):**  
+  - Dùng để định danh ứng dụng hoặc dịch vụ đang chạy trên thiết bị.  
+  - Ví dụ: HTTP (80), HTTPS (443).  
+
+Cấu trúc địa chỉ mạng giúp tổ chức và quản lý việc truyền dữ liệu hiệu quả, hỗ trợ định tuyến linh hoạt.
+
+### 2.4.3 Chuyển mạch (Switching)
+
+**Chuyển mạch (Switching):**  
+
+- **Khái niệm:**  
+  - Khi hai nút mạng không kết nối trực tiếp, dữ liệu phải đi qua các nút trung gian (transit nodes).  
+  - Quá trình này được gọi là **chuyển mạch (switching)**, và chuỗi các nút trung gian tạo thành **tuyến đường (route).**  
+
+- **Ví dụ minh họa:**  
+  - Trong mạng có các nút 2 và 4 không kết nối trực tiếp.  
+  - Dữ liệu phải đi qua các nút trung gian 1 và 5 theo tuyến **2 → 1 → 5 → 4**.  
+  - Nút 2 là điểm gửi, nút 4 là điểm nhận, các nút 1 và 5 đóng vai trò trung gian.  
+
+Chuyển mạch giúp định tuyến dữ liệu trong các mạng không hoàn toàn kết nối, đảm bảo liên lạc giữa mọi thiết bị.
+
+![Hình 2.12. Chuyển mạch người dùng qua mạng các nút trung gian](./img/2.12.png)
+
+Hình 2.12. Chuyển mạch người dùng qua mạng các nút trung gian
+
