@@ -22,6 +22,9 @@
   ```bash
   tcpdump -D
   ```
+
+  ![kiểm tra danh sách giao diện mạng](./img/1.png)
+
 - **Bắt gói tin trên một giao diện**  
   ```bash
   sudo tcpdump -i eth0
@@ -32,6 +35,8 @@
   ```bash
   sudo tcpdump -i eth0 -w file.pcap
   ```
+![Lưu gói tin](./img/2.png)
+
   Đọc lại file đã lưu:
   ```bash
   tcpdump -r file.pcap
