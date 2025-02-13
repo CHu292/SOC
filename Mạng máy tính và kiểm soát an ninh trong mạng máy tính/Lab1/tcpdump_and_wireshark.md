@@ -194,4 +194,199 @@ sudo tcpdump -i eth0 port 22
 
 ---
 
-Với các kiến thức trên, bạn có thể sử dụng **tcpdump** để chẩn đoán mạng, phát hiện tấn công, kiểm tra kết nối và phân tích lưu lượng hiệu quả! 🚀
+## **Hướng dẫn sử dụng Wireshark để phân tích gói tin mạng**
+
+Wireshark là một công cụ mạnh mẽ dùng để bắt và phân tích lưu lượng mạng theo cách trực quan hơn so với tcpdump.
+
+---
+
+## **1. Cài đặt Wireshark**
+### **Trên Linux**
+- **Ubuntu/Debian**:
+  ```bash
+  sudo apt update
+  sudo apt install wireshark
+  ```
+  Trong quá trình cài đặt, nếu được hỏi *"Should non-superusers be able to capture packets?"*, chọn **Yes** để sử dụng Wireshark mà không cần quyền root.
+
+- **CentOS/RHEL**:
+  ```bash
+  sudo yum install wireshark
+  ```
+
+### **Trên macOS**
+Nếu đã cài **Homebrew**, chạy:
+```bash
+brew install wireshark
+```
+
+### **Trên Windows**
+1. Tải Wireshark từ trang chính thức: [https://www.wireshark.org/download.html](https://www.wireshark.org/download.html)
+2. Chạy file `.exe` và làm theo hướng dẫn.
+
+---
+
+## **2. Mở Wireshark và bắt gói tin**
+### **Bước 1: Chạy Wireshark**
+Mở Wireshark từ Start Menu (Windows) hoặc terminal (`wireshark &` trên Linux).
+
+### **Bước 2: Chọn giao diện mạng**
+- Sau khi mở Wireshark, bạn sẽ thấy danh sách các **giao diện mạng** (`Interfaces`).
+- Chọn giao diện cần theo dõi (VD: Wi-Fi, Ethernet) rồi bấm **Start**.
+
+### **Bước 3: Dừng bắt gói tin**
+- Nhấn nút **Stop** (🔴) hoặc phím **Ctrl + E**.
+
+---
+
+## **3. Lọc gói tin**
+Wireshark cho phép sử dụng bộ lọc để dễ dàng tìm kiếm gói tin quan trọng.
+
+### **a) Lọc bằng Display Filter (lọc hiển thị)**
+- **Lọc theo giao thức**:
+  ```plaintext
+  http
+  tcp
+  udp
+  icmp
+  dns
+  ```
+- **Lọc theo địa chỉ IP**:
+  ```plaintext
+  ip.src == 192.168.1.1  # Chỉ hiển thị gói tin từ IP này
+  ip.dst == 192.168.1.100  # Chỉ hiển thị gói tin đến IP này
+  ip.addr == 192.168.1.1  # Hiển thị cả gửi và nhận từ IP này
+  ```
+- **Lọc theo cổng**:
+  ```plaintext
+  tcp.port == 80   # Chỉ hiển thị gói tin HTTP
+  udp.port == 53   # Chỉ hiển thị gói tin DNS
+  ```
+- **Lọc theo từ khóa trong dữ liệu gói tin**:
+  ```plaintext
+  frame contains "password"  # Tìm gói tin chứa từ "password"
+  ```
+
+### **b) Lọc bằng Capture Filter (lọc trong quá trình bắt)**
+- **Bắt gói tin từ IP cụ thể**:
+  ```plaintext
+  host 192.168.1.1
+  ```
+- **Bắt gói tin TCP hoặc UDP**:
+  ```plaintext
+  tcp
+  udp
+  ```
+- **Bắt gói tin HTTP (cổng 80)**:
+  ```plaintext
+  port 80
+  ```
+- **Bắt gói tin ICMP (ping)**:
+  ```plaintext
+  icmp
+  ```
+
+---
+
+## **4. Phân tích gói tin**
+### **a) Hiểu về giao diện Wireshark**
+Wireshark có **ba phần chính**:
+1. **Danh sách gói tin** (Packet List): Hiển thị tất cả gói tin đã bắt được.
+2. **Chi tiết gói tin** (Packet Details): Hiển thị thông tin chi tiết về gói tin đang chọn.
+3. **Dữ liệu thô (Packet Bytes)**: Hiển thị dữ liệu dạng hex và ASCII.
+
+### **b) Các thông tin quan trọng trong một gói tin**
+- **Source (SRC)**: Địa chỉ IP nguồn.
+- **Destination (DST)**: Địa chỉ IP đích.
+- **Protocol**: Giao thức (TCP, UDP, ICMP, DNS, HTTP...).
+- **Length**: Kích thước gói tin.
+- **Info**: Thông tin tóm tắt gói tin.
+
+### **c) Xem nội dung gói tin**
+- Nhấn vào một gói tin trong danh sách.
+- Dưới phần **Packet Details**, mở rộng mục **Hypertext Transfer Protocol** để xem nội dung HTTP.
+- Đối với TCP, có thể thấy cổng và các cờ (SYN, ACK...).
+
+---
+
+## **5. Xuất và phân tích dữ liệu**
+### **a) Lưu gói tin**
+- **Lưu gói tin đã bắt**:
+  1. Vào **File > Save As**.
+  2. Chọn định dạng `.pcapng` hoặc `.pcap`.
+
+- **Mở file đã lưu**:
+  ```bash
+  wireshark file.pcap
+  ```
+
+### **b) Xuất dữ liệu gói tin**
+- Xuất dữ liệu sang **CSV, JSON, XML** qua **File > Export Packet Dissections**.
+
+---
+
+## **6. Một số tình huống thực tế**
+### **a) Phân tích HTTP để tìm dữ liệu đăng nhập**
+1. Sử dụng filter:
+   ```plaintext
+   http.request.method == "POST"
+   ```
+2. Kiểm tra phần **Form data** để xem username, password (nếu không mã hóa).
+
+### **b) Xem các kết nối TCP đang mở**
+- Dùng filter:
+  ```plaintext
+  tcp.flags.syn == 1 and tcp.flags.ack == 0
+  ```
+  → Hiển thị các gói **SYN**, tức là kết nối TCP mới.
+
+### **c) Kiểm tra tấn công DDoS**
+- Dùng filter:
+  ```plaintext
+  ip.src == 192.168.1.1 and tcp.flags.syn == 1
+  ```
+  → Kiểm tra xem có quá nhiều kết nối SYN từ một IP không.
+
+---
+
+## **7. Mẹo nâng cao**
+### **a) Dùng Wireshark để theo dõi các thiết bị IoT**
+- Dùng filter:
+  ```plaintext
+  eth.src == 00:1A:2B:3C:4D:5E
+  ```
+  → Lọc theo địa chỉ MAC của thiết bị IoT.
+
+### **b) Phân tích DNS requests để phát hiện malware**
+- Dùng filter:
+  ```plaintext
+  dns.qry.name contains "malicious-domain.com"
+  ```
+  → Xem liệu thiết bị có đang truy cập domain độc hại không.
+
+### **c) Theo dõi tải xuống file từ HTTP**
+- Dùng filter:
+  ```plaintext
+  http.response.code == 200 and http.content_type contains "application/octet-stream"
+  ```
+  → Xem gói tin tải xuống file.
+
+---
+
+## **8. So sánh Wireshark với tcpdump**
+| Tính năng         | Wireshark | tcpdump |
+|------------------|-----------|---------|
+| Giao diện đồ họa | ✅ Có | ❌ Không |
+| Lọc mạnh mẽ | ✅ Có | ✅ Có |
+| Phân tích dữ liệu | ✅ Có | ❌ Không |
+| Hiển thị dữ liệu trực quan | ✅ Có | ❌ Không |
+| Lưu gói tin | ✅ Có | ✅ Có |
+
+---
+
+## **9. Kết luận**
+Wireshark là một công cụ phân tích mạng mạnh mẽ, giúp kiểm tra lưu lượng, phát hiện tấn công và chẩn đoán lỗi mạng dễ dàng hơn. Nếu bạn mới bắt đầu, hãy thử:
+- Bắt gói tin HTTP.
+- Xem lưu lượng DNS.
+- Lọc các kết nối TCP mở.
+
