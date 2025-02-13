@@ -1,4 +1,4 @@
-### Kiến thức cơ bản về **tcpdump**:
+# Kiến thức cơ bản về **tcpdump**:
 **tcpdump** là một công cụ dòng lệnh dùng để bắt gói tin trên mạng, giúp phân tích và chẩn đoán lưu lượng mạng.
 
 ## 1. **Cài đặt tcpdump**
@@ -194,7 +194,7 @@ sudo tcpdump -i eth0 port 22
 
 ---
 
-## **Hướng dẫn sử dụng Wireshark để phân tích gói tin mạng**
+# **Hướng dẫn sử dụng Wireshark để phân tích gói tin mạng**
 
 Wireshark là một công cụ mạnh mẽ dùng để bắt và phân tích lưu lượng mạng theo cách trực quan hơn so với tcpdump.
 
@@ -390,3 +390,190 @@ Wireshark là một công cụ phân tích mạng mạnh mẽ, giúp kiểm tra 
 - Xem lưu lượng DNS.
 - Lọc các kết nối TCP mở.
 
+
+# **Giải thích về ACK trong mạng máy tính (TCP/IP)**
+
+#### **1. ACK là gì?**
+ACK (**Acknowledgment**) là một cờ (**flag**) trong giao thức **TCP** (Transmission Control Protocol), dùng để xác nhận rằng một gói tin hoặc một tập dữ liệu đã được nhận thành công.
+
+- Khi một thiết bị gửi dữ liệu, nó mong đợi một **ACK** từ phía nhận để xác nhận rằng dữ liệu đã đến nơi.
+- Nếu không nhận được **ACK**, thiết bị gửi sẽ giả định rằng gói tin bị mất hoặc lỗi và gửi lại.
+
+---
+
+#### **2. Cách hoạt động của ACK trong TCP**
+Giao thức TCP sử dụng **cơ chế bắt tay ba bước (3-way handshake)** để thiết lập kết nối giữa hai thiết bị. **ACK đóng vai trò quan trọng** trong quá trình này.
+
+**🌟 Bắt tay 3 bước của TCP (TCP 3-way Handshake):**
+1. **SYN (Synchronize):** Máy gửi (Client) gửi một gói tin có cờ **SYN** đến máy nhận (Server) để bắt đầu kết nối.
+2. **SYN-ACK:** Máy nhận phản hồi bằng một gói tin có cờ **SYN và ACK** để xác nhận yêu cầu kết nối.
+3. **ACK:** Máy gửi gửi lại một gói tin có cờ **ACK** để hoàn tất quá trình bắt tay.
+
+✅ Sau khi quá trình bắt tay hoàn tất, dữ liệu mới có thể truyền tải giữa hai máy.
+
+---
+
+#### **3. Ví dụ về ACK trong truyền dữ liệu TCP**
+🔹 **Ví dụ:**
+- Máy A gửi một gói tin có số thứ tự (`SEQ = 1`) đến Máy B.
+- Máy B nhận được gói tin và phản hồi lại bằng một **ACK** với **Số ACK (ACK Number) = 2**, nghĩa là nó đã nhận được gói `SEQ = 1` và mong đợi gói tiếp theo có `SEQ = 2`.
+- Nếu Máy A không nhận được **ACK**, nó sẽ gửi lại gói tin.
+
+**Ví dụ thực tế trên Wireshark:**
+```plaintext
+Packet 1: A → B  [SEQ=1, ACK=0, SYN]
+Packet 2: B → A  [SEQ=1, ACK=2, SYN-ACK]
+Packet 3: A → B  [SEQ=2, ACK=2, ACK]
+```
+
+---
+
+#### **4. Vai trò của ACK trong kiểm soát lỗi**
+- Nếu một gói tin bị mất hoặc hỏng, máy nhận **không gửi ACK**.
+- Sau một khoảng thời gian, máy gửi sẽ gửi lại gói tin.
+- Đây là cơ chế **TCP Retransmission** giúp đảm bảo dữ liệu không bị mất.
+
+🛑 **Ví dụ lỗi trong Wireshark**:
+```plaintext
+Packet 1: A → B  [SEQ=1, ACK=0]
+Packet 2: A → B  [SEQ=1, ACK=0] (Retransmission, do không nhận được ACK)
+```
+
+---
+
+#### **5. Một số trạng thái ACK đặc biệt**
+1. **ACK bị mất**:
+   - Máy gửi sẽ gửi lại dữ liệu sau khi hết **Timeout**.
+
+2. **ACK bị trễ (Delayed ACK)**:
+   - TCP có thể trì hoãn ACK một chút để giảm số lượng gói tin trên mạng.
+
+3. **ACK kép (Duplicate ACK)**:
+   - Nếu một gói tin bị mất, thiết bị nhận có thể gửi **ACK trùng lặp** để báo cho thiết bị gửi biết cần retransmit.
+
+4. **Fast Retransmit (Gửi lại nhanh)**:
+   - Nếu thiết bị gửi nhận được 3 **ACK trùng lặp**, nó sẽ hiểu rằng một gói tin đã mất và gửi lại ngay mà không cần đợi timeout.
+
+---
+
+#### **6. So sánh TCP ACK với UDP**
+| **Tính năng** | **TCP (ACK có mặt)** | **UDP (Không có ACK)** |
+|--------------|--------------------|----------------------|
+| Đảm bảo dữ liệu | ✅ Có (nhờ ACK) | ❌ Không (không có ACK) |
+| Kiểm soát lỗi | ✅ Có | ❌ Không |
+| Độ trễ | ❌ Cao hơn do cần chờ ACK | ✅ Thấp hơn do không cần chờ ACK |
+| Ứng dụng | HTTP, SSH, FTP | VoIP, Streaming, Gaming |
+
+---
+
+### **7. Kết luận**
+- **ACK** là một phần quan trọng của TCP, giúp xác nhận dữ liệu đã đến nơi an toàn.
+- Nó giúp TCP trở thành một giao thức **đáng tin cậy**, đảm bảo không có gói tin bị mất mà không được gửi lại.
+- Nếu bạn thấy nhiều **ACK bị trễ, mất hoặc trùng lặp** trong Wireshark, có thể hệ thống đang gặp vấn đề về kết nối.
+
+# **Giải thích về SYN trong TCP/IP**
+
+#### **1. SYN là gì?**
+SYN (**Synchronize**) là một cờ (**flag**) trong tiêu đề của giao thức **TCP**. Nó được sử dụng để bắt đầu một kết nối giữa hai thiết bị theo cơ chế **TCP 3-way handshake** (bắt tay ba bước).
+
+- Khi một thiết bị muốn thiết lập kết nối TCP, nó gửi một gói tin **SYN** đến thiết bị đích.
+- Nếu thiết bị đích chấp nhận, nó sẽ phản hồi bằng một gói **SYN-ACK**.
+- Sau đó, thiết bị gửi ban đầu xác nhận bằng một gói **ACK**.
+
+🛑 **Lưu ý:** SYN chỉ xuất hiện trong quá trình thiết lập kết nối và không có trong các gói tin dữ liệu thông thường.
+
+---
+
+### **2. Cách hoạt động của SYN trong TCP**
+Giao thức TCP sử dụng **cơ chế bắt tay ba bước (3-way handshake)** để thiết lập một kết nối đáng tin cậy.
+
+**🌟 3 bước bắt tay TCP (TCP 3-way handshake):**
+1. **Client → Server:** Gửi gói tin SYN
+   ```plaintext
+   SYN (SEQ=x)
+   ```
+   - Client chọn một số thứ tự ban đầu (`SEQ=x`).
+   - Yêu cầu thiết lập kết nối với Server.
+
+2. **Server → Client:** Phản hồi bằng SYN-ACK
+   ```plaintext
+   SYN-ACK (SEQ=y, ACK=x+1)
+   ```
+   - Server gửi **SYN** để đồng bộ hóa.
+   - Đồng thời gửi **ACK=x+1** để xác nhận đã nhận SYN từ Client.
+
+3. **Client → Server:** Gửi ACK để hoàn tất kết nối
+   ```plaintext
+   ACK (SEQ=x+1, ACK=y+1)
+   ```
+   - Client gửi **ACK** để xác nhận gói SYN-ACK từ Server.
+   - Sau bước này, kết nối TCP được thiết lập và sẵn sàng truyền dữ liệu.
+
+✅ **Sau khi quá trình bắt tay hoàn tất, cả hai thiết bị có thể trao đổi dữ liệu một cách an toàn.**
+
+---
+
+### **3. Ví dụ về SYN trong Wireshark**
+Trong Wireshark, khi bắt đầu một kết nối TCP, bạn sẽ thấy chuỗi gói tin như sau:
+
+1. **Gói SYN từ Client đến Server**
+   ```plaintext
+   Frame 1: TCP 192.168.1.2 → 192.168.1.3 [SYN] SEQ=1000
+   ```
+   - Client (192.168.1.2) yêu cầu kết nối với Server (192.168.1.3).
+   - `SEQ=1000`: Số thứ tự ban đầu của Client.
+
+2. **Gói SYN-ACK từ Server đến Client**
+   ```plaintext
+   Frame 2: TCP 192.168.1.3 → 192.168.1.2 [SYN, ACK] SEQ=2000, ACK=1001
+   ```
+   - Server phản hồi bằng **SYN-ACK**.
+   - `SEQ=2000`: Số thứ tự ban đầu của Server.
+   - `ACK=1001`: Xác nhận đã nhận `SEQ=1000` từ Client.
+
+3. **Gói ACK từ Client đến Server**
+   ```plaintext
+   Frame 3: TCP 192.168.1.2 → 192.168.1.3 [ACK] SEQ=1001, ACK=2001
+   ```
+   - Client gửi **ACK** để hoàn tất kết nối.
+   - `ACK=2001`: Xác nhận đã nhận `SEQ=2000` từ Server.
+
+🔹 **Sau giai đoạn này, dữ liệu thực tế có thể được truyền tải.**
+
+---
+
+### **4. SYN Flood Attack - Tấn công từ chối dịch vụ bằng SYN**
+🚨 **SYN Flood** là một loại **tấn công từ chối dịch vụ (DoS/DDoS)** lợi dụng quá trình bắt tay 3 bước của TCP.
+
+#### **Cách hoạt động của SYN Flood**
+1. **Kẻ tấn công gửi một lượng lớn gói tin SYN** đến Server mục tiêu.
+2. **Server phản hồi bằng SYN-ACK**, chờ Client hoàn tất kết nối.
+3. **Nhưng kẻ tấn công không gửi ACK**, làm Server giữ tài nguyên kết nối trong trạng thái chờ.
+4. **Khi quá nhiều kết nối SYN chưa hoàn tất**, Server hết tài nguyên và không thể phục vụ các yêu cầu hợp lệ.
+
+🛑 **Dấu hiệu SYN Flood trong Wireshark**:
+- Rất nhiều gói SYN đến từ các địa chỉ IP khác nhau.
+- Không có (hoặc rất ít) gói ACK từ phía Client.
+
+🔹 **Cách giảm thiểu SYN Flood**:
+- **Sử dụng SYN Cookies**: Giúp Server không giữ trạng thái kết nối khi nhận quá nhiều SYN.
+- **Hạn chế số lượng kết nối TCP chưa hoàn tất** (`net.ipv4.tcp_max_syn_backlog` trong Linux).
+- **Firewall rules** để chặn các gói SYN không hợp lệ.
+
+---
+
+### **5. So sánh SYN và ACK**
+| **Thuộc tính** | **SYN** | **ACK** |
+|--------------|--------|--------|
+| Vai trò | Bắt đầu kết nối | Xác nhận dữ liệu đã nhận |
+| Xuất hiện khi nào? | Bắt tay TCP (kết nối ban đầu) | Suốt quá trình truyền dữ liệu |
+| Gói tin liên quan | SYN, SYN-ACK | ACK |
+| Có thể bị tấn công? | Có (SYN Flood) | Không phổ biến |
+
+---
+
+### **6. Kết luận**
+- **SYN** là bước đầu tiên của kết nối TCP, giúp đồng bộ hóa giữa hai thiết bị.
+- **Bắt tay ba bước (3-way handshake) với SYN, SYN-ACK, ACK** giúp thiết lập một kết nối đáng tin cậy.
+- **SYN Flood** là một dạng tấn công DoS/DDoS phổ biến làm quá tải tài nguyên Server.
+- Dùng **Wireshark** để kiểm tra trạng thái SYN, giúp phát hiện sự bất thường trong mạng.
