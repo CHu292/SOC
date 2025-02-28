@@ -281,3 +281,231 @@ Vì chúng ta không muốn Sophie tiếp tục sử dụng một mật khẩu m
 
 https://www.youtube.com/watch?v=C9UaUzrXGXE
 
+# Task 5: Managing Computers in AD
+
+Quản lý Máy tính trong Active Directory (AD)
+
+Theo mặc định, tất cả các máy tham gia vào miền (trừ Domain Controllers - DCs) sẽ được đặt trong một container có tên là "Computers". Nếu chúng ta kiểm tra DC của mình, chúng ta sẽ thấy rằng một số thiết bị đã có sẵn trong đó.
+
+![](./img/5.1.png)
+
+
+Trong mạng, có thể có các loại thiết bị khác nhau như máy chủ, máy tính xách tay và PC dành cho người dùng. Việc đặt tất cả thiết bị vào cùng một vị trí không phải là ý tưởng tốt, vì bạn có thể muốn áp dụng các chính sách khác nhau cho máy chủ và thiết bị mà người dùng sử dụng hàng ngày.
+
+Một phương pháp tổ chức hợp lý là phân loại thiết bị theo mục đích sử dụng. Thông thường, các thiết bị có thể được chia thành ba danh mục chính:
+
+## 1. Workstations (Máy trạm)
+- Đây là loại thiết bị phổ biến nhất trong một miền Active Directory.
+- Người dùng miền sẽ đăng nhập vào máy trạm để làm việc hoặc duyệt web.
+- Các thiết bị này không nên có tài khoản có quyền cao đăng nhập vào.
+
+## 2. Servers (Máy chủ)
+- Máy chủ là loại thiết bị phổ biến thứ hai trong Active Directory.
+- Chúng được sử dụng để cung cấp dịch vụ cho người dùng hoặc các máy chủ khác.
+
+## 3. Domain Controllers (Bộ điều khiển miền)
+- Đây là loại thiết bị phổ biến thứ ba trong Active Directory.
+- Domain Controllers giúp quản lý miền Active Directory.
+- Chúng chứa mật khẩu băm của tất cả tài khoản người dùng, khiến chúng trở thành thiết bị nhạy cảm nhất trong hệ thống.
+
+## Tổ chức OUs trong AD
+Để sắp xếp AD một cách gọn gàng, chúng ta có thể tạo hai OU (Organizational Units) riêng biệt:
+- **Workstations**
+- **Servers**
+
+Domain Controllers đã có một OU mặc định do Windows tạo sẵn. Hai OU trên sẽ được tạo trực tiếp dưới **thm.local** trong cấu trúc miền.
+
+![](./img/5.2.png)
+
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Sau khi sắp xếp các máy tính có sẵn, có bao nhiêu máy đã được đưa vào Workstations OU?**  
+
+Tạo một Organizational Unit (OU) trong Active Directory Users and Computers (ADUC).
+
+![](./img/5.3.png)
+
+![](./img/5.4.png)
+
+Sau đó chúng ta sẽ di chuyển các máy trạm vào workstations
+
+
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: 7  
+</details>  
+
+2. **Có nên tạo các OU riêng biệt cho Servers và Workstations không? (yay/nay)**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: yay 
+</details>  
+
+# Task 6: Group Policies
+
+Chính sách Nhóm (Group Policies)
+
+Cho đến nay, chúng ta đã tổ chức người dùng và máy tính vào các OU (Organizational Units), nhưng mục đích chính của việc này là để có thể triển khai các chính sách khác nhau cho từng OU một cách riêng biệt. Bằng cách này, chúng ta có thể áp dụng các cấu hình và tiêu chuẩn bảo mật khác nhau cho người dùng tùy theo bộ phận của họ.
+
+Windows quản lý các chính sách này thông qua Group Policy Objects (GPO).
+GPO thực chất là một tập hợp các thiết lập có thể áp dụng cho các OU. GPO có thể chứa các chính sách dành cho người dùng hoặc máy tính, giúp thiết lập các tiêu chuẩn trên các thiết bị và danh tính cụ thể.
+
+Để cấu hình GPO, bạn có thể sử dụng công cụ Group Policy Management, có sẵn trong menu Start.
+
+![](./img/6.1.png)
+
+Khi mở công cụ Group Policy Management, điều đầu tiên bạn sẽ thấy là cấu trúc OU đầy đủ của mình, như đã được thiết lập trước đó.
+
+Để cấu hình Group Policies (Chính sách nhóm), trước tiên bạn cần tạo một GPO (Group Policy Object) trong mục Group Policy Objects, sau đó liên kết nó với OU mà bạn muốn áp dụng chính sách.
+
+Ví dụ: bạn có thể thấy rằng trong hệ thống của mình đã có một số GPO được tạo sẵn.
+
+![](./img/6.2.png)
+
+Chúng ta có thể thấy trong hình ảnh trên rằng đã có 3 GPO được tạo. Trong số đó, Default Domain Policy và RDP Policy được liên kết với toàn bộ miền thm.local, còn Default Domain Controllers Policy chỉ được liên kết với OU Domain Controllers.
+
+Một điều quan trọng cần lưu ý là bất kỳ GPO nào được liên kết với một OU sẽ áp dụng cho cả OU đó và tất cả các sub-OU bên dưới nó. Ví dụ, OU Sales vẫn sẽ bị ảnh hưởng bởi Default Domain Policy.
+
+Bây giờ, hãy kiểm tra Default Domain Policy để xem bên trong một GPO có gì. Tab đầu tiên khi bạn chọn một GPO sẽ hiển thị phạm vi (scope), tức là nơi GPO được liên kết trong Active Directory.
+
+Với chính sách hiện tại, chúng ta có thể thấy rằng nó chỉ được liên kết với miền thm.local.
+
+![](./img/6.3.png)
+
+Như bạn có thể thấy, bạn cũng có thể áp dụng Security Filtering (Lọc bảo mật) cho GPO, để chúng chỉ áp dụng cho các người dùng/máy tính cụ thể trong một OU.
+
+Theo mặc định, GPO sẽ áp dụng cho nhóm Authenticated Users, nhóm này bao gồm tất cả người dùng và máy tính.
+
+Tab Settings chứa nội dung thực tế của GPO và cho chúng ta biết các cấu hình cụ thể mà nó áp dụng. Như đã đề cập trước đó, mỗi GPO có thể chứa các cấu hình áp dụng riêng cho máy tính hoặc người dùng.
+
+Trong trường hợp này, Default Domain Policy chỉ chứa các cấu hình dành cho máy tính.
+
+![](./img/6.4.png)
+
+Bạn có thể tự do khám phá GPO và mở rộng các mục có sẵn bằng cách sử dụng các liên kết "show" ở bên phải của từng cấu hình.
+
+Trong trường hợp này, Default Domain Policy chứa các cấu hình cơ bản nhất, thường áp dụng cho hầu hết các miền, bao gồm chính sách mật khẩu và khóa tài khoản.
+
+![](./img/6.5.png)
+
+Vì GPO này áp dụng cho toàn bộ miền, nên bất kỳ thay đổi nào đối với nó sẽ ảnh hưởng đến tất cả các máy tính.
+
+Hãy thay đổi chính sách độ dài mật khẩu tối thiểu, yêu cầu người dùng phải đặt mật khẩu có ít nhất 10 ký tự.
+
+Để thực hiện việc này, chuột phải vào GPO và chọn Edit.
+
+![](./img/6.6.png)
+
+Thao tác này sẽ mở một cửa sổ mới, nơi chúng ta có thể điều hướng và chỉnh sửa tất cả các cấu hình có sẵn.
+
+Để thay đổi độ dài mật khẩu tối thiểu, hãy điều hướng đến:
+Computer Configurations → Policies → Windows Setting → Security Settings → Account Policies → Password Policy
+
+Sau đó, thay đổi giá trị chính sách theo yêu cầu.
+
+![](./img/6.7.png)
+
+Như bạn có thể thấy, có rất nhiều chính sách có thể được thiết lập trong một GPO.
+
+Việc giải thích từng chính sách một trong một phiên duy nhất là không khả thi, nhưng bạn có thể tự do khám phá, vì một số chính sách khá dễ hiểu.
+
+Nếu bạn cần thêm thông tin về bất kỳ chính sách nào, bạn có thể nhấp đúp vào chính sách đó và đọc tab Explain để biết chi tiết.
+
+![](./img/6.8.png)
+
+
+## **Phân phối GPO (GPO distribution)**  
+
+Các **GPO** được phân phối trong mạng thông qua một **network share** có tên là **SYSVOL**, được lưu trữ trên **Domain Controller (DC)**.  
+Tất cả người dùng trong miền thường có quyền truy cập vào thư mục chia sẻ này qua mạng để **đồng bộ GPO định kỳ**.  
+
+Thư mục chia sẻ **SYSVOL** theo mặc định trỏ đến thư mục:  
+➡ **C:\Windows\SYSVOL\sysvol\** trên mỗi **Domain Controller (DC)** trong mạng.
+
+Sau khi thực hiện bất kỳ thay đổi nào đối với **GPO**, có thể mất **tối đa 2 giờ** để các máy tính cập nhật thay đổi.  
+
+Nếu bạn muốn buộc một máy tính cụ thể **đồng bộ GPO ngay lập tức**, bạn có thể chạy lệnh sau trên máy đó.
+
+![](./img/6.9.png)
+
+
+## **Tạo một số GPO cho THM Inc.**  
+
+Trong công việc mới của chúng ta, chúng ta được giao nhiệm vụ triển khai một số **GPO** để thực hiện các yêu cầu sau:  
+
+1. Chặn những người không thuộc bộ phận IT truy cập **Control Panel**.  
+2. Cấu hình **máy trạm và máy chủ tự động khóa màn hình sau 5 phút không hoạt động**, tránh trường hợp người dùng để lộ phiên làm việc của họ.  
+
+Bây giờ, chúng ta sẽ tập trung vào từng mục trên, xác định các **chính sách cần kích hoạt trong mỗi GPO** và nơi chúng nên được liên kết.
+
+---
+
+## **Hạn chế truy cập Control Panel**  
+
+Chúng ta muốn **hạn chế quyền truy cập Control Panel trên tất cả các máy tính**, chỉ cho phép những người thuộc bộ phận IT sử dụng. Người dùng thuộc các bộ phận khác không được phép thay đổi cài đặt hệ thống.
+
+Hãy tạo một **GPO mới** có tên **Restrict Control Panel Access** và mở nó để chỉnh sửa.  
+Vì GPO này áp dụng cho **người dùng cụ thể**, chúng ta sẽ tìm trong phần **User Configuration** để thiết lập chính sách phù hợp.
+
+![](./img/6.10.png)
+
+Hãy lưu ý rằng chúng ta đã kích hoạt chính sách Prohibit Access to Control Panel and PC settings (Cấm truy cập vào Control Panel và cài đặt máy tính).
+
+Sau khi GPO được cấu hình, chúng ta cần liên kết nó với tất cả các OU chứa những người dùng không nên có quyền truy cập vào Control Panel trên máy tính của họ.
+
+Trong trường hợp này, chúng ta sẽ liên kết GPO với các OU Marketing, Management và Sales bằng cách kéo và thả GPO vào từng OU đó.
+
+![](./img/6.11.png)
+
+
+## **GPO Khóa Màn Hình Tự Động (Auto Lock Screen GPO)**  
+
+Đối với **GPO đầu tiên**, liên quan đến việc **khóa màn hình** cho **máy trạm (workstations) và máy chủ (servers)**, chúng ta có thể **áp dụng trực tiếp** GPO này cho các **OU Workstations, Servers và Domain Controllers** mà chúng ta đã tạo trước đó.
+
+Mặc dù giải pháp này có thể hoạt động, nhưng một **cách tiếp cận thay thế** là **áp dụng GPO này cho miền gốc**. Vì chúng ta muốn GPO ảnh hưởng đến **tất cả các máy tính**, và vì các OU **Workstations, Servers và Domain Controllers** đều là **OU con** của miền gốc, chúng sẽ kế thừa các chính sách của miền.
+
+#### **Lưu ý:**  
+Nếu chúng ta áp dụng **GPO này** cho miền gốc, nó cũng sẽ được **kế thừa bởi các OU khác** như **Sales hoặc Marketing**. Tuy nhiên, vì những OU này **chỉ chứa người dùng**, bất kỳ **cấu hình dành cho máy tính** trong GPO của chúng ta sẽ bị **bỏ qua** bởi chúng.
+
+Bây giờ, hãy tạo một **GPO mới** có tên **Auto Lock Screen** và chỉnh sửa nó.  
+Chính sách chúng ta cần thiết lập được tìm thấy theo đường dẫn sau:
+
+![](./img/6.12.png)
+
+Sau khi các GPO đã được áp dụng cho các OU phù hợp, chúng ta có thể đăng nhập với tư cách bất kỳ người dùng nào trong Marketing, Sales hoặc Management để kiểm tra.
+
+Đối với nhiệm vụ này, hãy kết nối qua RDP bằng thông tin đăng nhập của Mark để xác minh.
+
+![](./img/6.13.png)
+
+
+#### **Lưu ý:**  
+Khi kết nối qua **RDP**, sử dụng **THM\Mark** làm tên người dùng để đăng nhập với tài khoản **Mark** trong miền **THM**.  
+
+Nếu chúng ta thử mở **Control Panel**, một thông báo sẽ xuất hiện, cho biết thao tác này bị quản trị viên từ chối. Bạn cũng có thể đợi **5 phút** để kiểm tra xem màn hình có tự động khóa hay không.  
+
+Vì chúng ta **không áp dụng GPO hạn chế Control Panel cho bộ phận IT**, bạn vẫn có thể đăng nhập vào máy với tư cách bất kỳ người dùng nào trong nhóm này và truy cập **Control Panel** bình thường.  
+
+#### **Lưu ý:**  
+Nếu bạn đã **tạo và liên kết các GPO**, nhưng vì lý do nào đó chúng vẫn không hoạt động, hãy chạy lệnh sau để **cưỡng chế cập nhật GPO**:  
+```powershell
+gpupdate /force
+```
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Tên của thư mục chia sẻ mạng được sử dụng để phân phối GPOs đến các máy trong miền là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: ______  
+</details>  
+
+2. **GPO có thể được sử dụng để áp dụng cài đặt cho người dùng và máy tính không? (yay/nay)**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: ___  
+</details>  
+
+
+
