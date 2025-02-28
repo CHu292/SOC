@@ -858,12 +858,85 @@ Hướng của **one-way trust relationship** ngược với hướng truy cập
 1. **Một nhóm các miền Windows chia sẻ cùng một không gian tên được gọi là gì?**  
 <details>  
 <summary>Hiển thị đáp án</summary>  
-Đáp án: ____  
+Đáp án: Tree  
 </details>  
+
+✅ Một nhóm các miền Windows **chia sẻ cùng một không gian tên (namespace)** được gọi là **Tree (Cây)** trong **Active Directory**.  
+
+---
+
+### **📌 Giải thích về Tree trong Active Directory**
+- **Tree** là tập hợp **các miền con (child domains) được tổ chức theo hệ thống phân cấp**.  
+- Tất cả các miền trong **Tree** **chia sẻ cùng một không gian tên DNS (namespace)**.  
+- **Miền con kế thừa không gian tên từ miền gốc**, ví dụ:  
+  - **thm.local** (miền gốc)  
+  - **uk.thm.local** (miền con của thm.local)  
+  - **us.thm.local** (miền con của thm.local)  
+
+🔥 **Mỗi miền trong cây có thể có Active Directory riêng**, nhưng chúng **tự động thiết lập quan hệ tin cậy hai chiều (Two-Way Trust) với nhau**.  
+
+---
+
+### **🌳 Khác biệt giữa Tree và Forest**
+| **Đặc điểm**        | **Tree**                                   | **Forest**                                   |
+|---------------------|-----------------------------------------|----------------------------------------------|
+| **Không gian tên**  | Chung một không gian tên (namespace)   | Các miền có không gian tên khác nhau       |
+| **Ví dụ**          | `thm.local`, `uk.thm.local`             | `thm.local` và `mht.com`                   |
+| **Quan hệ tin cậy**| Two-Way Trust giữa các miền con        | Trust giữa nhiều cây miền khác nhau        |
+| **Mục đích**       | Tổ chức các miền có cùng namespace     | Kết hợp nhiều công ty hoặc tổ chức khác nhau |
+
+---
+
+### **📌 Kết luận**
+✔ **Tree** là một nhóm **các miền Windows chia sẻ cùng một không gian tên** và có **mối quan hệ tin cậy hai chiều** trong Active Directory.  
+
 
 2. **Cần cấu hình gì giữa hai miền để một người dùng trong Domain A có thể truy cập tài nguyên trong Domain B?**  
 <details>  
 <summary>Hiển thị đáp án</summary>  
-Đáp án: _ _____ ___________  
+Đáp án: A Trust Relationship
 </details>  
 
+✅ **Cần cấu hình một Trust Relationship giữa Domain A và Domain B** để người dùng trong **Domain A có thể truy cập tài nguyên trong Domain B**.  
+
+---
+
+ **📌 Các bước cấu hình Trust Relationship giữa hai miền**
+1️⃣ **Xác định loại Trust phù hợp**  
+   - **One-Way Trust**: Domain A tin cậy Domain B → Người dùng từ **Domain B có thể truy cập tài nguyên trong Domain A**, nhưng không ngược lại.  
+   - **Two-Way Trust**: Domain A và Domain B tin cậy lẫn nhau → Người dùng từ **cả hai miền có thể truy cập tài nguyên của nhau**.  
+
+2️⃣ **Mở Active Directory Domains and Trusts**  
+   - Trên **Domain Controller**, mở **Active Directory Domains and Trusts** (`domain.msc`).  
+   - Nhấp chuột phải vào **Domain A**, chọn **Properties** → Chuyển đến tab **Trusts**.  
+
+3️⃣ **Thiết lập Trust Relationship**  
+   - Nhấp vào **New Trust** và làm theo trình hướng dẫn.  
+   - Chọn loại Trust phù hợp (**One-Way hoặc Two-Way**).  
+   - Chọn kiểu xác thực:
+     - **Forest Trust**: Nếu Domain A và Domain B nằm trong các Forest khác nhau.  
+     - **External Trust**: Nếu Domain B không phải là một phần của cùng một Forest.  
+
+4️⃣ **Cấu hình quyền trên tài nguyên của Domain B**  
+   - Trên **Domain B**, gán quyền cho **người dùng hoặc nhóm từ Domain A** bằng cách:  
+     - Thêm tài khoản từ **Domain A** vào **Group có quyền truy cập tài nguyên**.  
+     - **Gán quyền NTFS** trên thư mục chia sẻ hoặc tài nguyên mong muốn.  
+
+5️⃣ **Kiểm tra xác thực**  
+   - **Từ Domain A**, đăng nhập bằng tài khoản đã được cấp quyền.  
+   - Thử truy cập tài nguyên từ Domain B (`\\ServerB\SharedFolder`).  
+
+---
+
+ **📌 Kết luận**
+✔ **Cần thiết lập Trust Relationship giữa Domain A và Domain B** để cấp quyền truy cập.  
+✔ **Phải gán quyền trên tài nguyên của Domain B** để người dùng từ Domain A có thể truy cập.  
+✔ **Có thể chọn One-Way hoặc Two-Way Trust tùy theo yêu cầu bảo mật**.  
+
+# Task 9: Conclusion 
+
+Trong phòng này, chúng ta đã trình bày các thành phần và khái niệm cơ bản liên quan đến **Active Directory và Windows Domains**. Hãy nhớ rằng phòng này chỉ đóng vai trò là một phần **giới thiệu** về các khái niệm cơ bản, vì vẫn còn rất nhiều điều cần khám phá để triển khai **một môi trường Active Directory sẵn sàng cho sản xuất**.  
+
+Nếu bạn quan tâm đến việc **bảo mật hệ thống Active Directory**, hãy theo dõi **Active Directory Hardening Room** (sẽ sớm ra mắt).  
+
+Mặt khác, nếu bạn muốn tìm hiểu cách **kẻ tấn công lợi dụng các lỗi cấu hình phổ biến trong Active Directory** và các kỹ thuật tấn công **AD**, thì **[Compromising Active Directory module](https://tryhackme.com/module/hacking-active-directory)** là lựa chọn phù hợp.
