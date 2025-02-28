@@ -673,3 +673,197 @@ Kết quả là, **KDC sẽ gửi lại một TGS kèm theo một Service Sessio
 - **Kerberos** là phương thức **mạnh hơn, an toàn hơn**, được khuyến nghị sử dụng trong **các môi trường hiện đại**.  
 - **NetNTLM chỉ nên được sử dụng khi bắt buộc phải hỗ trợ các hệ thống không tương thích với Kerberos**.  
 
+---
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Phiên bản Windows hiện tại có sử dụng NetNTLM làm giao thức xác thực mặc định không? (yay/nay)**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: nay  
+</details>  
+
+Phiên bản Windows hiện tại **không sử dụng NetNTLM làm giao thức xác thực mặc định**.  
+
+ **✅ Giao thức xác thực mặc định trên Windows hiện tại**  
+Microsoft sử dụng **Kerberos** làm **giao thức xác thực mặc định** cho tất cả các phiên bản Windows hiện đại khi thiết bị tham gia vào **miền Active Directory (AD)**.  
+
+- **Kerberos** được sử dụng cho hầu hết các kịch bản xác thực trong **Windows Domain**.  
+- **NetNTLM** (NTLMv1 & NTLMv2) vẫn tồn tại nhưng **chỉ để tương thích ngược** với các hệ thống cũ.  
+
+---
+
+ **🛑 Khi nào Windows vẫn sử dụng NetNTLM?**  
+Windows **chỉ sử dụng NetNTLM (NTLM)** nếu **Kerberos không thể được sử dụng**. Một số tình huống bao gồm:  
+
+1️⃣ **Máy tính không thuộc miền AD**  
+   - Nếu máy tính không tham gia vào miền, nó sẽ không có **KDC (Key Distribution Center)** để sử dụng Kerberos.  
+   - Khi đó, Windows sẽ mặc định sử dụng **NTLM** để xác thực.  
+
+2️⃣ **Máy chủ hoặc dịch vụ không hỗ trợ Kerberos**  
+   - Một số dịch vụ hoặc ứng dụng cũ **chỉ hỗ trợ NTLM**.  
+   - Trong trường hợp này, Windows buộc phải sử dụng **NTLM** thay vì **Kerberos**.  
+
+3️⃣ **Xác thực qua IP thay vì DNS tên miền**  
+   - Kerberos yêu cầu **DNS tên miền** để xác định danh tính dịch vụ (**SPN - Service Principal Name**).  
+   - Nếu người dùng kết nối đến máy chủ bằng **địa chỉ IP thay vì tên miền**, Kerberos **sẽ không thể hoạt động** và Windows sẽ chuyển sang **NTLM**.  
+
+4️⃣ **Không có kết nối trực tiếp đến Domain Controller**  
+   - Kerberos yêu cầu liên hệ với **Domain Controller (DC)** để lấy vé (ticket).  
+   - Nếu máy khách không thể liên hệ với DC (ví dụ: làm việc từ xa không có VPN), Windows sẽ **fallback** sang **NTLM**.  
+
+---
+
+ **🛠 Cách kiểm tra hệ thống có đang sử dụng NTLM không?**  
+Bạn có thể kiểm tra xem hệ thống có đang sử dụng NTLM bằng cách:  
+
+🔹 **Kiểm tra các xác thực NTLM đang diễn ra trên máy tính**  
+Mở **Event Viewer** và kiểm tra nhật ký:  
+1. **Mở Event Viewer** (`eventvwr.msc`)  
+2. Điều hướng đến:  
+   ```
+   Applications and Services Logs → Microsoft → Windows → NTLM → Operational
+   ```
+3. Bật **Logging** để theo dõi xem hệ thống có đang sử dụng NTLM hay không.  
+
+🔹 **Dùng PowerShell để kiểm tra NTLM**  
+Chạy lệnh sau để kiểm tra chính sách NTLM trên hệ thống:  
+```powershell
+Get-WmiObject -namespace root\Microsoft\Windows\Lsa -class MS_NTLM_Provider
+```
+
+---
+
+ **🛡 Cách vô hiệu hóa NTLM để tăng cường bảo mật**  
+Microsoft khuyến nghị **tắt NTLM** nếu không cần thiết, để tránh các lỗ hổng bảo mật như **Pass-the-Hash (PtH) Attack** và **NTLM Relay Attack**.  
+
+✅ **Tắt NTLM thông qua Group Policy:**  
+1. Mở **Group Policy Management Editor** (`gpedit.msc` nếu dùng máy độc lập hoặc `gpmc.msc` nếu dùng Domain Controller).  
+2. Điều hướng đến:  
+   ```
+   Computer Configuration → Windows Settings → Security Settings → Local Policies → Security Options
+   ```
+3. Tìm và đặt các chính sách sau về **Deny all accounts**:  
+   - **Network security: LAN Manager authentication level** → Chọn **Send NTLMv2 response only. Refuse LM & NTLM**  
+   - **Network security: Restrict NTLM: Incoming NTLM traffic** → **Deny all accounts**  
+   - **Network security: Restrict NTLM: Outgoing NTLM traffic** → **Deny all accounts**  
+
+---
+
+
+2. **Khi nói về Kerberos, loại vé nào cho phép chúng ta yêu cầu các vé khác, được gọi là TGS?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: Ticket Granting Ticket
+</details>  
+
+Trong Kerberos, loại vé cho phép chúng ta yêu cầu các vé khác (TGS - Ticket Granting Service) được gọi là TGT (Ticket Granting Ticket).
+
+📌 TGT - Ticket Granting Ticket
+TGT là vé cấp quyền truy cập vào hệ thống vé (TGS) mà không cần nhập lại thông tin đăng nhập.
+Khi người dùng đăng nhập vào hệ thống, Key Distribution Center (KDC) cấp cho họ một TGT.
+TGT được sử dụng để yêu cầu các vé dịch vụ (TGS) cho các dịch vụ cụ thể trên mạng mà không cần xác thực lại với mật khẩu.
+🔍 Cách hoạt động của TGT trong Kerberos
+1️⃣ Người dùng gửi tên đăng nhập và dấu thời gian được mã hóa bằng mật khẩu băm của họ đến KDC.
+2️⃣ KDC kiểm tra thông tin đăng nhập, nếu đúng, cấp phát một TGT cho người dùng.
+3️⃣ Người dùng có thể sử dụng TGT để yêu cầu TGS khi họ muốn truy cập một dịch vụ trên mạng (như chia sẻ tệp, cơ sở dữ liệu...).
+4️⃣ KDC sử dụng TGT để xác thực yêu cầu, nếu hợp lệ, nó cấp TGS để người dùng có thể truy cập dịch vụ.
+
+3. **Khi sử dụng NetNTLM, mật khẩu của người dùng có được truyền qua mạng tại bất kỳ thời điểm nào không? (yay/nay)**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: nay  
+</details>  
+
+ mật khẩu của người dùng không bao giờ được truyền qua mạng khi sử dụng NetNTLM.
+
+🔍 Cách NetNTLM bảo vệ mật khẩu
+NetNTLM sử dụng cơ chế Challenge-Response để xác thực mà không gửi mật khẩu thô qua mạng. Thay vào đó, nó hoạt động như sau:
+
+1️⃣ Máy chủ gửi một "challenge" (số ngẫu nhiên) đến client
+2️⃣ Client sử dụng NTLM Hash của mật khẩu, kết hợp với challenge để tạo ra response (phản hồi)
+3️⃣ Response được gửi đến máy chủ, máy chủ chuyển nó đến Domain Controller (DC) để xác minh
+4️⃣ DC tính toán lại response dựa trên NTLM Hash đã lưu, nếu khớp thì xác thực thành công
+
+📌 Điểm quan trọng:
+
+Chỉ có NTLM Hash của mật khẩu được sử dụng để tạo response
+Mật khẩu thực tế không bao giờ được gửi trực tiếp qua mạng
+Mật khẩu hoặc NTLM Hash không bao giờ hiển thị dưới dạng văn bản thuần túy
+⚠ Nhưng NetNTLM vẫn có rủi ro bảo mật!
+Mặc dù mật khẩu không được truyền qua mạng, NetNTLM vẫn dễ bị tấn công Pass-the-Hash (PtH) và NTLM Relay nếu NTLM Hash của người dùng bị đánh cắp.
+
+🚨 Tấn công Pass-the-Hash (PtH):
+
+Nếu kẻ tấn công có được NTLM Hash, chúng có thể sử dụng nó để xác thực thay vì cần mật khẩu thực tế.
+🚨 Tấn công NTLM Relay:
+
+Kẻ tấn công chặn Challenge và Response rồi phát lại để xác thực với một dịch vụ khác mà không cần biết mật khẩu.
+
+# Task 8: Trees, Forests and Trusts
+
+Cây, Rừng và Mối Quan Hệ Tin Cậy
+
+Cho đến nay, chúng ta đã thảo luận về cách quản lý một miền đơn lẻ, vai trò của Domain Controller và cách nó kết nối máy tính, máy chủ và người dùng.
+
+![](./img/8.1.png)
+
+Khi các công ty phát triển, mạng của họ cũng vậy. Việc có một miền duy nhất cho một công ty là đủ để bắt đầu, nhưng theo thời gian, một số nhu cầu bổ sung có thể khiến bạn phải có nhiều hơn một miền.  
+
+## **Cây (Trees)**  
+
+Hãy tưởng tượng công ty của bạn mở rộng sang một quốc gia mới. Quốc gia mới có các luật và quy định khác nhau, yêu cầu bạn cập nhật GPO để tuân thủ. Ngoài ra, bạn có đội ngũ IT ở cả hai quốc gia và mỗi nhóm IT cần quản lý các tài nguyên riêng mà không ảnh hưởng đến nhóm còn lại.  
+
+Mặc dù bạn có thể tạo một cấu trúc **OU** phức tạp và sử dụng ủy quyền để đạt được điều này, nhưng việc có một **cấu trúc Active Directory (AD) quá lớn có thể khó quản lý và dễ xảy ra lỗi.**  
+
+May mắn thay, Active Directory hỗ trợ tích hợp nhiều miền để bạn có thể phân vùng mạng thành các đơn vị có thể quản lý độc lập. Nếu bạn có hai miền **chia sẻ cùng một không gian tên** (**thm.local** trong ví dụ này), các miền đó có thể được **kết hợp thành một cây (Tree)**.  
+
+Nếu miền **thm.local** của bạn được chia thành hai miền con cho các chi nhánh ở **Anh và Mỹ**, bạn có thể tạo một **cây** với miền gốc là **thm.local** và hai miền con **uk.thm.local** và **us.thm.local**, mỗi miền có **Active Directory, máy tính và người dùng riêng**.
+
+![](./img/8.2.png)
+
+Cấu trúc phân vùng này giúp chúng ta kiểm soát tốt hơn ai có quyền truy cập vào đâu trong miền. Nhóm IT từ Vương quốc Anh sẽ có **DC** riêng để quản lý các tài nguyên của Vương quốc Anh. Ví dụ, một người dùng ở Vương quốc Anh sẽ không thể quản lý người dùng ở Mỹ. Theo cách đó, **Domain Administrators** của mỗi chi nhánh sẽ có **toàn quyền kiểm soát DC của họ**, nhưng không phải DC của các chi nhánh khác. Các chính sách cũng có thể được cấu hình **độc lập** cho từng miền trong cây.  
+
+Một nhóm bảo mật mới cần được giới thiệu khi nói về **trees và forests**. Nhóm **Enterprise Admins** sẽ cấp cho người dùng quyền **quản trị trên tất cả các miền trong doanh nghiệp**. Mỗi miền vẫn sẽ có **Domain Admins** với quyền quản trị trên miền riêng lẻ của họ, và **Enterprise Admins** có thể kiểm soát mọi thứ trong toàn bộ doanh nghiệp.  
+
+## **Forests**  
+
+Các miền mà bạn quản lý cũng có thể được cấu hình trong **các không gian tên khác nhau**. Giả sử công ty của bạn tiếp tục phát triển và cuối cùng mua lại một công ty khác có tên là **MHT Inc.**. Khi cả hai công ty hợp nhất, bạn có thể có **các cây miền khác nhau** cho từng công ty, mỗi công ty được quản lý bởi **phòng IT riêng** của họ.  
+
+Sự kết hợp của **nhiều cây miền với các không gian tên khác nhau** trong cùng một mạng được gọi là **forest**.
+
+![](./img/8.3.png)
+
+## **Trust Relationships**  
+
+Việc tổ chức nhiều miền thành **trees và forests** giúp bạn có một mạng được phân vùng hợp lý về mặt **quản lý và tài nguyên**. Nhưng vào một thời điểm nào đó, một người dùng tại **THM UK** có thể cần truy cập một tệp chia sẻ trên một trong các máy chủ của **MHT ASIA**.  
+
+Để điều này có thể xảy ra, các miền được sắp xếp trong **trees và forests** được kết nối với nhau thông qua **trust relationships**.  
+
+Nói một cách đơn giản, việc có một **mối quan hệ tin cậy (trust relationship) giữa các miền** cho phép bạn **ủy quyền cho một người dùng từ miền THM UK để truy cập tài nguyên từ miền MHT EU**.  
+
+Mối quan hệ tin cậy đơn giản nhất có thể được thiết lập là **one-way trust relationship**.  
+
+Trong **one-way trust**, nếu **Domain AAA** tin cậy **Domain BBB**, điều này có nghĩa là một **người dùng trên BBB có thể được ủy quyền để truy cập tài nguyên trên AAA**.
+
+Hướng của **one-way trust relationship** ngược với hướng truy cập tài nguyên.  
+
+**Two-way trust relationships** cũng có thể được thiết lập để cho phép cả hai miền **ủy quyền truy cập lẫn nhau**. Theo mặc định, khi nhiều miền được tham gia vào một **tree hoặc forest**, chúng sẽ hình thành một **two-way trust relationship**.  
+
+Điều quan trọng cần lưu ý là **việc có một trust relationship giữa các miền không tự động cấp quyền truy cập vào tất cả tài nguyên** của các miền khác. Khi mối quan hệ tin cậy được thiết lập, bạn có thể **ủy quyền cho người dùng trên các miền khác nhau**, nhưng việc **cấp quyền cụ thể cho tài nguyên nào là tùy thuộc vào bạn**.
+
+
+**Trả lời các câu hỏi dưới đây**  
+
+1. **Một nhóm các miền Windows chia sẻ cùng một không gian tên được gọi là gì?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: ____  
+</details>  
+
+2. **Cần cấu hình gì giữa hai miền để một người dùng trong Domain A có thể truy cập tài nguyên trong Domain B?**  
+<details>  
+<summary>Hiển thị đáp án</summary>  
+Đáp án: _ _____ ___________  
+</details>  
+
