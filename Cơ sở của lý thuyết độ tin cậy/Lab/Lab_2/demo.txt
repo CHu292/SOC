@@ -1,0 +1,33 @@
+                                               +---------------------------------------------------------+
+                                               |   TOP EVENT: BÓNG ĐÈN KHÔNG SÁNG (LAMP FAILS TO LIGHT)  |
+                                               +------------------------------v----------------------------+
+                                                                  CỔNG OR
+                                                                     |
+           +----------------------------+---------------------------+----------------------+------------------+---------------------+
+           |                            |                           |                      |                  |
+           |                            |                           |                      |                  |
+      (G1) LỖI NGUỒN             (G2) LỖI CHUYỂN ĐỔI           (G3) LỖI DÂY DẪN       (G4) LỖI BÓNG ĐÈN   (BE14) KẾT NỐI LỎNG
+(Power Supply Failure)       (Converter / Switch Failure)   (Wiring Failure)       (Lamp Failure)      (Loose Connection)
+            [OR]                          [OR]                      [OR]                [OR]                      
+             / \                          /  \                       /  \                /   \
+            /   \                        /    \                     /    \              /     \
+ (G1.1) Mất Điện Lưới        (BE2) Switch/Công tắc cháy   (BE3) Dây đứt   (BE4) Chập mạch   (BE9) Bóng cháy   (BE10) Một phần hỏng
+   (Power Outage)           (nhiệt/tiếp điểm kém)         (Broken cable) (Short circuit)    (Burnt bulb)   (VD: sợi đốt kém)
+      [OR]                          |                       |             |                  |            
+       /  \                (BE2.1) Switch kẹt cơ        (BE3.1) Gãy mạch  (BE4.1) Ẩm ướt   (G4.1) Lắp sai đui
+      /    \                 (Stuck switch)             (Cracked wire)     (Moisture/Water) (Wrong socket)
+(BE1) Cúp điện cục bộ     (BE2.2) Nguồn phụ (VD: UPS)    (BE3.2) Oxy hóa   (BE4.2) Gặm nhấm  [OR]
+ (Local blackout)              hỏng (Backup fail)         (Corrosion)      (Rodent damage)    / \
+(BE1.1) Lỗi trạm biến áp    ...v.v.                   (BE3.3) Dây quá cũ      ...v.v.    (BE9.1) Đui không khớp
+(BE1.2) Lỗi rơ-le tổng                                                         (phích đui & đui đèn)
+ (Main relay open)           ...v.v.                                               ...v.v.   (BE9.2) Chân đèn biến dạng
+   ... v.v.                                                                                     (Lamp base bent)
+           
+       (G1.2) Hỏng Breaker/Fuse
+        (Fuse / Breaker open)
+            [OR]
+           /    \
+ (BE1.3) Fuse cháy   (BE1.4) CB trip sai
+   (Fuse blown)        (Breaker mis-trip)
+    ... v.v.
+

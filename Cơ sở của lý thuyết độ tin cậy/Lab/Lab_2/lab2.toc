@@ -1,0 +1,21 @@
+\xpginauxfiletrue 
+\selectlanguage *{russian}
+\contentsline {section}{\hyperref [sec:toc_main]{СОДЕРЖАНИЕ}}{2}{section*.1}%
+\contentsline {section}{Введение}{3}{section*.2}%
+\contentsline {section}{Задание}{3}{section*.3}%
+\contentsline {section}{\numberline {1}Ход работы}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Атака с использованием фишинга}{3}{subsection.1.1}%
+\contentsline {subsubsection}{Вид угрозы}{3}{section*.4}%
+\contentsline {subsubsection}{Источник угрозы}{3}{section*.5}%
+\contentsline {subsubsection}{Способ реализации}{4}{section*.6}%
+\contentsline {subsubsection}{Цель}{4}{section*.7}%
+\contentsline {subsubsection}{Меры предосторожности}{4}{section*.8}%
+\contentsline {paragraph}{Технические меры}{4}{section*.9}%
+\contentsline {paragraph}{Организационные меры}{4}{section*.10}%
+\contentsline {section}{\numberline {2}DDoS-атака на корпоративный веб-сайт}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Вид угрозы}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Источник угрозы}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Способ реализации}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Цель}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Меры предосторожности}{6}{subsection.2.5}%
+\contentsline {paragraph}{Технические меры}{6}{section*.11}%

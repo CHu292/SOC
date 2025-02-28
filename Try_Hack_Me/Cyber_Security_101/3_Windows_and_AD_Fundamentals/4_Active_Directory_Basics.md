@@ -279,3 +279,5 @@ Vì chúng ta không muốn Sophie tiếp tục sử dụng một mật khẩu m
 
 **Lưu ý:** Khi kết nối qua **RDP**, sử dụng **THM\sophie** làm tên người dùng để xác định bạn muốn đăng nhập bằng người dùng **sophie** trên miền **THM**.
 
+https://www.youtube.com/watch?v=C9UaUzrXGXE
+

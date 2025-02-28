@@ -1,0 +1,149 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=3cm, right=2cm, top=2.5cm, bottom=2.5cm]{geometry} % Căn lề chuẩn A4
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{setspace} % Điều chỉnh khoảng cách dòng
+\usepackage{fancyhdr} % Quản lý header/footer
+\usepackage{graphicx} % Hỗ trợ chèn ảnh
+\usepackage{tocloft} % Chỉnh sửa mục lục
+\usepackage{hyperref} % Tạo liên kết mục lục
+\usepackage{xcolor} % Định dạng màu sắc liên kết
+\usepackage{lipsum} % Nội dung giả (có thể xóa khi hoàn thành)
+
+\setmainlanguage{russian}
+\setmainfont{Times New Roman} % Nếu lỗi, thử "Liberation Serif" hoặc "FreeSerif"
+\newfontfamily\russianfont{Times New Roman}
+
+% Cấu hình header/footer và đánh số trang từ trang 2
+\pagestyle{fancy} 
+\fancyhf{} % Xóa header/footer mặc định
+\fancyfoot[C]{\thepage} % Số trang ở giữa footer
+\renewcommand{\headrulewidth}{0pt} % Không có gạch dưới header
+\renewcommand{\footrulewidth}{0pt} % Không có gạch trên footer
+
+% Cấu hình số thứ tự tiêu đề bắt đầu từ "Ход работы"
+\setcounter{secnumdepth}{2} % Đánh số tới subsection
+\setcounter{tocdepth}{2} % Hiển thị đến subsection trong mục lục
+
+% Thiết lập màu sắc cho liên kết mục lục
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue, % Liên kết có màu xanh
+	urlcolor=blue
+}
+
+\begin{document}
+	
+	% TRANG TIÊU ĐỀ (không có số trang)
+	\thispagestyle{empty} % Trang đầu không có số trang
+	
+	\onehalfspacing % Giãn dòng 1.5 để dễ đọc
+	
+	\begin{center}
+		\textbf{Министерство науки и высшего образования Российской Федерации} \\
+		\textbf{ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ} \\
+		\textbf{УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ} \\
+		\textbf{НАЦИОНАЛЬНЫЙ ИССЛЕДОВАТЕЛЬСКИЙ УНИВЕРСИТЕТ ИТМО} \\
+		\vspace{1cm}
+		\textbf{Факультет безопасности информационных технологий} \\
+		\vspace{0.5cm}
+		\textbf{Дисциплина:} \\
+		«Основы теории надежности» \\
+		\vspace{1cm}
+		\textbf{ОТЧЕТ ПО ЛАБОРАТОРНОЙ РАБОТЕ №2} \\
+		«Анализ дерева неисправностей (FTA)» \\
+	\end{center}
+	
+	\vspace{1.5cm} % Điều chỉnh khoảng cách xuống dưới
+	
+	\begin{flushright}
+		\textbf{Выполнил:} \\
+		Чу Ван Доан, студент группы N3347 \\
+		
+		\vspace{0.25cm} % Khoảng cách trước khi chèn ảnh
+		\includegraphics[width=3cm]{chuky.png} % Đường dẫn ảnh chữ ký (thay "chuky.png" bằng tên ảnh của bạn)
+		
+		\rule{5cm}{0.4pt} \\ (подпись)
+	\end{flushright}
+	
+	\begin{flushright}
+		\textbf{Проверил:} \\
+		Мухамеджанов Санжар \\
+		
+		\vspace{1cm}
+		\rule{5cm}{0.4pt} \\ (отметка о выполнении) \\
+		\vspace{0.5cm}
+		\rule{5cm}{0.4pt} \\ (подпись)
+	\end{flushright}
+	
+	\vfill
+	
+	\begin{center}
+		Санкт-Петербург \\
+		2025 г.
+	\end{center}
+	
+	\newpage
+	
+	% MỤC LỤC
+	\section*{\label{sec:toc_main}СОДЕРЖАНИЕ} % Đặt nhãn liên kết
+	\addcontentsline{toc}{section}{\hyperref[sec:toc_main]{СОДЕРЖАНИЕ}} % Thêm "СОДЕРЖАНИЕ" vào mục lục với liên kết
+	
+	% Hiển thị mục lục
+	\pagenumbering{arabic} % Đánh số trang dạng 1, 2, 3...
+	\setcounter{page}{2} % Trang tiếp theo là số 2
+	
+	\tableofcontents 
+	\newpage
+	
+	% CÁC PHẦN TRONG BÁO CÁO
+	\section*{Введение} % Không đánh số
+	\addcontentsline{toc}{section}{Введение} % Thêm vào mục lục nhưng không có số thứ tự
+	\lipsum[1] % Nội dung giả, thay thế bằng nội dung thực tế
+	
+	\section*{Задание} % Không đánh số
+	\addcontentsline{toc}{section}{Задание} % Thêm vào mục lục nhưng không có số thứ tự
+	\lipsum[2]
+	
+	% Bắt đầu đánh số tiêu đề từ đây
+	\section{Ход работы}
+	\subsection{Атака с использованием фишинга}
+	\subsubsection{Вид угрозы}
+	\lipsum[3]
+	
+	\subsubsection{Источник угрозы}
+	\lipsum[4]
+	
+	\subsubsection{Способ реализации}
+	\lipsum[5]
+	
+	\subsubsection{Цель}
+	\lipsum[6]
+	
+	\subsubsection{Меры предосторожности}
+	\paragraph{Технические меры}
+	\lipsum[7]
+	
+	\paragraph{Организационные меры}
+	\lipsum[8]
+	
+	\section{DDoS-атака на корпоративный веб-сайт}
+	\subsection{Вид угрозы}
+	\lipsum[9]
+	
+	\subsection{Источник угрозы}
+	\lipsum[10]
+	
+	\subsection{Способ реализации}
+	\lipsum[11]
+	
+	\subsection{Цель}
+	\lipsum[12]
+	
+	\subsection{Меры предосторожности}
+	\paragraph{Технические меры}
+	\lipsum[13]
+	
+	\newpage % Xuống trang mới, bắt đầu từ đây sẽ có số trang
+	
+\end{document}
