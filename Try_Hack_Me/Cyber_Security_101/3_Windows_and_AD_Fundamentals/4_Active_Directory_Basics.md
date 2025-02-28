@@ -465,7 +465,8 @@ Trong trường hợp này, chúng ta sẽ liên kết GPO với các OU Marketi
 
 Mặc dù giải pháp này có thể hoạt động, nhưng một **cách tiếp cận thay thế** là **áp dụng GPO này cho miền gốc**. Vì chúng ta muốn GPO ảnh hưởng đến **tất cả các máy tính**, và vì các OU **Workstations, Servers và Domain Controllers** đều là **OU con** của miền gốc, chúng sẽ kế thừa các chính sách của miền.
 
-#### **Lưu ý:**  
+**Lưu ý:**  
+
 Nếu chúng ta áp dụng **GPO này** cho miền gốc, nó cũng sẽ được **kế thừa bởi các OU khác** như **Sales hoặc Marketing**. Tuy nhiên, vì những OU này **chỉ chứa người dùng**, bất kỳ **cấu hình dành cho máy tính** trong GPO của chúng ta sẽ bị **bỏ qua** bởi chúng.
 
 Bây giờ, hãy tạo một **GPO mới** có tên **Auto Lock Screen** và chỉnh sửa nó.  
@@ -480,14 +481,16 @@ Sau khi các GPO đã được áp dụng cho các OU phù hợp, chúng ta có 
 ![](./img/6.13.png)
 
 
-#### **Lưu ý:**  
+**Lưu ý:**  
+
 Khi kết nối qua **RDP**, sử dụng **THM\Mark** làm tên người dùng để đăng nhập với tài khoản **Mark** trong miền **THM**.  
 
 Nếu chúng ta thử mở **Control Panel**, một thông báo sẽ xuất hiện, cho biết thao tác này bị quản trị viên từ chối. Bạn cũng có thể đợi **5 phút** để kiểm tra xem màn hình có tự động khóa hay không.  
 
 Vì chúng ta **không áp dụng GPO hạn chế Control Panel cho bộ phận IT**, bạn vẫn có thể đăng nhập vào máy với tư cách bất kỳ người dùng nào trong nhóm này và truy cập **Control Panel** bình thường.  
 
-#### **Lưu ý:**  
+ **Lưu ý:**  
+
 Nếu bạn đã **tạo và liên kết các GPO**, nhưng vì lý do nào đó chúng vẫn không hoạt động, hãy chạy lệnh sau để **cưỡng chế cập nhật GPO**:  
 ```powershell
 gpupdate /force
@@ -496,16 +499,177 @@ gpupdate /force
 **Trả lời các câu hỏi dưới đây**  
 
 1. **Tên của thư mục chia sẻ mạng được sử dụng để phân phối GPOs đến các máy trong miền là gì?**  
+
+Tên của **thư mục chia sẻ mạng** được sử dụng để **phân phối GPOs** đến các máy trong miền là **SYSVOL**.  
+
+SYSVOL là một **thư mục chia sẻ** trên mỗi **Domain Controller (DC)**, nơi chứa các **chính sách nhóm (GPOs)** và các tập tin quan trọng khác mà **máy tính trong miền** sử dụng để đồng bộ hóa chính sách.  
+
+Thư mục này có đường dẫn mặc định trên DC:  
+➡ **C:\Windows\SYSVOL\sysvol\\[tên miền]**  
+
+
 <details>  
 <summary>Hiển thị đáp án</summary>  
-Đáp án: ______  
+Đáp án: SYSVOL  
 </details>  
 
 2. **GPO có thể được sử dụng để áp dụng cài đặt cho người dùng và máy tính không? (yay/nay)**  
 <details>  
 <summary>Hiển thị đáp án</summary>  
-Đáp án: ___  
+Đáp án: yay  
 </details>  
 
+**GPO (Group Policy Object)** có thể được sử dụng để áp dụng **cài đặt cho cả người dùng và máy tính** trong miền.  
 
+ **Cấu trúc của GPO:**
+
+GPO có **hai phần chính** trong **Group Policy Management Editor**:
+1. **Computer Configuration** 🖥️  
+   - Áp dụng cho **máy tính**, bất kể người dùng nào đăng nhập.  
+   - Các cài đặt phổ biến bao gồm:
+     - Chính sách bảo mật (mật khẩu, khóa màn hình, tường lửa)
+     - Cấu hình mạng (DNS, Proxy, Wi-Fi)
+     - Cài đặt phần mềm (triển khai ứng dụng, chặn ứng dụng)
+     - Script khởi động/tắt máy
+
+2. **User Configuration** 👤  
+   - Áp dụng cho **người dùng**, bất kể họ đăng nhập vào máy nào.  
+   - Các cài đặt phổ biến bao gồm:
+     - Hạn chế truy cập Control Panel
+     - Cấu hình Desktop (hình nền, màn hình chờ)
+     - Mô tả menu Start và Taskbar
+     - Script đăng nhập/đăng xuất  
+
+ **Khi nào nên sử dụng từng loại?**
+
+✅ **Computer Configuration:** Khi bạn muốn kiểm soát **toàn bộ máy tính** (áp dụng cho mọi người dùng đăng nhập).  
+✅ **User Configuration:** Khi bạn muốn kiểm soát **trải nghiệm của người dùng** (áp dụng trên bất kỳ máy nào họ đăng nhập).  
+
+
+# Task 7: Authentication Methods
+
+**Phương thức Xác thực**  
+
+Khi sử dụng miền Windows, tất cả thông tin xác thực được lưu trữ trong Domain Controllers. Bất cứ khi nào một người dùng cố gắng xác thực vào một dịch vụ bằng thông tin đăng nhập miền, dịch vụ sẽ cần hỏi Domain Controller để xác minh xem thông tin đó có đúng không. Có hai giao thức có thể được sử dụng để xác thực mạng trong miền Windows:  
+
+- **Kerberos**: Được sử dụng bởi bất kỳ phiên bản Windows nào gần đây. Đây là giao thức mặc định trong bất kỳ miền hiện đại nào.  
+- **NetNTLM**: Giao thức xác thực cũ, được giữ lại vì mục đích tương thích.  
+
+Mặc dù NetNTLM được coi là lỗi thời, hầu hết các mạng sẽ có cả hai giao thức được bật. Hãy xem xét kỹ hơn cách từng giao thức này hoạt động.  
+
+---
+
+## **Xác thực Kerberos**  
+
+Xác thực **Kerberos** là giao thức xác thực mặc định trong bất kỳ phiên bản Windows nào gần đây. Người dùng đăng nhập vào một dịch vụ bằng Kerberos sẽ được cấp vé (ticket). Hãy coi vé như bằng chứng của một lần xác thực trước đó. Người dùng có thể trình vé cho một dịch vụ để chứng minh rằng họ đã được xác thực vào mạng trước đó và do đó được phép sử dụng nó.  
+
+Khi **Kerberos** được sử dụng để xác thực, quá trình sau diễn ra:  
+
+1. Người dùng gửi tên đăng nhập của họ và một dấu thời gian được mã hóa bằng khóa dẫn xuất từ mật khẩu của họ đến **Key Distribution Center (KDC)**, một dịch vụ thường được cài đặt trên Domain Controller, chịu trách nhiệm tạo vé Kerberos trong mạng.  
+
+   **KDC** sẽ tạo và gửi lại một **Ticket Granting Ticket (TGT)**, cho phép người dùng yêu cầu các vé bổ sung để truy cập các dịch vụ cụ thể.  
+
+   Việc yêu cầu vé có thể nghe có vẻ rườm rà, nhưng nó cho phép người dùng yêu cầu vé dịch vụ mà không cần gửi lại thông tin đăng nhập của họ mỗi lần muốn kết nối với một dịch vụ. Cùng với **TGT**, một **Session Key** sẽ được cung cấp cho người dùng, khóa này cần thiết để tạo các yêu cầu tiếp theo.  
+
+   Hãy lưu ý rằng **TGT** được mã hóa bằng **mật khẩu băm của tài khoản krbtgt**, và do đó **người dùng không thể truy cập nội dung của nó**. Điều quan trọng cần biết là **TGT được mã hóa** chứa một bản sao của **Session Key** như một phần của nội dung của nó, và **KDC không cần lưu trữ Session Key**, vì nó có thể khôi phục một bản sao bằng cách giải mã **TGT** nếu cần.
+
+![](./img/7.1.png)
+
+2. Khi một người dùng muốn kết nối đến một dịch vụ trên mạng như một thư mục chia sẻ, trang web hoặc cơ sở dữ liệu, họ sẽ sử dụng **TGT** để yêu cầu **KDC** cấp **Ticket Granting Service (TGS)**. **TGS** là các vé cho phép kết nối chỉ đến dịch vụ cụ thể mà chúng được tạo ra.  
+
+   Để yêu cầu **TGS**, người dùng sẽ gửi tên người dùng và một dấu thời gian được mã hóa bằng **Session Key**, cùng với **TGT** và một **Service Principal Name (SPN)**, cho biết dịch vụ và tên máy chủ mà họ muốn truy cập.  
+
+Kết quả là, **KDC sẽ gửi lại một TGS kèm theo một Service Session Key**, mà chúng ta sẽ cần để xác thực với dịch vụ mong muốn. **TGS** được mã hóa bằng một khóa được tạo từ **Service Owner Hash**.  
+
+**Service Owner** là tài khoản người dùng hoặc tài khoản máy tính mà dịch vụ đang chạy dưới quyền của nó. **TGS chứa một bản sao của Service Session Key** trong nội dung đã mã hóa, để **Service Owner có thể truy cập bằng cách giải mã TGS**.
+
+![](./img/7.2.png)
+
+3. Sau đó, **TGS** có thể được gửi đến dịch vụ mong muốn để xác thực và thiết lập kết nối. Dịch vụ sẽ sử dụng **mật khẩu băm của tài khoản được cấu hình** để giải mã **TGS** và xác thực **Service Session Key**.
+
+![](./img/7.3.png)
+
+## **Xác thực NetNTLM**  
+
+**NetNTLM** hoạt động bằng cách sử dụng **cơ chế thử thách - phản hồi (challenge-response)**. Toàn bộ quá trình diễn ra như sau:
+
+![](./img/7.5.png)
+
+
+**NetNTLM** hoạt động dựa trên **cơ chế thử thách - phản hồi (challenge-response)** để xác thực người dùng mà không cần gửi mật khẩu qua mạng. Quy trình xác thực diễn ra như sau:
+
+---
+
+### **1️⃣ Bước 1: Client gửi yêu cầu xác thực**  
+- Người dùng muốn truy cập một **máy chủ hoặc dịch vụ** trên mạng.  
+- **Client** (máy của người dùng) gửi một yêu cầu xác thực đến **Server**.
+
+---
+
+### **2️⃣ Bước 2: Server tạo thử thách (Challenge)**  
+- Máy **Server** tạo ra một **số ngẫu nhiên (nonce)** và gửi nó như một thử thách (Challenge) đến **Client**.  
+- Mục đích của Challenge này là đảm bảo rằng người dùng thực sự sở hữu thông tin xác thực hợp lệ.
+
+---
+
+### **3️⃣ Bước 3: Client phản hồi (Response)**  
+- **Client** kết hợp **NTLM Hash (băm mật khẩu của người dùng)** với **Challenge** vừa nhận từ **Server**.  
+- Sử dụng thông tin này, **Client** tạo một **Response (phản hồi)** và gửi lại cho **Server**.  
+- **Lưu ý:** Mật khẩu thực của người dùng **không bao giờ được gửi qua mạng**, thay vào đó chỉ có **Response** dựa trên mật khẩu băm được gửi đi.
+
+---
+
+### **4️⃣ Bước 4: Server chuyển Response đến Domain Controller để xác minh**  
+- **Server** gửi **Challenge** và **Response** của Client đến **Domain Controller (DC)** để xác thực.  
+- **DC** có bản sao **NTLM Hash của mật khẩu người dùng**, được lưu trữ trong **SAM (Security Account Manager)** hoặc **Active Directory**.
+
+---
+
+### **5️⃣ Bước 5: Domain Controller kiểm tra Response**  
+- **Domain Controller** sử dụng **NTLM Hash** đã lưu để **tạo lại Response** từ **Challenge**.  
+- Sau đó, **DC so sánh Response được tạo ra với Response do Client gửi đến**.  
+  - Nếu **Response khớp**, xác thực **thành công**.  
+  - Nếu **Response không khớp**, xác thực **bị từ chối**.  
+- Kết quả xác thực (thành công hoặc thất bại) được gửi lại **Server**.
+
+---
+
+### **6️⃣ Bước 6: Server gửi kết quả cho Client**  
+- Máy **Server** nhận kết quả từ **Domain Controller** và gửi phản hồi về **Client**.  
+  - Nếu xác thực thành công, **Client được cấp quyền truy cập vào dịch vụ**.  
+  - Nếu thất bại, **Client bị từ chối truy cập**.
+
+---
+
+## **🔥 Tóm tắt quan trọng về NetNTLM**
+✅ **Bảo mật mật khẩu:** Mật khẩu thực của người dùng **không bao giờ được truyền qua mạng**, thay vào đó chỉ có phản hồi băm được gửi.  
+✅ **Cơ chế Challenge-Response:** Mỗi lần xác thực, **Challenge ngẫu nhiên** được tạo để **ngăn chặn tấn công phát lại (Replay Attack)**.  
+✅ **Domain Controller đóng vai trò xác thực:** Server không thể tự xác thực mà phải gửi Response đến **DC để kiểm tra**.  
+✅ **Tài khoản cục bộ không cần DC:** Nếu người dùng sử dụng **tài khoản cục bộ**, máy chủ có thể xác thực **mà không cần kết nối với DC**, vì **NTLM Hash** của tài khoản đó đã được lưu trữ trong **SAM** của chính máy chủ.
+
+---
+
+### **📌 Hạn chế của NetNTLM**
+⚠ **Dễ bị tấn công Pass-the-Hash (PtH):** Nếu kẻ tấn công đánh cắp **NTLM Hash**, chúng có thể sử dụng nó để xác thực mà **không cần biết mật khẩu thực**.  
+⚠ **Không hỗ trợ xác thực đa yếu tố (MFA):** NetNTLM **chỉ dựa trên mật khẩu**, không hỗ trợ các phương thức xác thực mạnh hơn như **MFA**.  
+⚠ **Dễ bị tấn công Relay Attack:** Nếu không sử dụng **SMB Signing** hoặc các cơ chế bảo mật bổ sung, kẻ tấn công có thể chặn Challenge và Response để thực hiện tấn công **NTLM Relay**.  
+
+---
+
+## **🔍 So sánh NetNTLM và Kerberos**
+| **Tiêu chí**       | **NetNTLM** | **Kerberos** |
+|-------------------|------------|-------------|
+| **Phương thức xác thực** | Challenge-Response | Ticket-based |
+| **Truyền mật khẩu** | Không, chỉ gửi phản hồi băm | Không, sử dụng vé (ticket) |
+| **Cần Domain Controller** | Có (với tài khoản miền) | Có |
+| **Bảo mật** | Thấp, dễ bị tấn công PtH và Relay | Cao hơn, hỗ trợ mã hóa mạnh |
+| **Hỗ trợ MFA** | Không | Có |
+| **Hiệu suất** | Chậm hơn do nhiều bước Challenge-Response | Nhanh hơn do sử dụng Ticket |
+
+---
+
+### **🔥 Kết luận**
+- **NetNTLM** là giao thức xác thực **lỗi thời**, chủ yếu được sử dụng để duy trì **tương thích ngược** với hệ thống cũ.  
+- **Kerberos** là phương thức **mạnh hơn, an toàn hơn**, được khuyến nghị sử dụng trong **các môi trường hiện đại**.  
+- **NetNTLM chỉ nên được sử dụng khi bắt buộc phải hỗ trợ các hệ thống không tương thích với Kerberos**.  
 
