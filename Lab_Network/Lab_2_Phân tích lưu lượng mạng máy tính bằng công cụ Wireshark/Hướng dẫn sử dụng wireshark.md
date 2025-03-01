@@ -31,7 +31,7 @@ Phân tích Gói Tin: Wireshark cho phép bạn theo dõi và phân tích từng
 
 Đánh giá Hiệu suất Mạng: Wireshark cung cấp thông tin về thời gian phản hồi (response time), độ trễ (latency), và các thống kê khác, giúp đánh giá hiệu suất của mạng.
 
-Phân tích Giao thức: Wireshark hỗ trợ nhiều giao thức mạng khác nhau. Bạn có thể xem và phân tích giao thức [HTTP](../các_khái_niệm/HTTP.md), TCP, UDP, IP, DNS, và nhiều giao thức khác.
+Phân tích Giao thức: Wireshark hỗ trợ nhiều giao thức mạng khác nhau. Bạn có thể xem và phân tích giao thức [HTTP](../Các%20khái%20niệm/HTTP.md), TCP, UDP, IP, DNS, và nhiều giao thức khác.
 Điều tra Vấn đề Mạng: Khi xảy ra vấn đề mạng, Wireshark là một công cụ mạnh mẽ để phân tích và xác định nguyên nhân của sự cố.
 
 Bảo mật Mạng: Wireshark có thể được sử dụng để phát hiện các hoạt động độc hại trên mạng. Nó cho phép bạn xem gói tin để phát hiện các tấn công mạng, như phishing hoặc kiểm soát truy cập không được ủy quyền.
