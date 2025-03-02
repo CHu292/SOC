@@ -157,3 +157,32 @@ Trong Wireshark, quy tắc tô màu (Coloring Rules) giúp người dùng dễ d
 
 ### Cách kiểm tra gói tin trong Wireshark
 
+> Để kiểm tra gói tin trong máy tính sử dụng Wireshark, chúng ta bắt đầu bằng cách nhấp chuột vào một gói tin cụ thể. Sau đó, để tạo một bộ lọc, chúng ta có thể nhấp chuột phải vào bất kỳ chi tiết nào trong gói tin và sử dụng menu con Apply as Filter để tạo bộ lọc dựa trên thông tin đó. Việc tự tạo bộ lọc giúp người dùng tập trung vào các gói tin cụ thể và thuận tiện trong quá trình phân tích dữ liệu mạng.
+
+![Kiểm tra gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/Kiem_tra_goi_tin.png)
+
+### Phân tích gói tin với Wireshark
+
+#### Tìm kiếm gói tin (Find Packet)
+
+> Để tìm kiếm gói tin, chúng ta có thể sử dụng thanh công cụ Find Packet bằng cách bấm phím Ctrl + F, một hộp thoại mới sẽ xuất hiện nằm giữa thanh Filter và Packet List:
+
+![Tìm gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/tim_goi_tin.png)
+
+Chúng ta có thể tìm kiếm packet dựa vào:
+
+- Display Filter: Nhập vào một biểu thức filter (expression-based filter), Wireshark sẽ tìm kiếm các gói tin khớp với biểu thức này.
+- Hex value: Tìm kiếm dựa trên giá trị Hex.
+- String: Tìm kiếm dựa trên chuỗi dữ liệu.
+- Regular Expression: Tìm kiếm dựa trên biểu thức Regex.
+
+![](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/tim_goi_tin_1.png)
+
+> Tip: Sử dụng Ctrl + N để đi đến kết quả tiếp theo, Ctrl + B để lùi lại kết quả trước đó.
+
+| Options            | Ví dụ                          |
+|--------------------|--------------------------------|
+| **Display filter** | `tcp.src port==80`<br>hoặc<br>`ip.src==192.168.1.1` |
+| **Hex**           | `010108ffff`                   |
+| **String**        | `Quantrilinux.vn`<br>hoặc<br>`GET /` |
+| **Regular Expression** | `GET .* HTTP`            |
