@@ -250,3 +250,112 @@ Một vài Wireshark Expression tham khảo cho phần Capture Filter:
 | `icmp[0:2] == 0x0301` | ICMP destination unreachable, host unreachable |
 
 [Hoặc có thể tham khảo tại đây](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html)
+
+#### Display Filter
+
+>Display Filter giúp lọc ra những packet thỏa điều kiện trong file capture để thể hiện lên cho người dùng. Display filter chỉ lọc và thể hiện packet thỏa điều kiện chứ không xóa bỏ những packet không thỏa điều kiện, dữ liệu trong file capture hoàn toàn không bị ảnh hưởng.
+
+>Sử dụng Display Filter bằng cách nhập biểu thức (expression) vào Filter textbox phía trên phần Packet List. Bạn cũng có thể nhấp vào phần Expression để lựa chọn các pre-defined filters có sẵn ứng với từng giao thức.
+
+![Display Filter](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/display_filter.png)
+
+
+Wireshark Display Filter chủ yếu tuân theo cú pháp sau:
+
+```
+protocol.feature.subfeature COMPARISON_OPERATOR value LOGICAL_OPERATOR protocol.feature.subfeature COMPARISON_OPERATOR value
+```
+
+Trong đó:
+- **`protocol`**: Giao thức được lọc (ví dụ: `ip`, `tcp`, `udp`, `icmp`, `http`).
+- **`feature`**: Thuộc tính cụ thể của giao thức (ví dụ: `src`, `dst`, `port`, `flags`, `ttl`).
+- **`subfeature`**: Một đặc tính cụ thể hơn (không phải lúc nào cũng cần thiết, ví dụ: `tcp.flags.syn`, `ip.ttl`).
+- **`COMPARISON_OPERATOR`**: Toán tử so sánh 
+
+| Operator | Ý nghĩa |
+|----------|---------|
+| `==`     | Bằng (equal to) |
+| `!=`     | Không bằng (not equal to) |
+| `>`      | Lớn hơn (greater than) |
+| `<`      | Nhỏ hơn (less than) |
+| `>=`     | Lớn hơn hoặc bằng (greater than or equal) |
+| `<=`     | Nhỏ hơn hoặc bằng (less than or equal) |
+
+- **`value`**: Giá trị để so sánh (ví dụ: `80`, `192.168.1.1`, `5`).
+- **`LOGICAL_OPERATOR`**: Toán tử logic để kết hợp nhiều điều kiện.
+
+| Operator | Ý nghĩa |
+|----------|----------------------------------|
+| `and`    | tất cả các điều kiện phải được thỏa mãn |
+| `or`     | một trong các điều kiện được thỏa mãn |
+| `xor`    | một và chỉ một điều kiện được thỏa mãn |
+| `not`    | không điều kiện nào được phép thỏa mãn |
+
+---
+Một vài Wireshark Expression tham khảo cho phần Display Filter:
+
+| Expression | Ý nghĩa |
+|------------|---------|
+| `tcp.port eq 25 or icmp` | Lọc gói tin TCP liên quan port 25 hoặc sử dụng giao thức ICMP |
+| `ip.src==192.168.0.0/16 and ip.dst==192.168.0.0/16` | Lọc traffic trao đổi trong mạng LAN của subnet `192.168.0.0/16` |
+| `tcp.window_size == 0 && tcp.flags.reset != 1` | TCP buffer full và source kết nối báo hiệu cho Destination ngừng gửi dữ liệu |
+| `udp contains 81:60:03` | UDP packet chứa 3 bytes `81:60:03` ở vị trí bất kỳ trong header hoặc payload |
+| `http.request.uri matches “gl=se$”` | HTTP request có URL tận cùng bằng chuỗi `"gl=se"` |
+| `ip.addr == 192.168.0.1`<br>hoặc:<br>`ip.src == 192.168.0.1 or ip.dst == 192.168.0.1` | Wireshark filter by IP: Lọc tất cả traffic liên quan đến IP `192.168.0.1` |
+| `! ( ip.addr == 192.168.0.1 )`<br>hoặc:<br>`! (ip.src == 192.168.0.1 or ip.dst == 192.168.0.1)` | Lọc tất cả traffic **KHÔNG** liên quan đến IP `192.168.0.1` |
+| `tcp.flags.syn == 1` | Các gói tin TCP có cờ SYN được bật |
+| `tcp.flags.syn == 1 && tcp.flags.ack == 1` | Các gói tin TCP có cờ SYN/ACK được bật |
+| `http.host == “quantrilinux.vn”` | HTTP request có Host header là `"quantrilinux.vn"` |
+| `http.response.code == 404` | Các HTTP request có response status code là `404` |
+| `smtp || imap || pop` | Traffic liên quan đến email (SMTP, IMAP, POP) |
+| `! tcp.port == 22` | Loại bỏ traffic SSH |
+| `! arp` | Loại bỏ traffic ARP |
+| `ip.version == 4` | Wireshark IPv4 filter: Lọc tất cả các gói tin IP version 4 |
+| `tcp.srcport == 80` | Wireshark port filter: Lọc tất cả gói tin TCP có source port là `80` |
+| `tcp.port == 80` | Lọc tất cả các gói tin có liên quan đến port `80` |
+| `udp.port == 67 or udp.port == 68` | Traffic DHCP |
+| `dns` | Filter traffic liên quan DNS |
+| `http` | Wireshark HTTP filter |
+| `https` | Wireshark HTTPS filter |
+| `ip.src == 192.168.0.1` | Wireshark filter source IP |
+| `ip.dst == 192.168.0.1` | Wireshark filter destination IP |
+| `tcp.analysis.flags && !tcp.analysis.window_update` | Lọc tất cả các lỗi TCP |
+| `tcp.analysis.retransmission` | Lọc các gói tin TCP retransmissions (gửi lại do lỗi) |
+| `tcp.analysis.fast_retransmission` | Lọc các gói tin TCP fast retransmissions |
+| `tcp.analysis.duplicate_ack` | Lọc các gói tin TCP duplicate ACKs (ACK trùng lặp) |
+| `icmp` | Lọc tất cả traffic ICMP (ping, lỗi mạng, unreachable...) |
+| `icmp.type == 3` | Lọc ICMP Destination Unreachable |
+| `icmp.type == 8` | Lọc ICMP Echo Request (Ping Request) |
+| `icmp.type == 0` | Lọc ICMP Echo Reply (Ping Reply) |
+| `ether.src == 00:1A:2B:3C:4D:5E` | Lọc tất cả các gói tin có địa chỉ MAC nguồn `00:1A:2B:3C:4D:5E` |
+| `ether.dst == 00:1A:2B:3C:4D:5E` | Lọc tất cả các gói tin có địa chỉ MAC đích `00:1A:2B:3C:4D:5E` |
+| `ip.ttl < 10` | Lọc tất cả các gói tin có giá trị TTL nhỏ hơn 10 |
+| `frame.len > 1000` | Lọc tất cả các gói tin có kích thước lớn hơn 1000 byte |
+| `ip.flags.mf == 1` | Lọc các gói tin bị phân mảnh (More Fragments flag bật) |
+| `ip.frag_offset > 0` | Lọc tất cả các gói tin là phần tiếp theo của gói tin bị phân mảnh |
+| `tcp.seq == 1` | Lọc các gói tin TCP có số sequence là 1 |
+| `tcp.options.mss_val < 1460` | Lọc tất cả các gói tin TCP có giá trị MSS nhỏ hơn 1460 |
+| `ssl` | Lọc tất cả traffic liên quan đến SSL/TLS |
+| `tls.handshake.type == 1` | Lọc tất cả các gói tin TLS Client Hello |
+| `tls.handshake.type == 2` | Lọc tất cả các gói tin TLS Server Hello |
+| `tls.handshake.type == 11` | Lọc tất cả các gói tin TLS Certificate |
+| `tls.handshake.type == 16` | Lọc tất cả các gói tin TLS Client Key Exchange |
+| `dns.qry.name == "example.com"` | Lọc tất cả các truy vấn DNS tới `example.com` |
+| `dhcp.option.dhcp == 1` | Lọc các gói tin DHCP Discover |
+| `dhcp.option.dhcp == 2` | Lọc các gói tin DHCP Offer |
+| `dhcp.option.dhcp == 3` | Lọc các gói tin DHCP Request |
+| `dhcp.option.dhcp == 5` | Lọc các gói tin DHCP ACK |
+| `ftp` | Lọc tất cả traffic liên quan đến FTP |
+| `ftp.command == "USER"` | Lọc tất cả các gói tin FTP chứa lệnh `USER` (đăng nhập) |
+| `ftp.response.code == 530` | Lọc tất cả các phản hồi FTP có mã `530` (Login incorrect) |
+| `ppp` | Lọc tất cả các gói tin PPP (Point-to-Point Protocol) |
+| `smb` | Lọc tất cả traffic liên quan đến SMB (Server Message Block) |
+| `ntlmssp` | Lọc tất cả traffic liên quan đến NTLM authentication |
+| `kerberos` | Lọc tất cả traffic liên quan đến Kerberos authentication |
+| `dhcp` | Lọc tất cả traffic liên quan đến DHCP |
+| `stp` | Lọc tất cả traffic liên quan đến Spanning Tree Protocol |
+| `ospf` | Lọc tất cả traffic liên quan đến OSPF (Open Shortest Path First) |
+| `bgp` | Lọc tất cả traffic liên quan đến BGP (Border Gateway Protocol) |
+| `h323` | Lọc tất cả traffic liên quan đến giao thức VoIP H.323 |
+| `sip` | Lọc tất cả traffic liên quan đến giao thức VoIP SIP |
+
