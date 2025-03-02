@@ -387,3 +387,8 @@ Click vào một packet để chọn nó, sau đó xem thêm chi tiết về nó
 | **TCP/UDP/ICMP**    | Chứa thông tin về số cổng nguồn (`Source Port`), số cổng đích (`Destination Port`), số thứ tự (`Sequence Number`), số xác nhận (`ACK Number`), các cờ điều khiển (`Flags`), tùy chọn TCP (`TCP Options`)... |
 | **Application Layer** | Chứa thông tin về các giao thức ứng dụng như `HTTP`, `DNS`, `SMTP`... |
 
+Ở khung cửa sổ của Packet Bytes thể hiện gói tin ở dạng Hex. Khi click chọn 1 trường nào đó ở phần Packet Details, những bytes liên quan đến phần đó sẽ được tô đậm ở phần Packet Bytes tương ứng.
+
+![Packet Bytes](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/packet_bytes.png)
+
+
