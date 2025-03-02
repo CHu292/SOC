@@ -202,3 +202,51 @@ Chúng ta có thể khai báo biểu thức cho Capture Filter ở  Capture > Ca
 
 ![Capture Filter](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/capture_filter.png)
 
+Wireshark Capture Filter sử dụng cú pháp của Berkeley Packet Filter (BPF):
+
+- Mỗi filter gọi là một expression.
+- Mỗi expression chứa một hoặc nhiều primitives. Các primitives được kết hợp với nhau bằng các “Logical Operator” như AND (&&), OR (||) và NOT (!) .
+- Mỗi primitives chứa một hoặc nhiều qualifiers, theo sau là một ID name hoặc number. Các BPF Qualifiers bao gồm:
+
+| Qualifiers | Mô tả                                     | Ví dụ                          |
+|------------|------------------------------------------|--------------------------------|
+| **Type**   | Chỉ định ID name hoặc number ta sẽ tham chiếu | `host`, `net`, `port`         |
+| **Dir**    | Chỉ định hướng của dữ liệu (transfer direction) | `src`, `dst`                 |
+| **Proto**  | Protocol                                 | `ether`, `ip`, `tcp`, `udp`, `http`, `ftp` |
+
+
+- Cú pháp tổng quan: Bắt các gói tin gửi đến host 192.168.0.10 và sử dụng giao thức TCP, port 80:
+
+![Cú pháp bắt gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/Cu_phap_bat_goi_tin.png)
+
+
+Một vài Wireshark Expression tham khảo cho phần Capture Filter:
+
+| Expression | Ý nghĩa |
+|------------|---------|
+| `host 172.18.5.4` | Wireshark filter by IP: Bắt gói tin liên quan đến IP `172.18.5.4` |
+| `src 192.168.0.10` | Wireshark filter source IP: Bắt các gói tin có source IP là `192.168.0.10` |
+| `dst 192.168.0.1` | Wireshark filter destination IP: Bắt các gói tin có destination IP là `192.168.0.1` |
+| `net 192.168.0.0/24`<br>hoặc:<br>`net 192.168.0.0 mask 255.255.255.0` | Bắt gói tin liên quan đến subnet `192.168.0.0/24` |
+| `src net 192.168.0.0/24`<br>hoặc:<br>`src net 192.168.0.0 mask 255.255.255.0` | Bắt các gói tin có source IP thuộc subnet `192.168.0.0/24` |
+| `dst net 192.168.0.0/24`<br>hoặc:<br>`dst net 192.168.0.0 mask 255.255.255.0` | Bắt các gói tin có destination IP thuộc subnet `192.168.0.0/24` |
+| `port 53` | Wireshark port filter: Bắt gói tin DNS |
+| `port 67 or port 68` | Bắt gói tin DHCP |
+| `host 192.168.1.1 and not (port 80 or 443)`<br>hoặc:<br>`host 192.168.1.1 and not port 80 and not port 443` | Capture tất cả traffic liên quan đến IP `192.168.1.1` nhưng không phải traffic HTTP/HTTPS |
+| `(tcp[0:2] > 1500 and tcp[0:2] < 1550) or (tcp[2:2] > 1500 and tcp[2:2] < 1550)`<br>hoặc:<br>`tcp portrange 1501-1549` | Capture các packet nằm trong range port từ `1501-1549` |
+| `ip` | Wireshark IPv4 filter |
+| `ip6` | Wireshark IPv6 filter |
+| `tcp` | Bắt gói tin TCP |
+| `udp` | Bắt gói tin UDP |
+| `icmp` | Bắt gói tin ICMP |
+| `http` | Wireshark HTTP filter |
+| `https` | Wireshark HTTPS filter |
+| `tcp[13] & 32 == 32` | TCP packets với cờ URG được bật |
+| `tcp[13] & 16 == 16` | TCP packets với cờ ACK được bật |
+| `tcp[13] & 8 == 8` | TCP packets với cờ PSH được bật |
+| `tcp[13] & 4 == 4` | TCP packets với cờ RST được bật |
+| `tcp[13] & 2 == 2` | TCP packets với cờ SYN được bật |
+| `tcp[13] & 1 == 1` | TCP packets với cờ FIN được bật |
+| `icmp[0:2] == 0x0301` | ICMP destination unreachable, host unreachable |
+
+[Hoặc có thể tham khảo tại đây](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html)
