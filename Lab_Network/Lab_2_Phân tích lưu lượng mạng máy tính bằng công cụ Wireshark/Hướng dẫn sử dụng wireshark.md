@@ -359,3 +359,31 @@ Một vài Wireshark Expression tham khảo cho phần Display Filter:
 | `h323` | Lọc tất cả traffic liên quan đến giao thức VoIP H.323 |
 | `sip` | Lọc tất cả traffic liên quan đến giao thức VoIP SIP |
 
+### Cách đọc gói tin trong Wireshark
+
+Click vào một packet để chọn nó, sau đó xem thêm chi tiết về nó.
+
+![Xem gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/xem_goi_tin.png)
+
+Ở khung cửa sổ Paket List sẽ cung cấp cho chúng ta các thông tin như:
+
+| Trường        | Mô tả |
+|--------------|-------------------------------------------------------------|
+| **No**        | Số thứ tự của gói tin trong file capture hiện tại. |
+| **Time**      | Thời gian tương đối mà gói tin này được bắt, tính từ lúc bắt đầu quá trình bắt gói tin. |
+| **Source**    | Địa chỉ source IP của kết nối. |
+| **Destination** | Địa chỉ destination IP của kết nối. |
+| **Length**    | Chiều dài của gói tin. |
+| **Protocol**  | Giao thức của gói tin. |
+| **Info**      | Các thông tin tổng quan liên quan đến gói tin. |
+
+Ở khung cửa sổ của Packet Details sẽ cho ta thông tin chi tiết từng Layer của packet như:
+
+| Layer                | Mô tả |
+|----------------------|--------------------------------------------------------------|
+| **Frame**           | Thông tin về giao diện mạng (`Interface`), tổng quan về frame. |
+| **Ethernet**        | Chứa thông tin về địa chỉ MAC nguồn (`Source`), địa chỉ MAC đích (`Destination`), địa chỉ MAC (`Mac Address`). |
+| **Internet**        | Chứa thông tin về địa chỉ IP nguồn (`Source IP`), địa chỉ IP đích (`Destination IP`), TTL (`Time to Live`), giao thức (`Protocol`), cờ (`Flags`), checksum (`Checksum`), nhận diện gói (`Identification`), tổng chiều dài (`Total Length`)... |
+| **TCP/UDP/ICMP**    | Chứa thông tin về số cổng nguồn (`Source Port`), số cổng đích (`Destination Port`), số thứ tự (`Sequence Number`), số xác nhận (`ACK Number`), các cờ điều khiển (`Flags`), tùy chọn TCP (`TCP Options`)... |
+| **Application Layer** | Chứa thông tin về các giao thức ứng dụng như `HTTP`, `DNS`, `SMTP`... |
+
