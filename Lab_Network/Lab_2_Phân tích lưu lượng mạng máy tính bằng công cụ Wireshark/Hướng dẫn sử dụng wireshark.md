@@ -1,6 +1,6 @@
 # Hướng dẫn sử dụng WireShark
 
-## WireShark là gì
+# WireShark là gì
 
 > Wireshark là một ứng dụng dùng để bắt (capture), phân tích và xác định các vấn đề liên quan đến network như: rớt gói tin, kết nối chậm, hoặc các truy cập bất thường. Phần mềm này cho phép quản trị viên hiểu sâu hơn các Network Packets đang chạy trên hệ thống, qua đó dễ dàng xác định các nguyên nhân chính xác gây ra lỗi.
 
@@ -43,9 +43,9 @@ Bảo mật Mạng: Wireshark có thể được sử dụng để phát hiện 
 - Coloring rules cho phép thiết lập màu sắc cho các packet giúp phân tích nhanh và hiệu quả hơn.
 - Output có thể export sang XML, PostScript®, CSV, hoặc plain text.
 
-## Cách dùng WireShark
+# Cách dùng WireShark
 
-### Cách bắt và dừng gói tin
+## Cách bắt và dừng gói tin
 
 Giao diện của WireShark:
 
@@ -60,7 +60,7 @@ Dừng gói tin bằng cách bấm vào nút màu đỏ hoặc ```Capture -> Sto
 
 ![Dừng bắt gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/Dunggoitin.png)
 
-### Giao diện WireShark
+## Giao diện WireShark
 
 Giao diện gồm: Packet List, Packet Detail, Packet Byte
 
@@ -74,7 +74,7 @@ Giao diện chính của Wireshark được chia thành 3 phần:
 
 - Packet Bytes: Thể hiện packet ở định dạng raw dưới dạng hex hoặc binary và thể hiện cách mà packet được truyền trên đường truyền. 
 
-### Mở và lưu gói tin
+## Mở và lưu gói tin
 
 Để mở gói tin bằng Wireshark, bạn chọn File > Open và tìm đến đường dẫn của file cần mở.
 
@@ -85,7 +85,7 @@ Giao diện chính của Wireshark được chia thành 3 phần:
 ![Luu file](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/luu_file.png)
 
 
-### Cách lọc các gói tin trong phần mềm Wireshark
+## Cách lọc các gói tin trong phần mềm Wireshark
 
 > Một cách cơ bản để sử dụng Wireshark để lọc là nhập điều kiện vào hộp bộ lọc ở đầu cửa sổ và sau đó nhấp vào Apply hoặc nhấn Enter. Ví dụ, nếu bạn nhập dns vào bộ lọc, chỉ các gói tin DNS sẽ được hiển thị. Wireshark cung cấp chức năng tự động hoàn thành bộ lọc khi bạn bắt đầu nhập.
 
@@ -103,7 +103,7 @@ Giao diện chính của Wireshark được chia thành 3 phần:
 
 ![Hiển thị các gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/hien_thi_goi_tin_sau_khi_ap_dung_bo_loc.png)
 
-### Cách Color Coding trong Wireshark
+## Cách Color Coding trong Wireshark
 
 Trong Wireshark, quy tắc tô màu (Coloring Rules) giúp người dùng dễ dàng nhận diện và phân loại các loại gói tin dựa trên đặc điểm và lỗi mạng. Dưới đây là ý nghĩa của các màu sắc đánh dấu gói tin trong hình ảnh:
 
@@ -155,15 +155,15 @@ Trong Wireshark, quy tắc tô màu (Coloring Rules) giúp người dùng dễ d
 
 ![color coding](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/color_coding.png)
 
-### Cách kiểm tra gói tin trong Wireshark
+## Cách kiểm tra gói tin trong Wireshark
 
 > Để kiểm tra gói tin trong máy tính sử dụng Wireshark, chúng ta bắt đầu bằng cách nhấp chuột vào một gói tin cụ thể. Sau đó, để tạo một bộ lọc, chúng ta có thể nhấp chuột phải vào bất kỳ chi tiết nào trong gói tin và sử dụng menu con Apply as Filter để tạo bộ lọc dựa trên thông tin đó. Việc tự tạo bộ lọc giúp người dùng tập trung vào các gói tin cụ thể và thuận tiện trong quá trình phân tích dữ liệu mạng.
 
 ![Kiểm tra gói tin](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/Kiem_tra_goi_tin.png)
 
-### Phân tích gói tin với Wireshark
+## Phân tích gói tin với Wireshark
 
-#### Tìm kiếm gói tin (Find Packet)
+### Tìm kiếm gói tin (Find Packet)
 
 > Để tìm kiếm gói tin, chúng ta có thể sử dụng thanh công cụ Find Packet bằng cách bấm phím Ctrl + F, một hộp thoại mới sẽ xuất hiện nằm giữa thanh Filter và Packet List:
 
@@ -184,5 +184,21 @@ Chúng ta có thể tìm kiếm packet dựa vào:
 |--------------------|--------------------------------|
 | **Display filter** | `tcp.src port==80`<br>hoặc<br>`ip.src==192.168.1.1` |
 | **Hex**           | `010108ffff`                   |
-| **String**        | `Quantrilinux.vn`<br>hoặc<br>`GET /` |
+| **String**        | `web.telegram.org`<br>hoặc<br>`GET /` |
 | **Regular Expression** | `GET .* HTTP`            |
+
+### Wireshark Filter
+
+> Filter cho phép bạn lọc ra những packet nào sẽ dùng để phân tích. Sử dụng Wireshark filter bằng cách khai báo một biểu thức để quy định việc thêm vào (inclusion) hoặc loại bỏ (exclusion) các gói tin. Nếu có những gói tin bạn không cần phân tích, có thể viết filter để loại bỏ chúng. Ngược lại, có những gói tin quan trọng bạn muốn phân tích kỹ, có thể viết filter để lọc riêng chúng ra. Có hai loại filter chính:
+
+- Capture Filters: Chỉ định các packet sẽ được capture và quá trình bắt gói tin chỉ capture những packet thỏa điều kiện này.
+- Display filters: Áp dụng filter lên các gói tin đã được capture, mục tiêu là để ẩn đi những packet không cần thiết và chỉ thể hiện những packet thỏa điều kiện chỉ định
+
+#### Capture Filter
+
+> Được áp dụng trong quá trình bắt gói tin để giới hạn số lượng gói tin sẽ được bắt. Lý do chính để sử dụng filter này nhằm cải thiện performance và giới hạn số lượng dữ liệu capture được chỉ chứa các thông tin chúng ta quan tâm, giúp việc phân tích trở nên hiệu quả hơn. Điều này cực kỳ hữu ích khi áp dụng bắt gói tin bằng Wireshark trên các hệ thống có lưu lượng mạng cao, dữ liệu trao đổi lớn.
+
+Chúng ta có thể khai báo biểu thức cho Capture Filter ở  Capture > Capture Filters hoặc khai báo ở phần …using this filter khi lựa chọn card mạng:
+
+![Capture Filter](../Lab_2_Phân%20tích%20lưu%20lượng%20mạng%20máy%20tính%20bằng%20công%20cụ%20Wireshark/img/capture_filter.png)
+
