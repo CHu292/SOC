@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://media1.giphy.com/media/wvQIqJyNBOCjK/giphy.gif" width="100"/>
+  <img src="https://media1.giphy.com/media/wvQIqJyNBOCjK/giphy.gif" width="500"/>
 
 Các Bài học của CVĐ và ChatGPT plus của anh ấy
 </h1>
