@@ -61,5 +61,9 @@
     "ghép",
     "nghệ",
     "Phần"
-  ]
+  ],
+  "files.associations": {
+    "typeinfo": "c",
+    "*.tcc": "c"
+  }
 }

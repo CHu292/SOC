@@ -1,0 +1,258 @@
+1. VLAN
+IOU1:
+
+configure terminal
+vlan 110
+name Printer
+vlan 120
+name Computers
+vlan 130
+name Phones
+exit
+
+IOU2:
+
+configure terminal
+vlan 110
+name Printer
+vlan 120
+name Computers
+exit
+
+IOU3:
+
+configure terminal
+vlan 120
+name Computers
+vlan 130
+name Phones
+exit
+-------------------------------------------------------
+
+2. trunk
+
+IOU1:
+
+configure terminal
+interface Ethernet0/0
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface Ethernet0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+interface Ethernet0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+IOU2:
+
+configure terminal
+interface Ethernet0/0
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+IOU3:
+
+configure terminal
+interface Ethernet0/0
+switchport trunk encapsulation dot1q
+switchport mode trunk
+exit
+
+-------------------------------------------------------
+
+3. Access
+
+IOU2: 
+
+configure terminal
+interface Ethernet0/1
+switchport mode access
+switchport access vlan 110
+exit
+
+interface Ethernet0/2
+switchport mode access
+switchport access vlan 120
+exit
+
+IOU3:
+
+configure terminal
+interface Ethernet0/1
+switchport mode access
+switchport access vlan 120
+exit
+
+interface range Ethernet0/2-3
+switchport mode access
+switchport access vlan 130
+exit
+
+-------------------------------------------------------
+
+4. sub_interface:
+
+R1:
+
+configure terminal
+interface Ethernet0/0
+no shutdown
+exit
+
+interface Ethernet0/0.110
+encapsulation dot1Q 110
+ip address 192.168.110.254 255.255.255.0
+exit
+
+interface Ethernet0/0.120
+encapsulation dot1Q 120
+ip address 192.168.120.254 255.255.255.0
+exit
+
+interface Ethernet0/0.130
+encapsulation dot1Q 130
+ip address 192.168.130.254 255.255.255.0
+exit
+
+-------------------------------------------------------
+
+5. DHCP Server:
+R1:
+
+configure terminal
+ip dhcp excluded-address 192.168.110.1 192.168.110.10
+ip dhcp pool Printer
+ network 192.168.110.0 255.255.255.0
+ default-router 192.168.110.254
+ dns-server 8.8.8.8
+ lease 7
+exit
+
+ip dhcp excluded-address 192.168.120.1 192.168.120.10
+ip dhcp pool Computers
+network 192.168.120.0 255.255.255.0
+default-router 192.168.120.254
+dns-server 8.8.8.8
+lease 7
+exit
+
+ip dhcp excluded-address 192.168.130.1 192.168.130.10
+ip dhcp pool Phones
+network 192.168.130.0 255.255.255.0
+default-router 192.168.130.254
+dns-server 8.8.8.8
+lease 7
+exit
+
+-------------------------------------------------------
+
+6. Port's security:
+
+IOU2:
+
+configure terminal
+interface Ethernet0/1
+switchport mode access
+switchport access vlan 110
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address sticky
+no shutdown
+exit
+
+exit
+write memory
+
+IOU3: 
+
+configure terminal
+interface Ethernet0/1
+switchport mode access
+switchport access vlan 120
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address sticky
+no shutdown
+exit
+
+interface range Ethernet0/2-3
+switchport mode access
+switchport access vlan 130
+switchport port-security
+switchport port-security maximum 1
+switchport port-security violation restrict
+switchport port-security mac-address sticky
+no shutdown
+exit
+
+-------------------------------------------------------
+
+7. Dhcp snooping:
+
+IOU1:
+
+configure terminal
+ip dhcp snooping
+ip dhcp snooping vlan 110,120,130
+interface Ethernet0/0
+ip dhcp snooping trust
+exit
+
+interface Ethernet0/1
+ip dhcp snooping trust
+exit
+
+interface Ethernet0/2
+ip dhcp snooping trust
+exit
+
+IOU2:
+
+configure terminal
+ip dhcp snooping
+ip dhcp snooping vlan 110,120,130
+interface Ethernet0/0
+ip dhcp snooping trust
+exit
+
+interface Ethernet0/1
+no ip dhcp snooping trust
+exit
+
+interface Ethernet0/2
+no ip dhcp snooping trust
+exit 
+
+IOU3:
+
+configure terminal
+ip dhcp snooping
+ip dhcp snooping vlan 110,120,130
+interface Ethernet0/0
+ip dhcp snooping trust
+exit
+
+interface Ethernet0/1
+ip dhcp snooping trust
+exit
+
+interface Ethernet0/2
+ip dhcp snooping trust
+exit
+
+interface Ethernet0/3
+ip dhcp snooping trust
+exit
+
+interface Ethernet1/0
+ip dhcp snooping trust
+exit
