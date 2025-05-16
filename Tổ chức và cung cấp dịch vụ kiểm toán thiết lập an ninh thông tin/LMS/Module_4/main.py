@@ -2,7 +2,6 @@ import bcrypt
 import logging
 from datetime import datetime
 
-# Cấu hình ghi log
 logging.basicConfig(
     filename="login.log",
     level=logging.INFO,
@@ -20,45 +19,45 @@ class AuthSystem:
 
     def register_user(self, username, password):
         if username in self.user_database:
-            print("❌ Username already exists!")
+            print("Username already exists!")
             return
         self.user_database[username] = {
             "password": self.encrypt_password(password),
             "2fa_enabled": False,
             "2fa_method": None
         }
-        print(f"✅ User '{username}' registered successfully!")
+        print(f"User '{username}' registered successfully!")
 
     def login(self, username, password):
         if username not in self.user_database:
-            print("❌ User not found!")
+            print("User not found!")
             logging.warning(f"Login failed: user '{username}' not found.")
             return False
 
         stored_hash = self.user_database[username]["password"]
         if bcrypt.checkpw(password.encode(), stored_hash):
-            print("✅ Password is correct!")
+            print("Password is correct!")
             return True
         else:
-            print("❌ Incorrect password!")
+            print("Incorrect password!")
             logging.warning(f"Login failed: incorrect password for user '{username}'.")
             return False
 
     def enable_2fa(self, username, method="sms"):
         if username not in self.user_database:
-            print("❌ User not found!")
+            print("User not found!")
             return
         self.user_database[username]["2fa_enabled"] = True
         self.user_database[username]["2fa_method"] = method
-        print(f"✅ 2FA enabled for '{username}' using: {method.upper()}")
+        print(f"2FA enabled for '{username}' using: {method.upper()}")
 
     def verify_2fa(self, username, code):
         user = self.user_database.get(username)
         if not user:
-            print("❌ User not found!")
+            print("User not found!")
             return False
         if not user["2fa_enabled"]:
-            print("⚠️ 2FA is not enabled for this user.")
+            print("2FA is not enabled for this user.")
             return True
 
         method = user["2fa_method"]
@@ -67,14 +66,14 @@ class AuthSystem:
         elif method == "app":
             correct_code = "654321"
         else:
-            print("❌ Invalid 2FA method!")
+            print("Invalid 2FA method!")
             return False
 
         if code == correct_code:
-            print("✅ 2FA code is correct!")
+            print("2FA code is correct!")
             return True
         else:
-            print("❌ Incorrect 2FA code!")
+            print("Incorrect 2FA code!")
             logging.warning(f"Login failed: incorrect 2FA code for user '{username}'.")
             return False
 
@@ -84,18 +83,18 @@ class AuthSystem:
 
         if self.user_database[username]["2fa_enabled"]:
             if code is None:
-                print("⚠️ 2FA code required!")
+                print("2FA code required!")
                 return False
             if not self.verify_2fa(username, code):
                 return False
 
-        print("🎉 Login successful!")
+        print("Login successful!")
         logging.info(f"User '{username}' logged in successfully.")
         return True
 
     def menu(self):
         while True:
-            print("\n📋 Menu:")
+            print("\n Menu:")
             print("1 - Register")
             print("2 - Login")
             print("3 - Enable 2FA")
@@ -128,7 +127,7 @@ class AuthSystem:
                 break
 
             else:
-                print("❌ Invalid option.")
+                print("Invalid option.")
 
 if __name__ == "__main__":
     app = AuthSystem()
